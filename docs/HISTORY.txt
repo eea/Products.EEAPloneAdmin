@@ -6,8 +6,8 @@ Changelog
 [Antonio De Marinis - demarinis at eea.europa.eu]
 [David Ichim - david.ichim at eaudeweb.ro]
 
-0.2-dev - (unreleased)
-----------------------
+0.2 - (2011-02-14)
+------------------
 * Feature: eggified product [ichimdav #4063]
 
 0.1 - (Product)
@@ -18,3 +18,4 @@ Changelog
 * Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
   ids for JS/CSS resources [voineali #3962]
 * Generated skeleton product from DIYPloneStyle. [generator]
+
