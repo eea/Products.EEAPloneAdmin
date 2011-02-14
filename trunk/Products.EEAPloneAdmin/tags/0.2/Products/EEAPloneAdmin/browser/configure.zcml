@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+
+    <include file="migrate.zcml" />
+
+    <browser:page
+           for="*"
+	   name="fixTranslations"
+           class=".admin.LinguaPlone"
+           permission="cmf.ManagePortal"
+	   template="./www/fixTranslations.pt"
+         />
+
+    <browser:page
+           for="*"
+	   name="fixTidyText"
+           class=".admin.TidyContent"
+           permission="cmf.ManagePortal"
+	   template="./www/tidy.pt"
+         />
+
+    <adapter factory=".plone.ObjectTitle" />
+
+</configure>
