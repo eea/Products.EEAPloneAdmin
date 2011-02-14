@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript cacheable="True" compression="none" cookable="True"
+    enabled="True" expression="python: request.get('jsdisable','') != 'jquery'" id="++resource++jquery-1.3.2.js"
+    inline="False"
+    position-top="True" />
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="python: request.get('jsdisable','') != 'jquery'" id="promotions.js" inline="False"
+    position-after="++resource++jquery-1.3.2.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="event-registration.js" inline="False"
+    position-after="promotions.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="prototype.js" inline="False"
+    position-after="event-registration.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="register_function.js" inline="False"
+    position-after="event-registration.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="cssQuery.js" inline="False"
+    position-after="register_function.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="plone_javascript_variables.js"
+    inline="False"
+    position-after="cssQuery.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="nodeutilities.js" inline="False"
+    position-after="plone_javascript_variables.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="cookie_functions.js" inline="False"
+    position-after="nodeutilities.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="fullscreenmode.js" inline="False"
+    position-after="cookie_functions.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="dropdown.js" inline="False"
+    position-after="fullscreenmode.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="select_all.js" inline="False"
+    position-after="dropdown.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="login.js" inline="False"
+    position-after="select_all.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="attachevent.js" inline="False"
+    position-after="login.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="drop.js" inline="False"
+    position-after="attachevent.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="hideemail.js" inline="False"
+    position-after="drop.js"/>
+ <javascript cacheable="True" compression="none" cookable="True"
+    enabled="True" expression="" id="++resource++swfobject.js"
+    inline="False"
+    position-after="hideemail.js" />
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="++resource++jquery.flashembed-0.31.js"
+    inline="False"
+    position-after="++resource++swfobject.js" />
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
+    id="++resource++thickbox_prepare.js" inline="False"
+    position-after="++resource++jquery.flashembed-0.31.js" />
+ <javascript cacheable="True" compression="none" cookable="True"
+    enabled="True" expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
+    id="++resource++thickbox-3.1.js" inline="False"
+    position-after="++resource++thickbox_prepare.js" />
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="livesearch.js" inline="False"
+    position-after="++resource++thickbox-3.1.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="dragdropreorder.js" inline="False"
+    position-after="++resource++thickbox-3.1.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="collapsiblesections.js" inline="False"
+    position-after="dragdropreorder.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="highlightsearchterms.js" inline="False"
+    position-after="collapsiblesections.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="se-highlight.js" inline="False"
+    position-after="highlightsearchterms.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="first_input_focus.js" inline="False"
+    position-after="se-highlight.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="folder_contents_hideAddItems.js" inline="False"
+    position-after="first_input_focus.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="folder_contents_filter.js" inline="False"
+    position-after="folder_contents_hideAddItems.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="sarissa.js" inline="False"
+    position-after="folder_contents_filter.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="formUnload.js" inline="False"
+    position-after="sarissa.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
+    id="formsubmithelpers.js" inline="False"
+    position-after="formUnload.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="table_sorter.js" inline="False"
+    position-after="formsubmithelpers.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="calendarpopup.js" inline="False"
+    position-after="table_sorter.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="calendar_formfield.js" inline="False"
+    position-after="calendarpopup.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="mark_special_links.js" inline="False"
+    position-after="calendar_formfield.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="styleswitcher.js" inline="False"
+    position-after="mark_special_links.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:getattr(portal, 'SITE', object) != object"
+    id="ie5fixes.js" inline="False"
+    position-after="styleswitcher.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupunoi18n.js" inline="False"
+    position-after="ie5fixes.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="sarissa_ieemu_xpath.js" inline="False"
+    position-after="kupunoi18n.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuhelpers.js" inline="False"
+    position-after="sarissa_ieemu_xpath.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupueditor.js" inline="False"
+    position-after="kupuhelpers.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupubasetools.js" inline="False"
+    position-after="kupueditor.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuloggers.js" inline="False"
+    position-after="kupubasetools.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupucontentfilters.js" inline="False"
+    position-after="kupuloggers.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuploneeditor.js" inline="False"
+    position-after="kupucontentfilters.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuploneui.js" inline="False"
+    position-after="kupuploneeditor.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupusourceedit.js" inline="False"
+    position-after="kupuploneui.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupudrawers.js" inline="False"
+    position-after="kupusourceedit.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuploneinit.js" inline="False"
+    position-after="kupudrawers.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="plone_minwidth.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="correctPREformatting.js"
+    inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="resolution.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="resize.js" inline="False"/>
+ <javascript id="prototype.js" remove="" />
+ <javascript id="swfobject.js" remove="" />
+ <javascript id="effects.js" remove="" />
+ <javascript id="behaviour.js" remove="" />
+ <javascript id="dragdrop.js" remove="" />
+ <javascript id="tiny_mce/tiny_mce.js" remove="" />
+ <javascript id="json.js" remove="" />
+ <javascript id="builder.js" remove="" />
+ <javascript id="controls.js" remove="" />
+ <javascript id="bling.js" remove="" />
+ <javascript id="slider.js" remove="" />
+</object>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff SYSTEM "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<!-- XLIFF Format Copyright © OASIS Open 2001-2003 -->
+<xliff version="1.0">
+<file
+original="/index_html"
+product-name="Localizer"
+product-version="1.1.x"
+datatype="plaintext"
+source-language="en"
+target-language="is"
+date="2008-03-12T12:26:40Z"
+>
+<header>
+</header>
+<body>
+<trans-unit id="body">
+ <source>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;The EEA in 30 seconds&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+&lt;p&gt;&lt;b&gt;
+Mission
+&lt;/b&gt;&lt;br/&gt;
+The EEA's task is to provide timely, targeted, relevant and reliable environmental information. We serve those concerned with framing and implementing European and national environmental policy, and the general public. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Supporting the policy makers
+&lt;/b&gt;&lt;br/&gt;
+Our information helps the EU and Agency member countries make informed decisions about improving the environment, integrate environmental considerations into economic policies and move towards sustainability. We focus on supporting key users at vital points in the policy process at the European level.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Environmental information
+&lt;/b&gt;&lt;br/&gt;
+In our work we draw on existing organisations knowledge/information; we cooperate with them, coordinate the work at European level and seek to avoid duplication. We bring together the best available environmental data from individual countries. After a thorough compilation of data and its validation through our institutional network (EIONET), information is made accessible in various reporting formats to our users. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Membership countries
+&lt;/b&gt;&lt;br/&gt;
+Although the EEA is a European Union body, membership is open to non-EU countries that share our objectives. The EEA now has 32 member countries: all 27 EU Member States, Iceland, Liechtenstein, Norway, Switzerland and Turkey.
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Read more about the EEA&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;</source>
+ <target>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;EEA á 30 sekúndum&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+				&lt;p&gt;&lt;b&gt;Ætlunarverk&lt;/b&gt;&lt;br/&gt; Ætlunarverk EEA er að veita tímabærar, hnitmiðaðar, viðeigandi og áreiðanlegar upplýsingar um umhverfismál. Við þjónum bæði almenningi og öllum þeim aðilum er vinna að því að móta og framfylgja umhverfisstefnu á Evrópuvettvangi og í einstökum löndum álfunnar. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Stuðningur við stefnumótendur&lt;/b&gt;&lt;br/&gt; Upplýsingar okkar hjálpa Evrópusambandinu og aðildarríkjum EEA að taka upplýstar ákvarðanir um hvernig hægt er að hlúa að umhverfinu, koma að umhverfissjónarmiðum við stefnumótun í efnahagsmálum og stefna að sjálfbærri þróun. Við leggjum mikla áherslu á að hjálpa þeim sem móta umhverfisstefnuna á Evrópuvettvangi við allar mikilvægar ákvarðanir.
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Upplýsingar um umhverfismál&lt;/b&gt;&lt;br/&gt; Í störfum okkar hagnýtum við þá þekkingu og þær upplýsingar sem tiltækar eru hjá hinum ýmsu stofnunum. Við vinnum með þessum stofnunum, samhæfum það sem við erum að gera á hverjum tíma á Evrópuvettvangi og reynum að forðast tvítekningu. Við söfnum saman bestu fáanlegu umhverfisupplýsingum frá hinum ýmsu löndum.  Þegar búið er að safna saman efni og sannreyna það hjá stofnana-tenglaneti okkar (EIONET), göngum við frá því í ýmisskonar aðgengilegu skýrsluformi fyrir þá sem það er ætlað. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Aðildarríki EEA&lt;/b&gt;&lt;br/&gt; Þótt EEA sé ein af stofnunum Evrópusambandsins, er hún samt opin löndum er hafa sömu markmið en standa utan þess.  Aðildarrlöndin eru orðin 32, þ.e. öll aðildarríki Evrópusambandsins, Ísland, Liechtenstein, Noregur, Sviss og Tyrkland.
+				&lt;/p&gt;
+				&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Gjörið svo vel að lesa meira um EEA&lt;/a&gt;&lt;/p&gt;
+				&lt;br/&gt;
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+&lt;br/&gt;&lt;br/&gt;</target>
+</trans-unit>
+<trans-unit id="title">
+ <source>Introduction</source>
+ <target></target>
+</trans-unit>
+</body>
+</file>
+</xliff>

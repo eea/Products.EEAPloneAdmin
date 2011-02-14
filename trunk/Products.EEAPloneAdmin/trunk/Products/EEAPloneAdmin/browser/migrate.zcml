@@ -1,0 +1,166 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:page
+      for="*"
+      name="migrate"
+      class=".migrate.MigrateTheme"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="initiateThemes"
+      class=".migrate.InitialThemeCentres"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="correctThemeIds"
+      class=".migrate.MigrateWrongThemeIds"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateRDF"
+      class=".migrate.RDF"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateThemeTaggable"
+      class=".migrate.ThemeTaggable"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateIndicatorRDF"
+      class=".migrate.IndicatorRDFs"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="fixExcludeFromNav"
+      class=".migrate.FixExcludeFromNav"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateTopic"
+      class=".migrate.UpdateSmartFoldersAndTitles"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateFeedInterface"
+      class=".migrate.FeedMarkerInterface"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migratePromotionThemes"
+      class=".migrate.PromotionThemes"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateThemeLayoutAndDefaultPage"
+      class=".migrate.ThemeLayoutAndDefaultPage"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateGenericTheme"
+      class=".migrate.GenericThemeToDefault"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="eea.rdfrepository.interfaces.IRDFRepository"
+      name="migrateEntriesWithThumbnail"
+      class=".migrate.EntriesWithThumbnail"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateThemeCentreFoldersProperties"
+      class=".migrate.ChangeDefaultPageToProperty"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateEnsureAllObjectsHaveTags"
+      class=".migrate.EnsureAllObjectsHaveTags"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="changeMediaTypesDefault"
+      class=".migrate.ChangeMediaTypesDefault"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="addRichTextDescriptionToVideos"
+      class=".migrate.AddRichTextDescriptionToVideos"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="addFolderAsLocallyAllowedTypeInLinks"
+      class=".migrate.AddFolderAsLocallyAllowedTypeInLinks"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="addPressReleaseToHighlightsTopic"
+      class=".migrate.AddPressReleaseToHighlightsTopic"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="changeMultimediaLayout"
+      class=".migrate.ChangeMultimediaLayout"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="makeThemeMultimediaLayoutAProperty"
+      class=".migrate.MakeThemeMultimediaLayoutAProperty"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="importEcoTipsTranslations"
+      class=".migrate.ImportEcoTipsTranslationsFromCSV"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="migrateCallFors"
+      class=".migrate.MigrateDatesInCallForTendersAndInterests"
+      permission="cmf.ManagePortal"
+      />
+
+
+</configure>
