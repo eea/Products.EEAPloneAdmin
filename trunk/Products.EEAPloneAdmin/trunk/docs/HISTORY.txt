@@ -6,6 +6,9 @@ Changelog
 [Antonio De Marinis - demarinis at eea.europa.eu]
 [David Ichim - david.ichim at eaudeweb.ro]
 
+0.3-dev - (unreleased)
+----------------------
+
 0.2 - (2011-02-14)
 ------------------
 * Feature: eggified product [ichimdav #4063]
