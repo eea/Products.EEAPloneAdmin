@@ -5,20 +5,22 @@ Changelog
 [Alin Voinea - alin.voinea at eaudeweb.ro]
 [Antonio De Marinis - demarinis at eea.europa.eu]
 [David Ichim - david.ichim at eaudeweb.ro]
+[Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
 0.3-dev - (unreleased)
 ----------------------
+ * Bug fix: fix a bug due to incomplete exception handling [tiberich #4085]
 
 0.2 - (2011-02-14)
 ------------------
-* Feature: eggified product [ichimdav #4063]
+ * Feature: eggified product [ichimdav #4063]
 
 0.1 - (Product)
 ----------------------
-* Feature: save to disk resources when changes are triggered in portal resource registries [tiberich #4085]
-* Feature: added resolveuid.js to js optimization profile [tiberich #3988]
-* Feature: Added profile to optimize order of JS and CSS registries [voineali #3411]
-* Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
-  ids for JS/CSS resources [voineali #3962]
-* Generated skeleton product from DIYPloneStyle. [generator]
+ * Feature: save to disk resources when changes are triggered in portal resource registries [tiberich #4085]
+ * Feature: added resolveuid.js to js optimization profile [tiberich #3988]
+ * Feature: Added profile to optimize order of JS and CSS registries [voineali #3411]
+ * Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
+   ids for JS/CSS resources [voineali #3962]
+ * Generated skeleton product from DIYPloneStyle. [generator]
 

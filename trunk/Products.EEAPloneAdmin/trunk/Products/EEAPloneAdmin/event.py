@@ -1,5 +1,8 @@
 from App.config import getConfiguration
 import os
+import logging
+
+logger = logging.getLogger('Products.EEAPloneAdmin')
 
 
 def handle_resourceregistry_change(obj, event):
@@ -12,7 +15,8 @@ def handle_resourceregistry_change(obj, event):
         try:
             content = obj.getInlineResource(name, portal)
         except:
-            pass
+            logger.warning("Could not get content for resource %s" % name)
+            continue
 
         try:
             f = open(os.path.join(dest, name), "w+")
