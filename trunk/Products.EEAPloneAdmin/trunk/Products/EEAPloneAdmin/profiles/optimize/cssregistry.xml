@@ -142,15 +142,9 @@
     rendering="import"/>
 
   <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="on" expression="" media="" rel="stylesheet"
-    id="++resource++thickbox.css"
-    position-after="footer.css"
-    rendering="import"/>
-
-  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="" media="screen" rel="stylesheet"
     id="eea.translations-logo.css"
-    position-after="++resource++thickbox.css"
+    position-after="footer.css"
     rendering="import"/>
 
   <stylesheet title="" cacheable="True" compression="safe" cookable="True"

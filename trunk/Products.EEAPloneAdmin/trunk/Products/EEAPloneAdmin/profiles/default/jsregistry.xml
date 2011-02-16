@@ -59,21 +59,13 @@
     inline="False"
     position-after="++resource++swfobject.js" />
  <javascript cacheable="True" compression="safe" cookable="True"
-    enabled="True" expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
-    id="++resource++thickbox_prepare.js" inline="False"
-    position-after="++resource++jquery.flashembed-0.31.js" />
- <javascript cacheable="True" compression="none" cookable="True"
-    enabled="True" expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
-    id="++resource++thickbox-3.1.js" inline="False"
-    position-after="++resource++thickbox_prepare.js" />
- <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
     id="livesearch.js" inline="False"
-    position-after="++resource++thickbox-3.1.js"/>
+    position-after="++resource++jquery.flashembed-0.31.js" />
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
     id="dragdropreorder.js" inline="False"
-    position-after="++resource++thickbox-3.1.js"/>
+    position-after="livesearch.js" />
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
     id="collapsiblesections.js" inline="False"

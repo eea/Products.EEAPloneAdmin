@@ -65,10 +65,6 @@
     media="screen" rel="alternate stylesheet" rendering="link"
     position-after="textSmall.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="on" expression="" id="++resource++thickbox.css" media=""
-    rel="stylesheet" rendering="import"
-    position-after="textLarge.css" />
- <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="python: 'themes/water' in request.get('URL0')"
     id="wisetheme.css" media="screen" rel="stylesheet" rendering="import"
     position-after="textLarge.css"/>

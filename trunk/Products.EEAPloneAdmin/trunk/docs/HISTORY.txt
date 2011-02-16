@@ -9,6 +9,7 @@ Changelog
 
 0.3-dev - (unreleased)
 ----------------------
+ * Change: removed thickbox js and css profile registration [ichimdav #3773]
  * Bug fix: fix a bug due to incomplete exception handling [tiberich #4085]
 
 0.2 - (2011-02-14)
