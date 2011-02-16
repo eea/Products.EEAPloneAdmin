@@ -301,22 +301,11 @@
     position-after="framebreak.js"
     id="design.js" inline="False"/>
 
-  <javascript cacheable="True" compression="safe" cookable="True"
-    enabled="True"
-    expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
-    position-after="design.js"
-    id="++resource++thickbox_prepare.js" inline="False"/>
-
-  <javascript cacheable="True" compression="none" cookable="True"
-    enabled="True"
-    expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
-    position-after="++resource++thickbox_prepare.js"
-    id="++resource++thickbox-3.1.js" inline="False"/>
 
   <!-- Authenticated -->
   <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="not: portal/portal_membership/isAnonymousUser"
-    position-after="++resource++thickbox-3.1.js"
+    position-after="design.js"
     id="dragdropreorder.js" inline="False"/>
 
   <javascript cacheable="True" compression="safe" cookable="True"
