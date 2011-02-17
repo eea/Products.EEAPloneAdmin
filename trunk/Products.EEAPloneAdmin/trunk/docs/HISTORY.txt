@@ -11,6 +11,8 @@ Changelog
 ----------------------
  * Change: removed thickbox js and css profile registration [ichimdav #3773]
  * Bug fix: fix a bug due to incomplete exception handling [tiberich #4085]
+ * Change: improved save to disk functionality to take skins into consideration [tiberich #4085]
+ * Bug fix: fixed pottential bug in code in admin module [tiberich]
 
 0.2 - (2011-02-14)
 ------------------
