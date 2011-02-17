@@ -1,12 +1,13 @@
 from App.config import getConfiguration
 from Products.ATContentTypes.config import MX_TIDY_OPTIONS
 from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
+from Products.CMFCore.FSDTMLMethod import FSDTMLMethod
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-import urllib
 import logging
 import os
 import re
+#import urllib
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
@@ -110,9 +111,16 @@ def save_resources_on_disk(registry, request):
             try:
                 content = registry.getInlineResource(name, portal)
             except:
-                logger.warning("Could not get content for resource %s "
-                               "in skin %s" % (name, skin))
-                continue
+                try:
+                    f = getattr(portal, name)
+                    if isinstance(f, FSDTMLMethod):
+                        content = f.__call__(client=portal, request=request)
+                    else:   #we try to get the content somehow
+                        content = f()
+                except:
+                    logger.warning("Could not get content for resource %s "
+                                   "in skin %s" % (name, skin))
+                    continue
 
             try:
                 fpath = os.path.join(dest, name)
