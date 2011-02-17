@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.5-dev - (unreleased)
+----------------------
+
 0.4 - (2011-02-17)
 ------------------
  * Bug fix: properly retrieve content from FSDTMLMethods [tiberich #4085]
