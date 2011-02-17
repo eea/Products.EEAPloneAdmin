@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<object name="portal_css" meta_type="Stylesheets Registry">
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="authoring.css" media="all" rel="stylesheet"
+    rendering="import"
+    insert-top="True" />
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="base.css" media="screen" rel="stylesheet"
+    rendering="import"
+    position-after="authoring.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="public.css" media="screen" rel="stylesheet"
+    rendering="import"
+    position-after="base.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="columns.css" media="screen"
+    rel="stylesheet" rendering="import"
+    position-after="public.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="portlets.css" media="screen"
+    rel="stylesheet" rendering="import"
+    position-after="columns.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="print.css" media="print" rel="stylesheet"
+    rendering="import"
+    position-after="portlets.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="eeadesign2006.css" media="all"
+    rel="stylesheet" rendering="import"
+    position-after="print.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="portlet.css" media="all" rel="stylesheet"
+    rendering="import"
+    position-after="eeadesign2006.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="visual.css" media="all" rel="stylesheet"
+    rendering="import"
+    position-after="portlet.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="eea-globaltabs.css" media="all"
+    rel="stylesheet" rendering="import"
+    position-after="visual.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="eea-navigation.css" media="all"
+    rel="stylesheet" rendering="import"
+    position-after="eea-globaltabs.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="eea-highlights.css" media="all"
+    rel="stylesheet" rendering="import"
+    position-after="eea-navigation.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="themecentre.css" media="all"
+    rel="stylesheet" rendering="import"
+    position-after="eea-highlights.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="" id="mobile.css" media="handheld"
+    rel="stylesheet" rendering="import"
+    position-after="themecentre.css"/>
+ <stylesheet title="Small Text" cacheable="True" compression="safe"
+    cookable="False" enabled="on" expression="" id="textSmall.css"
+    media="screen" rel="alternate stylesheet" rendering="link"
+    position-after="mobile.css"/>
+ <stylesheet title="Large Text" cacheable="True" compression="safe"
+    cookable="False" enabled="on" expression="" id="textLarge.css"
+    media="screen" rel="alternate stylesheet" rendering="link"
+    position-after="textSmall.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="python: 'themes/water' in request.get('URL0')"
+    id="wisetheme.css" media="screen" rel="stylesheet" rendering="import"
+    position-after="textLarge.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
+    id="generated.css" media="all" rel="stylesheet" rendering="import"
+    position-after="wisetheme.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
+    id="livesearch.css" media="screen" rel="stylesheet" rendering="import"
+    position-after="generated.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
+    id="member.css" media="screen" rel="stylesheet" rendering="import"
+    position-after="livesearch.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupustyles.css" media="" rel="stylesheet" rendering="import"
+    position-after="member.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupuplone.css" media="" rel="stylesheet" rendering="import"
+    position-after="kupustyles.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on"
+    expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"
+    id="kupudrawerstyles.css" media="" rel="stylesheet" rendering="import"
+    position-after="kupuplone.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="on"
+    expression="python:here.portal_url.getPortalObject().getCurrentSkinName()==&quot;Plone Default&quot; and 'emptypage' not in request.get('URL0')"
+    id="ploneCustom.css" media="all" rel="stylesheet" rendering="import"
+    position-after="kupudrawerstyles.css"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="presentation.css" media="projection"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="deprecated.css" media="screen"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="python:object.isRightToLeft(domain='plone')"
+    id="RTL.css" media="screen" rel="stylesheet" rendering="import"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="False" expression="" id="resolution.css" media="all"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="800 to 1024" cacheable="True" compression="safe"
+    cookable="True" enabled="False" expression="" id="resolution_800-1024.css"
+    media="all" rel="alternate stylesheet" rendering="link"/>
+ <stylesheet title="1280up" cacheable="True" compression="safe"
+    cookable="True" enabled="False" expression="" id="resolution_1280up.css"
+    media="all" rel="alternate stylesheet" rendering="link"/>
+ <stylesheet title="EEA Reports" cacheable="True" compression="safe"
+    cookable="True" enabled="on"
+    expression="python:'report_view' in request.get('URL0', '')"
+    id="reports_styles.css" media="all" rel="stylesheet" rendering="import"/>
+</object>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="frontpage_properties" meta_type="Plone Property Sheet">
+  <property name="promotionFolder"
+     type="string">quicklinks</property>
+ </object>
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <property name="hide_if_empty" type="lines">
+     <element value="Folder"/>
+     <element value="Topic"/>
+     <element value="RichTopic"/>
+  </property>
+ </object>
+</object>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool">
+ <action-provider name="portal_actions">
+  <action title="RSS feed of this listing" action_id="rss"
+     category="document_actions"
+     condition_expr="python:portal.portal_syndication.isSyndicationAllowed(object)"
+     url_expr="string:$object_url/RSS" visible="False">
+   <permission>View</permission>
+  </action>
+  <action title="RSS2 feed of this listing" action_id="rss2"
+     category="document_actions"
+     condition_expr="python:portal.portal_syndication.isSyndicationAllowed(object)"
+     url_expr="string:$object_url/RSS2" visible="True">
+   <permission>View</permission>
+  </action>
+  <action title="SKOS feed of this listing" action_id="skos"
+     category="document_actions"
+     condition_expr="python:portal.portal_syndication.isSyndicationAllowed(object)"
+     url_expr="string:$object_url/SKOS" visible="True">
+   <permission>View</permission>
+  </action>
+  <action title="Google Earth view" action_id="gearth"
+     category="document_actions"
+     condition_expr="here/@@isGeoContainer"
+     url_expr="string:$object_url/google_earth" visible="True">
+   <permission>View</permission>
+  </action>
+ </action-provider>
+</object>

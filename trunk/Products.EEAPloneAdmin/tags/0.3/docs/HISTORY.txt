@@ -1,0 +1,29 @@
+Changelog
+=========
+[Sasha Vincic - sasha.vincic at eea.europa.eu]
+[Alexandru Ghica - alec.ghica at eaudeweb.ro]
+[Alin Voinea - alin.voinea at eaudeweb.ro]
+[Antonio De Marinis - demarinis at eea.europa.eu]
+[David Ichim - david.ichim at eaudeweb.ro]
+[Tiberiu Ichim - tiberiu at eaudeweb.ro]
+
+0.3 - (2011-02-17)
+------------------
+ * Change: removed thickbox js and css profile registration [ichimdav #3773]
+ * Bug fix: fix a bug due to incomplete exception handling [tiberich #4085]
+ * Change: improved save to disk functionality to take skins into consideration [tiberich #4085]
+ * Bug fix: fixed pottential bug in code in admin module [tiberich]
+
+0.2 - (2011-02-14)
+------------------
+ * Feature: eggified product [ichimdav #4063]
+
+0.1 - (Product)
+----------------------
+ * Feature: save to disk resources when changes are triggered in portal resource registries [tiberich #4085]
+ * Feature: added resolveuid.js to js optimization profile [tiberich #3988]
+ * Feature: Added profile to optimize order of JS and CSS registries [voineali #3411]
+ * Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
+   ids for JS/CSS resources [voineali #3962]
+ * Generated skeleton product from DIYPloneStyle. [generator]
+
