@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.4-dev - (unreleased)
+----------------------
+
 0.3 - (2011-02-17)
 ------------------
  * Change: removed thickbox js and css profile registration [ichimdav #3773]
