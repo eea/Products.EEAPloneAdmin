@@ -9,6 +9,7 @@ Changelog
 
 0.4-dev - (unreleased)
 ----------------------
+ * Bug fix: properly retrieve content from FSDTMLMethods [tiberich #4085]
 
 0.3 - (2011-02-17)
 ------------------
