@@ -1,8 +1,13 @@
+import string
+import logging
 import transaction
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.permissions import AddPortalMember
 from Products.CMFPlone.migrations.migration_util import safeEditProperty
+
+from Products.CMFFormController.FormAction import FormActionKey
+from Products.CMFFormController.globalVars import ANY_BUTTON, ANY_CONTEXT
 
 from zLOG import INFO
 from Products.CMFPlone.setup.SetupBase import SetupWidget
@@ -10,10 +15,12 @@ from Products.EEAPloneAdmin.config import *
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentreSchema
 from Products.NavigationManager.catalog import reindexTree
 
+logger = logging.getLogger('EEAPloneAdmin')
+
 def migrateReportsRSS2Topics(self, portal):
     themes = portal.portal_catalog( {'object_provides' : 'eea.themecentre.interfaces.IThemeCentre',
-				     'Language' : 'en',
-				     'path' : '/www/SITE/themes' })
+                                     'Language' : 'en',
+                                     'path' : '/www/SITE/themes' })
     languages = portal.portal_languages.getSupportedLanguages()
     wf = getToolByName(portal, 'portal_workflow')
     rt = getToolByName(portal, 'portal_redirection')
@@ -25,7 +32,7 @@ def migrateReportsRSS2Topics(self, portal):
             redirectUrl = redirectUrl[4:]
         print redirectUrl
         rt.addRedirect(redirectUrl, obj)
-        
+
     def _createTopic(theme, lang):
 	translation = theme.getTranslation(lang)
 	if translation is not None and hasattr(aq_base(theme),'publications'):
@@ -34,7 +41,7 @@ def migrateReportsRSS2Topics(self, portal):
             localrdfrepo = rdfrepo.getTranslation(lang)
             if localrdfrepo:
                 localrdfrepo.manage_delObjects(ids=['reports_%s' % theme.getId()])
-                                               
+
             theme.publications.addTranslation(lang)
 	    topicId = 'publications_topic'
 	    theme.publications[topicId].addTranslation(lang)
@@ -44,7 +51,7 @@ def migrateReportsRSS2Topics(self, portal):
 	    folder.unmarkCreationFlag()
             topic = folder[topicId]
             topic.unmarkCreationFlag()
-		
+
 	    folder.setTitle(title)
 	    topic.setTitle(title)
             topic.setLayout('folder_summary_view')
@@ -64,16 +71,16 @@ def migrateReportsRSS2Topics(self, portal):
 	    folder.unmarkCreationFlag()
             topic = folder[topicId]
             topic.unmarkCreationFlag()
-		
+
 	    folder.setTitle(title)
 	    topic.setTitle(title)
             topic.setLayout('folder_summary_view')
-            topic.setCustomViewFields(['effective'])            
+            topic.setCustomViewFields(['effective'])
 	    folder.setDefaultPage(topicId)
 	    wf.doActionFor(folder, 'publish', comment='Initial publish by method migrateReportsRSS2Topics')
 	    wf.doActionFor(topic, 'publish', comment='Initial publish by method migrateReportsRSS2Topics')
             reindexTree(topic)
-            
+
     rdfrepo = portal.SITE.themes['rdf-repository']
 
     portal.SITE.themes.manage_changeProperties(send_workflow_emails=False)
@@ -109,7 +116,7 @@ def migrateReportsRSS2Topics(self, portal):
         topic.setCustomViewFields(['effective'])
 	wf.doActionFor(folder[topicId], 'publish', comment='Initial publish by method migrateReportsRSS2Topics')
         reindexTree(topic)
-        
+
         # Articles
 	title = portal.SITE.articles.Title()
 	theme.invokeFactory('Folder', id='articles', title=title)
@@ -132,11 +139,11 @@ def migrateReportsRSS2Topics(self, portal):
         topic.setCustomViewFields(['effective'])
 	wf.doActionFor(folder[topicId], 'publish', comment='Initial publish by method migrateReportsRSS2Topics')
         reindexTree(topic)
-        
+
         for lang in languages:
             if lang != 'en':
                 _createTopic(theme, lang)
-        transaction.savepoint()        
+        transaction.savepoint()
 
     # remove left report rss feeds from none existing theme centres
     reportRSS = [ feed for feed in rdfrepo.objectIds() if feed.startswith('report')]
@@ -152,7 +159,7 @@ def migrateReportsRSS2Topics(self, portal):
         local = site.getTranslation(lang)
         if local and hasattr(aq_base(local),'reports'):
             local.manage_delObjects(ids=['reports'])
-            
+
     if not portal.getProperty('manually_added_portlets'):
 	portal.manage_addProperty('manually_added_portlets',
 				['publications_topic', 'articles_topic'],
@@ -192,7 +199,7 @@ def setupControlledMarshall(self, portal):
                       predicate='default',
                       expression='',
                       component_name='primary_field')
-        
+
 def configureContentTypes(self, portal):
     pt = getToolByName(portal, 'portal_types')
     typeInfo = { 'Folder' : { 'allowed_content_types' : ('Ad', 'Highlight', 'RDFEvent', 'Event', 'Document', 'Folder', 'RSSFeedRecipe', 'Promotion'),
@@ -202,7 +209,7 @@ def configureContentTypes(self, portal):
     for t,info  in typeInfo.items():
         tInfo = pt.getTypeInfo(t)
         tInfo.allowed_content_types = info['allowed_content_types']
-        tInfo.filter_content_types = info['filter_content_types']        
+        tInfo.filter_content_types = info['filter_content_types']
 
 def setupDefaultLeftRightSlots(self, portal):
     """ sets up the slots on objectmanagers """
@@ -216,7 +223,7 @@ def setDateProperties(self, portal):
     prop_tool = portal.portal_properties
     prop = prop_tool.site_properties
     prop.localTimeFormat = '%d %b %Y'
-    prop.localLongTimeFormat = '%d %b %Y %H:%M'    
+    prop.localLongTimeFormat = '%d %b %Y %H:%M'
 
 def setNavigationProperties(self, portal):
     prop_tool = portal.portal_properties
@@ -265,7 +272,7 @@ def setupDefaultRSSFeeds(self, portal):
                                     entriesWithThumbnail = noWithThumb )
             rss = getattr(rssFolder, id)
             workflow.doActionFor(rss, 'publish')
-            
+
 def configureContentCache(cacheTool):
     """ add our content types for caching """
     rules = cacheTool.getRules()
@@ -308,7 +315,7 @@ def configureCache(self, portal):
 
         configureContentCache(cacheTool)
 
-        
+
 def disableAnonymousJoin(self, portal):
     portal.manage_permission(AddPortalMember,
                              ('Manager',), acquire=0)
@@ -319,11 +326,11 @@ def disableMailForgottenPassword(self, portal):
 
 
 def setupLDAPUserFolder(self, portal):
-    """ Basic LDAP initialization inside gruf's user source. 
+    """ Basic LDAP initialization inside gruf's user source.
         Code from GRUF3/tests. """
-        
+
     from Products.EEAPloneAdmin.ldap_config import eionet
-            
+
     dg = eionet.get
     # User source replacement
     portal.acl_users.replaceUserSource("Users",
@@ -355,7 +362,7 @@ def setupLDAPUserFolder(self, portal):
                         , use_ssl=dg('use_ssl')
                         , conn_timeout=dg('conn_timeout')
                         , op_timeout=dg('op_timeout'))
-    
+
 
 
 def setupMemcachedRamCache(self, portal):
@@ -373,10 +380,93 @@ def setupMemcachedRamCache(self, portal):
 	    factory = portal.manage_addProduct['MemcachedManager']
 	    factory.manage_addMemcachedManager(id=id)
 	    portal[id].manage_editProps(title, settings)
-	    
-	    
-	
-	
+
+def cleanupCMFLinkChecker(self, portal):
+    logger.info("Removing configlets ...")
+    portal_conf=getToolByName(portal,'portal_controlpanel')
+    portal_conf.unregisterConfiglet('CMFLinkChecker')
+    portal_conf.unregisterConfiglet('CMFLCRetrievers')
+    portal_conf.unregisterConfiglet('MemberLinkChecker')
+
+    logger.info("Removing index ...")
+    portal_cat = getToolByName(portal, 'portal_catalog')
+    try:
+        portal_cat.delIndex('portal_linkchecker_uid')
+    except Exception, err:
+        logger.info(err)
+
+    try:
+        portal_cat.delColumn('portal_linkchecker_uid')
+    except Exception, err:
+        logger.info(err)
+
+    logger.info("Removing action provider registration ...")
+    portal_actions = getToolByName(portal, 'portal_actions')
+    portal_actions.manage_aproviders(chosen=('portal_linkchecker',),
+                                     del_provider=1)
+
+    logger.info("Removing memberdata extensions ...")
+    memberdata = getToolByName(portal, "portal_memberdata")
+    try:
+        memberdata._delProperty('lc_notify_details')
+        memberdata._delProperty('lc_notify_frequency')
+        memberdata._delProperty('lc_notify_changes_only')
+        memberdata._delProperty('lc_notify_last_notification')
+    except Exception, err:
+        logger.info(err)
+
+    logger.info("Removing portal properties ...")
+    try:
+        portal._delProperty('lc_status')
+        portal._delProperty('lc_frequency')
+    except Exception, err:
+        logger.info(err)
+
+    logger.info("Removing portlets ...")
+    keep = []
+    for portlet in portal.left_slots:
+        if not (portlet.startswith("here/portlet_links/") or
+                portlet.startswith("here/portlet_linksToMe/")):
+            keep.append(portlet)
+    portal.left_slots = tuple(keep)
+
+    logger.info("Removing form_controller registrations ...")
+    # Argh. The API is incomplete / awkward.
+
+    keys = [FormActionKey('document_edit', 'success', ANY_CONTEXT, ANY_BUTTON,
+                          None),
+            FormActionKey('event_edit', 'success', ANY_CONTEXT, ANY_BUTTON,
+                          None),
+            FormActionKey('link_edit', 'success', ANY_CONTEXT, ANY_BUTTON,
+                          None),
+            FormActionKey('newsitem_edit', 'success', ANY_CONTEXT, ANY_BUTTON,
+                          None)]
+
+    delete = portal.portal_form_controller.actions.delete
+
+    for key in keys:
+        try:
+            delete(key)
+        except Exception, err:
+            logger.info(err)
+
+    # Unregister skins
+    logger.info("Removing skins ...")
+    skins = portal.portal_skins.getSkinSelections()
+    for skin in skins:
+        path = portal.portal_skins.getSkinPath(skin)
+        path = map(string.strip, path.split(','))
+        while 'linkchecker' in path:
+            try:
+                del path[path.index('linkchecker')]
+            except ValueError:
+                break
+            path = ','.join(path)
+            portal.portal_skins.addSkinSelection(skin, path)
+            logger.info(skin + ",")
+        else:
+            logger.info("skipped" + skin)
+
 functions = {
     'disableMailForgottenPassword' : disableMailForgottenPassword,
     'setDateProperties' : setDateProperties,
@@ -391,6 +481,7 @@ functions = {
     'setupLanguageSettings':setupLanguageSettings,
     'setupMemcachedRamCache':setupMemcachedRamCache,
     'migrateReportsRSS2Topics' : migrateReportsRSS2Topics,
+    'cleanupCMFLinkChecker' : cleanupCMFLinkChecker,
     }
 
 class EEAGeneralSetup(SetupWidget):
