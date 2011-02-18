@@ -9,6 +9,7 @@ Changelog
 
 0.5-dev - (unreleased)
 ----------------------
+ * Change: added migration script for CMFLinkChecker cleanup [batradav #3219]
 
 0.4 - (2011-02-17)
 ------------------
