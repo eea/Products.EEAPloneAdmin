@@ -85,8 +85,11 @@ class TidyContent(BrowserView):
         return fixed
 
 
-def save_resources_on_disk(registry, request):
+def save_resources_on_disk(registry, request=None):
     """Reads merged resources from registry and saves them on disk"""
+
+    if request == None:
+        request = registry.REQUEST
 
     portal = getToolByName(registry, 'portal_url').getPortalObject()
     skins = getToolByName(registry, 'portal_skins').getSkinSelections()
