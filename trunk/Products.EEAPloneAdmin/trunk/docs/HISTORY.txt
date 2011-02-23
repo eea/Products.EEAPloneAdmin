@@ -10,6 +10,7 @@ Changelog
 0.5-dev - (unreleased)
 ----------------------
  * Change: added migration script for CMFLinkChecker cleanup [batradav #3219]
+ * Bug fix: fix bug due to API changes [tiberich #4085]
 
 0.4 - (2011-02-17)
 ------------------
