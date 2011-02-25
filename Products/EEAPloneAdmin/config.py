@@ -1,5 +1,5 @@
 GLOBALS = globals()
-DEPENDENCIES = ['EEADesign2006', 'NavigationManager', 'PloneRSSPortlet', 'PloneLanguageTool', 'LinguaPlone', 'ATVocabularyManager', 'Marshall','PloneRDFCalendar','CMFonFive','CMFSquidTool','CacheSetup', 'EEAContentTypes','FiveSite', 'PloneGazette', 'PloneCaptcha', 'PloneHelpCenter', 'EEAEnquiry','RichTopic', 'ATVocabularyManager', 'XLIFFMarshall']
+DEPENDENCIES = ['EEADesign2006', 'NavigationManager', 'PloneRSSPortlet', 'PloneLanguageTool', 'LinguaPlone', 'ATVocabularyManager', 'Marshall', 'CMFonFive', 'CMFSquidTool', 'CacheSetup', 'EEAContentTypes', 'FiveSite', 'PloneGazette', 'PloneCaptcha', 'PloneHelpCenter', 'EEAEnquiry', 'RichTopic', 'ATVocabularyManager', 'XLIFFMarshall']
 
 PRODUCT_DEPENDENCIES = ['MimetypesRegistry', 'PortalTransforms']
 
