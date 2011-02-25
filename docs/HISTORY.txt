@@ -9,7 +9,7 @@ Changelog
 
 0.6-dev - (unreleased)
 ----------------------
-* Change: removed PloneRDFCalendar from config.py, not needed for Plone 4 [ichimdav #2931]
+* Change: removed PloneRDFCalendar & RDFEvent, not needed for Plone 4 [ichimdav #2931]
 
 0.5 - (2011-02-23)
 ------------------
