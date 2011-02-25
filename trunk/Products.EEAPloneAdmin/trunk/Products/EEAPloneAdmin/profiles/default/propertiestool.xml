@@ -94,7 +94,6 @@
    <element value="News Item"/>
    <element value="Plone Site"/>
    <element value="QuickEvent"/>
-   <element value="RDFEvent"/>
    <element value="RSSFeedRecipe"/>
    <element value="Requestor"/>
    <element value="Subscriber"/>
@@ -110,11 +109,6 @@
   <property name="root" type="string">/</property>
   <property name="name" type="string"></property>
   <property name="topicListingInNavtree" type="boolean">True</property>
- </object>
- <object name="rdfcalendar_properties" meta_type="Plone Property Sheet">
-  <property name="title">Plone RDF calendar properties</property>
-  <property name="rdfevent_folder"
-     type="string">/www/SITE/events/imported</property>
  </object>
  <object name="site_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA</property>

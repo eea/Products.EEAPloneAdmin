@@ -202,7 +202,7 @@ def setupControlledMarshall(self, portal):
 
 def configureContentTypes(self, portal):
     pt = getToolByName(portal, 'portal_types')
-    typeInfo = { 'Folder' : { 'allowed_content_types' : ('Ad', 'Highlight', 'RDFEvent', 'Event', 'Document', 'Folder', 'RSSFeedRecipe', 'Promotion'),
+    typeInfo = { 'Folder' : { 'allowed_content_types' : ('Ad', 'Highlight', 'Event', 'Document', 'Folder', 'RSSFeedRecipe', 'Promotion'),
                               'filter_content_types' : True},
                  'Plone Site' : { 'allowed_content_types' : ('Folder'),
                                   'filter_content_types' : True } }
@@ -228,7 +228,7 @@ def setDateProperties(self, portal):
 def setNavigationProperties(self, portal):
     prop_tool = portal.portal_properties
     n_prop = prop_tool.navtree_properties
-    typesNotToList = [ 'ExternalHighlight','Highlight', 'FlashFile', 'News Item', 'RDFEvent', 'Event' ]
+    typesNotToList = [ 'ExternalHighlight','Highlight', 'FlashFile', 'News Item', 'Event' ]
     for typ in n_prop.metaTypesNotToList:
         typesNotToList.append(typ)
     n_prop.metaTypesNotToList = typesNotToList
