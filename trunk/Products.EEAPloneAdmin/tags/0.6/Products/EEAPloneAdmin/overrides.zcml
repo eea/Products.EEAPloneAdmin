@@ -1,0 +1,28 @@
+
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+ 
+  <browser:page
+      for="*"
+      name="plone"
+      class=".browser.plone.PloneAdmin"
+      permission="zope.Public"
+      allowed_interface="Products.CMFPlone.browser.interfaces.IPlone
+                         .browser.interfaces.IPloneAdmin"
+      />
+
+  <include package="eea.mediacentre" file="overrides.zcml" />
+  <include package="eea.translations" file="overrides.zcml" />
+  <include package="eea.reports" file="overrides.zcml" />
+  <include package="eea.plone3compat" file="overrides.zcml" />
+
+    <browser:subMenuItem
+        menu="contentmenu_extra"
+        submenu="subtypes"
+        title="Sub-types"
+        permission="cmf.ManagePortal"
+        for="*"
+        />
+
+</configure>
