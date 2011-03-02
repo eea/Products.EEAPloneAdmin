@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.7-dev - (unreleased)
+----------------------
+
 0.6 - (2011-03-02)
 ------------------
 * Change: removed PloneRDFCalendar & RDFEvent, not needed for Plone 4 [ichimdav #2931]
