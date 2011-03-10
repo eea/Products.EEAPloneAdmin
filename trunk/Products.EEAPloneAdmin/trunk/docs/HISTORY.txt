@@ -9,6 +9,10 @@ Changelog
 
 0.7-dev - (unreleased)
 ----------------------
+* Cleanup: Removed portal_migration scripts as portal_migration is deprecated.
+  Please check that there are no un-applied migration scripts before
+  upgrading to this version [voineali #4139]
+
 
 0.6 - (2011-03-02)
 ------------------
