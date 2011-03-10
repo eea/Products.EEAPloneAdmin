@@ -9,6 +9,7 @@ Changelog
 
 0.7-dev - (unreleased)
 ----------------------
+* Bug fix: Added translation domain to ZCML files [voineali #4139]
 * Cleanup: Removed portal_migration scripts as portal_migration is deprecated.
   Please check that there are no un-applied migration scripts before
   upgrading to this version [voineali #4139]
