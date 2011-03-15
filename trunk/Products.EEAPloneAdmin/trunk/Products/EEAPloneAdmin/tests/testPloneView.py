@@ -1,29 +1,27 @@
-#
-# Test methods used to make ...
-#
+#Test methods used to make ...
 
-import os, sys
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
 
 from Products.EEAPloneAdmin.tests.PloneAdminTestCase import EEAPloneAdminTestCase
-from Products.CMFPlone.tests import dummy
+#from Products.CMFPlone.tests import dummy
 
-from Products.CMFPlone.utils import _createObjectByType
+#from Products.CMFPlone.utils import _createObjectByType
 
-from Products.CMFPlone.URLTool import URLTool
-from Products.CMFPlone.MembershipTool import MembershipTool
-from Products.CMFPlone.GroupsTool import GroupsTool
-from Products.CMFPlone.GroupDataTool import GroupDataTool
-from Products.CMFPlone.ActionsTool import ActionsTool
-from Products.CMFPlone.ActionIconsTool import ActionIconsTool
+#from Products.CMFPlone.URLTool import URLTool
+#from Products.CMFPlone.MembershipTool import MembershipTool
+#from Products.CMFPlone.GroupsTool import GroupsTool
+#from Products.CMFPlone.GroupDataTool import GroupDataTool
+#from Products.CMFPlone.ActionsTool import ActionsTool
+#from Products.CMFPlone.ActionIconsTool import ActionIconsTool
 
-from Products.CMFCore.WorkflowTool import WorkflowTool
+#from Products.CMFCore.WorkflowTool import WorkflowTool
 
-from Products.CMFPlone.InterfaceTool import InterfaceTool
-from Products.CMFPlone.SyndicationTool import SyndicationTool
+#from Products.CMFPlone.InterfaceTool import InterfaceTool
+#from Products.CMFPlone.SyndicationTool import SyndicationTool
 
 from Products.EEAPloneAdmin.browser.plone import PloneAdmin as Plone
+import logging
+logger = logging.getLogger("Products.EEAPloneAdmin.tests.TestPloneView")
+
 
 class TestPloneView(EEAPloneAdminTestCase):
     """Tests the global plone view for functions we have overriden."""
@@ -33,9 +31,9 @@ class TestPloneView(EEAPloneAdminTestCase):
         try:
             from zope.app.publication.browser import setDefaultSkin
             setDefaultSkin(self.app.REQUEST)
-        except ImportError:
+        except ImportError, err:
             # BBB: zope 2.8
-            pass
+            logger.info(err)
         self.folder.invokeFactory('Document', 'test',
                                   title='Test default page')
         self.view = Plone(self.portal, self.app.REQUEST)
@@ -84,5 +82,3 @@ def test_suite():
     suite.addTest(makeSuite(TestPloneView))
     return suite
 
-if __name__ == '__main__':
-    framework()

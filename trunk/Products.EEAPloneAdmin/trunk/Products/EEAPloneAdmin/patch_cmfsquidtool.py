@@ -2,15 +2,11 @@ import sys
 import httplib
 import urlparse
 import Queue
-
+import socket
 from Products.CMFSquidTool.utils import (
-    Queue,
     Worker,
     logger,
-    Producer,
-    pruneAsync,
-    pruneUrl,
-    _producer
+    Producer
 )
 
 from Products.CMFSquidTool import utils
@@ -57,7 +53,7 @@ def runEEA(self):
 
             # Loop handling errors (other than connection errors) doing
             # the actual purge.
-            for i in range(5):
+            for _i in range(5):
                 if self.stopping:
                     break
                 # Get a connection.
@@ -67,7 +63,7 @@ def runEEA(self):
                         break
                 # Got an item, prune it!
                 try:
-                    resp, msg, err = self.producer._pruneUrl(connection,
+                    resp, _msg, _err = self.producer._pruneUrl(connection,
                                                              url, purge_type)
                     # worked! See if we can leave the connection open for
                     # the next item we need to process
@@ -101,7 +97,7 @@ def runEEA(self):
                     connection = None
                     logger.exception('Failed to purge %s', url)
                     break
-    except:
+    except Exception:
         logger.exception('Exception in worker thread '
                          'for (%s, %s)' % (self.host, self.scheme))
     logger.debug("%s terminating", self)
@@ -111,7 +107,7 @@ Worker.run = runEEA
 ############
 
 def getQueueAndWorkerEEA(self, url, squid_url):
-    (scheme, host, path, params, query, fragment) = urlparse.urlparse(squid_url)
+    (scheme, host, _path, _params, _query, _fragment) = urlparse.urlparse(squid_url)
     key = (host, scheme)
     if key not in self.queues:
         self.queue_lock.acquire()
@@ -135,8 +131,8 @@ def pruneAsyncEEA(self, url, purge_type='PURGE', daemon=True, squid_url=''):
     (scheme, host, path, params, query, fragment) = urlparse.urlparse(url)
     __traceback_info__ = (url, purge_type, scheme, host,
                           path, params, query, fragment)
-
-    q, w = self.getQueueAndWorker(url, squid_url)
+    __traceback_info__ # pyflakes 
+    q, _w = self.getQueueAndWorker(url, squid_url)
     try:
         q.put((url, purge_type), block=False)
         msg = 'Queued %s' % url
@@ -170,11 +166,12 @@ def pruneUrlEEA(self, url, purge_type='PURGE', squid_url=''):
             status = resp.status
         finally:
             conn.close()
-    except:
+    except Exception:
         status = "ERROR"
         err, msg, tb = sys.exc_info()
         try:
             from zExceptions.ExceptionFormatter import format_exception
+            format_exception
         except ImportError:
             from traceback import format_exception
         xerror = '\n'.join(format_exception(err, msg, tb))

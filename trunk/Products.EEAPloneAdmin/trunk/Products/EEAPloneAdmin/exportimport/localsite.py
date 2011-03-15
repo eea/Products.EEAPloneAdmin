@@ -90,7 +90,7 @@ def getLanguages(context):
     lt.manage_setLanguageSettings(defaultLang, supportedLangs, setPathN=True)
     logger.info("EEAPloneAdmin:local-sites: Enable 'Use language codes in URL path for manual override' in portal_languages")    
     siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
-    languages = [ (lang, foo) for lang, foo in siteLangView() if lang != 'en' ]
+    languages = [ (lang, _unused) for lang, _unused in siteLangView() if lang != 'en' ]
     return languages
 
 def translate(msgid, target_language, output=False):
@@ -109,7 +109,7 @@ def translate(msgid, target_language, output=False):
                 if target_language not in ['tr','mt', 'hu']:
                     try:
                         translation = gtranslate(str(msgid), langpair="en|%s" % target_language)
-                    except:
+                    except Exception:
                         print "GTRANSLATE FAILED %s and msgid %s" % (target_language, msgid)
 
                 untranslatedMessages.get(target_language)[msgid]  = translation
@@ -125,8 +125,7 @@ def translate(msgid, target_language, output=False):
 
 def retagAllTranslations(context, languages):
     catalog = getToolByName(context, 'portal_catalog')
-    langs = [ lang for lang, foo in languages
-                       if lang != 'en' ]
+    #langs = [ lang for lang, _unused in languages if lang != 'en' ]
 
     for b in catalog(object_provides='eea.themecentre.interfaces.IThemeTaggable',
                      Language='all'):
@@ -162,7 +161,7 @@ def setupTranslateSiteStructure(context):
         url = f.getPath()
         for path in structureNot2Translate:
             if path in url:
-                 break
+                break
         else:
             foldersByPath[url] = f
         
@@ -171,7 +170,7 @@ def setupTranslateSiteStructure(context):
     
     logger.info('PROGRESS: start: %s' % len(folderPaths))
     
-    for lang, foo in languages:
+    for lang, _unused in languages:
         logger.info('PROGRESS: language %s' % lang)
         for path in folderPaths:
             f = foldersByPath[path]
@@ -216,7 +215,7 @@ def setupTranslateSiteStructure(context):
             if hasattr(aq_base(obj), 'getExcludeFromNav'):
                 try:
                     translation.setExcludeFromNav(obj.getExcludeFromNav())
-                except:
+                except Exception:
                     logger.info("EEAPloneAdmin:local-sites: EXCLUDE-FROM-NAV-ERROR for %s" % obj.absolute_url())
             if obj.portal_type in ['Topic', 'RichTopic']:
                 origCustFields = obj.getCustomViewFields()
@@ -282,7 +281,7 @@ def setupNavigationManager(context):
     en.setLanguage('en')
     portal_url = _useCorrectUrlForWhereWeAreRunningThis(plone)
 
-    for lang, foo in languages:
+    for lang, _unused in languages:
         if not site.hasTranslation(lang):
             # a language that doesn't have local site
             continue
@@ -393,142 +392,142 @@ def setupLocalSites(context):
     enReports = enReportsFolder['reports']
     enReportsRss = enReportsFolder['reports-rss']
 
-    for lang, foo  in languages:
-      alreadyDone = []
+    for lang, _unused  in languages:
+        alreadyDone = []
         
-      if not DevelopmentMode and hasattr(plone, lang):
+        if not DevelopmentMode and hasattr(plone, lang):
           # if we are in production we don't want to change already migrated local sites
-          logger.info("Skipping language %s" % lang)
-          continue
+            logger.info("Skipping language %s" % lang)
+            continue
       
-      translation = en.getTranslation(lang)
-      if translation is None:
-          en.addTranslation(lang)
-          transaction.savepoint()
-          translation = en.getTranslation(lang)
-          translation.setId(lang)
-          translation.unmarkCreationFlag()
-          wf.doActionFor(translation, 'publish', comment='Initial publish by method setupLocalSite')
-          alsoProvides(translation, INavigationRoot)
-          logger.info("added localsite %s" % lang)
+        translation = en.getTranslation(lang)
+        if translation is None:
+            en.addTranslation(lang)
+            transaction.savepoint()
+            translation = en.getTranslation(lang)
+            translation.setId(lang)
+            translation.unmarkCreationFlag()
+            wf.doActionFor(translation, 'publish', comment='Initial publish by method setupLocalSite')
+            alsoProvides(translation, INavigationRoot)
+            logger.info("added localsite %s" % lang)
 
-      if translation.getProperty('navigationmanager_site') is None:
-          translation.manage_addProperty('navigationmanager_site',
+        if translation.getProperty('navigationmanager_site') is None:
+            translation.manage_addProperty('navigationmanager_site',
                                          'default-%s' % lang,
                                          'string')
 
-      translation.setLayout('frontpage_view')
-      translation.setTitle( translate( title, target_language=lang))
+        translation.setLayout('frontpage_view')
+        translation.setTitle( translate( title, target_language=lang))
 
-      for path,portalType, msgId in translateFromSite:
-          paths = path.split('/')
-          obj = en
-          for p in paths:
-              obj = getattr(obj, p, None)
-              if obj is None:
-                  logger.info("EEAPloneAdmin:local-sites: WARNING No existing object %s" % path)
-                  continue
-              if obj in alreadyDone:
-                  continue
+        for path,portalType, msgId in translateFromSite:
+            paths = path.split('/')
+            obj = en
+            for p in paths:
+                obj = getattr(obj, p, None)
+                if obj is None:
+                    logger.info("EEAPloneAdmin:local-sites: WARNING No existing object %s" % path)
+                    continue
+                if obj in alreadyDone:
+                    continue
               
-              doc = obj.getTranslation(lang)
-              if doc is None:
-                  obj.addTranslation(lang)
-                  doc = obj.getTranslation(lang)
-                  doc.unmarkCreationFlag()
-                  originalState = wf.getInfoFor(obj, 'review_state')
-                  if originalState == 'published':
-                      wf.doActionFor(doc, 'publish', comment='Initial publish by method setupLocalSite')
-                  elif originalState == 'visible' and portalType != 'Folder':
-                      wf.doActionFor(doc, 'submit', comment='Initial submit by method setupLocalSite')
-                      wf.doActionFor(doc, 'show', comment='Initial show by method setupLocalSite')
+                doc = obj.getTranslation(lang)
+                if doc is None:
+                    obj.addTranslation(lang)
+                    doc = obj.getTranslation(lang)
+                    doc.unmarkCreationFlag()
+                    originalState = wf.getInfoFor(obj, 'review_state')
+                    if originalState == 'published':
+                        wf.doActionFor(doc, 'publish', comment='Initial publish by method setupLocalSite')
+                    elif originalState == 'visible' and portalType != 'Folder':
+                        wf.doActionFor(doc, 'submit', comment='Initial submit by method setupLocalSite')
+                        wf.doActionFor(doc, 'show', comment='Initial show by method setupLocalSite')
 
-                  doc.setTitle( translate( _(msgId or obj.Title()), target_language=lang))
+                    doc.setTitle( translate( _(msgId or obj.Title()), target_language=lang))
                       
-              if obj.getId() in excludeFromNav:
-                  doc.setExcludeFromNav(True)
+                if obj.getId() in excludeFromNav:
+                    doc.setExcludeFromNav(True)
 
-              if utils.isDefaultPage(obj):
-                  parent = aq_parent(aq_inner(doc))
-                  parent.setDefaultPage(doc.getId())
+                if utils.isDefaultPage(obj):
+                    parent = aq_parent(aq_inner(doc))
+                    parent.setDefaultPage(doc.getId())
 
-              if obj.getProperty('layout') is not None:
-                  doc.setLayout(obj.getLayout())
+                if obj.getProperty('layout') is not None:
+                    doc.setLayout(obj.getLayout())
 
-              doc.reindexObject()
-              alreadyDone.append(obj)
-              transaction.savepoint()
+                doc.reindexObject()
+                alreadyDone.append(obj)
+                transaction.savepoint()
 
       
-      if not hasattr(translation, 'introduction'):
-          xliffMarshaller = getComponent('atxliff')
-          TITLE = re.compile("""&lt;tr&gt; \r\n          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; \r\n            &lt;p class="head0w"&gt;(.*)&lt;/p&gt;\r\n          &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n        """)
-          TITLE_TO_REMOVE = re.compile("""&lt;tr&gt; \r\n          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; \r\n            &lt;p class="head0w"&gt;.*&lt;/p&gt;\r\n          &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n        """)
-          try:
-              filename = os.path.join(package_home(GLOBALS), 'exportimport', 'local-sites', 'introduction-%s.xlf' % lang)
-              xliff = open(filename, 'r').read()
-              newTitle = TITLE.findall(xliff)
-              xliff = TITLE_TO_REMOVE.sub('', xliff)
-              # set path to the english introduction
-              xliff = xliff.replace('original="/index_html"', 'original="%s"' % '/'.join( enIntro.getPhysicalPath()))
-              # in plone the body field is called text
-              xliff = xliff.replace('id="body"', 'id="text"')
-              # fix xhtml 
-              xliff = xliff.replace('&lt;br/&gt;', '&lt;br /&gt;')
-              # fix broke resolveuid
-              # about-us/governance/intro - List of Management Board Members
-              xliff = xliff.replace('resolveuid/3374ee862f322175658ae0109cfa4d8d', 'resolveuid/883275041407e0cfea1bdfe9961f2252')
-              # about-us/governance/intro - List of Scientific Committee members
-              xliff = xliff.replace('resolveuid/c48511d8d406547c9a6ce84ee94dc781', 'resolveuid/7957a7529ed5df88caa7ad40ee9859f2')
-              xliffMarshaller.demarshall(enIntro, xliff, useTidy=True, keepHTML=False)
-              intro = enIntro.getTranslation(lang)
-              intro.unmarkCreationFlag()
-              if len(newTitle) == 2:
-                  intro.setTitle(newTitle[1])
-              else:
-                  logger.info("EEAPloneAdmin:local-sites title not changed for %s" % filename)
+        if not hasattr(translation, 'introduction'):
+            xliffMarshaller = getComponent('atxliff')
+            TITLE = re.compile("""&lt;tr&gt; \r\n          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; \r\n            &lt;p class="head0w"&gt;(.*)&lt;/p&gt;\r\n          &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n        """)
+            TITLE_TO_REMOVE = re.compile("""&lt;tr&gt; \r\n          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; \r\n            &lt;p class="head0w"&gt;.*&lt;/p&gt;\r\n          &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n        """)
+            try:
+                filename = os.path.join(package_home(GLOBALS), 'exportimport', 'local-sites', 'introduction-%s.xlf' % lang)
+                xliff = open(filename, 'r').read()
+                newTitle = TITLE.findall(xliff)
+                xliff = TITLE_TO_REMOVE.sub('', xliff)
+                # set path to the english introduction
+                xliff = xliff.replace('original="/index_html"', 'original="%s"' % '/'.join( enIntro.getPhysicalPath()))
+                # in plone the body field is called text
+                xliff = xliff.replace('id="body"', 'id="text"')
+                # fix xhtml 
+                xliff = xliff.replace('&lt;br/&gt;', '&lt;br /&gt;')
+                # fix broke resolveuid
+                # about-us/governance/intro - List of Management Board Members
+                xliff = xliff.replace('resolveuid/3374ee862f322175658ae0109cfa4d8d', 'resolveuid/883275041407e0cfea1bdfe9961f2252')
+                # about-us/governance/intro - List of Scientific Committee members
+                xliff = xliff.replace('resolveuid/c48511d8d406547c9a6ce84ee94dc781', 'resolveuid/7957a7529ed5df88caa7ad40ee9859f2')
+                xliffMarshaller.demarshall(enIntro, xliff, useTidy=True, keepHTML=False)
+                intro = enIntro.getTranslation(lang)
+                intro.unmarkCreationFlag()
+                if len(newTitle) == 2:
+                    intro.setTitle(newTitle[1])
+                else:
+                    logger.info("EEAPloneAdmin:local-sites title not changed for %s" % filename)
                   
-          except:
-              logger.info("EEAPloneAdmin:local-sites ERROR failed to load %s" % filename)                  
+            except Exception:
+                logger.info("EEAPloneAdmin:local-sites ERROR failed to load %s" % filename)                  
 
 
-      if not hasattr(translation, 'reports'):
-          rssTemplate = 'http://reports.eea.europa.eu/reports_local.rdf?select=public&image=yes&replang=%s'
-          rssTitle = _(u'Reports')
+        if not hasattr(translation, 'reports'):
+            rssTemplate = 'http://reports.eea.europa.eu/reports_local.rdf?select=public&image=yes&replang=%s'
+            rssTitle = _(u'Reports')
 
-          # reports folder
-          enReportsFolder.addTranslation(lang)
-          rfolder = enReportsFolder.getTranslation(lang)
-          rfolder.unmarkCreationFlag()
-          rfolder.setTitle( translate( rssTitle, target_language=lang))
-          rfolder.manage_addProperty('navigationmanager_menuid',
+            # reports folder
+            enReportsFolder.addTranslation(lang)
+            rfolder = enReportsFolder.getTranslation(lang)
+            rfolder.unmarkCreationFlag()
+            rfolder.setTitle( translate( rssTitle, target_language=lang))
+            rfolder.manage_addProperty('navigationmanager_menuid',
                                          'products',
                                          'string')
           
-          enReports.addTranslation(lang)
-          doc = enReports.getTranslation(lang)
-          doc.unmarkCreationFlag()
-          doc.setTitle( translate( rssTitle, target_language=lang))
-          rfolder.setDefaultPage('reports')
+            enReports.addTranslation(lang)
+            doc = enReports.getTranslation(lang)
+            doc.unmarkCreationFlag()
+            doc.setTitle( translate( rssTitle, target_language=lang))
+            rfolder.setDefaultPage('reports')
 
-          enReportsRss.addTranslation(lang)
-          rss = enReportsRss.getTranslation(lang)
-          rss.unmarkCreationFlag()
-          rss.setTitle( translate( rssTitle, target_language=lang))
-          rss.setUrl('/%s/reports' % lang)
-          rss.setFeedURL(rssTemplate % lang)
-          rss.setLanguage(lang)
-          rss.setEntriesSize(10000)
-          rss.setEntriesWithDescription(0)
-          transaction.savepoint()
-          try:
-              rss.reindexObject()
-          except:
-              logger.info("EEAPloneAdmin:local-sites ERROR feed %s" % rss.getFeedURL())
-              print "EEAPloneAdmin:local-sites ERROR feed %s" % rss.getFeedURL()
+            enReportsRss.addTranslation(lang)
+            rss = enReportsRss.getTranslation(lang)
+            rss.unmarkCreationFlag()
+            rss.setTitle( translate( rssTitle, target_language=lang))
+            rss.setUrl('/%s/reports' % lang)
+            rss.setFeedURL(rssTemplate % lang)
+            rss.setLanguage(lang)
+            rss.setEntriesSize(10000)
+            rss.setEntriesWithDescription(0)
+            transaction.savepoint()
+            try:
+                rss.reindexObject()
+            except Exception:
+                logger.info("EEAPloneAdmin:local-sites ERROR feed %s" % rss.getFeedURL())
+                print "EEAPloneAdmin:local-sites ERROR feed %s" % rss.getFeedURL()
               
-          doc.setRelatedItems(rss.UID())
-          wf.doActionFor(doc, 'publish', comment='Initial publish by method setupLocalSite')
+            doc.setRelatedItems(rss.UID())
+            wf.doActionFor(doc, 'publish', comment='Initial publish by method setupLocalSite')
           
     setupTranslateSiteStructure(context)
     setupNavigationManager(context)
@@ -569,18 +568,16 @@ def setupLocalRDFRepositories(context):
     wf = getToolByName(plone, 'portal_workflow')
     
     enRDFRepo = plone.SITE.themes['rdf-repository']
-    siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
+    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
     languages = getLanguages(context)
 
-
-    
-    for id, ob in enRDFRepo.objectItems():
-        if 'reports_' in id:
+    for rid, ob in enRDFRepo.objectItems():
+        if 'reports_' in rid:
             theme = IThemeTagging(ob).tags[0]
             rssTemplate = 'http://reports.eea.europa.eu/reports_local.rdf?select=public&image=yes&replang=%s&theme=%s'
             rssTitle = _(u'Reports')
             newRss = oldRss = 0
-            for lang, foo in languages:
+            for lang, _unused in languages:
                 translation = ob.getTranslation(lang)
                 if translation is None:
                     ob.addTranslation(lang)
@@ -611,14 +608,14 @@ def fixPromotion(context):
         return
 
     plone = context.getSite()
-    logger = context.getLogger('eea-localsite')
+    #logger = context.getLogger('eea-localsite')
     wf = getToolByName(plone, 'portal_workflow')
     
-    siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
+    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
     languages = getLanguages(context)
     qlinks = plone.SITE.quicklinks
 
-    for lang, foo in languages:
+    for lang, _unused in languages:
         promotion = qlinks.educational['glossary-learn-about-environmental-terms']
         translation = promotion.getTranslation(lang)
         if translation is not None:
@@ -626,7 +623,7 @@ def fixPromotion(context):
             translation.reindexObject()
 
     for obj in qlinks.educational.objectValues():
-        for lang, foo in languages:
+        for lang, _unused in languages:
             translation = obj.getTranslation(lang)
             if translation is not None:
                 if wf.getInfoFor(translation, 'review_state') != 'published' and wf.getInfoFor(obj, 'review_state') == 'published':
@@ -647,19 +644,19 @@ def getTranslationsFromGoogle(context):
     if context.readDataFile('eeaploneadmin_localsites.txt') is None:
         return
 
-    plone = context.getSite()
+    #plone = context.getSite()
     logger = context.getLogger('eea-localsite')
-    wf = getToolByName(plone, 'portal_workflow')
+    #wf = getToolByName(plone, 'portal_workflow')
     
-    siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
+    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
     languages = getLanguages(context)
 
-    for lang, foo in languages:
+    for lang, _unused in languages:
         pofile = codecs.open('/tmp/gtranslated-%s.po' % lang, 'wb', encoding='utf8')
         for msgid, msgstr in toTranslatefromG.items():
             try:
                 pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (msgid,  gtranslate(msgstr, langpair="en|%s" % lang)))
-            except:
+            except Exception:
                 logger.info("FAILED for lang %s msgstr %s" % (lang, msgstr))
         pofile.close()
     #run this later
@@ -679,12 +676,12 @@ def themecentreFix(context):
     logger = context.getLogger('eea-localsite')
     wf = getToolByName(plone, 'portal_workflow')
     catalog = getToolByName(plone, 'portal_catalog')    
-    siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
+    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
     languages = getLanguages(context)
 
     navman = plone.portal_navigationmanager.default
 
-    for lang, foo in languages:
+    for lang, _unused in languages:
         local = getattr(plone, lang, None)
         if local is None:
             continue
@@ -732,7 +729,7 @@ def themecentreFix(context):
                 themes = navman.getTranslation(lang)['themes']
                 logger.info('Removing themes in %s' % themes.absolute_url())
                 themes.manage_delObjects(ids=navigationItems2RemoveFromTranslatedMenues)
-            except:
+            except Exception:
                 logger.info('FAILED Removing menu themes %s' % lang)                
 
 def importTranslations(context):
@@ -741,13 +738,13 @@ def importTranslations(context):
 
     plone = context.getSite()
     logger = context.getLogger('eea-localsite')
-    wf = getToolByName(plone, 'portal_workflow')
+    #wf = getToolByName(plone, 'portal_workflow')
     xliffMarshaller = getComponent('atxliff')
     
-    siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
+    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
     languages = getLanguages(context)
 
-    for lang, foo in languages:
+    for lang, _unused in languages:
         filename = os.path.join(package_home(GLOBALS), 'exportimport', 'local-sites', 'EEA-2008-0037-00-00-EN%s.xlf' % lang.upper())
         xliff = open(filename, 'r').read()
         # solves #1968, we may change this to regex to be sure we only change links we want to
@@ -787,7 +784,7 @@ def fixLangIndependentFields(context):
         schema = canonical.Schema()
         independent_fields = schema.filterFields(languageIndependent=True)
 
-        for lang, t in canonical.getTranslations().items():
+        for _lang, t in canonical.getTranslations().items():
             translation = t[0]
             for field in independent_fields:
                 accessor = field.getEditAccessor(canonical)

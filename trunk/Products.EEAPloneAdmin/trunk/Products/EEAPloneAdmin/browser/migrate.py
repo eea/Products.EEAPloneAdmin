@@ -1,6 +1,6 @@
 import csv
 import logging
-from pprint import pformat
+#from pprint import pformat
 import urllib
 from zope.interface import alsoProvides, directlyProvides, directlyProvidedBy
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
@@ -13,7 +13,7 @@ from p4a.video.interfaces import IVideo
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
-from Products.CMFPlone.utils import normalizeString
+#from Products.CMFPlone.utils import normalizeString
 import socket
 import feedparser
 import urlparse
@@ -66,7 +66,7 @@ class MigrateWrongThemeIds(object):
                 obj = r.getObject()
                 try:
                     currentThemes = obj.getThemes()
-                except:
+                except Exception:
                     continue
                 if currentThemes == str(currentThemes):
                     currentThemes = [currentThemes,]
@@ -103,7 +103,7 @@ class MigrateTheme(object):
             self._image(themeId)
             step += 1
             self._indicators(themeId)
-        except:
+        except Exception:
             print themeId + ' failed on step %s' % step
         self.context.reindexObject()
 
@@ -139,9 +139,8 @@ class MigrateTheme(object):
         related = [ themeIdMap.get(r, r) for r in related ]
 
         # XXX need to find UID for the related theme centres
-        related = [ themeCentres.get(r) for r in related ]
-        related = [ r for r in related
-                      if r is not None ]
+        related = [ themeCentres.get(rel) for rel in related ]
+        related = [ rl for rl in related if rl is not None ]
         theme.related = related
 
     def _intro(self, themeId):
@@ -169,7 +168,7 @@ class MigrateTheme(object):
             obj = folder[linkId]
             try:
                 obj.setTitle(link[1].strip().decode('iso-8859-1'))
-            except:
+            except Exception:
                 obj.setTitle('link[2].strip()')
             obj.setRemoteUrl(link[2].strip())
             workflow.doActionFor(obj, 'publish')
@@ -235,7 +234,7 @@ class InitialThemeCentres(object):
 
         if not hasattr(aq_base(context), 'left_slots'):
             slots = ['here/portlet_themes/macros/portlet', ]
-            context.manage_addProperty('left_slots', slots, type='lines',),
+            context.manage_addProperty('left_slots', slots, type='lines',)#,
 
         #if hasattr(aq_base(context), 'navigationmanager_menuid'):
         #    context.manage_addProperty('navigationmanager_menuid', 'themes', type='string')
@@ -259,16 +258,16 @@ class RDF(object):
         feeds = urllib.urlopen(migrate_url).readlines()
 
         for feed_line in feeds:
-            id, title, feed_url = feed_line.strip().split('|')
-            if id.startswith("reports_"):
+            fid, title, feed_url = feed_line.strip().split('|')
+            if fid.startswith("reports_"):
                 title = "Reports"
             elif not title:
-                title = id
+                title = fid
 
-            if not hasattr(self.context, id):
-                self.context.invokeFactory('RSSFeedRecipe', id=id, title=title)
+            if not hasattr(self.context, fid):
+                self.context.invokeFactory('RSSFeedRecipe', id=fid, title=title)
 
-            recipe = self.context[id]
+            recipe = self.context[fid]
             recipe.setEntriesWithDescription(0)
             recipe.setEntriesWithThumbnail(0)
 
@@ -310,12 +309,12 @@ class IndicatorRDFs(object):
     def __call__(self):
         context = self.context
         workflow = getToolByName(self.context, 'portal_workflow')
-        url = 'http://themes.eea.europa.eu/indicators/bytheme.rss?theme_id=%s'
+        furl = 'http://themes.eea.europa.eu/indicators/bytheme.rss?theme_id=%s'
         themeids = context.portal_vocabularies.themes.objectIds()[1:]
         for theme in themeids:
             feedId = 'indicators_%s' % theme
             title = 'Indicators'
-            feed_url = url % theme
+            feed_url = furl % theme
             if not hasattr(self.context, feedId):
                 self.context.invokeFactory('RSSFeedRecipe', id=feedId, title=title)
             recipe = self.context[feedId]
@@ -529,16 +528,16 @@ class GenericThemeToDefault(object):
         queries = [query1,query2,query3,query4]
         output=''
         for query in queries:
-           brains = catalog.searchResults(query)
-           for brain in brains:
-               if brain.getThemes == ['G', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['g', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['D', 'e', 'f', 'a', 'u', 'l', 't'] or brain.getThemes == ['d', 'e', 'f', 'a', 'u', 'l', 't']:
-                  obj = brain.getObject()
-                  themes = IThemeTagging(obj)
-                  output=output+'NOTOK: '+obj.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + ' themes.tags[0]: '+ (len(themes.tags) > 0 and themes.tags[0] or '') + ' URL: ' + obj.absolute_url() +'\r'
-                  themes.tags = ['default']
-                  obj.reindexObject()
-               else:
-                  output=output+'OK: '+brain.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + 'URL:'+ brain.getURL() +'\r'
+            brains = catalog.searchResults(query)
+            for brain in brains:
+                if brain.getThemes == ['G', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['g', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['D', 'e', 'f', 'a', 'u', 'l', 't'] or brain.getThemes == ['d', 'e', 'f', 'a', 'u', 'l', 't']:
+                    obj = brain.getObject()
+                    themes = IThemeTagging(obj)
+                    output=output+'NOTOK: '+obj.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + ' themes.tags[0]: '+ (len(themes.tags) > 0 and themes.tags[0] or '') + ' URL: ' + obj.absolute_url() +'\r'
+                    themes.tags = ['default']
+                    obj.reindexObject()
+                else:
+                    output=output+'OK: '+brain.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + 'URL:'+ brain.getURL() +'\r'
         return 'themes are migrated, RESULT:\r' + output
 
 class EntriesWithThumbnail(object):
@@ -626,8 +625,8 @@ class ChangeMediaTypesDefault(object):
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog.searchResults(object_provides='p4a.video.interfaces.IVideoEnhanced')
         for brain in brains:
-            file = brain.getObject()
-            media = IMediaType(file)
+            bfile = brain.getObject()
+            media = IMediaType(bfile)
             if not media.types:
                 media.types = ['other']
             file.reindexObject()
@@ -647,8 +646,8 @@ class AddRichTextDescriptionToVideos(object):
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog.searchResults(object_provides='p4a.video.interfaces.IVideoEnhanced')
         for brain in brains:
-            file = brain.getObject()
-            video = IVideo(file)
+            vfile = brain.getObject()
+            video = IVideo(vfile)
             video.rich_description = u''
             video.urls = ()
 
@@ -809,7 +808,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
     def _import(self):
         filename = os.path.join(os.path.dirname(__file__), 'EEAWEBSITE_ECOTIP_Migration.csv')
         reader = csv.reader(open(filename, 'r'), delimiter='\t', quotechar='"')
-        header = reader.next()
+        reader.next()
         for index, row in enumerate(reader):
             if len(row) < 5:
                 self._raise("Invalid row(%d) in csv file." % (index + 2))
