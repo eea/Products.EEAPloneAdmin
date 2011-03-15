@@ -6,16 +6,18 @@ from zope.i18n import translate as realTranslate
 from valentine.gtranslate import translate as gtranslate
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
-from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
+#from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
+from zope.interface import alsoProvides
 from zope.event import notify
 from zope.app.event.objectevent import ObjectModifiedEvent
 from Products.NavigationManager.sections import INavigationSectionPosition
 from p4a.subtyper.interfaces import ISubtyper
 from zope.component import getUtility
-from zope.component import queryMultiAdapter
-from eea.facetednavigation.interfaces import ICriteria
+#from zope.component import queryMultiAdapter
+#from eea.facetednavigation.interfaces import ICriteria
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from Products.CMFCore.WorkflowCore import WorkflowException
+from DateTime import DateTime
 
 # Logging
 import logging
@@ -140,23 +142,23 @@ def bulkReindexObjects(self, brains):
     done = 0
     for brain in brains:
         try:
-    	    done += 1
-    	    info('INFO: reindexing %s', brain.getId)
-    	    obj = brain.getObject()
-    	    obj.reindexObject()
-    	    if done % 10 == 0:
-    		transaction.commit()
-    		info('INFO: Subtransaction committed to zodb')
-	except Exception, err:
-    	    info('ERROR: error during reindexing')
-    	    info_exception('Exception: %s ', err)
+            done += 1
+            info('INFO: reindexing %s', brain.getId)
+            obj = brain.getObject()
+            obj.reindexObject()
+            if done % 10 == 0:
+                transaction.commit()
+                info('INFO: Subtransaction committed to zodb')
+        except Exception, err:
+            info('ERROR: error during reindexing')
+            info_exception('Exception: %s ', err)
     info('INFO: Done reindexing')
 
 def reindexAllIndicators(self):
     """ Incremental commit and indexing of indicators """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    wf = getToolByName(context, 'portal_workflow')
+    #wf = getToolByName(context, 'portal_workflow')
 
     all_brains = cat.searchResults({'show_inactive':True,
                                     'language':'ALL',
@@ -211,7 +213,7 @@ def setIndicatorsFacets(self):
         IHeritorAccessor(indfo).ancestor = '/www/SITE/themes/indicators-ancestor'
         try:
             wf.doActionFor(indfo, 'publish',comment='done by setupmethods for new indicators ims.')
-        except:
+        except Exception:
             printed = printed + 'no possible to publish\n'
         indfo.reindexObject()
 
@@ -262,15 +264,15 @@ def createIndicatorSections(self):
                 indf.manage_pasteObjects(oldindpage)
                 oldpage = indf['indicators-old']
                 oldpage.setTitle('Indicators - old')
-            except:
+            except Exception:
                 printed = printed + "ERROR on theme: " + themeId
 
             #publish
             # Make sure it's published
             try:
                 wf.doActionFor(indf, 'publish',comment='done by setupmethods for new indicators ims.')
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             #reindex
             indf.reindexObject()
 
@@ -279,8 +281,8 @@ def createIndicatorSections(self):
             # Make sure it's published
             try:
                 wf.doActionFor(oldpage, 'hide',comment='done by setupmethods for new indicators ims.')
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             #reindex
             oldpage.reindexObject()
 
@@ -315,8 +317,8 @@ def createRODListing(self):
             # Make sure it's published
             try:
                 wf.doActionFor(rod, 'publish',comment='published by script for data centres setup.')
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             rod.reindexObject()
         else:
             printed = printed + '\n rod listing exists for ' + themeId
@@ -347,8 +349,8 @@ def createDCPage(self):
             # Make sure it's published
             try:
                 wf.doActionFor(dc, 'publish',comment='published by script for data centres setup.')
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             dc.reindexObject()
         else:
             printed = printed + '\n dc listing exists for ' + themeId
@@ -359,7 +361,7 @@ def interactiveMapsPromotions(self):
     """find interactive maps via promotions """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    wf = getToolByName(context, 'portal_workflow')
+    #wf = getToolByName(context, 'portal_workflow')
 
     pubs=cat.searchResults({ 'portal_type' : 'Promotion'})
 
@@ -398,7 +400,7 @@ def hideMapsDataFolders(self):
         printed = printed + pub.id + "\n modified"
         try:
             wf.doActionFor(pubo, 'showPublicDraft', comment='Data centre setup. Hiding old structure. done by method.')
-        except:
+        except Exception:
             printed = printed + '/'.join(pubo.getPhysicalPath()) + "\n exception"
         notify(ObjectModifiedEvent(pubo))
     return printed
@@ -443,7 +445,7 @@ def setupPublicationsFolder(self):
     lt = getToolByName(context, 'portal_languages')
     wf = getToolByName(context, 'portal_workflow')
 
-    defaultLang = lt.getDefaultLanguage()
+    #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
     printed=printed+context.id+"\n"
@@ -472,9 +474,9 @@ def setupPublicationsFolderRoot(self):
     context=self
     printed=""
     lt = getToolByName(context, 'portal_languages')
-    wf = getToolByName(context, 'portal_workflow')
+    #wf = getToolByName(context, 'portal_workflow')
 
-    defaultLang = lt.getDefaultLanguage()
+    #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
     printed=printed+context.id+"\n"
@@ -493,7 +495,7 @@ def setupPublicationsFolderRoot(self):
 
 untranslatedMessages = {}
 
-def translate(msgid, target_language, output=False):
+def translate(msgid, target_language, output = False):
     translation = realTranslate(msgid, target_language=target_language)
     if translation == str(msgid):
         if msgid not in untranslatedMessages.get(target_language, {}).keys():
@@ -507,7 +509,7 @@ def translate(msgid, target_language, output=False):
                 # google translate doesn't have all languages
                 try:
                     translation = gtranslate(str(msgid), langpair="en|%s" % target_language)
-                except:
+                except Exception:
                     print "GTRANSLATE FAILED %s and msgid %s" % (target_language, msgid)
                     untranslatedMessages.get(target_language)[msgid]  = translation
         translation = untranslatedMessages.get(target_language).get(msgid)
@@ -520,14 +522,14 @@ def translate(msgid, target_language, output=False):
 
 def translateObject(self,templateview, navigationroot=False):
     context=self
-    request = context.REQUEST
-    printed=""
+    #request = context.REQUEST
+    #printed=""
     mytitle=context.title
     print mytitle
     lt = getToolByName(context, 'portal_languages')
     wf = getToolByName(context, 'portal_workflow')
 
-    defaultLang = lt.getDefaultLanguage()
+    #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
     print context.id+"\n"
@@ -558,9 +560,9 @@ def translateObject(self,templateview, navigationroot=False):
 def getTranslationsFromGoogle(self, toTranslatefromG):
     context = self
     lt = getToolByName(context, 'portal_languages')
-    wf = getToolByName(context, 'portal_workflow')
+    #wf = getToolByName(context, 'portal_workflow')
     translationslist = []
-    defaultLang = lt.getDefaultLanguage()
+    #defaultLang = lt.getDefaultLanguage()
     languages = lt.getSupportedLanguages()
 
     for lang in languages:
@@ -570,7 +572,7 @@ def getTranslationsFromGoogle(self, toTranslatefromG):
                 translated = gtranslate(msgstr, langpair="en|%s" % lang)
                 pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (msgid,  translated ))
                 translationslist.append((msgid, lang ,translated))
-            except:
+            except Exception:
                 translationslist.append(("FAILED for lang %s msgstr %s" % (lang, msgstr)))
         pofile.close()
     return translationslist
@@ -582,7 +584,6 @@ def getTranslationsFromGoogle(self, toTranslatefromG):
 
 
 def importSubscribers(self):
-    import transaction
 
     info('INFO: Starting import of subscribers')
     portal = self.portal_url.getPortalObject()
@@ -615,7 +616,6 @@ def importSubscribers(self):
     return str(unprocessed_ids)
 
 def setActiveSubscribers(self):
-    import transaction
 
     info('INFO: Starting import of subscribers')
     portal = self.portal_url.getPortalObject()
@@ -627,10 +627,10 @@ def setActiveSubscribers(self):
 
     i = 0
     for subscriber in backup.objectValues():
-        id = subscriber.id
-        s = target.get(id)
+        sid = subscriber.id
+        s = target.get(sid)
         if not s:
-            info('INFO: original id %s is not found in new folder', id)
+            info('INFO: original id %s is not found in new folder', sid)
             continue
 
         s.active = subscriber.active
@@ -661,7 +661,7 @@ def sendMistakeEmail(self):
     portal = self.portal_url.getPortalObject()
     mailhost = portal.MailHost
     subscribers = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
-    theme = portal['SITE']['subscription']['eea_main_subscription']
+    #theme = portal['SITE']['subscription']['eea_main_subscription']
 
     subject = "Apologies - Your EEA newsletter subscription remains intact"
     body = """Dear subscriber,

@@ -8,9 +8,9 @@ COMMENT = "Was not able to translate the title of this folder automatically. \
 def invalidateUntranslatedFolders(context):
     """Invalidate folder translations that have the same title as the original.
     """
-    plone_utils = getToolByName(context, 'plone_utils')
-    urltool = getToolByName(context, 'portal_url')
-    portal = urltool.getPortalObject()
+    #plone_utils = getToolByName(context, 'plone_utils')
+    #urltool = getToolByName(context, 'portal_url')
+    #portal = urltool.getPortalObject()
     wf = getToolByName(context, 'portal_workflow')
     ct = getToolByName(context, 'portal_catalog')
 

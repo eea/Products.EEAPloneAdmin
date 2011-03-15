@@ -2,7 +2,7 @@
 # Base TestCase for EEAPloneAdmin
 #
 
-from Testing import ZopeTestCase
+#from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
 from Products.EEAPloneAdmin.config import DEPENDENCIES
 

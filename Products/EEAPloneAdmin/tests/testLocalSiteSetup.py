@@ -1,8 +1,6 @@
-#
-# Unit Tests for the style install and uninstall methods
-#
-
-import os, sys
+"""
+Unit Tests for the style install and uninstall methods
+"""
 
 from PloneAdminTestCase import EEAPloneAdminTestCase
 from Products.CMFCore.utils import getToolByName
@@ -11,10 +9,7 @@ from Products.EEAPloneAdmin.exportimport.localsite import translateFromSite
 
 from eea.translations import _
 from zope.i18n import translate
-    
 
-
-from Products.EEAPloneAdmin.config import *
 PROJECTNAME = 'EEAPloneAdmin'
 
 class testLocalSite(EEAPloneAdminTestCase):
@@ -26,7 +21,7 @@ class testLocalSite(EEAPloneAdminTestCase):
         # create production structure that we need
         self.site = getattr(self.portal, 'SITE')
 
-        for path, portalType, msgId in translateFromSite:
+        for path, portalType, _msgId in translateFromSite:
             paths = path.split('/')
             folder = self.site
             if len(paths) > 1:
@@ -79,7 +74,7 @@ class testLocalSite(EEAPloneAdminTestCase):
             self.failUnless(hasattr(localSite, 'reports-rss'), lang)            
             self.failUnless(hasattr(localSite, 'pressroom'), lang)
 
-            for path, portalType, msgId in translateFromSite:
+            for path, _portalType, _msgId in translateFromSite:
                 paths = path.split('/')
                 folder = localSite
                 for p in paths:

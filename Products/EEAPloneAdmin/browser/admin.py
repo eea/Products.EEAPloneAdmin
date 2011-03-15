@@ -29,8 +29,8 @@ class LinguaPlone(BrowserView):
     """ 
     """
 
-    def getNameParts(self, id):
-        parts = OBJNAME.findall(id)
+    def getNameParts(self, nid):
+        parts = OBJNAME.findall(nid)
         cid = lang = ending = ''            
         if len(parts) == 1:
             cid, lang, ending = parts[0]
@@ -40,8 +40,8 @@ class LinguaPlone(BrowserView):
         canonicals = {}
         context = self.context
         for obj in context.contentValues():
-            id = obj.getId()
-            cid, lang, ending = self.getNameParts(id)
+            oid = obj.getId()
+            cid, lang, _ending = self.getNameParts(oid)
             lang = lang.lower()
             if lang == 'en':
                 obj.setLanguage('')
@@ -50,8 +50,8 @@ class LinguaPlone(BrowserView):
                 canonicals[ cid ] = obj
 
         for obj in context.contentValues():
-            id = obj.getId()
-            cid, lang, ending = self.getNameParts(id)
+            oid = obj.getId()
+            cid, lang, _ending = self.getNameParts(oid)
             lang = lang.lower()            
             canonical = canonicals.get(cid, None)
             if canonical and lang != 'en':
@@ -73,14 +73,14 @@ class TidyContent(BrowserView):
             if hasattr(obj, 'getRawText') and hasattr(obj, 'setText'):
                 value = obj.getRawText()
                 result = mx_tidy(value, **MX_TIDY_OPTIONS)
-                nerrors, nwarnings, outputdata, errordata = result
+                _nerrors, _nwarnings, outputdata, _errordata = result
 
                 try:
                     outputdata = unwrapValueFromHTML(outputdata)
                     if outputdata != '' and outputdata is not None:
                         obj.setText(outputdata)
                         fixed['ok'].append(obj.getId())
-                except:
+                except Exception:
                     fixed['err'].append(obj.absolute_url())
         return fixed
 
@@ -113,14 +113,14 @@ def save_resources_on_disk(registry, request=None):
         for name in registry.concatenatedresources:
             try:
                 content = registry.getInlineResource(name, portal)
-            except:
+            except Exception:
                 try:
                     f = getattr(portal, name)
                     if isinstance(f, FSDTMLMethod):
                         content = f.__call__(client=portal, request=request)
                     else:   #we try to get the content somehow
                         content = f()
-                except:
+                except Exception:
                     logger.warning("Could not get content for resource %s "
                                    "in skin %s" % (name, skin))
                     continue
@@ -133,7 +133,6 @@ def save_resources_on_disk(registry, request=None):
                 logging.debug("Wrote %s on disk." % fpath)
             except IOError:
                 logging.warning("Could not write %s on disk." % fpath)
-                pass
 
 
 class SaveResourcesOnDisk(BrowserView):

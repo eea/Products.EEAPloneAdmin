@@ -1,10 +1,10 @@
-from StringIO import StringIO
+#from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
-import transaction
+#import transaction
 
 def install(portal, reinstall=False):
     """ install and default configuration. """
-    out = StringIO()
+    #out = StringIO()
 
     setup_tool = getToolByName(portal, 'portal_setup')
     setup_tool.setImportContext('profile-EEAPloneAdmin:default')

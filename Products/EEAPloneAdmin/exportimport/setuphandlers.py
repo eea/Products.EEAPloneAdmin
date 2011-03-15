@@ -48,6 +48,7 @@ def setupImageTypes(context):
     portal_atct.manage_changeProperties(image_types=types)
 
 def eeaMigration(context):
+    site = context.getSite()
     if context.readDataFile('eeaploneadmin_migration.txt') is None:
         return
     

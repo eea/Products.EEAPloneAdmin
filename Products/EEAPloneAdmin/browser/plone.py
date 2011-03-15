@@ -5,11 +5,11 @@ from Acquisition import aq_parent, aq_inner, aq_base
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.plone import Plone
-from Products.CMFPlone.browser.navtree import getNavigationRoot
+#from Products.CMFPlone.browser.navtree import getNavigationRoot
 from Products.CMFPlone import utils
 from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from interfaces import IPloneAdmin, IObjectTitle
-from zope.publisher.interfaces.browser import IBrowserRequest
+#from zope.publisher.interfaces.browser import IBrowserRequest
 
 class ObjectTitle(object):
     
@@ -116,9 +116,9 @@ class PloneAdmin(Plone):
                 'right':[],
                 'document_actions':[] }
 
-        canonical_left_slots = []
-        canonical_right_slots = []
-        canonical_document_action_slots = []
+        #canonical_left_slots = []
+        #canonical_right_slots = []
+        #canonical_document_action_slots = []
 
         left_slots=getattr(context,'left_slots', [])
         right_slots=getattr(context,'right_slots', [])
@@ -179,6 +179,3 @@ class PloneAdmin(Plone):
                 slots['document_actions'].append( (slot, 0) )
 
         return slots
-
-
-            

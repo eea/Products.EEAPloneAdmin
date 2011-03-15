@@ -1,8 +1,9 @@
 from config import GLOBALS
+GLOBALS
 
-from Products.GenericSetup import EXTENSION, BASE
+from Products.GenericSetup import EXTENSION #, BASE
 from Products.GenericSetup import profile_registry
-
+from zExceptions import NotFound, MethodNotAllowed
 from Products.LinguaPlone import config
 config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 
@@ -86,16 +87,16 @@ ATCTFolderMixin.HEAD = HEAD
 # CMF Squid Tool patched to accept squid server list parameter not linked
 # to formation of purge URLs. See more under #3728
 import patch_cmfsquidtool
-
+patch_cmfsquidtool
 # MONKEY PATCH
 # BaseRegistry patched to generate a better unique id for js/css resources
 # See more under #3962
 import patch_baseregistry
-
+patch_baseregistry
 # MONKEY PATCH
 # PloneLanguageTool patched to add 'Montenegrin' language
 import patch_PloneLanguageTool
-
+patch_PloneLanguageTool
 # MONKEY PATCH
 # If parent has more then 50 children reorder will be restricted in order
 # to avoid heavy wake up of objects. See more under #2803

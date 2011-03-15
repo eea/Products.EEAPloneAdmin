@@ -26,7 +26,7 @@
 #
 # The following code should be at the top of every test module:
 #
-# import os, sys
+import os, sys
 # if __name__ == '__main__':
 #     execfile(os.path.join(sys.path[0], 'framework.py'))
 #
@@ -70,7 +70,7 @@ if not sys.modules.has_key('Testing'):
         print 'You might need to set SOFTWARE_HOME.'
         sys.exit(1)
 
-import Testing, unittest
+import Testing #, unittest
 execfile(os.path.join(os.path.dirname(Testing.__file__), 'common.py'))
 
 # Include ZopeTestCase support
