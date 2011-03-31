@@ -40,7 +40,7 @@ class FixExcludeFromNav(object):
 
     def __call__(self):
         context = self.context
-        res = context.portal_catalog.searchResults(portal_type = 'Folder', id='multimedia', path = '/'.join(context.getPhysicalPath()))
+        res = context.portal_catalog.searchResults(portal_type='Folder', id='multimedia', path='/'.join(context.getPhysicalPath()))
         for folder in res:
             obj = folder.getObject()
             exclude_from_nav = getattr(aq_base(obj), 'exclude_from_nav', None)
@@ -69,13 +69,13 @@ class MigrateWrongThemeIds(object):
                 except Exception:
                     continue
                 if currentThemes == str(currentThemes):
-                    currentThemes = [currentThemes,]
-                newThemes = [ themeIdMap.get(r,r) for r in currentThemes ]
+                    currentThemes = [currentThemes, ]
+                newThemes = [ themeIdMap.get(r, r) for r in currentThemes ]
                 obj.setThemes(newThemes)
                 print '%s: %s -> %s' % (obj, currentThemes, newThemes)
 
         for t in themeIds:
-            newT = themeIdMap.get(t,t)
+            newT = themeIdMap.get(t, t)
             if newT != t:
                 obj = themeVocab[t]
                 obj.setId(newT)
@@ -110,14 +110,14 @@ class MigrateTheme(object):
     def _title(self, themeId):
         titleUrl = url % ('themeTitle', themeId)
         title = urllib.urlopen(titleUrl).read()
-        title = title.replace('\n','')
+        title = title.replace('\n', '')
         self.context.setTitle(title)
 
     def _image(self, themeId):
         getUrl = url % ('themeUrl', themeId)
-        themeUrl  = urllib.urlopen(getUrl).read().strip()
+        themeUrl = urllib.urlopen(getUrl).read().strip()
         imageUrl = themeUrl + '/theme_image'
-        imageData  = urllib.urlopen(imageUrl).read().strip()
+        imageData = urllib.urlopen(imageUrl).read().strip()
         image = self.context.invokeFactory('Image', id='theme_image', title='%s - Theme image' % self.context.Title())
         obj = self.context[image]
         obj.setImage(imageData)
@@ -126,13 +126,13 @@ class MigrateTheme(object):
     def _relatedThemes(self, themeId):
         relatedUrl = url % ('themeRelated', themeId)
         related = urllib.urlopen(relatedUrl).read().strip()
-        related = related[1:-1].replace('\'','')
+        related = related[1:-1].replace('\'', '')
         related = [ theme.strip() for theme in related.split(',') ]
         theme = IThemeRelation(self.context)
         themeCentres = self.context.portal_catalog.searchResults(object_provides='eea.themecentre.interfaces.IThemeCentre')
         tcs = {}
         for tc in themeCentres:
-            tcs[tc.getId] =  tc.getObject().UID()
+            tcs[tc.getId] = tc.getObject().UID()
         themeCentres = tcs
 
         # map old theme id to new
@@ -184,9 +184,6 @@ class MigrateTheme(object):
             obj.setTitle('Indicators')
             obj.setText(indiText, mimetype='text/html')
             catalog = getToolByName(self.context, 'portal_catalog')
-            indicatorRSS = catalog.searchResults( portal_type='RSSFeedRecipe', id='indicators_' +themeId)
-            if len(indicatorRSS) > 0:
-                obj.setRelatedItems(indicatorRSS[0].getObject().UID())
             workflow.doActionFor(obj, 'publish')
             obj.reindexObject()
 
@@ -205,7 +202,7 @@ class InitialThemeCentres(object):
         fixThemeIds()
 
         themeids = context.portal_vocabularies.themes.objectIds()[1:]
-        noThemes = int(self.request.get('noThemes',0))
+        noThemes = int(self.request.get('noThemes', 0))
         if noThemes > 0:
             themeids = themeids[:noThemes]
         toMigrate = self.request.get('migrate', False)
@@ -242,100 +239,6 @@ class InitialThemeCentres(object):
         alsoProvides(context, INavigationRoot)
         context.layout = 'themes_view'
         return self.request.RESPONSE.redirect(context.absolute_url())
-
-class RDF(object):
-    """ Copies RDF/RSS feeds from themes.eea.europa.eu to
-        RSSFeedRecipe objects in the current folder. """
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        socket.setdefaulttimeout(15)
-        workflow = getToolByName(self.context, 'portal_workflow')
-        migrate_url = url % ('themeRDF', '')
-        feeds = urllib.urlopen(migrate_url).readlines()
-
-        for feed_line in feeds:
-            fid, title, feed_url = feed_line.strip().split('|')
-            if fid.startswith("reports_"):
-                title = "Reports"
-            elif not title:
-                title = fid
-
-            if not hasattr(self.context, fid):
-                self.context.invokeFactory('RSSFeedRecipe', id=fid, title=title)
-
-            recipe = self.context[fid]
-            recipe.setEntriesWithDescription(0)
-            recipe.setEntriesWithThumbnail(0)
-
-            parsed = feedparser.parse(feed_url)
-            if parsed['feed'].has_key('link'):
-                recipe.setUrl(parsed['feed']['link'])
-
-            recipe.setEntriesSize(10000)
-
-            x = feed_url.find('theme=')
-            if x > -1:
-                theme = feed_url[x+6:].strip()
-                taggable = IThemeTagging(recipe)
-                taggable.tags = [theme]
-
-            parsed_url = urlparse.urlparse(feed_url)
-            if parsed_url[2] != '/schema.rdf' and parsed_url[2].endswith('.rdf'):
-                if parsed_url[4]:
-                    feed_url += '&image=yes'
-                else:
-                    feed_url += '?image=yes'
-            recipe.setFeedURL(feed_url)
-
-            if workflow.getInfoFor(recipe, 'review_state') != \
-                    'published':
-                workflow.doActionFor(recipe, 'publish')
-            recipe.reindexObject()
-
-
-        return str(len(feeds)) + ' RDF/RSS files were successfully migrated.'
-
-class IndicatorRDFs(object):
-    """ Create RSSFeedRecipes for indicator rss """
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        context = self.context
-        workflow = getToolByName(self.context, 'portal_workflow')
-        furl = 'http://themes.eea.europa.eu/indicators/bytheme.rss?theme_id=%s'
-        themeids = context.portal_vocabularies.themes.objectIds()[1:]
-        for theme in themeids:
-            feedId = 'indicators_%s' % theme
-            title = 'Indicators'
-            feed_url = furl % theme
-            if not hasattr(self.context, feedId):
-                self.context.invokeFactory('RSSFeedRecipe', id=feedId, title=title)
-            recipe = self.context[feedId]
-            recipe.setEntriesSize(10000)
-            recipe.setFeedURL(feed_url)
-            recipe.setEntriesWithDescription(0)
-            recipe.setEntriesWithThumbnail(0)
-
-            parsed = feedparser.parse(feed_url)
-            if parsed['feed'].has_key('link'):
-                recipe.setUrl(parsed['feed']['link'])
-
-            taggable = IThemeTagging(recipe)
-            taggable.tags = [theme]
-
-            if workflow.getInfoFor(recipe, 'review_state') != \
-                    'published':
-                workflow.doActionFor(recipe, 'publish')
-            recipe.reindexObject()
-
-        return str(len(themeids)) + ' indicator fees migrated.'
 
 class ThemeTaggable(object):
     """ Migrate theme tags to anootations. """
@@ -449,14 +352,6 @@ class FeedMarkerInterface(object):
         self.request = request
 
     def __call__(self):
-        catalog = getToolByName(self.context, 'portal_catalog')
-        query = { 'portal_type': 'RSSFeedRecipe' }
-        brains = catalog.searchResults(query)
-        for brain in brains:
-            feed = brain.getObject()
-            directlyProvides(feed, directlyProvidedBy(feed)-IFeed)
-            directlyProvides(feed, directlyProvidedBy(feed), IFeedContent)
-            feed.reindexObject()
         return 'success'
 
 class PromotionThemes(object):
@@ -525,39 +420,20 @@ class GenericThemeToDefault(object):
         query2 = { 'getThemes': 'D' }
         query3 = { 'getThemes': 'g' }
         query4 = { 'getThemes': 'd' }
-        queries = [query1,query2,query3,query4]
-        output=''
+        queries = [query1, query2, query3, query4]
+        output = ''
         for query in queries:
             brains = catalog.searchResults(query)
             for brain in brains:
                 if brain.getThemes == ['G', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['g', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['D', 'e', 'f', 'a', 'u', 'l', 't'] or brain.getThemes == ['d', 'e', 'f', 'a', 'u', 'l', 't']:
                     obj = brain.getObject()
                     themes = IThemeTagging(obj)
-                    output=output+'NOTOK: '+obj.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + ' themes.tags[0]: '+ (len(themes.tags) > 0 and themes.tags[0] or '') + ' URL: ' + obj.absolute_url() +'\r'
+                    output = output + 'NOTOK: ' + obj.id + ': ' + 'brain.getThemes[0]: ' + brain.getThemes[0] + ' themes.tags[0]: ' + (len(themes.tags) > 0 and themes.tags[0] or '') + ' URL: ' + obj.absolute_url() + '\r'
                     themes.tags = ['default']
                     obj.reindexObject()
                 else:
-                    output=output+'OK: '+brain.id+': '+'brain.getThemes[0]: '+ brain.getThemes[0] + 'URL:'+ brain.getURL() +'\r'
+                    output = output + 'OK: ' + brain.id + ': ' + 'brain.getThemes[0]: ' + brain.getThemes[0] + 'URL:' + brain.getURL() + '\r'
         return 'themes are migrated, RESULT:\r' + output
-
-class EntriesWithThumbnail(object):
-    """ Changes 'entries with thumbnail' to 10000 on all rss feed recipes
-        in the rdf repository. """
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        repository = self.context
-        catalog = getToolByName(self.context, 'portal_catalog')
-        query = {'portal_type': 'RSSFeedRecipe',
-                 'path': repository.getPhysicalPath() }
-        brains = catalog.searchResults(query)
-        for brain in brains:
-            recipe = brain.getObject()
-            recipe.setEntriesWithThumbnail(10000)
-        return '%d rss recipes were migrated' % len(brains)
 
 class ChangeDefaultPageToProperty(object):
     """ Changes default_page to being a property so it's visible in ZMI """
@@ -611,7 +487,7 @@ class EnsureAllObjectsHaveTags(object):
                         themes.tags = [themeCentreThemes.tags]
                         count += 1
 
-        return str(count)  + " objects were tagged"
+        return str(count) + " objects were tagged"
 
 class ChangeMediaTypesDefault(object):
     """ Changes the media type on file's don't have any media type set.
@@ -725,7 +601,7 @@ class ChangeMultimediaLayout(object):
         default_page = getattr(portal.SITE.multimedia, 'default_page', None)
         if default_page:
             multimedia = getattr(portal.SITE.multimedia, default_page)
-            multimedia.manage_changeProperties(layout = 'mediacentre_view')
+            multimedia.manage_changeProperties(layout='mediacentre_view')
             return "layout property of %s is changed to %s." % \
                     (multimedia.absolute_url(), 'mediacentre_view')
         else:
@@ -813,10 +689,10 @@ class ImportEcoTipsTranslationsFromCSV(object):
             if len(row) < 5:
                 self._raise("Invalid row(%d) in csv file." % (index + 2))
 
-            lang     = row[0].strip().lower()
+            lang = row[0].strip().lower()
             en_title = row[1].strip()
             tr_title = row[2].strip()
-            tr_desc  = row[4].strip()
+            tr_desc = row[4].strip()
             key = self.tips.get(en_title, None)
             if not key:
                 self._raise("I can not find this title in my green tips. Language: %s, Title: %s" % (lang, en_title))
@@ -897,7 +773,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
 
         ctool = getToolByName(self.context, 'portal_catalog')
         ctool.reindexObject(translation)
-        self.logger.info('Reindexed translation %s',  translation.absolute_url())
+        self.logger.info('Reindexed translation %s', translation.absolute_url())
 
     def __call__(self, safe=True, publish=True, reindex=True, language='all'):
         if not self.context.getId() == 'green-tips':
@@ -909,7 +785,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
         if language == 'all':
             language = []
         if isinstance(language, str):
-            language = [language,]
+            language = [language, ]
         self.languages = language or self.context.getTranslations().keys()
         if 'en' in self.languages:
             self.languages.remove('en')
