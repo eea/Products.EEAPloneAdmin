@@ -94,7 +94,6 @@
    <element value="News Item"/>
    <element value="Plone Site"/>
    <element value="QuickEvent"/>
-   <element value="RSSFeedRecipe"/>
    <element value="Requestor"/>
    <element value="Subscriber"/>
    <element value="TempFolder"/>

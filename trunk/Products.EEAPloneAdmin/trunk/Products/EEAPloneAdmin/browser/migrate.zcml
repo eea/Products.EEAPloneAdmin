@@ -24,22 +24,8 @@
 
   <browser:page
       for="*"
-      name="migrateRDF"
-      class=".migrate.RDF"
-      permission="zope.Public"
-      />
-
-  <browser:page
-      for="*"
       name="migrateThemeTaggable"
       class=".migrate.ThemeTaggable"
-      permission="zope.Public"
-      />
-
-  <browser:page
-      for="*"
-      name="migrateIndicatorRDF"
-      class=".migrate.IndicatorRDFs"
       permission="zope.Public"
       />
 
@@ -82,13 +68,6 @@
       for="*"
       name="migrateGenericTheme"
       class=".migrate.GenericThemeToDefault"
-      permission="cmf.ModifyPortalContent"
-      />
-
-  <browser:page
-      for="eea.rdfrepository.interfaces.IRDFRepository"
-      name="migrateEntriesWithThumbnail"
-      class=".migrate.EntriesWithThumbnail"
       permission="cmf.ModifyPortalContent"
       />
 

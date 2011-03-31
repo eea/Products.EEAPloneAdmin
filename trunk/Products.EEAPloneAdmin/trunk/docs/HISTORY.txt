@@ -9,6 +9,7 @@ Changelog
 
 0.7-dev - (unreleased)
 ----------------------
+* Cleanup: Removed PloneRSSPortlet [voineali #4169] 
 * Cleanup: of pyflakes compiler errors [ichimdav #4141]
 * Cleanup: of pylint violations [ichimdav #4140]
 * Bug fix: Added translation domain to ZCML files [voineali #4139]
