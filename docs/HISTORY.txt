@@ -7,8 +7,8 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
-0.7-dev - (unreleased)
-----------------------
+0.7 - (2011-04-01)
+------------------
 * Cleanup: Removed PloneRSSPortlet [voineali #4169] 
 * Cleanup: of pyflakes compiler errors [ichimdav #4141]
 * Cleanup: of pylint violations [ichimdav #4140]
@@ -16,7 +16,6 @@ Changelog
 * Cleanup: Removed portal_migration scripts as portal_migration is deprecated.
   Please check that there are no un-applied migration scripts before
   upgrading to this version [voineali #4139]
-
 
 0.6 - (2011-03-02)
 ------------------
