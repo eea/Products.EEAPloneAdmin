@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.8-dev - (unreleased)
+----------------------
+
 0.7 - (2011-04-01)
 ------------------
 * Cleanup: Removed PloneRSSPortlet [voineali #4169] 
