@@ -1,0 +1,274 @@
+﻿/00LanguageNegotiation :: Version
+/00RamCacheGlossary :: RAM Cache Manager
+/0MostVisitedCache :: RAM Cache Manager
+/CountryCode3 :: TinyTablePlus
+/LangCharsets :: TinyTablePlus
+/Localizer :: Localizer
+/Localizer/forced_lang :: Script (Python)
+/Localizer/is_local :: Script (Python)
+/Localizer/lang_by_domain :: Script (Python)
+/Localizer/lang_by_path :: Script (Python)
+/Localizer/selected_language :: Script (Python)
+/MailHost :: Mail Host
+/PR :: PressRoom
+/PR/Announcements :: PressBox
+/PR/Announcements/pbicon :: Image
+/PR/Newsreleases :: PressBox
+/PR/Newsreleases/pbicon :: Image
+/PR/Speeches :: PressBox
+/PR/Speeches/pbicon :: Image
+/PR_version :: Version
+/PUT_factory :: External Method
+/StaffTable :: TinyTablePlus
+/StaffTable_old :: TinyTablePlus
+/Templates/standard.dwt :: Page Template
+/URLEncodedFormat :: External Method
+/URLSuck :: External Method
+/URLSuckUTF8 :: External Method
+/VHM :: Virtual Host Monster
+/XML/TheSpotRecipient :: ZSyncer
+/ZProduction :: ZSyncer
+/browser_id_manager :: Browser Id Manager
+/developing :: Version
+/documents/00demarinis :: Version
+/documents/Lisbet :: Version
+/documents/bert :: Version
+/documents/code2 :: EasyDoc
+/documents/faq.htm.0001.0a8d.bak :: Page Template
+/documents/faq.htm.0001.0ea3.bak :: Page Template
+/documents/faq.htm.0001.1189.bak :: Page Template
+/documents/faq.htm.0001.1295.bak :: Page Template
+/documents/faq.htm.0001.1960.bak :: Page Template
+/documents/faq.htm.0001.20ae.bak :: Page Template
+/documents/faq.htm.0001.337f.bak :: Page Template
+/documents/faq.htm.0001.372a.bak :: Page Template
+/documents/faq.htm.0001.3771.bak :: Page Template
+/documents/faq.htm.0001.3b4a.bak :: Page Template
+/documents/faq.htm.0001.470e.bak :: Page Template
+/documents/faq.htm.0001.4760.bak :: Page Template
+/documents/faq.htm.0001.4db1.bak :: Page Template
+/documents/faq.htm.0001.5175.bak :: Page Template
+/documents/faq.htm.0001.5741.bak :: Page Template
+/documents/faq.htm.0001.5970.bak :: Page Template
+/documents/faq.htm.0001.6cee.bak :: Page Template
+/documents/faq.htm.0001.6d3f.bak :: Page Template
+/documents/faq.htm.0001.6edc.bak :: Page Template
+/documents/faq.htm.0001.94b2.bak :: Page Template
+/documents/faq.htm.0001.9851.bak :: Page Template
+/documents/faq.htm.0001.9a01.bak :: Page Template
+/documents/faq.htm.0001.a6d3.bak :: Page Template
+/documents/faq.htm.0001.af9c.bak :: Page Template
+/documents/faq.htm.0001.b2c1.bak :: Page Template
+/documents/faq.htm.0001.b813.bak :: Page Template
+/documents/faq.htm.0001.c366.bak :: Page Template
+/documents/faq.htm.0001.cf1f.bak :: Page Template
+/documents/faq.htm.0001.d323.bak :: Page Template
+/documents/faq.htm.0001.da38.bak :: Page Template
+/documents/faq.htm.0001.da76.bak :: Page Template
+/documents/faq.htm.0001.e137.bak :: Page Template
+/documents/faq.htm.0001.e5ba.bak :: Page Template
+/documents/faq.htm.0001.eff9.bak :: Page Template
+/documents/faq.htm.0001.f985.bak :: Page Template
+/documents/faq.htm.0001.feae.bak :: Page Template
+/documents/leo.htm :: Page Template
+/documents/leo.htm.0001.45af.bak :: Page Template
+/documents/leo.htm.0001.c8dd.bak :: Page Template
+/documents/newsreleases/GHG :: EasyDoc
+/documents/newsreleases/GHG-de :: EasyDoc
+/documents/newsreleases/GHG-es :: EasyDoc
+/documents/newsreleases/GHG-fr :: EasyDoc
+/documents/newsreleases/GHG-it :: EasyDoc
+/documents/newsreleases/Ozone2006-pl :: DTML Document
+/documents/newsreleases/Ozone2006-pt :: DTML Document
+/documents/newsreleases/signals_2002-cs :: DTML Document
+/documents/newsreleases/signals_2002-lt :: DTML Document
+/documents/newsreleases/signals_2002-lv :: DTML Document
+/documents/newsreleases/signals_2002-pl :: DTML Document
+/documents/newsreleases/signals_2002-sk :: DTML Document
+/documents/newsreleases/signals_2002-sl :: DTML Document
+/documents/newsreleases/waste :: EasyDoc
+/documents/newsreleases/waste-de :: EasyDoc
+/documents/newsreleases/waste-fr :: EasyDoc
+/documents/simpletest.htm :: Page Template
+/documents/soer_ppt :: Folder
+/documents/soer_ppt/AT_DE-ppt.ppt :: File
+/documents/soer_ppt/BE_DE-ppt.ppt :: File
+/documents/soer_ppt/BE_FR-ppt.ppt :: File
+/documents/soer_ppt/BE_NL-ppt.ppt :: File
+/documents/soer_ppt/BG_BG-ppt.ppt :: File
+/documents/soer_ppt/CH_DE-ppt.ppt :: File
+/documents/soer_ppt/CH_FR-ppt.ppt :: File
+/documents/soer_ppt/CH_IT-ppt.ppt :: File
+/documents/soer_ppt/CS_CS-ppt.ppt :: File
+/documents/soer_ppt/CY_EL-ppt.ppt :: File
+/documents/soer_ppt/DA_DA-ppt.ppt :: File
+/documents/soer_ppt/DE_DE-ppt.ppt :: File
+/documents/soer_ppt/EL_EL-ppt.ppt :: File
+/documents/soer_ppt/ES_ES-ppt.ppt :: File
+/documents/soer_ppt/ET_ET-ppt.ppt :: File
+/documents/soer_ppt/FI_FI-ppt.ppt :: File
+/documents/soer_ppt/FR_FR-ppt.ppt :: File
+/documents/soer_ppt/HU_HU-ppt.ppt :: File
+/documents/soer_ppt/IE_EN-ppt.ppt :: File
+/documents/soer_ppt/IS_IS-ppt.ppt :: File
+/documents/soer_ppt/IT_IT-ppt.ppt :: File
+/documents/soer_ppt/LI_DE-ppt.ppt :: File
+/documents/soer_ppt/LT_LT-ppt.ppt :: File
+/documents/soer_ppt/LU_DE-ppt.ppt :: File
+/documents/soer_ppt/LU_FR-ppt.ppt :: File
+/documents/soer_ppt/LV_LV-ppt.ppt :: File
+/documents/soer_ppt/MT_MT-ppt.ppt :: File
+/documents/soer_ppt/NL_NL-ppt.ppt :: File
+/documents/soer_ppt/NO_NO-ppt.ppt :: File
+/documents/soer_ppt/PL_PL-ppt.ppt :: File
+/documents/soer_ppt/PT_PT-ppt.ppt :: File
+/documents/soer_ppt/RO_RO-ppt.ppt :: File
+/documents/soer_ppt/SK_SK-ppt.ppt :: File
+/documents/soer_ppt/SL_SL-ppt.ppt :: File
+/documents/soer_ppt/SV_SV-ppt.ppt :: File
+/documents/soer_ppt/TR_TR-ppt.ppt :: File
+/documents/soer_ppt/UK_EN-ppt.ppt :: File
+/documents/speeches/SPE19961113SpXXX-ES :: DTML Document
+/documents/speeches/SPE19970424-ES :: DTML Document
+/documents/speeches/Speech%20Brussels%20July%209%2C%202001-en :: DTML Document
+/documents/speeches/index_html :: DTML Method
+/documents/strat :: Version
+/documents/temp :: EasyDoc
+/documents/who_we_are :: EasyDoc
+/error_log :: Site Error Log
+/forms/get_filename :: Script (Python)
+/getFilesUrlStartWithId :: Script (Python)
+/getLang :: Script (Python)
+/getLangFiles :: Script (Python)
+/getObjectFromUrl :: Script (Python)
+/getObjectFromUrl2 :: Script (Python)
+/getObjectsStartWithId :: Script (Python)
+/getObjectsStartWithIdO :: Script (Python)
+/getPressRoomObjects :: Script (Python)
+/getPressRoomObjectsLang :: Script (Python)
+/gettext :: MessageCatalog
+/gettext/be :: simple item
+/gettext/bg :: simple item
+/gettext/ca :: simple item
+/gettext/cs :: simple item
+/gettext/da :: simple item
+/gettext/de :: simple item
+/gettext/el :: simple item
+/gettext/en :: simple item
+/gettext/es :: simple item
+/gettext/et :: simple item
+/gettext/eu :: simple item
+/gettext/fi :: simple item
+/gettext/fo :: simple item
+/gettext/fr :: simple item
+/gettext/ga :: simple item
+/gettext/gd :: simple item
+/gettext/hr :: simple item
+/gettext/hu :: simple item
+/gettext/is :: simple item
+/gettext/it :: simple item
+/gettext/kl :: simple item
+/gettext/lt :: simple item
+/gettext/lv :: simple item
+/gettext/mk :: simple item
+/gettext/mt :: simple item
+/gettext/nl :: simple item
+/gettext/no :: simple item
+/gettext/pl :: simple item
+/gettext/pt :: simple item
+/gettext/rm :: simple item
+/gettext/ro :: simple item
+/gettext/ru :: simple item
+/gettext/sk :: simple item
+/gettext/sl :: simple item
+/gettext/sq :: simple item
+/gettext/sr :: simple item
+/gettext/sv :: simple item
+/gettext/tr :: simple item
+/glossaryBox :: Script (Python)
+/highlights/Ann1016620324 :: DTML Method
+/highlights/Ann1096279340/cv_CarolineJackson :: DTML Method
+/highlights/Ann1096279340/cv_StanleyJohnson :: DTML Method
+/highlights/Ann1096279340/cv_eileenbuttle :: DTML Method
+/highlights/Ann1096279340/cv_michelcornaert :: DTML Method
+/highlights/Ann1096279340/cv_vandanashiva :: DTML Method
+/highlights/Ann1096279340/front_html :: DTML Method
+/highlights/Ann1096279340/speech_TomORiordan :: DTML Method
+/highlights/Ann1132149255/prague_statement :: DTML Method
+/highlights/Ann1148473248/quiz/calculate :: Script (Python)
+/highlights/TDATfigure1.jpg :: File
+/highlights/TDATfigure2.jpg :: File
+/highlights/TDATposter.jpg :: File
+/highlights/loop :: DTML Method
+/leftArea.htm :: Page Template
+/local_date :: Script (Python)
+/makeId :: Script (Python)
+/newreports :: RDF Summary
+/news :: News Folder
+/organisation/getOrgData :: Script (Python)
+/organisation/jbs/0demarinis :: Version
+/organisation/jbs/EEAA20044/index_html :: LocalContent
+/organisation/jbs/EEAA20045/index_html :: LocalContent
+/organisation/jbs/EEAADM03003 :: Call For Tender
+/organisation/jbs/EEAADM03003/annex_I.pdf :: File
+/organisation/jbs/EEAADM03003/annex_II.pdf :: File
+/organisation/jbs/EEAADM03003/annex_III.pdf :: File
+/organisation/jbs/EEAADM03003/annex_IV.pdf :: File
+/organisation/jbs/EEAADM03003/annex_I_VI.pdf :: File
+/organisation/jbs/EEAADM03003/annex_V.pdf :: File
+/organisation/jbs/EEAADM03003/annex_VI.pdf :: File
+/organisation/jbs/EEAADM03003/invitation.html :: DTML Document
+/organisation/jbs/EEAB20043 :: LocalContent
+/organisation/jbs/testdoc :: EasyDoc
+/organisation/jbs/vacancy_off :: Version
+/organisation/manboard.html :: EasyDoc
+/organisation/manboardtest.html :: EasyDoc
+/organisation/sciecomm.html :: EasyDoc
+/organisation/testversion :: Version
+/other_langs :: Script (Python)
+/other_langs2 :: Script (Python)
+/other_langs3v :: Script (Python)
+/other_langs_files_dir :: Script (Python)
+/other_langs_files_dir_img :: Script (Python)
+/other_langs_stripped :: Script (Python)
+/other_langs_stripped2_img :: Script (Python)
+/other_langs_stripped_img :: Script (Python)
+/other_langs_stripped_img_edit :: Script (Python)
+/pictures/domingo_out :: Version
+/pr_footer_info :: LocalContent
+/session_data_manager :: Session Data Manager
+/standard_template.pt :: Page Template
+/temp_folder :: Folder
+/tender_version :: Version
+/tenders/EEAADS05002/awardnotice :: AwardNotice
+/tenders/EEAAIR04001/awardnotice :: AwardNotice
+/tenders/EEAAIR04003/awardnotice :: AwardNotice
+/tenders/EEACAF04009/awardnotice :: AwardNotice
+/tenders/EEACAF05001/awardnotice :: AwardNotice
+/tenders/EEAEAS05001/awardnotice :: AwardNotice
+/tenders/EEAEAS2004005/awardnotice :: AwardNotice
+/tenders/EEAEAS2004006/awardnotice :: AwardNotice
+/tenders/EEAEAS2004008/awardnotice :: AwardNotice
+/tenders/EEAEAS2004011/awardnotice :: AwardNotice
+/tenders/EEAIDS04001/awardnotice :: AwardNotice
+/tenders/EEAIDS04002/Awardnotice :: AwardNotice
+/tenders/EEAIDS05001/award :: AwardNotice
+/tenders/EEAITS03001/award :: AwardNotice
+/tenders/EEAITS03002/award :: AwardNotice
+/tenders/EEAITS03003/Award_notice :: AwardNotice
+/tenders/EEAITS03004/Award%20notice :: AwardNotice
+/tenders/EEAITS03008/awardnotice :: AwardNotice
+/tenders/EEARNC03001/Awardnotice :: AwardNotice
+/tenders/EEARNC03002/Awardnotice :: AwardNotice
+/tenders/EEARNC03007/awardnotice :: AwardNotice
+/tenders/EEARNC03008/awardnotice :: AwardNotice
+/tenders/EEARNC03010/awardnotice :: AwardNotice
+/tenders/EEARNC04001/awardnotice :: AwardNotice
+/tenders/EEASKI05001/award :: AwardNotice
+/tenders/completed :: Script (Python)
+/tenders/oddball :: Script (Python)
+/tenders/open :: Script (Python)
+/tenders/sortObjects :: Script (Python)
+/tenders/test%20for%20notices :: Version
+/testunicode.htm :: Page Template
+/toutf8 :: Script (Python)
