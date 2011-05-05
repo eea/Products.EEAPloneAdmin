@@ -9,6 +9,8 @@ Changelog
 
 0.8-dev - (unreleased)
 ----------------------
+ * Bug fix: Fixed translation method for content types that use schema extender
+     by porting the LinguaPlone patch from slc.publications [ghicaale #4298]
 
 0.7 - (2011-04-01)
 ------------------
