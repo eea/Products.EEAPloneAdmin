@@ -89,6 +89,19 @@ ATCTFolderMixin.HEAD = HEAD
 import patch_cmfsquidtool
 patch_cmfsquidtool
 # MONKEY PATCH
+# Reason for this patch:
+# Currently, LP assumes the mutator is defined on the object (only).
+#
+# When using schemaextender however, accessors and mutators for ExtensionFields are not 
+# available on the object. See the following posting: http://www.nabble.com/ANN:-[Ã–]er-1.0a1-t4626771s6741.html
+#
+# Therefore I propose for LP to look at the field itself to get the mutator, in case it is not 
+# found on the object. That way, the mutator can be defined on the ExtensionField directly.
+
+# This patch was proposed to the LP Issue tracker: http://plone.org/products/linguaplone/issues/116
+import patch_LinguaPlone
+patch_LinguaPlone
+# MONKEY PATCH
 # BaseRegistry patched to generate a better unique id for js/css resources
 # See more under #3962
 import patch_baseregistry
