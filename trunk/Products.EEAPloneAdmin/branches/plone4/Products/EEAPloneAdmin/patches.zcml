@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="eea">
+
+    <!--TODO: plone4, is this monkeypatch still needed? Probably yes-->
+    <!--<monkey:patch-->
+        <!--description="Monkeypatch kupu_tool.register_transform so prevent breaking the EEA transform chains"-->
+        <!--module="Products.kupu.plone.util"-->
+        <!--original="install_transform"-->
+        <!--replacement=".patches.install_transform"-->
+        <!--preserveOriginal="true"-->
+        <!--/>-->
+
+    <monkey:patch
+        description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
+        class="Products.CMFPlone.CatalogTool.CatalogTool "
+        original="searchResults"
+        replacement=".patch_catalog.searchResults"
+        preserveOriginal="true"
+        />
+
+    <monkey:patch
+        description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
+        class="Products.CMFPlone.CatalogTool.CatalogTool "
+        original="__call__"
+        replacement=".patch_catalog.searchResults"
+        preserveOriginal="true"
+        />
+
+    TODO: update this template using the latest from plone4
+    <monkey:patch
+        description="Monkeypatch catalog.manage_catalogView"
+        class="Products.CMFPlone.CatalogTool.CatalogTool "
+        original="manage_catalogView"
+        replacement=".patch_catalog.view"
+        preserveOriginal="true"
+        />
+
+</configure>
