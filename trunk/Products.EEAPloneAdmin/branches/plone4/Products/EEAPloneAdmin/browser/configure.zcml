@@ -3,31 +3,19 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="Products.EEAPloneAdmin">
 
-    <include file="migrate.zcml" />
+    disabled during plone4 migration
+    <!--<include file="migrate.zcml" />-->
 
-    <browser:page
-        for="*"
-        name="fixTranslations"
-        class=".admin.LinguaPlone"
-        permission="cmf.ManagePortal"
-        template="./www/fixTranslations.pt"
-        />
-
-    <browser:page
-        for="*"
-        name="fixTidyText"
-        class=".admin.TidyContent"
-        permission="cmf.ManagePortal"
-        template="./www/tidy.pt"
-        />
-Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
 
     <browser:page
         for="*"
         name="regen_js"
         class=".admin.RegenerateJS"
         permission="cmf.ManagePortal"
-        />
+        >
+        Should be for Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool 
+        but because of vhm issues, we can't do that 
+    </browser:page>
 
     <browser:page
         for="*"

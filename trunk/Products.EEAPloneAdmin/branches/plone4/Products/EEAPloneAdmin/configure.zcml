@@ -6,13 +6,9 @@
     <include file="profiles.zcml" />
     <include package=".browser" />
 
-    <class class="Products.PloneHelpCenter.content.HelpCenter.HelpCenter">
-        <implements interface="Products.NavigationManager.sections.INavigationSectionPositionable" />
-    </class>
-
     <subscriber
         for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
-        zope.app.event.interfaces.IObjectModifiedEvent"
+        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
         handler=".event.handle_resourceregistry_change" />
 
 </configure>

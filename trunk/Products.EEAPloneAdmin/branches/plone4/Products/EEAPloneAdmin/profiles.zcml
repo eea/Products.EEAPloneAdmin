@@ -12,7 +12,7 @@
         />
 
     <genericsetup:registerProfile
-        name="default"
+        name="local-site"
         title="EEA local sites"
         directory="profiles/local-site"
         description="Extension profile to create and configure local sites."
@@ -21,7 +21,7 @@
         />
 
     <genericsetup:registerProfile
-        name="default"
+        name="optimize"
         title="EEA WWW (CSS/JS reorder)"
         directory="profiles/optimize"
         description="Optimize order of CSS/JS for EEA website"

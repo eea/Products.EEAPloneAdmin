@@ -28,9 +28,16 @@ setup(name=name,
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'eea.mediacentre',
-          'eea.reports',
+
+          'Products.LinguaPlone',
+          'Products.PloneHelpCenter',
+
           'eea.translations',
+          'Products.NavigationManager',
+
+          #plone4: disabled during migration
+          #'eea.mediacentre',
+          #'eea.reports',
 
       ],
       entry_points="""

@@ -15,17 +15,19 @@
     <!--<include package="eea.mediacentre" file="overrides.zcml" />-->
     <!--<include package="eea.reports" file="overrides.zcml" />-->
 
-    <include package="eea.translations" file="overrides.zcml" />
+    plone: probably not needed anymore
+    <!--<include package="eea.translations" file="overrides.zcml" />-->
 
     plone4: disabling this, probably not needed
     <!--<include package="eea.plone3compat" file="overrides.zcml" />-->
 
-    <browser:subMenuItem
-        menu="contentmenu_extra"
-        submenu="subtypes"
-        title="Sub-types"
-        permission="cmf.ManagePortal"
-        for="*"
-        />
+    plone4: this menu needs to be written in another fashion, as it depends on p4a.* packages
+    <!--<browser:subMenuItem-->
+        <!--menu="contentmenu_extra"-->
+        <!--submenu="subtypes"-->
+        <!--title="Sub-types"-->
+        <!--permission="cmf.ManagePortal"-->
+        <!--for="*"-->
+        <!--/>-->
 
 </configure>
