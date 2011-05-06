@@ -3,15 +3,6 @@
     xmlns:monkey="http://namespaces.plone.org/monkey"
     i18n_domain="eea">
 
-    <!--TODO: plone4, is this monkeypatch still needed? Probably yes-->
-    <!--<monkey:patch-->
-        <!--description="Monkeypatch kupu_tool.register_transform so prevent breaking the EEA transform chains"-->
-        <!--module="Products.kupu.plone.util"-->
-        <!--original="install_transform"-->
-        <!--replacement=".patches.install_transform"-->
-        <!--preserveOriginal="true"-->
-        <!--/>-->
-
     <monkey:patch
         description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
         class="Products.CMFPlone.CatalogTool.CatalogTool "
@@ -28,12 +19,30 @@
         preserveOriginal="true"
         />
 
-    TODO: update this template using the latest from plone4
+    TODO: is this patch working? Please check
     <monkey:patch
         description="Monkeypatch catalog.manage_catalogView"
         class="Products.CMFPlone.CatalogTool.CatalogTool "
         original="manage_catalogView"
         replacement=".patch_catalog.view"
+        preserveOriginal="true"
+        />
+
+    TODO: plone4 is this patch still needed? Probably yes
+    <monkey:patch
+        description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
+        class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
+        original="generateId"
+        replacement=".patch_baseregistry.generateId"
+        preserveOriginal="true"
+        />
+
+    TODO: plone4 is this patch still needed?
+    <monkey:patch
+        description="Monkeypatch Products.CMFPlone.PloneTool.PloneTool tools to avoid reindexing object when more then 50 children are in the folder #2803"
+        class="Products.CMFPlone.PloneTool.PloneTool"
+        original="reindexOnReorder"
+        replacement=".patch_catalog.reindexOnReorder"
         preserveOriginal="true"
         />
 

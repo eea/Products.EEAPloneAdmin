@@ -3,6 +3,7 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="Products.EEAPloneAdmin">
 
+    <include file="profiles.zcml" />
     <include package=".browser" />
 
     <class class="Products.PloneHelpCenter.content.HelpCenter.HelpCenter">

@@ -1,31 +1,14 @@
+"""cataloging related patches
+"""
+
 from DateTime import DateTime
 from Globals import DTMLFile
+from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
-
-#from Products.CMFPlone.CatalogTool import CatalogTool
-
-#_enabled = []
-
-#def AlreadyApplied(patch):
-    #if patch in _enabled:
-        #return True
-    #_enabled.append(patch)
-    #return False
-
-#def AnonymousCatalog():
-    #if AlreadyApplied('AnonymousCatalog'):
-        #return
-
-    #CatalogTool.__eeaold_searchResults = CatalogTool.searchResults
-    #CatalogTool.searchResults = searchResults
-    #CatalogTool.__call__ = searchResults
-    #CatalogTool.manage_catalogView = DTMLFile('www/catalogView',globals())
-
-#AnonymousCatalog()
+from Products.CMFPlone.utils import log
 
 
 view = DTMLFile('www/catalogView',globals())
-
 
 def searchResults(self, REQUEST=None, **kw):
     """ Calls ZCatalog.searchResults with extra arguments that
@@ -43,3 +26,34 @@ def searchResults(self, REQUEST=None, **kw):
                              
     return self._old_searchResults(REQUEST, **kw)
 
+
+# MONKEY PATCH
+# If parent has more then 50 children reorder will be restricted in order
+# to avoid heavy wake up of objects. See more under #2803
+def reindexOnReorder(self, parent):
+    """ Catalog ordering support """
+
+    if len(parent.objectIds()) > 50:
+        log('This context has more then 50 children and reorder is restricted. Path %s' %
+            parent.absolute_url(1))
+        return
+
+    mtool = getToolByName(self, 'portal_membership')
+    if not mtool.checkPermission(ModifyPortalContent, parent):
+        return
+
+    cat = getToolByName(self, 'portal_catalog')
+    cataloged_objs = cat(path = {'query':'/'.join(parent.getPhysicalPath()),
+                                 'depth': 1})
+    for brain in cataloged_objs:
+        obj = brain.getObject()
+        # Don't crash when the catalog has contains a stale entry
+        if obj is not None:
+            cat.reindexObject(obj,['getObjPositionInParent'],
+                                                update_metadata=0)
+        else:
+            # Perhaps we should remove the bad entry as well?
+            log('Object in catalog no longer exists, cannot reindex: %s.'%
+                                brain.getPath())
+
+#PloneTool.reindexOnReorder = reindexOnReorder

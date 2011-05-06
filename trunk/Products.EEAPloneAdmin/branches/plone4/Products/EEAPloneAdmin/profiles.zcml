@@ -1,0 +1,33 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="eea">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA WWW"
+        directory="profiles/default"
+        description="Extension profile EEA Plone site"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA local sites"
+        directory="profiles/local-site"
+        description="Extension profile to create and configure local sites."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA WWW (CSS/JS reorder)"
+        directory="profiles/optimize"
+        description="Optimize order of CSS/JS for EEA website"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+</configure>
+

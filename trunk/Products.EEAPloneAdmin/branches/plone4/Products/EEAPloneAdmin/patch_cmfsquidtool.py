@@ -1,3 +1,8 @@
+"""
+# MONKEY PATCH
+# CMF Squid Tool patched to accept squid server list parameter not linked
+# to formation of purge URLs. See more under #3728
+"""
 import sys
 import httplib
 import urlparse

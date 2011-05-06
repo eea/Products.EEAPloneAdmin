@@ -28,6 +28,10 @@ setup(name=name,
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'eea.mediacentre',
+          'eea.reports',
+          'eea.translations',
+
       ],
       entry_points="""
       # -*- Entry points: -*-
