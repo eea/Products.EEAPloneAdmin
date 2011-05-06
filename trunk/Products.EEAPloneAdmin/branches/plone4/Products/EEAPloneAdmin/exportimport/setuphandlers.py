@@ -21,7 +21,19 @@ def setupVarious(context):
         logger.info("eeaploneadmin: created main folder SITE and set INavigationRoot")
 
     #setupMailhost(context)
-    setupImageTypes(context)
+
+    configureWorkflow(site)
+ 
+
+def configureWorkflow(portal):
+    """ configure what can't be configured with generic setup. """
+    wf = getToolByName(portal, 'portal_workflow')
+    if wf is not None:
+        wf['eea_default_workflow'].manager_bypass = True
+
+    #TODO plone4: where does this come from?
+    #setupImageTypes(context)
+
 
 def setupImageTypes(context):
     site = context.getSite()

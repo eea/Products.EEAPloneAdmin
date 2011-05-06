@@ -28,6 +28,7 @@ def searchResults(self, REQUEST=None, **kw):
 
 
 # MONKEY PATCH
+#plone4: is this still needed?
 # If parent has more then 50 children reorder will be restricted in order
 # to avoid heavy wake up of objects. See more under #2803
 def reindexOnReorder(self, parent):
