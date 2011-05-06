@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="eea_simple_approval"
+             title="Simple public approval"
+             state_variable="review_state"
+             initial_state="new">
+ <permission>Modify portal content</permission>
+ <state state_id="new" title="new">
+  <exit-transition transition_id="submit"/>
+  <permission-map name="Change portal events"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="published" title="Published">
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="submitted" title="">
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Modify portal content"
+                  acquired="True">
+   <permission-role>Manager</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="publish" title="publish"
+             new_state="published" trigger="USER"
+             before_script="publishContent" after_script="">
+  <action url="" category="workflow">publish</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="submit" title="Submit"
+             new_state="submitted" trigger="USER"
+             before_script="" after_script="submitContent">
+  <action url="" category="workflow">submit</action>
+  <guard>
+  </guard>
+ </transition>
+ <worklist worklist_id="pending" title="">
+  <description>Pending for publishing</description>
+  
+  <guard>
+   <guard-role>Manager</guard-role>
+  </guard>
+  <match name="review_state" values="submitted"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <script script_id="publishContent" type="External Method"
+         filename=""
+         module="EEAContentTypes.eea_public_approval_workflow_scripts"
+         function="publishContent"/>
+ <script script_id="submitContent" type="External Method"
+         filename=""
+         module="EEAContentTypes.frontpage_workflow_scripts"
+         function="submitForWebQA"/>
+</dc-workflow>
