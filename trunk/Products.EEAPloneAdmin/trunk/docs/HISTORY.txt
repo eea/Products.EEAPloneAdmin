@@ -7,8 +7,8 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
-0.8-dev - (unreleased)
-----------------------
+0.8 - (2011-05-10)
+------------------
  * Bug fix: Fixed translation method for content types that use schema extender
      by porting the LinguaPlone patch from slc.publications [ghicaale #4298]
 
