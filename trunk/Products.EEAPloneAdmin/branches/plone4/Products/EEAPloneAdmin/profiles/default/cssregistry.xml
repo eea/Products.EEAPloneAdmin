@@ -29,13 +29,9 @@
     rel="stylesheet" rendering="import"
     position-after="print.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="on" expression="" id="portlet.css" media="all" rel="stylesheet"
-    rendering="import"
-    position-after="eeadesign2006.css"/>
- <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="" id="visual.css" media="all" rel="stylesheet"
     rendering="import"
-    position-after="portlet.css"/>
+    position-after="eeadesign2006.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="" id="eea-globaltabs.css" media="all"
     rel="stylesheet" rendering="import"
@@ -45,13 +41,9 @@
     rel="stylesheet" rendering="import"
     position-after="eea-globaltabs.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="on" expression="" id="eea-highlights.css" media="all"
-    rel="stylesheet" rendering="import"
-    position-after="eea-navigation.css"/>
- <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="" id="themecentre.css" media="all"
     rel="stylesheet" rendering="import"
-    position-after="eea-highlights.css"/>
+    position-after="eea-navigation.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression="" id="mobile.css" media="handheld"
     rel="stylesheet" rendering="import"
@@ -97,8 +89,7 @@
     position-after="kupuplone.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on"
-    expression="python:here.portal_url.getPortalObject().getCurrentSkinName()==&quot;Plone Default&quot; and 'emptypage' not in request.get('URL0')"
-    id="ploneCustom.css" media="all" rel="stylesheet" rendering="import"
+    expression="" id="ploneCustom.css" media="all" rel="stylesheet" rendering="import"
     position-after="kupudrawerstyles.css"/>
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="False" expression="" id="presentation.css" media="projection"

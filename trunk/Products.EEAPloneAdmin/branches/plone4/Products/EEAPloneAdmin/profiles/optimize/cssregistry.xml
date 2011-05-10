@@ -249,7 +249,7 @@
 
   <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" media="all" rel="stylesheet"
-    expression="python:here.portal_url.getPortalObject().getCurrentSkinName()==&quot;Plone Default&quot; and 'emptypage' not in request.get('URL0')"
+    expression=""
     id="ploneCustom.css"
     position-after="kupudrawerstyles.css"
     rendering="import"/>
