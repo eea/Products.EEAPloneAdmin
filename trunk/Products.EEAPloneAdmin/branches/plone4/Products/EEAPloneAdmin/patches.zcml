@@ -19,6 +19,15 @@
         preserveOriginal="true"
         />
 
+    <!-- Do not remove the below patch, see patch_hachoir_core.py for more info -->
+    <!-- monkey:patch
+        description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
+        class="hachoir-core.i18n.UnicodeStdout"
+        original="writelines"
+        replacement=".patch_hachoir_core.writelines"
+        preserveOriginal="true"
+        / -->
+
     TODO: is this patch working? Please check
     <monkey:patch
         description="Monkeypatch catalog.manage_catalogView"
