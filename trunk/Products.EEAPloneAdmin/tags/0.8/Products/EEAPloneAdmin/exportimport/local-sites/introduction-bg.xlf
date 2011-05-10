@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff SYSTEM "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<!-- XLIFF Format Copyright © OASIS Open 2001-2003 -->
+<xliff version="1.0">
+<file
+original="/index_html"
+product-name="Localizer"
+product-version="1.1.x"
+datatype="plaintext"
+source-language="en"
+target-language="bg"
+date="2008-03-12T12:27:45Z"
+>
+<header>
+</header>
+<body>
+<trans-unit id="body">
+ <source>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;The EEA in 30 seconds&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+&lt;p&gt;&lt;b&gt;
+Mission
+&lt;/b&gt;&lt;br/&gt;
+The EEA's task is to provide timely, targeted, relevant and reliable environmental information. We serve those concerned with framing and implementing European and national environmental policy, and the general public. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Supporting the policy makers
+&lt;/b&gt;&lt;br/&gt;
+Our information helps the EU and Agency member countries make informed decisions about improving the environment, integrate environmental considerations into economic policies and move towards sustainability. We focus on supporting key users at vital points in the policy process at the European level.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Environmental information
+&lt;/b&gt;&lt;br/&gt;
+In our work we draw on existing organisations knowledge/information; we cooperate with them, coordinate the work at European level and seek to avoid duplication. We bring together the best available environmental data from individual countries. After a thorough compilation of data and its validation through our institutional network (EIONET), information is made accessible in various reporting formats to our users. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Membership countries
+&lt;/b&gt;&lt;br/&gt;
+Although the EEA is a European Union body, membership is open to non-EU countries that share our objectives. The EEA now has 32 member countries: all 27 EU Member States, Iceland, Liechtenstein, Norway, Switzerland and Turkey.
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Read more about the EEA&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;</source>
+ <target>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;ЕАОС в 30 секунди&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+				&lt;p&gt;&lt;b&gt;Мисия&lt;/b&gt;&lt;br/&gt; Задачата на Европейската агенция за околна среда е да предоставя навременна, целенасочена, подходяща и достоверна информация за околната среда. Предоставяме информация на всички, ангажирани в планирането и прилагането на европейските и национални политики по околната среда, както и на широката общественост. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Подкрепа за разработването на политиката&lt;/b&gt;&lt;br/&gt; Нашата информация помага на ЕС и на страните-членки на Агенцията да вземат информирани решения за подобряване на състоянието на околната среда, да интегрират въпросите свързани с околната среда в икономическата политика и да работят за устойчиво развитие. Предоставяме информация на ключови потребители в процеса на разработване на политиката на европейско ниво.
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Информация за околната среда&lt;/b&gt;&lt;br/&gt; В работата си разчитаме на съществуващите познания и информация на различни организации; сътрудничим си с тях, координираме работата на европейско ниво и помагаме да се избегне дублиране.  Събираме най-добрата налична информация за околната среда от отделните държави. След като обобщим данните и ги проверим чрез нашата институционална мрежа (EIONET), предоставяме информацията на нашите потребителите в различни формати. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Членство в ЕАОС&lt;/b&gt;&lt;br/&gt;Въпреки че ЕАОС е организация на Европейския съюз, членството в нея е отворено и за страните, които не са членки на ЕС и споделят нашите цели. По настоящем в ЕАОС членуват 32 страни: всичките 27 страни-членки на ЕС, Исландия, Лихтенщайн, Норвегия, Швейцария и Турция.
+				&lt;/p&gt;
+				&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Прочетете повече за ЕАОС &lt;/a&gt;&lt;/p&gt;
+				&lt;br/&gt;
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+&lt;br/&gt;&lt;br/&gt;</target>
+</trans-unit>
+<trans-unit id="title">
+ <source>Introduction</source>
+ <target></target>
+</trans-unit>
+</body>
+</file>
+</xliff>
