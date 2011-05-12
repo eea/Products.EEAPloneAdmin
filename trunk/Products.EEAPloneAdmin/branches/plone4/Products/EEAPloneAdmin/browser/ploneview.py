@@ -79,20 +79,8 @@ class PloneAdmin(Plone):
         #print "Admin: %s" % admin
         return admin
 
-    @memoize
     def local_site(self):
-        #NOTE: this used to be globalized with p2.5 method, this in no longer possible
-
         raise NotImplementedError("This has been moved to @@plone_portal_state") 
-
-        self._data['local_site'] = self._data['portal_url']
-        if self._data['language'] != 'en':
-            root = getattr(self._data['portal'],'SITE', self._data['portal'])
-            if hasattr(root, 'getTranslation') and root.getTranslation(self._data['language']) is not None:
-                self._data['local_site'] = '%s/%s' % ( self._data['portal_url'], self._data['language'])
-
-        for action in self._data['actions']['site_actions']:
-            action['url'] = action['url'].replace('LOCAL_SITE',self._data['local_site'])
 
     def is_empty(self):
         raise NotImplementedError("This has been moved to @@plone_context_state")
