@@ -107,9 +107,9 @@ class PloneAdmin(Plone):
 
         
     def _prepare_slots(self):
-        """ Prepares a structure that makes it conveient to determine
+        """ Prepares a structure that makes it convenient to determine
             if we want to use-macro or render the path expression.
-            The values for the dictioanries is a list of tuples
+            The values for the dictionaries is a list of tuples
             that are path expressions and the second value is a
             1 for use-macro, 0 for render path expression.
         """
@@ -125,7 +125,7 @@ class PloneAdmin(Plone):
         left_slots=getattr(context,'left_slots', [])
         right_slots=getattr(context,'right_slots', [])
         document_action_slots=getattr(context,'document_action_slots', [])
-        # if we use plone root slots we take the ane fron canonical
+        # if we use plone root slots we take the one from canonical
         # they may be the same
         if hasattr(aq_base(context), 'getCanonical'):
             plone = self._data['portal']
