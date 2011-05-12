@@ -1,7 +1,7 @@
 from Acquisition import aq_parent, aq_inner, aq_base
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import utils
+#from Products.CMFPlone import utils
 from Products.CMFPlone.browser.ploneview import Plone
 from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from interfaces import IPloneAdmin, IObjectTitle
@@ -60,7 +60,7 @@ class PloneAdmin(Plone):
         """ Remove translation of localized time """
         if translate:
             return Plone.toLocalizedTime(self, time, long_format)
-        props = getToolByName(utils.context(self), 'portal_properties').site_properties
+        props = getToolByName(self.context, 'portal_properties').site_properties
         time = DateTime(time)
         if long_format:
             return time.strftime( props.localLongTimeFormat )
@@ -69,7 +69,7 @@ class PloneAdmin(Plone):
     @memoize
     def isCmsMode(self):
         """ """
-        context = utils.context(self)
+        context = self.context
         portal_url = getToolByName(context, 'portal_url')
         portal = portal_url.getPortalObject()
 
@@ -97,7 +97,7 @@ class PloneAdmin(Plone):
         """
         #TODO: implement this for plone4, at this moment this method is not called
         raise NotImplementedError
-        context = utils.context(self)
+        context = self.context
         slots={ 'left':[],
                 'right':[],
                 'document_actions':[] }

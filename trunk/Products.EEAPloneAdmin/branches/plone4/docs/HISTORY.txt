@@ -7,8 +7,14 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
-0.8-dev - (unreleased)
+4.0-dev - (unreleased)
 ----------------------
+ * Feature: Plone 4 compatibility [tiberich #4306]
+ * Change: refactored the @@plone view to conform to Plone 4 [tiberich #4306]
+ * Change: added workflow scripts from EEAContentTypes and EEAEnquiry [tiberich #4306]
+ * Change: using collective.monkeypatcher for patches [tiberich #4306]
+ * Change: removed workflow setup scripts, they're now GS files [tiberich #4306]
+ * Change: disabled the test for the localsites profile, we won't do that anymore [tiberich #4306]
 
 0.7 - (2011-04-01)
 ------------------
@@ -30,7 +36,7 @@ Changelog
  * Bug fix: fix bug due to API changes [tiberich #4085]
 
 0.4 - (2011-02-17)
-------------------
+------------------ 
  * Bug fix: properly retrieve content from FSDTMLMethods [tiberich #4085]
 
 0.3 - (2011-02-17)

@@ -1,5 +1,5 @@
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.browser.interfaces import INavigationRoot
+from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
 
 #from Products.GenericSetup.utils import importObjects
