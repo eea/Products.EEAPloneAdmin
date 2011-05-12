@@ -136,10 +136,10 @@
  </variable>
  <script script_id="publishContent" type="External Method"
          filename=""
-         module="EEAContentTypes.eea_public_approval_workflow_scripts"
+         module="EEAPloneAdmin.eea_public_approval_workflow_scripts"
          function="publishContent"/>
  <script script_id="submitContent" type="External Method"
          filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="submitForWebQA"/>
 </dc-workflow>

@@ -159,6 +159,6 @@
  </variable>
  <script script_id="moveObject" type="External Method"
          filename=""
-         module="EEAContentTypes.CallForTender_scripts"
+         module="EEAPloneAdmin.CallForTender_scripts"
          function="moveObject"/>
 </dc-workflow>

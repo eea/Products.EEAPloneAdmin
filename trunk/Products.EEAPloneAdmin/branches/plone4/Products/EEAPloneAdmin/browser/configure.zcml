@@ -24,6 +24,6 @@
         permission="cmf.ManagePortal"
         />
 
-    <adapter factory=".plone.ObjectTitle" />
+    <adapter factory=".ploneview.ObjectTitle" />
 
 </configure>

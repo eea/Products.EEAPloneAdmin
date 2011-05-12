@@ -5,6 +5,9 @@ from Products.CMFPlone import utils
 from Products.CMFPlone.browser.ploneview import Plone
 from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from interfaces import IPloneAdmin, IObjectTitle
+from plone.app.layout.globals.context import ContextState as BaseContextState
+from plone.app.layout.globals.portal import PortalState as BasePortalState
+from plone.memoize.view import memoize
 from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 from zope.interface import implements, Interface
 
@@ -52,18 +55,6 @@ class ObjectTitle(object):
 class PloneAdmin(Plone):
 
     implements(IPloneAdmin)
-    
-    def isCmsMode(self):
-        """ """
-        context = utils.context(self)
-        portal_url = getToolByName(context, 'portal_url')
-        portal = portal_url.getPortalObject()
-
-        proptool = getToolByName(context, 'portal_properties')        
-        adminSkin = getattr(proptool.site_properties,'admin_skin', None)
-        admin = adminSkin and portal.getCurrentSkinName() == adminSkin
-        print "Admin: %s" % admin
-        return admin
 
     def toLocalizedTime(self, time, long_format=None, translate=True):
         """ Remove translation of localized time """
@@ -74,16 +65,25 @@ class PloneAdmin(Plone):
         if long_format:
             return time.strftime( props.localLongTimeFormat )
         return  time.strftime( props.localTimeFormat )
-
-    def _initializeData(self, options=None):
-        Plone._initializeData(self, options)
+    
+    @memoize
+    def isCmsMode(self):
+        """ """
         context = utils.context(self)
-        
-        # first try with a multi adapter, if no luck try single adapter
-        adapter = queryMultiAdapter((context, context.REQUEST), IObjectTitle)
-        if adapter is None:
-            adapter = IObjectTitle(context)
-        self._data['browser_title'] = adapter.title
+        portal_url = getToolByName(context, 'portal_url')
+        portal = portal_url.getPortalObject()
+
+        proptool = getToolByName(context, 'portal_properties')        
+        adminSkin = getattr(proptool.site_properties,'admin_skin', None)
+        admin = adminSkin and portal.getCurrentSkinName() == adminSkin
+        #print "Admin: %s" % admin
+        return admin
+
+    @memoize
+    def local_site(self):
+        #NOTE: this used to be globalized with p2.5 method, this in no longer possible
+
+        raise NotImplementedError("This has been moved to @@plone_portal_state") 
 
         self._data['local_site'] = self._data['portal_url']
         if self._data['language'] != 'en':
@@ -94,18 +94,12 @@ class PloneAdmin(Plone):
         for action in self._data['actions']['site_actions']:
             action['url'] = action['url'].replace('LOCAL_SITE',self._data['local_site'])
 
+    def is_empty(self):
+        raise NotImplementedError("This has been moved to @@plone_context_state")
 
-        is_empty = False
-        if self._data.get('isAnon', False):
-            catalog = getToolByName(context, 'portal_catalog')
-            rid = catalog.getrid('/'.join(context.getPhysicalPath()))
-            if rid:
-                metadata = catalog.getMetadataForRID(rid)
-                is_empty = metadata and metadata.get('is_empty', False)
-                
-        self._data['isEmpty'] = is_empty
+    def browser_title(self):
+        raise NotImplementedError("This has been moved to @@plone_context_state")
 
-        
     def _prepare_slots(self):
         """ Prepares a structure that makes it convenient to determine
             if we want to use-macro or render the path expression.
@@ -113,6 +107,8 @@ class PloneAdmin(Plone):
             that are path expressions and the second value is a
             1 for use-macro, 0 for render path expression.
         """
+        #TODO: implement this for plone4, at this moment this method is not called
+        raise NotImplementedError
         context = utils.context(self)
         slots={ 'left':[],
                 'right':[],
@@ -181,3 +177,59 @@ class PloneAdmin(Plone):
                 slots['document_actions'].append( (slot, 0) )
 
         return slots
+
+
+class ContextState(BaseContextState):
+    """Additions to default @@plone_context_state"""
+
+    @memoize
+    def is_empty(self):
+        portal_state = getMultiAdapter((self.context, self.request), 
+                                        name="plone_portal_state")
+        #NOTE: this used to be globalized with p2.5 method, this in no longer possible
+        context = self.context
+        is_empty = False
+        if portal_state.anonymous():
+            catalog = getToolByName(context, 'portal_catalog')
+            rid = catalog.getrid('/'.join(context.getPhysicalPath()))
+            if rid:
+                metadata = catalog.getMetadataForRID(rid)
+                is_empty = metadata and metadata.get('is_empty', False)
+                
+        return is_empty
+
+    @memoize
+    def browser_title(self):
+        #NOTE: this used to be globalized with p2.5 method, this in no longer possible
+
+        context = self.context
+        
+        # first try with a multi adapter, if no luck try single adapter
+        adapter = queryMultiAdapter((context, context.REQUEST), IObjectTitle)
+        if adapter is None:
+            adapter = IObjectTitle(context)
+        return adapter.title
+
+
+class PortalState(BasePortalState):
+    """Additions to default @@plone_portal_state"""
+
+    @memoize
+    def local_site(self):
+        #NOTE: this used to be globalized with p2.5 method, this in no longer possible
+        #TODO: BAD STYLE: this method used to have side effects, by changing site actions urls
+        portal = self.portal()
+        language = self.language()
+        portal_url = self.portal_url()
+
+        local_site = portal_url
+        if language != 'en':
+            root = getattr(portal(),'SITE', portal)
+            if hasattr(root, 'getTranslation') and root.getTranslation(language) is not None:
+                local_site = '%s/%s' % (portal_url, language)
+
+        #TODO: implement this for plone4
+        #for action in self._data['actions']['site_actions']:
+            #action['url'] = action['url'].replace('LOCAL_SITE',self._data['local_site'])
+
+        return local_site

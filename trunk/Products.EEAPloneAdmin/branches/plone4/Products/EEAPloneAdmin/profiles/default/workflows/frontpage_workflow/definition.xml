@@ -269,22 +269,22 @@
  </variable>
  <script script_id="publish" type="External Method"
          filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="publish"/>
  <script script_id="reject" type="External Method"
          filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="reject"/>
  <script script_id="submitForContentReview"
          type="External Method" filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="submitForContentReview"/>
  <script script_id="submitForProofReading"
          type="External Method" filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="submitForProofReading"/>
  <script script_id="submitForWebQA" type="External Method"
          filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="submitForWebQA"/>
 </dc-workflow>

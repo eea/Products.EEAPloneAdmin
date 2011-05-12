@@ -250,6 +250,6 @@
  </variable>
  <script script_id="submitContent" type="External Method"
          filename=""
-         module="EEAContentTypes.frontpage_workflow_scripts"
+         module="EEAPloneAdmin.frontpage_workflow_scripts"
          function="submitForWebQA"/>
 </dc-workflow>

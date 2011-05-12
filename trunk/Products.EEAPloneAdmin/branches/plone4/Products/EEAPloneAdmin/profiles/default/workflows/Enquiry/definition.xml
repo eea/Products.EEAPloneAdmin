@@ -94,6 +94,6 @@
   </guard>
  </variable>
  <script script_id="sendToIC" type="External Method"
-         filename="" module="EEAEnquiry.Enquiry_scripts"
+         filename="" module="EEAPloneAdmin.Enquiry_scripts"
          function="sendToIC"/>
 </dc-workflow>

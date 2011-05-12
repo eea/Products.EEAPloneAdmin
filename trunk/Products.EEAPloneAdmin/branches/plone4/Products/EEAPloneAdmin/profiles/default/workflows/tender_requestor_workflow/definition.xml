@@ -104,6 +104,6 @@
  </variable>
  <script script_id="sendCFTLink" type="External Method"
          filename=""
-         module="EEAContentTypes.tender_requestor_workflow_scripts"
+         module="EEAPloneAdmin.tender_requestor_workflow_scripts"
          function="sendCFTLink"/>
 </dc-workflow>

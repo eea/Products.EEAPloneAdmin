@@ -1,33 +1,52 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:five="http://namespaces.zope.org/five"
-    i18n_domain="Products.EEAPloneAdmin">
+	xmlns:browser="http://namespaces.zope.org/browser"
+	xmlns:five="http://namespaces.zope.org/five"
+	i18n_domain="Products.EEAPloneAdmin">
 
-    <browser:page
-        for="*"
-        name="plone"
-        class=".browser.plone.PloneAdmin"
-        permission="zope.Public"
-        allowed_interface="Products.CMFPlone.browser.interfaces.IPlone .browser.interfaces.IPloneAdmin" 
-        />
+	<browser:page
+		for="*"
+		name="plone"
+		class=".browser.ploneview.PloneAdmin"
+		permission="zope.Public"
+		allowed_interface="Products.CMFPlone.browser.interfaces.IPlone 
+						  .browser.interfaces.IPloneAdmin" 
+		/>
 
-    plone4: disabled during migration
-    <!--<include package="eea.mediacentre" file="overrides.zcml" />-->
-    <!--<include package="eea.reports" file="overrides.zcml" />-->
+	<browser:page
+		name="plone_context_state"
+		for="*"
+		class=".browser.ploneview.ContextState"
+		permission="zope.Public"
+		allowed_interface="plone.app.layout.globals.interfaces.IContextState
+						   .browser.interfaces.IContextState" 
+		/>
 
-    plone: probably not needed anymore
-    <!--<include package="eea.translations" file="overrides.zcml" />-->
+	<browser:page
+		name="plone_portal_state"
+		for="*"
+		class=".browser.ploneview.PortalState"
+		permission="zope.Public"
+		allowed_interface="plone.app.layout.globals.interfaces.IPortalState
+						   .browser.interfaces.IPortalState" 
+		/>
 
-    plone4: disabling this, probably not needed
-    <!--<include package="eea.plone3compat" file="overrides.zcml" />-->
+	plone4: disabled during migration
+	<!--<include package="eea.mediacentre" file="overrides.zcml" />-->
+	<!--<include package="eea.reports" file="overrides.zcml" />-->
 
-    plone4: this menu needs to be written in another fashion, as it depends on p4a.* packages
-    <!--<browser:subMenuItem-->
-        <!--menu="contentmenu_extra"-->
-        <!--submenu="subtypes"-->
-        <!--title="Sub-types"-->
-        <!--permission="cmf.ManagePortal"-->
-        <!--for="*"-->
-        <!--/>-->
+	plone: probably not needed anymore
+	<!--<include package="eea.translations" file="overrides.zcml" />-->
+
+	plone4: disabling this, probably not needed
+	<!--<include package="eea.plone3compat" file="overrides.zcml" />-->
+
+	plone4: this menu needs to be written in another fashion, as it depends on p4a.* packages
+	<!--<browser:subMenuItem-->
+		<!--menu="contentmenu_extra"-->
+		<!--submenu="subtypes"-->
+		<!--title="Sub-types"-->
+		<!--permission="cmf.ManagePortal"-->
+		<!--for="*"-->
+		<!--/>-->
 
 </configure>

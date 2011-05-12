@@ -32,7 +32,7 @@ __docformat__ = 'plaintext'
 
 ##code-section workflow-script-header #fill in your manual code here
 #from Products.CMFCore.utils import getToolByName
-from Products.EEAContentTypes.config import DEBUG
+from Products.EEAPloneAdmin.config import DEBUG
 ##/code-section workflow-script-header
 
 

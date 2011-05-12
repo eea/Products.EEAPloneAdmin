@@ -27,15 +27,14 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
+from Products.CMFCore.utils import getToolByName
+from Products.EEAPloneAdmin.config import DEBUG
+from Products.EEAPloneAdmin.interfaces import IWorkflowEmails
 from zope.component import queryAdapter
-from Products.EEAContentTypes.interfaces import IWorkflowEmails
-# Workflow Scripts for: frontpage_workflow
-from Products.EEAContentTypes.config import DEBUG
+
 if DEBUG:
     import socket
     socket.setdefaulttimeout(100)
-##code-section workflow-script-header #fill in your manual code here
-from Products.CMFCore.utils import getToolByName
 
 message = """
 
@@ -136,13 +135,13 @@ class WorkflowManagement(object):
             subject = self.subject
         subject = subject % self.portalType
 
-	# Add extra headers for the email, default as normal
-	#	Importance:         Can be 'Normal', 'High', 'Low'
-	#	X-MSMail-Priority:  Can be 'Normal', 'High', 'Low'
-	#	X-Priority:         Can be '1 (Highest)', '2 (High)', '3 (Normal)', '4 (Low)' or '5 (Lowest)'
-	#	Priority:           Can be 'normal', 'urgent' or 'non-urgent' (try to influence speed and delivery)
-	#
-	# 'Importance' and 'X-MSMail-Priority' are used by Outlook and Outlook Express while 'X-Priority' is used by Thunderbird and Eudora
+        # Add extra headers for the email, default as normal
+        #	Importance:         Can be 'Normal', 'High', 'Low'
+        #	X-MSMail-Priority:  Can be 'Normal', 'High', 'Low'
+        #	X-Priority:         Can be '1 (Highest)', '2 (High)', '3 (Normal)', '4 (Low)' or '5 (Lowest)'
+        #	Priority:           Can be 'normal', 'urgent' or 'non-urgent' (try to influence speed and delivery)
+        #
+        # 'Importance' and 'X-MSMail-Priority' are used by Outlook and Outlook Express while 'X-Priority' is used by Thunderbird and Eudora
 
         kwargs = {'Importance': 'Normal',
             'X-MSMail-Priority': 'Normal',

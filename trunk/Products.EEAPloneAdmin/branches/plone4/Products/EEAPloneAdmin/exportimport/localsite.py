@@ -1,23 +1,25 @@
-import os
-import re
-import transaction
-import codecs
-
-from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
-from zope.i18n import translate as realTranslate
-
 from Acquisition import aq_parent, aq_inner, aq_base
 from Globals import package_home, DevelopmentMode
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
+from Products.EEAPloneAdmin.config import GLOBALS, EEA_LANGUAGES
 from Products.Marshall.registry import getComponent
 from Products.ZCatalog.ProgressHandler import ZLogHandler
-
-from Products.EEAPloneAdmin.config import GLOBALS, EEA_LANGUAGES
-from eea.translations import _
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre, IThemeRelation
+from eea.translations import _
+from zope.i18n import translate as realTranslate
+from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
+import codecs
+import os
+import re
+import transaction
 
-from valentine.gtranslate import translate as gtranslate
+
+HAS_GTRANSLATE = True
+try:
+    from valentine.gtranslate import translate as gtranslate
+except ImportError:
+    HAS_GTRANSLATE = False
 
 excludeFromNav = ('legal', 'quicklinks', 'address.html')
 
@@ -107,10 +109,11 @@ def translate(msgid, target_language, output=False):
 
                 # google translate doesn't have all languages
                 if target_language not in ['tr', 'mt', 'hu']:
-                    try:
-                        translation = gtranslate(str(msgid), langpair="en|%s" % target_language)
-                    except Exception:
-                        print "GTRANSLATE FAILED %s and msgid %s" % (target_language, msgid)
+                    if HAS_GTRANSLATE:
+                        try:
+                            translation = gtranslate(str(msgid), langpair="en|%s" % target_language)
+                        except Exception:
+                            print "GTRANSLATE FAILED %s and msgid %s" % (target_language, msgid)
 
                 untranslatedMessages.get(target_language)[msgid] = translation
         translation = untranslatedMessages.get(target_language).get(msgid)
@@ -120,7 +123,6 @@ def translate(msgid, target_language, output=False):
         return translation.encode('utf8')
     # what do we have here?
     return str(translation)
-
 
 
 def retagAllTranslations(context, languages):
@@ -138,6 +140,7 @@ def retagAllTranslations(context, languages):
         if IThemeCentre.providedBy(obj):
             IThemeRelation(obj).related = IThemeRelation(obj.getCanonical()).related
             print "%s : %s" % (obj.absolute_url(1), IThemeRelation(obj).related)
+
 
 def setupTranslateSiteStructure(context):
     if context.readDataFile('eeaploneadmin_localsites.txt') is None:
@@ -777,5 +780,4 @@ def fixLangIndependentFields(context):
                 translation_mutator(data)
             translation.reindexObject()
     logger.info("Copied language independent fields for PressRelease,Highlight, Promotion ")
-
 

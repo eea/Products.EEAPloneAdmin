@@ -1,10 +1,13 @@
 GLOBALS = globals()
 DEPENDENCIES = [
-                'LinguaPlone', 'ATVocabularyManager', 'PloneHelpCenter', 
-                'ATVocabularyManager', 'XLIFFMarshall'
-
+                'LinguaPlone', 
+                'ATVocabularyManager', 
+                'PloneHelpCenter', 
+                'XLIFFMarshall'
                 'NavigationManager', 
-                'EEAContentTypes', 'EEAEnquiry', 
+                'EEAEnquiry', 
+
+                #'EEAContentTypes', 
 
                 #plone4 disabled until migrated
                 #'PloneGazette', 
@@ -56,3 +59,5 @@ EEA_LANGUAGES = [
                   'sk','sl',
                   'es','sv','tr','lv'  ]
 
+
+DEBUG = False
