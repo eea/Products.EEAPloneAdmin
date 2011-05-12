@@ -1,7 +1,6 @@
 from Acquisition import aq_parent, aq_inner, aq_base
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
-#from Products.CMFPlone import utils
 from Products.CMFPlone.browser.ploneview import Plone
 from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from interfaces import IPloneAdmin, IObjectTitle
