@@ -12,6 +12,8 @@ from zope.i18n import translate
 
 PROJECTNAME = 'EEAPloneAdmin'
 
+#TODO plone4: reactivate this test
+
 class testLocalSite(EEAPloneAdminTestCase):
 
     def afterSetUp(self):
