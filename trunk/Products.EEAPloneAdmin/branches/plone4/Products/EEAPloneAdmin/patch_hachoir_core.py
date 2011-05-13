@@ -9,8 +9,17 @@
     AttributeError: UnicodeStdout instance has no attribute 'writelines'
 """
 
-def writelines(self, lines):
-    """ Add writelines() method to UnicodeStdout
-    """
-    for text in lines:
-        self.write(text)
+from hachoir_core.i18n import UnicodeStdout as BaseUnicodeStdout
+import hachoir_core.i18n
+
+
+class PatchedUnicodeStdout(BaseUnicodeStdout):
+
+    def writelines(self, lines):
+        """ Add writelines() method to UnicodeStdout
+        """
+        for text in lines:
+            self.write(text)
+
+
+hachoir_core.i18n.UnicodeStdout = PatchedUnicodeStdout
