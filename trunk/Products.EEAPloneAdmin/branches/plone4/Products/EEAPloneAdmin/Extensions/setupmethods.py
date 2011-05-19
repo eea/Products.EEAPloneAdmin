@@ -10,7 +10,7 @@ from Products.CMFPlone.browser.interfaces import INavigationRoot
 from zope.interface import alsoProvides
 from zope.event import notify
 from zope.app.event.objectevent import ObjectModifiedEvent
-from Products.NavigationManager.sections import INavigationSectionPosition
+from Products.NavigationManager.interfaces import INavigationSectionPosition
 from p4a.subtyper.interfaces import ISubtyper
 from zope.component import getUtility
 #from zope.component import queryMultiAdapter
