@@ -473,7 +473,7 @@ def setupLocalSites(context):
                 xliff = xliff.replace('original="/index_html"', 'original="%s"' % '/'.join(enIntro.getPhysicalPath()))
                 # in plone the body field is called text
                 xliff = xliff.replace('id="body"', 'id="text"')
-                # fix xhtml 
+                # fix xhtml
                 xliff = xliff.replace('&lt;br/&gt;', '&lt;br /&gt;')
                 # fix broke resolveuid
                 # about-us/governance/intro - List of Management Board Members
@@ -493,7 +493,6 @@ def setupLocalSites(context):
 
 
         if not hasattr(translation, 'reports'):
-            rssTemplate = 'http://reports.eea.europa.eu/reports_local.rdf?select=public&image=yes&replang=%s'
             rssTitle = _(u'Reports')
 
             # reports folder

@@ -1,23 +1,18 @@
 import csv
 import logging
-#from pprint import pformat
 import urllib
-from zope.interface import alsoProvides, directlyProvides, directlyProvidedBy
+from zope.interface import alsoProvides
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
-from eea.rdfrepository.interfaces import IFeed, IFeedContent
 from eea.mediacentre.interfaces import IMediaType
 from p4a.video.interfaces import IVideo
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
-#from Products.CMFPlone.utils import normalizeString
-import socket
-import feedparser
-import urlparse
 import os
+
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
 
 # Some new theme ids are not same as old
@@ -183,10 +178,8 @@ class MigrateTheme(object):
             obj = self.context[indicators]
             obj.setTitle('Indicators')
             obj.setText(indiText, mimetype='text/html')
-            catalog = getToolByName(self.context, 'portal_catalog')
             workflow.doActionFor(obj, 'publish')
             obj.reindexObject()
-
 
 class InitialThemeCentres(object):
     """ create inital theme structure """
