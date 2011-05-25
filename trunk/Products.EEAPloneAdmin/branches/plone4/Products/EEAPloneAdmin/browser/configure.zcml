@@ -13,8 +13,8 @@
         class=".admin.RegenerateJS"
         permission="cmf.ManagePortal"
         >
-        Should be for Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool 
-        but because of vhm issues, we can't do that 
+        Should be for Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+        but because of vhm issues, we can't do that
     </browser:page>
 
     <browser:page
