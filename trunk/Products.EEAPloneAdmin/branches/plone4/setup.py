@@ -34,9 +34,9 @@ setup(name=name,
 
           'eea.translations',
           'Products.NavigationManager',
+          'valentine.linguaflow',
 
           #used in testing
-          'valentine.linguaflow',
           'eea.themecentre',
 
           #plone4: disabled during migration
