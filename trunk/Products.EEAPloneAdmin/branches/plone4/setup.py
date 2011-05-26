@@ -8,7 +8,7 @@ version = open(join(*path)).read().strip()
 
 setup(name=name,
       version=version,
-      description="EEA Products Plone Admin Files",
+      description="EEA Plone Admin",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
