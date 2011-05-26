@@ -4,7 +4,7 @@
 
     <genericsetup:registerProfile
         name="default"
-        title="EEA WWW"
+        title="EEA Plone Admin"
         directory="profiles/default"
         description="Extension profile EEA Plone site"
         provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -13,7 +13,7 @@
 
     <genericsetup:registerProfile
         name="local-site"
-        title="EEA local sites"
+        title="EEA Plone Admin local sites"
         directory="profiles/local-site"
         description="Extension profile to create and configure local sites."
         provides="Products.GenericSetup.interfaces.EXTENSION"
