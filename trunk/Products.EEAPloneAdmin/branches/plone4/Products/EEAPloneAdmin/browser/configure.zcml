@@ -24,6 +24,13 @@
         permission="cmf.ManagePortal"
         />
 
+    <browser:page
+        name="eea-workflow-support"
+        for="zope.interface.Interface"
+        class=".workflow.WorkflowSupport"
+        permission="cmf.ModifyPortalContent"
+        />
+
     <adapter factory=".ploneview.ObjectTitle" />
 
 </configure>
