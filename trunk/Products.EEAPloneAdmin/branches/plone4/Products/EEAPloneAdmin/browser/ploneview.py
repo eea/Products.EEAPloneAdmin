@@ -55,10 +55,10 @@ class PloneAdmin(Plone):
 
     implements(IPloneAdmin)
 
-    def toLocalizedTime(self, time, long_format=None, translate=True):
+    def toLocalizedTime(self, time, long_format = None, time_only = None, translate=True):
         """ Remove translation of localized time """
         if translate:
-            return Plone.toLocalizedTime(self, time, long_format)
+            return Plone.toLocalizedTime(self, time, time_only, long_format)
         props = getToolByName(self.context, 'portal_properties').site_properties
         time = DateTime(time)
         if long_format:
@@ -95,7 +95,12 @@ class PloneAdmin(Plone):
             1 for use-macro, 0 for render path expression.
         """
         #TODO: implement this for plone4, at this moment this method is not called
+        #tiberich: at this moment there's nothing in our zope that will call this method.
+        #I'm leaving this here as a reminder of what needs to be done: make the columns portlet manager 
+        #also look for canonical objects when looking at left/right slots.
+
         raise NotImplementedError
+
         context = self.context
         slots={ 'left':[],
                 'right':[],
@@ -211,7 +216,7 @@ class PortalState(BasePortalState):
 
         local_site = portal_url
         if language != 'en':
-            root = getattr(portal(),'SITE', portal)
+            root = getattr(portal,'SITE', portal)
             if hasattr(root, 'getTranslation') and root.getTranslation(language) is not None:
                 local_site = '%s/%s' % (portal_url, language)
 

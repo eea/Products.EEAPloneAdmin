@@ -38,10 +38,8 @@ setup(name=name,
 
           #used in testing
           'eea.themecentre',
-
-          #plone4: disabled during migration
-          #'eea.mediacentre',
-          #'eea.reports',
+          'eea.mediacentre',
+          'eea.reports',
 
       ],
       entry_points="""

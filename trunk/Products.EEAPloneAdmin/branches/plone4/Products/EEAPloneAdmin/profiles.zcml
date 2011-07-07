@@ -29,5 +29,9 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         />
 
-</configure>
+    <genericsetup:importStep
+        name="eea-various"
+        title="EEA site setup" description=""
+        handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious" />
 
+</configure>

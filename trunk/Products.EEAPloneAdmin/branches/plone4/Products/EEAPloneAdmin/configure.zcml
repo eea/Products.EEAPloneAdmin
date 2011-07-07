@@ -5,6 +5,7 @@
 
     <include file="profiles.zcml" />
     <include package=".browser" />
+    <include package=".upgrades" />
 
     <subscriber
         for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool

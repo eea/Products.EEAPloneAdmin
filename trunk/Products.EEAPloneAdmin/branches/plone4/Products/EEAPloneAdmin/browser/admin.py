@@ -128,7 +128,8 @@ def save_resources_on_disk(registry, request=None):
             try:
                 fpath = os.path.join(dest, name)
                 f = open(fpath, "w+")
-                f.write(content)
+                cont = content.encode('utf-8')
+                f.write(cont)
                 f.close()
                 logging.debug("Wrote %s on disk." % fpath)
             except IOError:

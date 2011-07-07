@@ -3,9 +3,7 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="Products.EEAPloneAdmin">
 
-    disabled during plone4 migration
-    <!--<include file="migrate.zcml" />-->
-
+    <include file="migrate.zcml" />
 
     <browser:page
         for="*"

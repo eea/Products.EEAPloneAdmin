@@ -2,9 +2,9 @@
 """
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.EEAPloneAdmin.config import DEBUG
 from Products.EEAPloneAdmin.interfaces import IWorkflowEmails
 from zope.component import queryAdapter
+from email.message import Message
 
 message = """
 
@@ -79,10 +79,9 @@ class WorkflowManagement(object):
 
             self.fromEmail = self._getUserEmail(portal)
         self.subject = '[EEA CMS] - %s ' + state_change.new_state.title
-
-        objUrl = obj.absolute_url(1)
-        if objUrl.startswith('SITE/'):
-            objUrl = objUrl[5:]
+        objUrl = obj.virtual_url_path() 
+        if objUrl.startswith('/SITE/'):
+            objUrl = objUrl[6:]
         cmsUrl = getattr(props, 'cms_url',
                          'https://www-cms.eea.europa.eu/SITE/')
         editUrl = cmsUrl + objUrl + '/edit'
@@ -90,14 +89,21 @@ class WorkflowManagement(object):
         if comment:
             comment = '%s\n--' % comment
 
-        msg = obj.unrestrictedTraverse('workflow_action_message')
-        self.msg = msg(obj, type=self.portalType,
-                       comment=comment, editUrl=editUrl )
+        msg = obj.unrestrictedTraverse('workflow_action_message', None)
+        if msg:
+            self.msg = msg(obj, type=self.portalType,
+                           comment=comment, editUrl=editUrl )
+        else:
+            self.msg = 'Action message for %s' % editUrl
 
         confirmationMsg = obj.unrestrictedTraverse(
-            'workflow_confirmation_message')
-        self.confirmationMsg = confirmationMsg(obj,
-                        type=self.portalType, comment=comment, editUrl=editUrl)
+            'workflow_confirmation_message', None)
+        if confirmationMsg:
+            self.confirmationMsg = confirmationMsg(obj,
+                      type=self.portalType, comment=comment, editUrl=editUrl)
+        else:
+            self.confirmationMsg = 'Confirmation message for %s' % \
+                                                       obj.absolute_url()
 
     def _getUserEmail(self, portal):
         """ Get user email
@@ -134,28 +140,43 @@ class WorkflowManagement(object):
         # 'Importance' and 'X-MSMail-Priority' are used by Outlook and
         #   Outlook Express while 'X-Priority' is used by Thunderbird and Eudora
 
-        kwargs = {'Importance': 'Normal',
-            'X-MSMail-Priority': 'Normal',
-            'X-Priority': '3',
-            'Priority': 'normal'}
+        # TODO: plone4 ichimdav this was unused, see if it's still needed
+        #kwargs = {'Importance': 'Normal',
+        #    'X-MSMail-Priority': 'Normal',
+        #    'X-Priority': '3',
+        #    'Priority': 'normal'}
 
         if len(self.toEmail) > 0:
-            kwargs['Importance'] = 'High'
-            kwargs['X-MSMail-Priority'] = 'High'
-            kwargs['X-Priority'] = '1 (Highest)'
-            kwargs['Priority'] = 'urgent'
+            m = Message()
+            m.set_payload(self.msg, 'utf-8')
+            m.set_type('text/html')
+            m.add_header('Importance', 'High')
+            m.add_header('X-MSMail-Priority', 'High')
+            m.add_header('X-Priority', '1 (Highest)')
+            m.add_header('Priority', 'urgent')
             a_subject = 'Action: %s' % subject
-            self.mhost.secureSend(self.msg, self.toEmail, self.fromEmail,
-                                  a_subject, subtype="html", charset='utf-8',
-                                  debug=DEBUG, **kwargs)
+
+            self.mhost.send(m,
+                            mto=self.toEmail,
+                            mfrom=self.fromEmail,
+                            subject=a_subject, 
+                            msg_type='text/html',
+                            )
 
         if len(self.toConfirmationEmail) > 0:
-            kwargs['Importance'] = 'Low'
-            kwargs['X-MSMail-Priority'] = 'Low'
-            kwargs['X-Priority'] = '5 (Lowest)'
-            kwargs['Priority'] = 'non-urgent'
+            m = Message()
+            m.set_payload(self.confirmationMsg, 'utf-8')
+            m.set_type('text/html')
+            m.add_header('Importance', 'High')
+            m.add_header('X-MSMail-Priority', 'High')
+            m.add_header('X-Priority', '1 (Highest)')
+            m.add_header('Priority', 'urgent')
+            a_subject = 'Action: %s' % subject
             c_subject = 'Confirmation: %s' % subject
-            self.mhost.secureSend(self.confirmationMsg,
-                                  self.toConfirmationEmail, self.fromEmail,
-                                  c_subject, subtype="html", charset='utf-8',
-                                  debug=DEBUG, **kwargs)
+
+            self.mhost.send(      m,
+                                  mto=self.toConfirmationEmail, 
+                                  mfrom=self.fromEmail,
+                                  subject=c_subject, 
+                                  msg_type="text/html", 
+                                  )

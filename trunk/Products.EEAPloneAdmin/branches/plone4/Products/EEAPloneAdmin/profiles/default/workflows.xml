@@ -116,7 +116,7 @@
         <type type_id="Image">
             <bound-workflow workflow_id="plone_workflow"/>
         </type>
-
+        
         <type type_id="Large Plone Folder">
             <bound-workflow workflow_id="folder_workflow"/>
         </type>
@@ -189,6 +189,11 @@
         <type type_id="VdexTerm"/>
         <type type_id="VdexVocabulary"/>
         <type type_id="VocabularyLibrary"/>
+
+        <type type_id="File">
+            <bound-workflow workflow_id="eea_default_workflow"/>
+        </type>
+
 
     </bindings>
 

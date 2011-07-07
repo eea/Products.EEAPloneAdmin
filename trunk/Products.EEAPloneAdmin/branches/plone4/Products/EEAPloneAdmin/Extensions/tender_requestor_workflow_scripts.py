@@ -30,10 +30,7 @@ __docformat__ = 'plaintext'
 
 # Workflow Scripts for: tender_requestor_workflow
 
-##code-section workflow-script-header #fill in your manual code here
-#from Products.CMFCore.utils import getToolByName
-from Products.EEAPloneAdmin.config import DEBUG
-##/code-section workflow-script-header
+#from Products.EEAPloneAdmin.config import DEBUG
 
 
 def sendCFTLink(self, state_change, **kw):
@@ -56,6 +53,6 @@ def sendCFTLink(self, state_change, **kw):
          obj.getId()
          )
 
-    return mhost.secureSend(msg, toEmail, fromEmail, subject, debug=DEBUG)
+    return mhost.send(msg, toEmail, fromEmail, subject)
 
 

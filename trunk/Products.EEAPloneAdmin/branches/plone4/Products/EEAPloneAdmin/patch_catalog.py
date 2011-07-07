@@ -2,13 +2,8 @@
 """
 
 from DateTime import DateTime
-from Globals import DTMLFile
-from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import log
 
-
-view = DTMLFile('www/catalogView',globals())
 
 def searchResults(self, REQUEST=None, **kw):
     """ Calls ZCatalog.searchResults with extra arguments that
@@ -27,34 +22,38 @@ def searchResults(self, REQUEST=None, **kw):
     return self._old_searchResults(REQUEST, **kw)
 
 
-# MONKEY PATCH
-#plone4: is this still needed?
+#from Globals import DTMLFile
+#view = DTMLFile('www/catalogView', globals())
+
 # If parent has more then 50 children reorder will be restricted in order
 # to avoid heavy wake up of objects. See more under #2803
-def reindexOnReorder(self, parent):
-    """ Catalog ordering support """
+#NOTE: we disabled this on plone4 because default method in CMFPlone doesn't do anything anymore
 
-    if len(parent.objectIds()) > 50:
-        log('This context has more then 50 children and reorder is restricted. Path %s' %
-            parent.absolute_url(1))
-        return
+#from Products.CMFCore.permissions import ModifyPortalContent
+#from Products.CMFPlone.utils import log
+#def reindexOnReorder(self, parent):
+    #""" Catalog ordering support """
 
-    mtool = getToolByName(self, 'portal_membership')
-    if not mtool.checkPermission(ModifyPortalContent, parent):
-        return
+    #if len(parent.objectIds()) > 50:
+        #log('This context has more then 50 children and reorder is restricted. Path %s' %
+            #parent.absolute_url(1))
+        #return
 
-    cat = getToolByName(self, 'portal_catalog')
-    cataloged_objs = cat(path = {'query':'/'.join(parent.getPhysicalPath()),
-                                 'depth': 1})
-    for brain in cataloged_objs:
-        obj = brain.getObject()
-        # Don't crash when the catalog has contains a stale entry
-        if obj is not None:
-            cat.reindexObject(obj,['getObjPositionInParent'],
-                                                update_metadata=0)
-        else:
-            # Perhaps we should remove the bad entry as well?
-            log('Object in catalog no longer exists, cannot reindex: %s.'%
-                                brain.getPath())
+    #mtool = getToolByName(self, 'portal_membership')
+    #if not mtool.checkPermission(ModifyPortalContent, parent):
+        #return
 
-#PloneTool.reindexOnReorder = reindexOnReorder
+    #cat = getToolByName(self, 'portal_catalog')
+    #cataloged_objs = cat(path = {'query':'/'.join(parent.getPhysicalPath()),
+                                 #'depth': 1})
+    #for brain in cataloged_objs:
+        #obj = brain.getObject()
+        ## Don't crash when the catalog has contains a stale entry
+        #if obj is not None:
+            #cat.reindexObject(obj,['getObjPositionInParent'],
+                                                #update_metadata=0)
+        #else:
+            ## Perhaps we should remove the bad entry as well?
+            #log('Object in catalog no longer exists, cannot reindex: %s.'%
+                                #brain.getPath())
+

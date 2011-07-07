@@ -88,12 +88,12 @@
     enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
     position-after="ga.js"
-    id="++resource++eea.jquery.js" inline="False"/>
+    id="jquery.js" inline="False"/>
 
   <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
-    position-after="++resource++eea.jquery.js"
+    position-after="jquery.js"
     id="++resource++jquery.tools.min.js" inline="False"/>
 
   <javascript cacheable="True" compression="safe" cookable="True"
