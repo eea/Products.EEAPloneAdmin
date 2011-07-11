@@ -3,13 +3,14 @@
     xmlns:monkey="http://namespaces.plone.org/monkey"
     i18n_domain="eea">
 
-    <monkey:patch
+    <!-- XXX Deprecated patch. Remove me -->
+    <!--monkey:patch
         description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
         class="Products.CMFPlone.CatalogTool.CatalogTool "
         original="searchResults"
         replacement=".patch_catalog.searchResults"
         preserveOriginal="true"
-        />
+        /-->
 
     <monkey:patch
         description="Monkeypatch ATCTFolderMixin.HEAD to also look for z3 views as default pages"
@@ -19,13 +20,14 @@
         preserveOriginal="true"
         />
 
-    <monkey:patch
+    <!-- XXX Deprecated patch. Remove me -->
+    <!--monkey:patch
         description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
         class="Products.CMFPlone.CatalogTool.CatalogTool "
         original="__call__"
         replacement=".patch_catalog.searchResults"
         preserveOriginal="true"
-        />
+        /-->
 
     <monkey:patch
         description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
