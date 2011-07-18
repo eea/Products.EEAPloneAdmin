@@ -10,7 +10,7 @@ from eea.mediacentre.interfaces import IMediaType
 from p4a.video.interfaces import IVideo
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.browser.interfaces import INavigationRoot
+from plone.app.layout.navigation.interfaces import INavigationRoot
 import os
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
