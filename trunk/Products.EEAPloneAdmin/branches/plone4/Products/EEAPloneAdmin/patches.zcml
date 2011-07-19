@@ -45,4 +45,15 @@
         replacement=".patch_hachoir_core.PatchedUnicodeStdout"
         />
 
+    <!-- Patch for GenericSetup delete unused steps, as those functions had no docstings -->
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
+                  class="Products.GenericSetup.tool.SetupTool"
+                  original="manage_deleteImportSteps"
+                  replacement=".patch_genericsetup.manage_deleteImportSteps" />
+
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
+                  class="Products.GenericSetup.tool.SetupTool"
+                  original="manage_deleteExportSteps"
+                  replacement=".patch_genericsetup.manage_deleteExportSteps" />
+
 </configure>
