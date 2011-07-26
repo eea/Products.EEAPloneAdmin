@@ -56,4 +56,10 @@
                   original="manage_deleteExportSteps"
                   replacement=".patch_genericsetup.manage_deleteExportSteps" />
 
+    <!-- Patch for p4a.fileimage, illegal characters are found when adding a FlashFile -->
+    <monkey:patch description="Monkeypatch p4a.fileimage.utils.py"
+                  module="p4a.fileimage.utils"
+                  original="write_ofsfile_to_tempfile"
+                  replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />
+
 </configure>
