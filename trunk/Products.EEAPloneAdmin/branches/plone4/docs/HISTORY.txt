@@ -10,6 +10,7 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Change: synchronized with resources on testing server [szabozo0 #4440]
 
 * Change: refactored the @@plone view to conform to Plone 4
   [tiberich #4306]
