@@ -20,6 +20,14 @@
         preserveOriginal="true"
         />
 
+    <monkey:patch
+        description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
+        class="Products.ATContentTypes.content.topic.ATTopic"
+        original="listSubtopics"
+        replacement=".patch_atct.listSubtopics"
+        preserveOriginal="false"
+        />
+
     <!-- XXX Deprecated patch. Remove me -->
     <!--monkey:patch
         description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
