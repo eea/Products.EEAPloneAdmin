@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bugfix: Enabled table_sorter.js for not authenticated users [szabozo0 #4446]
+
 * Change: synchronized with resources on testing server [szabozo0 #4440]
 
 * Change: refactored the @@plone view to conform to Plone 4

@@ -162,7 +162,7 @@
  <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="dropdown.js" inline="False"/>
- <javascript authenticated="True" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="table_sorter.js" inline="False"/>
  <javascript authenticated="True" cacheable="True" compression="safe"
