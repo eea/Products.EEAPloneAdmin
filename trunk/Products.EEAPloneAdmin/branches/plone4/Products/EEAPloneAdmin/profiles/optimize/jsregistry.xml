@@ -315,4 +315,8 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="tiny_mce_init.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="not: portal/portal_membership/isAnonymousUser"
+    id="block_ldapuserfolder_profile.js" inline="False"/>
 </object>
