@@ -71,7 +71,7 @@
                   replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />
 
     <!-- Related to HTML5 integration -->
-    <monkey:patch description="Monkeypatch plone.app.layout.links.viewlets.NavigationViewlet to remove deprecate <link rel='xxx' tags"
+    <monkey:patch description="Monkeypatch plone.app.layout.links.viewlets.NavigationViewlet to remove deprecate link rel=xxx tags"
                   module="plone.app.layout.links.viewlets"
                   original="NavigationViewlet"
                   replacement=".patch_html5.PatchedNavigationViewlet" />
