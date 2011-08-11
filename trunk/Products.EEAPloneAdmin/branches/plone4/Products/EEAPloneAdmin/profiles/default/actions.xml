@@ -35,7 +35,7 @@
       <property name="description" i18n:translate=""></property>
       <property name="url_expr">string:$object_url/SKOS</property>
       <property name="link_target"></property>
-      <property name="icon_expr">string:$portal_url/rdf.gif</property>
+      <property name="icon_expr">string:$portal_url/rdf.png</property>
       <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
       <property name="permissions">
         <element value="View"/>
@@ -62,7 +62,7 @@
       <property
         name="url_expr">string:javascript:toggleFullScreenMode();</property>
       <property
-        name="icon_expr">string:$portal_url/fullscreenexpand_icon.png</property>
+        name="icon_expr">string:$portal_url/fullscreenexpand_icon.gif</property>
       <property name="available_expr">not: here/@@inApplication</property>
       <property name="permissions">
         <element value="View"/>
@@ -74,7 +74,7 @@
       <property name="title" i18n:translate="">Print this</property>
       <property name="description" i18n:translate=""></property>
       <property name="url_expr">string:javascript:this.print();</property>
-      <property name="icon_expr">string:$portal_url/print_icon.png</property>
+      <property name="icon_expr">string:$portal_url/print_icon.gif</property>
       <property name="available_expr"></property>
       <property name="permissions">
         <element value="View"/>
