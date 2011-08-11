@@ -12,5 +12,17 @@
         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
         handler=".event.handle_resourceregistry_change" />
 
+    <adapter
+        factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+        provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+        for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary"
+        />
+
+    <adapter
+        factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+        provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+        for="Products.NavigationManager.NavigationManager.NavigationManager"
+        />
+
 </configure>
 

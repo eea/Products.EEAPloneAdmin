@@ -33,4 +33,10 @@
     <include package="eea.mediacentre" file="overrides.zcml" />
     <include package="eea.reports" file="overrides.zcml" />
 
+    <adapter
+        factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+        provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+        />
+
 </configure>
