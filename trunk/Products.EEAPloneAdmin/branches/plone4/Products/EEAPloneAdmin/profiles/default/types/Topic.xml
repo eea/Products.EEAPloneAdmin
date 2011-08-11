@@ -4,7 +4,7 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <action title="Syndication" action_id="syndication" category="object"
     condition_expr="" url_expr="string:${folder_url}/synPropertiesForm"
-    visible="True">
+    visible="False">
   <permission value="Change portal topics"/>
  </action>
 </object>
