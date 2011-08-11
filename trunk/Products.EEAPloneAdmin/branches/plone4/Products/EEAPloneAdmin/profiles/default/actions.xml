@@ -35,7 +35,7 @@
       <property name="description" i18n:translate=""></property>
       <property name="url_expr">string:$object_url/SKOS</property>
       <property name="link_target"></property>
-      <property name="icon_expr">string:$portal_url/rdf.png</property>
+      <property name="icon_expr">string:$portal_url/rdf.gif</property>
       <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
       <property name="permissions">
         <element value="View"/>
@@ -82,5 +82,33 @@
       <property name="visible">True</property>
     </object>
   </object>
+
+  <object name="rdf" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">RDF</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${object_url}/@@rdf</property>
+   <property name="link_target"></property>
+   <property name="icon_expr">string:$portal_url/rdf.png</property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="sendto" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Send this</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:$object_url/sendto_form</property>
+   <property name="link_target"></property>
+   <property name="icon_expr">string:$portal_url/mail_icon.gif</property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+ </object>
 
 </object>
