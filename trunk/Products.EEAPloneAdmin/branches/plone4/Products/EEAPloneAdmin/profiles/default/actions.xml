@@ -23,7 +23,7 @@
    <property name="url_expr">string:$object_url/RSS2</property>
    <property name="link_target"></property>
    <property name="icon_expr">string:$portal_url/rss.gif</property>
-   <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object) and object.portal_type != 'Topic'</property>
+   <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
    <property name="permissions">
     <element value="View"/>
    </property>
