@@ -40,7 +40,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">True</property>
+      <property name="visible">False</property>
     </object>
 
     <object name="gearth" meta_type="CMF Action" i18n:domain="plone">
@@ -84,7 +84,7 @@
   </object>
 
   <object name="rdf" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">RDF</property>
+   <property name="title" i18n:translate="">RDF (Semantic data export)</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${object_url}/@@rdf</property>
    <property name="link_target"></property>
@@ -93,7 +93,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">False</property>
+   <property name="visible">True</property>
   </object>
 
   <object name="sendto" meta_type="CMF Action" i18n:domain="plone">
