@@ -13,3 +13,9 @@ def listSubtopics(self):
     tops = [t[1] for t in tops]
     return tops
 
+
+from OFS.Folder import Folder
+from Products.ATContentTypes.content.folder import ATFolder, ATBTreeFolder
+
+ATFolder.manage_options = Folder.manage_options
+ATBTreeFolder.manage_options = Folder.manage_options
