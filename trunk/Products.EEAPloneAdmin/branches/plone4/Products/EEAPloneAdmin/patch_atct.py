@@ -1,3 +1,6 @@
+""" Monkey patches for ATCT
+"""
+
 from Products.CMFCore.utils import getToolByName
 
 def listSubtopics(self):

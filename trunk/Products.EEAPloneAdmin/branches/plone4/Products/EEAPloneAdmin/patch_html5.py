@@ -16,3 +16,8 @@ class PatchedNavigationViewlet(ViewletBase):
         return ''
 
 plone.app.layout.links.viewlets.NavigationViewlet = PatchedNavigationViewlet
+
+def render(self):
+    # We need to generate the link in every case, since the new url base detection
+    # algorithm of kss relies on it.
+    return u'<link rel="alternate" data-kss-base-url="kss-base-url" href="%s/" />' % self.context_state.object_url()

@@ -1,28 +1,28 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:five="http://namespaces.zope.org/five"
-    i18n_domain="Products.EEAPloneAdmin">
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="Products.EEAPloneAdmin">
 
     <include file="profiles.zcml" />
     <include package=".browser" />
     <include package=".upgrades" />
 
-    <subscriber
-        for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
-        zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-        handler=".event.handle_resourceregistry_change" />
+    <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+                zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".event.handle_resourceregistry_change" />
 
-    <adapter
-        factory=".exportimport.dummyexporter.DummyFilesystemExporter"
-        provides="Products.GenericSetup.interfaces.IFilesystemExporter"
-        for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary"
-        />
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
 
-    <adapter
-        factory=".exportimport.dummyexporter.DummyFilesystemExporter"
-        provides="Products.GenericSetup.interfaces.IFilesystemExporter"
-        for="Products.NavigationManager.NavigationManager.NavigationManager"
-        />
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.NavigationManager.NavigationManager.NavigationManager" />
+        
+    <!-- Override ++resource++kukit.js to validate KSS resources as HTML5, see #4444.
+         To be removed once we switch to Plone 4.2
+         Under portal_javascripts remove ++resource++eea_patch_kukit.js and enable ++resource++kukit.js -->
+    <browser:resource name="eea_patch_kukit.js"
+                      file="patch_html5_kukit.js" />
 
 </configure>
 
