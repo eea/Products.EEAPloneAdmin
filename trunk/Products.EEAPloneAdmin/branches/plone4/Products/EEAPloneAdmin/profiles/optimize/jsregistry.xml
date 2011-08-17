@@ -123,7 +123,7 @@
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="form_tabbing.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="popupforms.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
@@ -217,11 +217,11 @@
     id="++resource++base2-dom-fp.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
-    expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').isoff()"
+    expression=""
     id="++resource++kukit.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="False"
-    expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').ison()"
+    expression=""
     id="++resource++kukit-devel.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
