@@ -182,7 +182,7 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="lt IE 8"
-    cookable="True" enabled="on" expression="" id="IEFixes.css" media="screen"
+    cookable="True" enabled="False" expression="" id="IEFixes.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="IE 7"
