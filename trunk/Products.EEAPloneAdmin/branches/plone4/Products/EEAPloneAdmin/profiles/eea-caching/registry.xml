@@ -117,9 +117,72 @@
       </value_type>
     </field>
     <value>
+      <element>FlashFile</element>
+      <element>Article</element>
+      <element>AssessmentPart</element>
+      <element>CallForInterest</element>
+      <element>CallForTender</element>
+      <element>Topic</element>
+      <element>Data</element>
+      <element>DataFile</element>
+      <element>DataTable</element>
+      <element>EEAVacancy</element>
+      <element>EEAFigure</element>
+      <element>EEAFigureFile</element>
+      <element>EcoTip</element>
+      <element>Enquiry</element>
+      <element>EnquiryFolder</element>
+      <element>EnquiryRequestor</element>
+      <element>EnquiryRequestorFolder</element>
+      <element>EpubFile</element>
+      <element>Event</element>
+      <element>ExternalDataSpec</element>
+      <element>EyewitnessStory</element>
+      <element>HelpCenterFAQ</element>
+      <element>HelpCenterFAQFolder</element>
+      <element>FactSheetDocument</element>
       <element>File</element>
+      <element>Folder</element>
+      <element>GIS Application</element>
+      <element>HelpCenter</element>
+      <element>HelpCenterLink</element>
+      <element>Highlight</element>
+      <element>HelpCenterHowTo</element>
+      <element>HelpCenterHowToFolder</element>
       <element>Image</element>
+      <element>ImageFS</element>
+      <element>Assessment</element>
+      <element>IndicatorFactSheet</element>
+      <element>Specification</element>
+      <element>KeyMessage</element>
+      <element>Link</element>
+      <element>MethodologyReference</element>
+      <element>FlexibilityReport</element>
       <element>News Item</element>
+      <element>Newsletter</element>
+      <element>NewsletterBTree</element>
+      <element>NewsletterReference</element>
+      <element>NewsletterRichReference</element>
+      <element>NewsletterTheme</element>
+      <element>NewsletterTopic</element>
+      <element>Organisation</element>
+      <element>Document</element>
+      <element>PolicyDocumentReference</element>
+      <element>PolicyQuestion</element>
+      <element>PressRelease</element>
+      <element>Promotion</element>
+      <element>Report</element>
+      <element>QuickEvent</element>
+      <element>RationaleReference</element>
+      <element>SOERCountry</element>
+      <element>SOERKeyFact</element>
+      <element>SOERMessage</element>
+      <element>Speech</element>
+      <element>HelpCenterTutorial</element>
+      <element>HelpCenterTutorialPage</element>
+      <element>HelpCenterTutorialFolder</element>
+      <element>HelpCenterInstructionalVideo</element>
+      <element>WorkItem</element>
     </value>
   </record>
   <record field="templateRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping">
@@ -385,7 +448,9 @@
       <title>Domains</title>
       <value_type type="plone.registry.field.URI"/>
     </field>
-    <value/>
+    <value>
+      <element>http://www-testing.webdev.eea.europa.eu:80</element>
+    </value>
   </record>
   <record field="enabled" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.enabled">
     <field type="plone.registry.field.Bool">
@@ -401,7 +466,7 @@
       <description>This option is only relevant if you are using virtual hosting with Zope's VirtualHostMonster. This relies on special tokens (VirtualHostBase and VirtualHostRoot) in the URL to instruct Zope about the types of URLs that the user sees. If virtual host URLs are in use and this option is set, PURGE requests will be sent to the caching proxy with the virtual hosting tokens in place. This makes sense if there is a web server in front of your caching proxy performing the rewrites necessary to translate a user-facing URL into a virtual hosting URL, so that the requests the caching proxy sees have the rewrite information in them. Conversely, if the rewrite is done in or behind the caching proxy, you want to disable this option, so that the PURGE requests use URLs that match those seen by the caching proxy as they come from the client.</description>
       <title>Send PURGE requests with virtual hosting paths</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record field="enabled" interface="plone.caching.interfaces.ICacheSettings" name="plone.caching.interfaces.ICacheSettings.enabled">
     <field type="plone.registry.field.Bool">
