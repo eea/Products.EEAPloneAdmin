@@ -9,7 +9,7 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++jquery.select2uislider.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++jquery.jstree.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
