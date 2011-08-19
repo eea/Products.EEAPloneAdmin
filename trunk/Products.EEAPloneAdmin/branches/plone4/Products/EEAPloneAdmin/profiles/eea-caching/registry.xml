@@ -28,7 +28,72 @@
         <title>Ruleset name</title>
       </value_type>
     </field>
-    <value/>
+    <value>
+      <element key="EEAFigureFile">plone.content.file</element>
+      <element key="EEAFigure">plone.content.itemView</element>
+      <element key="HelpCenterHowTo">plone.content.itemView</element>
+      <element key="SOERKeyFact">plone.content.itemView</element>
+      <element key="Enquiry">plone.content.itemView</element>
+      <element key="Organisation">plone.content.itemView</element>
+      <element key="HelpCenterTutorialPage">plone.content.itemView</element>
+      <element key="KeyMessage">plone.content.itemView</element>
+      <element key="HelpCenterFAQFolder">plone.content.itemView</element>
+      <element key="HelpCenterLink">plone.content.itemView</element>
+      <element key="HelpCenter">plone.content.itemView</element>
+      <element key="MethodologyReference">plone.content.itemView</element>
+      <element key="Folder">plone.content.folderView</element>
+      <element key="Document">plone.content.itemView</element>
+      <element key="BaseCacheRule">plone.content.feed</element>
+      <element key="Newsletter">plone.content.itemView</element>
+      <element key="AssessmentPart">plone.content.itemView</element>
+      <element key="SOERCountry">plone.content.itemView</element>
+      <element key="FactSheetDocument">plone.content.itemView</element>
+      <element key="News Item">plone.content.itemView</element>
+      <element key="CallForInterest">plone.content.itemView</element>
+      <element key="Assessment">plone.content.itemView</element>
+      <element key="FlashFile">plone.content.file</element>
+      <element key="HelpCenterFAQ">plone.content.itemView</element>
+      <element key="EpubFile">plone.content.folderView</element>
+      <element key="NewsletterRichReference">plone.content.itemView</element>
+      <element key="RationaleReference">plone.content.itemView</element>
+      <element key="NewsletterTopic">plone.content.itemView</element>
+      <element key="EnquiryRequestorFolder">plone.content.itemView</element>
+      <element key="ExternalDataSpec">plone.content.itemView</element>
+      <element key="EcoTip">plone.content.itemView</element>
+      <element key="Data">plone.content.itemView</element>
+      <element key="EnquiryFolder">plone.content.itemView</element>
+      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
+      <element key="DataFile">plone.content.file</element>
+      <element key="Specification">plone.content.itemView</element>
+      <element key="WorkItem">plone.content.itemView</element>
+      <element key="HelpCenterHowToFolder">plone.content.itemView</element>
+      <element key="Report">plone.content.itemView</element>
+      <element key="HelpCenterTutorial">plone.content.itemView</element>
+      <element key="Article">plone.content.itemView</element>
+      <element key="Topic">plone.content.itemView</element>
+      <element key="Highlight">plone.content.itemView</element>
+      <element key="Promotion">plone.content.itemView</element>
+      <element key="PolicyDocumentReference">plone.content.itemView</element>
+      <element key="DataTable">plone.content.itemView</element>
+      <element key="CallForTender">plone.content.itemView</element>
+      <element key="GIS Application">plone.content.itemView</element>
+      <element key="NewsletterReference">plone.content.itemView</element>
+      <element key="SOERMessage">plone.content.itemView</element>
+      <element key="IndicatorFactSheet">plone.content.itemView</element>
+      <element key="Image">plone.content.file</element>
+      <element key="EyewitnessStory">plone.content.itemView</element>
+      <element key="Event">plone.content.itemView</element>
+      <element key="EEAVacancy">plone.content.itemView</element>
+      <element key="PolicyQuestion">plone.content.itemView</element>
+      <element key="EnquiryRequestor">plone.content.itemView</element>
+      <element key="ImageFS">plone.content.file</element>
+      <element key="File">plone.content.file</element>
+      <element key="PressRelease">plone.content.itemView</element>
+      <element key="Speech">plone.content.itemView</element>
+      <element key="NewsletterBTree">plone.content.itemView</element>
+      <element key="NewsletterTheme">plone.content.itemView</element>
+      <element key="QuickEvent">plone.content.itemView</element>
+    </value>
   </record>
   <record field="enableCompression" interface="plone.app.caching.interfaces.IPloneCacheSettings" name="plone.app.caching.interfaces.IPloneCacheSettings.enableCompression">
     <field type="plone.registry.field.Bool">
@@ -104,6 +169,32 @@
     </field>
     <value>False</value>
   </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>86400</value>
+  </record>
   <record name="plone.app.caching.moderateCaching.ramCache">
     <field type="plone.registry.field.Bool">
       <description>Turn on caching in Zope memory</description>
@@ -161,6 +252,22 @@
     </field>
     <value>86400</value>
   </record>
+  <record name="plone.app.caching.strongCaching.plone.resource.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.resource.maxage">
+    <field ref="plone.app.caching.strongCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.maxage">
+    <field ref="plone.app.caching.strongCaching.maxage"/>
+    <value>31536000</value>
+  </record>
   <record name="plone.app.caching.strongCaching.ramCache">
     <field type="plone.registry.field.Bool">
       <description>Turn on caching in Zope memory</description>
@@ -210,6 +317,39 @@
     </field>
     <value>False</value>
   </record>
+  <record name="plone.app.caching.weakCaching.plone.content.folderView.etags">
+    <field ref="plone.app.caching.weakCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+      <element>locked</element>
+      <element>copy</element>
+      <element>resourceRegistries</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.folderView.ramCache">
+    <field ref="plone.app.caching.weakCaching.ramCache"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.itemView.etags">
+    <field ref="plone.app.caching.weakCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+      <element>locked</element>
+      <element>resourceRegistries</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.itemView.ramCache">
+    <field ref="plone.app.caching.weakCaching.ramCache"/>
+    <value>True</value>
+  </record>
   <record name="plone.app.caching.weakCaching.ramCache">
     <field type="plone.registry.field.Bool">
       <description>Turn on caching in Zope memory</description>
@@ -232,7 +372,9 @@
       <title>Caching proxies</title>
       <value_type type="plone.registry.field.URI"/>
     </field>
-    <value/>
+    <value>
+      <element>http://localhost:9999</element>
+    </value>
   </record>
   <record field="domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.domains">
     <field type="plone.registry.field.Tuple">
@@ -267,7 +409,7 @@
       <description>If not set, no caching operations will be attempted</description>
       <title>Globally enabled</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record field="operationMapping" interface="plone.caching.interfaces.ICacheSettings" name="plone.caching.interfaces.ICacheSettings.operationMapping">
     <field type="plone.registry.field.Dict">
@@ -282,7 +424,14 @@
         <title>Caching operation name</title>
       </value_type>
     </field>
-    <value/>
+    <value>
+      <element key="plone.resource">plone.app.caching.strongCaching</element>
+      <element key="plone.stableResource">plone.app.caching.strongCaching</element>
+      <element key="plone.content.itemView">plone.app.caching.weakCaching</element>
+      <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.folderView">plone.app.caching.weakCaching</element>
+      <element key="plone.content.file">plone.app.caching.moderateCaching</element>
+    </value>
   </record>
   <record name="plone.caching.operations.chain.operations">
     <field type="plone.registry.field.List">
