@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Feature: Added profile for caching settings [ghicaale #4394]
+
 * Feature: Added patch_html5 in support of HTML5 integration [ghicaale #4444]
 
 * Bugfix: Enabled table_sorter.js for not authenticated users [szabozo0 #4446]
