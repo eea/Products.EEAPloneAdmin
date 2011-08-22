@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bugfix: Fixed promotion_gallery.js error when not in development mode [szabozo0 #4441]
+
 * Feature: Added profile for caching settings [ghicaale #4394]
 
 * Feature: Added patch_html5 in support of HTML5 integration [ghicaale #4444]
