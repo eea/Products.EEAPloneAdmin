@@ -33,66 +33,66 @@
       <element key="EEAFigure">plone.content.itemView</element>
       <element key="HelpCenterHowTo">plone.content.itemView</element>
       <element key="SOERKeyFact">plone.content.itemView</element>
-      <element key="Organisation">plone.content.itemView</element>
       <element key="Enquiry">plone.content.itemView</element>
-      <element key="EnquiryFolder">plone.content.itemView</element>
+      <element key="Organisation">plone.content.itemView</element>
       <element key="HelpCenterTutorialPage">plone.content.itemView</element>
       <element key="KeyMessage">plone.content.itemView</element>
       <element key="HelpCenterFAQFolder">plone.content.itemView</element>
       <element key="HelpCenterLink">plone.content.itemView</element>
       <element key="HelpCenter">plone.content.itemView</element>
-      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
+      <element key="MethodologyReference">plone.content.itemView</element>
       <element key="Folder">plone.content.folderView</element>
-      <element key="News Item">plone.content.itemView</element>
+      <element key="Document">plone.content.itemView</element>
       <element key="BaseCacheRule">plone.content.feed</element>
+      <element key="Newsletter">plone.content.itemView</element>
       <element key="AssessmentPart">plone.content.itemView</element>
       <element key="SOERCountry">plone.content.itemView</element>
-      <element key="EEAVacancy">plone.content.itemView</element>
-      <element key="Document">plone.content.itemView</element>
+      <element key="FactSheetDocument">plone.content.itemView</element>
+      <element key="News Item">plone.content.itemView</element>
       <element key="CallForInterest">plone.content.itemView</element>
-      <element key="RationaleReference">plone.content.itemView</element>
       <element key="Assessment">plone.content.itemView</element>
       <element key="FlashFile">plone.content.file</element>
       <element key="HelpCenterFAQ">plone.content.itemView</element>
       <element key="EpubFile">plone.content.folderView</element>
       <element key="NewsletterRichReference">plone.content.itemView</element>
-      <element key="EcoTip">plone.content.itemView</element>
+      <element key="RationaleReference">plone.content.itemView</element>
       <element key="NewsletterTopic">plone.content.itemView</element>
       <element key="EnquiryRequestorFolder">plone.content.itemView</element>
       <element key="ExternalDataSpec">plone.content.itemView</element>
-      <element key="Article">plone.content.itemView</element>
+      <element key="EcoTip">plone.content.itemView</element>
       <element key="Data">plone.content.itemView</element>
+      <element key="EnquiryFolder">plone.content.itemView</element>
+      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
+      <element key="DataFile">plone.content.file</element>
       <element key="Specification">plone.content.itemView</element>
-      <element key="NewsletterTheme">plone.content.itemView</element>
-      <element key="MethodologyReference">plone.content.itemView</element>
-      <element key="File">plone.content.file</element>
-      <element key="FactSheetDocument">plone.content.itemView</element>
       <element key="GIS Application">plone.content.itemView</element>
       <element key="HelpCenterHowToFolder">plone.content.itemView</element>
+      <element key="EEAVacancy">plone.content.itemView</element>
       <element key="Report">plone.content.itemView</element>
       <element key="HelpCenterTutorial">plone.content.itemView</element>
+      <element key="Article">plone.content.itemView</element>
       <element key="Highlight">plone.content.itemView</element>
       <element key="Promotion">plone.content.itemView</element>
       <element key="PolicyDocumentReference">plone.content.itemView</element>
       <element key="DataTable">plone.content.itemView</element>
+      <element key="CallForTender">plone.content.itemView</element>
       <element key="WorkItem">plone.content.itemView</element>
-      <element key="DataFile">plone.content.file</element>
       <element key="NewsletterReference">plone.content.itemView</element>
-      <element key="QuickEvent">plone.content.itemView</element>
       <element key="SOERMessage">plone.content.itemView</element>
-      <element key="IndicatorFactSheet">plone.content.itemView</element>
+      <element key="PolicyQuestion">plone.content.itemView</element>
       <element key="Image">plone.content.file</element>
       <element key="EyewitnessStory">plone.content.itemView</element>
-      <element key="Event">plone.content.itemView</element>
+      <element key="EnquiryRequestor">plone.content.itemView</element>
       <element key="Topic">plone.content.itemView</element>
-      <element key="PolicyQuestion">plone.content.itemView</element>
+      <element key="IndicatorFactSheet">plone.content.itemView</element>
       <element key="ImageFS">plone.content.file</element>
-      <element key="CallForTender">plone.content.itemView</element>
+      <element key="File">plone.content.file</element>
       <element key="PressRelease">plone.content.itemView</element>
       <element key="Speech">plone.content.itemView</element>
       <element key="NewsletterBTree">plone.content.itemView</element>
-      <element key="Newsletter">plone.content.itemView</element>
-      <element key="EnquiryRequestor">plone.content.itemView</element>
+      <element key="NewsletterTheme">plone.content.itemView</element>
+      <element key="QuickEvent">plone.content.itemView</element>
+      <element key="Event">plone.content.itemView</element>
     </value>
   </record>
   <record field="enableCompression" interface="plone.app.caching.interfaces.IPloneCacheSettings" name="plone.app.caching.interfaces.IPloneCacheSettings.enableCompression">
@@ -213,7 +213,7 @@
       <required>False</required>
       <title>Only cache for anonymous users</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.moderateCaching.etags">
     <field type="plone.registry.field.Tuple">
@@ -230,7 +230,7 @@
       <required>False</required>
       <title>Last-modified validation</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.moderateCaching.plone.content.feed.etags">
     <field ref="plone.app.caching.moderateCaching.etags"/>
@@ -280,7 +280,7 @@
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value/>
+    <value>Accept-Encoding, X-Username</value>
   </record>
   <record name="plone.app.caching.strongCaching.anonOnly">
     <field type="plone.registry.field.Bool">
@@ -288,7 +288,7 @@
       <required>False</required>
       <title>Only cache for anonymous users</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.strongCaching.etags">
     <field type="plone.registry.field.Tuple">
@@ -305,7 +305,7 @@
       <required>False</required>
       <title>Last-modified validation</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.strongCaching.maxage">
     <field type="plone.registry.field.Int">
@@ -353,7 +353,7 @@
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value/>
+    <value>Accept-Encoding, X-Username</value>
   </record>
   <record name="plone.app.caching.weakCaching.anonOnly">
     <field type="plone.registry.field.Bool">
