@@ -6,7 +6,7 @@
                   name="plone"
                   class=".browser.ploneview.PloneAdmin"
                   permission="zope.Public"
-                  allowed_interface="Products.CMFPlone.browser.interfaces.IPlone 
+                  allowed_interface="Products.CMFPlone.browser.interfaces.IPlone
                                      .browser.interfaces.IPloneAdmin" />
 
     <browser:page name="plone_context_state"
@@ -34,6 +34,10 @@
     <browser:viewletManager name="plone.resourceregistries.kineticstylesheets"
                             provides="Products.ResourceRegistries.interfaces.IHtmlHeadStyles"
                             template="kss.pt"
-                            permission="zope2.View" /> 
+                            permission="zope2.View" />
+
+    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
+      <browser:page name="manage-portlets"
+                    template="manage-contextual.pt" />
 
 </configure>
