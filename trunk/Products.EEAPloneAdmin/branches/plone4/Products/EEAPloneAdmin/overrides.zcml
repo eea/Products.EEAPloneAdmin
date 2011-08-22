@@ -37,9 +37,10 @@
                             permission="zope2.View" />
 
     <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
-      <browser:page name="manage-portlets"
-                    for="*"
-                    permission="zope.Public"
-                    template="manage-contextual.pt" />
+    <browser:page name="manage-portlets"
+                  for="plone.portlets.interfaces.ILocalPortletAssignable"
+                  class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+                  permission="plone.app.portlets.ManagePortlets"
+                  template="manage-contextual.pt" />
 
 </configure>
