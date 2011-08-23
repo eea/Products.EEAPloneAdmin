@@ -18,11 +18,5 @@
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.NavigationManager.NavigationManager.NavigationManager" />
         
-    <!-- Override ++resource++kukit.js to validate KSS resources as HTML5, see #4444.
-         To be removed once we switch to Plone 4.2
-         Under portal_javascripts remove ++resource++eea_patch_kukit.js and enable ++resource++kukit.js -->
-    <browser:resource name="eea_patch_kukit.js"
-                      file="patch_html5_kukit.js" />
-
 </configure>
 

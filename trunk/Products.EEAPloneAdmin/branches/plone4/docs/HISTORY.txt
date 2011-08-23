@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Change: Cleanup, removed eea_patch_kukit.js [szabozo0 #4441]
+
 * Bugfix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets [szabozo0 #4441]
 
 * Feature: Added profile for caching settings [ghicaale #4394]
