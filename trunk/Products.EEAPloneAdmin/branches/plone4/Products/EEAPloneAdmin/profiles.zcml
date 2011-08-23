@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="eea">
 
     <genericsetup:registerProfile
@@ -29,14 +30,16 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         />
 
-    <genericsetup:registerProfile
-        name="eea-caching"
-        title="EEA Plone Admin: caching settings"
-        description="Settings useful for setups with a caching proxy such as Squid or Varnish"
-        directory="profiles/eea-caching"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        for="plone.app.caching.interfaces.ICacheProfiles"
-        />
+    <configure zcml:condition="installed plone.app.caching">
+        <genericsetup:registerProfile
+            name="eea-caching"
+            title="EEA Plone Admin: caching settings"
+            description="Settings useful for setups with a caching proxy such as Squid or Varnish"
+            directory="profiles/eea-caching"
+            provides="Products.GenericSetup.interfaces.EXTENSION"
+            for="plone.app.caching.interfaces.ICacheProfiles"
+            />
+    </configure>
 
     <genericsetup:importStep
         name="eea-various"

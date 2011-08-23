@@ -27,20 +27,16 @@ setup(name=name,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
-
           'Products.LinguaPlone',
           'Products.PloneHelpCenter',
-
           'eea.translations',
           'Products.NavigationManager',
           'valentine.linguaflow',
 
-          #used in testing
+          # Used in testing
           'eea.themecentre',
           'eea.mediacentre',
           'eea.reports',
-
       ],
       entry_points="""
       # -*- Entry points: -*-
