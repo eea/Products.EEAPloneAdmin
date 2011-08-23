@@ -219,11 +219,11 @@
     conditionalcomment="" cookable="True" enabled="False" expression=""
     id="++resource++base2-dom-fp.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
-    conditionalcomment="" cookable="True" enabled="False"
+    conditionalcomment="" cookable="True" enabled="True"
     expression=""
     id="++resource++kukit.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
-    conditionalcomment="" cookable="True" enabled="True"
+    conditionalcomment="" cookable="True" enabled="False"
     expression=""
     id="++resource++eea_patch_kukit.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
