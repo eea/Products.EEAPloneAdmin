@@ -18,7 +18,9 @@
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.NavigationManager.NavigationManager.NavigationManager" />
 
-    <adapter factory=".purge.EEAContentPurgePaths"
-             name="eea.content" />
+    <configure zcml:condition="installed plone.app.caching">
+        <adapter factory=".purge.EEAContentPurgePaths"
+                 name="eea.content" />
+    </configure>
 
 </configure>

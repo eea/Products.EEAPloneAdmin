@@ -1,9 +1,11 @@
 """ Custom PURGE policy
 """
-from z3c.caching.interfaces import IPurgePaths
-from Products.CMFCore.interfaces import IDynamicType
 from zope.interface import implements
 from zope.component import adapts
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from z3c.caching.interfaces import IPurgePaths
+from Products.CMFCore.interfaces import IDynamicType
 
 class EEAContentPurgePaths(object):
     """ Paths to purge for content items to include the templates defined
