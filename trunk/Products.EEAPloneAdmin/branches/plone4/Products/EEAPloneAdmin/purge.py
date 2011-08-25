@@ -39,7 +39,7 @@ class EEAContentPurgePaths(object):
                     templates.append(tpl)
         
         for template in templates:
-            yield prefix + template
+            yield prefix + '/' + template
 
     def getAbsolutePaths(self):
         """ get absolute paths """
