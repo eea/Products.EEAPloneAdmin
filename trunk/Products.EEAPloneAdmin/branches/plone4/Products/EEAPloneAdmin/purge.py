@@ -22,14 +22,24 @@ class EEAContentPurgePaths(object):
     def getRelativePaths(self):
         """ Get relative paths """
         prefix = self.context.absolute_url_path()
+        portal_type = getattr(self.context, 'portal_type', None)
 
         self.registry = getUtility(IRegistry)
         self.ploneSettings = self.registry.forInterface(IPloneCacheSettings)
-
+        
         contentTypeRulesetMapping = self.ploneSettings.contentTypeRulesetMapping
         templateRulesetMapping = self.ploneSettings.templateRulesetMapping
-
-        yield prefix + '/my_template'
+        
+        ruleset = contentTypeRulesetMapping.get(portal_type)
+        
+        if ruleset:
+            templates = []
+            for tpl, rlst in templateRulesetMapping.items():
+                if rlst == ruleset:
+                    templates.append(tpl)
+        
+        for template in templates:
+            yield prefix + template
 
     def getAbsolutePaths(self):
         """ get absolute paths """
