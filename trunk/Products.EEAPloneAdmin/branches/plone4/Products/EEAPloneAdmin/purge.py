@@ -32,15 +32,24 @@ class EEAContentPurgePaths(object):
         
         ruleset = contentTypeRulesetMapping.get(portal_type)
         
+        templates = []
         if ruleset:
-            templates = []
-            for tpl, rlst in templateRulesetMapping.items():
-                if rlst == ruleset:
-                    templates.append(tpl)
+            # Purge all custom templates
+            templates.extend(templateRulesetMapping.keys())
+            
+    	    # Purge all scales
+    	    image_scales = ['image_icon', 'image_tile', 'image_large',
+    	                    'image_wide', 'image_preview', 'image_listing',
+    	                    'image_thumb', 'image_mini']
+    	    templates.extend(image_scales)
+    	    
+            # Purge eea.facetednavigation specific
+            faceted_temaplates = ['faceted_counter', 'faceted_query']
+            templates.extend(faceted_temaplates)
         
         for template in templates:
             yield prefix + '/' + template
-
+            
     def getAbsolutePaths(self):
         """ get absolute paths """
         return []
