@@ -7,7 +7,7 @@
     <include package=".upgrades" />
 
     <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
-                zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                 handler=".event.handle_resourceregistry_change" />
 
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
@@ -17,6 +17,8 @@
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.NavigationManager.NavigationManager.NavigationManager" />
-        
-</configure>
 
+    <adapter factory=".purge.EEAContentPurgePaths"
+             name="eea.content" />
+
+</configure>

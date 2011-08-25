@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Feature: Added EEA custom PURGE policy [ghicaale #4394]
+
 * Change: Cleanup, removed eea_patch_kukit.js [szabozo0 #4441]
 
 * Bugfix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets [szabozo0 #4441]
