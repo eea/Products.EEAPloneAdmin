@@ -44,7 +44,8 @@ class EEAContentPurgePaths(object):
     	    templates.extend(image_scales)
     	    
             # Purge eea.facetednavigation specific
-            faceted_temaplates = ['faceted_counter', 'faceted_query']
+            faceted_temaplates = ['faceted_counter', 'faceted_query',
+                                  'tagscloud_counter']
             templates.extend(faceted_temaplates)
         
         for template in templates:
