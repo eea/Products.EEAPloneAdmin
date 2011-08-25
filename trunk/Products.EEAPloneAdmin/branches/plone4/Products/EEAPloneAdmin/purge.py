@@ -6,6 +6,7 @@ from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 from z3c.caching.interfaces import IPurgePaths
 from Products.CMFCore.interfaces import IDynamicType
+from plone.app.caching.interfaces import IPloneCacheSettings
 
 class EEAContentPurgePaths(object):
     """ Paths to purge for content items to include the templates defined
