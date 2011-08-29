@@ -107,7 +107,6 @@
   <property name="currentFolderOnlyInNavtree" type="boolean">False</property>
   <property name="root" type="string">/</property>
   <property name="name" type="string"></property>
-  <property name="topicListingInNavtree" type="boolean">True</property>
  </object>
  <object name="site_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA</property>
