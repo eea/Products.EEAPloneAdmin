@@ -58,7 +58,7 @@
    <element value="HelpCenterTutorialPage"/>
    <element value="HelpCenterReferenceManualPage"/>
   </property>
-  <property name="bottomLevel" type="int">0</property>
+  <property name="bottomLevel" type="int">10</property>
   <property name="metaTypesNotToList" type="lines">
    <element value="ATBooleanCriterion"/>
    <element value="ATCurrentAuthorCriterion"/>
