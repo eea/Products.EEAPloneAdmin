@@ -162,3 +162,12 @@ class RegenerateCSS(SaveResourcesOnDisk):
     @property
     def tool(self):
         return getToolByName(self.context, "portal_css")
+
+
+class RegenerateKSS(SaveResourcesOnDisk):
+    """Call this to save on disk KSS resources
+    """
+
+    @property
+    def tool(self):
+        return getToolByName(self.context, "portal_kss")
