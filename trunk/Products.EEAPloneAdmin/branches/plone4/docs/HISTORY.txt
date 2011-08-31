@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Feature: Added extra header to prevent cache in browser [ghicaale #4506]
+
 * Feature: Added EEA custom PURGE policy [ghicaale #4394]
 
 * Change: Cleanup, removed eea_patch_kukit.js [szabozo0 #4441]

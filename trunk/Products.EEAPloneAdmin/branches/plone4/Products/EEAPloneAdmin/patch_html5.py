@@ -6,7 +6,6 @@ from plone.app.layout.viewlets import ViewletBase
 from plone.memoize import ram
 import plone.app.layout.links.viewlets
 
-
 class PatchedNavigationViewlet(ViewletBase):
     """ Navigation viewlet """
 
