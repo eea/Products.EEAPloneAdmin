@@ -1,8 +1,14 @@
 """ Patch for plone.app.caching
 """
-
-import plone.app.caching.operations.utils
-from plone.app.caching.operations.utils import formatDateTime, getExpiration
+try:
+    import plone.app.caching.operations.utils
+    from plone.app.caching.operations.utils import (
+        formatDateTime,
+        getExpiration
+    )
+    PLONE_APP_CACHING_INSTALLED = True
+except ImportError:
+    PLONE_APP_CACHING_INSTALLED = False
 
 def doNotCache(published, request, response):
     """ Added extra `` no-store``, ``no-cache``, ``post-check``,
@@ -36,5 +42,6 @@ def cacheInBrowser(published, request, response,
                         post-check=0, pre-check=0, private')
     response.setHeader('Pragma', 'no-cache')
 
-plone.app.caching.operations.utils.doNotCache = doNotCache
-plone.app.caching.operations.utils.cacheInBrowser = cacheInBrowser
+if PLONE_APP_CACHING_INSTALLED:
+    plone.app.caching.operations.utils.doNotCache = doNotCache
+    plone.app.caching.operations.utils.cacheInBrowser = cacheInBrowser

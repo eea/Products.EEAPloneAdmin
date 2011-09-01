@@ -71,17 +71,21 @@
                   preserveOriginal="false" />
 
     <!-- Patch for plone.app.caching to add extra headers -->
-    <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
-                  module="plone.app.caching.operations.utils"
-                  original="doNotCache"
-                  replacement=".patch_cache.doNotCache"
-                  preserveOriginal="true" / -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="doNotCache"
+                      replacement=".patch_cache.doNotCache"
+                      preserveOriginal="true" />
+    </configure -->
 
     <!-- Patch for plone.app.caching to add extra headers -->
-    <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
-                  module="plone.app.caching.operations.utils"
-                  original="cacheInBrowser"
-                  replacement=".patch_cache.cacheInBrowser"
-                  preserveOriginal="true" / -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="cacheInBrowser"
+                      replacement=".patch_cache.cacheInBrowser"
+                      preserveOriginal="true" />
+    </configure -->
 
 </configure>
