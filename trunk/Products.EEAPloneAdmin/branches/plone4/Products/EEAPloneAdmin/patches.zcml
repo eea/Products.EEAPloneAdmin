@@ -1,57 +1,44 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:monkey="http://namespaces.plone.org/monkey"
-    i18n_domain="eea">
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:monkey="http://namespaces.plone.org/monkey"
+           i18n_domain="eea">
 
     <!-- XXX Deprecated patch. Remove me -->
-    <!--monkey:patch
-        description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
-        class="Products.CMFPlone.CatalogTool.CatalogTool "
-        original="searchResults"
-        replacement=".patch_catalog.searchResults"
-        preserveOriginal="true"
-        /-->
+    <!-- monkey:patch description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
+                     class="Products.CMFPlone.CatalogTool.CatalogTool "
+                     original="searchResults"
+                     replacement=".patch_catalog.searchResults"
+                     preserveOriginal="true" / -->
 
-    <monkey:patch
-        description="Monkeypatch ATCTFolderMixin.HEAD to also look for z3 views as default pages"
-        class="Products.ATContentTypes.content.base.ATCTFolderMixin"
-        original="HEAD"
-        replacement=".patch_atctmixin.HEAD"
-        preserveOriginal="true"
-        />
+    <monkey:patch description="Monkeypatch ATCTFolderMixin.HEAD to also look for z3 views as default pages"
+                  class="Products.ATContentTypes.content.base.ATCTFolderMixin"
+                  original="HEAD"
+                  replacement=".patch_atctmixin.HEAD"
+                  preserveOriginal="true" />
 
-    <monkey:patch
-        description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
-        class="Products.ATContentTypes.content.topic.ATTopic"
-        original="listSubtopics"
-        replacement=".patch_atct.listSubtopics"
-        preserveOriginal="false"
-        />
+    <monkey:patch description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
+                  class="Products.ATContentTypes.content.topic.ATTopic"
+                  original="listSubtopics"
+                  replacement=".patch_atct.listSubtopics"
+                  preserveOriginal="false" />
 
     <!-- XXX Deprecated patch. Remove me -->
-    <!--monkey:patch
-        description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
-        class="Products.CMFPlone.CatalogTool.CatalogTool "
-        original="__call__"
-        replacement=".patch_catalog.searchResults"
-        preserveOriginal="true"
-        /-->
+    <!-- monkey:patch description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
+                      class="Products.CMFPlone.CatalogTool.CatalogTool "
+                      original="__call__"
+                      replacement=".patch_catalog.searchResults"
+                      preserveOriginal="true" / -->
 
-    <monkey:patch
-        description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
-        class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
-        original="generateId"
-        replacement=".patch_baseregistry.generateId"
-        preserveOriginal="true"
-        />
+    <monkey:patch description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
+                  class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
+                  original="generateId"
+                  replacement=".patch_baseregistry.generateId"
+                  preserveOriginal="true" />
 
     <!-- Do not remove the below patch, see patch_hachoir_core.py for more info -->
-    <monkey:patch
-        description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
-        module="hachoir_core.i18n"
-        original="UnicodeStdout"
-        replacement=".patch_hachoir_core.PatchedUnicodeStdout"
-        />
+    <monkey:patch description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
+                  module="hachoir_core.i18n"
+                  original="UnicodeStdout"
+                  replacement=".patch_hachoir_core.PatchedUnicodeStdout" />
 
     <!-- Patch for GenericSetup delete unused steps, as those functions had no docstings -->
     <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
@@ -82,14 +69,14 @@
                   original="render"
                   replacement=".patch_html5.render"
                   preserveOriginal="false" />
-                  
+
     <!-- Patch for plone.app.caching to add extra headers -->
     <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
                   module="plone.app.caching.operations.utils"
                   original="doNotCache"
                   replacement=".patch_cache.doNotCache"
                   preserveOriginal="true" / -->
-                  
+
     <!-- Patch for plone.app.caching to add extra headers -->
     <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
                   module="plone.app.caching.operations.utils"
