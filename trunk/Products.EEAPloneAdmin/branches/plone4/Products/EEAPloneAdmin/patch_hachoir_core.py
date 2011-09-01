@@ -14,6 +14,8 @@ import hachoir_core.i18n
 
 
 class PatchedUnicodeStdout(BaseUnicodeStdout):
+    """ Patched unicode stdout
+    """
 
     def writelines(self, lines):
         """ Add writelines() method to UnicodeStdout

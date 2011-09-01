@@ -25,17 +25,34 @@ def write_ofsfile_to_tempfile(obj, preferred_name=None):
     fout = open(filename, 'wb')
 
     class TempResponse(object):
-        def getHeader(self,n):
+        """ Teml response
+        """
+        def getHeader(self, n):
+            """ Get header
+            """
             pass
+
         def setHeader(self, n, v):
+            """ Set header
+            """
             pass
+
         def setBase(self, v):
+            """ Set base
+            """
             pass
+
         def write(self, d):
+            """ Write
+            """
             fout.write(d)
 
     class TempRequest(HTTPRequest):
+        """ Temp request
+        """
         def get_header(self, n, default=None):
+            """ Get header
+            """
             if default is not None:
                 return default
             return ''

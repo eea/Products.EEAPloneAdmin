@@ -1,3 +1,5 @@
+""" Migrate
+"""
 import csv
 import logging
 import urllib
@@ -27,15 +29,18 @@ themeIdMap = { 'coasts_seas' : 'coast_sea',
                'various' : 'other_issues' }
 
 class FixExcludeFromNav(object):
-    """ fix overwritten exclude_from_nav """
-
+    """ Fix overwritten exclude_from_nav
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         context = self.context
-        res = context.portal_catalog.searchResults(portal_type='Folder', id='multimedia', path='/'.join(context.getPhysicalPath()))
+        res = context.portal_catalog.searchResults(
+            portal_type='Folder',
+            id='multimedia',
+            path='/'.join(context.getPhysicalPath()))
         for folder in res:
             obj = folder.getObject()
             exclude_from_nav = getattr(aq_base(obj), 'exclude_from_nav', None)
@@ -44,8 +49,8 @@ class FixExcludeFromNav(object):
                 obj.initializeLayers()
 
 class MigrateWrongThemeIds(object):
-    """ migrate wrong theme ids to old correct """
-
+    """ Migrate wrong theme ids to old correct
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -76,8 +81,8 @@ class MigrateWrongThemeIds(object):
                 obj.setId(newT)
 
 class MigrateTheme(object):
-    """ Migrate theme info from themes.eea.europa.eu zope 2.6.4 """
-
+    """ Migrate theme info from themes.eea.europa.eu zope 2.6.4
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -103,28 +108,38 @@ class MigrateTheme(object):
         self.context.reindexObject()
 
     def _title(self, themeId):
+        """ Title
+        """
         titleUrl = url % ('themeTitle', themeId)
         title = urllib.urlopen(titleUrl).read()
         title = title.replace('\n', '')
         self.context.setTitle(title)
 
     def _image(self, themeId):
+        """ Image
+        """
         getUrl = url % ('themeUrl', themeId)
         themeUrl = urllib.urlopen(getUrl).read().strip()
         imageUrl = themeUrl + '/theme_image'
         imageData = urllib.urlopen(imageUrl).read().strip()
-        image = self.context.invokeFactory('Image', id='theme_image', title='%s - Theme image' % self.context.Title())
+        image = self.context.invokeFactory('Image',
+                                           id = 'theme_image',
+                                           title = '%s - Theme image' %
+                                                       self.context.Title())
         obj = self.context[image]
         obj.setImage(imageData)
         obj.reindexObject()
 
     def _relatedThemes(self, themeId):
+        """ Related themes
+        """
         relatedUrl = url % ('themeRelated', themeId)
         related = urllib.urlopen(relatedUrl).read().strip()
         related = related[1:-1].replace('\'', '')
         related = [ theme.strip() for theme in related.split(',') ]
         theme = IThemeRelation(self.context)
-        themeCentres = self.context.portal_catalog.searchResults(object_provides='eea.themecentre.interfaces.IThemeCentre')
+        themeCentres = self.context.portal_catalog.searchResults(
+            object_provides='eea.themecentre.interfaces.IThemeCentre')
         tcs = {}
         for tc in themeCentres:
             tcs[tc.getId] = tc.getObject().UID()
@@ -139,6 +154,8 @@ class MigrateTheme(object):
         theme.related = related
 
     def _intro(self, themeId):
+        """ Intro
+        """
         introUrl = url % ('themeIntro', themeId)
         introText = urllib.urlopen(introUrl).read().strip()
         intro = 'intro'
@@ -150,6 +167,8 @@ class MigrateTheme(object):
             obj.reindexObject()
 
     def _links(self, themeId):
+        """ Links
+        """
         workflow = getToolByName(self.context, 'portal_workflow')
         linksUrl = url % ('themeLinks', themeId)
         links = urllib.urlopen(linksUrl).read().strip()
@@ -169,6 +188,8 @@ class MigrateTheme(object):
             workflow.doActionFor(obj, 'publish')
 
     def _indicators(self, themeId):
+        """ Indicators
+        """
         workflow = getToolByName(self.context, 'portal_workflow')
         indiUrl = url % ('themeIndicator', themeId)
         indiText = urllib.urlopen(indiUrl).read().strip()
@@ -182,8 +203,8 @@ class MigrateTheme(object):
             obj.reindexObject()
 
 class InitialThemeCentres(object):
-    """ create inital theme structure """
-
+    """ Create inital theme structure
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -201,7 +222,9 @@ class InitialThemeCentres(object):
         toMigrate = self.request.get('migrate', False)
         for theme in themeids:
             if not hasattr(aq_base(context), theme):
-                folder = context.invokeFactory('Folder', id=theme, title=theme)
+                folder = context.invokeFactory('Folder',
+                                               id=theme,
+                                               title=theme)
                 folder = context[folder]
                 ptc = PromoteThemeCentre(folder, self.request)
                 ptc()
@@ -227,15 +250,17 @@ class InitialThemeCentres(object):
             context.manage_addProperty('left_slots', slots, type='lines',)#,
 
         #if hasattr(aq_base(context), 'navigationmanager_menuid'):
-        #    context.manage_addProperty('navigationmanager_menuid', 'themes', type='string')
+        #    context.manage_addProperty('navigationmanager_menuid',
+                                        #'themes',
+                                        #type='string')
 
         alsoProvides(context, INavigationRoot)
         context.layout = 'themes_view'
         return self.request.RESPONSE.redirect(context.absolute_url())
 
 class ThemeTaggable(object):
-    """ Migrate theme tags to anootations. """
-
+    """ Migrate theme tags to anootations
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -253,8 +278,8 @@ class ThemeTaggable(object):
             tagging.tags = themes
 
 class UpdateSmartFoldersAndTitles(object):
-    """ Change all event topics to have end instead of start in criteria. """
-
+    """ Change all event topics to have end instead of start in criteria
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -275,7 +300,8 @@ class UpdateSmartFoldersAndTitles(object):
                 topic.deleteCriterion('crit__start_ATFriendlyDateCriteria')
 
             if 'crit__end_ATFriendlyDateCriteria' not in topic.objectIds():
-                date_crit = topic.addCriterion('end', 'ATFriendlyDateCriteria')
+                date_crit = topic.addCriterion('end',
+                                               'ATFriendlyDateCriteria')
                 date_crit.setValue(0)
                 date_crit.setDateRange('+')
                 date_crit.setOperation('more')
@@ -284,8 +310,8 @@ class UpdateSmartFoldersAndTitles(object):
                 topic.deleteCriterion('crit__created_ATSortCriterion')
                 topic.addCriterion('start', 'ATSortCriterion')
 
-            # add custom fields to the events and highlight folders, links don't
-            # need any as they shouldn't show anything in "detail"
+            # add custom fields to the events and highlight folders,
+            # links don't need any as they shouldn't show anything in "detail"
             topic.setCustomViewFields(['start', 'end', 'location'])
 
         # add custom field on all highligh topic
@@ -307,7 +333,7 @@ class UpdateSmartFoldersAndTitles(object):
             topic.setCustomViewFields([])
 
         # rename titles on folders in themecentre
-        query = { 'object_provides': 'eea.themecentre.interfaces.IThemeCentre' }
+        query = {'object_provides': 'eea.themecentre.interfaces.IThemeCentre'}
         brains = catalog.searchResults(query)
         for brain in brains:
             themecentre = brain.getObject()
@@ -338,8 +364,8 @@ class UpdateSmartFoldersAndTitles(object):
         return 'success'
 
 class FeedMarkerInterface(object):
-    """ Changes all IFeed marker interfaces to be IFeedContent markers. """
-
+    """ Changes all IFeed marker interfaces to be IFeedContent markers
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -348,8 +374,8 @@ class FeedMarkerInterface(object):
         return 'success'
 
 class PromotionThemes(object):
-    """ Old promotions might have themes as strings instead of lists. """
-
+    """ Old promotions might have themes as strings instead of lists
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -376,7 +402,8 @@ class PromotionThemes(object):
 class ThemeLayoutAndDefaultPage(object):
     """ Removes the layout property on all themecentres and instead adds the
         default_page property with 'intro'. The intro document gets a layout
-        property instead. """
+        property instead.
+    """
 
     def __init__(self, context, request):
         self.context = context
@@ -394,14 +421,20 @@ class ThemeLayoutAndDefaultPage(object):
                 if tc_layout:
                     tc_base.__delattr__('layout')
                 if not themecentre.hasProperty('default_page'):
-                    themecentre.manage_addProperty('default_page', 'intro', 'string')
+                    themecentre.manage_addProperty('default_page',
+                                                   'intro',
+                                                   'string')
                 if not intro.hasProperty('layout'):
-                    intro.manage_addProperty('layout', 'themecentre_view', 'string')
+                    intro.manage_addProperty('layout',
+                                             'themecentre_view',
+                                             'string')
                 themecentre._p_changed = True
         return str(len(brains)) + ' themecentres migrated'
 
 class GenericThemeToDefault(object):
-    """ Migrates theme tags ['G','e','n','e','r','i','c'] or ['D', 'e', 'f', 'a', 'u', 'l', 't'] to ['default']. """
+    """ Migrates theme tags ['G','e','n','e','r','i','c'] or
+        ['D', 'e', 'f', 'a', 'u', 'l', 't'] to ['default'].
+    """
 
     def __init__(self, context, request):
         self.context = context
@@ -429,8 +462,8 @@ class GenericThemeToDefault(object):
         return 'themes are migrated, RESULT:\r' + output
 
 class ChangeDefaultPageToProperty(object):
-    """ Changes default_page to being a property so it's visible in ZMI """
-
+    """ Changes default_page to being a property so it's visible in ZMI
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -456,8 +489,8 @@ class ChangeDefaultPageToProperty(object):
 
 class EnsureAllObjectsHaveTags(object):
     """ Adds themecentre tag to all its objects if they don't have it
-        already. """
-
+        already.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -484,15 +517,16 @@ class EnsureAllObjectsHaveTags(object):
 
 class ChangeMediaTypesDefault(object):
     """ Changes the media type on file's don't have any media type set.
-        If media type not set, the type 'other' is set on the file. """
-
+        If media type not set, the type 'other' is set on the file.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(object_provides='p4a.video.interfaces.IVideoEnhanced')
+        brains = catalog.searchResults(
+            object_provides='p4a.video.interfaces.IVideoEnhanced')
         for brain in brains:
             bfile = brain.getObject()
             media = IMediaType(bfile)
@@ -505,15 +539,16 @@ class ChangeMediaTypesDefault(object):
 class AddRichTextDescriptionToVideos(object):
     """ Adds an empty string to the rich_description field on all
         IVideoEnhanced objects. As this is a new field it's None
-        and the edit page fails with a traceback. """
-
+        and the edit page fails with a traceback.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(object_provides='p4a.video.interfaces.IVideoEnhanced')
+        brains = catalog.searchResults(
+            object_provides='p4a.video.interfaces.IVideoEnhanced')
         for brain in brains:
             vfile = brain.getObject()
             video = IVideo(vfile)
@@ -522,17 +557,18 @@ class AddRichTextDescriptionToVideos(object):
 
         return str(len(brains)) + " videos where migrated."
 
-
 class AddFolderAsLocallyAllowedTypeInLinks(object):
-    """ Add the 'Folder' type as a locally addable type to all 'External link' folders in themecentres. """
-
+    """ Add the 'Folder' type as a locally addable type to
+        all 'External link' folders in themecentres.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(object_provides=IThemeCentre.__identifier__)
+        brains = catalog.searchResults(
+            object_provides=IThemeCentre.__identifier__)
         objs = [b.getObject() for b in brains]
         for obj in objs:
             linkfolder = None
@@ -547,21 +583,23 @@ class AddFolderAsLocallyAllowedTypeInLinks(object):
                 if 'Folder' not in local:
                     linkfolder.setLocallyAllowedTypes(local + ('Folder',))
                 if 'Folder' not in immediate:
-                    linkfolder.setImmediatelyAddableTypes(immediate + ('Folder',))
+                    linkfolder.setImmediatelyAddableTypes(
+                        immediate + ('Folder',))
 
         return 'successfully run'
 
 class AddPressReleaseToHighlightsTopic(object):
-    """ Adds PressRelease to the highlight topic's search criteria. """
-
+    """ Adds PressRelease to the highlight topic's search criteria.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(object_provides=IThemeCentre.__identifier__,
-                                       Language='all')
+        brains = catalog.searchResults(
+            object_provides=IThemeCentre.__identifier__,
+            Language='all')
         themecentres = [b.getObject() for b in brains]
         successful = 0
 
@@ -580,10 +618,9 @@ class AddPressReleaseToHighlightsTopic(object):
 
         return '%d highlight smart folders were modified' % successful
 
-
 class ChangeMultimediaLayout(object):
-    """ Changes layout to mediacentre_view in the global multimedia folder """
-
+    """ Changes layout to mediacentre_view in the global multimedia folder
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -603,15 +640,16 @@ class ChangeMultimediaLayout(object):
 
 class MakeThemeMultimediaLayoutAProperty(object):
     """ Multimedia folders in themecentres have a layout property that's
-        not visible in ZMI. Add it as a real property. """
-
+        not visible in ZMI. Add it as a real property.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        themeCentres = catalog.searchResults(object_provides=IThemeCentre.__identifier__)
+        themeCentres = catalog.searchResults(
+            object_provides=IThemeCentre.__identifier__)
         props = 0
         for tc in themeCentres:
             multimedia = getattr(aq_base(tc.getObject()), 'multimedia', None)
@@ -626,8 +664,8 @@ class MakeThemeMultimediaLayoutAProperty(object):
 
 class ImportEcoTipsTranslationsFromCSV(object):
     """ Import translations form EcoTip objects from the
-        EEAWEBSITE_ECOTIP_Migration.csv file """
-
+        EEAWEBSITE_ECOTIP_Migration.csv file
+    """
     def __init__(self, context, request):
         self.context = context.getCanonical()
         self.request = request
@@ -641,6 +679,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         self.imported = {}
 
     def _return(self):
+        """ Return
+        """
         msg = "You called this script with this parameters:"
         msg += "\n\tsafe=%s" % self.safe
         msg += "\n\tpublish=%s" % self.publish
@@ -649,7 +689,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         msg += "\n\n"
 
         if self.safe:
-            msg += "Translations NOT imported with %s warning(s). " % len(self.errors)
+            msg += "Translations NOT imported with %s warning(s). " %
+                                                            len(self.errors)
             msg += "To import ignoring warnings set safe param to False"
         else:
             msg += "Translations imported with %s error(s)" % len(self.errors)
@@ -659,6 +700,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         return msg + '\n'.join(self.errors)
 
     def _raise(self, msg):
+        """ Raise
+        """
         if self.safe:
             self.logger.warn(msg)
         else:
@@ -675,8 +718,13 @@ class ImportEcoTipsTranslationsFromCSV(object):
             self.tips[key] = value
 
     def _import(self):
-        filename = os.path.join(os.path.dirname(__file__), 'EEAWEBSITE_ECOTIP_Migration.csv')
-        reader = csv.reader(open(filename, 'r'), delimiter='\t', quotechar='"')
+        """ Import
+        """
+        filename = os.path.join(os.path.dirname(__file__),
+                                'EEAWEBSITE_ECOTIP_Migration.csv')
+        reader = csv.reader(open(filename, 'r'),
+                            delimiter='\t',
+                            quotechar='"')
         reader.next()
         for index, row in enumerate(reader):
             if len(row) < 5:
@@ -723,7 +771,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         tip = self.context._getOb(key)
         translation = tip.getTranslation(lang)
         if translation:
-            self._raise("Already imported. I'll override it: %s, %s" % (lang, key))
+            self._raise("Already imported. I'll override it: %s, %s" %
+                                                                (lang, key))
 
         if self.safe:
             return
@@ -740,6 +789,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         self._reindex(translation)
 
     def _publish(self, translation):
+        """ Publish
+        """
         if self.safe:
             return
         if not self.publish:
@@ -756,9 +807,12 @@ class ImportEcoTipsTranslationsFromCSV(object):
             self._raise('Could not publish %s, state: %s, error: %s' % (
                 translation.absolute_url(1), state, err))
         else:
-            self.logger.info('Published translation %s', translation.absolute_url())
+            self.logger.info('Published translation %s',
+                             translation.absolute_url())
 
     def _reindex(self, translation):
+        """ Reindex
+        """
         if self.safe:
             return
         if not self.reindex:
@@ -789,16 +843,16 @@ class ImportEcoTipsTranslationsFromCSV(object):
 
 class MigrateDatesInCallForTendersAndInterests(object):
     """ #1787 required us to set value on the expiration and effective fields.
-        This copies the dates open -> effective and close -> expire. """
-
+        This copies the dates open -> effective and close -> expire.
+    """
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        for b in catalog({'portal_type' : ['CallForTender', 'CallForInterest']}):
+        for b in catalog({'portal_type' : ['CallForTender',
+                                           'CallForInterest']}):
             obj = b.getObject()
             obj.setCloseDate(obj.getCloseDate())
             obj.setOpenDate(obj.getOpenDate())
-

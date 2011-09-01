@@ -1,19 +1,18 @@
-from old_dump import old
-#from DateTime import DateTime
+""" DTMLs
+"""
+from Products.EEAPloneAdmin.Extensions.sitecomp.VVV.old_dump import old
 
 dtmls = []
 
 print "Starting\n"
 
 for key in old.keys():
-
-	type = old[key]['type']
-
-	if type == 'DTML Method':
-		dtmls.append(key)
+    mytype = old[key]['type']
+    if mytype == 'DTML Method':
+        dtmls.append(key)
 
 dtmls.sort()
 for dtml in dtmls:
-	print dtml
+    print dtml
 
 print "\nDone!"

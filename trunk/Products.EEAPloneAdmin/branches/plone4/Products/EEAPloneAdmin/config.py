@@ -1,20 +1,23 @@
+""" Config module
+"""
+
 GLOBALS = globals()
 DEPENDENCIES = [
-                'LinguaPlone', 
-                'ATVocabularyManager', 
-                'PloneHelpCenter', 
+                'LinguaPlone',
+                'ATVocabularyManager',
+                'PloneHelpCenter',
                 'XLIFFMarshall'
-                'NavigationManager', 
-                'EEAEnquiry', 
+                'NavigationManager',
+                'EEAEnquiry',
 
-                #'EEAContentTypes', 
+                #'EEAContentTypes',
 
-                'PloneGazette', 
-                
+                'PloneGazette',
+
                 ]
 
 # Available languages for EEA content
-EEA_LANGUAGES = [  
+EEA_LANGUAGES = [
                   'bg','el',
                   'cs','da','nl','en',
                   'et','fi','fr','de',
@@ -23,6 +26,5 @@ EEA_LANGUAGES = [
                   'no','pl','pt','ro',
                   'sk','sl',
                   'es','sv','tr','lv'  ]
-
 
 DEBUG = False

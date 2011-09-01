@@ -8,6 +8,8 @@ if DEBUG:
     socket.setdefaulttimeout(100)
 
 def submitForProofReading(self, state_change, **kw):
+    """ Submit for proof reading
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
@@ -16,6 +18,8 @@ def submitForProofReading(self, state_change, **kw):
         return wfsupport(state_change, 'proofreader').sendEmail(subject)
 
 def submitForContentReview(self, state_change, **kw):
+    """ Submit for content review
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
@@ -24,6 +28,8 @@ def submitForContentReview(self, state_change, **kw):
         return wfsupport(state_change, 'reviewer').sendEmail(subject)
 
 def submitForWebQA(self, state_change, **kw):
+    """ Submit for web QA
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
@@ -32,6 +38,8 @@ def submitForWebQA(self, state_change, **kw):
         return wfsupport(state_change, 'webqa').sendEmail(subject)
 
 def publish(self, state_change, **kw):
+    """ Publish
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
@@ -40,6 +48,8 @@ def publish(self, state_change, **kw):
         return wfsupport(state_change, '').sendEmail(subject)
 
 def reject(self, state_change, **kw):
+    """ Reject
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
@@ -48,6 +58,8 @@ def reject(self, state_change, **kw):
         wfsupport(state_change, 'owner').sendEmail(subject)
 
 def sendWorkflowEmail(self, state_change, **kw):
+    """ Send workflow email
+    """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')

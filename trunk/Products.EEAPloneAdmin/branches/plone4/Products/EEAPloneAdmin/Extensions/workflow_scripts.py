@@ -1,7 +1,13 @@
+""" Workflow scripts
+"""
+
 from Products.CMFCore.utils import getToolByName
 
 def moveObject(self, state_change, **kw):
-    # ichimdav i've added these because of unfound vars from line 15, check if correct
+    """ Move object
+    """
+    #TODO ichimdav: i've added these because of unfound vars from line 15,
+    #               check if is correct
     news_folder = kw['news_folder']
     highlight_folder = kw['highlight_folder']
     pressrelease_folder = kw['pressrelease_folder']
@@ -32,7 +38,7 @@ def moveObject(self, state_change, **kw):
     srcFldr = obj.aq_parent
 
     # perform the move
-    objs = srcFldr.manage_cutObjects([oid,])
+    objs = srcFldr.manage_cutObjects([oid, ])
     dstFldr.manage_pasteObjects(objs)
 
     # get the new object

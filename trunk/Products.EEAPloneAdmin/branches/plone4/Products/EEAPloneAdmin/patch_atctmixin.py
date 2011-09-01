@@ -1,15 +1,15 @@
+""" MONKEY PATCH
+ this should be fixed in ATContentTypes to take in consideration
+ the case of zope3 view as default page. Also a fix should be
+ done for Five.BrowserView in order to handle HEAD requests
+ for all zope3 views.
+"""
+
 from zExceptions import NotFound, MethodNotAllowed
 from Acquisition import aq_base
 from webdav.Resource import Resource as WebdavResoure
 from zope.component.interfaces import ComponentLookupError
 from zope.component import getMultiAdapter
-
-
-# MONKEY PATCH
-# this should be fixed in ATContentTypes to take in consideration
-# the case of zope3 view as default page. Also a fix should be
-# done for Five.BrowserView in order to handle HEAD requests
-# for all zope3 views.
 
 def HEAD(self, REQUEST, RESPONSE):
     """Overwrite HEAD method for HTTP HEAD requests

@@ -11,7 +11,7 @@ def listSubtopics(self):
     tops = []
     for top in val:
         if check_p('View', top):
-            tops.append((top.Title().lower(),top))
+            tops.append((top.Title().lower(), top))
     tops.sort()
     tops = [t[1] for t in tops]
     return tops

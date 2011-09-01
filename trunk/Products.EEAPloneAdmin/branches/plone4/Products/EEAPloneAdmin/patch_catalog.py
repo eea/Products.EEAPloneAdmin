@@ -18,7 +18,7 @@ def searchResults(self, REQUEST=None, **kw):
     if membershipTool.isAnonymousUser():
         kw['review_state'] = 'published'
         kw['effectiveRange'] = DateTime()
-                             
+
     return self._old_searchResults(REQUEST, **kw)
 
 
@@ -27,7 +27,8 @@ def searchResults(self, REQUEST=None, **kw):
 
 # If parent has more then 50 children reorder will be restricted in order
 # to avoid heavy wake up of objects. See more under #2803
-#NOTE: we disabled this on plone4 because default method in CMFPlone doesn't do anything anymore
+#NOTE: we disabled this on plone4 because default method in CMFPlone doesn't
+#      do anything anymore
 
 #from Products.CMFCore.permissions import ModifyPortalContent
 #from Products.CMFPlone.utils import log
@@ -35,8 +36,8 @@ def searchResults(self, REQUEST=None, **kw):
     #""" Catalog ordering support """
 
     #if len(parent.objectIds()) > 50:
-        #log('This context has more then 50 children and reorder is restricted. Path %s' %
-            #parent.absolute_url(1))
+        #log('This context has more then 50 children and reorder is \
+             #restricted. Path %s' % parent.absolute_url(1))
         #return
 
     #mtool = getToolByName(self, 'portal_membership')

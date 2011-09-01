@@ -1,3 +1,5 @@
+""" Admin
+"""
 from App.config import getConfiguration
 from Products.ATContentTypes.config import MX_TIDY_OPTIONS
 from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
@@ -16,27 +18,30 @@ try:
     has_tidy = True
 except ImportError:
     has_tidy = False
-    
+
 if has_tidy:
     mx_tidy = tidy
 else:
-    mx_tidy = lambda x,**y:x
+    mx_tidy = lambda x, **y:x
 
-OBJNAME=  re.compile('(.*)-([A-Za-z]{2})([.][A-Za-z]{3})*$')
+OBJNAME = re.compile('(.*)-([A-Za-z]{2})([.][A-Za-z]{3})*$')
 
 
 class LinguaPlone(BrowserView):
-    """ 
+    """ LinguaPlone
     """
-
     def getNameParts(self, nid):
+        """ Get name parts
+        """
         parts = OBJNAME.findall(nid)
-        cid = lang = ending = ''            
+        cid = lang = ending = ''
         if len(parts) == 1:
             cid, lang, ending = parts[0]
         return cid, lang, ending
-    
+
     def fixTranslations(self):
+        """ Fix translations
+        """
         canonicals = {}
         context = self.context
         for obj in context.contentValues():
@@ -52,20 +57,22 @@ class LinguaPlone(BrowserView):
         for obj in context.contentValues():
             oid = obj.getId()
             cid, lang, _ending = self.getNameParts(oid)
-            lang = lang.lower()            
+            lang = lang.lower()
             canonical = canonicals.get(cid, None)
             if canonical and lang != 'en':
                 obj.setLanguage('')
                 obj.setLanguage(lang)
                 obj.addTranslationReference(canonical)
         return [ { 'canonical' : k,
-                   'translations' : v.getTranslationLanguages() } 
+                   'translations' : v.getTranslationLanguages() }
                                     for k,v in canonicals.items() ]
-            
 
 class TidyContent(BrowserView):
-
+    """ Tidy content
+    """
     def tidyAll(self):
+        """ Tidy all
+        """
         fixed = {'ok' : [],
                  'err' : [] }
         context = self.context
@@ -84,10 +91,9 @@ class TidyContent(BrowserView):
                     fixed['err'].append(obj.absolute_url())
         return fixed
 
-
 def save_resources_on_disk(registry, request=None):
-    """Reads merged resources from registry and saves them on disk"""
-
+    """ Reads merged resources from registry and saves them on disk
+    """
     if request == None:
         request = registry.REQUEST
 
@@ -95,7 +101,7 @@ def save_resources_on_disk(registry, request=None):
     skins = getToolByName(registry, 'portal_skins').getSkinSelections()
     conf = getConfiguration()
     base = conf.environment['saved_resources']
-    
+
     #remove this line when we want to support multiple skins
     skins = [skins[0]]
 
@@ -135,9 +141,8 @@ def save_resources_on_disk(registry, request=None):
             except IOError:
                 logging.warning("Could not write %s on disk." % fpath)
 
-
 class SaveResourcesOnDisk(BrowserView):
-    """Base class to save resources on disk
+    """ Base class to save resources on disk
     """
     tool = None
 
@@ -145,29 +150,23 @@ class SaveResourcesOnDisk(BrowserView):
         save_resources_on_disk(self.tool, self.request)
         return "Resources saved"
 
-
 class RegenerateJS(SaveResourcesOnDisk):
-    """Call this to save on disk JS resources
+    """ Call this to save on disk JS resources
     """
-
     @property
     def tool(self):
         return getToolByName(self.context, "portal_javascripts")
 
-
 class RegenerateCSS(SaveResourcesOnDisk):
-    """Call this to save on disk CSS resources
+    """ Call this to save on disk CSS resources
     """
-
     @property
     def tool(self):
         return getToolByName(self.context, "portal_css")
 
-
 class RegenerateKSS(SaveResourcesOnDisk):
-    """Call this to save on disk KSS resources
+    """ Call this to save on disk KSS resources
     """
-
     @property
     def tool(self):
         return getToolByName(self.context, "portal_kss")

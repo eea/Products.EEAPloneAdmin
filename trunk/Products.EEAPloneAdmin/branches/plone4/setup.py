@@ -1,3 +1,5 @@
+""" EEA Plone Admin installer
+"""
 from setuptools import setup, find_packages
 import os
 from os.path import join
@@ -11,7 +13,6 @@ setup(name=name,
       description="EEA Plone Admin",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -19,7 +20,8 @@ setup(name=name,
       keywords='eea',
       author='European Environment Agency (EEA)',
       author_email='webadmin@eea.europa.eu',
-      url='http://svn.eionet.europa.eu/projects/Zope/browser/trunk/Products.EEAPloneAdmin',
+      url='http://svn.eionet.europa.eu/projects/'
+          'Zope/browser/trunk/Products.EEAPloneAdmin',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],

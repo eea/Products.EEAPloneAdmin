@@ -1,6 +1,5 @@
-#
-# Base TestCase for EEAPloneAdmin
-#
+""" Base TestCase for EEAPloneAdmin
+"""
 
 from Products.EEAPloneAdmin.config import DEPENDENCIES
 from Products.PloneTestCase import PloneTestCase
@@ -12,11 +11,11 @@ from Products.Five import zcml
 #from Testing import ZopeTestCase
 
 PRODUCTS = [
-            'ATVocabularyManager', 
+            'ATVocabularyManager',
             'EEAContentTypes',
-            'EEAPloneAdmin', 
+            'EEAPloneAdmin',
             'valentine.linguaflow',
-            ] 
+            ]
 
 PRODUCTS = list(set(PRODUCTS).union(DEPENDENCIES))
 
@@ -29,6 +28,8 @@ PROFILES = [
 
 @onsetup
 def setup_eeaploneadmin():
+    """ Setup EEA Plone Admin
+    """
 
     for dependency in DEPENDENCIES:
         PloneTestCase.installProduct(dependency)
@@ -50,7 +51,9 @@ setup_eeaploneadmin()
 PloneTestCase.setupPloneSite(products=PRODUCTS, extension_profiles=PROFILES)
 
 class EEAPloneAdminTestCase(PloneTestCase.PloneTestCase):
-    """Base TestCase for EEAContentTypes."""
+    """ Base TestCase for EEAContentTypes
+    """
 
 class EEAPloneAdminFunctionalTestCase(PloneTestCase.FunctionalTestCase):
-    """ """
+    """ Functional test case
+    """

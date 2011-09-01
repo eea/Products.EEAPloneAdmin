@@ -1,24 +1,29 @@
 # -*- coding: utf-8 -*-
-
-#Test methods used to make ...
+""" Test PloneView
+"""
 
 from Products.EEAPloneAdmin.browser.ploneview import ContextState
-from Products.EEAPloneAdmin.tests.PloneAdminTestCase import EEAPloneAdminTestCase
+from Products.EEAPloneAdmin.tests.PloneAdminTestCase import (
+    EEAPloneAdminTestCase,
+)
+from unittest import TestSuite, makeSuite
 import logging
-
 
 logger = logging.getLogger("Products.EEAPloneAdmin.tests.TestPloneView")
 
-
 class TestPloneView(EEAPloneAdminTestCase):
-    """Tests the global plone view for functions we have overriden."""
+    """ Tests the global plone view for functions we have overriden
+    """
 
     def afterSetUp(self):
+        """ After setup
+        """
         self.folder.invokeFactory('Document', 'test',
                                   title='Test default page')
-        
-    def testObjectTitle(self):
 
+    def testObjectTitle(self):
+        """ Test object title
+        """
         view = ContextState(self.portal, self.app.REQUEST)
 
         self.setRoles(('Manager',))
@@ -28,7 +33,6 @@ class TestPloneView(EEAPloneAdminTestCase):
         f1.invokeFactory('Folder', id='f2')
         view = ContextState(f1, self.app.REQUEST)
         self.failUnless(view.browser_title() == 'f1')
-
 
         f2 = self.portal.f1.f2
         f2.invokeFactory('Folder', id='f3')
@@ -48,13 +52,13 @@ class TestPloneView(EEAPloneAdminTestCase):
         lang = self.portal.f1.lang
         lang.invokeFactory('Document', id='doc', title=u'Svenska åäö')
         view = ContextState(lang.doc, self.app.REQUEST)
-        self.failUnless(view.browser_title().decode('utf8') == u'Svenska åäö - f1', 
-                        view.browser_title())
-
+        self.failUnless(
+            view.browser_title().decode('utf8') == u'Svenska åäö - f1',
+            view.browser_title())
 
 def test_suite():
-    from unittest import TestSuite, makeSuite
+    """ Test suite
+    """
     suite = TestSuite()
     suite.addTest(makeSuite(TestPloneView))
     return suite
-
