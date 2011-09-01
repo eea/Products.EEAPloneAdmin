@@ -84,15 +84,17 @@
                   preserveOriginal="false" />
                   
     <!-- Patch for plone.app.caching to add extra headers -->
-    <monkey:patch description="Patch for plone.app.caching to add extra headers"
+    <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
                   module="plone.app.caching.operations.utils"
                   original="doNotCache"
-                  replacement=".patch_cache.PatcheddoNotCache" />
+                  replacement=".patch_cache.doNotCache"
+                  preserveOriginal="true" / -->
                   
     <!-- Patch for plone.app.caching to add extra headers -->
-    <monkey:patch description="Patch for plone.app.caching to add extra headers"
+    <!-- monkey:patch description="Patch for plone.app.caching to add extra headers"
                   module="plone.app.caching.operations.utils"
                   original="cacheInBrowser"
-                  replacement=".patch_cache.PatchedcacheInBrowser" />
+                  replacement=".patch_cache.cacheInBrowser"
+                  preserveOriginal="true" / -->
 
 </configure>
