@@ -38,4 +38,11 @@
 
     <adapter factory=".ploneview.ObjectTitle" />
 
+    <browser:page
+        name="patch_tinymce.js"
+        for="*"
+        class=".tinymce.TinyMCEPatch"
+        permission="zope.Public"
+        />
+
 </configure>

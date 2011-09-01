@@ -10,6 +10,7 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Patch: added patch_tinymce.js to fix tinymce loading [tiberich #4510]
 * Feature: Added extra headers to prevent cache in browser [ghicaale #4506]
 
 * Feature: Added EEA custom PURGE policy [ghicaale #4394]
