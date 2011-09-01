@@ -689,8 +689,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
         msg += "\n\n"
 
         if self.safe:
-            msg += "Translations NOT imported with %s warning(s). " %
-                                                            len(self.errors)
+            msg += "Translations NOT imported with %s warning(s). " % len(self.errors)
             msg += "To import ignoring warnings set safe param to False"
         else:
             msg += "Translations imported with %s error(s)" % len(self.errors)
