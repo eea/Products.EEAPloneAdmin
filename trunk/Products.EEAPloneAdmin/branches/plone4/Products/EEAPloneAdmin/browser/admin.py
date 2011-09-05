@@ -5,7 +5,6 @@ from Acquisition import aq_base
 from App.config import getConfiguration
 from Products.ATContentTypes.config import MX_TIDY_OPTIONS
 from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
-from Products.CMFCore.FSDTMLMethod import FSDTMLMethod
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.resource import Resource as z3_Resource
@@ -208,23 +207,31 @@ def getResourceContent(registry, item, context, original=False):
         if obj is not None:
             if isinstance(obj, z3_Resource):
                 content = get_resource_content(obj, self, default_charset)
-            elif hasattr(aq_base(obj),'meta_type') and  obj.meta_type in ['DTML Method', 'Filesystem DTML Method']:
+            elif hasattr(aq_base(obj),'meta_type') and  obj.meta_type in \
+                ['DTML Method', 'Filesystem DTML Method']:
                 content = obj(client=self.aq_parent, REQUEST=self.REQUEST,
                               RESPONSE=self.REQUEST.RESPONSE)
-                contenttype = self.REQUEST.RESPONSE.headers.get('content-type', '')
-                contenttype = getCharsetFromContentType(contenttype, default_charset)
+                contenttype = self.REQUEST.RESPONSE.headers.get('content-type',
+                        '')
+                contenttype = getCharsetFromContentType(contenttype, 
+                        default_charset)
                 content = unicode(content, contenttype)
-            elif hasattr(aq_base(obj),'meta_type') and obj.meta_type == 'Filesystem File':
+            elif hasattr(aq_base(obj),'meta_type') and \
+                    obj.meta_type == 'Filesystem File':
                 obj._updateFromFS()
                 content = obj._readFile(0)
-                contenttype = getCharsetFromContentType(obj.content_type, default_charset)
+                contenttype = getCharsetFromContentType(obj.content_type, 
+                        default_charset)
                 content = unicode(content, contenttype)
-            elif hasattr(aq_base(obj),'meta_type') and obj.meta_type in ('ATFile', 'ATBlob'):
+            elif hasattr(aq_base(obj),'meta_type') and obj.meta_type in \
+                    ('ATFile', 'ATBlob'):
                 f = obj.getFile()
-                contenttype = getCharsetFromContentType(f.getContentType(), default_charset)
+                contenttype = getCharsetFromContentType(f.getContentType(), 
+                        default_charset)
                 content = unicode(str(f), contenttype)
             # We should add more explicit type-matching checks
-            elif hasattr(aq_base(obj), 'index_html') and callable(obj.index_html):
+            elif hasattr(aq_base(obj), 'index_html') and \
+                    callable(obj.index_html):
                 original_headers, if_modified = self._removeCachingHeaders()
                 content = obj.index_html(self.REQUEST,
                                          self.REQUEST.RESPONSE)
