@@ -8,7 +8,8 @@ from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.resource import Resource as z3_Resource
-from Products.ResourceRegistries.tools.BaseRegistry import getCharsetFromContentType
+from Products.ResourceRegistries.tools.BaseRegistry import \
+        getCharsetFromContentType
 from ZPublisher.Iterators import IStreamIterator
 import codecs
 import logging
@@ -198,7 +199,8 @@ def getResourceContent(registry, item, context, original=False):
             #otherwise we're merging resources in which case just log an error
             if len(ids) > 1:
                 #Object probably isn't published yet
-                output += u"\n/* XXX ERROR -- access to '%s' not authorized */\n" % id
+                output += (
+                u"\n/* XXX ERROR -- access to '%s' not authorized */\n" % id)
                 content = u''
                 obj = None
             else:
