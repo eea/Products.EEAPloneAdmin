@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
 <object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="alchemyapi" meta_type="Plone Property Sheet">
+  <property name="title">Alchemy API</property>
+  <property name="key"
+     type="string">1111122baa0b58161cc1b893f13a701a59d646fc</property>
+ </object>
  <object name="frontpage_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA Frontpage properties</property>
   <property name="promotionFolder"
-     type="string">/www/SITE/quicklinks</property>
+     type="string">quicklinks</property>
   <property name="noOfHigh" type="int">1</property>
   <property name="noOfMedium" type="int">4</property>
-  <property name="noOfLow" type="int">10</property>
+  <property name="noOfLow" type="int">3</property>
   <property name="development" type="boolean">False</property>
  </object>
  <object name="geographical_properties" meta_type="Plone Property Sheet">
@@ -58,7 +63,7 @@
    <element value="HelpCenterTutorialPage"/>
    <element value="HelpCenterReferenceManualPage"/>
   </property>
-  <property name="bottomLevel" type="int">10</property>
+  <property name="bottomLevel" type="int">0</property>
   <property name="metaTypesNotToList" type="lines">
    <element value="ATBooleanCriterion"/>
    <element value="ATCurrentAuthorCriterion"/>
@@ -72,13 +77,31 @@
    <element value="ATSimpleIntCriterion"/>
    <element value="ATSimpleStringCriterion"/>
    <element value="ATSortCriterion"/>
+   <element value="AssessmentPart"/>
    <element value="CFTRequestor"/>
    <element value="CMF Link"/>
+   <element value="CacheTool"/>
    <element value="CallForInterest"/>
    <element value="CallForTender"/>
+   <element value="CommonalityReport"/>
+   <element value="Data"/>
+   <element value="DataSourceLink"/>
    <element value="Discussion Item"/>
+   <element value="DiversityReport"/>
+   <element value="EEAFigure"/>
+   <element value="EEAPossibleRelation"/>
+   <element value="EEARelationsContentType"/>
+   <element value="EEARelationsTool"/>
+   <element value="EEAVacancy"/>
+   <element value="EcoTip"/>
    <element value="Enquiry"/>
    <element value="EnquiryRequestor"/>
+   <element value="Event"/>
+   <element value="ExternalDataSpec"/>
+   <element value="File"/>
+   <element value="ATFile"/>
+   <element value="FlashFile"/>
+   <element value="FlexibilityReport"/>
    <element value="HelpCenterDefinition"/>
    <element value="HelpCenterErrorReference"/>
    <element value="HelpCenterFAQ"/>
@@ -90,15 +113,27 @@
    <element value="HelpCenterTutorial"/>
    <element value="HelpCenterTutorialPage"/>
    <element value="Image"/>
+   <element value="ImageFS"/>
+   <element value="ATImage"/>
+   <element value="IndicatorFactSheet"/>
    <element value="Link"/>
+   <element value="MethodologyReference"/>
    <element value="News Item"/>
+   <element value="Newsletter"/>
+   <element value="Organisation"/>
    <element value="Plone Site"/>
+   <element value="PolicyDocumentReference"/>
+   <element value="PolicyQuestion"/>
    <element value="QuickEvent"/>
+   <element value="RDFEvent"/>
+   <element value="RationaleReference"/>
+   <element value="RelatedIndicatorLink"/>
    <element value="Requestor"/>
+   <element value="Specification"/>
+   <element value="Speech"/>
    <element value="Subscriber"/>
    <element value="TempFolder"/>
    <element value="VocabularyLibrary"/>
-   <element value="CacheTool"/>
   </property>
   <property name="enable_wf_state_filtering" type="boolean">True</property>
   <property name="wf_states_to_show" type="lines">
@@ -307,18 +342,16 @@
   <property name="title">EEA workflow properties</property>
   <property name="default_webqa" type="lines">
    <element value="antonio.de.marinis@eea.europa.eu"/>
-   <element value="sasha.vincic@eea.europa.eu"/>
+   <element value="marie.jaegly@eea.europa.eu"/>
   </property>
   <property name="default_reviewer" type="lines">
-   <element value="bjarnason@eea.europa.eu"/>
+   <element value="antonio.de.marinis@eea.europa.eu"/>
   </property>
   <property name="default_proofreader" type="lines">
-   <element value="henriette.nilsson@eea.europa.eu"/>
-   <element value="marilou.pehrson@eea.europa.eu"/>
+   <element value="samantha.wilson@eea.europa.eu"/>
   </property>
   <property name="highlight_webqa" type="lines">
    <element value="antonio.de.marinis@eea.europa.eu"/>
-   <element value="sasha.vincic@eea.europa.eu"/>
   </property>
   <property name="send_confirmation_mail" type="lines">
    <element value="reviewer"/>
@@ -334,14 +367,13 @@
    <element value="owner"/>
   </property>
   <property name="default_" type="lines">
-   <element value="sasha.vincic@eea.europa.eu"/>
    <element value="antonio.de.marinis@eea.europa.eu"/>
   </property>
   <property name="highlight_owner" type="lines">
    <element value="antonio.de.marinis@eea.europa.eu"/>
   </property>
   <property name="quickevent_webqa" type="lines">
-   <element value="Marilou.Pehrson@eea.europa.eu"/>
+   <element value="marie.jaegly@eea.europa.eu"/>
    <element value="antonio.de.marinis@eea.europa.eu"/>
   </property>
   <property name="default_owner" type="lines">
