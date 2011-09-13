@@ -184,9 +184,9 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'configure_faceted.html' in request.URL0"
     id="faceted_edit.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
-    expression="python: True" id="publish_dialog.js" inline="False"/>
+    expression="" id="publish_dialog.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'daviz-view.html' in request.URL0" id="daviz-view.js"
