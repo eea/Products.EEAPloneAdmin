@@ -183,15 +183,15 @@ def getResourceContent(registry, item, context, original=False):
 
     default_charset = 'utf-8'
 
-    for id in ids:
+    for res_id in ids:
         try:
             if portal is not None:
-                obj = context.restrictedTraverse(id)
+                obj = context.restrictedTraverse(res_id)
             else:
                 #Can't do anything other than attempt a getattr
-                obj = getattr(context, id)
+                obj = getattr(context, res_id)
         except (AttributeError, KeyError):
-            output += u"\n/* XXX ERROR -- could not find '%s'*/\n" % id
+            output += u"\n/* ERROR -- could not find '%s'*/\n" % res_id
             content = u''
             obj = None
         except Unauthorized:
@@ -200,7 +200,7 @@ def getResourceContent(registry, item, context, original=False):
             if len(ids) > 1:
                 #Object probably isn't published yet
                 output += (
-                u"\n/* XXX ERROR -- access to '%s' not authorized */\n" % id)
+                u"\n/* ERROR -- access to '%s' not authorized */\n" % res_id)
                 content = u''
                 obj = None
             else:
@@ -215,26 +215,26 @@ def getResourceContent(registry, item, context, original=False):
                               RESPONSE=self.REQUEST.RESPONSE)
                 contenttype = self.REQUEST.RESPONSE.headers.get('content-type',
                         '')
-                contenttype = getCharsetFromContentType(contenttype, 
+                contenttype = getCharsetFromContentType(contenttype,
                         default_charset)
                 content = unicode(content, contenttype)
             elif hasattr(aq_base(obj),'meta_type') and \
                     obj.meta_type == 'Filesystem File':
                 obj._updateFromFS()
                 content = obj._readFile(0)
-                contenttype = getCharsetFromContentType(obj.content_type, 
+                contenttype = getCharsetFromContentType(obj.content_type,
                         default_charset)
                 content = unicode(content, contenttype)
             elif hasattr(aq_base(obj),'meta_type') and obj.meta_type in \
                     ('ATFile', 'ATBlob'):
                 f = obj.getFile()
-                contenttype = getCharsetFromContentType(f.getContentType(), 
+                contenttype = getCharsetFromContentType(f.getContentType(),
                         default_charset)
                 content = unicode(str(f), contenttype)
             # We should add more explicit type-matching checks
             elif hasattr(aq_base(obj), 'index_html') and \
                     callable(obj.index_html):
-                original_headers, if_modified = self._removeCachingHeaders()
+                self._removeCachingHeaders()
                 content = obj.index_html(self.REQUEST,
                                          self.REQUEST.RESPONSE)
                 if not isinstance(content, unicode):
@@ -245,10 +245,10 @@ def getResourceContent(registry, item, context, original=False):
                 except TypeError:
                     # Could be a view or browser resource
                     content = obj()
-                
+
                 if IStreamIterator.providedBy(content):
                     content = content.read()
-                
+
                 if not isinstance(content, unicode):
                     content = unicode(content, default_charset)
             else:
@@ -258,11 +258,11 @@ def getResourceContent(registry, item, context, original=False):
         # Add start/end notes to the resource for better
         # understanding and debugging
         if content:
-            output += u'\n/* - %s - */\n' % (id,)
+            output += u'\n/* - %s - */\n' % (res_id,)
             if original:
                 output += content
             else:
-                output += self.finalizeContent(resources[id], content)
+                output += self.finalizeContent(resources[res_id], content)
             output += u'\n'
 
     # File objects and other might manipulate the headers,
@@ -272,6 +272,8 @@ def getResourceContent(registry, item, context, original=False):
 
 
 def get_resource_content(obj, registry, default_charset):
+    """ Get resource content
+    """
     self = registry
     try:
         method = obj.__browser_default__(self.REQUEST)[1][0]
@@ -286,7 +288,7 @@ def get_resource_content(obj, registry, default_charset):
     method = method in ('HEAD','POST') and 'GET' or method
     content = getattr(obj, method)()
 
-    if not isinstance(content, unicode): 
+    if not isinstance(content, unicode):
         contenttype = self.REQUEST.RESPONSE.headers.get('content-type', '')
         contenttype = getCharsetFromContentType(contenttype, default_charset)
         content = unicode(content, contenttype)
@@ -308,6 +310,8 @@ class RegenerateJS(SaveResourcesOnDisk):
     """
     @property
     def tool(self):
+        """ Tool
+        """
         return getToolByName(self.context, "portal_javascripts")
 
 class RegenerateCSS(SaveResourcesOnDisk):
@@ -315,6 +319,8 @@ class RegenerateCSS(SaveResourcesOnDisk):
     """
     @property
     def tool(self):
+        """ Tool
+        """
         return getToolByName(self.context, "portal_css")
 
 class RegenerateKSS(SaveResourcesOnDisk):
@@ -322,4 +328,6 @@ class RegenerateKSS(SaveResourcesOnDisk):
     """
     @property
     def tool(self):
+        """ Tool
+        """
         return getToolByName(self.context, "portal_kss")
