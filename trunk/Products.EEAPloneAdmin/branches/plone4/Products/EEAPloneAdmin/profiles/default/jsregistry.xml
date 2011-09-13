@@ -78,12 +78,8 @@
     <!--position-after="collapsiblesections.js"/>-->
  <!--<javascript cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="True" expression="not: portal/portal_membership/isAnonymousUser"-->
-    <!--id="se-highlight.js" inline="False"-->
-    <!--position-after="highlightsearchterms.js"/>-->
- <!--<javascript cacheable="True" compression="safe" cookable="True"-->
-    <!--enabled="True" expression="not: portal/portal_membership/isAnonymousUser"-->
     <!--id="first_input_focus.js" inline="False"-->
-    <!--position-after="se-highlight.js"/>-->
+    <!--position-after="highlightsearchterms.js"/>-->
  <!--<javascript cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="True" expression="not: portal/portal_membership/isAnonymousUser"-->
     <!--id="folder_contents_hideAddItems.js" inline="False"-->
@@ -131,14 +127,9 @@
     <!--position-after="mark_special_links.js"/>-->
  <!--<javascript cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="True"-->
-    <!--expression="python:getattr(portal, 'SITE', object) != object"-->
-    <!--id="ie5fixes.js" inline="False"-->
-    <!--position-after="styleswitcher.js"/>-->
- <!--<javascript cacheable="True" compression="safe" cookable="True"-->
-    <!--enabled="True"-->
     <!--expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"-->
     <!--id="kupunoi18n.js" inline="False"-->
-    <!--position-after="ie5fixes.js"/>-->
+    <!--position-after="styleswitcher.js"/>-->
  <!--<javascript cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="True"-->
     <!--expression="python:portal.kupu_library_tool.isKupuEnabled(REQUEST=request)"-->
