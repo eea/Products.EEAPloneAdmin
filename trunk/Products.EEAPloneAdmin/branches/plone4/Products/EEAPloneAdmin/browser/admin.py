@@ -239,7 +239,6 @@ def getResourceContent(registry, item, context, original=False):
                                          self.REQUEST.RESPONSE)
                 if not isinstance(content, unicode):
                     content = unicode(content, default_charset)
-                self._restoreCachingHeaders(original_headers, if_modified)
             elif callable(obj):
                 try:
                     content = obj(self.REQUEST, self.REQUEST.RESPONSE)
