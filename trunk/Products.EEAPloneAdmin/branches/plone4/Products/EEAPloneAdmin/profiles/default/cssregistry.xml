@@ -58,13 +58,9 @@
     <!--media="screen" rel="alternate stylesheet" rendering="link"-->
     <!--position-after="textSmall.css"/>-->
  <!--<stylesheet title="" cacheable="True" compression="safe" cookable="True"-->
-    <!--enabled="on" expression="python: 'themes/water' in request.get('URL0')"-->
-    <!--id="wisetheme.css" media="screen" rel="stylesheet" rendering="import"-->
-    <!--position-after="textLarge.css"/>-->
- <!--<stylesheet title="" cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="on" expression="not: portal/portal_membership/isAnonymousUser"-->
     <!--id="generated.css" media="all" rel="stylesheet" rendering="import"-->
-    <!--position-after="wisetheme.css"/>-->
+    <!--position-after="textLarge.css"/>-->
  <!--<stylesheet title="" cacheable="True" compression="safe" cookable="True"-->
     <!--enabled="on" expression="not: portal/portal_membership/isAnonymousUser"-->
     <!--id="livesearch.css" media="screen" rel="stylesheet" rendering="import"-->
@@ -110,8 +106,4 @@
  <!--<stylesheet title="1280up" cacheable="True" compression="safe"-->
     <!--cookable="True" enabled="False" expression="" id="resolution_1280up.css"-->
     <!--media="all" rel="alternate stylesheet" rendering="link"/>-->
- <!--<stylesheet title="EEA Reports" cacheable="True" compression="safe"-->
-    <!--cookable="True" enabled="on"-->
-    <!--expression="python:'report_view' in request.get('URL0', '')"-->
-    <!--id="reports_styles.css" media="all" rel="stylesheet" rendering="import"/>-->
 </object>

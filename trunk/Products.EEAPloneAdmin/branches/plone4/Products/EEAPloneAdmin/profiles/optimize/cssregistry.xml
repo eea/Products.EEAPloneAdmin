@@ -124,20 +124,12 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="reports_styles.css" media="all"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="eea_soer.css" media="all" rel="stylesheet"
     rendering="import"/>
  <stylesheet title="Workflow state readiness stylesheet" applyPrefix="False"
     authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="on" expression=""
     id="readiness.css" media="screen" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="python: 'themes/water' in request.get('URL0')"
-    id="wisetheme.css" media="screen" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
