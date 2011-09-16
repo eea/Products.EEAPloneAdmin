@@ -110,8 +110,8 @@ def save_resources_on_disk(registry, request=None):
     base = conf.environment['saved_resources']
 
     #remove this line when we want to support multiple skins
-    skins = [skins[0]]
     other_skins = skins[1:]
+    skins = [skins[0]]
 
     #this is not necessary if we use all skins instead of just one
     not_found = []      #resources that are not found in first skin
