@@ -111,6 +111,10 @@ def save_resources_on_disk(registry, request=None):
 
     #remove this line when we want to support multiple skins
     skins = [skins[0]]
+    other_skins = skins[1:]
+
+    #this is not necessary if we use all skins instead of just one
+    not_found = []      #resources that are not found in first skin
 
     for skin in skins:
         portal.changeSkin(skin) #temporarily changes current skin
@@ -124,24 +128,9 @@ def save_resources_on_disk(registry, request=None):
             os.makedirs(dest)
 
         for name in registry.concatenatedresources:
-
             content = getResourceContent(registry, name, registry)
-
-            #try:
-                #content = getResourceContent(registry, name, portal)
-                ##content = registry.getInlineResource(name, portal)
-            #except Exception:
-                #try:
-                    #f = getattr(portal, name)
-                    #if isinstance(f, FSDTMLMethod):
-                        #content = f.__call__(client=portal, request=request)
-                    #else:   #we try to get the content somehow
-                        #content = f()
-                #except Exception:
-                    #logger.warning("Could not get content for resource %s "
-                                   #"in skin %s" % (name, skin))
-                    #continue
-
+            if "ERROR -- could not find" in content:
+                not_found.append(name)
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
 
@@ -158,6 +147,41 @@ def save_resources_on_disk(registry, request=None):
                 logging.debug("Wrote %s on disk." % fpath)
             except IOError:
                 logging.warning("Could not write %s on disk." % fpath)
+
+    if not_found:
+        for skin in other_skins:
+            portal.changeSkin(skin) #temporarily changes current skin
+
+            #toggle these two lines when we want to support multiple skins
+            dest = base
+            #dest = os.path.join(base, urllib.quote(skin))
+
+            if not os.path.exists(dest):
+                logging.debug("%s does not exists. Creating it." % dest)
+                os.makedirs(dest)
+
+            for name in not_found:
+                content = getResourceContent(registry, name, registry)
+                if "ERROR -- could not find" not in content:
+                    ix = not_found.index(name)
+                    del not_found[ix]
+
+                if isinstance(content, str):
+                    content = content.decode('utf-8', 'ignore')
+
+                try:
+                    fpath = os.path.join(dest, name)
+                    parent = os.path.dirname(fpath)
+                    if not os.path.exists(parent):
+                        logging.debug("%s does not exists. Creating it." % dest)
+                        os.makedirs(parent)
+
+                    f = codecs.open(fpath, 'w', 'utf-8')
+                    f.write(content)
+                    f.close()
+                    logging.debug("Wrote %s on disk." % fpath)
+                except IOError:
+                    logging.warning("Could not write %s on disk." % fpath)
 
 
 def getResourceContent(registry, item, context, original=False):
