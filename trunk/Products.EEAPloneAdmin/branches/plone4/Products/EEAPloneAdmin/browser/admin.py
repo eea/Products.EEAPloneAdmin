@@ -165,6 +165,8 @@ def save_resources_on_disk(registry, request=None):
                 if "ERROR -- could not find" not in content:
                     ix = not_found.index(name)
                     del not_found[ix]
+                else:
+                    continue
 
                 if isinstance(content, str):
                     content = content.decode('utf-8', 'ignore')
