@@ -152,7 +152,7 @@ def save_resources_on_disk(registry, request=None):
                     logging.debug("%s does not exists. Creating it." % dest)
                     os.makedirs(parent)
 
-                f = codecs.open(fpath, 'w+', 'utf-8')
+                f = codecs.open(fpath, 'w', 'utf-8')
                 f.write(content)
                 f.close()
                 logging.debug("Wrote %s on disk." % fpath)
