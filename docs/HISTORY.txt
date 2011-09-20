@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.11-dev - (unreleased)
+-----------------------
+
 0.10 - (2011-09-20)
 -------------------
  * Bug fix: fix error that appeared when saving JS resources [tiberich #4556]
