@@ -9,6 +9,7 @@ Changelog
 
 0.9-dev - (unreleased)
 ----------------------
+ * Bug fix: properly save resources on disk [tiberich #4556]
 
 0.8 - (2011-05-10)
 ------------------
