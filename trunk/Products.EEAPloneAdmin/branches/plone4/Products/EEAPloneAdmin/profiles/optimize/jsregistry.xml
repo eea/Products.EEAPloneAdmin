@@ -322,4 +322,7 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="block_ldapuserfolder_profile.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="not: portal/portal_membership/isAnonymousUser" id="patch_keyword_widget.js" inline="False"
+    position-after="block_ldapuserfolder_profile.js"/>
 </object>
