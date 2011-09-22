@@ -54,19 +54,5 @@
                       layer="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer" />
     </configure>
 
-    <!--browser:page
-      name="language-controlpanel"
-      for="*"
-      class="plone.app.controlpanel.language.LanguageControlPanel"
-      permission="cmf.ManagePortal"
-      /-->
-    <browser:page
-      name="language-controlpanel"
-      for="*"
-      class="plone.app.controlpanel.language.LanguageControlPanel"
-      permission="cmf.ManagePortal"
-      layer="Products.LinguaPlone.interfaces.ILinguaPloneProductLayer"
-    />
-
 
 </configure>

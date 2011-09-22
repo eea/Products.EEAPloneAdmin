@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Change: Removed overrides for control panel pages, we solved it with url rewrites [szabozo #4510]
+
 * Bugfix: started fixing views/templates called on /www context [szabozo #4510]
 
 * Patch: added patch_tinymce.js to fix tinymce loading; added tinymce_themes skin path for same purposes [tiberich #4510]

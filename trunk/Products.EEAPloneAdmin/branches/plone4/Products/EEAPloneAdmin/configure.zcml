@@ -25,8 +25,4 @@
     </configure>
 
 
-    <adapter factory=".language_controlpanel.EEALanguageControlPanelAdapter" />
-
-    <adapter factory=".language_controlpanel.EEAMultiLanguageControlPanelAdapter" />
-
 </configure>
