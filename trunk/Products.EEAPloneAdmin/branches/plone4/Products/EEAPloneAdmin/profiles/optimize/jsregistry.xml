@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="jquery.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
@@ -9,7 +9,7 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++jquery.select2uislider.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="none"
+ <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++jquery.jstree.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
@@ -49,9 +49,6 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="plone_javascript_variables.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True" expression=""
-    id="modernizr.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="nodeutilities.js" inline="False"/>
@@ -112,6 +109,9 @@
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="eea-mediacentre.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="eea-accordion.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="dragdropreorder.js" inline="False"/>
@@ -165,7 +165,7 @@
  <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="dropdown.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="table_sorter.js" inline="False"/>
  <javascript authenticated="True" cacheable="True" compression="safe"
@@ -180,13 +180,16 @@
  <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="unlockOnFormUnload.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="patch_tinymce.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'configure_faceted.html' in request.URL0"
     id="faceted_edit.js" inline="False"/>
  <javascript authenticated="True" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="publish_dialog.js" inline="False"/>
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="publish_dialog.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'daviz-view.html' in request.URL0" id="daviz-view.js"
@@ -200,7 +203,7 @@
     expression="python: request.get('jsdisable','') != 'jquery'"
     id="eea.geotags.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False"
+    conditionalcomment="" cookable="True" enabled="True"
     expression="python:not here.restrictedTraverse('@@plone_portal_state').anonymous() or (getattr(portal, 'kupu_library_tool', None) and portal.kupu_library_tool.isKupuEnabled(REQUEST=request))"
     id="sarissa.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
@@ -219,23 +222,39 @@
     conditionalcomment="" cookable="True" enabled="False" expression=""
     id="++resource++base2-dom-fp.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
-    conditionalcomment="" cookable="True" enabled="True"
-    expression=""
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++kukit.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="False"
-    expression=""
+    expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').ison()"
     id="++resource++kukit-devel.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True"
-    expression="python: portal.portal_membership.isAnonymousUser() and request.get('jsdisable','') != 'jquery'"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="design.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="sub_cookies.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="promotions.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
-    expression="python: request.get('jsdisable','') != 'jquery'"
+    expression="not: portal/portal_membership/isAnonymousUser"
+    id="block_ldapuserfolder_profile.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="False" expression=""
+    id="++resource++vPIP/vpip.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="promotion_gallery.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="promo_gallery.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="whatsnew_gallery.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="print_warning.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
@@ -260,9 +279,6 @@
     id="eea-fullscreen.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
-    id="eea-accordion.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
     id="eea-smartview.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
@@ -281,15 +297,12 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui-i18n.js" inline="False"/>
-  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True" expression=""
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="False" enabled="True" expression=""
     id="eea_vpip.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++vPIP/vpipit.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
-    id="++resource++vPIP/vpip.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++flowplayer-html/flowplayer-3.2.2.min.js" inline="False"/>
@@ -310,6 +323,10 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="False" expression=""
     id="resize.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="not: portal/portal_membership/isAnonymousUser"
+    id="spmdragdropreorder.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
@@ -318,11 +335,8 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="tiny_mce_init.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="none"
+ <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
-    id="block_ldapuserfolder_profile.js" inline="False"/>
- <javascript cacheable="True" compression="safe" cookable="True"
-    enabled="True" expression="not: portal/portal_membership/isAnonymousUser" id="patch_keyword_widget.js" inline="False"
-    position-after="block_ldapuserfolder_profile.js"/>
+    id="patch_keyword_widget.js" inline="False"/>
 </object>

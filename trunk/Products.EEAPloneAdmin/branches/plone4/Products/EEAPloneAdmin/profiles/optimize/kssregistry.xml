@@ -2,10 +2,11 @@
 <object name="portal_kss" meta_type="KSS Registry">
  <kineticstylesheet authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="on"
-    expression="python:portal.portal_tinymce.isTinyMCEEnabled(REQUEST=request)"
+    expression="not: portal/portal_membership/isAnonymousUser"
     id="++resource++tinymce.kss/tinymce.kss"/>
  <kineticstylesheet authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
+    conditionalcomment="" cookable="True" enabled="on"
+    expression="python: not here.restrictedTraverse('@@contentproxied')()"
     id="at.kss"/>
  <kineticstylesheet authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="on" expression=""
@@ -20,11 +21,9 @@
     conditionalcomment="" cookable="True" enabled="on" expression=""
     id="++resource++plone.app.form.kss"/>
  <kineticstylesheet authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
+    conditionalcomment="" cookable="True" enabled="on" expression=""
     id="++resource++plone.app.z3cform"/>
  <kineticstylesheet authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
+    conditionalcomment="" cookable="True" enabled="on" expression=""
     id="linguaplone.kss"/>
-
 </object>
-

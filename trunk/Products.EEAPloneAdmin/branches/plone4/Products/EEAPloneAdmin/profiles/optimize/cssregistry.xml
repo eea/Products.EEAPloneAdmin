@@ -59,6 +59,14 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="frontpage.css" media="all" rel="stylesheet"
+    rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="footer.css" media="screen" rel="stylesheet"
+    rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="controlpanel.css" media="screen"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
@@ -80,10 +88,6 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="footer.css" media="screen" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="eea-navigation.css" media="all"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
@@ -97,15 +101,7 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="frontpage.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="dataservice_style.css" media="all"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="Figures View CSS" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="++resource++eea.dataservice.view.css" media="all"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="EEA Reference Browser Widget" applyPrefix="False"
     authenticated="False" cacheable="True" compression="none"
@@ -130,10 +126,6 @@
     authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="on" expression=""
     id="readiness.css" media="screen" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
-    id="livesearch.css" media="screen" rel="stylesheet" rendering="import"/>
  <stylesheet title="Faceted Edit CSS" applyPrefix="False"
     authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="on"
@@ -156,6 +148,11 @@
     cacheable="True" compression="none" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="eea.geotags.css" media="all"
     rel="stylesheet" rendering="import"/>
+ <stylesheet title="Astana conference specific css" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="none"
+    conditionalcomment="" cookable="True" enabled="on"
+    expression="python:'eea-at-the-astana-ministerial-conference' in request.URL0"
+    id="astana.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="navtree.css" media="screen"
@@ -174,8 +171,8 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="lt IE 8"
-    cookable="True" enabled="False" expression="" id="IEFixes.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="False" expression="" id="IEFixes.css"
+    media="screen" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="IE 7"
     cookable="True" enabled="on" expression="exists: portal/IE7Fixes.css"
@@ -195,6 +192,14 @@
     enabled="on" expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui-themes/sunburst-patch.css" media="screen"
     rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="helpcenter.css" media="all"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="helpcenter_print.css" media="print"
+    rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++videostyles/video.css"
@@ -217,6 +222,11 @@
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++eea.translations-logo.css"
     media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="Figures View CSS" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="++resource++eea.dataservice.view.css" media="all" rel="stylesheet"
+    rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="python: 'report_view' in request.get('URL0')"
@@ -224,11 +234,28 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on"
+    expression="python:'about-us/who/organisational-chart' in request.URL0"
+    id="organisations.css" media="screen" rel="stylesheet"
+    rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="promo_gallery.css" media="screen"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="full" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="solgemaportletsmanager.css" media="all"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="ploneCustom.css" media="all"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on"
-    expression="python:here.portal_url.getPortalObject().getCurrentSkinName()==&quot;EEADesignCMS&quot;"
-    id="ploneAdmin.css" media="screen" rel="stylesheet" rendering="import"/>
+    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
+    id="livesearch.css" media="screen" rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
+    id="ploneAdmin.css" media="" rel="stylesheet" rendering="import"/>
 </object>
