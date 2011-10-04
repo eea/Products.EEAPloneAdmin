@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bug fix: added override to use nice template layout for formlib based forms [tiberich #4589]
+
 * Change: Removed overrides for control panel pages, we solved it with url rewrites [szabozo #4510]
 
 * Bugfix: started fixing views/templates called on /www context [szabozo #4510]

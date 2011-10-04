@@ -54,5 +54,12 @@
                       layer="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer" />
     </configure>
 
+    <!-- some forms don't inherit from plone.app.form, but we still want the nice forms from there, see #4589 -->
+    <adapter
+        for="zope.formlib.interfaces.IPageForm"
+        factory="plone.app.form.default_named_template_adapter"
+        name="default"
+        provides="zope.formlib.namedtemplate.INamedTemplate"
+        />
 
 </configure>
