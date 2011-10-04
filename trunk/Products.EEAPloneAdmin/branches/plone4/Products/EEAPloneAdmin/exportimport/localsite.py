@@ -37,7 +37,7 @@ translateFromSite = (('address.html', 'Document', None),
                      ('legal/privacy/privacy-en', 'Document', None),
                      ('pressroom', 'Folder', 'Press Room'),
                      ('pressroom/newsreleases', 'Folder', 'News releases'),
-                     ('pressroom/newsreleases/all-press-releases', 'RichTopic', 'News releases'),
+                     ('pressroom/newsreleases/all-press-releases', 'Topic', 'News releases'),
                      ('quicklinks', 'Folder', None),
                      ('quicklinks/educational', 'Folder', 'Education'),
                      ('quicklinks/spotlight', 'Folder', None),
@@ -155,7 +155,7 @@ def setupTranslateSiteStructure(context):
     utils = getToolByName(plone, 'plone_utils')
     wf = getToolByName(plone, 'portal_workflow')
     folders = catalog(path={'query': '/www/SITE', },
-                      portal_type=['Folder', 'ATFolder', 'RichTopic', 'Topic'],
+                      portal_type=['Folder', 'ATFolder', 'Topic'],
                       Language='en'
                       )
     foldersByPath = {}
@@ -220,7 +220,7 @@ def setupTranslateSiteStructure(context):
                     translation.setExcludeFromNav(obj.getExcludeFromNav())
                 except Exception:
                     logger.info("EEAPloneAdmin:local-sites: EXCLUDE-FROM-NAV-ERROR for %s" % obj.absolute_url())
-            if obj.portal_type in ['Topic', 'RichTopic']:
+            if obj.portal_type in ['Topic']:
                 origCustFields = obj.getCustomViewFields()
                 if list(origCustFields) != ['Title']:
                     #fields are already set use those

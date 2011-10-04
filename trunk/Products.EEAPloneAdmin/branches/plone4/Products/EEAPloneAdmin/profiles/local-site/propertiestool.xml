@@ -8,7 +8,6 @@
   <property name="hide_if_empty" type="lines">
      <element value="Folder"/>
      <element value="Topic"/>
-     <element value="RichTopic"/>
   </property>
  </object>
 </object>

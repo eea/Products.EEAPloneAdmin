@@ -320,7 +320,6 @@
    <element value="Topic"/>
    <element value="FlashFile"/>
    <element value="Highlight"/>
-   <element value="RichTopic"/>
   </property>
   <property name="use_folder_contents" type="lines"/>
   <property name="many_users" type="boolean">True</property>
