@@ -88,4 +88,11 @@
                       preserveOriginal="true" />
     </configure -->
 
+    <!-- Patch for Products.GenericSetup.context.TarballExportContext to create valid tar.gz files -->
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.context.py"
+                  class="Products.GenericSetup.context.TarballExportContext"
+                  original="__init__"
+                  replacement=".patch_genericsetup.__patched_init__" />
+
+
 </configure>
