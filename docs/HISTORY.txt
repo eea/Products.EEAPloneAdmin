@@ -9,6 +9,8 @@ Changelog
 
 0.11-dev - (unreleased)
 -----------------------
+ * Feature: added external method unmarkCreationFlagForBrains 
+   for unmarking creation flag on a give catalog search result. [demarant]
 
 0.10 - (2011-09-20)
 -------------------
