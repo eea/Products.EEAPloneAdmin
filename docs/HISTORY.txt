@@ -11,6 +11,11 @@ Changelog
 -----------------------
  * Feature: added external method unmarkCreationFlagForBrains 
    for unmarking creation flag on a give catalog search result. [demarant]
+ * Change: enabled multiple skins when saving resources [tiberich #4603]
+ * Bug fix: added a patch for the import step of resource registries that 
+   will save resources when GS profile is loaded [tiberich #4603]
+ * Feature: call a script after saving resources, it will sync the files 
+   in a central location [tiberich #4603]
 
 0.10 - (2011-09-20)
 -------------------

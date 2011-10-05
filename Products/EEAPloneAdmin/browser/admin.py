@@ -1,4 +1,3 @@
-#import urllib
 from AccessControl import Unauthorized
 from Acquisition import aq_base
 from App.config import getConfiguration
@@ -7,11 +6,13 @@ from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.resource import Resource as z3_Resource
-from ZPublisher.Iterators import IStreamIterator
 import codecs
 import logging
 import os
 import re
+import urllib
+import subprocess
+#from ZPublisher.Iterators import IStreamIterator
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
@@ -89,10 +90,6 @@ class TidyContent(BrowserView):
         return fixed
 
 
-
-
-
-
 def getCharsetFromContentType(contenttype, default='utf-8'):
     contenttype = contenttype.lower()
     if 'charset=' in contenttype:
@@ -104,21 +101,26 @@ def getCharsetFromContentType(contenttype, default='utf-8'):
         return default
 
 
-
 def save_resources_on_disk(registry, request=None):
     """ Reads merged resources from registry and saves them on disk
     """
     if request == None:
-        request = registry.REQUEST
+        request = getattr(registry, "REQUEST", None)
+
+    if request == None:
+        return
+
+    logger.info(u"Starting to save resources on disk for registry %s" % registry)
 
     portal = getToolByName(registry, 'portal_url').getPortalObject()
     skins = getToolByName(registry, 'portal_skins').getSkinSelections()
     conf = getConfiguration()
     base = conf.environment['saved_resources']
+    script = conf.environment.get('sync_resources')
 
     #remove this line when we want to support multiple skins
     other_skins = skins[1:]
-    skins = [skins[0]]
+    #skins = [skins[0]] #only one skin
 
     #this is not necessary if we use all skins instead of just one
     not_found = []      #resources that are not found in first skin
@@ -127,8 +129,8 @@ def save_resources_on_disk(registry, request=None):
         portal.changeSkin(skin) #temporarily changes current skin
 
         #toggle these two lines when we want to support multiple skins
-        dest = base
-        #dest = os.path.join(base, urllib.quote(skin))
+        #dest = base    #only one skin
+        dest = os.path.join(base, urllib.quote(skin))
 
         if not os.path.exists(dest):
             logging.debug("%s does not exists. Creating it." % dest)
@@ -137,7 +139,7 @@ def save_resources_on_disk(registry, request=None):
         for name in registry.concatenatedresources:
             content = getResourceContent(registry, name, registry)
             if "ERROR -- could not find" in content:
-                not_found.append(name)
+                not_found.append((name, skin))
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
 
@@ -156,18 +158,20 @@ def save_resources_on_disk(registry, request=None):
                 logging.warning("Could not write %s on disk." % fpath)
 
     if not_found:
-        for skin in other_skins:
+        for skin in skins:
             portal.changeSkin(skin) #temporarily changes current skin
 
             #toggle these two lines when we want to support multiple skins
-            dest = base
-            #dest = os.path.join(base, urllib.quote(skin))
+            #dest = base    #only one skin
+            dest = os.path.join(base, urllib.quote(skin))
 
             if not os.path.exists(dest):
                 logging.debug("%s does not exists. Creating it." % dest)
                 os.makedirs(dest)
 
-            for name in not_found:
+            for name, original_skin_name in not_found:
+                if original_skin_name == skin:  #skip the skins where we had errors
+                    continue
                 content = getResourceContent(registry, name, registry)
                 if "ERROR -- could not find" not in content:
                     ix = not_found.index(name)
@@ -191,6 +195,13 @@ def save_resources_on_disk(registry, request=None):
                     logging.debug("Wrote %s on disk." % fpath)
                 except IOError:
                     logging.warning("Could not write %s on disk." % fpath)
+
+    if script:
+        res = subprocess.call([script])
+        if res != 0:
+            raise ValueError("Unsuccessful synchronisation of disk resources")
+
+    logger.info(u"Finished saving resources on disk for registry %s" % registry)
 
 
 def getResourceContent(registry, item, context, original=False):
@@ -329,70 +340,6 @@ def get_resource_content(obj, registry, default_charset):
         content = unicode(content, contenttype)
 
     return content
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#def save_resources_on_disk(registry, request=None):
-    #"""Reads merged resources from registry and saves them on disk"""
-
-    #if request == None:
-        #request = registry.REQUEST
-
-    #portal = getToolByName(registry, 'portal_url').getPortalObject()
-    #skins = getToolByName(registry, 'portal_skins').getSkinSelections()
-    #conf = getConfiguration()
-    #base = conf.environment['saved_resources']
-    
-    ##remove this line when we want to support multiple skins
-    #skins = [skins[0]]
-
-    #for skin in skins:
-        #portal.changeSkin(skin) #temporarily changes current skin
-
-        ##toggle these two lines when we want to support multiple skins
-        #dest = base
-        ##dest = os.path.join(base, urllib.quote(skin))
-
-        #if not os.path.exists(dest):
-            #logging.debug("%s does not exists. Creating it." % dest)
-            #os.makedirs(dest)
-
-        #for name in registry.concatenatedresources:
-            #try:
-                #content = registry.getInlineResource(name, portal)
-            #except Exception:
-                #try:
-                    #f = getattr(portal, name)
-                    #if isinstance(f, FSDTMLMethod):
-                        #content = f.__call__(client=portal, request=request)
-                    #else:   #we try to get the content somehow
-                        #content = f()
-                #except Exception:
-                    #logger.warning("Could not get content for resource %s "
-                                   #"in skin %s" % (name, skin))
-                    #continue
-
-            #try:
-                #fpath = os.path.join(dest, name)
-                #f = open(fpath, "w+")
-                #f.write(content)
-                #f.close()
-                #logging.debug("Wrote %s on disk." % fpath)
-            #except IOError:
-                #logging.warning("Could not write %s on disk." % fpath)
 
 
 class SaveResourcesOnDisk(BrowserView):
