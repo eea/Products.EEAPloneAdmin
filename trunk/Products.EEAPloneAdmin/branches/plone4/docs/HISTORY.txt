@@ -10,13 +10,13 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
-* Bugfix: Added monkeypatch for fixing export all steps [szabozo #4583]
+* Bugfix: Added monkeypatch for fixing export all steps [szabozo0 #4583]
 
 * Bug fix: added override to use nice template layout for formlib based forms [tiberich #4589]
 
-* Change: Removed overrides for control panel pages, we solved it with url rewrites [szabozo #4510]
+* Change: Removed overrides for control panel pages, we solved it with url rewrites [szabozo0 #4510]
 
-* Bugfix: started fixing views/templates called on /www context [szabozo #4510]
+* Bugfix: started fixing views/templates called on /www context [szabozo0 #4510]
 
 * Patch: added patch_tinymce.js to fix tinymce loading; added tinymce_themes skin path for same purposes [tiberich #4510]
 
