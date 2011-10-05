@@ -11,7 +11,7 @@
 
     <subscriber
         for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
-        zope.app.event.interfaces.IObjectModifiedEvent"
+             zope.app.event.interfaces.IObjectModifiedEvent"
         handler=".event.handle_resourceregistry_change" />
 
 </configure>
