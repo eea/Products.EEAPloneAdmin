@@ -1,9 +1,10 @@
 """ Monkey patches for p4a.fileimage
 """
-import os
-import tempfile
 from zope.publisher.http import HTTPRequest
 import logging
+import os
+import p4a.fileimage.utils
+import tempfile
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -79,3 +80,7 @@ def write_ofsfile_to_tempfile(obj, preferred_name=None):
     fout.close()
 
     return filename
+
+def apply_patch():
+    logger.info("Applying patch for p4a.fileimage.utils")
+    p4a.fileimage.utils.write_ofsfile_to_tempfile = write_ofsfile_to_tempfile
