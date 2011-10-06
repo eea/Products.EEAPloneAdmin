@@ -59,7 +59,11 @@ def write_ofsfile_to_tempfile(obj, preferred_name=None):
 
     temp_res = TempResponse()
     req = TempRequest(obj, {}, temp_res)
-    res = obj.index_html(req, temp_res)
+    if hasattr(obj, 'index_html'):
+        res = obj.index_html(req, temp_res)
+    else:
+        res = obj.data  #assumes this is a plone.app.blob.field.BlobWrapper
+
     if res:
         if isinstance(res, str):
             fout.write(res)
