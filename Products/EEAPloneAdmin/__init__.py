@@ -118,6 +118,11 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFPlone.utils import log
 
+#MONKEY PATCH
+#solves #4606, sometimes getField() returns a BlobWrapper instead of ExtensionBlobField
+import patch_p4a_fileimage
+patch_p4a_fileimage.apply_patch()
+
 def reindexOnReorder(self, parent):
     """ Catalog ordering support """
 
