@@ -4,6 +4,7 @@
            i18n_domain="Products.EEAPloneAdmin">
 
     <include file="profiles.zcml" />
+    <include file="cache.zcml" />
     <include package=".browser" />
     <include package=".upgrades" />
 
