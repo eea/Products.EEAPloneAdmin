@@ -139,7 +139,7 @@ def save_resources_on_disk(registry, request=None):
 
         #toggle these two lines when we want to support multiple skins
         #dest = base    #only one skin
-        dest = os.path.join(base, urllib.quote(skin))
+        dest = os.path.join(base, skin) #urllib.quote(skin)
 
         if not os.path.exists(dest):
             logging.debug("%s does not exists. Creating it." % dest)
@@ -192,7 +192,8 @@ def save_resources_on_disk(registry, request=None):
 
                 if isinstance(content, str):
                     content = content.decode('utf-8', 'ignore')
-                    content = localize(content, default_url, portal_url)
+
+                content = localize(content, default_url, portal_url)
 
                 try:
                     fpath = os.path.join(dest, name)
