@@ -9,6 +9,7 @@ Changelog
 
 0.12-dev - (unreleased)
 -----------------------
+ * Bug fix: don't quote skin name when saving disk resources [#tiberich #4606]
 
 0.11 - (2011-10-07)
 -------------------
