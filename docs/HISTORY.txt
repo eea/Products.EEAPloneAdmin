@@ -9,6 +9,7 @@ Changelog
 
 0.11-dev - (unreleased)
 -----------------------
+ * Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603]
  * Bug fix: added a patch for p4a.fileimage.utils to check if field is blobwrapper [tiberich #4606]
  * Feature: added external method unmarkCreationFlagForBrains 
    for unmarking creation flag on a give catalog search result. [demarant]

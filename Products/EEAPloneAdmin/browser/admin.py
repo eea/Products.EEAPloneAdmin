@@ -101,6 +101,12 @@ def getCharsetFromContentType(contenttype, default='utf-8'):
         return default
 
 
+def localize(content, default_url, portal_url):
+    if default_url == portal_url:
+        return
+    return content.replace(unicode(portal_url), unicode(default_url))
+
+
 def save_resources_on_disk(registry, request=None):
     """ Reads merged resources from registry and saves them on disk
     """
@@ -112,11 +118,14 @@ def save_resources_on_disk(registry, request=None):
 
     logger.info(u"Starting to save resources on disk for registry %s" % registry)
 
-    portal = getToolByName(registry, 'portal_url').getPortalObject()
-    skins = getToolByName(registry, 'portal_skins').getSkinSelections()
-    conf = getConfiguration()
-    base = conf.environment['saved_resources']
-    script = conf.environment.get('sync_resources')
+    portal_url_tool = getToolByName(registry, 'portal_url')
+    portal_url      = portal_url_tool()
+    portal          = portal_url_tool.getPortalObject()
+    skins           = getToolByName(registry, 'portal_skins').getSkinSelections()
+    conf            = getConfiguration()
+    base            = conf.environment['saved_resources']
+    script          = conf.environment.get('sync_resources')
+    default_url     = conf.environment.get('portal_url', portal_url)
 
     #remove this line when we want to support multiple skins
     other_skins = skins[1:]
@@ -142,6 +151,8 @@ def save_resources_on_disk(registry, request=None):
                 not_found.append((name, skin))
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
+
+            content = localize(content, default_url, portal_url)
 
             try:
                 fpath = os.path.join(dest, name)
@@ -181,6 +192,7 @@ def save_resources_on_disk(registry, request=None):
 
                 if isinstance(content, str):
                     content = content.decode('utf-8', 'ignore')
+                    content = localize(content, default_url, portal_url)
 
                 try:
                     fpath = os.path.join(dest, name)
