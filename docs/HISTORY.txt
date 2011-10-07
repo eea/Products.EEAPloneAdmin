@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.12-dev - (unreleased)
+-----------------------
+
 0.11 - (2011-10-07)
 -------------------
  * Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603]
