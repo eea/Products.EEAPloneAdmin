@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="plone" action_id="rss2"
+              title="RSS2 Syndication" priority="0"
+              icon_expr="rss.gif"/>
+ <action-icon category="plone" action_id="skos"
+              title="SKOS Syndication" priority="0"
+              icon_expr="rdf.gif"/>
+ <action-icon category="plone" action_id="gearth"
+              title="Google Earth View" priority="0"
+              icon_expr="google_earth.gif"/>
+</action-icons>
