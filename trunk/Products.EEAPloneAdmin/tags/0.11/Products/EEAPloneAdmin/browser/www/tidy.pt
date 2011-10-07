@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body tal:define="objs view/tidyAll">
+
+<h2>Not fixed</h2>
+<ul>
+ <li tal:repeat="url objs/err">
+    <a href="" target="fixContent"
+       tal:attributes="href string:${url}/edit"
+       tal:content="url">URL</a>
+ </li>
+</ul>
+
+<h2>Fixed</h2>
+<ul>
+ <li tal:repeat="obj objs/ok">
+    <tal:obj content="obj" />
+ </li>
+</ul>
+</body>
+</html>
