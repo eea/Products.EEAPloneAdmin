@@ -209,7 +209,7 @@ def save_resources_on_disk(registry, request=None):
                     logging.warning("Could not write %s on disk." % fpath)
 
     if script: 
-        res = subprocess.call([script]) 
+        res = subprocess.call([script, base]) 
         if res != 0: 
             raise ValueError("Unsuccessful synchronisation of disk resources") 
  

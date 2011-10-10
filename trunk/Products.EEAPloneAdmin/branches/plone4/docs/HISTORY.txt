@@ -11,11 +11,11 @@ Changelog
 4.0-dev - (unreleased)
 ----------------------
 * Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603] 
- * Change: enabled multiple skins when saving resources [tiberich #4603] 
- * Bug fix: added a patch for the import step of resource registries that  
-   will save resources when GS profile is loaded [tiberich #4603] 
- * Feature: call a script after saving resources, it will sync the files  
-   in a central location [tiberich #4603] 
+* Change: enabled multiple skins when saving resources [tiberich #4603] 
+* Bug fix: added a patch for the import step of resource registries that  
+  will save resources when GS profile is loaded [tiberich #4603] 
+* Feature: call a script after saving resources, it will sync the files  
+  in a central location [tiberich #4603] 
 
 * Bug fix: added fix for #4606 for p4a.fileimage [tiberich #4606]
 
