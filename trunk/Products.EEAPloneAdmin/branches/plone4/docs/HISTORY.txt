@@ -16,6 +16,8 @@ Changelog
   will save resources when GS profile is loaded [tiberich #4603] 
 * Feature: call a script after saving resources, it will sync the files  
   in a central location [tiberich #4603] 
+* Feature: added external method unmarkCreationFlagForBrains  
+  for unmarking creation flag on a give catalog search result. [demarant] 
 
 * Bug fix: added fix for #4606 for p4a.fileimage [tiberich #4606]
 

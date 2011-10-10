@@ -357,6 +357,23 @@ def createDCPage(self):
 
     return printed
 
+ 
+def unmarkCreationFlagForBrains(self,brains=None): 
+    """ unmark creation flag for given catalog brains """ 
+    printed = "*********Unmarking creating flag********" 
+    for b in brains: 
+        o = b.getObject() 
+        try: 
+          if o.checkCreationFlag(): 
+             print 'Unmarking creation flag for %s - %s' % (o.getId(), o.absolute_url()) 
+             o.unmarkCreationFlag() 
+          else: 
+             print 'Already marked for %s - %s' % (o.getId(), o.absolute_url()) 
+        except: 
+          print "ERROR unmarking flag  on " + o.absolute_url() 
+    return printed 
+
+
 def interactiveMapsPromotions(self):
     """find interactive maps via promotions """
     context = self
