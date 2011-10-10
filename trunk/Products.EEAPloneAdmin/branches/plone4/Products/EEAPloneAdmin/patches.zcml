@@ -34,6 +34,12 @@
                   replacement=".patch_baseregistry.generateId"
                   preserveOriginal="true" />
 
+    <monkey:patch description="Monkeypatch BaseRegistry GS import to regenerate disk resources #4603"
+                  class="Products.ResourceRegistries.exportimport.resourceregistry.ResourceRegistryNodeAdapter"
+                  original="_initResources"
+                  replacement=".patch_baseregistry._initResources"
+                  preserveOriginal="true" />
+
     <!-- Do not remove the below patch, see patch_hachoir_core.py for more info -->
     <monkey:patch description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
                   module="hachoir_core.i18n"
