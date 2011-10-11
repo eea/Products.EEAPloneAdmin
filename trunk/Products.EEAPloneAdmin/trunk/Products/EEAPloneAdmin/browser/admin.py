@@ -169,6 +169,8 @@ def save_resources_on_disk(registry, request=None):
                 logging.warning("Could not write %s on disk." % fpath)
 
     if not_found:
+        logging.info("Did not find content for the following resources, trying "
+                     "to get them from the other skins: %s" % not_found)
         for skin in skins:
             portal.changeSkin(skin) #temporarily changes current skin
 
@@ -185,7 +187,7 @@ def save_resources_on_disk(registry, request=None):
                     continue
                 content = getResourceContent(registry, name, registry)
                 if "ERROR -- could not find" not in content:
-                    ix = not_found.index(name)
+                    ix = not_found.index((name, original_skin_name))
                     del not_found[ix]
                 else:
                     continue

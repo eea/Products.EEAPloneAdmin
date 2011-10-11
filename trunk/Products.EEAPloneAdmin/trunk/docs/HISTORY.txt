@@ -9,6 +9,8 @@ Changelog
 
 0.14-dev - (unreleased)
 -----------------------
+* Bug fix: fix a problem when trying to save skin resources and the resource could not be 
+  found in the current skin [tiberich #4606]
 
 0.13 - (2011-10-11)
 -------------------
