@@ -9,6 +9,7 @@ Changelog
 
 0.13-dev - (unreleased)
 -----------------------
+ * Bug fix: fix problem that could happen on development machines with saving disk resources [tiberich #4606]
 
 0.12 - (2011-10-07)
 -------------------

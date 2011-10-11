@@ -103,7 +103,7 @@ def getCharsetFromContentType(contenttype, default='utf-8'):
 
 def localize(content, default_url, portal_url):
     if default_url == portal_url:
-        return
+        return content
     return content.replace(unicode(portal_url), unicode(default_url))
 
 
