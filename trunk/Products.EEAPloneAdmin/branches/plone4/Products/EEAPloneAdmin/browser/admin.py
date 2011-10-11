@@ -102,7 +102,7 @@ class TidyContent(BrowserView):
 
 def localize(content, default_url, portal_url): 
     if default_url == portal_url: 
-        return 
+        return content
     return content.replace(unicode(portal_url), unicode(default_url)) 
 
  
@@ -290,7 +290,7 @@ def getResourceContent(registry, item, context, original=False):
             # We should add more explicit type-matching checks
             elif hasattr(aq_base(obj), 'index_html') and \
                     callable(obj.index_html):
-                self._removeCachingHeaders()
+                #self._removeCachingHeaders()
                 content = obj.index_html(self.REQUEST,
                                          self.REQUEST.RESPONSE)
                 if not isinstance(content, unicode):
