@@ -10,13 +10,13 @@ from Products.Five import BrowserView
 from Products.Five.browser.resource import Resource as z3_Resource
 from Products.ResourceRegistries.tools.BaseRegistry import \
         getCharsetFromContentType
+from ZPublisher.Iterators import IStreamIterator 
 import codecs
 import logging
 import os
 import re
 import subprocess 
 
-#from ZPublisher.Iterators import IStreamIterator 
 #import urllib
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
