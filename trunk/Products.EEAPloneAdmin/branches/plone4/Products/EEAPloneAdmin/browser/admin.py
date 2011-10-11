@@ -122,6 +122,10 @@ def save_resources_on_disk(registry, request=None):
     portal          = portal_url_tool.getPortalObject() 
     skins           = getToolByName(registry, 'portal_skins').getSkinSelections() 
     conf            = getConfiguration() 
+
+    if not hasattr(conf, 'environment'):
+        return  #this happens during unit tests, we skip this procedure
+
     base            = conf.environment['saved_resources'] 
     script          = conf.environment.get('sync_resources') 
     default_url     = conf.environment.get('portal_url', portal_url) 
