@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.14-dev - (unreleased)
+-----------------------
+
 0.13 - (2011-10-11)
 -------------------
  * Bug fix: fix problem that could happen on development machines with saving disk resources [tiberich #4606]
