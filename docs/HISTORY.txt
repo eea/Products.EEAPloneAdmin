@@ -7,6 +7,9 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
+0.15-dev - (unreleased)
+-----------------------
+
 0.14 - (2011-10-11)
 -------------------
 * Bug fix: fix a problem when trying to save skin resources and the resource could not be 
