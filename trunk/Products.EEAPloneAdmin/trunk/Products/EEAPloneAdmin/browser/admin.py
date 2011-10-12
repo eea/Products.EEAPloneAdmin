@@ -127,13 +127,6 @@ def save_resources_on_disk(registry, request=None):
     script          = conf.environment.get('sync_resources')
     default_url     = conf.environment.get('portal_url', portal_url)
 
-    #remove this line when we want to support multiple skins
-    other_skins = skins[1:]
-    #skins = [skins[0]] #only one skin
-
-    #this is not necessary if we use all skins instead of just one
-    not_found = []      #resources that are not found in first skin
-
     for skin in skins:
         portal.changeSkin(skin) #temporarily changes current skin
 
@@ -147,8 +140,6 @@ def save_resources_on_disk(registry, request=None):
 
         for name in registry.concatenatedresources:
             content = getResourceContent(registry, name, registry)
-            if "ERROR -- could not find" in content:
-                not_found.append((name, skin))
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
 
@@ -167,49 +158,6 @@ def save_resources_on_disk(registry, request=None):
                 logging.debug("Wrote %s on disk." % fpath)
             except IOError:
                 logging.warning("Could not write %s on disk." % fpath)
-
-    if not_found:
-        logging.info("Did not find content for the following resources, trying "
-                     "to get them from the other skins: %s" % not_found)
-        for skin in skins:
-            portal.changeSkin(skin) #temporarily changes current skin
-
-            #toggle these two lines when we want to support multiple skins
-            #dest = base    #only one skin
-            dest = os.path.join(base, urllib.quote(skin))
-
-            if not os.path.exists(dest):
-                logging.debug("%s does not exists. Creating it." % dest)
-                os.makedirs(dest)
-
-            for name, original_skin_name in not_found:
-                if original_skin_name == skin:  #skip the skins where we had errors
-                    continue
-                content = getResourceContent(registry, name, registry)
-                if "ERROR -- could not find" not in content:
-                    ix = not_found.index((name, original_skin_name))
-                    del not_found[ix]
-                else:
-                    continue
-
-                if isinstance(content, str):
-                    content = content.decode('utf-8', 'ignore')
-
-                content = localize(content, default_url, portal_url)
-
-                try:
-                    fpath = os.path.join(dest, name)
-                    parent = os.path.dirname(fpath)
-                    if not os.path.exists(parent):
-                        logging.debug("%s does not exists. Creating it." % dest)
-                        os.makedirs(parent)
-
-                    f = codecs.open(fpath, 'w', 'utf-8')
-                    f.write(content)
-                    f.close()
-                    logging.debug("Wrote %s on disk." % fpath)
-                except IOError:
-                    logging.warning("Could not write %s on disk." % fpath)
 
     if script:
         res = subprocess.call([script, base])

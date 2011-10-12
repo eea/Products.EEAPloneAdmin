@@ -9,6 +9,8 @@ Changelog
 
 0.15-dev - (unreleased)
 -----------------------
+ * Change: don't try to get not found resources from other skins, not necessary when we have 
+   multiple skins [tiberich #4606]
 
 0.14 - (2011-10-11)
 -------------------
