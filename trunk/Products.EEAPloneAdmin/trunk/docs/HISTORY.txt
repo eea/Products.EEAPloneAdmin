@@ -7,8 +7,8 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
-0.15-dev - (unreleased)
------------------------
+0.15 - (2011-10-12)
+-------------------
  * Change: don't try to get not found resources from other skins, not necessary when we have 
    multiple skins [tiberich #4606]
 
