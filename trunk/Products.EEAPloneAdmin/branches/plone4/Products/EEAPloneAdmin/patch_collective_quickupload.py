@@ -5,6 +5,7 @@ from collective.quickupload import logger
 from collective.quickupload.browser.quick_upload import getDataFromAllRequests
 from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
 from Products.CMFCore.utils import getToolByName
+from Acquisition import aq_inner
 
 def quick_upload_file(self) :
     context = aq_inner(self.context)
