@@ -1,6 +1,8 @@
 """ Monkey patch for collective.quickupload
 """
 import json
+import urllib
+import mimetypes
 from collective.quickupload import logger
 from collective.quickupload.browser.quick_upload import getDataFromAllRequests
 from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
