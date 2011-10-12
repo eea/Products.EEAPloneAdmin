@@ -55,7 +55,7 @@
             <div id="content-core">
                 <a href=""
                    class="link-parent"
-                   tal:attributes="href string:$portal_url/aq_parent/plone_control_panel"
+                   tal:attributes="href string:$portal_url/aq_parent/@@overview-controlpanel"
                    i18n:translate="label_up_to_plone_setup">
                   Up to Site Setup
                 </a>
