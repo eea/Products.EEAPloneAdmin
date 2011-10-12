@@ -3,7 +3,7 @@
 import json
 from collective.quickupload import logger
 from collective.quickupload.browser.quick_upload import getDataFromAllRequests
-from collective.quickupload.interfaces import IQuickUploadFileFactory
+from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
 from Products.CMFCore.utils import getToolByName
 
 def quick_upload_file(self) :
