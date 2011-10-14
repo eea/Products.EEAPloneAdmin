@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Feature: added registration of dashboard traversal to allow proper functioning of dashboard [tiberich #4624]
+
 * Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603] 
 * Change: enabled multiple skins when saving resources [tiberich #4603] 
 * Bug fix: added a patch for the import step of resource registries that  

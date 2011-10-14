@@ -54,5 +54,11 @@
       layer="eea.design.browser.interfaces.IEEACommonLayer"
       />
 
+  <!--Allows proper functioning of the dashboard when displayed over a non-root url-->
+    <adapter
+        factory="plone.app.portlets.browser.traversal.DashboardNamespace"
+        for="Products.Archetypes.interfaces.IBaseFolder zope.publisher.interfaces.http.IHTTPRequest"
+        name="dashboard"
+        />
 
 </configure>
