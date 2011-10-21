@@ -5,18 +5,14 @@ import time
 import codecs
 import transaction
 from zope.i18n import translate as realTranslate
-from valentine.gtranslate import translate as gtranslate
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
-#from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
 from zope.interface import alsoProvides
 from zope.event import notify
 from zope.app.event.objectevent import ObjectModifiedEvent
 from Products.NavigationManager.interfaces import INavigationSectionPosition
 from p4a.subtyper.interfaces import ISubtyper
 from zope.component import getUtility
-#from zope.component import queryMultiAdapter
-#from eea.facetednavigation.interfaces import ICriteria
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from Products.CMFCore.WorkflowCore import WorkflowException
 from DateTime import DateTime
@@ -569,22 +565,8 @@ def translate(msgid, target_language, output=False):
     translation = realTranslate(msgid, target_language=target_language)
     if translation == str(msgid):
         if msgid not in untranslatedMessages.get(target_language, {}).keys():
-            if untranslatedMessages.get(target_language) is None:
-                untranslatedMessages[target_language] = {}
-
-            translation = untranslatedMessages.get(target_language).get(msgid)
-            if translation is None:
-                # we have run gtranslate so now we just keep it untranslated
-                translation = str(msgid)
-                # google translate doesn't have all languages
-                try:
-                    translation = gtranslate(str(msgid),
-                                             langpair="en|%s" % target_language)
-                except Exception:
-                    print "GTRANSLATE FAILED %s and msgid %s" % (
-                        target_language, msgid)
-                    untranslatedMessages.get(
-                        target_language)[msgid] = translation
+            untranslatedMessages.setdefault(target_language, {})
+            untranslatedMessages[target_language].setDefault(msgid, str(msgid))
         translation = untranslatedMessages.get(target_language).get(msgid)
     if type(translation) == type(''):
         return translation
@@ -636,36 +618,7 @@ def translateObject(self, templateview, navigationroot=False):
 def getTranslationsFromGoogle(self, toTranslatefromG):
     """ Translate from google
     """
-    context = self
-    lt = getToolByName(context, 'portal_languages')
-    #wf = getToolByName(context, 'portal_workflow')
-    translationslist = []
-    #defaultLang = lt.getDefaultLanguage()
-    languages = lt.getSupportedLanguages()
-
-    for lang in languages:
-        pofile = codecs.open('/tmp/gtranslated-%s.po' % lang,
-                             'wb', encoding='utf8')
-        for msgid, msgstr in toTranslatefromG.items():
-            try:
-                translated = gtranslate(msgstr, langpair="en|%s" % lang)
-                pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (
-                    msgid, translated))
-                translationslist.append((msgid, lang , translated))
-            except Exception:
-                translationslist.append(
-                    ("FAILED for lang %s msgstr %s" % (lang, msgstr)))
-        pofile.close()
-    return translationslist
-    # run this later
-    # cd eea.translations/eea/translations/i18n
-    # ls /tmp/gtranslated-* | awk -F- '{split($2, b, ".");
-    # print "cat /tmp/gtranslated-"b[1]".po >> \
-    # "b[1]"/LC_MESSAGES/eea.translations.po" ;}' | /bin/sh
-    # ls | awk '{ print "pocompile "$1"/LC_MESSAGES/eea.translations.po \
-    # "$1"/LC_MESSAGES/eea.translations.mo" ;}' | /bin/sh
-
-
+    return []
 
 def importSubscribers(self):
     """ Import subscribers

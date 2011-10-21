@@ -19,14 +19,6 @@ import codecs
 import os
 import re
 import transaction
-
-
-HAS_GTRANSLATE = True
-try:
-    from valentine.gtranslate import translate as gtranslate
-except ImportError:
-    HAS_GTRANSLATE = False
-
 excludeFromNav = ('legal', 'quicklinks', 'address.html')
 
 # list of (path, portalType, translationText)
@@ -118,19 +110,7 @@ def translate(msgid, target_language, output=False):
 
             translation = untranslatedMessages.get(target_language).get(msgid)
             if translation is None:
-                # we have run gtranslate so now we just keep it untranslated
                 translation = str(msgid)
-
-                # google translate doesn't have all languages
-                if target_language not in ['tr', 'mt', 'hu']:
-                    if HAS_GTRANSLATE:
-                        try:
-                            translation = gtranslate(str(msgid),
-                                            langpair="en|%s" % target_language)
-                        except Exception:
-                            print "GTRANSLATE FAILED %s and msgid %s" % (
-                                target_language, msgid)
-
                 untranslatedMessages.get(target_language)[msgid] = translation
         translation = untranslatedMessages.get(target_language).get(msgid)
     if type(translation) == type(''):
@@ -695,33 +675,6 @@ toTranslatefromG = { 'Animations' : 'Animations',
 def getTranslationsFromGoogle(context):
     if context.readDataFile('eeaploneadmin_localsites.txt') is None:
         return
-
-    #plone = context.getSite()
-    logger = context.getLogger('eea-localsite')
-    #wf = getToolByName(plone, 'portal_workflow')
-
-    #siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
-    languages = getLanguages(context)
-
-    for lang, _unused in languages:
-        pofile = codecs.open('/tmp/gtranslated-%s.po' % lang, 'wb',
-                             encoding='utf8')
-        for msgid, msgstr in toTranslatefromG.items():
-            try:
-                pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (
-                    msgid, gtranslate(msgstr, langpair="en|%s" % lang)))
-            except Exception:
-                logger.info("FAILED for lang %s msgstr %s" % (lang, msgstr))
-        pofile.close()
-    #run this later
-    # cd eea.translations/eea/translations/i18n
-    # ls /tmp/gtranslated-* | awk -F- '{split($2, b, ".");
-    # print "cat /tmp/gtranslated-"b[1]".po >> \
-    # "b[1]"/LC_MESSAGES/eea.translations.po" ;}' | /bin/sh
-    # ls | awk '{ print "pocompile \
-    # "$1"/LC_MESSAGES/eea.translations.po \
-    # "$1"/LC_MESSAGES/eea.translations.mo" ;}' | /bin/sh
-
 
 navigationItems2RemoveFromTranslatedMenues = ['chemicals', 'coasts-and-seas',
                                               'fisheries', 'industry']
