@@ -28,10 +28,14 @@ info = logger.info
 info_exception = logger.exception
 
 def testTimeoutA(self):
+    """ Test
+    """
     time.sleep(600)
     return 'done'
 
 def bulkDeleteSpam(self):
+    """ Cleanup spam
+    """
     info('INFO: starting bulk delete spam')
     context = self
     request = self.REQUEST
@@ -98,19 +102,19 @@ def bulkChangeState(self):
                     pass
                 elif old_state == 'visible':
                     wftool.doActionFor(ob, 'publish',
-                                       comment='SOER2010 launch. Set by migration script.')
+                            comment='SOER2010 launch. Set by migration script.')
                 elif old_state == 'webqa_pending':
                     wftool.doActionFor(ob, 'publish',
-                                       comment='SOER2010 launch. Set by migration script.')
+                            comment='SOER2010 launch. Set by migration script.')
                 elif old_state == 'new':
                     wftool.doActionFor(ob, 'publish',
-                                       comment='SOER2010 launch. Set by migration script.')
+                            comment='SOER2010 launch. Set by migration script.')
                 elif old_state == 'draft':
                     wftool.doActionFor(ob, 'publish',
-                                       comment='SOER2010 launch. Set by migration script.')
+                            comment='SOER2010 launch. Set by migration script.')
                 elif old_state == 'pending':
                     wftool.doActionFor(ob, 'publish',
-                                       comment='SOER2010 launch. Set by migration script.')
+                            comment='SOER2010 launch. Set by migration script.')
                 else:
                     info('ERROR: state not covered, %s' % ob.absolute_url())
                     info('ERROR: old state: %s' % old_state)
@@ -163,8 +167,8 @@ def reindexAllIndicators(self):
     #wf = getToolByName(context, 'portal_workflow')
 
     all_brains = cat.searchResults({'show_inactive':True,
-                                    'language':'ALL',
-                                    'object_provides':'eea.indicators.content.interfaces.ISpecification'})
+        'language':'ALL',
+        'object_provides':'eea.indicators.content.interfaces.ISpecification'})
 
     done = 0
     try:
@@ -172,7 +176,8 @@ def reindexAllIndicators(self):
             done += 1
             content = brain.getObject()
             content.reindexObject()
-            msg = "(%d / %d) reindexed indicator: %s" % (done, len(all_brains), "/".join(content.getPhysicalPath()))
+            msg = "(%d / %d) reindexed indicator: %s" % (done, len(
+                all_brains), "/".join(content.getPhysicalPath()))
             info(msg)
             for asses in content.objectValues('Assessment'):
                 asses.reindexObject()
@@ -188,6 +193,8 @@ def reindexAllIndicators(self):
     info('Done reindexing.')
 
 def setIndicatorsFacets(self):
+    """ Setter
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
@@ -195,7 +202,8 @@ def setIndicatorsFacets(self):
    # Example:
    #    >>> fid = portal.invokeFactory('Folder', 'heritor')
    #    >>> heritor = portal._getOb(fid)
-   #    >>> subtyper.change_type(heritor, 'eea.faceted.inheritance.FolderFacetedHeritor')
+   #    >>> subtyper.change_type(heritor,
+   #    ...     'eea.faceted.inheritance.FolderFacetedHeritor')
    #
    #  Connect heritor with ancestor
    #
@@ -204,36 +212,46 @@ def setIndicatorsFacets(self):
    #    >>> IHeritorAccessor(heritor).ancestor
    #    '/plone/ancestor'
 
-    pubs=cat.searchResults({'id':'indicators', 'path': '/www/SITE/themes/'})
+    pubs = cat.searchResults({'id':'indicators', 'path': '/www/SITE/themes/'})
     subtyper = getUtility(ISubtyper)
     printed = "Indicators sections for new IMSv3\n"
 
     for indf in pubs:
-        indfo=indf.getObject()
+        indfo = indf.getObject()
         printed = printed + indfo.absolute_url() + '\n'
-        subtyper.change_type(indfo, 'eea.faceted.inheritance.FolderFacetedHeritor')
-        IHeritorAccessor(indfo).ancestor = '/www/SITE/themes/indicators-ancestor'
+        subtyper.change_type(indfo,
+                             'eea.faceted.inheritance.FolderFacetedHeritor')
+        IHeritorAccessor(indfo
+                         ).ancestor = '/www/SITE/themes/indicators-ancestor'
         try:
-            wf.doActionFor(indfo, 'publish',comment='done by setupmethods for new indicators ims.')
+            wf.doActionFor(indfo, 'publish',
+                        comment='done by setupmethods for new indicators ims.')
         except Exception:
             printed = printed + 'no possible to publish\n'
         indfo.reindexObject()
 
-    #oldpages=cat.searchResults({'id':'indicators-old','meta_type':'Folder','path': '/www/SITE/themes/'})
+    #oldpages=cat.searchResults({'id':'indicators-old','meta_type':'Folder',
+    #                            'path': '/www/SITE/themes/'})
     #for indf in oldpages[:10]:
     #    indfo=indf.getObject()
     #    printed = printed + indfo.absolute_url() + '\n'
-        #wf.doActionFor(indfo, 'hide',comment='done by setupmethods for new indicators ims.')
+        #wf.doActionFor(indfo,
+        # 'hide',comment='done by setupmethods for new indicators ims.')
         #indfo.reindexObject()
 
     return printed
 
 def createIndicatorSections(self):
+    """ Create sections
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
 
-    pubs=cat.searchResults({ 'object_provides' : 'eea.themecentre.interfaces.IThemeCentre','path': '/www/SITE/themes/' })
+    pubs = cat.searchResults({
+        'object_provides' : 'eea.themecentre.interfaces.IThemeCentre',
+        'path': '/www/SITE/themes/'
+    })
 
     printed = "Indicators sections for new IMSv3"
 
@@ -241,7 +259,7 @@ def createIndicatorSections(self):
     img_preview = context.manage_copyObjects(["img_preview"])
 
     for theme in pubs:
-        themeItem=theme.getObject()
+        themeItem = theme.getObject()
         printed = printed + themeItem.absolute_url()
         themeId = theme.id
         printed = printed + 'fixing a few things in %s' % themeId
@@ -249,8 +267,8 @@ def createIndicatorSections(self):
             try:
                 printed = printed + '\nfixing indicators\n'
                 #rename old indicators page
-                themeItem.manage_renameObject('indicators','indicators-old')
-                oldindpage=themeItem.manage_cutObjects(["indicators-old"])
+                themeItem.manage_renameObject('indicators', 'indicators-old')
+                oldindpage = themeItem.manage_cutObjects(["indicators-old"])
                 oldpage = themeItem['indicators-old']
                 #create new indicator section
                 #create folder and preview image in it
@@ -260,7 +278,8 @@ def createIndicatorSections(self):
                 indf.setTitle('Indicators')
                 # copy old intro text in rich topic area
                 #indf.setRichContent(oldpage.getText())
-                INavigationSectionPosition(indf).section = 'data-center-services'
+                INavigationSectionPosition(indf
+                                           ).section = 'data-center-services'
                 indf.unmarkCreationFlag()
                 indf.manage_pasteObjects(img_preview)
                 indf.manage_pasteObjects(oldindpage)
@@ -272,7 +291,8 @@ def createIndicatorSections(self):
             #publish
             # Make sure it's published
             try:
-                wf.doActionFor(indf, 'publish',comment='done by setupmethods for new indicators ims.')
+                wf.doActionFor(indf, 'publish',
+                        comment='done by setupmethods for new indicators ims.')
             except Exception, err:
                 logger.info(err)
             #reindex
@@ -282,7 +302,8 @@ def createIndicatorSections(self):
             #retract old page
             # Make sure it's published
             try:
-                wf.doActionFor(oldpage, 'hide',comment='done by setupmethods for new indicators ims.')
+                wf.doActionFor(oldpage, 'hide',
+                        comment='done by setupmethods for new indicators ims.')
             except Exception, err:
                 logger.info(err)
             #reindex
@@ -297,19 +318,25 @@ def createIndicatorSections(self):
     return printed
 
 def createRODListing(self):
+    """ ROD
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
 
-    pubs=cat.searchResults({ 'object_provides' : 'eea.themecentre.interfaces.IThemeCentre','path': '/www/SITE/themes/' })
+    pubs = cat.searchResults({
+        'object_provides' : 'eea.themecentre.interfaces.IThemeCentre',
+        'path': '/www/SITE/themes/'
+    })
 
     printed = "Rod listing"
 
     for theme in pubs:
-        themeItem=theme.getObject()
+        themeItem = theme.getObject()
         themeId = theme.id
         if not hasattr(themeItem, 'reporting-obligations'):
-            printed = printed + '\n adding reporting obligations page to ' + themeId
+            printed = (printed + '\n adding reporting obligations page to ' +
+                       themeId)
             themeItem.invokeFactory('Document', id='reporting-obligations')
             rod = themeItem['reporting-obligations']
             rod.setLayout('rod_listing')
@@ -318,7 +345,8 @@ def createRODListing(self):
             rod.unmarkCreationFlag()
             # Make sure it's published
             try:
-                wf.doActionFor(rod, 'publish',comment='published by script for data centres setup.')
+                wf.doActionFor(rod, 'publish',
+                        comment='published by script for data centres setup.')
             except Exception, err:
                 logger.info(err)
             rod.reindexObject()
@@ -333,12 +361,15 @@ def createDCPage(self):
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
 
-    pubs=cat.searchResults({ 'object_provides' : 'eea.themecentre.interfaces.IThemeCentre','path': '/www/SITE/themes/' })
+    pubs = cat.searchResults({
+        'object_provides' : 'eea.themecentre.interfaces.IThemeCentre',
+        'path': '/www/SITE/themes/'
+    })
 
     printed = "create dc page for not dc sites"
 
     for theme in pubs:
-        themeItem=theme.getObject()
+        themeItem = theme.getObject()
         themeId = theme.id
         if not hasattr(themeItem, 'dc'):
             printed = printed + '\n adding dc page to ' + themeId
@@ -350,7 +381,8 @@ def createDCPage(self):
             dc.unmarkCreationFlag()
             # Make sure it's published
             try:
-                wf.doActionFor(dc, 'publish',comment='published by script for data centres setup.')
+                wf.doActionFor(dc, 'publish',
+                        comment='published by script for data centres setup.')
             except Exception, err:
                 logger.info(err)
             dc.reindexObject()
@@ -360,19 +392,21 @@ def createDCPage(self):
     return printed
 
 
-def unmarkCreationFlagForBrains(self,brains=None):
+def unmarkCreationFlagForBrains(self, brains=None):
     """ unmark creation flag for given catalog brains """
     printed = "*********Unmarking creating flag********"
     for b in brains:
         o = b.getObject()
         try:
-          if o.checkCreationFlag():
-             print 'Unmarking creation flag for %s - %s' % (o.getId(), o.absolute_url())
-             o.unmarkCreationFlag()
-          else:
-             print 'Already marked for %s - %s' % (o.getId(), o.absolute_url())
-        except:
-          print "ERROR unmarking flag  on " + o.absolute_url()
+            if o.checkCreationFlag():
+                print 'Unmarking creation flag for %s - %s' % (
+                    o.getId(), o.absolute_url())
+                o.unmarkCreationFlag()
+            else:
+                print 'Already marked for %s - %s' % (
+                    o.getId(), o.absolute_url())
+        except Exception:
+            print "ERROR unmarking flag  on " + o.absolute_url()
     return printed
 
 
@@ -382,45 +416,55 @@ def interactiveMapsPromotions(self):
     cat = getToolByName(context, 'portal_catalog')
     #wf = getToolByName(context, 'portal_workflow')
 
-    pubs=cat.searchResults({ 'portal_type' : 'Promotion'})
+    pubs = cat.searchResults({ 'portal_type' : 'Promotion'})
 
     printed = "Promotions:"
 
     for pub in pubs:
-        pubo=pub.getObject()
+        pubo = pub.getObject()
         printed = printed + pub.review_state + ' ' + pubo.absolute_url() + '\n'
         if INavigationSectionPosition(pubo).section:
-            printed = printed +'Sections: ' + INavigationSectionPosition(pubo).section + '\n'
-        printed = printed + '**************************************************\n'
+            printed = (printed + 'Sections: ' +
+                       INavigationSectionPosition(pubo).section + '\n')
+        printed = printed + '************************************************\n'
 
     return printed
 
 def sendModifiedForObjects(self):
+    """ Send modified
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs=cat.searchResults({ 'id' : 'dm' })
-    printed=""
+    pubs = cat.searchResults({ 'id' : 'dm' })
+    printed = ""
     for pub in pubs:
-        pubo=pub.getObject()
+        pubo = pub.getObject()
         printed = printed + pub.id + "\n modified"
-        pubo.reindexIsEmptyForSite(pubo, query={'path' : '/'.join(pubo.getPhysicalPath()),
-                                                'Language' : 'all' })
+        pubo.reindexIsEmptyForSite(pubo, query={
+            'path' : '/'.join(pubo.getPhysicalPath()),
+            'Language' : 'all'
+        })
         notify(ObjectModifiedEvent(pubo))
     return printed
 
 def hideMapsDataFolders(self):
+    """ Hide maps
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
-    pubs=cat.searchResults({ 'id' : 'maps-and-graphs' ,'path': '/www/SITE/themes/'})
-    printed="STARTED"
+    pubs = cat.searchResults({ 'id' : 'maps-and-graphs' ,
+                             'path': '/www/SITE/themes/'})
+    printed = "STARTED"
     for pub in pubs:
-        pubo=pub.getObject()
+        pubo = pub.getObject()
         printed = printed + pub.id + "\n modified"
         try:
-            wf.doActionFor(pubo, 'showPublicDraft', comment='Data centre setup. Hiding old structure. done by method.')
+            wf.doActionFor(pubo, 'showPublicDraft',
+            comment='Data centre setup. Hiding old structure. done by method.')
         except Exception:
-            printed = printed + '/'.join(pubo.getPhysicalPath()) + "\n exception"
+            printed = printed + '/'.join(
+                pubo.getPhysicalPath()) + "\n exception"
         notify(ObjectModifiedEvent(pubo))
     return printed
 
@@ -428,10 +472,10 @@ def setNavContext(self):
     """moving the data centric object under data centre section. """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs=cat.searchResults({ 'id' : 'datasets' ,'path': '/www/SITE/themes/'})
-    printed="STARTED"
+    pubs = cat.searchResults({ 'id' : 'datasets' , 'path': '/www/SITE/themes/'})
+    printed = "STARTED"
     for pub in pubs:
-        pubo=pub.getObject()
+        pubo = pub.getObject()
         printed = printed + pub.id + "\n modified"
         printed = printed + '/'.join(pubo.getPhysicalPath()) + "\n"
         notify(ObjectModifiedEvent(pubo))
@@ -445,76 +489,83 @@ def setNavContextForLiveMaps(self):
     """moving the live maps objects under data centre section. """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs=cat.searchResults({ 'navSection' : 'quicklinks' })
-    printed="STARTED\n"
+    pubs = cat.searchResults({ 'navSection' : 'quicklinks' })
+    printed = "STARTED\n"
     for pub in pubs:
-        pubo=pub.getObject()
+        pubo = pub.getObject()
         printed = printed + pub.id + "\n modified \n"
         printed = printed + '/'.join(pubo.getPhysicalPath()) + "\n"
         #notify(ObjectModifiedEvent(pubo))
         navContext = INavigationSectionPosition(pubo)
         #navContext.section = 'data-center-services'
         #notify(ObjectModifiedEvent(pubo))
-        printed = printed + '  SECTION: ' + navContext.section  + "\n"
+        printed = printed + '  SECTION: ' + navContext.section + "\n"
     return printed
 
 def setupPublicationsFolder(self):
-    context=self
-    printed=""
+    """ Setup publications
+    """
+    context = self
+    printed = ""
     lt = getToolByName(context, 'portal_languages')
     wf = getToolByName(context, 'portal_workflow')
 
     #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
-    printed=printed+context.id+"\n"
+    printed = printed + context.id + "\n"
 
     for lang in supportedLangs:
-        en=context
+        en = context
         translation = en.getTranslation(lang)
-        printed=printed+"\n"+lang
+        printed = printed + "\n" + lang
         if translation is None:
             en.addTranslation(lang)
-            printed=printed+"\n"+lang+" added missing translation"
+            printed = printed + "\n" + lang + " added missing translation"
             translation = en.getTranslation(lang)
             translation.unmarkCreationFlag()
-            wf.doActionFor(translation, 'publish', comment='Initial auto publish by method for new publication system')
-            printed=printed+"\n published"
+            wf.doActionFor(translation, 'publish',
+            comment='Initial auto publish by method for new publication system')
+            printed = printed + "\n published"
             #alsoProvides(translation, INavigationRoot)
 
         translation.setLayout('folder_summary_search_view')
-        printed=printed+"\n setting layout with search"
+        printed = printed + "\n setting layout with search"
         #translation.setTitle( translate( title, target_language=lang))
         #printed=printed+"\n translate title"
 
     return printed
 
 def setupPublicationsFolderRoot(self):
-    context=self
-    printed=""
+    """ Setup publications root
+    """
+    context = self
+    printed = ""
     lt = getToolByName(context, 'portal_languages')
     #wf = getToolByName(context, 'portal_workflow')
 
     #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
-    printed=printed+context.id+"\n"
+    printed = printed + context.id + "\n"
 
     for lang in supportedLangs:
-        en=context
+        en = context
         translation = en.getTranslation(lang)
-        printed=printed+"\n"+lang
+        printed = printed + "\n" + lang
         if translation is not None:
             translation.setDefaultPage('latest')
             #alsoProvides(translation, INavigationRoot)
-            printed=printed+"\n default page set to latest rich topic"
+            printed = printed + "\n default page set to latest rich topic"
         else:
-            printed=printed+"\n"+lang+" not translated"
+            printed = printed + "\n" + lang + " not translated"
     return printed
 
 untranslatedMessages = {}
 
-def translate(msgid, target_language, output = False):
+def translate(msgid, target_language, output=False):
+    """ Translate
+    """
     translation = realTranslate(msgid, target_language=target_language)
     if translation == str(msgid):
         if msgid not in untranslatedMessages.get(target_language, {}).keys():
@@ -527,10 +578,13 @@ def translate(msgid, target_language, output = False):
                 translation = str(msgid)
                 # google translate doesn't have all languages
                 try:
-                    translation = gtranslate(str(msgid), langpair="en|%s" % target_language)
+                    translation = gtranslate(str(msgid),
+                                             langpair="en|%s" % target_language)
                 except Exception:
-                    print "GTRANSLATE FAILED %s and msgid %s" % (target_language, msgid)
-                    untranslatedMessages.get(target_language)[msgid]  = translation
+                    print "GTRANSLATE FAILED %s and msgid %s" % (
+                        target_language, msgid)
+                    untranslatedMessages.get(
+                        target_language)[msgid] = translation
         translation = untranslatedMessages.get(target_language).get(msgid)
     if type(translation) == type(''):
         return translation
@@ -539,11 +593,13 @@ def translate(msgid, target_language, output = False):
     # what do we have here?
     return str(translation)
 
-def translateObject(self,templateview, navigationroot=False):
-    context=self
+def translateObject(self, templateview, navigationroot=False):
+    """ Translate object
+    """
+    context = self
     #request = context.REQUEST
     #printed=""
-    mytitle=context.title
+    mytitle = context.title
     print mytitle
     lt = getToolByName(context, 'portal_languages')
     wf = getToolByName(context, 'portal_workflow')
@@ -551,18 +607,19 @@ def translateObject(self,templateview, navigationroot=False):
     #defaultLang = lt.getDefaultLanguage()
     supportedLangs = lt.getSupportedLanguages()
 
-    print context.id+"\n"
+    print context.id + "\n"
 
     for lang in supportedLangs:
-        en=context
+        en = context
         translation = en.getTranslation(lang)
-        print "\n processing language: "+lang
+        print "\n processing language: " + lang
         if translation is None:
             en.addTranslation(lang)
-            print "\n"+lang+" added missing translation"
+            print "\n" + lang + " added missing translation"
             translation = en.getTranslation(lang)
             translation.unmarkCreationFlag()
-            wf.doActionFor(translation, 'publish', comment='Initial auto publish by translateObject method')
+            wf.doActionFor(translation, 'publish',
+                       comment='Initial auto publish by translateObject method')
             print "\n published"
 
         if navigationroot:
@@ -570,13 +627,15 @@ def translateObject(self,templateview, navigationroot=False):
             print "\n INavigationRoot assigned"
         translation.setLayout(templateview)
         print "\n setting layout to: " + templateview
-        transtitle = translate( mytitle, target_language=lang)
-        translation.setTitle( transtitle)
+        transtitle = translate(mytitle, target_language=lang)
+        translation.setTitle(transtitle)
         print "\n translate title to: " + transtitle
 
-    return "object translated operation completed: " +  str(untranslatedMessages)
+    return "object translated operation completed: " + str(untranslatedMessages)
 
 def getTranslationsFromGoogle(self, toTranslatefromG):
+    """ Translate from google
+    """
     context = self
     lt = getToolByName(context, 'portal_languages')
     #wf = getToolByName(context, 'portal_workflow')
@@ -585,29 +644,37 @@ def getTranslationsFromGoogle(self, toTranslatefromG):
     languages = lt.getSupportedLanguages()
 
     for lang in languages:
-        pofile = codecs.open('/tmp/gtranslated-%s.po' % lang, 'wb', encoding='utf8')
+        pofile = codecs.open('/tmp/gtranslated-%s.po' % lang,
+                             'wb', encoding='utf8')
         for msgid, msgstr in toTranslatefromG.items():
             try:
                 translated = gtranslate(msgstr, langpair="en|%s" % lang)
-                pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (msgid,  translated ))
-                translationslist.append((msgid, lang ,translated))
+                pofile.writelines('\nmsgid "%s"\nmsgstr "%s"\n\n' % (
+                    msgid, translated))
+                translationslist.append((msgid, lang , translated))
             except Exception:
-                translationslist.append(("FAILED for lang %s msgstr %s" % (lang, msgstr)))
+                translationslist.append(
+                    ("FAILED for lang %s msgstr %s" % (lang, msgstr)))
         pofile.close()
     return translationslist
     # run this later
     # cd eea.translations/eea/translations/i18n
-    # ls /tmp/gtranslated-* | awk -F- '{split($2, b, "."); print "cat /tmp/gtranslated-"b[1]".po >> "b[1]"/LC_MESSAGES/eea.translations.po" ;}' | /bin/sh
-    # ls | awk '{ print "pocompile "$1"/LC_MESSAGES/eea.translations.po "$1"/LC_MESSAGES/eea.translations.mo" ;}' | /bin/sh
+    # ls /tmp/gtranslated-* | awk -F- '{split($2, b, ".");
+    # print "cat /tmp/gtranslated-"b[1]".po >> \
+    # "b[1]"/LC_MESSAGES/eea.translations.po" ;}' | /bin/sh
+    # ls | awk '{ print "pocompile "$1"/LC_MESSAGES/eea.translations.po \
+    # "$1"/LC_MESSAGES/eea.translations.mo" ;}' | /bin/sh
 
 
 
 def importSubscribers(self):
-
+    """ Import subscribers
+    """
     info('INFO: Starting import of subscribers')
     portal = self.portal_url.getPortalObject()
     backup = portal['SITE']['sandbox']['testnewsletter']['subscribers']
-    target = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
+    target = portal['SITE']['subscription'][
+        'eea_main_subscription']['subscribers']
 
     unprocessed_ids = []
 
@@ -635,11 +702,13 @@ def importSubscribers(self):
     return str(unprocessed_ids)
 
 def setActiveSubscribers(self):
-
+    """ Set active subscribers
+    """
     info('INFO: Starting import of subscribers')
     portal = self.portal_url.getPortalObject()
     backup = portal['SITE']['sandbox']['testnewsletter']['subscribers']
-    target = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
+    target = portal['SITE']['subscription'][
+        'eea_main_subscription']['subscribers']
 
     all_emails = []
     duplicate_email_ids = []
@@ -657,7 +726,8 @@ def setActiveSubscribers(self):
         s.format = subscriber.format
         s.bounces = []
         s._p_changed = True
-        info("INFO: set %s to %s (using %s)" % (s.id, s.active, subscriber.active))
+        info("INFO: set %s to %s (using %s)" % (
+            s.id, s.active, subscriber.active))
 
         if (s.email in all_emails):
             duplicate_email_ids.append(s.id)
@@ -668,24 +738,31 @@ def setActiveSubscribers(self):
             transaction.commit()
         i += 1
 
-    info("INFO: the following ids are duplicated emails, should be erased %s", duplicate_email_ids)
+    info("INFO: the following ids are duplicated emails, should be erased %s",
+         duplicate_email_ids)
     transaction.commit()
     info('INFO: Done reset subscribers active status')
     return str(duplicate_email_ids)
 
 
 def sendMistakeEmail(self):
+    """ Send email
+    """
     import email as emailutils
 
     portal = self.portal_url.getPortalObject()
     mailhost = portal.MailHost
-    subscribers = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
+    subscribers = portal['SITE']['subscription'][
+        'eea_main_subscription']['subscribers']
     #theme = portal['SITE']['subscription']['eea_main_subscription']
 
     subject = "Apologies - Your EEA newsletter subscription remains intact"
     body = """Dear subscriber,
 
-This morning, you might have been informed that you had been automatically removed from our newsletter service. The email was sent by mistake. You will receive EEA notifications in the future without having to resubscribe to our service.
+This morning, you might have been informed that you had been automatically
+removed from our newsletter service. The email was sent by mistake.
+You will receive EEA notifications in the future without having to
+resubscribe to our service.
 
 We apologise for any inconvenience it may have caused.
 
@@ -697,21 +774,23 @@ The EEA webteam
     count = len(emails)
 
     for i, email in enumerate(emails):
-        mailMsg=emailutils.Message.Message()
-        mailMsg["To"]=email
-        mailMsg["From"]="EEA Notification Service <no-reply@eea.europa.eu>"
-        mailMsg["Subject"]=subject
-        mailMsg["Date"]=emailutils.Utils.formatdate(localtime=1)
-        mailMsg["Message-ID"]=emailutils.Utils.make_msgid()
-        mailMsg["Mime-version"]="1.0"
-        mailMsg["Content-type"]="text/plain"
+        mailMsg = emailutils.Message.Message()
+        mailMsg["To"] = email
+        mailMsg["From"] = "EEA Notification Service <no-reply@eea.europa.eu>"
+        mailMsg["Subject"] = subject
+        mailMsg["Date"] = emailutils.Utils.formatdate(localtime=1)
+        mailMsg["Message-ID"] = emailutils.Utils.make_msgid()
+        mailMsg["Mime-version"] = "1.0"
+        mailMsg["Content-type"] = "text/plain"
         mailMsg.set_payload(body)
-        mailMsg.epilogue="\n" # To ensure that message ends with newline
+        mailMsg.epilogue = "\n" # To ensure that message ends with newline
 
         try:
             #TODO: is
-            #theme.sendmail("no-reply@eea.europa.eu", [("", email)], mailMsg, subject = subject)
-            mailhost.send(messageText=body, mto=email, mfrom="no-reply@eea.europa.eu", subject=subject)
+            #theme.sendmail("no-reply@eea.europa.eu",
+            #[("", email)], mailMsg, subject = subject)
+            mailhost.send(messageText=body, mto=email,
+                          mfrom="no-reply@eea.europa.eu", subject=subject)
             info("INFO: sent email to %s, %s of %s" % (email, i, count))
         except Exception, e:
             info("Got exception %s for %s" % (e, email))
