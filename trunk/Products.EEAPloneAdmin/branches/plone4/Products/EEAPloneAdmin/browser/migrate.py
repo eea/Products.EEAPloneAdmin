@@ -274,7 +274,7 @@ class ThemeTaggable(object):
         for brain in brains:
             obj = brain.getObject()
             tagging = IThemeTagging(obj)
-            themes = filter(None, obj.schema['themes'].get(obj))
+            themes = [x for x in obj.schema['themes'].get(obj) if x is not None]
             tagging.tags = themes
 
 class UpdateSmartFoldersAndTitles(object):
@@ -451,14 +451,27 @@ class GenericThemeToDefault(object):
         for query in queries:
             brains = catalog.searchResults(query)
             for brain in brains:
-                if brain.getThemes == ['G', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['g', 'e', 'n', 'e', 'r', 'i', 'c'] or brain.getThemes == ['D', 'e', 'f', 'a', 'u', 'l', 't'] or brain.getThemes == ['d', 'e', 'f', 'a', 'u', 'l', 't']:
+                if (brain.getThemes == ['G', 'e', 'n', 'e', 'r', 'i', 'c'] or
+                    brain.getThemes == ['g', 'e', 'n', 'e', 'r', 'i', 'c'] or
+                    brain.getThemes == ['D', 'e', 'f', 'a', 'u', 'l', 't'] or
+                    brain.getThemes == ['d', 'e', 'f', 'a', 'u', 'l', 't']):
                     obj = brain.getObject()
                     themes = IThemeTagging(obj)
-                    output = output + 'NOTOK: ' + obj.id + ': ' + 'brain.getThemes[0]: ' + brain.getThemes[0] + ' themes.tags[0]: ' + (len(themes.tags) > 0 and themes.tags[0] or '') + ' URL: ' + obj.absolute_url() + '\r'
+
+                    output = (output + 'NOTOK: ' + obj.id + ': ' +
+                              'brain.getThemes[0]: ' + brain.getThemes[0] +
+                              ' themes.tags[0]: ' + (len(themes.tags) > 0 and
+                                                     themes.tags[0] or '') +
+                              ' URL: ' + obj.absolute_url() + '\r')
+
                     themes.tags = ['default']
                     obj.reindexObject()
                 else:
-                    output = output + 'OK: ' + brain.id + ': ' + 'brain.getThemes[0]: ' + brain.getThemes[0] + 'URL:' + brain.getURL() + '\r'
+
+                    output = (output + 'OK: ' + brain.id + ': ' +
+                              'brain.getThemes[0]: ' + brain.getThemes[0] +
+                              'URL:' + brain.getURL() + '\r')
+
         return 'themes are migrated, RESULT:\r' + output
 
 class ChangeDefaultPageToProperty(object):
@@ -477,7 +490,7 @@ class ChangeDefaultPageToProperty(object):
             news = getattr(themecentre, 'news', None)
             events = getattr(themecentre, 'events', None)
 
-            for folder in filter(None, (links, news, events)):
+            for folder in (x for x in (links, news, events) if x is not None):
                 base = aq_base(folder)
                 attr = getattr(base, 'default_page', None)
                 has_property = base.hasProperty('default_page')
@@ -689,7 +702,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
         msg += "\n\n"
 
         if self.safe:
-            msg += "Translations NOT imported with %s warning(s). " % len(self.errors)
+            msg += "Translations NOT imported with %s warning(s). " % len(
+                self.errors)
             msg += "To import ignoring warnings set safe param to False"
         else:
             msg += "Translations imported with %s error(s)" % len(self.errors)
@@ -735,7 +749,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
             tr_desc = row[4].strip()
             key = self.tips.get(en_title, None)
             if not key:
-                self._raise("I can not find this title in my green tips. Language: %s, Title: %s" % (lang, en_title))
+                self._raise("I can not find this title in my green tips. "
+                            "Language: %s, Title: %s" % (lang, en_title))
                 continue
 
             self._add_translation(key, lang, tr_title, tr_desc)
@@ -750,7 +765,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
             junk = [lang for lang in self.languages if lang not in langs]
             if junk:
                 junk.sort()
-                self._raise('No translations found for %s(%s), \n\tlanguages:\t%s' % (tip, title, ', '.join(junk)))
+                self._raise('No translations found for %s(%s), '
+                        '\n\tlanguages:\t%s' % (tip, title, ', '.join(junk)))
 
     def _add_translation(self, key, lang, title, description):
         """ Add trannslation
@@ -760,8 +776,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
 
         translation = lang in self.imported.get(key, [])
         if translation:
-            self._raise('Duplicated translation in csv file: %s language: %s' % (
-                key, lang))
+            self._raise('Duplicated translation in csv file: '
+                        '%s language: %s' % (key, lang))
             return
 
         self.imported.setdefault(key, [])
@@ -823,7 +839,8 @@ class ImportEcoTipsTranslationsFromCSV(object):
 
     def __call__(self, safe=True, publish=True, reindex=True, language='all'):
         if not self.context.getId() == 'green-tips':
-            return "Ops, you can run this migration script only in green-tips context"
+            return ("Ops, you can run this migration script "
+                    "only in green-tips context")
 
         self.safe = safe in [True, 1, 'True', '1', 'yes', 'on']
         self.publish = publish in [True, 1, 'True', '1', 'yes', 'on']

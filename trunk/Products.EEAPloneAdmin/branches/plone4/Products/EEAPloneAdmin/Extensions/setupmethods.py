@@ -2,7 +2,6 @@
 """
 import sys
 import time
-import codecs
 import transaction
 from zope.i18n import translate as realTranslate
 from Products.CMFCore.utils import getToolByName

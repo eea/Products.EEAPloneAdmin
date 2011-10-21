@@ -10,12 +10,12 @@ from Products.Five import BrowserView
 from Products.Five.browser.resource import Resource as z3_Resource
 from Products.ResourceRegistries.tools.BaseRegistry import \
         getCharsetFromContentType
-from ZPublisher.Iterators import IStreamIterator 
+from ZPublisher.Iterators import IStreamIterator
 import codecs
 import logging
 import os
 import re
-import subprocess 
+import subprocess
 
 #import urllib
 
@@ -100,41 +100,43 @@ class TidyContent(BrowserView):
         return fixed
 
 
-def localize(content, default_url, portal_url): 
-    if default_url == portal_url: 
+def localize(content, default_url, portal_url):
+    if default_url == portal_url:
         return content
-    return content.replace(unicode(portal_url), unicode(default_url)) 
+    return content.replace(unicode(portal_url), unicode(default_url))
 
- 
+
 def save_resources_on_disk(registry, request=None):
     """ Reads merged resources from registry and saves them on disk
     """
     if request == None:
-        request = getattr(registry, "REQUEST", None) 
- 
-    if request == None: 
-        return 
- 
-    logger.info(u"Starting to save resources on disk for registry %s" % registry) 
+        request = getattr(registry, "REQUEST", None)
 
-    portal_url_tool = getToolByName(registry, 'portal_url') 
-    portal_url      = portal_url_tool() 
-    portal          = portal_url_tool.getPortalObject() 
-    skins           = getToolByName(registry, 'portal_skins').getSkinSelections() 
-    conf            = getConfiguration() 
+    if request == None:
+        return
+
+    logger.info(
+        u"Starting to save resources on disk for registry %s" % registry)
+
+    portal_url_tool = getToolByName(registry, 'portal_url')
+    portal_url      = portal_url_tool()
+    portal          = portal_url_tool.getPortalObject()
+    skins           = getToolByName(registry,
+                                    'portal_skins').getSkinSelections()
+    conf            = getConfiguration()
 
     if not hasattr(conf, 'environment'):
         return  #this happens during unit tests, we skip this procedure
 
-    base            = conf.environment['saved_resources'] 
-    script          = conf.environment.get('sync_resources') 
-    default_url     = conf.environment.get('portal_url', portal_url) 
+    base            = conf.environment['saved_resources']
+    script          = conf.environment.get('sync_resources')
+    default_url     = conf.environment.get('portal_url', portal_url)
 
     for skin in skins:
         portal.changeSkin(skin) #temporarily changes current skin
 
         #toggle these two lines when we want to support multiple skins
-        #dest = base   #only one skin  
+        #dest = base   #only one skin
         dest = os.path.join(base, skin)
 
         if not os.path.exists(dest):
@@ -146,7 +148,7 @@ def save_resources_on_disk(registry, request=None):
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
 
-            content = localize(content, default_url, portal_url) 
+            content = localize(content, default_url, portal_url)
 
             try:
                 fpath = os.path.join(dest, name)
@@ -162,12 +164,12 @@ def save_resources_on_disk(registry, request=None):
             except IOError:
                 logging.warning("Could not write %s on disk." % fpath)
 
-    if script: 
-        res = subprocess.call([script, base]) 
-        if res != 0: 
-            raise ValueError("Unsuccessful synchronisation of disk resources") 
- 
-    logger.info(u"Finished saving resources on disk for registry %s" % registry) 
+    if script:
+        res = subprocess.call([script, base])
+        if res != 0:
+            raise ValueError("Unsuccessful synchronisation of disk resources")
+
+    logger.info(u"Finished saving resources on disk for registry %s" % registry)
 
 
 def getResourceContent(registry, item, context, original=False):
