@@ -1,3 +1,5 @@
+""" Setup
+"""
 import sys
 import time
 import codecs
@@ -357,21 +359,21 @@ def createDCPage(self):
 
     return printed
 
- 
-def unmarkCreationFlagForBrains(self,brains=None): 
-    """ unmark creation flag for given catalog brains """ 
-    printed = "*********Unmarking creating flag********" 
-    for b in brains: 
-        o = b.getObject() 
-        try: 
-          if o.checkCreationFlag(): 
-             print 'Unmarking creation flag for %s - %s' % (o.getId(), o.absolute_url()) 
-             o.unmarkCreationFlag() 
-          else: 
-             print 'Already marked for %s - %s' % (o.getId(), o.absolute_url()) 
-        except: 
-          print "ERROR unmarking flag  on " + o.absolute_url() 
-    return printed 
+
+def unmarkCreationFlagForBrains(self,brains=None):
+    """ unmark creation flag for given catalog brains """
+    printed = "*********Unmarking creating flag********"
+    for b in brains:
+        o = b.getObject()
+        try:
+          if o.checkCreationFlag():
+             print 'Unmarking creation flag for %s - %s' % (o.getId(), o.absolute_url())
+             o.unmarkCreationFlag()
+          else:
+             print 'Already marked for %s - %s' % (o.getId(), o.absolute_url())
+        except:
+          print "ERROR unmarking flag  on " + o.absolute_url()
+    return printed
 
 
 def interactiveMapsPromotions(self):
@@ -606,7 +608,7 @@ def importSubscribers(self):
     portal = self.portal_url.getPortalObject()
     backup = portal['SITE']['sandbox']['testnewsletter']['subscribers']
     target = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
-    
+
     unprocessed_ids = []
 
     i = 0
@@ -638,7 +640,7 @@ def setActiveSubscribers(self):
     portal = self.portal_url.getPortalObject()
     backup = portal['SITE']['sandbox']['testnewsletter']['subscribers']
     target = portal['SITE']['subscription']['eea_main_subscription']['subscribers']
-    
+
     all_emails = []
     duplicate_email_ids = []
 
@@ -707,7 +709,7 @@ The EEA webteam
         mailMsg.epilogue="\n" # To ensure that message ends with newline
 
         try:
-            #TODO: is 
+            #TODO: is
             #theme.sendmail("no-reply@eea.europa.eu", [("", email)], mailMsg, subject = subject)
             mailhost.send(messageText=body, mto=email, mfrom="no-reply@eea.europa.eu", subject=subject)
             info("INFO: sent email to %s, %s of %s" % (email, i, count))
