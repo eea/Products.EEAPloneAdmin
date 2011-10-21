@@ -34,6 +34,7 @@ setup(name=name,
           'eea.translations',
           'Products.NavigationManager',
           'valentine.linguaflow',
+          'collective.quickupload',
 
           # Used in testing
           'eea.themecentre',
