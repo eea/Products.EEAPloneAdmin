@@ -5,6 +5,12 @@
     id="jquery.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++eea.tags.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++jquery.tokeninput.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++jquery.tagcloud.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
@@ -106,8 +112,13 @@
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="readiness.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True" expression=""
-    id="eea-mediacentre.js" inline="False"/>
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="eea-mediacentre.js"
+    inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python: 'videopage' in request.URL0" id="eea.multimedia.js"
+    inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="eea-accordion.js" inline="False"/>
@@ -339,4 +350,16 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="patch_keyword_widget.js" inline="False"/>
+ <javascript authenticated="True" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++quickupload_static/swfobject.js" inline="False"/>
+ <javascript authenticated="True" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++quickupload_static/jquery.uploadify.js" inline="False"/>
+ <javascript authenticated="True" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++quickupload_static/fileuploader.js" inline="False"/>
+ <javascript authenticated="True" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++quickupload_static/helpers.js" inline="False"/>
 </object>

@@ -4,6 +4,21 @@
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++jquery.css" media="all"
     rel="stylesheet" rendering="import"/>
+ <stylesheet title="jQuery plugin: Tokeninput Mac" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="++resource++jquery.tokeninput.mac.css" media="all" rel="stylesheet"
+    rendering="import"/>
+ <stylesheet title="jQuery plugin: Tokeninput Facebook" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="++resource++jquery.tokeninput.facebook.css" media="all"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="jQuery plugin: Tokeninput" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="++resource++jquery.tokeninput.css" media="all" rel="stylesheet"
+    rendering="import"/>
  <stylesheet title="jQuery plugin: Select to UI Slider" applyPrefix="False"
     authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="on" expression=""
@@ -170,8 +185,8 @@
     enabled="on" expression="" id="ploneKss.css" media="screen"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="lt IE 8"
-    cookable="True" enabled="False" expression="" id="IEFixes.css"
+    cacheable="False" compression="safe" conditionalcomment="lt IE 8"
+    cookable="False" enabled="on" expression="" id="IEFixes.css"
     media="screen" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="IE 7"
@@ -252,10 +267,28 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="python: 'videopage' in request.URL0"
+    id="eea.multimedia.css" media="all" rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
     id="livesearch.css" media="screen" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="not: portal/portal_membership/isAnonymousUser"
     id="ploneAdmin.css" media="" rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="++resource++eea.tags.css" media="screen"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression=""
+    id="++resource++quickupload_static/uploadify.css" media=""
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression=""
+    id="++resource++quickupload_static/fileuploader.css" media=""
+    rel="stylesheet" rendering="import"/>
 </object>

@@ -228,4 +228,10 @@
     url_expr="string:${portal_url}/@@manage-viewlets" visible="True">
   <permission>Manage portal</permission>
  </configlet>
+ <configlet title="Quick Upload" action_id="QuickUpload"
+    appId="collective.quickupload" category="Products" condition_expr=""
+    icon_expr="string:${portal_url}/++resource++quickupload_static/upload.png"
+    url_expr="string:${portal_url}/@@quickupload-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
 </object>
