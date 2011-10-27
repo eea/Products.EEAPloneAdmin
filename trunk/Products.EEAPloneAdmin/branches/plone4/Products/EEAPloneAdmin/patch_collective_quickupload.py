@@ -9,7 +9,6 @@ from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner
 
-
 from types import UnicodeType
 from thread import allocate_lock
 
@@ -33,9 +32,7 @@ from collective.quickupload.browser.interfaces import (
     IQuickUploadCapable, IQuickUploadFileFactory)
 from Products.Archetypes.utils import shasattr
 
-
 upload_lock = allocate_lock()
-
 
 def quick_upload_file(self):
     """ Quick upload
@@ -225,4 +222,3 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description, conten
     if not error :
         result['success'] = obj
     return result
-
