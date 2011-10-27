@@ -106,5 +106,10 @@
                   original="quick_upload_file"
                   replacement=".patch_collective_quickupload.quick_upload_file" />
 
+    <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.uploadcapable.py"
+                  class="collective.quickupload.browser.uploadcapable.QuickUploadCapableFileFactory"
+                  original="__call__"
+                  replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
+
 
 </configure>

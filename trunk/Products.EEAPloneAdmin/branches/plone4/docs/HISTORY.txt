@@ -10,6 +10,8 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bug fix: set the name of the uploaded file when quickupload is used [szabozo #4643]
+
 * Feature: added registration of dashboard traversal to allow proper functioning of dashboard [tiberich #4624]
 
 * Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603] 
