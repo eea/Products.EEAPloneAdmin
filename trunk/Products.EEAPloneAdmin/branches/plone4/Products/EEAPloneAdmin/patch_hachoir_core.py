@@ -12,7 +12,6 @@
 from hachoir_core.i18n import UnicodeStdout as BaseUnicodeStdout
 import hachoir_core.i18n
 
-
 class PatchedUnicodeStdout(BaseUnicodeStdout):
     """ Patched unicode stdout
     """
@@ -22,6 +21,5 @@ class PatchedUnicodeStdout(BaseUnicodeStdout):
         """
         for text in lines:
             self.write(text)
-
 
 hachoir_core.i18n.UnicodeStdout = PatchedUnicodeStdout

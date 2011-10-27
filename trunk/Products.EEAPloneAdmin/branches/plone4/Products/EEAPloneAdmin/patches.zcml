@@ -112,11 +112,4 @@
                   original="__call__"
                   replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
 
-    <!-- Patch for plone.app.upgrade to fix workflow update -->
-    <monkey:patch description="Monkeypatch plone.app.upgrade-1.1.3.v41.alphas.py"
-                  module="plone.app.upgrade.v41.alphas"
-                  original="add_siteadmin_role"
-                  replacement=".patch_plone_app_upgrade.add_siteadmin_role"
-                  preserveOriginal="false" />
-
 </configure>
