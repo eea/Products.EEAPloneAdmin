@@ -14,7 +14,6 @@ from thread import allocate_lock
 import transaction
 from AccessControl import Unauthorized
 from ZODB.POSException import ConflictError
-from Acquisition import aq_inner
 from zope import component
 from zope.event import notify
 from zope.app.container.interfaces import INameChooser
@@ -22,7 +21,6 @@ from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.Archetypes.event import ObjectInitializedEvent
 
-from collective.quickupload import logger
 from Products.Archetypes.utils import shasattr
 
 upload_lock = allocate_lock()
