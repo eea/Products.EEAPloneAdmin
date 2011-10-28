@@ -144,7 +144,13 @@ def save_resources_on_disk(registry, request=None):
             os.makedirs(dest)
 
         for name in registry.concatenatedresources:
-            content = getResourceContent(registry, name, registry)
+            try:
+                content = getResourceContent(registry, name, registry)
+            except KeyError:
+                #this is for DTML base_properties problem
+                logging.warning("Could not generate content for %s" % name)
+                continue
+
             if isinstance(content, str):
                 content = content.decode('utf-8', 'ignore')
 
