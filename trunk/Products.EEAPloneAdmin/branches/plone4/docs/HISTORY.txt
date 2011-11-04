@@ -10,6 +10,7 @@ Changelog
 
 4.0-dev - (unreleased)
 ----------------------
+* Bug fix: Enabled resize.js [szabozo0 #4667]
 * Bug fix: ignore KeyErrors when getting content for resources (avoids problems caused by 
   missing base_properties in default Plone skin) [tiberich #4603]
 * Bug fix: set the name of the uploaded file when quickupload is used [szabozo #4643]

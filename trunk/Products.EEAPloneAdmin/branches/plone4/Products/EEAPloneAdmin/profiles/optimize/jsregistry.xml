@@ -332,7 +332,7 @@
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="swfobject.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
+    conditionalcomment="" cookable="True" enabled="True" expression=""
     id="resize.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
