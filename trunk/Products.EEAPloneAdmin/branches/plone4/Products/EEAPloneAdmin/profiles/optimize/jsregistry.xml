@@ -117,7 +117,7 @@
     inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
-    expression="python: 'videopage' in request.URL0" id="eea.multimedia.js"
+    expression="python: 'multimedia_view' in context.getLayout()" id="eea.multimedia.js"
     inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""

@@ -267,7 +267,7 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="python: 'videopage' in request.URL0"
+    enabled="on" expression="python: 'multimedia_view' in context.getLayout()"
     id="eea.multimedia.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
