@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="eea-various" version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious"
+              title="EEA site setup">
+ </import-step>
+ <import-step id="eeaploneadmin_skins"
+              version="20070911-01"
+              handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupSkins"
+              title="Skins import">
+      
+    Various import steps that are not handled by GS import/export
+    handlers.
+  
+ </import-step>
+</import-steps>
