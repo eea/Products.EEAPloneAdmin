@@ -1,0 +1,30 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="Products.EEAPloneAdmin">
+
+    <include file="profiles.zcml" />
+    <include package=".browser" />
+    <include package=".upgrades" />
+
+    <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".event.handle_resourceregistry_change" />
+
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
+
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.NavigationManager.NavigationManager.NavigationManager" />
+
+    <configure zcml:condition="installed plone.app.caching">
+        <include file="cache.zcml" />
+
+        <adapter factory=".purge.EEAContentPurgePaths"
+                 name="eea.content" />
+    </configure>
+
+
+</configure>

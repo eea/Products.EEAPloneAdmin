@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="eea-localsite"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.setupLocalSites"
+              title="EEAPloneAdmin: setup local sites step">
+   <dependency step="cssregistry" />
+   <dependency step="propertiestool" />
+   <dependency step="actions" />
+ </import-step>
+
+ <import-step id="eea-localrdfrepositories"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.setupLocalRDFRepositories"
+              title="EEAPloneAdmin: setup local rdf repositories">
+ </import-step>
+
+ <import-step id="eea-setupRetagAllTranslations"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.setupRetagAllTranslations"
+              title="EEAPloneAdmin: setup local retag all translations">
+ </import-step>
+
+ <import-step id="eea-setupNavigationManager"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.setupNavigationManager"
+              title="EEAPloneAdmin: setup local  navigation menues">
+ </import-step>
+
+ <import-step id="eea-setupTranslateSiteStructure"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.setupTranslateSiteStructure"
+              title="EEAPloneAdmin: setup local site structure">
+ </import-step>
+
+ <import-step id="eea-fixPromotion"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.fixPromotion"
+              title="EEAPloneAdmin: fix local promotions">
+ </import-step>
+
+ <import-step id="eea-getTranslationsFromGoogle"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.getTranslationsFromGoogle"
+              title="EEAPloneAdmin: get translations from google">
+ </import-step>
+
+ <import-step id="eea-themecentreFix"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.themecentreFix"
+              title="EEAPloneAdmin: themecentre fix, set default page and layout">
+ </import-step>
+
+ <import-step id="eea-importTranslations"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.importTranslations"
+              title="EEAPloneAdmin: import translations">
+ </import-step>
+
+ <import-step id="eea-fixLangIndependentFields"
+              version="20080310-01"
+              handler="Products.EEAPloneAdmin.exportimport.localsite.fixLangIndependentFields"
+              title="EEAPloneAdmin: Fix language independent fields on Press/Highlight/Promotion">
+ </import-step>
+
+</import-steps>
