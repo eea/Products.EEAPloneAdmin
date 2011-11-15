@@ -148,7 +148,8 @@ def save_resources_on_disk(registry, request=None):
                 content = getResourceContent(registry, name, registry)
             except KeyError:
                 #this is for DTML base_properties problem
-                logging.warning("Could not generate content for %s in skin %s" % (name, skin))
+                logging.warning("Could not generate content "
+                                "for %s in skin %s" % (name, skin))
                 continue
 
             if isinstance(content, str):
