@@ -457,7 +457,7 @@
       <value_type type="plone.registry.field.URI" />
     </field>
     <value>
-      <element>http://localhost:9999</element>
+      <element>http://localhost:6081</element>
     </value>
   </record>
   <record field="domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.domains">
@@ -470,7 +470,7 @@
       <value_type type="plone.registry.field.URI" />
     </field>
     <value>
-      <element>http://www-testing.webdev.eea.europa.eu:80</element>
+      <element>http://www.eea.europa.eu:80</element>
     </value>
   </record>
   <record field="enabled" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.enabled">
