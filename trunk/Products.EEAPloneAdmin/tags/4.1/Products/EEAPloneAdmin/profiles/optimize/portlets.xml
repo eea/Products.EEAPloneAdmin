@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<portlets>
+ <portletmanager name="plone.dashboard1"
+    type="plone.app.portlets.interfaces.IDashboard"/>
+ <portletmanager name="plone.dashboard2"
+    type="plone.app.portlets.interfaces.IDashboard"/>
+ <portletmanager name="plone.dashboard3"
+    type="plone.app.portlets.interfaces.IDashboard"/>
+ <portletmanager name="plone.dashboard4"
+    type="plone.app.portlets.interfaces.IDashboard"/>
+ <portletmanager name="plone.footer"
+    type="eea.design.browser.interfaces.IFooterPortletManager"/>
+ <portletmanager name="plone.leftcolumn"
+    type="plone.app.portlets.interfaces.ILeftColumn"/>
+ <portletmanager name="plone.rightcolumn"
+    type="plone.app.portlets.interfaces.IRightColumn"/>
+ <portlet title="Login" addview="portlets.Login"
+    description="A portlet which can render a log-in box">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+ </portlet>
+ <portlet title="Collection portlet"
+    addview="plone.portlet.collection.Collection"
+    description="A portlet which displays the results of a collection query"/>
+ <portlet title="Review list" addview="portlets.Review"
+    description="A portlet which can render a listing on the review queue.">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="RSS Feed" addview="portlets.rss"
+    description="A portlet which can receive and render an RSS feed.">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Classic portlet" addview="portlets.Classic"
+    description="A portlet which can render a classic template-based portlet">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Recent items" addview="portlets.Recent"
+    description="A portlet which can render a listing of recently changed items.">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="News" addview="portlets.News"
+    description="A portlet which can render a listing of recent news">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Navigation" addview="portlets.Navigation"
+    description="A portlet which can render a navigation tree">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+ </portlet>
+ <portlet title="Events" addview="portlets.Events"
+    description="A portlet which can render a listing of recent events">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="EEA Promotion Gallery" addview="portlets.PromoGallery"
+    description="A portlet which displays a gallery with the latest promoted items">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Quick Upload Portlet"
+    addview="collective.quickupload.QuickUploadPortlet"
+    description="Portlet displaying a quick and multiple upload form"/>
+ <portlet title="Search" addview="portlets.Search"
+    description="A portlet which shows a search box.">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="EEA Featured Article" addview="portlets.FeaturedArticle"
+    description="A portlet which displays a featured article">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Calendar portlet" addview="portlets.Calendar"
+    description="A portlet which can render a calendar.">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="Readiness portlet"
+    addview="plone.app.portlets.browser.formhelper.NullAddForm"
+    description="A portlet which shows readiness information"/>
+ <portlet title="Static text portlet" addview="plone.portlet.static.Static"
+    description="A portlet which can display static HTML text."/>
+ <assignment name="recent-items" category="user" key="eeademo"
+    manager="plone.dashboard2" type="portlets.Recent" visible="True">
+  <property name="count">5</property>
+ </assignment>
+ <assignment name="recent-items" category="user" key="eeademo2"
+    manager="plone.dashboard2" type="portlets.Recent" visible="True">
+  <property name="count">5</property>
+ </assignment>
+ <assignment name="news" category="user" key="eeademo"
+    manager="plone.dashboard1" type="portlets.News" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="events" category="user" key="eeademo"
+    manager="plone.dashboard1" type="portlets.Events" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="news" category="user" key="eeademo2"
+    manager="plone.dashboard1" type="portlets.News" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="events" category="user" key="eeademo2"
+    manager="plone.dashboard1" type="portlets.Events" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="review-list" category="user" key="eeademo"
+    manager="plone.dashboard4" type="portlets.Review" visible="True"/>
+ <assignment name="review-list" category="user" key="eeademo2"
+    manager="plone.dashboard4" type="portlets.Review" visible="True"/>
+ <assignment name="readiness" category="content_type" key="Assessment"
+    manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
+    visible="True"/>
+ <assignment name="quick-upload" category="content_type" key="DataTable"
+    manager="plone.rightcolumn"
+    type="collective.quickupload.QuickUploadPortlet" visible="True">
+  <property name="header">Quick upload</property>
+  <property name="upload_media_type"/>
+  <property name="upload_portal_type">auto</property>
+ </assignment>
+ <assignment name="quick-upload" category="content_type" key="EEAFigure"
+    manager="plone.rightcolumn"
+    type="collective.quickupload.QuickUploadPortlet" visible="True">
+  <property name="header">Quick upload</property>
+  <property name="upload_media_type"/>
+  <property name="upload_portal_type">auto</property>
+ </assignment>
+ <assignment name="readiness" category="content_type" key="IndicatorFactSheet"
+    manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
+    visible="True"/>
+ <assignment name="readiness" category="content_type" key="Specification"
+    manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
+    visible="True"/>
+ <assignment name="portlet_ecotip" category="context" key="/"
+    manager="plone.footer" type="portlets.Classic" visible="True">
+  <property name="macro">portlet</property>
+  <property name="template">portlet_ecotip</property>
+ </assignment>
+ <assignment name="navigation" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Navigation" visible="True">
+  <property name="topLevel">1</property>
+  <property name="currentFolderOnly">False</property>
+  <property name="name"></property>
+  <property name="includeTop">False</property>
+  <property name="bottomLevel">0</property>
+  <property name="root"/>
+ </assignment>
+ <assignment name="portlet_gazette" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Classic" visible="True">
+  <property name="macro">portlet</property>
+  <property name="template">portlet_gazette</property>
+ </assignment>
+ <assignment name="portlet_translationfeedback" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Classic" visible="True">
+  <property name="macro">portlet</property>
+  <property name="template">portlet_translationfeedback</property>
+ </assignment>
+ <assignment name="portlet_globalpromotion" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Classic" visible="True">
+  <property name="macro">portlet</property>
+  <property name="template">portlet_globalpromotion</property>
+ </assignment>
+ <blacklist category="user" location="/" manager="plone.dashboard2"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.dashboard2"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.dashboard2"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.dashboard2"
+    status="acquire"/>
+ <blacklist category="user" location="/" manager="plone.dashboard3"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.dashboard3"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.dashboard3"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.dashboard3"
+    status="acquire"/>
+ <blacklist category="user" location="/" manager="plone.dashboard1"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.dashboard1"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.dashboard1"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.dashboard1"
+    status="acquire"/>
+ <blacklist category="user" location="/" manager="plone.dashboard4"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.dashboard4"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.dashboard4"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.dashboard4"
+    status="acquire"/>
+ <blacklist category="user" location="/" manager="plone.footer"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.footer"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.footer"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.footer"
+    status="show"/>
+ <blacklist category="user" location="/" manager="plone.leftcolumn"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.leftcolumn"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.leftcolumn"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.leftcolumn"
+    status="show"/>
+ <blacklist category="user" location="/" manager="plone.rightcolumn"
+    status="acquire"/>
+ <blacklist category="group" location="/" manager="plone.rightcolumn"
+    status="acquire"/>
+ <blacklist category="content_type" location="/" manager="plone.rightcolumn"
+    status="acquire"/>
+ <blacklist category="context" location="/" manager="plone.rightcolumn"
+    status="show"/>
+</portlets>

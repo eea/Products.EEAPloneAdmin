@@ -1,0 +1,49 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="eea">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA Plone Admin"
+        directory="profiles/default"
+        description="Extension profile EEA Plone site"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="local-site"
+        title="EEA Plone Admin: local sites"
+        directory="profiles/local-site"
+        description="Extension profile to create and configure local sites."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="optimize"
+        title="EEA Plone Admin: CSS/JS reorder"
+        directory="profiles/optimize"
+        description="Optimize order of CSS/JS for EEA website"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <configure zcml:condition="installed plone.app.caching">
+        <genericsetup:registerProfile
+            name="eea-caching"
+            title="EEA Plone Admin: caching settings"
+            description="Settings useful for setups with a caching proxy such as Squid or Varnish"
+            directory="profiles/eea-caching"
+            provides="Products.GenericSetup.interfaces.EXTENSION"
+            for="plone.app.caching.interfaces.ICacheProfiles"
+            />
+    </configure>
+
+    <genericsetup:importStep
+        name="eea-various"
+        title="EEA site setup" description=""
+        handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious" />
+
+</configure>
