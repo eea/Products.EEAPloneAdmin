@@ -9,26 +9,28 @@ Changelog
 
 4.2-dev - (unreleased)
 ----------------------
+* Change: Made Themes tab hidden as it already in Categorization tab
+  [voineali #4694]
 
 4.1 - (2011-11-18)
 ------------------
-* Rerelease broken egg  
+* Rerelease broken egg
 
 4.0 - (2011-11-18)
 ------------------
 * Bug fix: Enabled resize.js [szabozo0 #4667]
-* Bug fix: ignore KeyErrors when getting content for resources (avoids problems caused by 
+* Bug fix: ignore KeyErrors when getting content for resources (avoids problems caused by
   missing base_properties in default Plone skin) [tiberich #4603]
 * Bug fix: set the name of the uploaded file when quickupload is used [szabozo #4643]
 * Feature: added registration of dashboard traversal to allow proper functioning of dashboard [tiberich #4624]
-* Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603] 
-* Change: enabled multiple skins when saving resources [tiberich #4603] 
-* Bug fix: added a patch for the import step of resource registries that  
-  will save resources when GS profile is loaded [tiberich #4603] 
-* Feature: call a script after saving resources, it will sync the files  
-  in a central location [tiberich #4603] 
-* Feature: added external method unmarkCreationFlagForBrains  
-  for unmarking creation flag on a give catalog search result. [demarant] 
+* Feature: use a buildout environmental variable to fix portal links in generated resources [tiberich #4603]
+* Change: enabled multiple skins when saving resources [tiberich #4603]
+* Bug fix: added a patch for the import step of resource registries that
+  will save resources when GS profile is loaded [tiberich #4603]
+* Feature: call a script after saving resources, it will sync the files
+  in a central location [tiberich #4603]
+* Feature: added external method unmarkCreationFlagForBrains
+  for unmarking creation flag on a give catalog search result. [demarant]
 * Bug fix: added fix for #4606 for p4a.fileimage [tiberich #4606]
 * Bugfix: Added monkeypatch for fixing export all steps [szabozo0 #4583]
 * Bug fix: added override to use nice template layout for formlib based forms [tiberich #4589]
