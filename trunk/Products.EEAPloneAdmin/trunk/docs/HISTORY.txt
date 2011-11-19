@@ -9,6 +9,7 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+ * Added patch to avoid failure in missing blobs [tiberich]
 
 4.2 - (2011-11-19)
 ------------------
