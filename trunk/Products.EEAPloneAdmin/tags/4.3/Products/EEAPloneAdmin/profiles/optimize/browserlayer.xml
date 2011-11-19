@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layers name="" meta_type="ComponentRegistry">
+ <layer name="Solgema.PortletsManager"
+    interface="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer"/>
+ <layer name="plone.app.z3cform"
+    interface="plone.app.z3cform.interfaces.IPloneFormLayer"/>
+ <layer name="EEADesignCMS"
+    interface="eea.design.browser.interfaces.IEEADesignCMS"/>
+ <layer name="LinguaPlone"
+    interface="Products.LinguaPlone.interfaces.ILinguaPloneProductLayer"/>
+ <layer name="collective.js.jqueryui"
+    interface="collective.js.jqueryui.interfaces.IJqueryUILayer"/>
+ <layer name="EEADesign2006"
+    interface="eea.design.browser.interfaces.IEEADesignPublic"/>
+</layers>
