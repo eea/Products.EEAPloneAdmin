@@ -11,6 +11,7 @@ Changelog
 ----------------------
 * Change: Made Themes tab hidden as it already in Categorization tab
   [voineali #4694]
+* Added get_oid External method to help debug blobs [tiberich]
 
 4.1 - (2011-11-18)
 ------------------
