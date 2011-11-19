@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:cache="http://namespaces.zope.org/cache"
+           i18n_domain="eea">
+
+    <cache:ruleset ruleset="plone.resource"
+                   for="Products.CMFCore.FSDTMLMethod.FSDTMLMethod" />
+
+</configure>
+
