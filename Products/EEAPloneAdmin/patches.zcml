@@ -116,7 +116,7 @@
         description="Fix getSize method for blob fields"
         class="plone.app.blob.field.BlobWrapper"
         original="getSize"
-        replacement=".patches.patched_getSize"
+        replacement=".patch_blob.patched_getSize"
                 docstringWarning="true"
         />
 
