@@ -112,4 +112,12 @@
                   original="__call__"
                   replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
 
+    <monkey:patch
+        description="Fix getSize method for blob fields"
+        class="plone.app.blob.field.BlobWrapper"
+        original="getSize"
+        replacement=".patches.patched_getSize"
+                docstringWarning="true"
+        />
+
 </configure>
