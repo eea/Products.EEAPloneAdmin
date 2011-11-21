@@ -7,8 +7,8 @@ Changelog
 [David Ichim - david.ichim at eaudeweb.ro]
 [Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
-4.4-dev - (unreleased)
-----------------------
+4.4 - (2011-11-21)
+------------------
 * Cleanup: pylint warnigns
   [voineali]
 
