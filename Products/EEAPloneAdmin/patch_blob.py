@@ -1,3 +1,5 @@
+""" Blob patch
+"""
 from plone.app.blob.utils import getImageSize, openBlob
 from ZODB.POSException import POSKeyError
 

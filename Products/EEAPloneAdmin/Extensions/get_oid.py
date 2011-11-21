@@ -1,3 +1,5 @@
+""" Get OID
+"""
 from ZODB.utils import oid_repr
 import os
 import binascii
