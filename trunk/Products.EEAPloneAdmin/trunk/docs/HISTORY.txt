@@ -9,6 +9,8 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Cleanup: pylint warnigns
+  [voineali]
 
 4.3 - (2011-11-19)
 ------------------

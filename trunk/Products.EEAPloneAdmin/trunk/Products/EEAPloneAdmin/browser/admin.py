@@ -101,6 +101,8 @@ class TidyContent(BrowserView):
 
 
 def localize(content, default_url, portal_url):
+    """ Localize
+    """
     if default_url == portal_url:
         return content
     return content.replace(unicode(portal_url), unicode(default_url))
