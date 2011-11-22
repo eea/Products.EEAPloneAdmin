@@ -9,9 +9,11 @@ Changelog
 
 4.6-dev - (unreleased)
 ----------------------
+ * Added patch for Products.TinyMCE bug in utility [tiberich #4733]
 
 4.5 - (2011-11-21)
 ------------------
+* no changes
 
 4.4 - (2011-11-21)
 ------------------
