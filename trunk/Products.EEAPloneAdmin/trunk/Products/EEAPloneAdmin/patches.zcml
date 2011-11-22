@@ -120,4 +120,10 @@
                 docstringWarning="true"
         />
 
+    <monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
+                  class="Products.TinyMCE.utility.TinyMCE"
+                  original="getContentType"
+                  replacement=".patch_tinymce.patched_getContentType"
+                  preserveOriginal="false" />
+
 </configure>
