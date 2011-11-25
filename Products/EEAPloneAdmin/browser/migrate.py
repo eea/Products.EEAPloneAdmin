@@ -13,6 +13,7 @@ from p4a.video.interfaces import IVideo
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
+from Products.Five import BrowserView
 import os
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
@@ -872,3 +873,42 @@ class MigrateDatesInCallForTendersAndInterests(object):
             obj = b.getObject()
             obj.setCloseDate(obj.getCloseDate())
             obj.setOpenDate(obj.getOpenDate())
+
+class FixImages(BrowserView):
+    """ Fix Missing Image blob filenames
+    """
+
+    def __call__(self):
+        query = {'portal_type':{
+                'query':[
+                    'Image', 
+                    'Highlight', 
+                    'ImageFS', 
+                    'Article', 
+                    'Promotion', 
+                    'Speech', 
+                    'PressRelease', 
+                    'Blob' ,
+                    'HelpCenterInstructionalVideo'
+                    ],
+                'operator':'or'
+            }}
+
+        brains = self.context.portal_catalog(query)
+        for brain in brains:
+            obj = brain.getObject()
+            if obj.getField('image'):
+                raw = obj.getField('image').getRaw(obj)
+                try:
+                    if not raw.filename:
+                        raw.filename = obj.getId()
+                except:
+                    pass
+            if obj.getField('screenshot'):
+                raw = obj.getField('screenshot').getRaw(obj)
+                try:
+                    if not raw.filename:
+                        raw.filename = obj.getId()
+                except:
+                    pass
+        return "Done"
