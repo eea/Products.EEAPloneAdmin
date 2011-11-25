@@ -7,7 +7,7 @@ from Products.EEAPloneAdmin.interfaces import IWorkflowEmails
 from zope.component import queryAdapter
 from email.message import Message
 
-message = """
+message = u"""
 
     Type: %s
     Title: %s
@@ -22,7 +22,7 @@ message = """
     """
 
 
-infoMessage = """
+infoMessage = u"""
 
     Type: %s
     Titel: %s
@@ -88,14 +88,14 @@ class WorkflowManagement(object):
         editUrl = cmsUrl + objUrl + '/edit'
         comment = state_change.kwargs.get('comment', '')
         if comment:
-            comment = '%s\n--' % comment
+            comment = u'%s\n--' % comment
 
         msg = obj.unrestrictedTraverse('workflow_action_message', None)
         if msg:
             self.msg = msg(obj, type=self.portalType,
                            comment=comment, editUrl=editUrl )
         else:
-            self.msg = 'Action message for %s' % editUrl
+            self.msg = u'Action message for %s' % editUrl
 
         confirmationMsg = obj.unrestrictedTraverse(
             'workflow_confirmation_message', None)
@@ -103,7 +103,7 @@ class WorkflowManagement(object):
             self.confirmationMsg = confirmationMsg(obj,
                       type=self.portalType, comment=comment, editUrl=editUrl)
         else:
-            self.confirmationMsg = 'Confirmation message for %s' % \
+            self.confirmationMsg = u'Confirmation message for %s' % \
                                                        obj.absolute_url()
 
     def _getUserEmail(self, portal):
