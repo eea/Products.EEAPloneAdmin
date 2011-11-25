@@ -132,4 +132,10 @@
                   original="getConfigPath"
                   replacement=".patch_maildrophost.patched_getConfigPath" />
 
+    <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
+    <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
+                  class="Products.MaildropHost.MaildropHost.MaildropHost"
+                  original="getCandidateConfigPaths"
+                  replacement=".patch_maildrophost.patched_getCandidateConfigPaths" />
+
 </configure>
