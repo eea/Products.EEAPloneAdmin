@@ -113,4 +113,9 @@
                   class=".migrate.MigrateDatesInCallForTendersAndInterests"
                   permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+                  name="fix-images"
+                  class=".migrate.FixImages"
+                  permission="cmf.ManagePortal" />
+
 </configure>
