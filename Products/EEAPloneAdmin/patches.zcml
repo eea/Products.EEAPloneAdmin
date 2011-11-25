@@ -125,5 +125,11 @@
                   original="getContentType"
                   replacement=".patch_tinymce.patched_getContentType"
                   preserveOriginal="false" />
+                  
+    <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->                                                                                    
+    <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"                                                            
+                  class="Products.MaildropHost.MaildropHost.MaildropHost" 
+                  original="getConfigPath"                                                                                                                             
+                  replacement=".patch_maildrophost.patched_getConfigPath" />
 
 </configure>

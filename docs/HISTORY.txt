@@ -1,18 +1,15 @@
 Changelog
 =========
-[Sasha Vincic - sasha.vincic at eea.europa.eu]
-[Alexandru Ghica - alec.ghica at eaudeweb.ro]
-[Alin Voinea - alin.voinea at eaudeweb.ro]
-[Antonio De Marinis - demarinis at eea.europa.eu]
-[David Ichim - david.ichim at eaudeweb.ro]
-[Tiberiu Ichim - tiberiu at eaudeweb.ro]
 
 4.7-dev - (unreleased)
 ----------------------
+* Feature: Added EEA mailhost configuration
+  [ghicaale #4770]
 
 4.6 - (2011-11-22)
 ------------------
- * Added patch for Products.TinyMCE bug in utility [tiberich #4733]
+* Added patch for Products.TinyMCE bug in utility
+   [tiberich #4733]
 
 4.5 - (2011-11-21)
 ------------------
@@ -25,7 +22,8 @@ Changelog
 
 4.3 - (2011-11-19)
 ------------------
- * Added patch to avoid failure in missing blobs [tiberich]
+ * Added patch to avoid failure in missing blobs
+   [tiberich]
 
 4.2 - (2011-11-19)
 ------------------
