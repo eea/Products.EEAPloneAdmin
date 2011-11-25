@@ -3,6 +3,7 @@ Changelog
 
 4.8-dev - (unreleased)
 ----------------------
+ * Bug fix: added patch for EEA mailhost [ghicaale #4770]
 
 4.7 - (2011-11-25)
 ------------------
