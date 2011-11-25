@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:monkey="http://namespaces.plone.org/monkey"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
            i18n_domain="eea">
 
     <!-- XXX Deprecated patch. Remove me -->
