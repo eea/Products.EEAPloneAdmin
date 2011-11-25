@@ -3,7 +3,7 @@
 import os
 from Globals import package_home
 from Acquisition import aq_base
-from Prodcuts.MaildropHost.MaildropHost import DEFAULT_CONFIG_PATH
+from Products.MaildropHost.MaildropHost import DEFAULT_CONFIG_PATH
 
 EEA_CONFIG_PATH = os.path.join(package_home(globals()), 'eea_mailhost_config')
 CONFIG_PATHS = {'DEFAULT' : DEFAULT_CONFIG_PATH,
