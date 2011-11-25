@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.8-dev - (unreleased)
+----------------------
+
 4.7 - (2011-11-25)
 ------------------
 * Feature: Added EEA mailhost configuration
