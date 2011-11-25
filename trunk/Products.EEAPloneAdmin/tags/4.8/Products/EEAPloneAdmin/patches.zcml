@@ -1,0 +1,149 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:monkey="http://namespaces.plone.org/monkey"
+           i18n_domain="eea">
+
+    <!-- XXX Deprecated patch. Remove me -->
+    <!-- monkey:patch description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
+                     class="Products.CMFPlone.CatalogTool.CatalogTool "
+                     original="searchResults"
+                     replacement=".patch_catalog.searchResults"
+                     preserveOriginal="true" / -->
+
+    <monkey:patch description="Monkeypatch ATCTFolderMixin.HEAD to also look for z3 views as default pages"
+                  class="Products.ATContentTypes.content.base.ATCTFolderMixin"
+                  original="HEAD"
+                  replacement=".patch_atctmixin.HEAD"
+                  preserveOriginal="true" />
+
+    <monkey:patch description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
+                  class="Products.ATContentTypes.content.topic.ATTopic"
+                  original="listSubtopics"
+                  replacement=".patch_atct.listSubtopics"
+                  preserveOriginal="false" />
+
+    <!-- XXX Deprecated patch. Remove me -->
+    <!-- monkey:patch description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
+                      class="Products.CMFPlone.CatalogTool.CatalogTool "
+                      original="__call__"
+                      replacement=".patch_catalog.searchResults"
+                      preserveOriginal="true" / -->
+
+    <monkey:patch description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
+                  class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
+                  original="generateId"
+                  replacement=".patch_baseregistry.generateId"
+                  preserveOriginal="true" />
+
+    <monkey:patch description="Monkeypatch BaseRegistry GS import to regenerate disk resources #4603"
+                  class="Products.ResourceRegistries.exportimport.resourceregistry.ResourceRegistryNodeAdapter"
+                  original="_initResources"
+                  replacement=".patch_baseregistry._initResources"
+                  preserveOriginal="true" />
+
+    <!-- Do not remove the below patch, see patch_hachoir_core.py for more info -->
+    <monkey:patch description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
+                  module="hachoir_core.i18n"
+                  original="UnicodeStdout"
+                  replacement=".patch_hachoir_core.PatchedUnicodeStdout" />
+
+    <!-- Patch for GenericSetup delete unused steps, as those functions had no docstings -->
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
+                  class="Products.GenericSetup.tool.SetupTool"
+                  original="manage_deleteImportSteps"
+                  replacement=".patch_genericsetup.manage_deleteImportSteps" />
+
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
+                  class="Products.GenericSetup.tool.SetupTool"
+                  original="manage_deleteExportSteps"
+                  replacement=".patch_genericsetup.manage_deleteExportSteps" />
+
+    <!-- Patch for p4a.fileimage, illegal characters are found when adding a FlashFile -->
+    <monkey:patch description="Monkeypatch p4a.fileimage.utils.py"
+                  module="p4a.fileimage.utils"
+                  original="write_ofsfile_to_tempfile"
+                  replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />
+
+    <!-- Related to HTML5 integration -->
+    <monkey:patch description="Monkeypatch plone.app.layout.links.viewlets.NavigationViewlet to remove deprecate link rel=xxx tags. To be removed when we switch to Plone 4.2"
+                  module="plone.app.layout.links.viewlets"
+                  original="NavigationViewlet"
+                  replacement=".patch_html5.PatchedNavigationViewlet" />
+
+    <!-- Related to HTML5 integration -->
+    <monkey:patch description="Monkeypatch plone.app.kss to fix kss-base-url in order to validate HTML5. To be removed when we switch to Plone 4.2"
+                  class="plone.app.kss.headerviewlet.KSSBaseUrlViewlet"
+                  original="render"
+                  replacement=".patch_html5.render"
+                  preserveOriginal="false" />
+
+    <!-- Patch for plone.app.caching to add extra headers -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="doNotCache"
+                      replacement=".patch_cache.doNotCache"
+                      preserveOriginal="true" />
+    </configure -->
+
+    <!-- Patch for plone.app.caching to add extra headers -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="cacheInBrowser"
+                      replacement=".patch_cache.cacheInBrowser"
+                      preserveOriginal="true" />
+    </configure -->
+
+    <!-- Patch for Products.GenericSetup.context.TarballExportContext to create valid tar.gz files -->
+    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.context.py"
+                  class="Products.GenericSetup.context.TarballExportContext"
+                  original="__init__"
+                  replacement=".patch_genericsetup.__patched_init__" />
+
+    <!-- Patch for collective.quickupload to permit contextual uploads -->
+    <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.quick_upload.py"
+                  class="collective.quickupload.browser.quick_upload.QuickUploadFile"
+                  original="quick_upload_file"
+                  replacement=".patch_collective_quickupload.quick_upload_file" />
+
+    <!-- Patch for collective.quickupload to set filename as title, #4643 -->
+    <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.uploadcapable.py"
+                  class="collective.quickupload.browser.uploadcapable.QuickUploadCapableFileFactory"
+                  original="__call__"
+                  replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
+
+    <monkey:patch
+        description="Fix getSize method for blob fields"
+        class="plone.app.blob.field.BlobWrapper"
+        original="getSize"
+        replacement=".patch_blob.patched_getSize"
+                docstringWarning="true"
+        />
+
+    <monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
+                  class="Products.TinyMCE.utility.TinyMCE"
+                  original="getContentType"
+                  replacement=".patch_tinymce.patched_getContentType"
+                  preserveOriginal="false" />
+
+    <configure zcml:condition="installed Products.MaildropHost">
+        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
+        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
+                      class="Products.MaildropHost.MaildropHost.MaildropHost"
+                      original="getConfigPath"
+                      replacement=".patch_maildrophost.patched_getConfigPath" />
+
+        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
+        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
+                      class="Products.MaildropHost.MaildropHost.MaildropHost"
+                      original="getCandidateConfigPaths"
+                      replacement=".patch_maildrophost.patched_getCandidateConfigPaths" />
+
+        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
+        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
+                      class="Products.MaildropHost.MaildropHost.MaildropHost"
+                      original="setConfigPath"
+                      replacement=".patch_maildrophost.patched_setConfigPath" />
+    </configure>
+
+</configure>
