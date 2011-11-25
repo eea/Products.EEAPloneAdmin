@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.11-dev - (unreleased)
+-----------------------
+
 4.10 - (2011-11-25)
 -------------------
  * Bug fix: Set filename for image fields where missing [szabozo0 #4746]
