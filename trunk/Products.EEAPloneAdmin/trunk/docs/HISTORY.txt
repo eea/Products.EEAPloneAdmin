@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.9-dev - (unreleased)
-----------------------
+4.9 - (2011-11-25)
+------------------
  * Bug fix: Fixed previous broken egg.
 
 4.8 - (2011-11-25)
