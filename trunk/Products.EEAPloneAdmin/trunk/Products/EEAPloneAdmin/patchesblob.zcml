@@ -11,6 +11,7 @@
         docstringWarning="true"
         />
 
+
     <!--original experimental.blobmissing configure.zcml file-->
 	<include package="collective.monkeypatcher" />
 	<include package="collective.monkeypatcher" file="meta.zcml" />
@@ -19,7 +20,7 @@
         description="Fix get_size method for blob fields"
         class="plone.app.blob.field.BlobWrapper"
         original="get_size"
-        replacement=".patches.patched_field_get_size"
+        replacement=".patch_blob.patched_field_get_size"
 		docstringWarning="true"
         />
 
@@ -27,7 +28,7 @@
         description="Fix index_html method for blob fields"
         class="plone.app.blob.field.BlobField"
         original="index_html"
-        replacement=".patches.patched_field_index_html"
+        replacement=".patch_blob.patched_field_index_html"
 		docstringWarning="true"
 		preserveOriginal="true"
         />
@@ -36,7 +37,7 @@
         description="Fix get_size method for blob fields"
         class="Products.ATContentTypes.content.base.ATCTMixin"
         original="get_size"
-        replacement=".patches.patched_class_get_size"
+        replacement=".patch_blob.patched_class_get_size"
 		docstringWarning="true"
         />
 
@@ -44,7 +45,7 @@
         description="Fix getScale method for blob mixins"
         class="plone.app.blob.mixins.ImageFieldMixin"
         original="getScale"
-        replacement=".patches.patched_getScale"
+        replacement=".patch_blob.patched_getScale"
 		docstringWarning="true"
         />
 
