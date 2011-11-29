@@ -4,6 +4,7 @@ Changelog
 4.11-dev - (unreleased)
 -----------------------
  * Feature: added logging for missing blobs [tiberich #4702]
+ * Bug fix: added script to check for missing blobs [ghicaale #4806]
 
 4.10 - (2011-11-25)
 -------------------
