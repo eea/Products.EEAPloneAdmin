@@ -21,7 +21,7 @@ import re
 import transaction
 excludeFromNav = ('legal', 'quicklinks', 'address.html')
 
-#pylint: disable-msg = C0111
+#pylint: disable-msg = C0111, C0301
 # list of (path, portalType, translationText)
 # translationText is None when we use the title of the object
 translateFromSite = (('address.html', 'Document', None),

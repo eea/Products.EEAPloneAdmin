@@ -899,13 +899,13 @@ class FixImages(BrowserView):
     def __call__(self):
         query = {'portal_type':{
                 'query':[
-                    'Image', 
-                    'Highlight', 
-                    'ImageFS', 
-                    'Article', 
-                    'Promotion', 
-                    'Speech', 
-                    'PressRelease', 
+                    'Image',
+                    'Highlight',
+                    'ImageFS',
+                    'Article',
+                    'Promotion',
+                    'Speech',
+                    'PressRelease',
                     'Blob' ,
                     'HelpCenterInstructionalVideo'
                     ],
@@ -919,19 +919,23 @@ class FixImages(BrowserView):
                 raw = obj.getField('image').getRaw(obj)
                 try:
                     if not raw.filename:
-                        logger.info("Settings filename for field image for %s", obj)
+                        logger.info(
+                            "Settings filename for field image for %s", obj)
                         raw.filename = obj.getId()
-                except:
-                    logger.error("ERROR when setting filename for %s", brain.getURL())
+                except Exception:
+                    logger.error(
+                        "ERROR when setting filename for %s", brain.getURL())
 
             if obj.getField('screenshot'):
                 raw = obj.getField('screenshot').getRaw(obj)
                 try:
                     if not raw.filename:
-                        logger.info("Settings filename for field screenshot for %s", obj)
+                        logger.info(
+                           "Settings filename for field screenshot for %s", obj)
                         raw.filename = obj.getId()
-                except:
-                    logger.error("ERROR when setting filename for field screenshot for %s", brain.getURL())
+                except Exception:
+                    logger.error("ERROR when setting filename for "
+                                 "field screenshot for %s", brain.getURL())
 
         logger.info("Migration of field image filenames done")
         return "Done"

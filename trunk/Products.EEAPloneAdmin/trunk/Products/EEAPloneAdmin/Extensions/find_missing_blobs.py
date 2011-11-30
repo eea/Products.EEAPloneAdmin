@@ -1,6 +1,5 @@
 """ Find missing blobs
 """
-from ZODB.utils import oid_repr
 import os
 import binascii
 import logging
@@ -10,7 +9,7 @@ logger = logging.getLogger('eea')
 def FindMissingBlobs(self):
 
     from Products.CMFCore.utils import getToolByName
-    res = {}
+    #res = {}
     cat = getToolByName(self, 'portal_catalog', None)
     #TODO: EpubFile, Article, Highlight, Promotion, Speech, PressRelease
     content_types = ['EEAFigureFile', 'Image', 'ImageFS', 'DataFile', 'File',
@@ -29,7 +28,8 @@ def FindMissingBlobs(self):
             blob_path = getBlobOid(obj)
             logger.info('*** %s *** /%s' % (tk.getPath(), blob_path))
             filefield = obj.getFile()
-            filesize = filefield.get_size()
+            #filesize = filefield.get_size()
+            filefield.get_size()
 
     logger.info('End testing')
 
@@ -49,7 +49,8 @@ def FindMissingBlobs(self):
         blob_path = getBlobOid(obj)
         logger.info('###--- %s *** %s *** /%s' % (i, k.getPath(), blob_path))
         filefield = obj.getFile()
-        filesize = filefield.get_size()
+        #filesize = filefield.get_size()
+        filefield.get_size()
 
     logger.info('Report done.')
     return "Done."
@@ -65,7 +66,8 @@ def getBlobOid(self):
     oid = blob._p_oid
     serial = blob._p_serial
 
-    filename = field.getRaw(self).getFilename()
+    #filename = field.getRaw(self).getFilename()
+    field.getRaw(self).getFilename()
 
     directories = []
     # Create the bushy directory structure with the least significant byte

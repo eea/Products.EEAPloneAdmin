@@ -46,16 +46,16 @@ def patched_class_get_size(self):
         return 0
     try:
         return f.get_size(self) or 0
-    except POSKeyError: 
+    except POSKeyError:
         logger.error("BLOBWARNING: Error when doing get_size "
                        "for field %r for %r" % (f, self))
         return 0
-   
 
-def patched_field_index_html(self, instance, REQUEST=None, 
+
+def patched_field_index_html(self, instance, REQUEST=None,
                            RESPONSE=None, disposition='inline'):
     try:
-        blob = self._old_index_html(instance, REQUEST=REQUEST, 
+        blob = self._old_index_html(instance, REQUEST=REQUEST,
                             RESPONSE=RESPONSE, disposition=disposition)
         if blob:
             return blob
@@ -66,7 +66,7 @@ def patched_field_index_html(self, instance, REQUEST=None,
         if not RESPONSE:
             RESPONSE = instance.REQUEST.RESPONSE
         putils = getToolByName(instance, 'plone_utils')
-        putils.addPortalMessage('Missing BLOB file for %r' % 
+        putils.addPortalMessage('Missing BLOB file for %r' %
                             instance.absolute_url_path(), type='error')
         RESPONSE.redirect(instance.absolute_url()+'/view')
 
@@ -105,7 +105,8 @@ def patched_getSize(self):
                        "image size for blob %r. Info about blob: "
                        "OID (oid, repr, path on zeo storage): %r > %r > %r "
                        "CACHED (path to cached blob): %r "
-                        % (self, self.blob._p_oid, oid_repr(oid), oid.__repr__(), path, cached))
+                        % (self, self.blob._p_oid, oid_repr(oid),
+                           oid.__repr__(), path, cached))
 
         return 0
 
