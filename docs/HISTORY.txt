@@ -5,6 +5,8 @@ Changelog
 -----------------------
  * Feature: added logging for missing blobs [tiberich #4702]
  * Bug fix: added script to check for missing blobs [ghicaale #4806]
+ * Bug fix: improve logging for migration script for missing filenames in
+   blobs [tiberich #4746]
 
 4.10 - (2011-11-25)
 -------------------

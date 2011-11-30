@@ -1,20 +1,22 @@
 """ Migrate
 """
-import csv
-import logging
-import urllib
-from zope.interface import alsoProvides
-from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
-from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
-from eea.themecentre.browser.themecentre import PromoteThemeCentre
-from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
-from eea.mediacentre.interfaces import IMediaType
-from p4a.video.interfaces import IVideo
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
-from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.Five import BrowserView
+from eea.mediacentre.interfaces import IMediaType
+from eea.themecentre.browser.themecentre import PromoteThemeCentre
+from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
+from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
+from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
+from p4a.video.interfaces import IVideo
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from zope.interface import alsoProvides
+import csv
+import logging
 import os
+import urllib
+
+logger = logging.getLogger("Products.EEAPloneAdmin")
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
 
@@ -28,6 +30,7 @@ themeIdMap = { 'coasts_seas' : 'coast_sea',
                'env_reporting' : 'reporting',
                'env_scenarios' : 'scenarios',
                'various' : 'other_issues' }
+
 
 class FixExcludeFromNav(object):
     """ Fix overwritten exclude_from_nav
@@ -364,6 +367,7 @@ class UpdateSmartFoldersAndTitles(object):
 
         return 'success'
 
+
 class FeedMarkerInterface(object):
     """ Changes all IFeed marker interfaces to be IFeedContent markers
     """
@@ -373,6 +377,7 @@ class FeedMarkerInterface(object):
 
     def __call__(self):
         return 'success'
+
 
 class PromotionThemes(object):
     """ Old promotions might have themes as strings instead of lists
@@ -399,6 +404,7 @@ class PromotionThemes(object):
             return 'Some objects were not migrated\n' + not_migrated
         else:
             return 'success'
+
 
 class ThemeLayoutAndDefaultPage(object):
     """ Removes the layout property on all themecentres and instead adds the
@@ -431,6 +437,7 @@ class ThemeLayoutAndDefaultPage(object):
                                              'string')
                 themecentre._p_changed = True
         return str(len(brains)) + ' themecentres migrated'
+
 
 class GenericThemeToDefault(object):
     """ Migrates theme tags ['G','e','n','e','r','i','c'] or
@@ -475,6 +482,7 @@ class GenericThemeToDefault(object):
 
         return 'themes are migrated, RESULT:\r' + output
 
+
 class ChangeDefaultPageToProperty(object):
     """ Changes default_page to being a property so it's visible in ZMI
     """
@@ -500,6 +508,7 @@ class ChangeDefaultPageToProperty(object):
                     del base.default_page
                     base.manage_addProperty('default_page', attr, 'string')
         return "successfully migrated properties"
+
 
 class EnsureAllObjectsHaveTags(object):
     """ Adds themecentre tag to all its objects if they don't have it
@@ -529,6 +538,7 @@ class EnsureAllObjectsHaveTags(object):
 
         return str(count) + " objects were tagged"
 
+
 class ChangeMediaTypesDefault(object):
     """ Changes the media type on file's don't have any media type set.
         If media type not set, the type 'other' is set on the file.
@@ -550,6 +560,7 @@ class ChangeMediaTypesDefault(object):
 
         return "migration successful"
 
+
 class AddRichTextDescriptionToVideos(object):
     """ Adds an empty string to the rich_description field on all
         IVideoEnhanced objects. As this is a new field it's None
@@ -570,6 +581,7 @@ class AddRichTextDescriptionToVideos(object):
             video.urls = ()
 
         return str(len(brains)) + " videos where migrated."
+
 
 class AddFolderAsLocallyAllowedTypeInLinks(object):
     """ Add the 'Folder' type as a locally addable type to
@@ -602,6 +614,7 @@ class AddFolderAsLocallyAllowedTypeInLinks(object):
 
         return 'successfully run'
 
+
 class AddPressReleaseToHighlightsTopic(object):
     """ Adds PressRelease to the highlight topic's search criteria.
     """
@@ -632,6 +645,7 @@ class AddPressReleaseToHighlightsTopic(object):
 
         return '%d highlight smart folders were modified' % successful
 
+
 class ChangeMultimediaLayout(object):
     """ Changes layout to mediacentre_view in the global multimedia folder
     """
@@ -651,6 +665,7 @@ class ChangeMultimediaLayout(object):
         else:
             return "default_page property of multimedia not found, " \
                    "no migration done"
+
 
 class MakeThemeMultimediaLayoutAProperty(object):
     """ Multimedia folders in themecentres have a layout property that's
@@ -675,6 +690,7 @@ class MakeThemeMultimediaLayoutAProperty(object):
                     multimedia.manage_addProperty('layout', layout, 'string')
                     props += 1
         return '%d layout properties are fixed' % props
+
 
 class ImportEcoTipsTranslationsFromCSV(object):
     """ Import translations form EcoTip objects from the
@@ -858,6 +874,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
         self._import()
         return self._return()
 
+
 class MigrateDatesInCallForTendersAndInterests(object):
     """ #1787 required us to set value on the expiration and effective fields.
         This copies the dates open -> effective and close -> expire.
@@ -874,8 +891,9 @@ class MigrateDatesInCallForTendersAndInterests(object):
             obj.setCloseDate(obj.getCloseDate())
             obj.setOpenDate(obj.getOpenDate())
 
+
 class FixImages(BrowserView):
-    """ Fix Missing Image blob filenames
+    """ Fixes: some image blobs have no attribute "filename" set
     """
 
     def __call__(self):
@@ -901,14 +919,19 @@ class FixImages(BrowserView):
                 raw = obj.getField('image').getRaw(obj)
                 try:
                     if not raw.filename:
+                        logger.info("Settings filename for field image for %s", obj)
                         raw.filename = obj.getId()
                 except:
-                    pass
+                    logger.error("ERROR when setting filename for %s", brain.getURL())
+
             if obj.getField('screenshot'):
                 raw = obj.getField('screenshot').getRaw(obj)
                 try:
                     if not raw.filename:
+                        logger.info("Settings filename for field screenshot for %s", obj)
                         raw.filename = obj.getId()
                 except:
-                    pass
+                    logger.error("ERROR when setting filename for field screenshot for %s", brain.getURL())
+
+        logger.info("Migration of field image filenames done")
         return "Done"
