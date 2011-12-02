@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.12-dev - (unreleased)
+-----------------------
+
 4.11 - (2011-12-02)
 -------------------
  * Feature: added logging for missing blobs [tiberich #4702]
