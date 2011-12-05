@@ -1,15 +1,18 @@
 """ Find missing blobs
 """
+
+from Products.CMFCore.utils import getToolByName
 from ZODB.utils import oid_repr
-import os
+from ZODB.utils import p64
 import binascii
 import logging
+import os
 
 logger = logging.getLogger('eea')
 
+
 def FindMissingBlobs(self):
 
-    from Products.CMFCore.utils import getToolByName
     res = {}
     cat = getToolByName(self, 'portal_catalog', None)
     #content_types = ['EEAFigureFile', 'Image', 'ImageFS', 'DataFile', 'File',
@@ -66,6 +69,7 @@ def FindMissingBlobs(self):
     logger.info('Report done.')
     return "Done."
 
+
 def getBlobOid(self):
     if self.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
@@ -87,10 +91,23 @@ def getBlobOid(self):
     path = os.path.sep.join(directories)
 
     nice_serial = "0x"+"".join([binascii.hexlify(x) for x in serial]) + ".blob"
-    #xnice_serial = []
-    #for x in str(serial):
-        #xnice_serial.append('0x%s' % binascii.hexlify(x))
-    #nice_serial = os.path.sep.join(xnice_serial)
 
     #cached = blob._p_blob_committed
     return '%s/%s' % (path, nice_serial)
+
+
+def find_missing_blog_by_oid(self, oid):
+    original_oid = oid
+    oid = oid[2:]
+    _o = []
+    i = 0
+    while i < len(oid):
+        _o.append(binascii.unhexlify(oid[i:i+2]))
+        i += 2
+
+    oid = long("".join(oid))
+    oid = p64(oid)
+
+    nice_oid = "0x"+"".join([binascii.hexlify(x) for x in original_oid])
+    return nice_oid
+
