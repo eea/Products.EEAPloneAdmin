@@ -96,7 +96,7 @@ def getBlobOid(self):
     return '%s/%s' % (path, nice_serial)
 
 
-def find_missing_blog_by_oid(self, oid):
+def find_missing_blob_by_oid(self, oid):
     original_oid = oid
     oid = oid[2:]
     _o = []
