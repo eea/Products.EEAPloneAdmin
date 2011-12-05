@@ -2,7 +2,7 @@
 """
 
 from Products.CMFCore.utils import getToolByName
-from ZODB.utils import oid_repr
+from ZODB.utils import oid_repr, repr_to_oid
 from ZODB.utils import p64
 import binascii
 import logging
@@ -97,17 +97,30 @@ def getBlobOid(self):
 
 
 def find_missing_blob_by_oid(self, oid):
-    original_oid = oid
-    oid = oid[2:]
-    _o = []
-    i = 0
-    while i < len(oid):
-        _o.append(binascii.unhexlify(oid[i:i+2]))
-        i += 2
+    img = self.restrictedTraverse()
+    oid = repr_to_oid(oid)
 
-    oid = long("".join(oid))
-    oid = p64(oid)
+    query = {'portal_type':{
+            'query':[
+                'Article',
+                'Blob' ,
+                'DataFile', 
+                'EEAFigureFile', 
+                'FactSheetDocument', 
+                'File',
+                'FlashFile', 
+                'HelpCenterInstructionalVideo',
+                'Highlight',
+                'Image',
+                'ImageFS',
+                'PressRelease',
+                'Promotion',
+                'Report'
+                'Speech',
+                ],
+            'operator':'or'
+        }}
 
-    nice_oid = "0x"+"".join([binascii.hexlify(x) for x in original_oid])
-    return nice_oid
-
+    brains = self.context.portal_catalog(query)
+    for brain in brains:
+        obj = brain.getObject()
