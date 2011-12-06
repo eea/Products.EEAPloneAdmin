@@ -144,8 +144,11 @@ def get_list_of_blobs(self):
     brains = cat(**query)
     for brain in brains:
         obj = brain.getObject()
+        schema = getattr(obj.aq_inner.aq_self, 'schema', None)
+        if not schema:
+            continue
         fields = filter(lambda f:IBlobField.providedBy(f),
-                        obj.schema.fields())
+                        schema.fields())
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
