@@ -69,10 +69,8 @@ def FindMissingBlobs(self):
         i += 1
         obj = k.getObject()
         blob_path = getBlobOid(obj)
-        logger.info('###--- %s *** %s *** %s *** /%s' % (i,
-                                                         k.portal_type,
-                                                         k.getPath(),
-                                                         blob_path))
+        logger.info('###--- %s *** %s *** %s *** /%s' % (i, k.portal_type, 
+                        k.getPath(), blob_path))
 
         if obj.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
@@ -88,7 +86,7 @@ def FindMissingBlobs(self):
 
 def getBlobOid(self):
     """ Get blob oid
-    """"
+    """
     if self.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
         field = self.getField('file')
@@ -116,27 +114,30 @@ def getBlobOid(self):
 def get_list_of_blobs(self):
     """ Get list of all blobs with their OID
     """
-    query = {'portal_type':{
-            'query':[
-                'Article',
-                'Blob' ,
-                'DataFile',
-                'EEAFigureFile',
-                'FactSheetDocument',
-                'File',
-                'FlashFile',
-                'HelpCenterInstructionalVideo',
-                'Highlight',
-                'Image',
-                'ImageFS',
-                'PressRelease',
-                'Promotion',
-                'Report'
-                'Speech',
-                ],
-            'operator':'or'
-        }}
+#   query = {'portal_type':{
+#           'query':[
+#               'Article',
+#               'Blob' ,
+#               'DataFile', 
+#               'EEAFigureFile', 
+#               'FactSheetDocument', 
+#               'File',
+#               'FlashFile', 
+#               'HelpCenterInstructionalVideo',
+#               'Highlight',
+#               'Image',
+#               'ImageFS',
+#               'PressRelease',
+#               'Promotion',
+#               'Report'
+#               'Speech',
+#               ],
+#           'operator':'or'
+#       }}
 
+    query = {
+        'Language': 'all',
+    }
     tree = {}
 
     brains = self.portal_catalog(query)
@@ -147,6 +148,8 @@ def get_list_of_blobs(self):
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
-            tree[oid_repr(blob._p_oid)] = (f.getName(), brain.getURL())
+            tree[oid_repr(blob._p_oid)] = (f.getName(), 
+                                           brain.portal_type, 
+                                           brain.getURL())
 
     return pprint.pformat(tree)
