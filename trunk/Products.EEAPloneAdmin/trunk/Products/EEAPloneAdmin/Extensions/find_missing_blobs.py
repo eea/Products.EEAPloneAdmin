@@ -1,12 +1,14 @@
 """ Find missing blobs
 """
 
+from plone.app.blob.interfaces import IBlobField
 from Products.CMFCore.utils import getToolByName
 from ZODB.utils import oid_repr, repr_to_oid
 from ZODB.utils import p64
 import binascii
 import logging
 import os
+import pprint
 
 logger = logging.getLogger('eea')
 
@@ -96,9 +98,8 @@ def getBlobOid(self):
     return '%s/%s' % (path, nice_serial)
 
 
-def find_missing_blob_by_oid(self, oid):
-    img = self.restrictedTraverse()
-    oid = repr_to_oid(oid)
+def get_list_of_blobs(self): #, oid
+    #oid = repr_to_oid(oid)
 
     query = {'portal_type':{
             'query':[
@@ -121,6 +122,15 @@ def find_missing_blob_by_oid(self, oid):
             'operator':'or'
         }}
 
-    brains = self.context.portal_catalog(query)
+    tree = {}
+
+    brains = self.portal_catalog(query)
     for brain in brains:
         obj = brain.getObject()
+        fields = filter(lambda f:IBlobField.providedBy(f), obj.schema.fields())
+        for f in fields:
+            bw = f.getRaw(obj)
+            blob = bw.getBlob()
+            tree[oid_repr(blob._p_oid)] = (f.getName(), brain.getURL())
+
+    return pprint.pformat(tree)
