@@ -69,7 +69,7 @@ def FindMissingBlobs(self):
         i += 1
         obj = k.getObject()
         blob_path = getBlobOid(obj)
-        logger.info('###--- %s *** %s *** %s *** /%s' % (i, k.portal_type, 
+        logger.info('###--- %s *** %s *** %s *** /%s' % (i, k.portal_type,
                         k.getPath(), blob_path))
 
         if obj.portal_type in ['EEAFigureFile', 'DataFile', 'File',
@@ -118,11 +118,11 @@ def get_list_of_blobs(self):
 #           'query':[
 #               'Article',
 #               'Blob' ,
-#               'DataFile', 
-#               'EEAFigureFile', 
-#               'FactSheetDocument', 
+#               'DataFile',
+#               'EEAFigureFile',
+#               'FactSheetDocument',
 #               'File',
-#               'FlashFile', 
+#               'FlashFile',
 #               'HelpCenterInstructionalVideo',
 #               'Highlight',
 #               'Image',
@@ -140,7 +140,8 @@ def get_list_of_blobs(self):
     }
     tree = {}
 
-    brains = self.portal_catalog(query)
+    cat = getToolByName(self, 'portal_catalog', None)
+    brains = cat(**query)
     for brain in brains:
         obj = brain.getObject()
         fields = filter(lambda f:IBlobField.providedBy(f),
@@ -148,8 +149,22 @@ def get_list_of_blobs(self):
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
-            tree[oid_repr(blob._p_oid)] = (f.getName(), 
-                                           brain.portal_type, 
+            tree[oid_repr(blob._p_oid)] = (f.getName(),
+                                           brain.portal_type,
                                            brain.getURL())
 
     return pprint.pformat(tree)
+
+def find_missing_blob_scales(self):
+    """ Find missing blobs under scales
+    """
+    cat = getToolByName(self, 'portal_catalog', None)
+
+    query = {'portal_type': ['Article']}
+
+    brains = cat(**query)
+    for brain in brains:
+        obj = brain.getObject()
+
+        # obj get scales
+        # check all scales for missing blob
