@@ -158,6 +158,7 @@ def get_list_of_blobs(self):
 def find_missing_blob_scales(self):
     """ Find missing blobs under scales
     """
+
     cat = getToolByName(self, 'portal_catalog', None)
 
     query = {'portal_type': ['Article']}
@@ -166,5 +167,15 @@ def find_missing_blob_scales(self):
     for brain in brains:
         obj = brain.getObject()
 
-        # obj get scales
-        # check all scales for missing blob
+        logger.info('Object path /%s' % obj.absolute_url(1))
+        sizes = obj.getField('image').getAvailableSizes(obj)
+        for size in sizes:
+            scale = obj.getField('image').getScale(obj, size)
+            if not scale:
+                continue
+            scale_field = scale.getField('image')
+            scalefield = scale_field.getAccessor(scale)()
+            scale_size = scalefield.get_size()
+            logger.info('%s *** %s' % (size, scale_size))
+
+    return 'Done.'
