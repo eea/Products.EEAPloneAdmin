@@ -3,8 +3,7 @@
 
 from plone.app.blob.interfaces import IBlobField
 from Products.CMFCore.utils import getToolByName
-from ZODB.utils import oid_repr, repr_to_oid
-from ZODB.utils import p64
+from ZODB.utils import oid_repr
 import binascii
 import logging
 import os
@@ -14,12 +13,24 @@ logger = logging.getLogger('eea')
 
 
 def FindMissingBlobs(self):
+    """ Find missing blobs
+    """
 
     res = {}
     cat = getToolByName(self, 'portal_catalog', None)
-    #content_types = ['EEAFigureFile', 'Image', 'ImageFS', 'DataFile', 'File',
-    #                 'FlashFile', 'FactSheetDocument', 'Report', 'Speech',
-    #                 'PressRelease', 'Promotion', 'Highlight', 'Article']
+    #content_types = ['EEAFigureFile',
+    #                 'Image',
+    #                 'ImageFS',
+    #                 'DataFile',
+    #                 'File',
+    #                 'FlashFile',
+    #                 'FactSheetDocument',
+    #                 'Report',
+    #                 'Speech',
+    #                 'PressRelease',
+    #                 'Promotion',
+    #                 'Highlight',
+    #                 'Article']
     content_types = ['ImageFS']
 
     # Test everything will go well
@@ -58,7 +69,10 @@ def FindMissingBlobs(self):
         i += 1
         obj = k.getObject()
         blob_path = getBlobOid(obj)
-        logger.info('###--- %s *** %s *** %s *** /%s' % (i, k.portal_type, k.getPath(), blob_path))
+        logger.info('###--- %s *** %s *** %s *** /%s' % (i,
+                                                         k.portal_type,
+                                                         k.getPath(),
+                                                         blob_path))
 
         if obj.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
@@ -73,6 +87,8 @@ def FindMissingBlobs(self):
 
 
 def getBlobOid(self):
+    """ Get blob oid
+    """"
     if self.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
         field = self.getField('file')
@@ -92,24 +108,23 @@ def getBlobOid(self):
         directories.append('0x%s' % binascii.hexlify(byte))
     path = os.path.sep.join(directories)
 
-    nice_serial = "0x"+"".join([binascii.hexlify(x) for x in serial]) + ".blob"
+    nice_serial = "0x" + "".join([binascii.hexlify(x) for x in serial]) + \
+                  ".blob"
 
-    #cached = blob._p_blob_committed
     return '%s/%s' % (path, nice_serial)
 
-
-def get_list_of_blobs(self): #, oid
-    #oid = repr_to_oid(oid)
-
+def get_list_of_blobs(self):
+    """ Get list of all blobs with their OID
+    """
     query = {'portal_type':{
             'query':[
                 'Article',
                 'Blob' ,
-                'DataFile', 
-                'EEAFigureFile', 
-                'FactSheetDocument', 
+                'DataFile',
+                'EEAFigureFile',
+                'FactSheetDocument',
                 'File',
-                'FlashFile', 
+                'FlashFile',
                 'HelpCenterInstructionalVideo',
                 'Highlight',
                 'Image',
@@ -127,7 +142,8 @@ def get_list_of_blobs(self): #, oid
     brains = self.portal_catalog(query)
     for brain in brains:
         obj = brain.getObject()
-        fields = filter(lambda f:IBlobField.providedBy(f), obj.schema.fields())
+        fields = filter(lambda f:IBlobField.providedBy(f),
+                        obj.schema.fields())
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
