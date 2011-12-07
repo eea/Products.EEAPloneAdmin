@@ -16,7 +16,7 @@ def FindMissingBlobs(self):
     """ Find missing blobs
     """
 
-    res = {}
+    #res = {}
     cat = getToolByName(self, 'portal_catalog', None)
     #content_types = ['EEAFigureFile',
     #                 'Image',
@@ -51,7 +51,8 @@ def FindMissingBlobs(self):
             else:
                 file_field = obj.getField('image')
             filefield = file_field.getAccessor(obj)()
-            filesize = filefield.get_size()
+            #filesize = filefield.get_size()
+            filefield.get_size()
 
     logger.info('End testing')
 
@@ -78,7 +79,8 @@ def FindMissingBlobs(self):
         else:
             file_field = obj.getField('image')
         filefield = file_field.getAccessor(obj)()
-        filesize = filefield.get_size()
+        #filesize = filefield.get_size()
+        filefield.get_size()
 
     logger.info('Report done.')
     return "Done."
@@ -97,7 +99,8 @@ def getBlobOid(self):
     oid = blob._p_oid
     serial = blob._p_serial
 
-    filename = field.getRaw(self).getFilename()
+    #filename = field.getRaw(self).getFilename()
+    field.getRaw(self).getFilename()
 
     directories = []
     # Create the bushy directory structure with the least significant byte
@@ -147,8 +150,7 @@ def get_list_of_blobs(self):
         schema = getattr(obj.aq_inner.aq_self, 'schema', None)
         if not schema:
             continue
-        fields = filter(lambda f:IBlobField.providedBy(f),
-                        schema.fields())
+        fields = [f for f in schema.fields() if IBlobField.providedBy(f)]
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
