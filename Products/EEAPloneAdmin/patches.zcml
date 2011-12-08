@@ -120,6 +120,30 @@
                   replacement=".patch_tinymce.patched_getContentType"
                   preserveOriginal="false" />
 
+      <monkey:patch description="Monkeypatch Products.TinyMCE.utility to make root of site www/SITE"
+          class="Products.TinyMCE.utility.TinyMCE"
+          original="getConfiguration"
+          replacement=".patch_tinymce.patched_getConfiguration"
+          preserveOriginal="false" />
+
+      <monkey:patch description="Monkeypatch Products.TinyMCE.getBreadcrumbs to make navigationRoot of site www/SITE"
+          class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"
+          original="getBreadcrumbs"
+          replacement=".patch_tinymce.patched_getBreadcrumbs"
+          preserveOriginal="false" />
+
+      <monkey:patch description="Monkeypatch Products.TinyMCE.getListing to make navigationRoot of site www/SITE"
+          class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"
+          original="getListing"
+          replacement=".patch_tinymce.patched_getListing"
+          preserveOriginal="false" />
+
+      <monkey:patch description="Monkeypatch Products.TinyMCE.getSearchResults to search in Title instead of SearchableText"
+          class="Products.TinyMCE.adapters.JSONSearch.JSONSearch"
+          original="getSearchResults"
+          replacement=".patch_tinymce.patched_getSearchResults"
+          preserveOriginal="false" />
+
     <configure zcml:condition="installed Products.MaildropHost">
         <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
         <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"

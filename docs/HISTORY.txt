@@ -3,6 +3,8 @@ Changelog
 
 4.12-dev - (unreleased)
 -----------------------
+ * Bug fix: WIP fix limited search behavior of tinymce in regards
+   to internal linking [ichimdav #4825]
 
 4.11 - (2011-12-02)
 -------------------
