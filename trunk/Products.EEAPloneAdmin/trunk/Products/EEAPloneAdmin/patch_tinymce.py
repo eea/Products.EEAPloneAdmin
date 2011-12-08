@@ -11,7 +11,6 @@ from types import StringTypes
 from plone.app.layout.globals.portal import RIGHT_TO_LEFT
 from zope.app.component.hooks import getSite
 from Products.CMFCore.interfaces._content import IFolderish
-from Acquisition import aq_base
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 import json
@@ -103,7 +102,8 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     # Replacing some hardcoded translations
     labels = {}
     labels['label_styles'] = translate(_('(remove style)'), context=request)
-    labels['label_paragraph'] = translate(_('Normal paragraph'), context=request)
+    labels['label_paragraph'] = translate(_('Normal paragraph'),
+                                                            context=request)
     labels['label_plain_cell'] = translate(_('Plain cell'), context=request)
     labels['label_style_ldots'] = translate(_('Style...'), context=request)
     labels['label_text'] = translate(_('Text'), context=request)
@@ -111,8 +111,10 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     labels['label_selection'] = translate(_('Selection'), context=request)
     labels['label_lists'] = translate(_('Lists'), context=request)
     labels['label_print'] = translate(_('Print'), context=request)
-    labels['label_no_items'] = translate(_('No items in this folder'), context=request)
-    labels['label_no_anchors'] = translate(_('No anchors in this page'), context=request)
+    labels['label_no_items'] = translate(_('No items in this folder'),
+                                                            context=request)
+    labels['label_no_anchors'] = translate(_('No anchors in this page'),
+                                                            context=request)
     results['labels'] = labels
 
     # Add styles to results
@@ -132,9 +134,12 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
                     # table.htm.pt
                     continue
                 if request is not None:
-                    tablestyletitle = translate(_(tablestylefields[0]), context=request)
-                results['styles'].append(tablestyletitle + '|table|' + tablestyleid)
-                results['table_styles'].append(tablestyletitle + '=' + tablestyleid)
+                    tablestyletitle = translate(_(tablestylefields[0]),
+                                                        context=request)
+                results['styles'].append(tablestyletitle + '|table|' +
+                                                            tablestyleid)
+                results['table_styles'].append(tablestyletitle + '=' +
+                                                            tablestyleid)
         if isinstance(self.styles, StringTypes):
             styles = []
             for style in self.styles.split('\n'):
@@ -157,11 +162,15 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
 
     # Filter buttons
     if allow_buttons is not None:
-        allow_buttons = self.translateButtonsFromKupu(context=context, buttons=allow_buttons)
-        results['buttons'] = filter(lambda x: x in results['buttons'], allow_buttons)
+        allow_buttons = self.translateButtonsFromKupu(context=context,
+                                                        buttons=allow_buttons)
+        results['buttons'] = filter(lambda x: x in results['buttons'],
+                                                                allow_buttons)
     if filter_buttons is not None:
-        filter_buttons = self.translateButtonsFromKupu(context=context, buttons=filter_buttons)
-        results['buttons'] = filter(lambda x: x not in filter_buttons, results['buttons'])
+        filter_buttons = self.translateButtonsFromKupu(context=context,
+                                                       buttons=filter_buttons)
+        results['buttons'] = filter(lambda x: x not in filter_buttons,
+                                                           results['buttons'])
 
     # Get valid html elements
     results['valid_elements'] = self.getValidElements()
@@ -269,7 +278,8 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     AVAILABLE_LANGUAGES = set(
     'sq ar hy az eu be bn nb bs br bg ca ch zh hr cs da dv nl en et fi fr gl '
     'ka de el gu he hi hu is id ia it ja ko lv lt lb mk ms ml mn se no nn fa '
-    'pl pt ps ro ru sc sr ii si sk sl es sv ta tt te th tr tw uk ur cy vi zu'.split())
+    'pl pt ps ro ru sc sr ii si sk sl es sv ta tt te th tr tw uk ur cy vi zu'
+                                                                    .split())
 
     if 'LANGUAGE' in context.REQUEST:
         results['language'] = context.REQUEST.LANGUAGE[:2]
@@ -281,7 +291,8 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     try:
         results['document_url'] = context.absolute_url()
         parent = aq_parent(aq_inner(context))
-        if getattr(aq_base(context), 'checkCreationFlag', None) and context.checkCreationFlag():
+        if getattr(aq_base(context), 'checkCreationFlag', None) and
+                                                  context.checkCreationFlag():
             parent = aq_parent(aq_parent(parent))
             results['parent'] = parent.absolute_url() + "/"
         else:
@@ -300,10 +311,13 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     # init vars specific for "After the Deadline" spellchecker
     mtool = getToolByName(portal, 'portal_membership')
     member = mtool.getAuthenticatedMember()
-    results['atd_rpc_id'] = 'Products.TinyMCE-' + (member.getId() or '')  # None when Anonymous User
+    # None when Anonymous User
+    results['atd_rpc_id'] = 'Products.TinyMCE-' + (member.getId() or '')
     results['atd_rpc_url'] = "%s/@@" % portal.absolute_url()
-    results['atd_show_types'] = self.libraries_atd_show_types.strip().replace('\n', ',')
-    results['atd_ignore_strings'] = self.libraries_atd_ignore_strings.strip().replace('\n', ',')
+    results['atd_show_types'] = self.libraries_atd_show_types.strip() \
+                                                    .replace('\n', ',')
+    results['atd_ignore_strings'] = self.libraries_atd_ignore_strings \
+                                            .strip().replace('\n', ',')
 
     return json.dumps(results)
 
@@ -324,10 +338,12 @@ def patched_getBreadcrumbs(self, path=None):
         path = path.strip('/')
         root = aq_inner(root.restrictedTraverse(path))
 
-    relative = aq_inner(self.context).getPhysicalPath()[len(root.getPhysicalPath()):]
+    relative = aq_inner(self.context).getPhysicalPath()
+                                          [len(root.getPhysicalPath()):]
     if path is None:
         # Add siteroot
-        result.append({'title': root.title_or_id(), 'url': '/'.join(root.getPhysicalPath())})
+        result.append({'title': root.title_or_id(),
+                                'url': '/'.join(root.getPhysicalPath())})
 
     for i in range(len(relative)):
         now = relative[:i + 1]
@@ -335,11 +351,13 @@ def patched_getBreadcrumbs(self, path=None):
 
         if IFolderish.providedBy(obj):
             if not now[-1] == 'talkback':
-                result.append({'title': obj.title_or_id(), 'url': root_url + '/' + '/'.join(now)})
+                result.append({'title': obj.title_or_id(),
+                                  'url': root_url + '/' + '/'.join(now)})
     return result
 
 
-def patched_getListing(self, filter_portal_types, rooted, document_base_url, upload_type=None):
+def patched_getListing(self, filter_portal_types, rooted,
+                                    document_base_url, upload_type=None):
     """Returns the actual listing"""
 
     catalog_results = []
@@ -353,7 +371,8 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
     if not IFolderish.providedBy(object):
         object = aq_parent(object)
 
-    #plone4 if INavigationRoot.providedBy(object) or (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
+    #plone4 if INavigationRoot.providedBy(object) or 
+    #(rooted == "True" and document_base_url[:-1] == object.absolute_url()):
     if (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
         results['parent_url'] = ''
     else:
@@ -367,7 +386,8 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
 
     # get all portal types and get information from brains
     path = '/'.join(object.getPhysicalPath())
-    for brain in portal_catalog(portal_type=filter_portal_types, sort_on='getObjPositionInParent', path={'query': path, 'depth': 1}):
+    for brain in portal_catalog(portal_type=filter_portal_types,
+           sort_on='getObjPositionInParent', path={'query': path, 'depth': 1}):
         catalog_results.append({
             'id': brain.getId,
             'uid': brain.UID or None,  # Maybe Missing.Value
@@ -405,7 +425,10 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     if searchtext:
         # plone4 it was search by SearchableText instead of title which gave
         # thousands of searches just vaguely related to the keywords
-        for brain in self.context.portal_catalog.searchResults({'Title': '%s*' % searchtext, 'portal_type': filter_portal_types, 'sort_on': 'sortable_title', 'path': '/'.join(self.context.getPhysicalPath())}):
+        for brain in self.context.portal_catalog.searchResults({'Title': '%s*'
+            % searchtext, 'portal_type': filter_portal_types, 'sort_on':
+            'sortable_title', 'path': '/'.join(
+                                            self.context.getPhysicalPath())}):
             catalog_results.append({
                 'id': brain.getId,
                 'uid': brain.UID,
