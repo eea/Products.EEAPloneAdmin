@@ -65,7 +65,8 @@ class PloneAdmin(Plone):
                         time_only = None, translate=True):
         """ Remove translation of localized time """
         if translate:
-            return Plone.toLocalizedTime(self, time, time_only, long_format)
+            return Plone.toLocalizedTime(self, time=time, time_only=time_only,
+                                         long_format=long_format)
         props = getToolByName(self.context, 'portal_properties').site_properties
         time = DateTime(time)
         if long_format:
