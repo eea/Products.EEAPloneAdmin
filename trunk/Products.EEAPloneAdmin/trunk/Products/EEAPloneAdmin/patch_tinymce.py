@@ -291,7 +291,7 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     try:
         results['document_url'] = context.absolute_url()
         parent = aq_parent(aq_inner(context))
-        if getattr(aq_base(context), 'checkCreationFlag', None) and
+        if getattr(aq_base(context), 'checkCreationFlag', None) and \
                                                   context.checkCreationFlag():
             parent = aq_parent(aq_parent(parent))
             results['parent'] = parent.absolute_url() + "/"
@@ -338,8 +338,8 @@ def patched_getBreadcrumbs(self, path=None):
         path = path.strip('/')
         root = aq_inner(root.restrictedTraverse(path))
 
-    relative = aq_inner(self.context).getPhysicalPath()
-                                          [len(root.getPhysicalPath()):]
+    relative = aq_inner(self.context) \
+            .getPhysicalPath()[len(root.getPhysicalPath()):]
     if path is None:
         # Add siteroot
         result.append({'title': root.title_or_id(),
