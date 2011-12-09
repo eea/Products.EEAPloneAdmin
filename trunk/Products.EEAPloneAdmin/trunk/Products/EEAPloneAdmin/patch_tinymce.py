@@ -68,7 +68,7 @@ def patched_getContentType(self, object=None, fieldname=None):
 
 def patched_getConfiguration(self, context=None, field=None, request=None):
     """ Patched configuration to set NavigationRoot to www/SITE since
-    we have many folders that implement INavigationRoot
+        we have many folders that implement INavigationRoot
     """
     results = {}
 
@@ -359,7 +359,6 @@ def patched_getBreadcrumbs(self, path=None):
 def patched_getListing(self, filter_portal_types, rooted,
                                     document_base_url, upload_type=None):
     """Returns the actual listing"""
-
     catalog_results = []
     results = {}
 
@@ -385,19 +384,29 @@ def patched_getListing(self, filter_portal_types, rooted,
         results['path'] = self.getBreadcrumbs()
 
     # get all portal types and get information from brains
+    # plone4 added ability to click topics and get the query results
+    def cat_results(brain):
+        """ utility function to avoid repetition of code
+        """
+        return  catalog_results.append({
+                'id': brain.getId,
+                'uid': brain.UID or None,  # Maybe Missing.Value
+                'url': brain.getURL(),
+                'portal_type': brain.portal_type,
+                'normalized_type': normalizer.normalize(brain.portal_type),
+                'title': brain.Title == "" and brain.id or brain.Title,
+                'icon': brain.getIcon,
+                'is_folderish': brain.is_folderish
+                })
     path = '/'.join(object.getPhysicalPath())
-    for brain in portal_catalog(portal_type=filter_portal_types,
-           sort_on='getObjPositionInParent', path={'query': path, 'depth': 1}):
-        catalog_results.append({
-            'id': brain.getId,
-            'uid': brain.UID or None,  # Maybe Missing.Value
-            'url': brain.getURL(),
-            'portal_type': brain.portal_type,
-            'normalized_type': normalizer.normalize(brain.portal_type),
-            'title': brain.Title == "" and brain.id or brain.Title,
-            'icon': brain.getIcon,
-            'is_folderish': brain.is_folderish
-            })
+    if object.portal_type == 'Topic':
+        for brain in object.queryCatalog(sort_on='getObjPositionInParent'):
+            cat_results(brain)
+    else:
+        for brain in portal_catalog(portal_type=filter_portal_types,
+                                    sort_on='getObjPositionInParent',
+                                    path={'query': path, 'depth': 1}):
+            cat_results(brain)
 
     # add catalog_ressults
     results['items'] = catalog_results
