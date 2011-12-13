@@ -3,6 +3,9 @@ Changelog
 
 4.12-dev - (unreleased)
 -----------------------
+ * Bug fix: Cache frontpage only one hour instead of 24
+   [voineali]
+
  * Bug fix: Fixed toLocalizedTime to show long_format
    [voineali #4798]
 

@@ -207,7 +207,7 @@
       <element key="organigram.html">plone.content.itemView</element>
       <element key="accessibility-info">plone.content.itemView</element>
       <element key="search_rss">plone.content.feed</element>
-      <element key="frontpage_view">plone.content.itemView</element>
+      <element key="frontpage_view">eea.content.frontPage</element>
       <element key="faceted_query">plone.content.itemView</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
       <element key="sendto_form">plone.content.itemView</element>
@@ -235,6 +235,30 @@
       <title>Only cache for anonymous users</title>
     </field>
     <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly" />
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.etags">
+    <field ref="plone.app.caching.moderateCaching.etags" />
+    <value />
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified" />
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache" />
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage" />
+    <value>3600</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.vary">
+    <field ref="plone.app.caching.moderateCaching.vary" />
+    <value>Accept-Encoding, X-Username</value>
   </record>
   <record name="plone.app.caching.moderateCaching.etags">
     <field type="plone.registry.field.Tuple">
@@ -457,7 +481,8 @@
       <value_type type="plone.registry.field.URI" />
     </field>
     <value>
-      <element>http://localhost:6081</element>
+      <element>http://192.168.2.4:6081</element>
+      <element>http://192.168.2.5:6081</element>
     </value>
   </record>
   <record field="domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.domains">
@@ -512,6 +537,7 @@
     </field>
     <value>
       <element key="plone.resource">plone.app.caching.strongCaching</element>
+      <element key="eea.content.frontPage">plone.app.caching.moderateCaching</element>
       <element key="plone.stableResource">plone.app.caching.strongCaching</element>
       <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
       <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
