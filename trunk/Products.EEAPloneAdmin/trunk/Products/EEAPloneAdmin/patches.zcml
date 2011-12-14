@@ -144,6 +144,12 @@
           replacement=".patch_tinymce.patched_getSearchResults"
           preserveOriginal="false" />
 
+      <monkey:patch description="Monkeypatch plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter to solve logic bug in Plone code"
+          class="plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter"
+          original="resolve_image"
+          replacement=".patch_plone_outputfilters.patched_resolve_image"
+          preserveOriginal="false" />
+
     <configure zcml:condition="installed Products.MaildropHost">
         <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
         <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"

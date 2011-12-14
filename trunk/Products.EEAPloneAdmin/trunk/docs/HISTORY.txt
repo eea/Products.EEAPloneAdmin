@@ -3,6 +3,9 @@ Changelog
 
 4.12-dev - (unreleased)
 -----------------------
+ * Bug fix: added patch to avoid logic bug in plone.outputfilters  
+   image captioning code [tiberich #4832]
+
  * Bug fix: Cache frontpage only one hour instead of 24
    [voineali]
 
