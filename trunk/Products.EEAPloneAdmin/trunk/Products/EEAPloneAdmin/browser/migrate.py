@@ -915,27 +915,23 @@ class FixImages(BrowserView):
         brains = self.context.portal_catalog(query)
         for brain in brains:
             obj = brain.getObject()
-            if obj.getField('image'):
-                raw = obj.getField('image').getRaw(obj)
-                try:
-                    if not raw.filename:
-                        logger.info(
-                            "Settings filename for field image for %s", obj)
-                        raw.filename = obj.getId()
-                except Exception:
-                    logger.error(
-                        "ERROR when setting filename for %s", brain.getURL())
+            
+            fields = ['image', 'screenshot']
 
-            if obj.getField('screenshot'):
-                raw = obj.getField('screenshot').getRaw(obj)
-                try:
-                    if not raw.filename:
-                        logger.info(
-                           "Settings filename for field screenshot for %s", obj)
-                        raw.filename = obj.getId()
-                except Exception:
-                    logger.error("ERROR when setting filename for "
-                                 "field screenshot for %s", brain.getURL())
+            for name in fields:
+                field = obj.getField(name)
+                if field:
+                    raw = field.getRaw(obj)
+                    try:
+                        if not raw.filename:
+                            logger.info(
+                                "Settings filename for field %s for %s" % 
+                                (name, obj))
+                            raw.filename = obj.getId()
+                    except Exception:
+                        logger.error(
+                            "MIGRATION ERROR when setting filename for %s", 
+                            brain.getURL())
 
         logger.info("Migration of field image filenames done")
         return "Done"
