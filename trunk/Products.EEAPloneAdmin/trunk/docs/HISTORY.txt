@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.13-dev - (unreleased)
+-----------------------
+
 4.12 - (2011-12-15)
 -------------------
  * Bug fix: added patch to avoid logic bug in plone.outputfilters  
