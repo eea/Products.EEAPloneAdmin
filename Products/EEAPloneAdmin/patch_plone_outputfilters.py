@@ -1,3 +1,5 @@
+""" Patch due to #4832
+"""
 from zope.app.component.hooks import getSite
 from urlparse import urlsplit
 from urllib import unquote
@@ -8,13 +10,13 @@ from zExceptions import NotFound
 
 
 def patched_resolve_image(self, src):
-    """patched because of bug in code in plone
+    """ Patched because of bug in code in plone
     """
     description = ''
     if urlsplit(src)[0]:
         # We have a scheme
         return None, None, src, description
-    
+
     base = self.context
     subpath = src
     appendix = ''
