@@ -1,4 +1,4 @@
-"""cataloging related patches
+""" Cataloging related patches
 """
 
 from DateTime import DateTime
