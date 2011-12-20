@@ -3,13 +3,15 @@ Changelog
 
 4.13-dev - (unreleased)
 -----------------------
+ * Bug fix: Cache faceted and Topic only one hour instead of 24
+   [voineali #4824]
 
 4.12 - (2011-12-15)
 -------------------
- * Bug fix: added patch to avoid logic bug in plone.outputfilters  
+ * Bug fix: added patch to avoid logic bug in plone.outputfilters
    image captioning code [tiberich #4832]
  * Bug fix: Cache frontpage only one hour instead of 24
-   [voineali]
+   [voineali #4824]
  * Bug fix: Fixed toLocalizedTime to show long_format
    [voineali #4798]
  * Bug fix: fix limited search behavior of tinymce in regards
