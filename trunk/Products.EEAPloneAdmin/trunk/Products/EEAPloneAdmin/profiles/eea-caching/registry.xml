@@ -84,7 +84,7 @@
       <element key="Image">plone.content.file</element>
       <element key="EyewitnessStory">plone.content.itemView</element>
       <element key="Event">plone.content.itemView</element>
-      <element key="Topic">plone.content.itemView</element>
+      <element key="Topic">eea.content.frontPage</element>
       <element key="PolicyQuestion">plone.content.itemView</element>
       <element key="ImageFS">plone.content.file</element>
       <element key="CallForTender">plone.content.itemView</element>
@@ -202,13 +202,13 @@
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>
       <element key="download">plone.content.itemView</element>
-      <element key="faceted_counter">plone.content.itemView</element>
+      <element key="faceted_counter">eea.content.frontPage</element>
       <element key="staff.html">plone.content.itemView</element>
       <element key="organigram.html">plone.content.itemView</element>
       <element key="accessibility-info">plone.content.itemView</element>
       <element key="search_rss">plone.content.feed</element>
       <element key="frontpage_view">eea.content.frontPage</element>
-      <element key="faceted_query">plone.content.itemView</element>
+      <element key="faceted_query">eea.content.frontPage</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
       <element key="sendto_form">plone.content.itemView</element>
       <element key="RSS2">plone.content.itemView</element>
@@ -223,7 +223,7 @@
       <element key="folder_contents">plone.content.itemView</element>
       <element key="folder_summary">plone.content.itemView</element>
       <element key="rdf">plone.content.itemView</element>
-      <element key="tagscloud_counter">plone.content.itemView</element>
+      <element key="tagscloud_counter">eea.content.frontPage</element>
       <element key="sitemap">plone.content.itemView</element>
       <element key="RSS">plone.content.feed</element>
     </value>
