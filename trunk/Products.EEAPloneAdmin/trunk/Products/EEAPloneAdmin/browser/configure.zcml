@@ -45,15 +45,6 @@
         permission="zope.Public"
         />
 
-  <browser:page
-      name="usergroup-userprefs"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class="plone.app.controlpanel.usergroups.UsersOverviewControlPanel"
-      permission="zope2.ManageUsers"
-      template="usergroups_usersoverview.pt"
-      layer="eea.design.browser.interfaces.IEEACommonLayer"
-      />
-
   <!--Allows proper functioning of the dashboard when displayed over a non-root url-->
     <adapter
         factory="plone.app.portlets.browser.traversal.DashboardNamespace"
