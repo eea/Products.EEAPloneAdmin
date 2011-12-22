@@ -168,12 +168,7 @@ jQuery.eearewriterules = function(context){
   form = jQuery('form:has(input[value*="@@manage-group-portlets"])', context);
   if(form.length){
     jQuery.each(form, function(){
-      var action = jQuery(this).attr('action');
       var selfform = jQuery(this);
-      if(action.indexOf('/www') !== -1){
-        return;
-      }
-
       jQuery(selfform).eearewrite({
         attr: 'action',
         oldVal: selfform.attr('action'),
@@ -186,12 +181,7 @@ jQuery.eearewriterules = function(context){
   form = jQuery('form:has(input[value*="@@manage-group-dashboard"])', context);
   if(form.length){
     jQuery.each(form, function(){
-      var action = jQuery(this).attr('action');
       var selfform = jQuery(this);
-      if(action.indexOf('/www') !== -1){
-        return;
-      }
-
       jQuery(selfform).eearewrite({
         attr: 'action',
         oldVal: selfform.attr('action'),
@@ -200,6 +190,57 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@types-controlpanel
+  form = jQuery('form[action*="@@types-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@types-controlpanel',
+      newVal: 'www/@@types-controlpanel'
+    });
+  }
+
+  // @@manage-content-type-portlets
+  form = jQuery('a[href*="@@manage-content-type-portlets"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@manage-content-type-portlets',
+      newVal: 'www/@@manage-content-type-portlets'
+    });
+  }
+
+  form = jQuery('form:has(input[value*="@@manage-content-type-portlets"])', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: selfform.attr('action'),
+        newVal: selfform.attr('action') + '/www'
+      });
+    });
+  }
+
+  // @@rules-controlpanel
+  form = jQuery('form[action*="@@rules-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@rules-controlpanel',
+      newVal: 'www/@@rules-controlpanel'
+    });
+  }
+
+  // @@rules-controlpanel
+  form = jQuery('form[action*="+rule/plone.ContentRule"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '+rule/plone.ContentRule',
+      newVal: 'www/+rule/plone.ContentRule'
+    });
+  }
 
 };
 
