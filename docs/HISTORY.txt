@@ -3,6 +3,8 @@ Changelog
 
 4.13-dev - (unreleased)
 -----------------------
+ * Bug fix: Replaced aq_parent with www
+   [voineali #4590]
  * Bug fix: Cache faceted and Topic only one hour instead of 24
    [voineali #4824]
 

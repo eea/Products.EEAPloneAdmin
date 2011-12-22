@@ -22,22 +22,22 @@
             <ul class="contentViews" id="content-views">
               <li class="selected">
                 <a href=""
-                  tal:attributes="href string:$portal_url/aq_parent/@@usergroup-userprefs"
+                  tal:attributes="href string:$portal_url/www/@@usergroup-userprefs"
                    i18n:translate="label_users">Users</a>
               </li>
               <li>
                 <a href=""
-                  tal:attributes="href string:$portal_url/aq_parent/@@usergroup-groupprefs"
+                  tal:attributes="href string:$portal_url/www/@@usergroup-groupprefs"
                    i18n:translate="label_groups">Groups</a>
               </li>
               <li>
                 <a href=""
-                  tal:attributes="href string:$portal_url/aq_parent/@@usergroup-controlpanel"
+                  tal:attributes="href string:$portal_url/www/@@usergroup-controlpanel"
                    i18n:translate="label_usergroup_settings">Settings</a>
               </li>
               <li>
                 <a href=""
-                  tal:attributes="href string:$portal_url/aq_parent/@@member-registration"
+                  tal:attributes="href string:$portal_url/www/@@member-registration"
                    i18n:translate="label_member_registration">Member Registration</a>
               </li>
             </ul>
@@ -55,7 +55,7 @@
             <div id="content-core">
                 <a href=""
                    class="link-parent"
-                   tal:attributes="href string:$portal_url/aq_parent/@@overview-controlpanel"
+                   tal:attributes="href string:$portal_url/www/@@overview-controlpanel"
                    i18n:translate="label_up_to_plone_setup">
                   Up to Site Setup
                 </a>
@@ -79,7 +79,7 @@
                 <form action=""
                       name="users_add"
                       method="post"
-                      tal:attributes="action string:$portal_url/aq_parent/@@new-user">
+                      tal:attributes="action string:$portal_url/www/@@new-user">
 
                   <input class="standalone add"
                              type="submit"
@@ -94,7 +94,7 @@
                       class="enableAutoFocus"
                       name="users_search"
                       method="post"
-                      tal:attributes="action string:$portal_url/aq_parent/$template_id"
+                      tal:attributes="action string:$portal_url/www/$template_id"
                       tal:define="findAll python:'form.button.FindAll' in request.keys();
                                   portal_users view/searchResults;
                                   batch python:Batch(portal_users, b_size, int(b_start), orphan=1);
@@ -150,7 +150,7 @@
 
                                 <td>
                                     <a href="@@user-information"
-                                      tal:attributes="href string:$portal_url/aq_parent/@@user-information?${userquery}">
+                                      tal:attributes="href string:$portal_url/www/@@user-information?${userquery}">
                                         <tal:block replace="structure context/portal_url/user.png"/>&nbsp;<span tal:replace="user/fullname">Full Name</span>
                                         (<span tal:replace="userid">username</span>)
                                     </a>
