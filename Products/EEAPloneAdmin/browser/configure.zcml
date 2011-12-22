@@ -61,4 +61,9 @@
         name="dashboard"
         />
 
+    <browser:resource
+        name="eeaploneadmin.rewriterules.js"
+        file="rewriterules.js"
+    />
+
 </configure>

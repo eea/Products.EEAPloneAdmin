@@ -3,6 +3,9 @@ Changelog
 
 4.13-dev - (unreleased)
 -----------------------
+ * Bug fix: Added eea rewrite rules JS in order to rewrite some URL as some
+   views works only if they are applied to Plone Site
+   [voineali #4590]
  * Bug fix: Replaced aq_parent with www
    [voineali #4590]
  * Bug fix: Cache faceted and Topic only one hour instead of 24
