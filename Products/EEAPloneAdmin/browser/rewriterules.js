@@ -38,15 +38,101 @@ jQuery.fn.eearewrite = function(options){
   EEA Rewrite Rules
 */
 jQuery.eearewriterules = function(context){
+
+  var form;
+
+  // @usergroup-userprefs
+  form = jQuery('form[action*="@@usergroup-userprefs"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@usergroup-userprefs',
+      newVal: 'www/@@usergroup-userprefs'
+    });
+  }
+
+  form = jQuery('a[href*="@@usergroup-userprefs"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@usergroup-userprefs',
+      newVal: 'www/@@usergroup-userprefs'
+    });
+  }
+
+  form = jQuery('a[href*="@@usergroup-groupprefs"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@usergroup-groupprefs',
+      newVal: 'www/@@usergroup-groupprefs'
+    });
+  }
+
+  form = jQuery('a[href*="@@usergroup-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@usergroup-controlpanel',
+      newVal: 'www/@@usergroup-controlpanel'
+    });
+  }
+
+  form = jQuery('a[href*="@@member-registration"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@member-registration',
+      newVal: 'www/@@member-registration'
+    });
+  }
+
+  form = jQuery('a[href*="@@overview-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@overview-controlpanel',
+      newVal: 'www/@@overview-controlpanel'
+    });
+  }
+
+  form = jQuery('a[href*="@@new-user"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@new-user',
+      newVal: 'www/@@new-user'
+    });
+  }
+
+  form = jQuery('form[action*="@@new-user"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@new-user',
+      newVal: 'www/@@new-user'
+    });
+  }
+
+  form = jQuery('a[href*="@@user-information"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: '@@user-information',
+      newVal: 'www/@@user-information'
+    });
+  }
+
+
+
   // @@usergroup-usermembership?b_start:int=0&userid=
-  var form = jQuery('form[action*="@@usergroup-usermembership"]', context);
+  form = jQuery('form[action*="@@usergroup-usermembership"]', context);
   if(form.length){
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: '@@usergroup-usermembership',
       newVal: 'www/@@usergroup-usermembership'
     });
-    console.log('Rewrite done');
   }
 
   // @@usergroup-groupprefs
@@ -113,6 +199,8 @@ jQuery.eearewriterules = function(context){
       });
     });
   }
+
+
 };
 
 
