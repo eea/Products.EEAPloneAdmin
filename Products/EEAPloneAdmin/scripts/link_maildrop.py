@@ -17,3 +17,4 @@ def link():
         source = source[:-1]
     cmd = ['ln', '-s', source, dest]
     subprocess.check_call(cmd, cwd=bin_folder)
+    print "Created link to maildrop at", dest
