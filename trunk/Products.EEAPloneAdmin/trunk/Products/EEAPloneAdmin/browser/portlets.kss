@@ -1,0 +1,28 @@
+.portletAssignments .managedPortletActions .up:click {
+    evt-click-preventdefault: true;
+    action-server: www/inlineMovePortletUp;
+    www/inlineMovePortletUp-portlethash: kssAttr('portlethash', true);
+    www/inlineMovePortletUp-viewname: kssAttr('viewname', true);
+} 
+
+.portletAssignments .managedPortletActions .down:click {
+    evt-click-preventdefault: true;
+    action-server: www/inlineMovePortletDown;
+    www/inlineMovePortletDown-portlethash: kssAttr('portlethash', true);
+    www/inlineMovePortletDown-viewname: kssAttr('viewname', true);
+} 
+
+.portletAssignments .managedPortletActions .delete:click {
+    evt-click-preventdefault: true;
+    action-server: www/inlineDeletePortlet;
+    www/inlineDeletePortlet-portlethash: kssAttr('portlethash', true);
+    www/inlineDeletePortlet-viewname: kssAttr('viewname', true);
+} 
+
+.portletAssignments .managedPortletActions .toggle-visibility:click {
+    evt-click-preventdefault: true;
+    action-server: www/togglePortletVisibility;
+    www/togglePortletVisibility-portlethash: kssAttr('portlethash', true);
+    www/togglePortletVisibility-viewname: kssAttr('viewname', true);
+} 
+

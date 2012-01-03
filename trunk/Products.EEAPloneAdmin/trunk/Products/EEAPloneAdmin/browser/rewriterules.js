@@ -242,6 +242,19 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // ++contenttypeportlets++
+  form = jQuery('a[href*="++contenttypeportlets++"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: action,
+        newVal: action.replace('++contenttypeportlets++', 'www/++contenttypeportlets++')
+      });
+    });
+  }
 };
 
 
@@ -257,3 +270,4 @@ jQuery(document).ready(function(){
     }
   }
 });
+
