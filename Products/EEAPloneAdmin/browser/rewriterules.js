@@ -269,6 +269,21 @@ jQuery.eearewriterules = function(context){
       });
     });
   }
+
+  // portal_vocabularies
+  form = jQuery('form[action*="portal_vocabularies"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('portal_vocabularies', 'www/portal_vocabularies')
+      });
+    });
+  }
+
 };
 
 
