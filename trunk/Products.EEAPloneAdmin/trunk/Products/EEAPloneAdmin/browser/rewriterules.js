@@ -255,6 +255,20 @@ jQuery.eearewriterules = function(context){
       });
     });
   }
+
+  // ++groupdashboard++
+  form = jQuery('a[href*="++groupdashboard++"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: action,
+        newVal: action.replace('++groupdashboard++', 'www/++groupdashboard++')
+      });
+    });
+  }
 };
 
 
@@ -262,12 +276,38 @@ jQuery.eearewriterules = function(context){
   Apply EEA Rewrite Rules on document ready
 */
 jQuery(document).ready(function(){
+
+  var form;
+  var context = jQuery('body');
+
+  /* Rewrite on document ready
+  */
   try{
-    jQuery.eearewriterules(jQuery('body'));
+    jQuery.eearewriterules(context);
   }catch(err){
     if(window.console){
       console.log(err);
     }
   }
-});
 
+  /* Rewrite on events
+  */
+
+  // On AddGroupButton click
+  try{
+    form = jQuery('input[name="form.button.AddGroup"]', context);
+    if(form.length){
+      form.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+  }catch(err2){
+    if(window.console){
+      console.log(err2);
+    }
+  }
+
+});
