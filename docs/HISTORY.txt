@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.14-dev - (unreleased)
------------------------
+4.14 - (2012-01-04)
+-------------------
  * Bug fix: Updated eea rewrite rules JS in order to rewrite some URL as some
    views works only if they are applied to Plone Site
    [voineali #4590]
