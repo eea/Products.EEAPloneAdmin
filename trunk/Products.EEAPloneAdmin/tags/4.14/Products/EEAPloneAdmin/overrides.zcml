@@ -1,0 +1,62 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="Products.EEAPloneAdmin">
+
+    <browser:page for="*"
+                  name="plone"
+                  class=".browser.ploneview.PloneAdmin"
+                  permission="zope.Public"
+                  allowed_interface="Products.CMFPlone.browser.interfaces.IPlone
+                                     .browser.interfaces.IPloneAdmin" />
+
+    <browser:page name="plone_context_state"
+                  for="*"
+                  class=".browser.ploneview.ContextState"
+                  permission="zope.Public"
+                  allowed_interface="plone.app.layout.globals.interfaces.IContextState
+                                     .browser.interfaces.IContextState" />
+
+    <browser:page name="plone_portal_state"
+                  for="*"
+                  class=".browser.ploneview.PortalState"
+                  permission="zope.Public"
+                  allowed_interface="plone.app.layout.globals.interfaces.IPortalState
+                                     .browser.interfaces.IPortalState" />
+
+    <include package="eea.mediacentre" file="overrides.zcml" />
+    <include package="eea.reports" file="overrides.zcml" />
+
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot" />
+
+    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
+    <browser:viewletManager name="plone.resourceregistries.kineticstylesheets"
+                            provides="Products.ResourceRegistries.interfaces.IHtmlHeadStyles"
+                            template="kss.pt"
+                            permission="zope2.View" />
+
+    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
+    <browser:page name="manage-portlets"
+                  for="plone.portlets.interfaces.ILocalPortletAssignable"
+                  class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+                  permission="plone.app.portlets.ManagePortlets"
+                  template="manage-contextual.pt" />
+
+    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
+    <configure zcml:condition="installed Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer">
+        <browser:page for="plone.portlets.interfaces.ILocalPortletAssignable"
+                      name="manage-portlets"
+                      class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+                      template="solgema-manage-contextual.pt"
+                      permission="plone.app.portlets.ManagePortlets"
+                      layer="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer" />
+    </configure>
+
+    <browser:resource
+        name="manage-portlets.kss"
+        file="browser/portlets.kss"
+        />
+
+</configure>
