@@ -3,7 +3,7 @@ Changelog
 
 4.15-dev - (unreleased)
 -----------------------
- * Upgrade step: import javascript and css from EEAPloneAdmin Optimization profile
+ * Upgrade step: import javascript and css from "EEAPloneAdmin: CSS/JS reorder" profile
    [tiberich #4737]
  * Bug fix: updated the optimization JS profile file to minimize number of 
    generated files [tiberich #4737]
