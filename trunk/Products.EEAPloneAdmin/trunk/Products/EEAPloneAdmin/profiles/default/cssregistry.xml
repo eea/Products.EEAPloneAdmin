@@ -175,10 +175,6 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="helpcenter.css" media="all"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++videostyles/video.css"
     media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
@@ -197,6 +193,10 @@
     cacheable="True" compression="full" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="solgemaportletsmanager.css" media="all"
     rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="helpcenter.css" media="all"
+    rel="stylesheet" rendering="link"/>
  <stylesheet title="Faceted Edit CSS" applyPrefix="False"
     authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="on"
@@ -225,9 +225,9 @@
     enabled="on" expression="" id="helpcenter_print.css" media="print"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="gt IE 8"
-    cookable="True" enabled="on" expression="" id="IEFixes.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+    cacheable="False" compression="safe" conditionalcomment="lt IE 8"
+    cookable="False" enabled="on" expression="" id="IEFixes.css"
+    media="screen" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="IE 7"
     cookable="True" enabled="on" expression="exists: portal/IE7Fixes.css"
@@ -285,8 +285,8 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="python:'multimedia_view' in context.getLayout()"
-    id="eea.multimedia.css" media="all" rel="stylesheet" rendering="link"/>
+    enabled="on" expression="python: 'multimedia_view' in context.getLayout()"
+    id="eea.multimedia.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="Figures View CSS" applyPrefix="False"
     authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="on" expression=""
@@ -296,9 +296,8 @@
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="ploneCustom.css" media="all"
     rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
+ <stylesheet title="" applyPrefix="False" authenticated="True"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on"
-    expression="python:here.portal_url.getPortalObject().getCurrentSkinName()==&quot;EEADesignCMS&quot;"
-    id="ploneAdmin.css" media="screen" rel="stylesheet" rendering="import"/>
+    enabled="on" expression="" id="ploneAdmin.css" media="" rel="stylesheet"
+    rendering="import"/>
 </object>
