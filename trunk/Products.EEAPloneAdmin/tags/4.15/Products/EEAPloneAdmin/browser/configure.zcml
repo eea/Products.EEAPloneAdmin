@@ -1,0 +1,60 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="Products.EEAPloneAdmin">
+
+    <include file="migrate.zcml" />
+
+    <browser:page
+        for="*"
+        name="regen_js"
+        class=".admin.RegenerateJS"
+        permission="cmf.ManagePortal"
+        >
+        Should be for Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+        but because of vhm issues, we can't do that
+    </browser:page>
+
+    <browser:page
+        for="*"
+        name="regen_css"
+        class=".admin.RegenerateCSS"
+        permission="cmf.ManagePortal"
+        />
+
+    <browser:page
+        for="*"
+        name="regen_kss"
+        class=".admin.RegenerateKSS"
+        permission="cmf.ManagePortal"
+        />
+
+    <browser:page
+        name="eea-workflow-support"
+        for="zope.interface.Interface"
+        class=".workflow.WorkflowSupport"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <adapter factory=".ploneview.ObjectTitle" />
+
+    <browser:page
+        name="patch_tinymce.js"
+        for="*"
+        class=".tinymce.TinyMCEPatch"
+        permission="zope.Public"
+        />
+
+  <!--Allows proper functioning of the dashboard when displayed over a non-root url-->
+    <adapter
+        factory="plone.app.portlets.browser.traversal.DashboardNamespace"
+        for="Products.Archetypes.interfaces.IBaseFolder zope.publisher.interfaces.http.IHTTPRequest"
+        name="dashboard"
+        />
+
+    <browser:resource
+        name="eeaploneadmin.rewriterules.js"
+        file="rewriterules.js"
+    />
+
+</configure>
