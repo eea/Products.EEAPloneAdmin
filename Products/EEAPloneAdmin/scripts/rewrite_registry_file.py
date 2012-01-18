@@ -46,7 +46,7 @@ def main():
         else:
             es.set('insert-top', 'true')
 
-        es.set('update', 'true')
+        #es.set('update', 'true')
 
         previous = es.get('id')
 
