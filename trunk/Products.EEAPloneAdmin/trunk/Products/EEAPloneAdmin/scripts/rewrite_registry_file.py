@@ -38,12 +38,15 @@ def main():
     for script in scripts:
         es = lxml.etree.SubElement(obj, _type)
         for k, v in script.items():
-            if k not in ['after', 'insert-after', 'position-top']:
+            if k not in ['after', 'insert-after', 
+                         'position-top', 'update']:
                 es.set(k, v)
         if previous:
             es.set('insert-after', previous)
         else:
             es.set('insert-top', 'true')
+
+        es.set('update', 'true')
 
         previous = es.get('id')
 
