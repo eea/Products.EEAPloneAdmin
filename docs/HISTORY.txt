@@ -3,6 +3,8 @@ Changelog
 
 4.16-dev - (unreleased)
 -----------------------
+ * Feature: added script to rewrite css/js registry files to enable optimization reordering [tiberich #4737]
+ * Bug fix: added ordering instructions in css/js registry files [tiberich #4737]
 
 4.15 - (2012-01-17)
 -------------------
