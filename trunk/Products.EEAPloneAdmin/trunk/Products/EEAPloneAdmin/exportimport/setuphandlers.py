@@ -55,4 +55,6 @@ def clear_registries(context):
     csstool = getToolByName(site, 'portal_javascripts')
 
     for tool in (jstool, csstool):
-        tool._data = PersistentMapping()
+        tool.cookedresources = ()
+        tool.concatenatedresources = {}
+        tool.resources = ()
