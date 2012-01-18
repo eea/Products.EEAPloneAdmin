@@ -46,4 +46,9 @@
         title="EEA site setup" description=""
         handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious" />
 
+    <genericsetup:importStep
+        name="eea-clear-registries"
+        title="Clear resource registries" description=""
+        handler="Products.EEAPloneAdmin.exportimport.setuphandlers.clear_registries" />
+
 </configure>
