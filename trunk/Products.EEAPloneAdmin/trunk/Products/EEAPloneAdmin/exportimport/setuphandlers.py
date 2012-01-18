@@ -1,6 +1,7 @@
 """ Setuphandlers
 """
 
+from Persistence import PersistentMapping
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
@@ -45,3 +46,13 @@ def setupImageTypes(context):
         if type_ not in types:
             types = types + (type_,)
     portal_atct.manage_changeProperties(image_types=types)
+
+def clear_registries(context):
+    """Clear resource registries
+    """
+    site = context.getSite()
+    jstool  = getToolByName(site, 'portal_javascripts')
+    csstool = getToolByName(site, 'portal_javascripts')
+
+    for tool in (jstool, csstool):
+        tool._data = PersistentMapping()
