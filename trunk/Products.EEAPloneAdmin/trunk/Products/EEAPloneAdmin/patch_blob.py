@@ -105,7 +105,7 @@ def patched_getSize(self):
                        "image size for blob %r. Info about blob: "
                        "OID (oid, repr, path on zeo storage): %r > %r > %r "
                        "CACHED (path to cached blob): %r "
-                        % (self, self.blob._p_oid, oid_repr(oid),
+                        % (self.blob._p_oid, oid_repr(oid),
                            oid.__repr__(), path, cached))
 
         return 0
