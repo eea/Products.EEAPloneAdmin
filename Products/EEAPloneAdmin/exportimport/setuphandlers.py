@@ -1,7 +1,5 @@
 """ Setuphandlers
 """
-
-from Persistence import PersistentMapping
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides

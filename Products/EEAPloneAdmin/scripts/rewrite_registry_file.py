@@ -1,8 +1,6 @@
 #!/usr/bin/python
 """ A script to rewrite a [js/css]registry.xml file to an optimization format
 """
-
-import os
 import sys
 import lxml.etree
 import string
@@ -16,9 +14,9 @@ def main():
     _type = None
 
     if 'cssregistry.xml' in input:
-        _type='stylesheet'
+        _type = 'stylesheet'
     if 'jsregistry.xml' in input:
-        _type='javascript'
+        _type = 'javascript'
 
     if not _type:
         print "Invalid named input file, has ",
@@ -38,7 +36,7 @@ def main():
     for script in scripts:
         es = lxml.etree.SubElement(obj, _type)
         for k, v in script.items():
-            if k not in ['after', 'insert-after', 
+            if k not in ['after', 'insert-after',
                          'position-top', 'update']:
                 es.set(k, v)
         if previous:
