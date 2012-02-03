@@ -6,11 +6,11 @@ Changelog
  * Bug fix: made kukit.js only for authenticated since it gives error on gis apps [demarant #4895]
  * Feature: added script to rewrite css/js registry files to enable optimization reordering [tiberich #4737]
  * Bug fix: added ordering instructions in css/js registry files [tiberich #4737]
- * UPGRADE STEP: 
- - export js/css profiles in portal_setup
- - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
- - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry 
- - go to portal_javascripts, portal_css, portal_kss, click save
+ * Upgrade step:
+     - export js/css profiles in portal_setup
+     - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
+     - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry 
+     - go to portal_javascripts, portal_css, portal_kss, click save
 
 4.15 - (2012-01-17)
 -------------------
