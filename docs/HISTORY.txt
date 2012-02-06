@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.17-dev - (unreleased)
+-----------------------
+
 4.16 - (2012-02-06)
 -------------------
  * Bug fix: made kukit.js only for authenticated since it gives error on gis apps [demarant #4895]
