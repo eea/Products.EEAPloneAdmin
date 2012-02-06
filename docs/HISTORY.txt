@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.16-dev - (unreleased)
------------------------
+4.16 - (2012-02-06)
+-------------------
  * Bug fix: made kukit.js only for authenticated since it gives error on gis apps [demarant #4895]
  * Feature: added script to rewrite css/js registry files to enable optimization reordering [tiberich #4737]
  * Bug fix: added ordering instructions in css/js registry files [tiberich #4737]
