@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='ASCII' standalone='yes'?>
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
   <javascript authenticated="False" cacheable="True" compression="none" conditionalcomment="" cookable="True" enabled="True" expression="python: request.get('jsdisable','') != 'jquery'" id="jquery.js" inline="False" insert-top="true" />
+  <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="context/@@jqueryui-include-condition" id="++resource++jquery-ui.min.js" inline="False" insert-after="jquery.js" />
+  <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="context/@@jqueryui-include-condition" id="++resource++jquery-ui-i18n.js" inline="False" insert-after="++resource++jquery-ui-i18n.js" />
   <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="" id="event-registration.js" inline="False" insert-after="jquery.js" />
   <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="" id="register_function.js" inline="False" insert-after="event-registration.js" />
   <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="" id="plone_javascript_variables.js" inline="False" insert-after="register_function.js" />
@@ -95,8 +97,6 @@
   <javascript authenticated="False" cacheable="True" compression="none" conditionalcomment="" cookable="True" enabled="False" expression="" id="++resource++effects.js" inline="False" insert-after="++resource++prototype.js" />
   <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="False" expression="" id="++resource++cssQuery-compat.js" inline="False" insert-after="++resource++effects.js" />
   <javascript authenticated="False" cacheable="True" compression="none" conditionalcomment="" cookable="True" enabled="False" expression="" id="++resource++base2-dom-fp.js" inline="False" insert-after="++resource++cssQuery-compat.js" />
-  <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="context/@@jqueryui-include-condition" id="++resource++jquery-ui.min.js" inline="False" insert-after="++resource++base2-dom-fp.js" />
-  <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="context/@@jqueryui-include-condition" id="++resource++jquery-ui-i18n.js" inline="False" insert-after="++resource++jquery-ui.min.js" />
   <javascript authenticated="False" cacheable="True" compression="safe" conditionalcomment="" cookable="True" enabled="True" expression="python: 'report_view' in request.get('URL0')" id="++resource++eea.reports.js" inline="False" insert-after="++resource++jquery-ui-i18n.js" />
   <javascript authenticated="False" cacheable="True" compression="none" conditionalcomment="" cookable="True" enabled="True" expression="python:'multimedia_view' in context.getLayout()" id="eea.multimedia.js" inline="False" insert-after="++resource++eea.reports.js" />
   <javascript authenticated="False" cacheable="True" compression="none" conditionalcomment="" cookable="True" enabled="True" expression="" id="eea_vpip.js" inline="False" insert-after="eea.multimedia.js" />
