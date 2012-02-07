@@ -50,7 +50,7 @@ def clear_registries(context):
     """
     site = context.getSite()
     jstool  = getToolByName(site, 'portal_javascripts')
-    csstool = getToolByName(site, 'portal_javascripts')
+    csstool = getToolByName(site, 'portal_css')
 
     for tool in (jstool, csstool):
         tool.cookedresources = ()
