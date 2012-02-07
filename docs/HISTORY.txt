@@ -5,6 +5,7 @@ Changelog
 -----------------------
  * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods 
    used for maintenance. [demarant]
+ * Bug fix: fix clear registries setup step [tiberich]
 
 4.16 - (2012-02-06)
 -------------------
