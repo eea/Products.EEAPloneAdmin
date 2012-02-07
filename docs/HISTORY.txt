@@ -3,6 +3,8 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
+ * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods 
+   used for maintenance. [demarant]
 
 4.16 - (2012-02-06)
 -------------------
