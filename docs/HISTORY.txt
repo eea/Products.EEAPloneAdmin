@@ -3,6 +3,7 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
+ * Bug fix: disabled clear registry import setup step [tiberich]
  * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods 
    used for maintenance. [demarant]
  * Bug fix: fix clear registries setup step [tiberich]
