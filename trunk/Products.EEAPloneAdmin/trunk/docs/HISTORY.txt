@@ -10,6 +10,7 @@ Changelog
    [demarant]
  * Bug fix: fix clear registries setup step
    [tiberich]
+ * Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources [tiberich #4933]
 
 4.16 - (2012-02-06)
 -------------------

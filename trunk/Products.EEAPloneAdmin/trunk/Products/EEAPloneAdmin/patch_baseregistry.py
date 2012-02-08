@@ -1,8 +1,13 @@
 """ Monkey patches for BaseRegistryTool
 """
+
 from time import time
-from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
-from Products.CMFCore.utils import getToolByName
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
+
+#from Products.CMFCore.utils import getToolByName
+#from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
+
 
 def generateId(self, *args, **kwargs):
     """ Better unique ids for js/css resources
@@ -11,9 +16,16 @@ def generateId(self, *args, **kwargs):
     now = now.replace('.', '')
     return '%s%s%s' % (self.filename_base, now, self.filename_appendix)
 
-def _initResources(self, node):
-    """ Init Resources
-    """
-    self._old__initResources(node)
-    registry = getToolByName(self.context, self.registry_id)
-    save_resources_on_disk(registry)
+
+def patch_cookResources(self):
+    self._old_cookResources()
+    notify(ObjectModifiedEvent(self))
+
+
+#def _initResources(self, node):
+    #""" Init Resources
+    #"""
+    #registry = getToolByName(self.context, self.registry_id)
+    #self._old__initResources(node)
+    #save_resources_on_disk(registry)
+
