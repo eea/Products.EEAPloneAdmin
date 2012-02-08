@@ -3,16 +3,22 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
- * Bug fix: disabled clear registry import setup step [tiberich]
- * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods 
-   used for maintenance. [demarant]
- * Bug fix: fix clear registries setup step [tiberich]
+ * Bug fix: added cache headers to multimedia_popup_view.pt [ghicaale #4930]
+ * Bug fix: disabled clear registry import setup step
+   [tiberich]
+ * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
+   [demarant]
+ * Bug fix: fix clear registries setup step
+   [tiberich]
 
 4.16 - (2012-02-06)
 -------------------
- * Bug fix: made kukit.js only for authenticated since it gives error on gis apps [demarant #4895]
- * Feature: added script to rewrite css/js registry files to enable optimization reordering [tiberich #4737]
- * Bug fix: added ordering instructions in css/js registry files [tiberich #4737]
+ * Bug fix: made kukit.js only for authenticated since it gives error on gis apps
+   [demarant #4895]
+ * Feature: added script to rewrite css/js registry files to enable optimization reordering
+   [tiberich #4737]
+ * Bug fix: added ordering instructions in css/js registry files
+   [tiberich #4737]
  * Upgrade step:
      - export js/css profiles in portal_setup
      - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
@@ -24,7 +30,8 @@ Changelog
  * Upgrade step: import javascript and css from "EEAPloneAdmin: CSS/JS reorder" profile
    [tiberich #4737]
  * Bug fix: updated the optimization JS profile file to minimize number of 
-   generated files [tiberich #4737]
+   generated files
+   [tiberich #4737]
 
 4.14 - (2012-01-04)
 -------------------
@@ -34,7 +41,8 @@ Changelog
 
 4.13 - (2012-01-03)
 -------------------
- * Feature: added script to create a link to maildrop script [tiberich #4804]
+ * Feature: added script to create a link to maildrop script
+   [tiberich #4804]
  * Bug fix: Added eea rewrite rules JS in order to rewrite some URL as some
    views works only if they are applied to Plone Site
    [voineali #4590]
@@ -46,21 +54,24 @@ Changelog
 4.12 - (2011-12-15)
 -------------------
  * Bug fix: added patch to avoid logic bug in plone.outputfilters
-   image captioning code [tiberich #4832]
+   image captioning code
+   [tiberich #4832]
  * Bug fix: Cache frontpage only one hour instead of 24
    [voineali #4824]
  * Bug fix: Fixed toLocalizedTime to show long_format
    [voineali #4798]
  * Bug fix: fix limited search behavior of tinymce in regards
-   to internal linking and breadcrumbs trails for image and internal link
-   plugins [ichimdav #4825]
+   to internal linking and breadcrumbs trails for image and internal link plugins
+   [ichimdav #4825]
 
 4.11 - (2011-12-02)
 -------------------
- * Feature: added logging for missing blobs [tiberich #4702]
- * Bug fix: added script to check for missing blobs [ghicaale #4806]
- * Bug fix: improve logging for migration script for missing filenames in
-   blobs [tiberich #4746]
+ * Feature: added logging for missing blobs
+   [tiberich #4702]
+ * Bug fix: added script to check for missing blobs
+   [ghicaale #4806]
+ * Bug fix: improve logging for migration script for missing filenames in blobs
+   [tiberich #4746]
 
 4.10 - (2011-11-25)
 -------------------
