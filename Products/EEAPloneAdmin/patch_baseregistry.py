@@ -18,6 +18,8 @@ def generateId(self, *args, **kwargs):
 
 
 def patch_cookResources(self):
+    """Patch for cookResources to trigger the ObjectModifiedEvent
+    """
     self._old_cookResources()
     notify(ObjectModifiedEvent(self))
 
