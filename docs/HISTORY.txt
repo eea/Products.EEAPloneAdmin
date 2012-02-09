@@ -3,15 +3,13 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
- * Code cleanup [tiberich]
  * Bug fix: added cache headers to multimedia_popup_view.pt [ghicaale #4930]
- * Bug fix: disabled clear registry import setup step
-   [tiberich]
+ * Bug fix: fix and disabled clear registry import setup step
+   [tiberich #4933]
  * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
    [demarant]
- * Bug fix: fix clear registries setup step
-   [tiberich]
  * Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources [tiberich #4933]
+ * Code cleanup [tiberich]
 
 4.16 - (2012-02-06)
 -------------------
