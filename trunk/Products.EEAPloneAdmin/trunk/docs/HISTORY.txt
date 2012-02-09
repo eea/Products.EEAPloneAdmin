@@ -3,6 +3,7 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
+ * Code cleanup [tiberich]
  * Bug fix: added cache headers to multimedia_popup_view.pt [ghicaale #4930]
  * Bug fix: disabled clear registry import setup step
    [tiberich]

@@ -16,6 +16,8 @@ logger = logging.getLogger("Products.EEAPloneAdmin")
 
 
 def patched_field_get_size(self):
+    """Patch for get_size
+    """
     try:
         blob = openBlob(self.blob)
         size = fstat(blob.fileno()).st_size
@@ -41,6 +43,8 @@ def patched_field_get_size(self):
 
 
 def patched_class_get_size(self):
+    """Patch for get_size
+    """
     f = self.getPrimaryField()
     if f is None:
         return 0
@@ -54,6 +58,8 @@ def patched_class_get_size(self):
 
 def patched_field_index_html(self, instance, REQUEST=None,
                            RESPONSE=None, disposition='inline'):
+    """Patch for index_html for field
+    """
     try:
         blob = self._old_index_html(instance, REQUEST=REQUEST,
                             RESPONSE=RESPONSE, disposition=disposition)
@@ -72,6 +78,8 @@ def patched_field_index_html(self, instance, REQUEST=None,
 
 
 def patched_getScale(self, instance, scale=None, **kwargs):
+    """Patch for getScale
+    """
     if scale is None:
         return self.getUnwrapped(instance, **kwargs)
     handler = IImageScaleHandler(self, None)
@@ -86,7 +94,6 @@ def patched_getScale(self, instance, scale=None, **kwargs):
 
 def patched_getSize(self):
     """ return image dimensions of the blob """
-    # TODO: this should probably be cached...
     try:
         blob = openBlob(self.blob)
     except POSKeyError:
