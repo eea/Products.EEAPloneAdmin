@@ -45,9 +45,14 @@ def setupImageTypes(context):
             types = types + (type_,)
     portal_atct.manage_changeProperties(image_types=types)
 
+
 def clear_registries(context):
     """Clear resource registries
     """
+
+    if context.readDataFile('eeaploneadmin-optimize.txt') is None:
+        return
+
     site = context.getSite()
     jstool  = getToolByName(site, 'portal_javascripts')
     csstool = getToolByName(site, 'portal_css')

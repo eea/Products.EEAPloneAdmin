@@ -4,7 +4,7 @@ Changelog
 4.17-dev - (unreleased)
 -----------------------
  * Bug fix: added cache headers to multimedia_popup_view.pt [ghicaale #4930]
- * Bug fix: fix and disabled clear registry import setup step
+ * Bug fix: fix clear registry import setup step
    [tiberich #4933]
  * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
    [demarant]
