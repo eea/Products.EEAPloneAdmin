@@ -176,4 +176,25 @@
                       replacement=".patch_maildrophost.patched_setConfigPath" />
     </configure>
 
+    <!-- Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939 -->
+    <monkey:patch description="Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939"
+                  class="plone.app.viewletmanager.manager.ManageViewlets"
+                  original="show"
+                  replacement=".patch_viewletmanager.show" />
+
+    <monkey:patch description="Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939"
+                  class="plone.app.viewletmanager.manager.ManageViewlets"
+                  original="hide"
+                  replacement=".patch_viewletmanager.hide" />
+
+    <monkey:patch description="Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939"
+                  class="plone.app.viewletmanager.manager.ManageViewlets"
+                  original="moveAbove"
+                  replacement=".patch_viewletmanager.moveAbove" />
+
+    <monkey:patch description="Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939"
+                  class="plone.app.viewletmanager.manager.ManageViewlets"
+                  original="moveBelow"
+                  replacement=".patch_viewletmanager.moveBelow" />
+
 </configure>
