@@ -3,13 +3,20 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
- * Bug fix: added cache headers to multimedia_popup_view.pt [ghicaale #4930]
+ * Upgrade step: under @@manage-viewlets resave position of viewlets in order
+   to be saved for EEADesign2006 skin too [ghicaale #4939]
+ * Bug fix: patch for plone.app.viewletmanager to save viewlets order for both skins
+   [ghicaale #4939]
+ * Bug fix: added cache headers to multimedia_popup_view.pt
+   [ghicaale #4930]
  * Bug fix: fix clear registry import setup step
    [tiberich #4933]
  * Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
    [demarant]
- * Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources [tiberich #4933]
- * Code cleanup [tiberich]
+ * Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources
+   [tiberich #4933]
+ * Code cleanup
+   [tiberich]
 
 4.16 - (2012-02-06)
 -------------------
