@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.17-dev - (unreleased)
------------------------
+4.17 - (2012-02-14)
+-------------------
  * Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
    [ghicaale #4945]
  * Upgrade step: under @@manage-viewlets resave position of viewlets in order
