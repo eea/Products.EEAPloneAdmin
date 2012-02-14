@@ -3,6 +3,8 @@ Changelog
 
 4.17-dev - (unreleased)
 -----------------------
+ * Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
+   [ghicaale #4945]
  * Upgrade step: under @@manage-viewlets resave position of viewlets in order
    to be saved for EEADesign2006 skin too [ghicaale #4939]
  * Bug fix: patch for plone.app.viewletmanager to save viewlets order for both skins
