@@ -295,7 +295,7 @@
  <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="patch_tinymce.js" inline="False"/>
- <javascript authenticated="True" cacheable="True" compression="safe"
+ <javascript authenticated="True" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="tiny_mce.js" inline="False"/>
  <javascript authenticated="True" cacheable="True" compression="safe"
