@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.18-dev - (unreleased)
+-----------------------
+
 4.17 - (2012-02-14)
 -------------------
  * Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
