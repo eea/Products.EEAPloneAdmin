@@ -28,6 +28,42 @@ def testTimeoutA(self):
     time.sleep(600)
     return 'done'
 
+def bulkDelete(self, brains=[],batchnr=20,delete_versions=False):
+    """ Delete many objects in batches (multi transactions). BE CAUTIUS.
+    """
+    info('INFO: starting bulk delete')
+    context = self
+    request = self.REQUEST
+    debug = request.get('debug', None)
+    totobs = len(brains)
+    deleted_count = 0
+    
+    # Delete loop
+    trans_count = 0
+    for brain in brains:
+        trans_count += 1
+        if debug:
+            info('INFO: deleting %s' % brain)
+        else:
+            ob = brain.getObject()
+            parent = ob.aq_parent
+            #check if object has versions, if so do not delete it
+            versions = ob.unrestrictedTraverse('@@getVersions')
+            ver_nr = len(versions())
+            if ((ver_nr < 2 or delete_versions) and brain.review_state not in ['published','visible']): 
+               # only one version then delete, never delete published content
+               info('INFO: deleting %s' % (ob.absolute_url()))
+               parent.manage_delObjects([ob.id])
+               deleted_count += 1
+            else:
+               info('INFO: Skip deleting: review state = %s  versions = %s' \
+                    % (brain.review_state, str(ver_nr)))
+        if trans_count % batchnr == 0:
+            info('INFO: processing %s of %s objects' % (str(trans_count),str(totobs)))
+            transaction.commit()
+            
+    info('INFO: Done bulk delete of %s of total %s requested' % (str(deleted_count),str(totobs)))
+
 def bulkDeleteSpam(self):
     """ Cleanup spam
     """
