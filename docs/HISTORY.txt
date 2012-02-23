@@ -5,6 +5,8 @@ Changelog
 -----------------------
  * Feature: added external method for deleted old never published objects
    [demarant]
+ * Change: added override for munin browser views to make them public
+   [tiberich #4955]
 
 4.17 - (2012-02-14)
 -------------------
