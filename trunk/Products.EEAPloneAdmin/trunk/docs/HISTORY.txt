@@ -7,6 +7,8 @@ Changelog
    [demarant]
  * Change: added override for munin browser views to make them public
    [tiberich #4955]
+ * Feature: only do saving of resources on disk in the context of EEA Plone site
+   [tiberich]
 
 4.17 - (2012-02-14)
 -------------------
