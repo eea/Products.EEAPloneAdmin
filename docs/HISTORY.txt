@@ -3,6 +3,7 @@ Changelog
 
 4.18-dev - (unreleased)
 -----------------------
+ * Bug Fix: updated all Office excel 2010 to new mime type. [demarant #4957]
  * Feature: added external method for deleted old never published objects
    [demarant]
  * Change: added override for munin browser views to make them public
