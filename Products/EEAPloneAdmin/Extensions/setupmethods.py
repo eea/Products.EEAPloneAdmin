@@ -28,29 +28,29 @@ def testTimeoutA(self):
     time.sleep(600)
     return 'done'
 
-def updateExcelMimeTypes(self,brains=[],batchnr=20):
+def updateMimeTypes(self,brains=[], extension=None, newmime=None, batchnr=20):
     """Update mime types for file fields and their catalog index
     """
     info('INFO: starting mime types update')
     trans_count = 0
     totobs = len(brains)
-    newmime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 
     for myfile in brains:
-       fileo = myfile.getObject()
-       field = fileo.getField('file')
-       if field:
-          accessor = field.getAccessor(fileo)()
-          if accessor != None:
-             filename = accessor.filename
-             if filename:
-                 if 'xlsx' in filename:
+      fileo = myfile.getObject()
+      field = fileo.getField('file')
+      if field:
+	accessor = field.getAccessor(fileo)()
+	if accessor != None:
+            filename = accessor.filename
+            if filename:
+                if extension and extension in filename:
                     trans_count += 1
-                    accessor.content_type = newmime
-                    info('INFO: updating mime type for %s %s' % (myfile.id,filename))
-                    fileo.unindexObject()
-                    fileo.reindexObject()
-       if trans_count % batchnr == 0:
+       	       	    if newmime:
+                       accessor.content_type = newmime                                                        
+                       info('INFO: updating mime type for %s %s' % (myfile.id,filename))
+                       fileo.unindexObject()
+                       fileo.reindexObject()
+      if trans_count % batchnr == 0:
             info('INFO: processing %s of %s objects' % (str(trans_count),str(totobs)))
             transaction.commit()
 
