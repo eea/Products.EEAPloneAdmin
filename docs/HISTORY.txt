@@ -3,9 +3,9 @@ Changelog
 
 4.18-dev - (unreleased)
 -----------------------
- * Upgrade Step: dascalu + tiberich: install eea.munin on ape, link 
+ * Upgrade step: dascalu + tiberich: install eea.munin on ape, link 
    its plugins into the ape munin [tiberich #4955]
- * Upgrade Step: dascalu + tiberich: on each squirrel, install the 
+ * Upgrade step: dascalu + tiberich: on each squirrel, install the 
    plugins in munin-scripts in munin [tiberich #4955]
  * Bug Fix: updated all xlsx and docx to new mime type. [demarant #4957]
  * Feature: added external method for deleted old never published objects
