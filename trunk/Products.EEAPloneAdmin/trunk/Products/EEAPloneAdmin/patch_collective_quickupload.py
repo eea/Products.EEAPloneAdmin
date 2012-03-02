@@ -3,6 +3,7 @@
 import json
 import urllib
 import mimetypes
+from zope import component
 from collective.quickupload import logger
 from collective.quickupload.browser.quick_upload import getDataFromAllRequests
 from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
@@ -111,7 +112,12 @@ def quick_upload_file(self):
         if f['success'] is not None :
             o = f['success']
             logger.info("file url: %s" % o.absolute_url())
-            msg = {u'success': True}
+            msg = {
+                u'success': True,
+                u'uid': o.UID(),
+                u'name': o.getId(),
+                u'title': o.pretty_title_or_id()
+            }
         else :
             msg = {u'error': f['error']}
     else :
@@ -132,10 +138,10 @@ def detect_context_rules(context, portal_type):
 
     return portal_type
 
-def QuickUploadCapableFileFactory__call__(self, name, title, description, 
+def QuickUploadCapableFileFactory__call__(self, name, title, description,
                                             content_type, data, portal_type):
     """ Patched __call__ for QuickUploadCapableFileFactory """
-    
+
     context = aq_inner(self.context)
     charset = context.getCharset()
     filename = name
@@ -165,7 +171,7 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description,
         try:
             transaction.begin()
             try:
-                context.invokeFactory(type_name=portal_type, id=newid, 
+                context.invokeFactory(type_name=portal_type, id=newid,
                                         title=title, description=description)
             except Unauthorized :
                 error = u'serverErrorNoPermission'
@@ -183,17 +189,17 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description,
                     if primaryField is not None:
                         mutator = primaryField.getMutator(obj)
                         # mimetype arg works with blob files
-                        mutator(data, content_type=content_type, 
+                        mutator(data, content_type=content_type,
                                 mimetype=content_type)
-                        # XXX when getting file through request.BODYFILE 
-                        # (XHR direct upload) the filename is not inside 
-                        # the file and the filename must be a string, not 
-                        # unicode otherwise Archetypes raise an error 
+                        # XXX when getting file through request.BODYFILE
+                        # (XHR direct upload) the filename is not inside
+                        # the file and the filename must be a string, not
+                        # unicode otherwise Archetypes raise an error
                         # (so we use filename and not name)
                         if not obj.getFilename() :
                             obj.setFilename(filename)
                             #patch:
-                            #check if setFilename worked, 
+                            #check if setFilename worked,
                             # if not we set the filename on the blob
                             if not obj.getFilename():
                                 field = obj.getPrimaryField()
@@ -206,7 +212,7 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description,
                         obj.reindexObject()
                         notify(ObjectInitializedEvent(obj))
                     else :
-                        # some products remove the 'primary' attribute on 
+                        # some products remove the 'primary' attribute on
                         # ATFile or ATImage (which is very bad)
                         error = u'serverError'
                         logger.info("An error happens : impossible to get"\
