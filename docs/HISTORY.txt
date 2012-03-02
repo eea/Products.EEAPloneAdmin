@@ -3,10 +3,13 @@ Changelog
 
 4.18-dev - (unreleased)
 -----------------------
- * Upgrade step: dascalu + tiberich: install eea.munin on ape, link 
+ * Upgrade step: dascalu + tiberich: install eea.munin on ape, link
    its plugins into the ape munin [tiberich #4955]
- * Upgrade step: dascalu + tiberich: on each squirrel, install the 
+ * Upgrade step: dascalu + tiberich: on each squirrel, install the
    plugins in munin-scripts in munin [tiberich #4955]
+ * Bug fix: Updated collective.quickupload patch according with the latest
+   changes
+   [voineali #4965]
  * Bug Fix: updated all xlsx and docx to new mime type. [demarant #4957]
  * Feature: added external method for deleted old never published objects
    [demarant]
@@ -45,14 +48,14 @@ Changelog
  * Upgrade step:
      - export js/css profiles in portal_setup
      - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
-     - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry 
+     - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry
      - go to portal_javascripts, portal_css, portal_kss, click save
 
 4.15 - (2012-01-17)
 -------------------
  * Upgrade step: import javascript and css from "EEAPloneAdmin: CSS/JS reorder" profile
    [tiberich #4737]
- * Bug fix: updated the optimization JS profile file to minimize number of 
+ * Bug fix: updated the optimization JS profile file to minimize number of
    generated files
    [tiberich #4737]
 
