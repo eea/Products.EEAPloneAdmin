@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.19-dev - (unreleased)
+-----------------------
+
 4.18 - (2012-03-05)
 -------------------
  * Upgrade step: dascalu + tiberich: install eea.munin on ape, link
