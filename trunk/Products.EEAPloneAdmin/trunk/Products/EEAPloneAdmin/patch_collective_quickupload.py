@@ -15,7 +15,6 @@ from thread import allocate_lock
 import transaction
 from AccessControl import Unauthorized
 from ZODB.POSException import ConflictError
-from zope import component
 from zope.event import notify
 from zope.app.container.interfaces import INameChooser
 
