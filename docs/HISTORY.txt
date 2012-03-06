@@ -3,6 +3,8 @@ Changelog
 
 4.19-dev - (unreleased)
 -----------------------
+ * Change: remove code that checks for IEEAPloneSite when saving disk resources
+   [tiberich]
 
 4.18 - (2012-03-05)
 -------------------
