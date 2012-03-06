@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool" allow_any="False"
+   cookie_persistence="False" default_skin="EEADesign2006"
+   request_varname="plone_skin">
+ <object name="ATContentTypes" meta_type="Filesystem Directory View"
+    directory="Products.ATContentTypes:skins/ATContentTypes"/>
+ <object name="ATVocabularyManager" meta_type="Filesystem Directory View"
+    directory="Products.ATVocabularyManager:skins/ATVocabularyManager"/>
+ <object name="AddRemoveWidget" meta_type="Filesystem Directory View"
+    directory="Products.AddRemoveWidget:skins/AddRemoveWidget"/>
+ <object name="CMFEditions" meta_type="Filesystem Directory View"
+    directory="Products.CMFEditions:skins/CMFEditions"/>
+ <object name="CMFPlacefulWorkflow" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlacefulWorkflow:skins/CMFPlacefulWorkflow"/>
+ <object name="DataGridWidget" meta_type="Filesystem Directory View"
+    directory="Products.DataGridField:skins/DataGridWidget"/>
+ <object name="EEAContentTypes" meta_type="Filesystem Directory View"
+    directory="Products.EEAContentTypes:skins/EEAContentTypes"/>
+ <object name="EEAContentTypes_public" meta_type="Filesystem Directory View"
+    directory="Products.EEAContentTypes:skins/EEAContentTypes_public"/>
+ <object name="EEAEnquiry" meta_type="Filesystem Directory View"
+    directory="Products.EEAEnquiry:skins/EEAEnquiry"/>
+ <object name="LanguageTool" meta_type="Filesystem Directory View"
+    directory="Products.PloneLanguageTool:skins/LanguageTool"/>
+ <object name="LinguaPlone" meta_type="Filesystem Directory View"
+    directory="Products.LinguaPlone:skins/LinguaPlone"/>
+ <object name="LocationWidget" meta_type="Filesystem Directory View"
+    directory="eea.locationwidget:skins/LocationWidget"/>
+ <object name="NavigationManager" meta_type="Filesystem Directory View"
+    directory="Products.NavigationManager:skins/NavigationManager"/>
+ <object name="PasswordReset" meta_type="Filesystem Directory View"
+    directory="Products.PasswordResetTool:skins/PasswordReset"/>
+ <object name="PloneGazette" meta_type="Filesystem Directory View"
+    directory="Products.PloneGazette:skins/PloneGazette"/>
+ <object name="archetypes" meta_type="Filesystem Directory View"
+    directory="Products.Archetypes:skins/archetypes"/>
+ <object name="archetypes_kss" meta_type="Filesystem Directory View"
+    directory="Products.Archetypes:skins/archetypes_kss"/>
+ <object name="bda_feed" meta_type="Filesystem Directory View"
+    directory="bda.feed:skin"/>
+ <object name="classic_ecmascript" meta_type="Filesystem Directory View"
+    directory="plonetheme.classic:skins/classic_ecmascript"/>
+ <object name="classic_styles" meta_type="Filesystem Directory View"
+    directory="plonetheme.classic:skins/classic_styles"/>
+ <object name="cmf_legacy" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/cmf_legacy"/>
+ <object name="cmfeditions_views" meta_type="Filesystem Directory View"
+    directory="Products.CMFEditions:skins/cmfeditions_views"/>
+ <object name="custom" meta_type="Folder"/>
+ <object name="custom.PLONE25" meta_type="Folder"/>
+ <object name="custom_admin" meta_type="Folder"/>
+ <object name="custom_admin.PLONE25" meta_type="Folder"/>
+ <object name="custom_images" meta_type="Folder"/>
+ <object name="dataservice_templates" meta_type="Filesystem Directory View"
+    directory="eea.dataservice:skins/dataservice_templates"/>
+ <object name="eea_design" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eea_design"/>
+ <object name="eea_epub" meta_type="Filesystem Directory View"
+    directory="eea.epub:skins/eea_epub"/>
+ <object name="eea_geotags" meta_type="Filesystem Directory View"
+    directory="eea.geotags:skins/eea_geotags"/>
+ <object name="eea_google" meta_type="Filesystem Directory View"
+    directory="eea.google:skins/eea_google"/>
+ <object name="eea_images" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eea_images"/>
+ <object name="eea_mediacentre" meta_type="Filesystem Directory View"
+    directory="eea.mediacentre:skins/eea_mediacentre"/>
+ <object name="eea_multimedia" meta_type="Filesystem Directory View"
+    directory="eea.mediacentre:skins/eea_multimedia"/>
+ <object name="eea_pagedesign" meta_type="Filesystem Directory View"
+    directory="eea.pagedesign:skins/eea_pagedesign"/>
+ <object name="eea_promotion" meta_type="Filesystem Directory View"
+    directory="eea.promotion:skins/eea_promotion"/>
+ <object name="eea_relations" meta_type="Filesystem Directory View"
+    directory="eea.relations:skins/eea_relations"/>
+ <object name="eea_signals" meta_type="Filesystem Directory View"
+    directory="eea.signals:skins/eea_signals"/>
+ <object name="eea_sitestructurediff" meta_type="Filesystem Directory View"
+    directory="eea.sitestructurediff:skins/eea_sitestructurediff"/>
+ <object name="eea_socialmedia" meta_type="Filesystem Directory View"
+    directory="eea.socialmedia:skins/eea_socialmedia"/>
+ <object name="eea_soer" meta_type="Filesystem Directory View"
+    directory="eea.soer:skins/eea_soer"/>
+ <object name="eea_webapplication" meta_type="Filesystem Directory View"
+    directory="Products.eeawebapplication:skins/eea_webapplication"/>
+ <object name="eea_workflow_templates" meta_type="Filesystem Directory View"
+    directory="eea.workflow:skins/eea_workflow_templates"/>
+ <object name="eeadesign_2011" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eea_design_2011"/>
+ <object name="eeadesign_cms" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_cms"/>
+ <object name="eeadesign_green" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_green"/>
+ <object name="eeadesign_green_images" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_green_images"/>
+ <object name="eeadesign_js" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_js"/>
+ <object name="eeadesign_public" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_public"/>
+ <object name="eeadesign_public_cmsandwww"
+    meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_public_cmsandwww"/>
+ <object name="eeadesign_style_docs" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_style_docs"/>
+ <object name="eeadesign_templates" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/eeadesign_templates"/>
+ <object name="eeatemplatesservice" meta_type="Filesystem Directory View"
+    directory="Products.EEATemplatesService:skins/eeatemplatesservice"/>
+ <object name="fatsyndication" meta_type="Filesystem Directory View"
+    directory="Products.fatsyndication:skins/fatsyndication"/>
+ <object name="indicators_images" meta_type="Filesystem Directory View"
+    directory="eea.indicators:skins/indicators_images"/>
+ <object name="indicators_overrides" meta_type="Filesystem Directory View"
+    directory="eea.indicators:skins/indicators_overrides"/>
+ <object name="indicators_styles" meta_type="Filesystem Directory View"
+    directory="eea.indicators:skins/indicators_styles"/>
+ <object name="indicators_templates" meta_type="Filesystem Directory View"
+    directory="eea.indicators:skins/indicators_templates"/>
+ <object name="linguaflow_templates" meta_type="Filesystem Directory View"
+    directory="valentine.linguaflow:skins/linguaflow_templates"/>
+ <object name="mimetypes_icons" meta_type="Filesystem Directory View"
+    directory="Products.MimetypesRegistry:skins/mimetypes_icons"/>
+ <object name="orderablereferencefield" meta_type="Filesystem Directory View"
+    directory="Products.OrderableReferenceField:skins/orderablereferencefield"/>
+ <object name="plone_3rdParty" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_3rdParty"/>
+ <object name="plone_content" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_content"/>
+ <object name="plone_deprecated" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_deprecated"/>
+ <object name="plone_ecmascript" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_ecmascript"/>
+ <object name="plone_form_scripts" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_form_scripts"/>
+ <object name="plone_forms" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_forms"/>
+ <object name="plone_help_center" meta_type="Filesystem Directory View"
+    directory="Products.PloneHelpCenter:skins/plone_help_center"/>
+ <object name="plone_help_center_images" meta_type="Filesystem Directory View"
+    directory="Products.PloneHelpCenter:skins/plone_help_center_images"/>
+ <object name="plone_images" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_images"/>
+ <object name="plone_kss" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_kss"/>
+ <object name="plone_login" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_login"/>
+ <object name="plone_prefs" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_prefs"/>
+ <object name="plone_scripts" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_scripts"/>
+ <object name="plone_styles" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_styles"/>
+ <object name="plone_templates" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_templates"/>
+ <object name="plone_wysiwyg" meta_type="Filesystem Directory View"
+    directory="Products.CMFPlone:skins/plone_wysiwyg"/>
+ <object name="referencebrowser" meta_type="Filesystem Directory View"
+    directory="archetypes.referencebrowserwidget:skins/referencebrowser"/>
+ <object name="reports_templates" meta_type="Filesystem Directory View"
+    directory="eea.reports:skins/reports_templates"/>
+ <object name="solgemaportletsmanager" meta_type="Filesystem Directory View"
+    directory="Solgema.PortletsManager:skins/solgemaportletsmanager"/>
+ <object name="sunburst_images" meta_type="Filesystem Directory View"
+    directory="plonetheme.sunburst:skins/sunburst_images"/>
+ <object name="sunburst_styles" meta_type="Filesystem Directory View"
+    directory="plonetheme.sunburst:skins/sunburst_styles"/>
+ <object name="sunburst_templates" meta_type="Filesystem Directory View"
+    directory="plonetheme.sunburst:skins/sunburst_templates"/>
+ <object name="themecentre_images" meta_type="Filesystem Directory View"
+    directory="eea.themecentre:skins/themecentre_images"/>
+ <object name="themecentre_styles" meta_type="Filesystem Directory View"
+    directory="eea.themecentre:skins/themecentre_styles"/>
+ <object name="themecentre_templates" meta_type="Filesystem Directory View"
+    directory="eea.themecentre:skins/themecentre_templates"/>
+ <object name="tinymce" meta_type="Filesystem Directory View"
+    directory="Products.TinyMCE:skins/tinymce"/>
+ <object name="tinymce_themes" meta_type="Filesystem Directory View"
+    directory="Products.TinyMCE:skins/tinymce/themes"/>
+ <object name="userandgroupselectionwidget"
+    meta_type="Filesystem Directory View"
+    directory="Products.UserAndGroupSelectionWidget:skins/userandgroupselectionwidget"/>
+ <object name="versions_templates" meta_type="Filesystem Directory View"
+    directory="eea.versions:skins/versions_templates"/>
+ <object name="wisetheme_images" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/wisetheme_images"/>
+ <object name="wisetheme_styles" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/wisetheme_styles"/>
+ <object name="wisetheme_templates" meta_type="Filesystem Directory View"
+    directory="eea.design:skins/wisetheme_templates"/>
+ <skin-path name="EEADesign2006">
+  <layer name="custom_admin"/>
+  <layer name="custom_images"/>
+  <layer name="custom"/>
+  <layer name="eea_multimedia"/>
+  <layer name="eea_design"/>
+  <layer name="eea_mediacentre"/>
+  <layer name="tinymce"/>
+  <layer name="tinymce_themes"/>
+  <layer name="solgemaportletsmanager"/>
+  <layer name="eeadesign_2011"/>
+  <layer name="eea_pagedesign"/>
+  <layer name="eea_images"/>
+  <layer name="eeadesign_templates"/>
+  <layer name="eeadesign_js"/>
+  <layer name="eeadesign_green_images"/>
+  <layer name="eeadesign_public"/>
+  <layer name="eeadesign_green"/>
+  <layer name="eeadesign_public_cmsandwww"/>
+  <layer name="eeadesign_style_docs"/>
+  <layer name="wisetheme_images"/>
+  <layer name="linguaflow_templates"/>
+  <layer name="indicators_overrides"/>
+  <layer name="indicators_templates"/>
+  <layer name="indicators_styles"/>
+  <layer name="indicators_images"/>
+  <layer name="eea_soer"/>
+  <layer name="themecentre_templates"/>
+  <layer name="themecentre_styles"/>
+  <layer name="themecentre_images"/>
+  <layer name="referencebrowser"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
+  <layer name="plone_help_center_images"/>
+  <layer name="plone_help_center"/>
+  <layer name="LinguaPlone"/>
+  <layer name="fatsyndication"/>
+  <layer name="userandgroupselectionwidget"/>
+  <layer name="orderablereferencefield"/>
+  <layer name="eea_webapplication"/>
+  <layer name="AddRemoveWidget"/>
+  <layer name="eea_workflow_templates"/>
+  <layer name="versions_templates"/>
+  <layer name="EEAEnquiry"/>
+  <layer name="eeatemplatesservice"/>
+  <layer name="eea_promotion"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="LocationWidget"/>
+  <layer name="eea_sitestructurediff"/>
+  <layer name="eea_signals"/>
+  <layer name="eea_relations"/>
+  <layer name="NavigationManager"/>
+  <layer name="eea_geotags"/>
+  <layer name="eea_epub"/>
+  <layer name="eea_google"/>
+  <layer name="dataservice_templates"/>
+  <layer name="reports_templates"/>
+  <layer name="PloneGazette"/>
+  <layer name="DataGridWidget"/>
+  <layer name="sunburst_images"/>
+  <layer name="sunburst_templates"/>
+  <layer name="sunburst_styles"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="cmfeditions_views"/>
+  <layer name="CMFEditions"/>
+  <layer name="archetypes"/>
+  <layer name="archetypes_kss"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="LanguageTool"/>
+  <layer name="plone_kss"/>
+  <layer name="ATContentTypes"/>
+  <layer name="PasswordReset"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_templates"/>
+  <layer name="classic_styles"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+  <layer name="ATVocabularyManager"/>
+ </skin-path>
+ <skin-path name="EEADesignCMS">
+  <layer name="custom_admin"/>
+  <layer name="custom_images"/>
+  <layer name="custom"/>
+  <layer name="eea_multimedia"/>
+  <layer name="eea_design"/>
+  <layer name="eea_mediacentre"/>
+  <layer name="tinymce"/>
+  <layer name="tinymce_themes"/>
+  <layer name="solgemaportletsmanager"/>
+  <layer name="eeadesign_2011"/>
+  <layer name="eea_pagedesign"/>
+  <layer name="eeadesign_cms"/>
+  <layer name="eea_images"/>
+  <layer name="eeadesign_templates"/>
+  <layer name="eeadesign_js"/>
+  <layer name="eeadesign_green_images"/>
+  <layer name="eeadesign_public"/>
+  <layer name="eeadesign_green"/>
+  <layer name="eeadesign_public_cmsandwww"/>
+  <layer name="eeadesign_style_docs"/>
+  <layer name="wisetheme_images"/>
+  <layer name="linguaflow_templates"/>
+  <layer name="indicators_overrides"/>
+  <layer name="indicators_templates"/>
+  <layer name="indicators_styles"/>
+  <layer name="indicators_images"/>
+  <layer name="eea_soer"/>
+  <layer name="themecentre_templates"/>
+  <layer name="themecentre_styles"/>
+  <layer name="themecentre_images"/>
+  <layer name="referencebrowser"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
+  <layer name="plone_help_center_images"/>
+  <layer name="plone_help_center"/>
+  <layer name="LinguaPlone"/>
+  <layer name="fatsyndication"/>
+  <layer name="userandgroupselectionwidget"/>
+  <layer name="orderablereferencefield"/>
+  <layer name="eea_webapplication"/>
+  <layer name="AddRemoveWidget"/>
+  <layer name="eea_workflow_templates"/>
+  <layer name="versions_templates"/>
+  <layer name="EEAEnquiry"/>
+  <layer name="eeatemplatesservice"/>
+  <layer name="eea_promotion"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="LocationWidget"/>
+  <layer name="eea_sitestructurediff"/>
+  <layer name="eea_signals"/>
+  <layer name="eea_relations"/>
+  <layer name="NavigationManager"/>
+  <layer name="eea_geotags"/>
+  <layer name="eea_epub"/>
+  <layer name="eea_google"/>
+  <layer name="dataservice_templates"/>
+  <layer name="reports_templates"/>
+  <layer name="PloneGazette"/>
+  <layer name="DataGridWidget"/>
+  <layer name="sunburst_images"/>
+  <layer name="sunburst_templates"/>
+  <layer name="sunburst_styles"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="cmfeditions_views"/>
+  <layer name="CMFEditions"/>
+  <layer name="archetypes"/>
+  <layer name="archetypes_kss"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="LanguageTool"/>
+  <layer name="plone_kss"/>
+  <layer name="ATContentTypes"/>
+  <layer name="PasswordReset"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_templates"/>
+  <layer name="classic_styles"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+  <layer name="ATVocabularyManager"/>
+ </skin-path>
+ <skin-path name="Plone Classic Theme">
+  <layer name="custom_admin"/>
+  <layer name="custom_images"/>
+  <layer name="PasswordReset"/>
+  <layer name="ATContentTypes"/>
+  <layer name="archetypes"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_templates"/>
+  <layer name="classic_styles"/>
+  <layer name="classic_ecmascript"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+  <layer name="custom"/>
+  <layer name="eea_multimedia"/>
+  <layer name="tinymce"/>
+  <layer name="solgemaportletsmanager"/>
+  <layer name="eeatemplatesservice"/>
+  <layer name="EEAEnquiry"/>
+  <layer name="indicators_overrides"/>
+  <layer name="indicators_templates"/>
+  <layer name="indicators_styles"/>
+  <layer name="indicators_images"/>
+  <layer name="eea_soer"/>
+  <layer name="themecentre_templates"/>
+  <layer name="themecentre_styles"/>
+  <layer name="themecentre_images"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
+  <layer name="LocationWidget"/>
+  <layer name="reports_templates"/>
+  <layer name="AddRemoveWidget"/>
+  <layer name="LinguaPlone"/>
+  <layer name="plone_help_center_images"/>
+  <layer name="plone_help_center"/>
+  <layer name="eea_promotion"/>
+  <layer name="NavigationManager"/>
+  <layer name="linguaflow_templates"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="eea_sitestructurediff"/>
+  <layer name="eea_signals"/>
+  <layer name="eea_relations"/>
+  <layer name="eea_pagedesign"/>
+  <layer name="eea_google"/>
+  <layer name="eea_geotags"/>
+  <layer name="eea_epub"/>
+  <layer name="dataservice_templates"/>
+  <layer name="eea_workflow_templates"/>
+  <layer name="versions_templates"/>
+  <layer name="eea_webapplication"/>
+  <layer name="userandgroupselectionwidget"/>
+  <layer name="fatsyndication"/>
+  <layer name="orderablereferencefield"/>
+  <layer name="referencebrowser"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="LanguageTool"/>
+  <layer name="cmfeditions_views"/>
+  <layer name="CMFEditions"/>
+  <layer name="DataGridWidget"/>
+  <layer name="PloneGazette"/>
+  <layer name="plone_kss"/>
+  <layer name="archetypes_kss"/>
+  <layer name="ATVocabularyManager"/>
+  <layer name="eea_mediacentre"/>
+ </skin-path>
+ <skin-path name="Plone Default">
+  <layer name="custom_admin"/>
+  <layer name="custom_images"/>
+  <layer name="PasswordReset"/>
+  <layer name="ATContentTypes"/>
+  <layer name="archetypes"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_templates"/>
+  <layer name="classic_styles"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+  <layer name="custom"/>
+  <layer name="eea_multimedia"/>
+  <layer name="tinymce"/>
+  <layer name="solgemaportletsmanager"/>
+  <layer name="eeatemplatesservice"/>
+  <layer name="EEAEnquiry"/>
+  <layer name="indicators_overrides"/>
+  <layer name="indicators_templates"/>
+  <layer name="indicators_styles"/>
+  <layer name="indicators_images"/>
+  <layer name="eea_soer"/>
+  <layer name="themecentre_templates"/>
+  <layer name="themecentre_styles"/>
+  <layer name="themecentre_images"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
+  <layer name="LocationWidget"/>
+  <layer name="reports_templates"/>
+  <layer name="AddRemoveWidget"/>
+  <layer name="LinguaPlone"/>
+  <layer name="plone_help_center_images"/>
+  <layer name="plone_help_center"/>
+  <layer name="eea_promotion"/>
+  <layer name="NavigationManager"/>
+  <layer name="linguaflow_templates"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="eea_sitestructurediff"/>
+  <layer name="eea_signals"/>
+  <layer name="eea_relations"/>
+  <layer name="eea_pagedesign"/>
+  <layer name="eea_google"/>
+  <layer name="eea_geotags"/>
+  <layer name="eea_epub"/>
+  <layer name="dataservice_templates"/>
+  <layer name="eea_workflow_templates"/>
+  <layer name="versions_templates"/>
+  <layer name="eea_webapplication"/>
+  <layer name="bda_feed"/>
+  <layer name="userandgroupselectionwidget"/>
+  <layer name="fatsyndication"/>
+  <layer name="orderablereferencefield"/>
+  <layer name="referencebrowser"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="LanguageTool"/>
+  <layer name="cmfeditions_views"/>
+  <layer name="CMFEditions"/>
+  <layer name="DataGridWidget"/>
+  <layer name="PloneGazette"/>
+  <layer name="plone_kss"/>
+  <layer name="archetypes_kss"/>
+  <layer name="ATVocabularyManager"/>
+  <layer name="eea_mediacentre"/>
+ </skin-path>
+ <skin-path name="Sunburst Theme">
+  <layer name="custom_admin"/>
+  <layer name="custom_images"/>
+  <layer name="PasswordReset"/>
+  <layer name="ATContentTypes"/>
+  <layer name="archetypes"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_templates"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+  <layer name="custom"/>
+  <layer name="eea_multimedia"/>
+  <layer name="tinymce"/>
+  <layer name="solgemaportletsmanager"/>
+  <layer name="eeatemplatesservice"/>
+  <layer name="EEAEnquiry"/>
+  <layer name="indicators_overrides"/>
+  <layer name="indicators_templates"/>
+  <layer name="indicators_styles"/>
+  <layer name="indicators_images"/>
+  <layer name="eea_soer"/>
+  <layer name="themecentre_templates"/>
+  <layer name="themecentre_styles"/>
+  <layer name="themecentre_images"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
+  <layer name="LocationWidget"/>
+  <layer name="reports_templates"/>
+  <layer name="AddRemoveWidget"/>
+  <layer name="LinguaPlone"/>
+  <layer name="plone_help_center_images"/>
+  <layer name="plone_help_center"/>
+  <layer name="eea_promotion"/>
+  <layer name="NavigationManager"/>
+  <layer name="linguaflow_templates"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="eea_sitestructurediff"/>
+  <layer name="eea_signals"/>
+  <layer name="eea_relations"/>
+  <layer name="eea_pagedesign"/>
+  <layer name="eea_google"/>
+  <layer name="eea_geotags"/>
+  <layer name="eea_epub"/>
+  <layer name="dataservice_templates"/>
+  <layer name="eea_workflow_templates"/>
+  <layer name="versions_templates"/>
+  <layer name="eea_webapplication"/>
+  <layer name="userandgroupselectionwidget"/>
+  <layer name="fatsyndication"/>
+  <layer name="orderablereferencefield"/>
+  <layer name="sunburst_images"/>
+  <layer name="sunburst_templates"/>
+  <layer name="sunburst_styles"/>
+  <layer name="referencebrowser"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="LanguageTool"/>
+  <layer name="cmfeditions_views"/>
+  <layer name="CMFEditions"/>
+  <layer name="DataGridWidget"/>
+  <layer name="PloneGazette"/>
+  <layer name="plone_kss"/>
+  <layer name="archetypes_kss"/>
+  <layer name="ATVocabularyManager"/>
+  <layer name="eea_mediacentre"/>
+ </skin-path>
+</object>
