@@ -118,9 +118,6 @@ def save_resources_on_disk(registry, request=None):
     if request == None:
         return
 
-    #if not IEEAPloneSite.providedBy(registry.aq_parent):
-    #    return  #this is not an EEA Plone site
-
     logger.info(
         u"Starting to save resources on disk for registry %s" % registry)
 
