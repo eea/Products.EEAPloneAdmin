@@ -47,9 +47,7 @@
  <object name="cmfeditions_views" meta_type="Filesystem Directory View"
     directory="Products.CMFEditions:skins/cmfeditions_views"/>
  <object name="custom" meta_type="Folder"/>
- <object name="custom.PLONE25" meta_type="Folder"/>
  <object name="custom_admin" meta_type="Folder"/>
- <object name="custom_admin.PLONE25" meta_type="Folder"/>
  <object name="custom_images" meta_type="Folder"/>
  <object name="dataservice_templates" meta_type="Filesystem Directory View"
     directory="eea.dataservice:skins/dataservice_templates"/>
@@ -57,6 +55,8 @@
     directory="eea.design:skins/eea_design"/>
  <object name="eea_epub" meta_type="Filesystem Directory View"
     directory="eea.epub:skins/eea_epub"/>
+ <object name="eea_forms" meta_type="Filesystem Directory View"
+    directory="eea.forms:skins/eea_forms"/>
  <object name="eea_geotags" meta_type="Filesystem Directory View"
     directory="eea.geotags:skins/eea_geotags"/>
  <object name="eea_google" meta_type="Filesystem Directory View"
@@ -183,17 +183,12 @@
     directory="eea.versions:skins/versions_templates"/>
  <object name="wisetheme_images" meta_type="Filesystem Directory View"
     directory="eea.design:skins/wisetheme_images"/>
- <object name="wisetheme_styles" meta_type="Filesystem Directory View"
-    directory="eea.design:skins/wisetheme_styles"/>
- <object name="wisetheme_templates" meta_type="Filesystem Directory View"
-    directory="eea.design:skins/wisetheme_templates"/>
  <skin-path name="EEADesign2006">
-  <layer name="custom_admin"/>
   <layer name="custom_images"/>
   <layer name="custom"/>
+  <layer name="eea_forms"/>
   <layer name="eea_multimedia"/>
   <layer name="eea_design"/>
-  <layer name="eea_mediacentre"/>
   <layer name="tinymce"/>
   <layer name="tinymce_themes"/>
   <layer name="solgemaportletsmanager"/>
@@ -232,6 +227,7 @@
   <layer name="versions_templates"/>
   <layer name="EEAEnquiry"/>
   <layer name="eeatemplatesservice"/>
+  <layer name="eea_mediacentre"/>
   <layer name="eea_promotion"/>
   <layer name="eea_socialmedia"/>
   <layer name="LocationWidget"/>
@@ -279,15 +275,15 @@
   <layer name="custom_admin"/>
   <layer name="custom_images"/>
   <layer name="custom"/>
+  <layer name="eea_forms"/>
   <layer name="eea_multimedia"/>
-  <layer name="eea_design"/>
-  <layer name="eea_mediacentre"/>
-  <layer name="tinymce"/>
-  <layer name="tinymce_themes"/>
   <layer name="solgemaportletsmanager"/>
   <layer name="eeadesign_2011"/>
   <layer name="eea_pagedesign"/>
   <layer name="eeadesign_cms"/>
+  <layer name="eea_design"/>
+  <layer name="tinymce"/>
+  <layer name="tinymce_themes"/>
   <layer name="eea_images"/>
   <layer name="eeadesign_templates"/>
   <layer name="eeadesign_js"/>
@@ -321,6 +317,7 @@
   <layer name="versions_templates"/>
   <layer name="EEAEnquiry"/>
   <layer name="eeatemplatesservice"/>
+  <layer name="eea_mediacentre"/>
   <layer name="eea_promotion"/>
   <layer name="eea_socialmedia"/>
   <layer name="LocationWidget"/>
@@ -367,6 +364,7 @@
  <skin-path name="Plone Classic Theme">
   <layer name="custom_admin"/>
   <layer name="custom_images"/>
+  <layer name="ATVocabularyManager"/>
   <layer name="PasswordReset"/>
   <layer name="ATContentTypes"/>
   <layer name="archetypes"/>
@@ -375,8 +373,6 @@
   <layer name="plone_wysiwyg"/>
   <layer name="plone_prefs"/>
   <layer name="plone_templates"/>
-  <layer name="classic_styles"/>
-  <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
   <layer name="plone_forms"/>
@@ -387,7 +383,7 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
-  <layer name="eea_multimedia"/>
+  <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
   <layer name="eeatemplatesservice"/>
@@ -397,6 +393,8 @@
   <layer name="indicators_styles"/>
   <layer name="indicators_images"/>
   <layer name="eea_soer"/>
+  <layer name="eea_multimedia"/>
+  <layer name="eea_promotion"/>
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
@@ -408,7 +406,6 @@
   <layer name="LinguaPlone"/>
   <layer name="plone_help_center_images"/>
   <layer name="plone_help_center"/>
-  <layer name="eea_promotion"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
   <layer name="eea_socialmedia"/>
@@ -426,6 +423,8 @@
   <layer name="userandgroupselectionwidget"/>
   <layer name="fatsyndication"/>
   <layer name="orderablereferencefield"/>
+  <layer name="classic_styles"/>
+  <layer name="classic_ecmascript"/>
   <layer name="referencebrowser"/>
   <layer name="CMFPlacefulWorkflow"/>
   <layer name="LanguageTool"/>
@@ -435,7 +434,6 @@
   <layer name="PloneGazette"/>
   <layer name="plone_kss"/>
   <layer name="archetypes_kss"/>
-  <layer name="ATVocabularyManager"/>
   <layer name="eea_mediacentre"/>
  </skin-path>
  <skin-path name="Plone Default">
@@ -449,7 +447,6 @@
   <layer name="plone_wysiwyg"/>
   <layer name="plone_prefs"/>
   <layer name="plone_templates"/>
-  <layer name="classic_styles"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
   <layer name="plone_forms"/>
@@ -460,7 +457,7 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
-  <layer name="eea_multimedia"/>
+  <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
   <layer name="eeatemplatesservice"/>
@@ -470,6 +467,8 @@
   <layer name="indicators_styles"/>
   <layer name="indicators_images"/>
   <layer name="eea_soer"/>
+  <layer name="eea_multimedia"/>
+  <layer name="eea_promotion"/>
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
@@ -481,7 +480,6 @@
   <layer name="LinguaPlone"/>
   <layer name="plone_help_center_images"/>
   <layer name="plone_help_center"/>
-  <layer name="eea_promotion"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
   <layer name="eea_socialmedia"/>
@@ -515,6 +513,7 @@
  <skin-path name="Sunburst Theme">
   <layer name="custom_admin"/>
   <layer name="custom_images"/>
+  <layer name="ATVocabularyManager"/>
   <layer name="PasswordReset"/>
   <layer name="ATContentTypes"/>
   <layer name="archetypes"/>
@@ -533,7 +532,7 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
-  <layer name="eea_multimedia"/>
+  <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
   <layer name="eeatemplatesservice"/>
@@ -543,6 +542,8 @@
   <layer name="indicators_styles"/>
   <layer name="indicators_images"/>
   <layer name="eea_soer"/>
+  <layer name="eea_multimedia"/>
+  <layer name="eea_promotion"/>
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
@@ -554,7 +555,6 @@
   <layer name="LinguaPlone"/>
   <layer name="plone_help_center_images"/>
   <layer name="plone_help_center"/>
-  <layer name="eea_promotion"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
   <layer name="eea_socialmedia"/>
@@ -584,7 +584,6 @@
   <layer name="PloneGazette"/>
   <layer name="plone_kss"/>
   <layer name="archetypes_kss"/>
-  <layer name="ATVocabularyManager"/>
   <layer name="eea_mediacentre"/>
  </skin-path>
 </object>

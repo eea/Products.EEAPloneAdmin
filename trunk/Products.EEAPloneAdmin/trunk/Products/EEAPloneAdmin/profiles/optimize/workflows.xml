@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <property
+    name="title">Contains workflow definitions for your portal</property>
+ <object name="CallForTender" meta_type="Workflow"/>
+ <object name="Enquiry" meta_type="Workflow"/>
+ <object name="EnquiryFolder" meta_type="Workflow"/>
+ <object name="EnquiryRequestor" meta_type="Workflow"/>
+ <object name="alec-test" meta_type="Workflow"/>
+ <object name="backup_of_eea_default_workflow" meta_type="Workflow"/>
+ <object name="eea_data_workflow" meta_type="Workflow"/>
+ <object name="eea_default_workflow" meta_type="Workflow"/>
+ <object name="eea_imagefs_workflow" meta_type="Workflow"/>
+ <object name="eea_simple_approval" meta_type="Workflow"/>
+ <object name="eea_simple_public_approval" meta_type="Workflow"/>
+ <object name="eea_simple_public_folder" meta_type="Workflow"/>
+ <object name="folder_workflow" meta_type="Workflow"/>
+ <object name="frontpage_workflow" meta_type="Workflow"/>
+ <object name="helpcenter_workflow" meta_type="Workflow"/>
+ <object name="helpcenterfolder_workflow" meta_type="Workflow"/>
+ <object name="helpcentersubitem_workflow" meta_type="Workflow"/>
+ <object name="indicators_workflow" meta_type="Workflow"/>
+ <object name="intranet_folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_workflow" meta_type="Workflow"/>
+ <object name="linguaflow" meta_type="Workflow"/>
+ <object name="one_state_workflow" meta_type="Workflow"/>
+ <object name="plone_workflow" meta_type="Workflow"/>
+ <object name="simple_publication_workflow" meta_type="Workflow"/>
+ <object name="tender_requestor_workflow" meta_type="Workflow"/>
+ <bindings>
+  <default>
+   <bound-workflow workflow_id="eea_default_workflow"/>
+   <bound-workflow workflow_id="linguaflow"/>
+  </default>
+  <type type_id="ATBooleanCriterion"/>
+  <type type_id="ATCurrentAuthorCriterion"/>
+  <type type_id="ATDateCriteria"/>
+  <type type_id="ATDateRangeCriterion"/>
+  <type type_id="ATFile"/>
+  <type type_id="ATImage"/>
+  <type type_id="ATListCriterion"/>
+  <type type_id="ATPathCriterion"/>
+  <type type_id="ATPortalTypeCriterion"/>
+  <type type_id="ATReferenceCriterion"/>
+  <type type_id="ATRelativePathCriterion"/>
+  <type type_id="ATSelectionCriterion"/>
+  <type type_id="ATSimpleIntCriterion"/>
+  <type type_id="ATSimpleStringCriterion"/>
+  <type type_id="ATSortCriterion"/>
+  <type type_id="AliasVocabulary"/>
+  <type type_id="Assessment">
+   <bound-workflow workflow_id="indicators_workflow"/>
+  </type>
+  <type type_id="AssessmentPart">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="CFTRequestor">
+   <bound-workflow workflow_id="tender_requestor_workflow"/>
+  </type>
+  <type type_id="CachePolicy">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="CacheTool"/>
+  <type type_id="CallForInterest">
+   <bound-workflow workflow_id="CallForTender"/>
+  </type>
+  <type type_id="CallForTender">
+   <bound-workflow workflow_id="CallForTender"/>
+  </type>
+  <type type_id="ContentCacheRule"/>
+  <type type_id="Data">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
+  <type type_id="DataFile">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
+  <type type_id="DataTable">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
+  <type type_id="Discussion Item"/>
+  <type type_id="EEAFigure">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
+  <type type_id="EEAFigureFile">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
+  <type type_id="EEAPossibleRelation"/>
+  <type type_id="EEARelationsContentType"/>
+  <type type_id="EEARelationsTool"/>
+  <type type_id="Enquiry">
+   <bound-workflow workflow_id="Enquiry"/>
+  </type>
+  <type type_id="EnquiryFolder">
+   <bound-workflow workflow_id="EnquiryFolder"/>
+  </type>
+  <type type_id="EnquiryRequestor">
+   <bound-workflow workflow_id="EnquiryRequestor"/>
+  </type>
+  <type type_id="EnquiryRequestorFolder">
+   <bound-workflow workflow_id="EnquiryFolder"/>
+  </type>
+  <type type_id="ExternalDataSpec">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="FactSheetDocument">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="File">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="Folder">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
+  <type type_id="HeaderSet"/>
+  <type type_id="HeaderSetFolder"/>
+  <type type_id="HelpCenterDefinition">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterErrorReference">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterErrorReferenceFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterFAQ">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="HelpCenterFAQFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterGlossary">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterHowTo">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterHowToFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterInstructionalVideo">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterInstructionalVideoFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterLeafPage">
+   <bound-workflow workflow_id="helpcentersubitem_workflow"/>
+  </type>
+  <type type_id="HelpCenterLink">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterLinkFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterReferenceManual">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterReferenceManualFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterReferenceManualPage">
+   <bound-workflow workflow_id="helpcentersubitem_workflow"/>
+  </type>
+  <type type_id="HelpCenterReferenceManualSection">
+   <bound-workflow workflow_id="helpcentersubitem_workflow"/>
+  </type>
+  <type type_id="HelpCenterTutorial">
+   <bound-workflow workflow_id="helpcenter_workflow"/>
+  </type>
+  <type type_id="HelpCenterTutorialFolder">
+   <bound-workflow workflow_id="helpcenterfolder_workflow"/>
+  </type>
+  <type type_id="HelpCenterTutorialPage">
+   <bound-workflow workflow_id="helpcentersubitem_workflow"/>
+  </type>
+  <type type_id="Image">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="ImageFS">
+   <bound-workflow workflow_id="eea_imagefs_workflow"/>
+  </type>
+  <type type_id="IndicatorFactSheet">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="KeyMessage">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+  <type type_id="Large Plone Folder">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
+  <type type_id="Link">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="MacroCacheRule"/>
+  <type type_id="MacroFolder"/>
+  <type type_id="MethodologyReference">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="NavigationItem">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="NavigationManager">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="Newsletter">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="NewsletterBTree">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="NewsletterReference">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="Organisation">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="Plone Site"/>
+  <type type_id="PolicyDocumentReference">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="PolicyHTTPCacheManagerCacheRule"/>
+  <type type_id="PolicyQuestion">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="PressRelease">
+   <bound-workflow workflow_id="eea_simple_approval"/>
+  </type>
+  <type type_id="PubliclyAddableItemsFolder">
+   <bound-workflow workflow_id="eea_simple_public_folder"/>
+  </type>
+  <type type_id="QuickEvent">
+   <bound-workflow workflow_id="eea_simple_public_approval"/>
+  </type>
+  <type type_id="RDFEvent">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="RSSFeedRecipe">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="RationaleReference">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="Report">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
+  <type type_id="Requestor">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="RuleFolder"/>
+  <type type_id="Section">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="SimpleVocabulary"/>
+  <type type_id="SimpleVocabularyTerm">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="SortedSimpleVocabulary"/>
+  <type type_id="Specification">
+   <bound-workflow workflow_id="indicators_workflow"/>
+  </type>
+  <type type_id="Speech">
+   <bound-workflow workflow_id="eea_simple_approval"/>
+  </type>
+  <type type_id="Subscriber">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="TempFolder">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="TemplateCacheRule"/>
+  <type type_id="TreeVocabulary"/>
+  <type type_id="TreeVocabularyTerm"/>
+  <type type_id="VdexFileVocabulary"/>
+  <type type_id="VdexLangstring"/>
+  <type type_id="VdexMediaDescriptor"/>
+  <type type_id="VdexRelationEndPoint"/>
+  <type type_id="VdexTerm"/>
+  <type type_id="VdexVocabulary"/>
+  <type type_id="VocabularyLibrary"/>
+  <type type_id="WorkItem">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+ </bindings>
+</object>

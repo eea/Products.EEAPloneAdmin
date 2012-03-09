@@ -4,11 +4,11 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
     id="jquery.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui.min.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui-i18n.js" inline="False"/>
@@ -157,6 +157,10 @@
     id="++resource++kukit.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
+    expression="python:here.restrictedTraverse('@@plone_portal_state').anonymous()"
+    id="framebreak.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
     id="eea-accordion.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
@@ -202,10 +206,6 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
-    id="framebreak.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True"
-    expression="python: request.get('jsdisable','') != 'jquery'"
     id="eea-fancybox.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
@@ -218,11 +218,11 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
-    id="eea-galleryview.js" inline="False"/>
+    id="eea-tooltips.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
-    id="eea-tooltips.js" inline="False"/>
+    id="eea-galleryview.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python: request.get('jsdisable','') != 'jquery'"
@@ -319,11 +319,11 @@
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'configure_faceted.html' in request.URL0"
     id="faceted_edit.js" inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'daviz-view.html' in request.URL0" id="daviz-view.js"
     inline="False"/>
- <javascript authenticated="False" cacheable="True" compression="safe"
+ <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True"
     expression="python:'daviz-edit.html' in request.URL0" id="daviz-edit.js"
     inline="False"/>
@@ -408,4 +408,39 @@
  <javascript authenticated="True" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="formUnload.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True" expression=""
+    id="++resource++eea.forms.edit.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz-edit.html' in request.URL0"
+    id="++resource++eea.googlecharts.dashboard-edit.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz-edit.html' in request.URL0"
+    id="++resource++eea.googlecharts.edit.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz-view.html' in request.URL0"
+    id="++resource++eea.googlecharts.dashboard.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz-view.html' in request.URL0"
+    id="++resource++eea.googlecharts.view.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz' in request.URL0" id="++resource++json2.js"
+    inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz' in request.URL0"
+    id="++resource++eea.googlecharts.chart.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="False"
+    expression="python:'daviz' in request.URL0"
+    id="++resource++eea.googlecharts.datatable.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'daviz' in request.URL0" id="custom_datatable.js"
+    inline="False"/>
 </object>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<object name="CachePolicy" meta_type="Factory-based Type Information"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Cache Policy</property>
+ <property name="description"
+    i18n:translate="">A container for cache policies</property>
+ <property
+    name="icon_expr">string:${portal_url}/cachesetup_tool_icon.gif</property>
+ <property name="content_meta_type">CachePolicy</property>
+ <property name="product">CacheSetup</property>
+ <property name="factory">addCachePolicy</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">base_edit</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="RuleFolder"/>
+  <element value="HeaderSetFolder"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="cache_policy_config"/>
+ <alias from="edit" to="cache_policy_config"/>
+ <alias from="view" to="cache_policy_config"/>
+ <action title="Cache Policy" action_id="view" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:$object_url" visible="False">
+  <permission value="Manage portal"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/base_edit"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz" icon_expr=""
+    link_target="" url_expr="string:${object_url}/reference_graph"
+    visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+ <action title="Folder Listing" action_id="folderlisting" category="folder"
+    condition_expr="object/isPrincipiaFolderish" icon_expr="" link_target=""
+    url_expr="string:${folder_url}/view" visible="False">
+  <permission value="View"/>
+ </action>
+</object>

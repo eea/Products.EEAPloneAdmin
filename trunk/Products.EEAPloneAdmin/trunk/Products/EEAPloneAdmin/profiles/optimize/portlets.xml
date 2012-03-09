@@ -41,8 +41,8 @@
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
- <portlet title="News" addview="portlets.News"
-    description="A portlet which can render a listing of recent news">
+ <portlet title="EEA Promotion Gallery" addview="portlets.PromoGallery"
+    description="A portlet which displays a gallery with the latest promoted items">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
@@ -50,13 +50,11 @@
     description="A portlet which can render a navigation tree">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
  </portlet>
- <portlet title="Events" addview="portlets.Events"
-    description="A portlet which can render a listing of recent events">
-  <for interface="plone.app.portlets.interfaces.IColumn"/>
-  <for interface="plone.app.portlets.interfaces.IDashboard"/>
- </portlet>
- <portlet title="EEA Promotion Gallery" addview="portlets.PromoGallery"
-    description="A portlet which displays a gallery with the latest promoted items">
+ <portlet title="Readiness portlet"
+    addview="plone.app.portlets.browser.formhelper.NullAddForm"
+    description="A portlet which shows readiness information"/>
+ <portlet title="News" addview="portlets.News"
+    description="A portlet which can render a listing of recent news">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
@@ -78,54 +76,89 @@
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
- <portlet title="Readiness portlet"
-    addview="plone.app.portlets.browser.formhelper.NullAddForm"
-    description="A portlet which shows readiness information"/>
+ <portlet title="Events" addview="portlets.Events"
+    description="A portlet which can render a listing of recent events">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
  <portlet title="Static text portlet" addview="plone.portlet.static.Static"
     description="A portlet which can display static HTML text."/>
- <assignment name="recent-items" category="user" key="eeademo"
+ <assignment name="recent-items" category="user" key="alectester2"
     manager="plone.dashboard2" type="portlets.Recent" visible="True">
   <property name="count">5</property>
  </assignment>
- <assignment name="recent-items" category="user" key="eeademo2"
+ <assignment name="recent-items" category="user" key="alintest"
     manager="plone.dashboard2" type="portlets.Recent" visible="True">
   <property name="count">5</property>
  </assignment>
- <assignment name="news" category="user" key="eeademo"
+ <assignment name="events" category="user" key="demarant"
+    manager="plone.dashboard2" type="portlets.Events" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="recently-created" category="user" key="demarant"
+    manager="plone.dashboard3" type="plone.portlet.collection.Collection"
+    visible="True">
+  <property name="show_more">True</property>
+  <property name="header">Recently created</property>
+  <property name="limit"/>
+  <property name="target_collection">/SITE/recently-created</property>
+  <property name="random">False</property>
+  <property name="show_dates">True</property>
+ </assignment>
+ <assignment name="news" category="user" key="alectester2"
     manager="plone.dashboard1" type="portlets.News" visible="True">
   <property name="count">5</property>
   <property name="state">
    <element>published</element>
   </property>
  </assignment>
- <assignment name="events" category="user" key="eeademo"
+ <assignment name="events" category="user" key="alectester2"
     manager="plone.dashboard1" type="portlets.Events" visible="True">
   <property name="count">5</property>
   <property name="state">
    <element>published</element>
   </property>
  </assignment>
- <assignment name="news" category="user" key="eeademo2"
+ <assignment name="news" category="user" key="alintest"
     manager="plone.dashboard1" type="portlets.News" visible="True">
   <property name="count">5</property>
   <property name="state">
    <element>published</element>
   </property>
  </assignment>
- <assignment name="events" category="user" key="eeademo2"
+ <assignment name="events" category="user" key="alintest"
     manager="plone.dashboard1" type="portlets.Events" visible="True">
   <property name="count">5</property>
   <property name="state">
    <element>published</element>
   </property>
  </assignment>
- <assignment name="review-list" category="user" key="eeademo"
+ <assignment name="recent-items" category="user" key="demarant"
+    manager="plone.dashboard1" type="portlets.Recent" visible="True">
+  <property name="count">5</property>
+ </assignment>
+ <assignment name="review-list" category="user" key="alectester2"
     manager="plone.dashboard4" type="portlets.Review" visible="True"/>
- <assignment name="review-list" category="user" key="eeademo2"
+ <assignment name="review-list" category="user" key="alintest"
     manager="plone.dashboard4" type="portlets.Review" visible="True"/>
+ <assignment name="left-over-content" category="user" key="demarant"
+    manager="plone.dashboard4" type="plone.portlet.collection.Collection"
+    visible="True">
+  <property name="show_more">True</property>
+  <property name="header">Left over content</property>
+  <property name="limit"/>
+  <property name="target_collection">/SITE/left-over</property>
+  <property name="random">False</property>
+  <property name="show_dates">True</property>
+ </assignment>
  <assignment name="readiness" category="content_type" key="Assessment"
     manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
     visible="True"/>
+ <assignment name="label_log_in" category="content_type" key="Assessment"
+    manager="plone.rightcolumn" type="portlets.Login" visible="True"/>
  <assignment name="quick-upload" category="content_type" key="DataTable"
     manager="plone.rightcolumn"
     type="collective.quickupload.QuickUploadPortlet" visible="True">
@@ -146,24 +179,17 @@
  <assignment name="readiness" category="content_type" key="Specification"
     manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
     visible="True"/>
+ <assignment name="label_log_in" category="content_type" key="Specification"
+    manager="plone.rightcolumn" type="portlets.Login" visible="True"/>
  <assignment name="portlet_ecotip" category="context" key="/"
     manager="plone.footer" type="portlets.Classic" visible="True">
   <property name="macro">portlet</property>
   <property name="template">portlet_ecotip</property>
  </assignment>
- <assignment name="navigation" category="context" key="/"
-    manager="plone.rightcolumn" type="portlets.Navigation" visible="True">
-  <property name="topLevel">1</property>
-  <property name="currentFolderOnly">False</property>
-  <property name="name"></property>
-  <property name="includeTop">False</property>
-  <property name="bottomLevel">0</property>
-  <property name="root"/>
- </assignment>
- <assignment name="portlet_gazette" category="context" key="/"
+ <assignment name="portlet_cache" category="context" key="/"
     manager="plone.rightcolumn" type="portlets.Classic" visible="True">
   <property name="macro">portlet</property>
-  <property name="template">portlet_gazette</property>
+  <property name="template">portlet_cache</property>
  </assignment>
  <assignment name="portlet_translationfeedback" category="context" key="/"
     manager="plone.rightcolumn" type="portlets.Classic" visible="True">
@@ -174,6 +200,20 @@
     manager="plone.rightcolumn" type="portlets.Classic" visible="True">
   <property name="macro">portlet</property>
   <property name="template">portlet_globalpromotion</property>
+ </assignment>
+ <assignment name="navigation" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Navigation" visible="True">
+  <property name="topLevel">1</property>
+  <property name="currentFolderOnly">False</property>
+  <property name="name">Navigation</property>
+  <property name="includeTop">False</property>
+  <property name="bottomLevel">0</property>
+  <property name="root"/>
+ </assignment>
+ <assignment name="portlet_gazette" category="context" key="/"
+    manager="plone.rightcolumn" type="portlets.Classic" visible="True">
+  <property name="macro">portlet</property>
+  <property name="template">portlet_gazette</property>
  </assignment>
  <blacklist category="user" location="/" manager="plone.dashboard2"
     status="acquire"/>
@@ -214,7 +254,7 @@
  <blacklist category="content_type" location="/" manager="plone.footer"
     status="acquire"/>
  <blacklist category="context" location="/" manager="plone.footer"
-    status="show"/>
+    status="acquire"/>
  <blacklist category="user" location="/" manager="plone.leftcolumn"
     status="acquire"/>
  <blacklist category="group" location="/" manager="plone.leftcolumn"
@@ -222,7 +262,7 @@
  <blacklist category="content_type" location="/" manager="plone.leftcolumn"
     status="acquire"/>
  <blacklist category="context" location="/" manager="plone.leftcolumn"
-    status="show"/>
+    status="acquire"/>
  <blacklist category="user" location="/" manager="plone.rightcolumn"
     status="acquire"/>
  <blacklist category="group" location="/" manager="plone.rightcolumn"

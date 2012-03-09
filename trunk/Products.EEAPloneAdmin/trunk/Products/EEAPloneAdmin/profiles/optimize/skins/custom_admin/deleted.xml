@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="deleted" meta_type="Folder">
+ <property name="title"></property>
+ <object name="DEPRECATED_default_error_message" meta_type="Page Template"/>
+ <object name="DEPRECATED_global_statusmessage" meta_type="Page Template"/>
+ <object name="DEPRECATED_portlet_versions" meta_type="Page Template"/>
+ <object name="contact-info" meta_type="Controller Page Template"/>
+ <object name="eeafigure_view" meta_type="Page Template"/>
+ <object name="login_form" meta_type="Controller Page Template"/>
+ <object name="send_feedback_site" meta_type="Controller Python Script"/>
+</object>

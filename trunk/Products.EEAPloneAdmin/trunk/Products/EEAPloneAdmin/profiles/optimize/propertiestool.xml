@@ -43,6 +43,15 @@
   <property name="noOfMedium" type="int">4</property>
   <property name="noOfLow" type="int">3</property>
   <property name="development" type="boolean">False</property>
+  <property name="noOfMultimedia" type="int">6</property>
+  <property name="noOfAnimations" type="int">15</property>
+  <property name="noOfArticles" type="int">6</property>
+  <property name="noOfPublications" type="int">6</property>
+  <property name="noOfPromotions" type="int">10</property>
+  <property name="noOfEachProduct" type="int">3</property>
+  <property name="noOfDatasets" type="int">6</property>
+  <property name="noOfLatestDefault" type="int">6</property>
+  <property name="noOfVideos" type="int">60</property>
  </object>
  <object name="geographical_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA Geographical properties</property>
@@ -70,13 +79,14 @@
   <property name="MapZoom_single" type="string">4</property>
   <property name="MapLoc_multi" type="string">Wien, Austria</property>
   <property name="MapZoom_multi" type="string">5</property>
+  <property name="geonames_key" type="string">eeacms</property>
  </object>
  <object name="imaging_properties" meta_type="Plone Property Sheet">
   <property name="title">Image handling properties</property>
   <property name="allowed_sizes" type="lines">
+   <element value="xlarge 633:356"/>
    <element value="wide 325:183"/>
    <element value="large 768:768"/>
-   <element value="xlarge 633:356"/>
    <element value="preview 400:400"/>
    <element value="mini 200:200"/>
    <element value="thumb 128:128"/>
@@ -197,7 +207,9 @@
    <element value="VocabularyLibrary"/>
   </property>
   <property name="enable_wf_state_filtering" type="boolean">False</property>
-  <property name="wf_states_to_show" type="lines"/>
+  <property name="wf_states_to_show" type="lines">
+   <element value="published"/>
+  </property>
   <property name="currentFolderOnlyInNavtree" type="boolean">False</property>
   <property name="root" type="string">/</property>
   <property name="name" type="string"></property>
@@ -211,7 +223,7 @@
   <property name="fill_titles" type="boolean">True</property>
   <property name="fill_descriptions" type="boolean">False</property>
   <property name="size_limit" type="int">0</property>
-  <property name="sim_upload_limit" type="int">3</property>
+  <property name="sim_upload_limit" type="int">2</property>
  </object>
  <object name="rdfmarshaller_properties" meta_type="Plone Property Sheet">
   <property name="title">eea.rdfmarshaller  properties</property>
@@ -315,7 +327,6 @@
   <property name="available_editors" type="lines">
    <element value="None"/>
    <element value="Kupu"/>
-   <element value="TinyMCE"/>
   </property>
   <property name="allowRolesToAddKeywords" type="lines">
    <element value="CommonEditor"/>
@@ -437,7 +448,6 @@
    <element value="Topic"/>
    <element value="FlashFile"/>
    <element value="Highlight"/>
-   <element value="RichTopic"/>
   </property>
   <property name="use_folder_contents" type="lines"/>
   <property name="many_users" type="boolean">True</property>
@@ -460,7 +470,17 @@
      type="string">false</property>
   <property name="many_groups" type="boolean">False</property>
   <property name="number_of_days_to_keep" type="int">7</property>
-  <property name="webstats_js" type="string"></property>
+  <property name="webstats_js"
+     type="string">&lt;!-- ClickTale Bottom part --&gt;
+   &lt;div id="ClickTaleDiv" style="display: none;"&gt;&lt;/div&gt;
+   &lt;script type="text/javascript"&gt;
+   if(document.location.protocol!='https:')
+     document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRc5.js'%20type='text/javascript'%3E%3C/script%3E"));
+   &lt;/script&gt;
+   &lt;script type="text/javascript"&gt;
+   if(typeof ClickTale=='function') ClickTale(1650,0.0013,"www09");
+   &lt;/script&gt;
+   &lt;!-- ClickTale end of Bottom part --&gt;</property>
   <property name="icon_visibility" type="string">enabled</property>
   <property name="disable_nonfolderish_sections"
      type="boolean">False</property>
@@ -506,6 +526,9 @@
    <element value="TempFolder"/>
    <element value="EnquiryFolder"/>
   </property>
+  <property name="allow_external_login_sites" type="lines"/>
+  <property name="external_login_url" type="string"></property>
+  <property name="external_logout_url" type="string"></property>
  </object>
  <object name="soer_properties" meta_type="Plone Property Sheet">
   <property name="title">SOER channel properties</property>
