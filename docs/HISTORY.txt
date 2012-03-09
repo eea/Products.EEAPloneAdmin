@@ -3,6 +3,9 @@ Changelog
 
 4.20-dev - (unreleased)
 -----------------------
+ * Bug fix: patched plone.app.redirector to also redirect direct file download
+   links (e.g. at_download/fileField) when the containing object defines an alias
+   [ghicaale]
 
 4.19 - (2012-03-06)
 -------------------
