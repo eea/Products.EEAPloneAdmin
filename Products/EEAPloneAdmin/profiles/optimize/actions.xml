@@ -55,7 +55,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
   <object name="extedit" meta_type="CMF Action" i18n:domain="plone">
    <property name="title"
@@ -148,7 +148,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
   <object name="facebook" meta_type="CMF Action" i18n:domain="plone">
    <property name="title" i18n:translate="">Share on Facebook</property>
@@ -168,7 +168,7 @@
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${object_url}/@@rdf</property>
    <property name="link_target"></property>
-   <property name="icon_expr">string:$portal_url/rss.gif</property>
+   <property name="icon_expr">string:$portal_url/rdf.png</property>
    <property name="available_expr"></property>
    <property name="permissions"/>
    <property name="visible">True</property>
@@ -283,12 +283,12 @@
    <property name="title" i18n:translate="">Site Setup</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string: ${portal_url}/@@overview-controlpanel</property>
+      name="url_expr">string:${portal_url}/@@overview-controlpanel</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
-    <element value="Manage portal"/>
+    <element value="Plone Site Setup: Overview"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -491,7 +491,7 @@
    <property name="visible">True</property>
   </object>
   <object name="daviz.edit" meta_type="CMF Action">
-   <property name="title">Edit Exhibit View</property>
+   <property name="title">Edit Visualizations</property>
    <property name="description"></property>
    <property
       name="url_expr">string:${object/absolute_url}/daviz-edit.html</property>
@@ -501,20 +501,6 @@
       name="available_expr">object/@@daviz_support/is_exhibit</property>
    <property name="permissions">
     <element value="Modify portal content"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
-  <object name="promotion_edit" meta_type="CMF Action" i18n:domain="eea">
-   <property name="title" i18n:translate="">Promotions</property>
-   <property name="description" i18n:translate=""></property>
-   <property
-      name="url_expr">string:${object_url}/promotion_edit.html</property>
-   <property name="link_target"></property>
-   <property name="icon_expr"></property>
-   <property
-      name="available_expr">python:'eea.promotion.interfaces.IPromoted' in object.restrictedTraverse('@@get_interfaces')()</property>
-   <property name="permissions">
-    <element value="Manage promotions"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -531,17 +517,17 @@
    </property>
    <property name="visible">False</property>
   </object>
-  <object name="promote_themecentre" meta_type="CMF Action" i18n:domain="eea">
-   <property name="title" i18n:translate="">Promote to theme centre</property>
+  <object name="promotion_edit" meta_type="CMF Action" i18n:domain="eea">
+   <property name="title" i18n:translate="">Promotions</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string:${object_url}/themecentre_edit.html</property>
+      name="url_expr">string:${object_url}/promotion_edit.html</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
-      name="available_expr">python:'eea.themecentre.interfaces.IThemeCentre' in object.restrictedTraverse('@@get_interfaces')()</property>
+      name="available_expr">python:'eea.promotion.interfaces.IPromoted' in object.restrictedTraverse('@@get_interfaces')()</property>
    <property name="permissions">
-    <element value="EEA: promote to theme centre"/>
+    <element value="Manage promotions"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -811,7 +797,7 @@
    <property name="title" i18n:translate="">Create new version</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string:${globals_view/getCurrentObjectUrl}/@@createVersion</property>
+      name="url_expr">string:javascript:startCreationOfNewVersion();</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
@@ -996,6 +982,53 @@
    </property>
    <property name="visible">True</property>
   </object>
+  <object name="send_as_notification" meta_type="CMF Action"
+     i18n:domain="eea">
+   <property name="title" i18n:translate="">Send as notification</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/getCurrentObjectUrl}/@@sendAsNotification</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python:'Products.Archetypes.interfaces.base.IBaseFolder' in object.restrictedTraverse('@@get_interfaces')()</property>
+   <property name="permissions">
+    <element value="Modify portal content"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="promote_themecentre" meta_type="CMF Action" i18n:domain="eea">
+   <property name="title" i18n:translate="">Promote to theme centre</property>
+   <property name="description"
+      i18n:translate="">Promote to theme centre</property>
+   <property
+      name="url_expr">string:${object_url}/@@promote2ThemeCentre</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python:'Products.ATContentTypes.interfaces.folder.IATBTreeFolder' in object.restrictedTraverse('@@get_interfaces')()</property>
+   <property name="permissions">
+    <element value="EEA: promote to theme centre"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="depromote_themecentre" meta_type="CMF Action"
+     i18n:domain="eea">
+   <property name="title"
+      i18n:translate="">Depromote a theme centre</property>
+   <property name="description"
+      i18n:translate="">Depromote a theme centre</property>
+   <property
+      name="url_expr">string:${object_url}/@@depromote2ThemeCentre</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python:'eea.themecentre.interfaces.IThemeCentre' in object.restrictedTraverse('@@get_interfaces')()</property>
+   <property name="permissions">
+    <element value="EEA: promote to theme centre"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
   <object name="promotion_add" meta_type="CMF Action" i18n:domain="eea">
    <property name="title" i18n:translate="">Create Promotion</property>
    <property name="description"
@@ -1040,50 +1073,17 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="send_as_notification" meta_type="CMF Action"
-     i18n:domain="eea">
-   <property name="title" i18n:translate="">Send as notification</property>
+  <object name="crop_image" meta_type="CMF Action" i18n:domain="eea">
+   <property name="title" i18n:translate="">Crop Image</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string:${globals_view/getCurrentObjectUrl}/@@sendAsNotification</property>
+      name="url_expr">string:${globals_view/getCurrentObjectUrl}/@@crop</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
-      name="available_expr">python:'Products.ATContentTypes.interface.IATFolder' in object.restrictedTraverse('@@get_interfaces')()</property>
+      name="available_expr">python:'Products.EEAContentTypes.content.interfaces.IExternalHighlight'  in object.restrictedTraverse('@@get_interfaces')() or 'Products.ATContentTypes.interfaces.image.IATImage' in object.restrictedTraverse('@@get_interfaces')()</property>
    <property name="permissions">
     <element value="Modify portal content"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
-  <object name="promote_themecentre" meta_type="CMF Action" i18n:domain="eea">
-   <property name="title" i18n:translate="">Promote to theme centre</property>
-   <property name="description"
-      i18n:translate="">Promote to theme centre</property>
-   <property
-      name="url_expr">string:${object_url}/@@promote2ThemeCentre</property>
-   <property name="link_target"></property>
-   <property name="icon_expr"></property>
-   <property
-      name="available_expr">python:'Products.ATContentTypes.interfaces.folder.IATBTreeFolder' in object.restrictedTraverse('@@get_interfaces')()</property>
-   <property name="permissions">
-    <element value="EEA: promote to theme centre"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
-  <object name="depromote_themecentre" meta_type="CMF Action"
-     i18n:domain="eea">
-   <property name="title"
-      i18n:translate="">Depromote a theme centre</property>
-   <property name="description"
-      i18n:translate="">Depromote a theme centre</property>
-   <property
-      name="url_expr">string:${object_url}/@@depromote2ThemeCentre</property>
-   <property name="link_target"></property>
-   <property name="icon_expr"></property>
-   <property
-      name="available_expr">python:'eea.themecentre.interfaces.IThemeCentre' in object.restrictedTraverse('@@get_interfaces')()</property>
-   <property name="permissions">
-    <element value="EEA: promote to theme centre"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -1106,7 +1106,7 @@
    <property name="title" i18n:translate="">Log in</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string:${globals_view/navigationRootUrl}/login_form</property>
+      name="url_expr">string:${globals_view/navigationRootUrl}/login</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">not: member</property>
@@ -1125,6 +1125,31 @@
    <property name="available_expr">not: member</property>
    <property name="permissions">
     <element value="Add portal member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="my_activity" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">My activity</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">python:portal_url+'/author/'+member.getId()</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:member is not None</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="reviewlist" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">My review list</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/full_review_list</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python: member</property>
+   <property name="permissions">
+    <element value="View"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -1154,30 +1179,18 @@
    </property>
    <property name="visible">False</property>
   </object>
-  <object name="logout" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">Log out</property>
+  <object name="plone_setup" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Site setup</property>
    <property name="description" i18n:translate=""></property>
    <property
-      name="url_expr">string:${globals_view/navigationRootUrl}/logout</property>
+      name="url_expr">string:${portal_url}/@@overview-controlpanel</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
-   <property name="available_expr">member</property>
+   <property name="available_expr"></property>
    <property name="permissions">
-    <element value="View"/>
+    <element value="Plone Site Setup: Overview"/>
    </property>
-   <property name="visible">True</property>
-  </object>
-  <object name="reviewlist" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">My review list</property>
-   <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/full_review_list</property>
-   <property name="link_target"></property>
-   <property name="icon_expr"></property>
-   <property name="available_expr">python: member</property>
-   <property name="permissions">
-    <element value="View"/>
-   </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
   <object name="addFavorite" meta_type="CMF Action" i18n:domain="plone">
    <property name="title" i18n:translate="">Add to favorites</property>
@@ -1191,6 +1204,19 @@
     <element value="View"/>
    </property>
    <property name="visible">False</property>
+  </object>
+  <object name="logout" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Log out</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/navigationRootUrl}/logout</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
   </object>
  </object>
  <object name="rdf" meta_type="CMF Action" i18n:domain="plone">

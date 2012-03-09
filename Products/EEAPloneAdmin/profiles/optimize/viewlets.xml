@@ -1,5 +1,23 @@
 <?xml version="1.0"?>
 <object>
+ <order manager="plone.abovecontenttitle" skinname="Sunburst Theme">
+  <viewlet name="plone.personal_bar"/>
+  <viewlet name="plone.path_bar"/>
+ </order>
+ <order manager="plone.portalfooter" skinname="Sunburst Theme"/>
+ <order manager="plone.portalheader" skinname="Sunburst Theme">
+  <viewlet name="plone.skip_links"/>
+  <viewlet name="plone.logo"/>
+  <viewlet name="plone.searchbox"/>
+ </order>
+ <order manager="plone.portaltop" skinname="Sunburst Theme">
+  <viewlet name="eea.cross_site_top"/>
+  <viewlet name="plone.global_sections"/>
+ </order>
+ <order manager="plone.belowcontenttitle" skinname="Sunburst Theme">
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
+  <viewlet name="eea.themestags"/>
+ </order>
  <order manager="plone.abovecontenttitle" skinname="Plone Classic Theme">
   <viewlet name="plone.personal_bar"/>
   <viewlet name="plone.path_bar"/>
@@ -47,17 +65,18 @@
   <viewlet name="plone.app.i18n.locales.languageselector"/>
   <viewlet name="eea.themestags"/>
  </order>
- <order manager="plone.belowcontentbody" skinname="EEADesignCMS">
-  <viewlet name="eea.related_bytheme"/>
-  <viewlet name="eea.related_pages"/>
-  <viewlet name="eea.related_multimedia"/>
+ <order manager="plone.belowcontentbody" skinname="EEADesign2006">
   <viewlet name="plone.belowcontentbody.relateditems"/>
+  <viewlet name="eea.related_multimedia"/>
+  <viewlet name="eea.related_pages"/>
+  <viewlet name="eea.related_bytheme"/>
   <viewlet name="plone.abovecontenttitle.documentactions"/>
  </order>
- <order manager="plone.abovecontent" skinname="EEADesignCMS">
-  <viewlet name="plone.personal_bar"/>
-  <viewlet name="plone.path_bar"/>
-  <viewlet name="plone.lockinfo"/>
+ <order manager="plone.portalfooter" skinname="EEADesign2006">
+  <viewlet name="plone.footer"/>
+  <viewlet name="plone.colophon"/>
+  <viewlet name="plone.site_actions"/>
+  <viewlet name="plone.analytics"/>
  </order>
  <order manager="plone.belowcontenttitle" skinname="Plone Default">
   <viewlet name="plone.app.i18n.locales.languageselector"/>
@@ -96,26 +115,32 @@
   <viewlet name="plone.contentviews"/>
   <viewlet name="plone.contentactions"/>
  </order>
- <order manager="plone.abovecontenttitle" skinname="Sunburst Theme">
+ <order manager="plone.belowcontentbody" skinname="EEADesignCMS">
+  <viewlet name="plone.belowcontentbody.relateditems"/>
+  <viewlet name="eea.related_multimedia"/>
+  <viewlet name="eea.related_pages"/>
+  <viewlet name="eea.related_bytheme"/>
+  <viewlet name="plone.abovecontenttitle.documentactions"/>
+ </order>
+ <order manager="plone.portalfooter" skinname="EEADesignCMS">
+  <viewlet name="plone.footer"/>
+  <viewlet name="plone.colophon"/>
+  <viewlet name="plone.site_actions"/>
+  <viewlet name="plone.analytics"/>
+ </order>
+ <order manager="plone.abovecontent" skinname="EEADesignCMS">
   <viewlet name="plone.personal_bar"/>
   <viewlet name="plone.path_bar"/>
  </order>
- <order manager="plone.portalfooter" skinname="Sunburst Theme"/>
- <order manager="plone.portalheader" skinname="Sunburst Theme">
-  <viewlet name="plone.skip_links"/>
-  <viewlet name="plone.logo"/>
-  <viewlet name="plone.searchbox"/>
- </order>
- <order manager="plone.portaltop" skinname="Sunburst Theme">
+ <order manager="plone.portaltop" skinname="EEADesignCMS">
+  <viewlet name="eea.js_belowbodytag"/>
   <viewlet name="eea.cross_site_top"/>
+  <viewlet name="plone.header"/>
   <viewlet name="plone.global_sections"/>
  </order>
- <order manager="plone.belowcontenttitle" skinname="Sunburst Theme">
-  <viewlet name="plone.app.i18n.locales.languageselector"/>
-  <viewlet name="eea.themestags"/>
- </order>
  <hidden manager="plone.belowcontentbody" skinname="EEADesignCMS">
-  <viewlet name="eea.related_multimedia"/>
+  <viewlet name="plone.belowcontentbody.relateditems"/>
+  <viewlet name="eea.related_pages"/>
  </hidden>
  <hidden manager="plone.portalfooter" skinname="EEADesignCMS">
   <viewlet name="plone.site_actions"/>
@@ -126,8 +151,8 @@
  <hidden manager="plone.portalheader" skinname="EEADesignCMS">
   <viewlet name="plone.app.i18n.locales.languageselector"/>
   <viewlet name="plone.site_actions"/>
-  <viewlet name="plone.personal_bar"/>
   <viewlet name="plone.global_sections"/>
+  <viewlet name="plone.personal_bar"/>
  </hidden>
  <hidden manager="plone.belowcontent" skinname="Old Plone 3 Custom Theme">
   <viewlet name="plone.belowcontenttitle.keywords"/>
@@ -145,11 +170,15 @@
  <hidden manager="plone.htmlhead.links" skinname="Old Plone 3 Custom Theme">
   <viewlet name="plone.links.author"/>
  </hidden>
- <hidden manager="plone.htmlhead.links" skinname="EEADesign2006">
-  <viewlet name="plone.links.author"/>
+ <hidden manager="plone.belowcontentbody" skinname="EEADesign2006">
+  <viewlet name="plone.belowcontentbody.relateditems"/>
+  <viewlet name="eea.related_pages"/>
  </hidden>
  <hidden manager="plone.portalfooter" skinname="EEADesign2006">
   <viewlet name="plone.site_actions"/>
+ </hidden>
+ <hidden manager="plone.htmlhead.links" skinname="EEADesign2006">
+  <viewlet name="plone.links.author"/>
  </hidden>
  <hidden manager="plone.portalheader" skinname="EEADesign2006">
   <viewlet name="plone.app.i18n.locales.languageselector"/>

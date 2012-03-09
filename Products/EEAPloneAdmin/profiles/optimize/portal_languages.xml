@@ -3,7 +3,7 @@
  <default_language value="en"/>
  <use_path_negotiation value="True"/>
  <use_cookie_negotiation value="False"/>
- <set_cookie_everywhere value="True"/>
+ <set_cookie_everywhere value="False"/>
  <use_request_negotiation value="False"/>
  <use_cctld_negotiation value="False"/>
  <use_content_negotiation value="True"/>

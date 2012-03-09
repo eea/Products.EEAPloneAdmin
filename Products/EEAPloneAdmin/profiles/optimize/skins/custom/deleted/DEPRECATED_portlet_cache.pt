@@ -1,0 +1,18 @@
+<metal:html xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  i18n:domain="plone">
+  <metal:body metal:define-macro="portlet" tal:define="checkPermission nocall: context/portal_membership/checkPermission;"
+    tal:condition="python:checkPermission('Manage Portal', context)">
+    <dl class="portlet" id="portlet-cache">
+      <dt class="portletHeader">
+        Cache
+      </dt>
+      <dd class="portletItem">
+        <a href="@@invalidate_cache" title="Invalidate cache for current page">Invalidate</a>	   	    
+      </dd>
+      <dd class="portletItem">
+        <a href="@@invalidate_cache?recursive_invalidation=1" title="Invalidate cache for current page and all subpages">Recursive invalidation</a>	   	    
+      </dd>
+    </dl>
+  </metal:body>
+</metal:html>
