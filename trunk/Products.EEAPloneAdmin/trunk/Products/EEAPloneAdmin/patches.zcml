@@ -197,11 +197,18 @@
                   original="moveBelow"
                   replacement=".patch_viewletmanager.moveBelow" />
 
-    <!-- Patch plone.app.redirector to also redirect direct file download links (e.g. at_download/fileField) when
+    <!-- Patch plone.app.redirector ver 1.1.2, to also redirect direct file download links (e.g. at_download/fileField) when
          the containing object defines an alias -->
     <monkey:patch description="Fix plone.app.redirector to properly redirect for at_download links"
                   class="plone.app.redirector.storage.RedirectionStorage"
                   original="get"
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
+
+    <!-- Patch plone.app.kss ver 1.7.0, not to fail silently and to display a visual progress of state change -->
+    <monkey:patch description="Monkeypatch plone.app.kss ver 1.7.0, not to fail silently and to display a visual progress of state change"
+                  class="plone.app.kss.content_replacer.ContentMenuView"
+                  original="changeWorkflowState"
+                  replacement=".patch_plone_app_kss.changeWorkflowState"
+                  preserveOriginal="false" />
 
 </configure>
