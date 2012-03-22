@@ -204,11 +204,4 @@
                   original="get"
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
 
-    <!-- Patch plone.app.kss ver 1.7.0, not to fail silently and to display a visual progress of state change -->
-    <monkey:patch description="Monkeypatch plone.app.kss ver 1.7.0, not to fail silently and to display a visual progress of state change"
-                  class="plone.app.kss.content_replacer.ContentMenuView"
-                  original="changeWorkflowState"
-                  replacement=".patch_plone_app_kss.changeWorkflowState"
-                  preserveOriginal="false" />
-
 </configure>
