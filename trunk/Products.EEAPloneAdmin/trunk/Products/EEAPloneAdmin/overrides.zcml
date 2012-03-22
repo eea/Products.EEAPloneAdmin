@@ -78,9 +78,14 @@
                       layer="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer" />
     </configure>
 
-    <browser:resource
-        name="manage-portlets.kss"
-        file="browser/portlets.kss"
-        />
+    <browser:resource name="manage-portlets.kss"
+                      file="browser/portlets.kss" />
+
+    <!-- Patch plone.app.kss ver 1.7.0, not to fail silently and to display a visual progress on state change -->
+    <browser:page for="plone.app.kss.interfaces.IPortalObject"
+                  attribute="changeWorkflowState"
+                  class=".patch_plone_app_kss.ContentMenuView"
+                  name="changeWorkflowState"
+                  permission="zope2.View" />
 
 </configure>
