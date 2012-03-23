@@ -39,7 +39,6 @@ class ContentMenuView(Implicit, PloneKSSView):
             return self.render()
 
         (proto, host, path, query, anchor) = urlsplit(url)
-        proto = host = anchor = '' #Patch to make pylint happy
         if not path.endswith('content_status_modify'):
             raise KSSExplicitError, 'content_status_modify is not handled'
         action = query.split("workflow_action=")[-1].split('&')[0]
