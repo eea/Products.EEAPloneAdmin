@@ -3,7 +3,7 @@ Changelog
 
 4.20-dev - (unreleased)
 -----------------------
- * Bug fix: WIP patched plone.app.kss not silently fails and to display a
+ * Bug fix: patched plone.app.kss not silently fails and to display a
    progress info on state change
    [ghicaale #5017]
  * Bug fix: patched plone.app.redirector to also redirect direct file download
