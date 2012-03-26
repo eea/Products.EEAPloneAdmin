@@ -242,6 +242,39 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@rules-controlpanel - add action
+  form = jQuery('form[action*="+action"]', context);
+  if(form.length && context_url.indexOf("++rule++rule")){
+    var selfform = jQuery(form);
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: selfform.attr('action'),
+      newVal: selfform.attr('action').replace('/++rule++rule', '/www/++rule++rule')
+    });
+  }
+
+  // @@rules-controlpanel - add condition
+  form = jQuery('form[action*="+condition"]', context);
+  if(form.length && context_url.indexOf("++rule++rule")){
+    var selfform = jQuery(form);
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: selfform.attr('action'),
+      newVal: selfform.attr('action').replace('/++rule++rule', '/www/++rule++rule')
+    });
+  }
+
+  // @@rules-controlpanel - @@manage-elements
+  form = jQuery('form[action*="@@manage-elements"]', context);
+  if(form.length && context_url.indexOf("++rule++rule")){
+    var selfform = jQuery(form);
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: selfform.attr('action'),
+      newVal: selfform.attr('action').replace('/++rule++rule', '/www/++rule++rule')
+    });
+  }
+
   // ++contenttypeportlets++
   form = jQuery('a[href*="++contenttypeportlets++"]', context);
   if(form.length){

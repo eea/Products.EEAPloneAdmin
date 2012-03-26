@@ -3,8 +3,10 @@ Changelog
 
 4.20-dev - (unreleased)
 -----------------------
- * Bug fix: flush collective.indexing process queue in searchResults monkey
-   patch [tiberich #5033]
+ * Bug fix: fixed "content rules" redirects under control panel
+   [ghicaale]
+ * Bug fix: flush collective.indexing process queue in searchResults monkey patch
+   [tiberich #5033]
  * Bug fix: patched plone.app.kss not silently fails and to display a
    progress info on state change
    [ghicaale #5017]
