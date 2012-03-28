@@ -31,14 +31,14 @@
                       replacement=".patch_catalog.searchResults"
                       preserveOriginal="true" / -->
 
-    <!-- Patch of Products.ResourceRegistries ver 2.0.4 to generate better ids; Solves #3962
+    <!-- Patch of Products.ResourceRegistries ver 2.0.4 to generate better ids; Solves #3962 -->
     <monkey:patch description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
                   class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
                   original="generateId"
                   replacement=".patch_baseregistry.generateId"
                   preserveOriginal="true" />
 
-    <!-- Patch of Products.ResourceRegistries ver 2.0.4 to regenerate disk resources #4603
+    <!-- Patch of Products.ResourceRegistries ver 2.0.4 to regenerate disk resources #4603 -->
     <monkey:patch description="Monkeypatch BaseRegistry GS import to regenerate disk resources #4603"
                   class="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool"
                   original="cookResources"
