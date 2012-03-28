@@ -52,8 +52,7 @@ class ContentMenuView(Implicit, PloneKSSView):
                                                    context.absolute_url(),
                                                    err))
             context.plone_utils.addPortalMessage(
-                           _(u'An error occurred on state change. Contact '
-                              'portal administrator for more details.'),
+                           _(u'An error occurred on state change: %s' % err),
                             'error')
 
         selector = ksscore.getCssSelector('.contentViews')
