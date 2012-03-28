@@ -83,6 +83,7 @@
                   replacement=".patch_html5.render"
                   preserveOriginal="false" />
 
+    <!-- See TODO under __init__.py -->
     <!-- Patch for plone.app.caching to add extra headers -->
     <!-- configure zcml:condition="installed plone.app.caching">
         <monkey:patch description="Patch for plone.app.caching to add extra headers"
@@ -92,6 +93,7 @@
                       preserveOriginal="true" />
     </configure -->
 
+    <!-- See TODO under __init__.py -->
     <!-- Patch for plone.app.caching to add extra headers -->
     <!-- configure zcml:condition="installed plone.app.caching">
         <monkey:patch description="Patch for plone.app.caching to add extra headers"
@@ -197,11 +199,18 @@
                   original="moveBelow"
                   replacement=".patch_viewletmanager.moveBelow" />
 
-    <!-- Patch plone.app.redirector ver 1.1.2, to also redirect direct file download links (e.g. at_download/fileField) when
+   <!-- Patch plone.app.redirector ver 1.1.2, to also redirect direct file download links (e.g. at_download/fileField) when
          the containing object defines an alias -->
     <monkey:patch description="Fix plone.app.redirector to properly redirect for at_download links"
                   class="plone.app.redirector.storage.RedirectionStorage"
                   original="get"
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
+
+    <!-- See TODO under __init__.py -->
+    <!-- Patch plone.app.discussion ver 2.0.10, not to fail on migrate workflows when "Discussion Item" has no workflow assigned -->
+    <!-- monkey:patch description="Fix plone.app.discussion not to fail on migrate workflows when 'Discussion Item' has no workflow assigned"
+                  module="plone.app.discussion.browser.controlpanel"
+                  original="notify_configuration_changed"
+                  replacement=".patch_plone_app_discussion.notify_configuration_changed" / -->
 
 </configure>

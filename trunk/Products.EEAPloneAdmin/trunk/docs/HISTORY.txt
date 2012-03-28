@@ -3,8 +3,8 @@ Changelog
 
 4.20-dev - (unreleased)
 -----------------------
- * Upgrade step: under ZMI -> portal_workflow assign to "Disscution Item"
-   the "one_state_workflow" workflow
+ * Bug fix: patched plone.app.discussion ver 2.0.10, not to fail on migrate workflows
+   when "Discussion Item" has no workflow assigned
    [ghicaale #5041]
  * Bug fix: fixed "content rules" redirects under control panel
    [ghicaale]
