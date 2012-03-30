@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<object name="portal_types" meta_type="Plone Types Tool">
+ <property
+    name="title">Controls the available content types in your portal</property>
+ <object name="ATBooleanCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATCurrentAuthorCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATDateCriteria" meta_type="Factory-based Type Information"/>
+ <object name="ATDateRangeCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATListCriterion" meta_type="Factory-based Type Information"/>
+ <object name="ATPathCriterion" meta_type="Factory-based Type Information"/>
+ <object name="ATPortalTypeCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATReferenceCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATRelativePathCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATSelectionCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATSimpleIntCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATSimpleStringCriterion"
+    meta_type="Factory-based Type Information"/>
+ <object name="ATSortCriterion" meta_type="Factory-based Type Information"/>
+ <object name="CMF Document" meta_type="Factory-based Type Information"/>
+ <object name="CMF Event" meta_type="Factory-based Type Information"/>
+ <object name="CMF Favorite" meta_type="Factory-based Type Information"/>
+ <object name="CMF File" meta_type="Factory-based Type Information"/>
+ <object name="CMF Folder" meta_type="Factory-based Type Information"/>
+ <object name="CMF Image" meta_type="Factory-based Type Information"/>
+ <object name="CMF Large Plone Folder"
+    meta_type="Factory-based Type Information"/>
+ <object name="CMF Link" meta_type="Factory-based Type Information"/>
+ <object name="CMF News Item" meta_type="Factory-based Type Information"/>
+ <object name="CMF Topic" meta_type="Factory-based Type Information"/>
+ <object name="Discussion Item" meta_type="Factory-based Type Information"/>
+ <object name="Document"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Enquiry" meta_type="Factory-based Type Information"/>
+ <object name="EnquiryFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EnquiryRequestor" meta_type="Factory-based Type Information"/>
+ <object name="EnquiryRequestorFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Event"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Favorite"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="File"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Folder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Image"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Link"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="News Item"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Plone Site"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="PubliclyAddableItemsFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="QuickEvent"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Requestor" meta_type="Factory-based Type Information"/>
+ <object name="TempFolder" meta_type="Factory-based Type Information"/>
+ <object name="Topic"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="GoReplacements"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="GoReplacement" meta_type="Factory-based Type Information"/>
+ <object name="EEAVacancy"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="NavigationManager" meta_type="Factory-based Type Information"/>
+ <object name="NavigationItem"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EcoTip"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="CFTRequestor"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="CallForInterest"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="CallForTender"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="GIS Application"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Highlight"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="PressRelease"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Promotion"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Speech"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="FlashFile"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Newsletter" meta_type="Factory-based Type Information"/>
+ <object name="NewsletterBTree" meta_type="Factory-based Type Information"/>
+ <object name="NewsletterReference"
+    meta_type="Factory-based Type Information"/>
+ <object name="NewsletterRichReference"
+    meta_type="Factory-based Type Information"/>
+ <object name="NewsletterTheme" meta_type="Factory-based Type Information"/>
+ <object name="NewsletterTopic" meta_type="Factory-based Type Information"/>
+ <object name="Section" meta_type="Factory-based Type Information"/>
+ <object name="Subscriber" meta_type="Factory-based Type Information"/>
+ <object name="Article"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HeaderSet" meta_type="Factory-based Type Information"/>
+ <object name="ContentCacheRule" meta_type="Factory-based Type Information"/>
+ <object name="CacheTool" meta_type="Factory-based Type Information"/>
+ <object name="CachePolicy" meta_type="Factory-based Type Information"/>
+ <object name="RuleFolder" meta_type="Factory-based Type Information"/>
+ <object name="BaseCacheRule" meta_type="Factory-based Type Information"/>
+ <object name="PolicyHTTPCacheManagerCacheRule"
+    meta_type="Factory-based Type Information"/>
+ <object name="TemplateCacheRule" meta_type="Factory-based Type Information"/>
+ <object name="HeaderSetFolder" meta_type="Factory-based Type Information"/>
+ <object name="Data"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Organisation"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="DataTable"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="DataFile"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EEAFigure"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EEAFigureFile"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ImageFS"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EyewitnessStory"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EEARelationsTool" meta_type="Factory-based Type Information"/>
+ <object name="EEARelationsContentType"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="EEAPossibleRelation"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Report"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="PolicyQuestion"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ExternalDataSpec"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="MethodologyReference"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Specification"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Assessment"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="RationaleReference"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="AssessmentPart"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="PolicyDocumentReference"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="WorkItem"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="FactSheetDocument"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="IndicatorFactSheet"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="SOERMessage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="KeyMessage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="SOERKeyFact"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="VdexRelationEndPoint"
+    meta_type="Factory-based Type Information"/>
+ <object name="VdexLangstring" meta_type="Factory-based Type Information"/>
+ <object name="AliasVocabulary" meta_type="Factory-based Type Information"/>
+ <object name="TreeVocabularyTerm"
+    meta_type="Factory-based Type Information"/>
+ <object name="VdexVocabulary" meta_type="Factory-based Type Information"/>
+ <object name="TreeVocabulary" meta_type="Factory-based Type Information"/>
+ <object name="SortedSimpleVocabulary"
+    meta_type="Factory-based Type Information"/>
+ <object name="VdexMediaDescriptor"
+    meta_type="Factory-based Type Information"/>
+ <object name="VdexTerm" meta_type="Factory-based Type Information"/>
+ <object name="SimpleVocabulary" meta_type="Factory-based Type Information"/>
+ <object name="SimpleVocabularyTerm"
+    meta_type="Factory-based Type Information"/>
+ <object name="CommonalityReport"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="DiversityReport"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="FlexibilityReport"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="SOERCountry"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="RelatedIndicatorLink"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="DataSourceLink"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="VocabularyLibrary" meta_type="Factory-based Type Information"/>
+ <object name="EpubFile"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ATImage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ATFile"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenter"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterDefinition"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterErrorReference"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterErrorReferenceFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterFAQ"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterFAQFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterGlossary"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterHowTo"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterHowToFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterInstructionalVideo"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterInstructionalVideoFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterLink"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterLinkFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterReferenceManual"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterReferenceManualFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterReferenceManualPage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterReferenceManualSection"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterTutorial"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterTutorialFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterTutorialPage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterKnowledgeBase"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="HelpCenterLeafPage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ATProxiedContent"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="VdexFileVocabulary"
+    meta_type="Factory-based Type Information"/>
+ <object name="DavizVisualization"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Sparql"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="SparqlBookmarksFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+</object>
