@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.21-dev - (unreleased)
+-----------------------
+
 4.20 - (2012-03-30)
 -------------------
  * Bug fix: patched plone.app.discussion ver 2.0.10, not to fail on migrate workflows
