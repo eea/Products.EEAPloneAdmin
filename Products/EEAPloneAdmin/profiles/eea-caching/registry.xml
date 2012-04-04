@@ -64,6 +64,8 @@
       <element key="EnquiryFolder">plone.content.itemView</element>
       <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
       <element key="DataFile">plone.content.file</element>
+      <element key="Sparql">plone.content.file</element>
+      <element key="SparqlBookmarksFolder">plone.content.file</element>
       <element key="Specification">plone.content.itemView</element>
       <element key="PolicyQuestion">plone.content.itemView</element>
       <element key="WorkItem">plone.content.itemView</element>
@@ -208,6 +210,7 @@
       <element key="accessibility-info">plone.content.itemView</element>
       <element key="search_rss">plone.content.feed</element>
       <element key="frontpage_view">eea.content.frontPage</element>
+      <element key="sparql-download">plone.content.file</element>
       <element key="faceted_query">eea.content.frontPage</element>
       <element key="multimedia_popup_view">plone.content.file</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>

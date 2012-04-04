@@ -3,6 +3,8 @@ Changelog
 
 4.21-dev - (unreleased)
 -----------------------
+ * Bug fix: Added plone.app.caching rules for Sparql and SparqlBookmarkFolder
+   [voineali #5074]
 
 4.20 - (2012-03-30)
 -------------------
