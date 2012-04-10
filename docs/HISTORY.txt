@@ -4,7 +4,8 @@ Changelog
 4.21-dev - (unreleased)
 -----------------------
  * Feature: use fake_transition in eea_data_workflow [tiberich #5065]
- * Bug fix: Added plone.app.caching rules for Sparql and SparqlBookmarkFolder
+ * Bug fix: Added plone.app.caching rules for DavizVisualization,
+   Sparql and SparqlBookmarkFolder
    [voineali #5074]
 
 4.20 - (2012-03-30)

@@ -34,6 +34,7 @@
       <element key="HelpCenterHowTo">plone.content.itemView</element>
       <element key="SOERKeyFact">plone.content.itemView</element>
       <element key="Enquiry">plone.content.itemView</element>
+      <element key="DataFile">plone.content.file</element>
       <element key="Organisation">plone.content.itemView</element>
       <element key="HelpCenterTutorialPage">plone.content.itemView</element>
       <element key="KeyMessage">plone.content.itemView</element>
@@ -51,6 +52,7 @@
       <element key="News Item">plone.content.itemView</element>
       <element key="CallForInterest">plone.content.itemView</element>
       <element key="Assessment">plone.content.itemView</element>
+      <element key="DavizVisualization">plone.content.itemView</element>
       <element key="FlashFile">plone.content.file</element>
       <element key="HelpCenterFAQ">plone.content.itemView</element>
       <element key="EpubFile">plone.content.folderView</element>
@@ -63,9 +65,7 @@
       <element key="Data">plone.content.itemView</element>
       <element key="EnquiryFolder">plone.content.itemView</element>
       <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
-      <element key="DataFile">plone.content.file</element>
       <element key="Sparql">plone.content.file</element>
-      <element key="SparqlBookmarksFolder">plone.content.file</element>
       <element key="Specification">plone.content.itemView</element>
       <element key="PolicyQuestion">plone.content.itemView</element>
       <element key="WorkItem">plone.content.itemView</element>
@@ -83,6 +83,7 @@
       <element key="SOERMessage">plone.content.itemView</element>
       <element key="IndicatorFactSheet">plone.content.itemView</element>
       <element key="Image">plone.content.file</element>
+      <element key="SparqlBookmarksFolder">plone.content.file</element>
       <element key="EyewitnessStory">plone.content.itemView</element>
       <element key="Event">plone.content.itemView</element>
       <element key="Topic">eea.content.frontPage</element>
@@ -128,6 +129,7 @@
       <element>Data</element>
       <element>DataFile</element>
       <element>DataTable</element>
+      <element>DavizVisualization</element>
       <element>EEAVacancy</element>
       <element>EEAFigure</element>
       <element>EEAFigureFile</element>
@@ -179,6 +181,8 @@
       <element>SOERCountry</element>
       <element>SOERKeyFact</element>
       <element>SOERMessage</element>
+      <element>Sparql</element>
+      <element>SparqlBookmarksFolder</element>
       <element>Speech</element>
       <element>HelpCenterTutorial</element>
       <element>HelpCenterTutorialPage</element>
@@ -224,8 +228,10 @@
       <element key="highlights.rdf">plone.content.itemView</element>
       <element key="video_popup_view">plone.content.file</element>
       <element key="reports.rdf">plone.content.itemView</element>
+      <element key="daviz-view.json">plone.content.file</element>
       <element key="folder_contents">plone.content.itemView</element>
       <element key="folder_summary">plone.content.itemView</element>
+      <element key="daviz-relateditems.json">plone.content.file</element>
       <element key="rdf">plone.content.itemView</element>
       <element key="tagscloud_counter">eea.content.frontPage</element>
       <element key="sitemap">plone.content.itemView</element>
