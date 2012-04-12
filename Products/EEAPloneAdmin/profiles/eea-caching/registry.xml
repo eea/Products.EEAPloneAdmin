@@ -214,7 +214,13 @@
       <element key="accessibility-info">plone.content.itemView</element>
       <element key="search_rss">plone.content.feed</element>
       <element key="frontpage_view">eea.content.frontPage</element>
-      <element key="sparql-download">plone.content.file</element>
+      <element key="sparql.table">plone.content.file</element>
+      <element key="sparql.csv">plone.content.file</element>
+      <element key="sparql.tsv">plone.content.file</element>
+      <element key="sparql.json">plone.content.file</element>
+      <element key="sparql.exhibit">plone.content.file</element>
+      <element key="sparql.xml">plone.content.file</element>
+      <element key="sparql.schema.xml">plone.content.file</element>
       <element key="faceted_query">eea.content.frontPage</element>
       <element key="multimedia_popup_view">plone.content.file</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
@@ -228,9 +234,9 @@
       <element key="highlights.rdf">plone.content.itemView</element>
       <element key="video_popup_view">plone.content.file</element>
       <element key="reports.rdf">plone.content.itemView</element>
-      <element key="daviz-view.json">plone.content.file</element>
       <element key="folder_contents">plone.content.itemView</element>
       <element key="folder_summary">plone.content.itemView</element>
+      <element key="daviz-view.json">plone.content.file</element>
       <element key="daviz-relateditems.json">plone.content.file</element>
       <element key="rdf">plone.content.itemView</element>
       <element key="tagscloud_counter">eea.content.frontPage</element>
