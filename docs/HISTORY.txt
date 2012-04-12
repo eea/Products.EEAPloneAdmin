@@ -7,6 +7,9 @@ Changelog
  * Bug fix: Added plone.app.caching rules for DavizVisualization,
    Sparql and SparqlBookmarkFolder
    [voineali #5074]
+ * Upgrade step: Remove 'sparql-download' from:
+   Site Setup > Caching > Caching operations > Templates
+   [voineali #5074]
 
 4.20 - (2012-03-30)
 -------------------
