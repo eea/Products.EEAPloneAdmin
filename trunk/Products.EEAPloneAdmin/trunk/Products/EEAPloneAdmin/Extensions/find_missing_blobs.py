@@ -187,6 +187,7 @@ def find_missing_blob_scales(self):
     return 'Done.'
 
 def find_missing_scales(self):
+    """ Find missing scales """
     cat = getToolByName(self, 'portal_catalog', None)
 
     content_types = ['EEAFigureFile',
@@ -223,9 +224,10 @@ def find_missing_scales(self):
 
         for size in sizes.keys():
             try:
-                view = getMultiAdapter((obj, self.REQUEST), name="image_" + size)
-                img = view()
-            except:
+                view = getMultiAdapter((obj, self.REQUEST), name="image_" \
+                                                                    + size)
+                view()
+            except Exception:
                 broken.append((obj, size))
 
     return """<html><body><h3>Broken:</h3><ul>%s</ul></body></html""" % \
