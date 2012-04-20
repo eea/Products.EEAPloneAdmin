@@ -184,3 +184,49 @@ def find_missing_blob_scales(self):
             logger.info('%s *** %s' % (size, scale_size))
 
     return 'Done.'
+
+def find_missing_scales(self):
+    cat = getToolByName(self, 'portal_catalog', None)
+
+    content_types = ['EEAFigureFile',
+                     'Image',
+                     'ImageFS',
+                     'DataFile',
+                     'File',
+                     'FlashFile',
+                     'FactSheetDocument',
+                     'Report',
+                     'Speech',
+                     'PressRelease',
+                     'Promotion',
+                     'Highlight',
+                     'Article']
+
+
+    query = {'portal_type': content_types, "Language":'all'}
+    sizes = {}
+
+    props = self.portal_properties.imaging_properties
+    sizes = props.getProperty('allowed_sizes')
+    self.sizes = {}
+    for size in sizes:
+        name, info = size.split(' ')
+        w, h = info.split(':')
+        self.sizes[name] = (int(w), int(h))
+
+    brains = cat(**query)
+    for brain in brains:
+        obj = brain.getObject()
+
+        logger.info('Object path /%s' % obj.absolute_url(1))
+        sizes = obj.getField('image').getAvailableSizes(obj)
+        for size in sizes:
+            scale = obj.getField('image').getScale(obj, size)
+            if not scale:
+                continue
+            scale_field = scale.getField('image')
+            scalefield = scale_field.getAccessor(scale)()
+            scale_size = scalefield.get_size()
+            logger.info('%s *** %s' % (size, scale_size))
+
+    return 'Done.'
