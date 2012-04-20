@@ -3,6 +3,8 @@ Changelog
 
 4.21-dev - (unreleased)
 -----------------------
+ * Bug fix: now all objects that are copied have their creation
+   date set to now() [tiberich #4402]
  * Feature: use fake_transition in eea_data_workflow [tiberich #5065]
  * Bug fix: Added plone.app.caching rules for DavizVisualization,
    Sparql and SparqlBookmarkFolder
