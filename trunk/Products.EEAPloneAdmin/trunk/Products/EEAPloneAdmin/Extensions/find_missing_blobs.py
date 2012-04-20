@@ -1,9 +1,10 @@
 """ Find missing blobs
 """
 
-from plone.app.blob.interfaces import IBlobField
 from Products.CMFCore.utils import getToolByName
 from ZODB.utils import oid_repr
+from plone.app.blob.interfaces import IBlobField
+from zope.component import getMultiAdapter
 import binascii
 import logging
 import os
@@ -214,19 +215,18 @@ def find_missing_scales(self):
         w, h = info.split(':')
         self.sizes[name] = (int(w), int(h))
 
+    broken = []
+
     brains = cat(**query)
     for brain in brains:
         obj = brain.getObject()
 
-        logger.info('Object path /%s' % obj.absolute_url(1))
-        sizes = obj.getField('image').getAvailableSizes(obj)
-        for size in sizes:
-            scale = obj.getField('image').getScale(obj, size)
-            if not scale:
-                continue
-            scale_field = scale.getField('image')
-            scalefield = scale_field.getAccessor(scale)()
-            scale_size = scalefield.get_size()
-            logger.info('%s *** %s' % (size, scale_size))
+        for size in sizes.keys():
+            try:
+                view = getMultiAdapter((obj, self.REQUEST), name="image_" + size)
+                img = view()
+            except:
+                broken.append((obj, size))
 
-    return 'Done.'
+    return """<html><body><h3>Broken:</h3><ul>%s</ul></body></html""" % \
+            "\n".join(map(lambda x:"<li>%s - %s</li>" % x, broken))
