@@ -11,6 +11,9 @@
                      zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                 handler=".event.handle_resourceregistry_change" />
 
+    <subscriber for="* zope.lifecycleevent.interfaces.IObjectCopiedEvent"
+                handler=".event.handle_object_copied" />
+
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
