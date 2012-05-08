@@ -266,11 +266,14 @@ def getResourceContent(registry, item, context, original=False):
                 except TypeError:
                     # Could be a view or browser resource
                     content = obj()
+                except AttributeError, err:
+                    logger.exception(err)
+                    content = u''
 
                 if IStreamIterator.providedBy(content):
                     content = content.read()
 
-                if not isinstance(content, unicode):
+                if content and not isinstance(content, unicode):
                     content = unicode(content, default_charset)
             else:
                 content = str(obj)
