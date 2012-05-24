@@ -17,7 +17,6 @@ from plone.app.discussion.comment import CommentFactory
 from plone.app.discussion.interfaces import IConversation, IReplies, IComment
 
 from plone.app.discussion.browser.migration import DT2dt
-from zope.component.interfaces import ComponentLookupError
 
 def migrate_discussions(self, filter_callback=None):
 
