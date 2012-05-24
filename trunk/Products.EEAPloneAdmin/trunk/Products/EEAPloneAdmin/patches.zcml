@@ -220,6 +220,13 @@
                   original="get"
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
 
+    <!-- Patch plone.app.discussion ver 2.0.10, not to fail on migrate comments -->
+    <monkey:patch description="Fix plone.app.discussion not to fail on migrating comments"
+                  class="plone.app.discussion.browser.migration.View"
+                  original="__call__"
+                  replacement=".patch_discussion.migrate_discussions" />
+
+
     <!-- See TODO under __init__.py -->
     <!-- Patch plone.app.discussion ver 2.0.10, not to fail on migrate workflows when "Discussion Item" has no workflow assigned -->
     <!-- monkey:patch description="Fix plone.app.discussion not to fail on migrate workflows when 'Discussion Item' has no workflow assigned"
