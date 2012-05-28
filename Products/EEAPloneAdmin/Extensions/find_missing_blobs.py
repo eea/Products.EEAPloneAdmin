@@ -206,15 +206,14 @@ def find_missing_scales(self):
 
 
     query = {'portal_type': content_types, "Language":'all'}
-    sizes = {}
+    img_sizes = {}
 
     props = self.portal_properties.imaging_properties
     sizes = props.getProperty('allowed_sizes')
-    self.sizes = {}
     for size in sizes:
         name, info = size.split(' ')
         w, h = info.split(':')
-        self.sizes[name] = (int(w), int(h))
+        img_sizes[name] = (int(w), int(h))
 
     broken = []
 
@@ -222,7 +221,8 @@ def find_missing_scales(self):
     for brain in brains:
         obj = brain.getObject()
 
-        for size in sizes.keys():
+        for size in img_sizes.keys():
+            #print obj.absolute_url(), size
             try:
                 view = getMultiAdapter((obj, self.REQUEST), name="image_" \
                                                                     + size)
@@ -230,5 +230,7 @@ def find_missing_scales(self):
             except Exception:
                 broken.append((obj, size))
 
+    f = open("/tmp/out.txt", "w")
+    f.writelines(map(lambda x:" - ".join(x), broken))
     return """<html><body><h3>Broken:</h3><ul>%s</ul></body></html""" % \
             "\n".join(map(lambda x:"<li>%s - %s</li>" % x, broken))
