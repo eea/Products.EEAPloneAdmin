@@ -1,39 +1,29 @@
 """Discussions patches
 """
 
-#imports for migration
-from Acquisition import aq_inner, aq_parent
-
-from Products.CMFCore.utils import getToolByName
-
-from Products.CMFCore.interfaces._content import IDiscussionResponse
-
-import transaction
-
-from plone.app.discussion.comment import CommentFactory
-
-from plone.app.discussion.interfaces import IConversation, IReplies, IComment
-
-from plone.app.discussion.browser.migration import DT2dt
-
 #imports for conversation
-from zope.component import queryUtility
-
-from plone.registry.interfaces import IRegistry
-
+#imports for migration
 from Acquisition import aq_base
 from Acquisition import aq_chain
 from Acquisition import aq_inner
-
-from Products.CMFCore.utils import getToolByName
+from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.interfaces import IFolderish
-
-from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFCore.interfaces._content import IDiscussionResponse
+from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonStructuralFolder
-
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from plone.app.discussion.browser.migration import DT2dt
+from plone.app.discussion.comment import CommentFactory
+from plone.app.discussion.interfaces import IConversation, IReplies, IComment
 from plone.app.discussion.interfaces import IDiscussionSettings
+from plone.registry.interfaces import IRegistry
+from zope.component import queryUtility
+import transaction
+
 
 def migrate_discussions(self, filter_callback=None):
+    """Migrate discussions"""
 
     context = aq_inner(self.context)
     out = []
@@ -52,6 +42,7 @@ def migrate_discussions(self, filter_callback=None):
     catalog = getToolByName(context, 'portal_catalog')
 
     def log(msg):
+        """ log"""
         # encode string before sending it to external world
         if isinstance(msg, unicode):
             msg = msg.encode('utf-8') # pragma: no cover
@@ -59,6 +50,7 @@ def migrate_discussions(self, filter_callback=None):
         out.append(msg)
 
     def migrate_replies(context, in_reply_to, replies, depth=0, just_delete=0):
+        """migrate_replies"""
         # Recursive function to migrate all direct replies
         # of a comment. Returns True if there are no replies to
         # this comment left, and therefore the comment can be removed.
@@ -197,8 +189,8 @@ def migrate_discussions(self, filter_callback=None):
 
     if self.total_comments_migrated != count_comments_old:
         log("%s comments could not be migrated."
-            % (count_comments_old - self.total_comments_migrated)) # pragma: no cover
-        log("Please make sure your portal catalog is up-to-date.") # pragma: no cover
+            % (count_comments_old - self.total_comments_migrated)) 
+        log("Please make sure your portal catalog is up-to-date.")
 
     if dry_run and not test:
         transaction.abort() # pragma: no cover
@@ -251,6 +243,8 @@ def conversation_enabled(self):
 #        return False
 
     def traverse_parents(context):
+        """traverse parents
+        """
         # Run through the aq_chain of obj and check if discussion is
         # enabled in a parent folder.
         for obj in aq_chain(context):
