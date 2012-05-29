@@ -150,7 +150,7 @@ def migrate_discussions(self, filter_callback=None):
         try:
             obj = brain.getObject()
         except Exception, err:
-            log("Exception while migrating: %s" %brain.getPath())
+            log("Exception while migrating: %s %s" %(brain.getPath(), str(err)))
         talkback = getattr( obj, 'talkback', None )
         if talkback:
             replies = talkback.getReplies()
