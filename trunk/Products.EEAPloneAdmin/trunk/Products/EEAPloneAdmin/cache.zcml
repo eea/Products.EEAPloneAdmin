@@ -11,4 +11,10 @@
     description="A public-facing view for front page"
     />
 
+  <cache:rulesetType
+    name="eea.content.ajaxResources"
+    title="Stable AJAX resources"
+    description="These are resources that are called using AJAX and which can be cached for at least one month"
+    />
+
 </configure>
