@@ -226,7 +226,7 @@
                   original="__call__"
                   replacement=".patch_discussion.migrate_discussions" />
 
-    <!-- Patch plone.app.discussion ver 2.0.10, to allow discussions on folderish objects -->
+    <!-- Patch plone.app.discussion ver >= 2.0.10, to allow discussions on folderish objects -->
     <monkey:patch description="Fix plone.app.discussion to allow discussions on folderish objects"
                   class="plone.app.discussion.browser.conversation.ConversationView"
                   original="enabled"
@@ -234,7 +234,7 @@
 
 
     <!-- See TODO under __init__.py -->
-    <!-- Patch plone.app.discussion ver 2.0.10, not to fail on migrate workflows when "Discussion Item" has no workflow assigned -->
+    <!-- Patch plone.app.discussion ver >= 2.0.10, not to fail on migrate workflows when "Discussion Item" has no workflow assigned -->
     <!-- monkey:patch description="Fix plone.app.discussion not to fail on migrate workflows when 'Discussion Item' has no workflow assigned"
                   module="plone.app.discussion.browser.controlpanel"
                   original="notify_configuration_changed"
