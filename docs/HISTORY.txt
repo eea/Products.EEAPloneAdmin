@@ -3,6 +3,8 @@ Changelog
 
 4.22-dev - (unreleased)
 -----------------------
+ * Bug fix: fixed markup of HISTORY.txt file
+   [ciobabog refs #5231]
  * Upgrade step:
      - Within ZMI > portal_setup > Import Tab > Import All Steps from 'Plone Discussions'
      - Migrate comments: http://localhost:<port>/www/@@comment-migration
@@ -78,8 +80,6 @@ Changelog
 
 4.17 - (2012-02-14)
 -------------------
- * Bug fix: fixed markup of HISTORY.txt file
-   [ciobabog refs #5231]
  * Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
    [ghicaale #4945]
  * Upgrade step: under @@manage-viewlets resave position of viewlets in order
