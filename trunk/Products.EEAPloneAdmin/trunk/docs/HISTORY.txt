@@ -3,6 +3,12 @@ Changelog
 
 4.22-dev - (unreleased)
 -----------------------
+ * Upgrade step:
+     - Within ZMI > portal_setup > Import Tab > Import All Steps from 'Plone Discussions'
+     - Migrate comments: http://localhost:<port>/www/@@comment-migration
+     - Enable comments and notification mails on http://localhost:8080/www/@@discussion-settings
+ * Feature: Upgraded commenting system
+   [szabozo0 #5189]
  * Upgrade step: Within ZMI > portal_setup > Import Tab
    import 'Manage the configuration registry' from 'EEA Plone Admin: caching settings'
    [voineali #5121]

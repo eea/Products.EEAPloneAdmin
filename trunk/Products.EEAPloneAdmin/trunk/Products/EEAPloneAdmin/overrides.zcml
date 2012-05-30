@@ -88,4 +88,6 @@
                   name="changeWorkflowState"
                   permission="zope2.View" />
 
+    <include package=".browser" file="overrides.zcml"/>
+
 </configure>
