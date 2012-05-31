@@ -14,9 +14,9 @@ Changelog
 * Upgrade step: Within ZMI > portal_setup > Import Tab
   import 'Manage the configuration registry' from 'EEA Plone Admin: caching settings'
   [voineali #5121]
-* Change: Add 'eea.content.ajaxResources' cache rule in order to cache AJAX
+* Change: Add 'eea.content.staleResources' cache rule in order to cache some sparql
   resources in varnish for one month
-  [voineali fixes #5121]
+  [voineali, demarant fixes #5121]
 * Bug fix: Make it possible to add new Plone Sites within EEA Data.fs or on a
   fresh new one
   [voineali refs #5145]
