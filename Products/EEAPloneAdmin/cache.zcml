@@ -12,9 +12,9 @@
     />
 
   <cache:rulesetType
-    name="eea.content.ajaxResources"
-    title="Stable AJAX resources"
-    description="These are resources that are called using AJAX and which can be cached for at least one month"
+    name="eea.content.staleResources"
+    title="Stale resources"
+    description="These are resources which can be cached for at least one month e.g. of these are sparql downloadable resources and files"
     />
 
 </configure>

@@ -65,7 +65,7 @@
       <element key="Data">plone.content.itemView</element>
       <element key="EnquiryFolder">plone.content.itemView</element>
       <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
-      <element key="Sparql">eea.content.ajaxResources</element>
+      <element key="Sparql">eea.content.staleResources</element>
       <element key="Specification">plone.content.itemView</element>
       <element key="PolicyQuestion">plone.content.itemView</element>
       <element key="WorkItem">plone.content.itemView</element>
@@ -83,7 +83,7 @@
       <element key="SOERMessage">plone.content.itemView</element>
       <element key="IndicatorFactSheet">plone.content.itemView</element>
       <element key="Image">plone.content.file</element>
-      <element key="SparqlBookmarksFolder">eea.content.ajaxResources</element>
+      <element key="SparqlBookmarksFolder">eea.content.staleResources</element>
       <element key="EyewitnessStory">plone.content.itemView</element>
       <element key="Event">plone.content.itemView</element>
       <element key="Topic">eea.content.frontPage</element>
@@ -204,15 +204,15 @@
       </value_type>
     </field>
     <value>
-      <element key="daviz-view.json">eea.content.ajaxResources</element>
-      <element key="daviz-relateditems.json">eea.content.ajaxResources</element>
-      <element key="download.json">eea.content.ajaxResources</element>
-      <element key="download.xml">eea.content.ajaxResources</element>
-      <element key="download.exhibit">eea.content.ajaxResources</element>
-      <element key="download.table">eea.content.ajaxResources</element>
-      <element key="download.csv">eea.content.ajaxResources</element>
-      <element key="download.tsv">eea.content.ajaxResources</element>
-      <element key="download.schema.xml">eea.content.ajaxResources</element>
+      <element key="daviz-view.json">eea.content.staleResources</element>
+      <element key="daviz-relateditems.json">eea.content.staleResources</element>
+      <element key="download.json">eea.content.staleResources</element>
+      <element key="download.xml">eea.content.staleResources</element>
+      <element key="download.exhibit">eea.content.staleResources</element>
+      <element key="download.table">eea.content.staleResources</element>
+      <element key="download.csv">eea.content.staleResources</element>
+      <element key="download.tsv">eea.content.staleResources</element>
+      <element key="download.schema.xml">eea.content.staleResources</element>
       <element key="image_view">plone.content.itemView</element>
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>
@@ -351,31 +351,31 @@
     </field>
     <value>True</value>
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.anonOnly">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.anonOnly">
     <field ref="plone.app.caching.strongCaching.anonOnly" />
     <value>True</value>
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.etags">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.etags">
     <field ref="plone.app.caching.strongCaching.etags" />
     <value />
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.lastModified">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.lastModified">
     <field ref="plone.app.caching.strongCaching.lastModified" />
     <value>True</value>
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.maxage">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.maxage">
     <field ref="plone.app.caching.strongCaching.maxage" />
     <value>2592000</value>
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.ramCache">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.ramCache">
     <field ref="plone.app.caching.strongCaching.ramCache" />
     <value>False</value>
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.smaxage">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.smaxage">
     <field ref="plone.app.caching.strongCaching.smaxage" />
     <value />
   </record>
-  <record name="plone.app.caching.strongCaching.eea.content.ajaxResources.vary">
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.vary">
     <field ref="plone.app.caching.strongCaching.vary" />
     <value>Accept-Encoding, X-Username</value>
   </record>
@@ -585,7 +585,7 @@
       <element key="plone.stableResource">plone.app.caching.strongCaching</element>
       <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
       <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
-      <element key="eea.content.ajaxResources">plone.app.caching.strongCaching</element>
+      <element key="eea.content.staleResources">plone.app.caching.strongCaching</element>
       <element key="plone.content.folderView">plone.app.caching.moderateCaching</element>
       <element key="plone.content.file">plone.app.caching.moderateCaching</element>
     </value>
