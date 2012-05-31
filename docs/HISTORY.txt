@@ -3,17 +3,20 @@ Changelog
 
 4.22-dev - (unreleased)
 -----------------------
+* Upgrade step:
+    - Within ZMI > portal_setup > Upgrades Tab run upgrades for
+      Products.CMFPlone (4.1.2 -> 4.1.5) [voineali #5116]
+    - Within ZMI > portal_setup > Import Tab > Import All Steps from
+      'Plone Discussions'
+    - Migrate comments: http://localhost:<port>/www/@@comment-migration
+    - Enable comments and notification mails on
+      http://localhost:8080/www/@@discussion-settings
+    - Within ZMI > portal_setup > Import Tab import 'Manage the configuration
+      registry' from 'EEA Plone Admin: caching settings' [voineali #5121]
 * Bug fix: fixed markup of HISTORY.txt file
   [ciobabog refs #5231]
-* Upgrade step:
-    - Within ZMI > portal_setup > Import Tab > Import All Steps from 'Plone Discussions'
-    - Migrate comments: http://localhost:<port>/www/@@comment-migration
-    - Enable comments and notification mails on http://localhost:8080/www/@@discussion-settings
 * Feature: Upgraded commenting system
   [szabozo0 #5189]
-* Upgrade step: Within ZMI > portal_setup > Import Tab
-  import 'Manage the configuration registry' from 'EEA Plone Admin: caching settings'
-  [voineali #5121]
 * Change: Add 'eea.content.staleResources' cache rule in order to cache some sparql
   resources in varnish for one month
   [voineali, demarant fixes #5121]
