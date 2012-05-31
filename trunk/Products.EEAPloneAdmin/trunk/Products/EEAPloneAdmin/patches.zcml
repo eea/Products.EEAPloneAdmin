@@ -220,17 +220,17 @@
                   original="get"
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
 
-    <!-- Patch plone.app.discussion ver 2.0.10, not to fail on migrate comments -->
+    <!-- Patch plone.app.discussion ver >= 2.0.10, not to fail on migrate comments -->
     <monkey:patch description="Fix plone.app.discussion not to fail on migrating comments"
                   class="plone.app.discussion.browser.migration.View"
                   original="__call__"
-                  replacement=".patch_discussion.migrate_discussions" />
+                  replacement=".patch_plone_app_discussion.migrate_discussions" />
 
     <!-- Patch plone.app.discussion ver >= 2.0.10, to allow discussions on folderish objects -->
     <monkey:patch description="Fix plone.app.discussion to allow discussions on folderish objects"
                   class="plone.app.discussion.browser.conversation.ConversationView"
                   original="enabled"
-                  replacement=".patch_discussion.conversation_enabled" />
+                  replacement=".patch_plone_app_discussion.conversation_enabled" />
 
 
     <!-- See TODO under __init__.py -->
