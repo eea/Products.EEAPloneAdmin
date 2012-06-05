@@ -3,14 +3,6 @@ Changelog
 
 4.22-dev - (unreleased)
 -----------------------
-* Bug fix: removed anonymous permission for eea_default_view public draft
-  [ichimdav #5244]
-* Upgrade step:
-    - Within ZMI > portal_workflows/eea_default_workflow/states/visible/manage_permissions
-      uncheck 'View' and 'Access Content Information' for Anonymous users and hit Save
-    - Within ZMI > portal_workflow/manage_selectWorkflows
-      Press 'Update security settings' button to enable the change of security 
-      for public draft
 * Upgrade step:
     - Within ZMI > portal_setup > Upgrades Tab run upgrades for
       Products.CMFPlone (4.1.2 -> 4.1.5) [voineali #5116]
