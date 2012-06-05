@@ -194,6 +194,7 @@
   <exit-transition transition_id="submitCopyEdit"/>
   <exit-transition transition_id="submitProofReading"/>
   <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
    <permission-role>Authenticated</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -204,6 +205,7 @@
    <permission-role>WebReviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
    <permission-role>Authenticated</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
