@@ -21,6 +21,11 @@
         />
 
 
+
+    We override because of incorect parsing of datetime. Only one
+    line has changed from the original module, it comes from 
+    plone.app.form/widgets/datecomponents v1.2
+
     <browser:page
         name="date_components_support"
         for="*" 
