@@ -20,4 +20,13 @@
         permission="zope2.View"
         />
 
+
+    <browser:page
+        name="date_components_support"
+        for="*" 
+        permission="zope2.View"
+        class=".datecomponents.DateComponents"
+        allowed_interface="plone.app.form.widgets.interfaces.IDateComponents"
+        /> 
+
 </configure>
