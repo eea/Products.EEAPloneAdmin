@@ -20,6 +20,7 @@ PLONE_CEILING = DateTime(2021, 0) # 2020-12-31
 
 
 def english_month_names():
+    """see original module """
     names = {}
     for x in range(1, 13):
         faux = DateTime(2004, x, 1)
@@ -55,7 +56,7 @@ class DateComponents(BrowserView):
 
         timepattern = dates.getFormatter('time').getPattern()
         if 'a' in timepattern:
-             use_ampm = True
+            use_ampm = True
         month_names = dates.getFormatter('date').calendar.months
 
         # 'id' is what shows up.  December for month 12. 
@@ -81,7 +82,7 @@ class DateComponents(BrowserView):
                 dateParts = date.split(" ")
                 #PATCH: we fix #5236
                 #dateParts[0] = dateParts[0].replace("-", "/")
-                date=' '.join(dateParts)
+                date = ' '.join(dateParts)
 
         if date is None:
             date = now
@@ -122,7 +123,7 @@ class DateComponents(BrowserView):
             if max_year < date.year():
                 max_year = date.year()
 
-        year=int(date.strftime('%Y'))
+        year = int(date.strftime('%Y'))
 
         if default:
             years.append({'id': '--', 'value': '0000', 'selected': 1})
@@ -135,7 +136,7 @@ class DateComponents(BrowserView):
                 d['selected'] = 1
             years.append(d)
 
-        month=int(date.strftime('%m'))
+        month = int(date.strftime('%m'))
 
         if default:
             months.append({'id': '--', 'value': '00', 'selected': 1, 
@@ -166,11 +167,11 @@ class DateComponents(BrowserView):
             days.append(d)
 
         if use_ampm:
-            hours_range = [12]+range(1,12)
+            hours_range = [12] + range(1, 12)
             hour_default = '12'
             hour = int(date.h_12())
         else:
-            hours_range = range(0,24)
+            hours_range = range(0, 24)
             hour_default = '00'
             hour = int(date.h_24())
         
@@ -198,7 +199,8 @@ class DateComponents(BrowserView):
 
         for x in range(0, 60, minute_step):
             d = {'id': '%02d' % x, 'value': '%02d' % x, 'selected': None}
-            if (x == minute or minute < x < minute + minute_step) and not default:
+            if (x == minute or minute < x < minute + minute_step) and \
+                not default:
                 d['selected'] = 1
             minutes.append(d)
 
