@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<componentregistry>
+ <adapters>
+  <adapter name="subtypes" factory="p4a.subtyper.submenu.SubtypesSubMenuItem"
+     for="zope.interface.Interface
+           zope.interface.Interface"
+     provides="plone.app.contentmenu.interfaces.IContentMenuItem"/>
+  <adapter
+     factory="Solgema.PortletsManager.exportimport.SolgemaPortletAssignmentImportExportHandler"
+     for="zope.interface.Interface"
+     provides="plone.app.portlets.exportimport.interfaces.IPortletAssignmentExportImportHandler"/>
+  <adapter
+     factory="Solgema.PortletsManager.portlets.retriever.SolgemaPortletRetriever"
+     for="zope.interface.Interface
+           plone.portlets.interfaces.IPortletManager"
+     provides="plone.portlets.interfaces.IPortletRetriever"/>
+ </adapters>
+ <subscribers/>
+ <utilities>
+  <utility interface="Products.ATContentTypes.interfaces.interfaces.IATCTTool"
+     object="portal_atct"/>
+  <utility interface="Products.CMFActionIcons.interfaces.IActionIconsTool"
+     object="portal_actionicons"/>
+  <utility interface="Products.CMFCore.interfaces.IDiscussionTool"
+     object="portal_discussion"/>
+  <utility interface="Products.CMFCore.interfaces.IMetadataTool"
+     object="portal_metadata"/>
+  <utility interface="Products.CMFCore.interfaces.IPropertiesTool"
+     object="portal_properties"/>
+  <utility interface="Products.CMFCore.interfaces.ISiteRoot" object=""/>
+  <utility interface="Products.CMFCore.interfaces.ISyndicationTool"
+     object="portal_syndication"/>
+  <utility interface="Products.CMFCore.interfaces.IUndoTool"
+     object="portal_undo"/>
+  <utility interface="Products.CMFDiffTool.interfaces.IDiffTool"
+     object="portal_diff"/>
+  <utility
+     interface="Products.CMFPlacefulWorkflow.interfaces.portal_placeful_workflow.IPlacefulWorkflowTool"
+     object="portal_placeful_workflow"/>
+  <utility interface="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+     object=""/>
+  <utility
+     interface="Products.CMFUid.interfaces.IUniqueIdAnnotationManagement"
+     object="portal_uidannotation"/>
+  <utility interface="Products.CMFUid.interfaces.IUniqueIdGenerator"
+     object="portal_uidgenerator"/>
+  <utility interface="Products.MailHost.interfaces.IMailHost"
+     object="MailHost"/>
+  <utility
+     interface="Products.MimetypesRegistry.interfaces.IMimetypesRegistryTool"
+     object="mimetypes_registry"/>
+  <utility
+     interface="Products.PortalTransforms.interfaces.IPortalTransformsTool"
+     object="portal_transforms"/>
+  <utility
+     interface="Products.ResourceRegistries.interfaces.registries.IKSSRegistry"
+     object="portal_kss"/>
+  <utility interface="Products.TinyMCE.interfaces.utility.ITinyMCE"
+     object="portal_tinymce"/>
+  <utility interface="eea.faceted.tool.interfaces.IFacetedTool"
+     object="portal_faceted"/>
+  <utility interface="eea.google.tool.interfaces.IGoogleTool"
+     object="portal_google"/>
+  <utility interface="eea.relations.content.interfaces.IRelationsTool"
+     object="portal_relations"/>
+  <utility interface="five.customerize.interfaces.IViewTemplateContainer"
+     object="portal_view_customizations"/>
+  <utility interface="p4a.plonevideoembed.interfaces.IVideoLinkSupport"
+     object=""/>
+  <utility interface="p4a.video.interfaces.IVideoSupport" object=""/>
+  <utility interface="plone.app.i18n.locales.interfaces.IContentLanguages"
+     object="plone_app_content_languages"/>
+  <utility interface="plone.app.i18n.locales.interfaces.ICountries"
+     object="plone_app_countries"/>
+  <utility interface="plone.app.i18n.locales.interfaces.IMetadataLanguages"
+     object="plone_app_metadata_languages"/>
+  <utility factory="plone.app.redirector.storage.RedirectionStorage"
+     interface="plone.app.redirector.interfaces.IRedirectionStorage"/>
+  <utility factory="plone.app.viewletmanager.storage.ViewletSettingsStorage"
+     interface="plone.app.viewletmanager.interfaces.IViewletSettingsStorage"/>
+  <utility name="EEADesign2006"
+     factory="zope.interface.interface.InterfaceClass" id="IEEADesignPublic"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="EEADesignCMS"
+     factory="zope.interface.interface.InterfaceClass" id="IEEADesignCMS"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="LinguaPlone"
+     factory="zope.interface.interface.InterfaceClass"
+     id="ILinguaPloneProductLayer"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="Solgema.PortletsManager"
+     factory="zope.interface.interface.InterfaceClass"
+     id="ISolgemaPortletsManagerLayer"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="collective.js.jqueryui"
+     factory="zope.interface.interface.InterfaceClass" id="IJqueryUILayer"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="plone.app.z3cform"
+     factory="zope.interface.interface.InterfaceClass" id="IPloneFormLayer"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility factory="plone.contentrules.engine.storage.RuleStorage"
+     interface="plone.contentrules.engine.interfaces.IRuleStorage"/>
+  <utility factory="Products.LinguaPlone.vocabulary.SyncedLanguages"
+     interface="plone.i18n.locales.interfaces.IContentLanguageAvailability"/>
+  <utility factory="Products.LinguaPlone.vocabulary.SyncedLanguages"
+     interface="plone.i18n.locales.interfaces.IMetadataLanguageAvailability"/>
+  <utility factory="plone.keyring.keymanager.KeyManager"
+     interface="plone.keyring.interfaces.IKeyManager"/>
+  <utility interface="plone.registry.interfaces.IRegistry"
+     object="portal_registry"/>
+  <utility factory="zope.ramcache.ram.RAMCache"
+     interface="zope.ramcache.interfaces.ram.IRAMCache"/>
+ </utilities>
+</componentregistry>

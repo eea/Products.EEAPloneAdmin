@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<object name="TempFolder" meta_type="Factory-based Type Information"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate=""></property>
+ <property name="description"
+    i18n:translate="">Specialized folder for temporary data.</property>
+ <property name="icon_expr"></property>
+ <property name="content_meta_type">TempFolder</property>
+ <property name="product">CMFCore</property>
+ <property name="factory">manage_addPortalFolder</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">index_html</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types">
+  <element value="ATBooleanCriterion"/>
+  <element value="ATCurrentAuthorCriterion"/>
+  <element value="ATDateCriteria"/>
+  <element value="ATDateRangeCriterion"/>
+  <element value="ATFile"/>
+  <element value="ATImage"/>
+  <element value="ATListCriterion"/>
+  <element value="ATPathCriterion"/>
+  <element value="ATPortalTypeCriterion"/>
+  <element value="ATProxiedContent"/>
+  <element value="ATReferenceCriterion"/>
+  <element value="ATRelativePathCriterion"/>
+  <element value="ATSelectionCriterion"/>
+  <element value="ATSimpleIntCriterion"/>
+  <element value="ATSimpleStringCriterion"/>
+  <element value="ATSortCriterion"/>
+  <element value="AliasVocabulary"/>
+  <element value="Article"/>
+  <element value="Assessment"/>
+  <element value="AssessmentPart"/>
+  <element value="BaseCacheRule"/>
+  <element value="CFTRequestor"/>
+  <element value="CMF Document"/>
+  <element value="CMF Event"/>
+  <element value="CMF Favorite"/>
+  <element value="CMF File"/>
+  <element value="CMF Folder"/>
+  <element value="CMF Image"/>
+  <element value="CMF Large Plone Folder"/>
+  <element value="CMF Link"/>
+  <element value="CMF News Item"/>
+  <element value="CMF Topic"/>
+  <element value="CachePolicy"/>
+  <element value="CacheTool"/>
+  <element value="CallForInterest"/>
+  <element value="CallForTender"/>
+  <element value="CommonalityReport"/>
+  <element value="ContentCacheRule"/>
+  <element value="Data"/>
+  <element value="DataFile"/>
+  <element value="DataSourceLink"/>
+  <element value="DataTable"/>
+  <element value="DavizVisualization"/>
+  <element value="Discussion Item"/>
+  <element value="DiversityReport"/>
+  <element value="Document"/>
+  <element value="EEAFigure"/>
+  <element value="EEAFigureFile"/>
+  <element value="EEAPossibleRelation"/>
+  <element value="EEARelationsContentType"/>
+  <element value="EEARelationsTool"/>
+  <element value="EEAVacancy"/>
+  <element value="EcoTip"/>
+  <element value="Enquiry"/>
+  <element value="EnquiryFolder"/>
+  <element value="EnquiryRequestor"/>
+  <element value="EnquiryRequestorFolder"/>
+  <element value="EpubFile"/>
+  <element value="Event"/>
+  <element value="ExternalDataSpec"/>
+  <element value="EyewitnessStory"/>
+  <element value="FactSheetDocument"/>
+  <element value="Favorite"/>
+  <element value="File"/>
+  <element value="FlashFile"/>
+  <element value="FlexibilityReport"/>
+  <element value="Folder"/>
+  <element value="GIS Application"/>
+  <element value="GoReplacement"/>
+  <element value="GoReplacements"/>
+  <element value="HeaderSet"/>
+  <element value="HeaderSetFolder"/>
+  <element value="HelpCenter"/>
+  <element value="HelpCenterDefinition"/>
+  <element value="HelpCenterErrorReference"/>
+  <element value="HelpCenterErrorReferenceFolder"/>
+  <element value="HelpCenterFAQ"/>
+  <element value="HelpCenterFAQFolder"/>
+  <element value="HelpCenterGlossary"/>
+  <element value="HelpCenterHowTo"/>
+  <element value="HelpCenterHowToFolder"/>
+  <element value="HelpCenterInstructionalVideo"/>
+  <element value="HelpCenterInstructionalVideoFolder"/>
+  <element value="HelpCenterKnowledgeBase"/>
+  <element value="HelpCenterLeafPage"/>
+  <element value="HelpCenterLink"/>
+  <element value="HelpCenterLinkFolder"/>
+  <element value="HelpCenterReferenceManual"/>
+  <element value="HelpCenterReferenceManualFolder"/>
+  <element value="HelpCenterReferenceManualPage"/>
+  <element value="HelpCenterReferenceManualSection"/>
+  <element value="HelpCenterTutorial"/>
+  <element value="HelpCenterTutorialFolder"/>
+  <element value="HelpCenterTutorialPage"/>
+  <element value="Highlight"/>
+  <element value="Image"/>
+  <element value="ImageFS"/>
+  <element value="IndicatorFactSheet"/>
+  <element value="KeyMessage"/>
+  <element value="Link"/>
+  <element value="MethodologyReference"/>
+  <element value="NavigationItem"/>
+  <element value="NavigationManager"/>
+  <element value="News Item"/>
+  <element value="Newsletter"/>
+  <element value="NewsletterBTree"/>
+  <element value="NewsletterReference"/>
+  <element value="NewsletterRichReference"/>
+  <element value="NewsletterTheme"/>
+  <element value="NewsletterTopic"/>
+  <element value="Organisation"/>
+  <element value="Plone Site"/>
+  <element value="PolicyDocumentReference"/>
+  <element value="PolicyHTTPCacheManagerCacheRule"/>
+  <element value="PolicyQuestion"/>
+  <element value="PressRelease"/>
+  <element value="Promotion"/>
+  <element value="PubliclyAddableItemsFolder"/>
+  <element value="QuickEvent"/>
+  <element value="RationaleReference"/>
+  <element value="RelatedIndicatorLink"/>
+  <element value="Report"/>
+  <element value="Requestor"/>
+  <element value="RuleFolder"/>
+  <element value="SOERCountry"/>
+  <element value="SOERKeyFact"/>
+  <element value="SOERMessage"/>
+  <element value="Section"/>
+  <element value="SimpleVocabulary"/>
+  <element value="SimpleVocabularyTerm"/>
+  <element value="SortedSimpleVocabulary"/>
+  <element value="Sparql"/>
+  <element value="SparqlBookmarksFolder"/>
+  <element value="Specification"/>
+  <element value="Speech"/>
+  <element value="Subscriber"/>
+  <element value="TempFolder"/>
+  <element value="TemplateCacheRule"/>
+  <element value="Topic"/>
+  <element value="TreeVocabulary"/>
+  <element value="TreeVocabularyTerm"/>
+  <element value="VdexFileVocabulary"/>
+  <element value="VdexLangstring"/>
+  <element value="VdexMediaDescriptor"/>
+  <element value="VdexRelationEndPoint"/>
+  <element value="VdexTerm"/>
+  <element value="VdexVocabulary"/>
+  <element value="VocabularyLibrary"/>
+  <element value="WorkItem"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="index_html"/>
+ <alias from="index.html" to="index_html"/>
+ <alias from="view" to="index_html"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="New..." action_id="new" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_factories" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="Rename items" action_id="rename_items" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_rename_form" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="State" action_id="content_status_history"
+    category="object_tabs"
+    condition_expr="python:object and portal.portal_workflow.getTransitionsFor(object, object.getParentNode())"
+    icon_expr="" link_target=""
+    url_expr="string:$object_url/content_status_history" visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="External Edit" action_id="external_edit" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:$object_url/external_edit" visible="False">
+  <permission value="Modify portal content"/>
+ </action>
+</object>
