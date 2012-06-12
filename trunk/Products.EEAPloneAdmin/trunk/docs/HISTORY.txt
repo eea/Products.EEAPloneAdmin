@@ -3,6 +3,15 @@ Changelog
 
 4.22-dev - (unreleased)
 -----------------------
+* Bug fix: added script to migrate provider_url on ExternalDataSpecs
+  [tiberich fixes #5232]
+* Upgrade step:
+  Create an external method with module name: 
+      Products.EEAPloneAdmin.fix_externaldataspecs 
+  function name: 
+      fix_externaldataspecs
+  Execute it, save the output for future reference.
+  [tiberich #5232]
 * Bug fix: added override for datecomponents from plone.app.form
   [tiberich #5236]
 * Upgrade step:
