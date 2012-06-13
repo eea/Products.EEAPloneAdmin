@@ -3,6 +3,8 @@ Changelog
 
 4.23-dev - (unreleased)
 -----------------------
+* Bug fix: show results with tinymce when using translations
+  [ichimdav #5229]
 
 4.22 - (2012-06-12)
 -------------------

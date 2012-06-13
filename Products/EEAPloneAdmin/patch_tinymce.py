@@ -235,8 +235,13 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     portal = getSite()
     results['portal_url'] = aq_inner(portal).absolute_url()
     # plone4 commented line
-    # nav_root = getNavigationRootObject(context, portal)
-    nav_root = portal.restrictedTraverse('SITE')
+    #nav_root = getNavigationRootObject(context, portal)
+    # #5229 set root site according to language of context
+    location = context.absolute_url()
+    if "SITE" in location:
+        nav_root = portal.restrictedTraverse('SITE')
+    else:
+        nav_root = portal.restrictedTraverse(context.Language())
     results['navigation_root_url'] = nav_root.absolute_url()
 
     if self.content_css and self.content_css.strip() != "":
@@ -327,8 +332,13 @@ def patched_getBreadcrumbs(self, path=None):
     """Get breadcrumbs with navigation root set to www/SITE"""
     result = []
 
-    #plone4 root_url = getNavigationRoot(self.context)
-    root_url = "/www/SITE/"
+    # #5229
+    location = self.context.absolute_url()
+    if "SITE" in location:
+        root_url = "/www/SITE/"
+    else:
+        root_url = "/www/" + self.context.Language()
+
     root = aq_inner(self.context.restrictedTraverse(root_url))
     root_url = root.absolute_url()
 
@@ -363,14 +373,13 @@ def patched_getListing(self, filter_portal_types, rooted,
     results = {}
 
     object = aq_inner(self.context)
-    portal_catalog = getToolByName(object, 'portal_catalog')
     normalizer = getUtility(IIDNormalizer)
 
     # check if object is a folderish object, if not, get it's parent.
     if not IFolderish.providedBy(object):
         object = aq_parent(object)
 
-    #plone4 if INavigationRoot.providedBy(object) or 
+    #plone4 if INavigationRoot.providedBy(object) or
     #(rooted == "True" and document_base_url[:-1] == object.absolute_url()):
     if (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
         results['parent_url'] = ''
@@ -398,14 +407,12 @@ def patched_getListing(self, filter_portal_types, rooted,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish
                 })
-    path = '/'.join(object.getPhysicalPath())
     if object.portal_type == 'Topic':
         for brain in object.queryCatalog(sort_on='getObjPositionInParent'):
             cat_results(brain)
     else:
-        for brain in portal_catalog(portal_type=filter_portal_types,
-                                    sort_on='getObjPositionInParent',
-                                    path={'query': path, 'depth': 1}):
+        for brain in self.context.getFolderContents({'portal_type':
+                    filter_portal_types, 'sort_on': 'getObjPositionInParent'}):
             cat_results(brain)
 
     # add catalog_ressults
@@ -425,7 +432,6 @@ def patched_getListing(self, filter_portal_types, rooted,
 
 def patched_getSearchResults(self, filter_portal_types, searchtext):
     """Returns the actual search result"""
-
     catalog_results = []
     results = {}
 
