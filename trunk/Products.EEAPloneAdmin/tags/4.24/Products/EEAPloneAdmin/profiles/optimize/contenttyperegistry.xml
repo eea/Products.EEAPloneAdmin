@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<object name="content_type_registry" meta_type="Content Type Registry">
+ <predicate name="StaffFile" content_type_name="File"
+    predicate_type="name_regex">
+  <argument value="eeastaff"/>
+ </predicate>
+ <predicate name="image" content_type_name="Image"
+    predicate_type="major_minor">
+  <argument value="image"/>
+  <argument value=""/>
+ </predicate>
+ <predicate name="html" content_type_name="Document"
+    predicate_type="major_minor">
+  <argument value="text"/>
+  <argument value="html"/>
+ </predicate>
+ <predicate name="flash" content_type_name="File"
+    predicate_type="major_minor">
+  <argument value="application"/>
+  <argument value="x-shockwave-flash"/>
+ </predicate>
+ <predicate name="files extensions" content_type_name="File"
+    predicate_type="extension">
+  <argument value="pdf,doc,xls"/>
+ </predicate>
+</object>
