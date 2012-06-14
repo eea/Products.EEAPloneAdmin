@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool">
+ <action-provider name="portal_actions">
+  <action title="Site map" action_id="sitemap"
+     category="site_actions"
+     condition_expr=""
+     url_expr="string:LOCAL_SITE/sitemap" visible="True"
+     position-after="contact">
+   <permission>View</permission>
+  </action>
+  <action title="EEA main website" action_id="eeawebsite"
+     category="externalsite_actions"
+     condition_expr=""
+     url_expr="string:${portal_url}" visible="True"
+     position-before="eionet">
+   <permission>View</permission>
+  </action>
+  <action title="Subscriptions" action_id="subscriptions"
+     category="site_actions"
+     condition_expr="python: request.get('LANGUAGE', 'en') == 'en'"
+     url_expr="string:${portal_url}/subscription" visible="True">
+   <permission>View</permission>
+  </action>
+  <action title="FAQ" action_id="faq" category="site_actions"
+     condition_expr="python: request.get('LANGUAGE', 'en') == 'en'"
+     url_expr="string:${portal_url}/help/eea-help-centre/faqs" visible="True">
+   <permission>View</permission>
+  </action>
+ </action-provider>
+</object>

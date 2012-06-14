@@ -1,0 +1,361 @@
+Changelog
+=========
+
+4.23 - (2012-06-14)
+-------------------
+* Bug fix: show results with tinymce when using translations
+  [ichimdav #5229]
+
+4.22 - (2012-06-12)
+-------------------
+* Bug fix: added script to migrate provider_url on ExternalDataSpecs
+  [tiberich fixes #5232]
+* Upgrade step:
+  Create an external method with module name: 
+      Products.EEAPloneAdmin.fix_externaldataspecs 
+  function name: 
+      fix_externaldataspecs
+  Execute it, save the output for future reference.
+  [tiberich #5232]
+* Bug fix: added override for datecomponents from plone.app.form
+  [tiberich #5236]
+* Upgrade step:
+    - Within ZMI > portal_setup > Upgrades Tab run upgrades for
+      Products.CMFPlone (4.1.2 -> 4.1.5) 
+      [voineali #5116]
+    - Within ZMI > portal_setup > Import Tab > Import All Steps from
+      'Plone Discussions'
+    - Migrate comments: http://localhost:<port>/www/@@comment-migration
+    - Enable comments and notification mails on
+      http://localhost:8080/www/@@discussion-settings
+    - Within ZMI > portal_setup > Import Tab import 'Manage the configuration
+      registry' from 'EEA Plone Admin: caching settings' 
+      [voineali #5121]
+* Bug fix: fixed markup of HISTORY.txt file
+  [ciobabog refs #5231]
+* Feature: Upgraded commenting system
+  [szabozo0 #5189]
+* Change: Add 'eea.content.staleResources' cache rule in order to cache some sparql
+  resources in varnish for one month
+  [voineali, demarant fixes #5121]
+* Bug fix: Make it possible to add new Plone Sites within EEA Data.fs or on a
+  fresh new one
+  [voineali refs #5145]
+* Change: removed jsdisable condition from js resources
+  [szabozo0 #5095]
+
+4.21 - (2012-04-26)
+-------------------
+* Bug fix: now all objects that are copied have their creation
+  date set to now()
+  [tiberich #4402]
+* Feature: use fake_transition in eea_data_workflow
+  [tiberich #5065]
+* Bug fix: Added plone.app.caching rules for DavizVisualization,
+  Sparql and SparqlBookmarkFolder
+  [voineali #5074]
+* Upgrade step: Remove 'sparql-download' from:
+  Site Setup > Caching > Caching operations > Templates
+  [voineali #5074]
+
+4.20 - (2012-03-30)
+-------------------
+* Bug fix: patched plone.app.discussion ver 2.0.10, not to fail on migrate workflows
+  when "Discussion Item" has no workflow assigned
+  [ghicaale #5041]
+* Bug fix: fixed "content rules" redirects under control panel
+  [ghicaale]
+* Bug fix: flush collective.indexing process queue in searchResults monkey patch
+  [tiberich #5033]
+* Bug fix: patched plone.app.kss not silently fails and to display a
+  progress info on state change
+  [ghicaale #5017]
+* Bug fix: patched plone.app.redirector to also redirect direct file download
+  links (e.g. at_download/fileField) when the containing object defines an alias
+  [ghicaale]
+
+4.19 - (2012-03-06)
+-------------------
+* Change: remove code that checks for IEEAPloneSite when saving disk resources
+  [tiberich]
+
+4.18 - (2012-03-05)
+-------------------
+* Upgrade step: dascalu + tiberich: install eea.munin on ape, link
+  its plugins into the ape munin
+  [tiberich #4955]
+* Upgrade step: dascalu + tiberich: on each squirrel, install the
+  plugins in munin-scripts in munin
+  [tiberich #4955]
+* Bug fix: Updated collective.quickupload patch according with the latest
+  changes
+  [voineali #4965]
+* Bug Fix: updated all xlsx and docx to new mime type.
+  [demarant #4957]
+* Feature: added external method for deleted old never published objects
+  [demarant]
+* Change: added override for munin browser views to make them public
+  [tiberich #4955]
+* Feature: only do saving of resources on disk in the context of EEA Plone site
+  [tiberich]
+
+4.17 - (2012-02-14)
+-------------------
+* Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
+  [ghicaale #4945]
+* Upgrade step: under @@manage-viewlets resave position of viewlets in order
+  to be saved for EEADesign2006 skin too
+  [ghicaale #4939]
+* Bug fix: patch for plone.app.viewletmanager to save viewlets order for both skins
+  [ghicaale #4939]
+* Bug fix: added cache headers to multimedia_popup_view.pt
+  [ghicaale #4930]
+* Bug fix: fix clear registry import setup step
+  [tiberich #4933]
+* Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
+  [demarant]
+* Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources
+  [tiberich #4933]
+* Code cleanup
+  [tiberich]
+
+4.16 - (2012-02-06)
+-------------------
+* Bug fix: made kukit.js only for authenticated since it gives error on gis apps
+  [demarant #4895]
+* Feature: added script to rewrite css/js registry files to enable optimization reordering
+  [tiberich #4737]
+* Bug fix: added ordering instructions in css/js registry files
+  [tiberich #4737]
+* Upgrade step:
+    - export js/css profiles in portal_setup
+    - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
+    - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry
+    - go to portal_javascripts, portal_css, portal_kss, click save
+
+4.15 - (2012-01-17)
+-------------------
+* Upgrade step: import javascript and css from "EEAPloneAdmin: CSS/JS reorder" profile
+  [tiberich #4737]
+* Bug fix: updated the optimization JS profile file to minimize number of
+  generated files
+  [tiberich #4737]
+
+4.14 - (2012-01-04)
+-------------------
+* Bug fix: Updated eea rewrite rules JS in order to rewrite some URL as some
+  views works only if they are applied to Plone Site
+  [voineali #4590]
+
+4.13 - (2012-01-03)
+-------------------
+* Feature: added script to create a link to maildrop script
+  [tiberich #4804]
+* Bug fix: Added eea rewrite rules JS in order to rewrite some URL as some
+  views works only if they are applied to Plone Site
+  [voineali #4590]
+* Bug fix: Replaced aq_parent with www
+  [voineali #4590]
+* Bug fix: Cache faceted and Topic only one hour instead of 24
+  [voineali #4824]
+
+4.12 - (2011-12-15)
+-------------------
+* Bug fix: added patch to avoid logic bug in plone.outputfilters
+  image captioning code
+  [tiberich #4832]
+* Bug fix: Cache frontpage only one hour instead of 24
+  [voineali #4824]
+* Bug fix: Fixed toLocalizedTime to show long_format
+  [voineali #4798]
+* Bug fix: fix limited search behavior of tinymce in regards
+  to internal linking and breadcrumbs trails for image and internal link plugins
+  [ichimdav #4825]
+
+4.11 - (2011-12-02)
+-------------------
+* Feature: added logging for missing blobs
+  [tiberich #4702]
+* Bug fix: added script to check for missing blobs
+  [ghicaale #4806]
+* Bug fix: improve logging for migration script for missing filenames in blobs
+  [tiberich #4746]
+
+4.10 - (2011-11-25)
+-------------------
+* Bug fix: Set filename for image fields where missing
+  [szabozo0 #4746]
+
+4.9 - (2011-11-25)
+------------------
+* Bug fix: Fixed previous broken egg.
+
+4.8 - (2011-11-25)
+------------------
+* Bug fix: added patch for EEA mailhost
+  [ghicaale #4770]
+
+4.7 - (2011-11-25)
+------------------
+* Feature: Added EEA mailhost configuration
+  [ghicaale #4770]
+
+4.6 - (2011-11-22)
+------------------
+* Added patch for Products.TinyMCE bug in utility
+  [tiberich #4733]
+
+4.5 - (2011-11-21)
+------------------
+* no changes
+
+4.4 - (2011-11-21)
+------------------
+* Cleanup: pylint warnigns
+  [voineali]
+
+4.3 - (2011-11-19)
+------------------
+* Added patch to avoid failure in missing blobs
+  [tiberich]
+
+4.2 - (2011-11-19)
+------------------
+* Change: Made Themes tab hidden as it already in Categorization tab
+  [voineali #4694]
+* Added get_oid External method to help debug blobs
+  [tiberich]
+
+4.1 - (2011-11-18)
+------------------
+* Rerelease broken egg
+
+4.0 - (2011-11-18)
+------------------
+* Bug fix: Enabled resize.js
+  [szabozo0 #4667]
+* Bug fix: ignore KeyErrors when getting content for resources (avoids problems caused by
+  missing base_properties in default Plone skin)
+  [tiberich #4603]
+* Bug fix: set the name of the uploaded file when quickupload is used
+  [szabozo #4643]
+* Feature: added registration of dashboard traversal to allow proper functioning of dashboard
+  [tiberich #4624]
+* Feature: use a buildout environmental variable to fix portal links in generated resources
+  [tiberich #4603]
+* Change: enabled multiple skins when saving resources
+  [tiberich #4603]
+* Bug fix: added a patch for the import step of resource registries that
+  will save resources when GS profile is loaded
+  [tiberich #4603]
+* Feature: call a script after saving resources, it will sync the files
+  in a central location
+  [tiberich #4603]
+* Feature: added external method unmarkCreationFlagForBrains
+  for unmarking creation flag on a give catalog search result.
+  [demarant]
+* Bug fix: added fix for #4606 for p4a.fileimage
+  [tiberich #4606]
+* Bugfix: Added monkeypatch for fixing export all steps
+  [szabozo0 #4583]
+* Bug fix: added override to use nice template layout for formlib based forms
+  [tiberich #4589]
+* Change: Removed overrides for control panel pages, we solved it with url rewrites
+  [szabozo0 #4510]
+* Bugfix: started fixing views/templates called on /www context
+  [szabozo0 #4510]
+* Patch: added patch_tinymce.js to fix tinymce loading; added tinymce_themes skin path for same purposes
+  [tiberich #4510]
+* Feature: Added extra headers to prevent cache in browser
+  [ghicaale #4506]
+* Feature: Added EEA custom PURGE policy
+  [ghicaale #4394]
+* Change: Cleanup, removed eea_patch_kukit.js
+  [szabozo0 #4441]
+* Bugfix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets
+  [szabozo0 #4441]
+* Feature: Added profile for caching settings
+  [ghicaale #4394]
+* Feature: Added patch_html5 in support of HTML5 integration
+  [ghicaale #4444]
+* Bugfix: Enabled table_sorter.js for not authenticated users
+  [szabozo0 #4446]
+* Change: synchronized with resources on testing server
+  [szabozo0 #4440]
+* Change: refactored the @@plone view to conform to Plone 4
+  [tiberich #4306]
+* Change: added workflow scripts from EEAContentTypes and EEAEnquiry
+  [tiberich #4306]
+* Change: using collective.monkeypatcher for patches
+  [tiberich #4306]
+* Change: removed workflow setup scripts, they're now GS files
+  [tiberich #4306]
+* Change: disabled the test for the localsites profile, we won't do that anymore
+  [tiberich #4306]
+* Feature: Added upgrade steps
+  [voineali #4392]
+* Feature: Plone 4 compatibility
+  [tiberich #4306]
+
+0.7 - (2011-04-01)
+------------------
+* Cleanup: Removed PloneRSSPortlet
+  [voineali #4169]
+* Cleanup: of pyflakes compiler errors
+  [ichimdav #4141]
+* Cleanup: of pylint violations
+  [ichimdav #4140]
+* Bug fix: Added translation domain to ZCML files
+  [voineali #4139]
+* Cleanup: Removed portal_migration scripts as portal_migration is deprecated.
+  Please check that there are no un-applied migration scripts before
+  upgrading to this version
+  [voineali #4139]
+
+0.6 - (2011-03-02)
+------------------
+* Change: removed PloneRDFCalendar & RDFEvent, not needed for Plone 4
+  [ichimdav #2931]
+
+0.5 - (2011-02-23)
+------------------
+* Change: added migration script for CMFLinkChecker cleanup
+  [batradav #3219]
+* Bug fix: fix bug due to API changes
+  [tiberich #4085]
+
+0.4 - (2011-02-17)
+------------------
+* Bug fix: properly retrieve content from FSDTMLMethods
+  [tiberich #4085]
+
+0.3 - (2011-02-17)
+------------------
+* Change: removed thickbox js and css profile registration
+  [ichimdav #3773]
+* Bug fix: fix a bug due to incomplete exception handling
+  [tiberich #4085]
+* Change: improved save to disk functionality to take skins into consideration
+  [tiberich #4085]
+* Bug fix: fixed pottential bug in code in admin module
+  [tiberich]
+
+0.2 - (2011-02-14)
+------------------
+* Feature: eggified product
+  [ichimdav #4063]
+
+0.1 - (Product)
+---------------
+* Feature: save to disk resources when changes are triggered in portal resource registries
+  [tiberich #4085]
+* Feature: added resolveuid.js to js optimization profile
+  [tiberich #3988]
+* Feature: Added profile to optimize order of JS and CSS registries
+  [voineali #3411]
+* Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
+  ids for JS/CSS resources
+  [voineali #3962]
+* Generated skeleton product from DIYPloneStyle.
+  [generator]
+

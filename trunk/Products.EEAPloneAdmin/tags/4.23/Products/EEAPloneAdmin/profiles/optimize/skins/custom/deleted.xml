@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="deleted" meta_type="Folder">
+ <property name="title"></property>
+ <object name="DEPRECATED2_frontpage_view" meta_type="Page Template"/>
+ <object name="DEPRECATED_default_error_message" meta_type="Page Template"/>
+ <object name="DEPRECATED_frontpage_macros" meta_type="Page Template"/>
+ <object name="DEPRECATED_frontpage_view" meta_type="Page Template"/>
+ <object name="DEPRECATED_portlet_cache" meta_type="Page Template"/>
+ <object name="DEPRECATED_portlet_versions" meta_type="Page Template"/>
+ <object name="DEPRECATED_rssAllowed" meta_type="Script (Python)"/>
+ <object name="DEPRECATED_soercountry_view" meta_type="Page Template"/>
+ <object name="copy_of_jobs_view" meta_type="Page Template"/>
+ <object name="default_error_message" meta_type="Page Template"/>
+ <object name="eeafigure_view" meta_type="Page Template"/>
+ <object name="event_view" meta_type="Page Template"/>
+ <object name="folder_listing" meta_type="Page Template"/>
+ <object name="jobs_view" meta_type="Page Template"/>
+ <object name="login_form" meta_type="Controller Page Template"/>
+ <object name="mail_password_form" meta_type="Page Template"/>
+ <object name="organigram-NEW" meta_type="Page Template"/>
+ <object name="plonegazette_mua_formatter" meta_type="Page Template"/>
+ <object name="soercountry_view" meta_type="Page Template"/>
+</object>
