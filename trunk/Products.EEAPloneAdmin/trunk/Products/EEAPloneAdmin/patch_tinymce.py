@@ -237,11 +237,11 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     # plone4 commented line
     #nav_root = getNavigationRootObject(context, portal)
     # #5229 set root site according to language of context
-    location = context.absolute_url()
-    if "SITE" in location:
+    lang = context.Language()
+    if lang == "en":
         nav_root = portal.restrictedTraverse('SITE')
     else:
-        nav_root = portal.restrictedTraverse(context.Language())
+        nav_root = portal.restrictedTraverse(lang)
     results['navigation_root_url'] = nav_root.absolute_url()
 
     if self.content_css and self.content_css.strip() != "":
@@ -333,11 +333,11 @@ def patched_getBreadcrumbs(self, path=None):
     result = []
 
     # #5229
-    location = self.context.absolute_url()
-    if "SITE" in location:
+    lang = self.context.Language()
+    if lang == "en":
         root_url = "/www/SITE/"
     else:
-        root_url = "/www/" + self.context.Language()
+        root_url = "/www/" + lang
 
     root = aq_inner(self.context.restrictedTraverse(root_url))
     root_url = root.absolute_url()
