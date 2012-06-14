@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.25-dev - (unreleased)
+-----------------------
+
 4.24 - (2012-06-14)
 -------------------
 * Bug fix: fixed bug introduced in previous egg
