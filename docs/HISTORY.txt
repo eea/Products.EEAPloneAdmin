@@ -3,6 +3,8 @@ Changelog
 
 4.24-dev - (unreleased)
 -----------------------
+* Bug fix: fixed bug introduced in previous egg
+  [ichimdav #5229]
 
 4.23 - (2012-06-14)
 -------------------
