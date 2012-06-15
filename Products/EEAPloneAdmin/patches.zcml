@@ -24,6 +24,18 @@
                   replacement=".patch_atct.listSubtopics"
                   preserveOriginal="false" />
 
+    <!-- Patch of Products.ATContentTypes ver 2.1.7 for calendar view with location as tuple  #5284 -->
+        <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
+                  class="Products.ATContentTypes.lib.calendarsupport"
+                  original="vformat"
+                  replacement=".patch_atct.vformat"
+                  preserveOriginal="false" />
+        <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
+                  class="Products.ATContentTypes.lib.calendarsupport"
+                  original="foldLine"
+                  replacement=".patch_atct.foldLine"
+                  preserveOriginal="false" />
+
     <!-- XXX Deprecated patch. Remove me -->
     <!-- monkey:patch description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
                       class="Products.CMFPlone.CatalogTool.CatalogTool "

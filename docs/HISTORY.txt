@@ -3,6 +3,9 @@ Changelog
 
 4.25-dev - (unreleased)
 -----------------------
+* Bug fix: patched ATContentTypes calendarsuport to accept location field
+  as a tuple
+  [ichimdav fixes #5284]
 
 4.24 - (2012-06-14)
 -------------------
