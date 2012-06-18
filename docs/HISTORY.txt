@@ -1,6 +1,10 @@
 Changelog
 =========
 
+4.26-dev - (unreleased)
+-------------------
+ 
+
 4.25 - (2012-06-18)
 -------------------
 * Bug fix: patched ATContentTypes calendarsuport to accept location field
