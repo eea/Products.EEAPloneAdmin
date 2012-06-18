@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<object name="NavigationItem"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Navigation Item</property>
+ <property name="description" i18n:translate="">Navigation item</property>
+ <property name="icon_expr">string:${portal_url}/document_icon.png</property>
+ <property name="content_meta_type">NavigationItem</property>
+ <property name="product">NavigationManager</property>
+ <property name="factory">addNavigationItem</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">base_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="NavigationItem"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">base_view</property>
+ <property name="view_methods">
+  <element value="base_view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="base_view"/>
+ <alias from="edit" to="base_edit"/>
+ <alias from="index.html" to="(Default)"/>
+ <alias from="properties" to="base_metadata"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(Default)"/>
+ <action title="View" action_id="view" category="object"
+    condition_expr="python:True" icon_expr="" link_target=""
+    url_expr="string:$object_url" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/edit"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz" icon_expr=""
+    link_target="" url_expr="string:${object_url}/reference_graph"
+    visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+ <action title="Folder Listing" action_id="folderlisting" category="folder"
+    condition_expr="object/isPrincipiaFolderish" icon_expr="" link_target=""
+    url_expr="string:${folder_url}/view" visible="False">
+  <permission value="View"/>
+ </action>
+</object>

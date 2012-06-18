@@ -1,0 +1,20 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:cache="http://namespaces.zope.org/cache"
+  i18n_domain="eea">
+  <include package="z3c.caching" file="meta.zcml" />
+  <cache:ruleset ruleset="plone.resource"
+    for="Products.CMFCore.FSDTMLMethod.FSDTMLMethod" />
+
+  <cache:rulesetType
+    name="eea.content.frontPage"
+    title="Front page"
+    description="A public-facing view for front page"
+    />
+
+  <cache:rulesetType
+    name="eea.content.staleResources"
+    title="Stale resources"
+    description="These are resources which can be cached for at least one month e.g. of these are sparql downloadable resources and files"
+    />
+
+</configure>
