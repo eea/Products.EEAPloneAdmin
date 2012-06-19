@@ -29,9 +29,6 @@ class IPloneAdmin(Interface):
 class IContextState(Interface):
     """ IContextState
     """
-    def is_empty():
-        """ Return true if context is empty (but only for anonymous)
-        """
 
     def browser_title():
         """ Return the computed title for the curent context

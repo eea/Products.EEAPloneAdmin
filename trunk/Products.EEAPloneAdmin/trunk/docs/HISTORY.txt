@@ -3,7 +3,8 @@ Changelog
 
 4.26-dev - (unreleased)
 -------------------
- 
+* Bug fix: removed definition of is_empty
+  [tiberich refs #5289]
 
 4.25 - (2012-06-18)
 -------------------
