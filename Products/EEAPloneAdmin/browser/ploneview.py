@@ -92,11 +92,11 @@ class PloneAdmin(Plone):
         raise NotImplementedError(
             "This has been moved to @@plone_portal_state")
 
-    def is_empty(self):
-        """ Empty
-        """
-        raise NotImplementedError(
-            "This has been moved to @@plone_context_state")
+    #def is_empty(self):
+        #""" Empty
+        #"""
+        #raise NotImplementedError(
+            #"This has been moved to @@plone_context_state")
 
     def browser_title(self):
         """ Title
@@ -199,24 +199,24 @@ class PloneAdmin(Plone):
 class ContextState(BaseContextState):
     """Additions to default @@plone_context_state"""
 
-    @memoize
-    def is_empty(self):
-        """ Empty
-        """
-        portal_state = getMultiAdapter((self.context, self.request),
-                                        name="plone_portal_state")
-        # NOTE: this used to be globalized with p2.5 method,
-        # this in no longer possible
-        context = self.context
-        is_empty = False
-        if portal_state.anonymous():
-            catalog = getToolByName(context, 'portal_catalog')
-            rid = catalog.getrid('/'.join(context.getPhysicalPath()))
-            if rid:
-                metadata = catalog.getMetadataForRID(rid)
-                is_empty = metadata and metadata.get('is_empty', False)
+    #@memoize
+    #def is_empty(self):
+        #""" Empty
+        #"""
+        #portal_state = getMultiAdapter((self.context, self.request),
+                                        #name="plone_portal_state")
+        ## NOTE: this used to be globalized with p2.5 method,
+        ## this in no longer possible
+        #context = self.context
+        #is_empty = False
+        #if portal_state.anonymous():
+            #catalog = getToolByName(context, 'portal_catalog')
+            #rid = catalog.getrid('/'.join(context.getPhysicalPath()))
+            #if rid:
+                #metadata = catalog.getMetadataForRID(rid)
+                #is_empty = metadata and metadata.get('is_empty', False)
 
-        return is_empty
+        #return is_empty
 
     @memoize
     def browser_title(self):
