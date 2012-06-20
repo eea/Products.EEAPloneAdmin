@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  lang="en"
+  metal:use-macro="context/main_template/macros/master"
+  i18n:domain="plone">
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+
+        <metal:field use-macro="python:context.widget('text', mode='view')">
+          Body text
+        </metal:field>
+
+        <h2>Application form</h2>
+        <p><strong>Interested candidates must apply by
+            filling in the application form below. To the application form must be attached:
+        </strong></p>
+        <ul><li><strong>The template
+              CV below duly filled in, and</strong>
+            <br /><a title="europass cv template" class="internal-link" href="/about-us/jobs/europass_cv_template.doc">Template
+              Europass CV
+              </a><br /><a title="instructions for europass cv" class="internal-link"
+              href="/about-us/jobs/instructions_for_europass_cv.pdf">Instructions for Europass
+              CV </a>
+            </li><li>
+            <strong>A letter of motivation</strong></li></ul>
+        <p><strong>E-mail (Questions only)</strong>: should you have any questions, please use this email: 
+          <script type="text/javascript">
+            document.write(create_contact_info_local('recruitment.enquiries','eea.europa.eu','recruitment.enquiries at eea.europa.eu') + '');
+            </script><noscript>
+            <em>Email Protected.<br />
+              Please enable JavaScript.</em>
+        </noscript></p>
+        <iframe src="" style="width:95%; height:820px" scrolling="auto"
+          tal:attributes="src python:'http://vacancies.eea.europa.eu/applicationForm.aspx?PostRef=%s' % here.Title()"></iframe>
+
+      </metal:content-core>
+    </metal:content-core>
+  </body>
+</html>

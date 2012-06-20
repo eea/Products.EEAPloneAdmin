@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="CommonEditor"/>
+    <role name="ContentManager"/>
+    <role name="Contributor"/>
+    <role name="Editor"/>
+    <role name="EventsManager"/>
+    <role name="Manager"/>
+    <role name="Member"/>
+    <role name="Owner"/>
+    <role name="PromotionManager"/>
+    <role name="ProofReader"/>
+    <role name="Reader"/>
+    <role name="Reviewer"/>
+    <role name="Site Administrator"/>
+    <role name="WebReviewer"/>
+    <role name="packrole"/>
+  </roles>
+  <permissions>
+    <permission name="ATContentTypes Topic: Add ATBooleanCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATCurrentAuthorCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATDateCriteria" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATDateRangeCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATListCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATPathCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATPortalTypeCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATReferenceCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATSelectionCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATSimpleIntCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATSimpleStringCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes Topic: Add ATSortCriterion" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes: Add Document" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add Event" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add File" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add Folder" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add Image" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add Large Plone Folder" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes: Add Link" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Add News Item" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="ATContentTypes: Upload via url" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="ATContentTypes: View history" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Access Transient Objects" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Access arbitrary user session data" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Access contents information" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
+      <role name="Reader"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Access future portal content" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Access inactive portal content" acquire="False">
+      <role name="CommonEditor"/>
+      <role name="ContentManager"/>
+      <role name="EventsManager"/>
+      <role name="Owner"/>
+      <role name="ProofReader"/>
+      <role name="Site Administrator"/>
+      <role name="WebReviewer"/>
+    </permission>
+    <permission name="Access session data" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Add BTreeFolder2s" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Add CallForTender" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Add Documents, Images, and Files" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Add Folders" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Add portal content" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Add portal events" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Add portal folders" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Add portal member" acquire="False">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Add portal topics" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Allow sendto" acquire="True">
+      <role name="Anonymous"/>
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="CMFEditions: Access previous versions" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="CMFEditions: Checkout to location" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="CMFEditions: Revert to previous versions" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="CMFEditions: Save new version" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="Change Images and Files" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Change local roles" acquire="True">
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Change portal events" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Change portal topics" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Content rules: Manage rules" acquire="False">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Copy or Move" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Delete objects" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="FTP access" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="List folder contents" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Reviewer"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="List portal members" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="List undoable changes" acquire="True">
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Mail forgotten password" acquire="True">
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Manage promotions" acquire="True">
+      <role name="PromotionManager"/>
+    </permission>
+    <permission name="Manage properties" acquire="True">
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Modify portal content" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Modify view template" acquire="True">
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="PloneHelpCenter: Add Documentation" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Portlets: Manage own portlets" acquire="True">
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Portlets: Manage portlets" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Portlets: View dashboard" acquire="True">
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Query Vocabulary" acquire="True">
+      <role name="ContentManager"/>
+    </permission>
+    <permission name="Reply to item" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Request review" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Review portal content" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="Manager"/>
+      <role name="Reviewer"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Search ZCatalog" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Set own password" acquire="False">
+      <role name="Authenticated"/>
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Set own properties" acquire="False">
+      <role name="Authenticated"/>
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Undo changes" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Use Database Methods" acquire="True">
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Use external editor" acquire="False">
+      <role name="Authenticated"/>
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Use mailhost services" acquire="True">
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="Use version control" acquire="True">
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="View" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
+      <role name="Reader"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="View Groups" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Member"/>
+      <role name="Owner"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="View History" acquire="True">
+      <role name="CommonEditor"/>
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
+      <role name="Reader"/>
+      <role name="Reviewer"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="View management screens" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+    </permission>
+    <permission name="WebDAV Lock items" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="WebDAV Unlock items" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="WebDAV access" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Site Administrator"/>
+    </permission>
+    <permission name="eea.daviz: Add presentation" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+    </permission>
+    <permission name="eea.facetednavigation: Configure faceted" acquire="True">
+      <role name="ContentManager"/>
+      <role name="Editor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+    </permission>
+    <permission name="eea.sparql: Add Sparql" acquire="False">
+      <role name="ContentManager"/>
+      <role name="Contributor"/>
+      <role name="Manager"/>
+    </permission>
+  </permissions>
+</rolemap>

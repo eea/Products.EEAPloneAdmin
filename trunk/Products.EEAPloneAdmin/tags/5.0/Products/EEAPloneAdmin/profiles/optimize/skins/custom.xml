@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="custom" meta_type="Folder">
+ <property name="title"></property>
+ <object name="deleted" meta_type="Folder"/>
+ <object name="eeareferencebrowser" meta_type="Page Template"/>
+ <object name="enquiry_edit" meta_type="Page Template"/>
+ <object name="enquiry_macros" meta_type="Page Template"/>
+ <object name="logged_out" meta_type="Controller Page Template"/>
+ <object name="organigram.html" meta_type="Page Template"/>
+</object>
