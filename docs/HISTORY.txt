@@ -1,6 +1,9 @@
 Changelog
 =========
 
+5.1-dev - (unreleased)
+----------------------
+
 5.0 - (2012-06-20)
 ------------------
 * Bug fix: removed definition of is_empty
