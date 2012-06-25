@@ -6,6 +6,8 @@ Changelog
 
 5.0 - (2012-06-20)
 ------------------
+* Feature: Improved unmarkcreationflag method.
+  [demarant refs #5312]
 * Bug fix: removed definition of is_empty
   [tiberich refs #5289]
 
