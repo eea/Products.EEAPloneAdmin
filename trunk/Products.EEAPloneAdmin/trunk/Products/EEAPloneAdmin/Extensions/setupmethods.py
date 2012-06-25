@@ -455,24 +455,30 @@ def createDCPage(self):
 
     return printed
 
-
 def unmarkCreationFlagForBrains(self, brains=None):
     """ unmark creation flag for given catalog brains """
-    printed = "*********Unmarking creating flag********"
+    info('INFO: starting unmark creation flag')
+    tot = len(brains)
+    i = 0
     for b in brains:
-        o = b.getObject()
+        i += 1
+	info('INFO: processing %s of %s' % (str(i),str(tot)))
         try:
+            o = b.getObject()
             if o.checkCreationFlag():
-                print 'Unmarking creation flag for %s - %s' % (
+                msg = 'INFO: Unmarking creation flag for %s - %s' % (
                     o.getId(), o.absolute_url())
                 o.unmarkCreationFlag()
+                info(msg)
             else:
-                print 'Already marked for %s - %s' % (
+                msg = 'Already marked for %s - %s' % (
                     o.getId(), o.absolute_url())
-        except Exception:
-            print "ERROR unmarking flag  on " + o.absolute_url()
-    return printed
+                info(msg)
+        except WorkflowException, err:
+                info('ERROR: unmarking flag for %s' % o.absolute_url())
+                info_exception('Exception: %s ', err)
 
+    info('INFO: DONE unmark creation flag')
 
 def interactiveMapsPromotions(self):
     """find interactive maps via promotions """
