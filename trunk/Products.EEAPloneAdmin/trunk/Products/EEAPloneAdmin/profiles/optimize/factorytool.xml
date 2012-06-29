@@ -9,6 +9,7 @@
   <type portal_type="CacheTool"/>
   <type portal_type="CallForInterest"/>
   <type portal_type="CallForTender"/>
+  <type portal_type="CloudVideo"/>
   <type portal_type="CommonalityReport"/>
   <type portal_type="ContentCacheRule"/>
   <type portal_type="Data"/>

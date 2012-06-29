@@ -41,8 +41,8 @@
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
- <portlet title="EEA Promotion Gallery" addview="portlets.PromoGallery"
-    description="A portlet which displays a gallery with the latest promoted items">
+ <portlet title="News" addview="portlets.News"
+    description="A portlet which can render a listing of recent news">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
@@ -50,11 +50,13 @@
     description="A portlet which can render a navigation tree">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
  </portlet>
- <portlet title="Readiness portlet"
-    addview="plone.app.portlets.browser.formhelper.NullAddForm"
-    description="A portlet which shows readiness information"/>
- <portlet title="News" addview="portlets.News"
-    description="A portlet which can render a listing of recent news">
+ <portlet title="Events" addview="portlets.Events"
+    description="A portlet which can render a listing of recent events">
+  <for interface="plone.app.portlets.interfaces.IColumn"/>
+  <for interface="plone.app.portlets.interfaces.IDashboard"/>
+ </portlet>
+ <portlet title="EEA Promotion Gallery" addview="portlets.PromoGallery"
+    description="A portlet which displays a gallery with the latest promoted items">
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
@@ -76,11 +78,9 @@
   <for interface="plone.app.portlets.interfaces.IColumn"/>
   <for interface="plone.app.portlets.interfaces.IDashboard"/>
  </portlet>
- <portlet title="Events" addview="portlets.Events"
-    description="A portlet which can render a listing of recent events">
-  <for interface="plone.app.portlets.interfaces.IColumn"/>
-  <for interface="plone.app.portlets.interfaces.IDashboard"/>
- </portlet>
+ <portlet title="Readiness portlet"
+    addview="plone.app.portlets.browser.formhelper.NullAddForm"
+    description="A portlet which shows readiness information"/>
  <portlet title="Static text portlet" addview="plone.portlet.static.Static"
     description="A portlet which can display static HTML text."/>
  <assignment name="recent-items" category="user" key="alectester2"
@@ -97,6 +97,10 @@
   <property name="state">
    <element>published</element>
   </property>
+ </assignment>
+ <assignment name="recent-items" category="user" key="eeamanager"
+    manager="plone.dashboard2" type="portlets.Recent" visible="True">
+  <property name="count">5</property>
  </assignment>
  <assignment name="recently-created" category="user" key="demarant"
     manager="plone.dashboard3" type="plone.portlet.collection.Collection"
@@ -140,6 +144,20 @@
     manager="plone.dashboard1" type="portlets.Recent" visible="True">
   <property name="count">5</property>
  </assignment>
+ <assignment name="news" category="user" key="eeamanager"
+    manager="plone.dashboard1" type="portlets.News" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
+ <assignment name="events" category="user" key="eeamanager"
+    manager="plone.dashboard1" type="portlets.Events" visible="True">
+  <property name="count">5</property>
+  <property name="state">
+   <element>published</element>
+  </property>
+ </assignment>
  <assignment name="review-list" category="user" key="alectester2"
     manager="plone.dashboard4" type="portlets.Review" visible="True"/>
  <assignment name="review-list" category="user" key="alintest"
@@ -154,6 +172,8 @@
   <property name="random">False</property>
   <property name="show_dates">True</property>
  </assignment>
+ <assignment name="review-list" category="user" key="eeamanager"
+    manager="plone.dashboard4" type="portlets.Review" visible="True"/>
  <assignment name="readiness" category="content_type" key="Assessment"
     manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
     visible="True"/>
@@ -173,6 +193,9 @@
   <property name="upload_media_type"/>
   <property name="upload_portal_type">auto</property>
  </assignment>
+ <assignment name="readiness" category="content_type" key="EEAFigure"
+    manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
+    visible="True"/>
  <assignment name="readiness" category="content_type" key="IndicatorFactSheet"
     manager="plone.rightcolumn" stopUrls="" type="portlets.Readiness"
     visible="True"/>

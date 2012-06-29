@@ -8,6 +8,7 @@
  <object name="EnquiryRequestor" meta_type="Workflow"/>
  <object name="alec-test" meta_type="Workflow"/>
  <object name="backup_of_eea_default_workflow" meta_type="Workflow"/>
+ <object name="comment_review_workflow" meta_type="Workflow"/>
  <object name="eea_data_workflow" meta_type="Workflow"/>
  <object name="eea_default_workflow" meta_type="Workflow"/>
  <object name="eea_imagefs_workflow" meta_type="Workflow"/>
@@ -74,10 +75,18 @@
   <type type_id="DataFile">
    <bound-workflow workflow_id="eea_data_workflow"/>
   </type>
+  <type type_id="DataFileLink">
+   <bound-workflow workflow_id="eea_data_workflow"/>
+  </type>
   <type type_id="DataTable">
    <bound-workflow workflow_id="eea_data_workflow"/>
   </type>
-  <type type_id="Discussion Item"/>
+  <type type_id="DavizVisualization">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
+  <type type_id="Discussion Item">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
   <type type_id="EEAFigure">
    <bound-workflow workflow_id="eea_data_workflow"/>
   </type>
@@ -255,6 +264,12 @@
    <bound-workflow workflow_id="plone_workflow"/>
   </type>
   <type type_id="SortedSimpleVocabulary"/>
+  <type type_id="Sparql">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
+  <type type_id="SparqlBookmarksFolder">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
   <type type_id="Specification">
    <bound-workflow workflow_id="indicators_workflow"/>
   </type>

@@ -4,7 +4,8 @@
    i18n:domain="eea.sparql" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Sparql Bookmarks Folder</property>
  <property name="description" i18n:translate="">Sparql</property>
- <property name="icon_expr">string:${portal_url}/cloud.png</property>
+ <property
+    name="icon_expr">string:${portal_url}/++resource++eea.sparql.images/cloud.png</property>
  <property name="content_meta_type">SparqlBookmarksFolder</property>
  <property name="product">eea.sparql</property>
  <property name="factory">addSparqlBookmarksFolder</property>
@@ -19,7 +20,7 @@
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
  <property name="view_methods">
-  <element value="base_view"/>
+  <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
  <alias from="(Default)" to="(dynamic view)"/>

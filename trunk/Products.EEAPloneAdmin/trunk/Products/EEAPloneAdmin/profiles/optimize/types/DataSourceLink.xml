@@ -2,9 +2,9 @@
 <object name="DataSourceLink"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Link to datasoruce</property>
+ <property name="title" i18n:translate="">Link to data source</property>
  <property name="description"
-    i18n:translate="">A link to an internal or external resource.</property>
+    i18n:translate="">A link to a data source for SOER country reports.</property>
  <property name="icon_expr">string:${portal_url}/link_icon.gif</property>
  <property name="content_meta_type">ATLink</property>
  <property name="product">ATContentTypes</property>

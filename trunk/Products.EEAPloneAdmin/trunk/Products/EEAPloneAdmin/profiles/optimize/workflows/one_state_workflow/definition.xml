@@ -4,9 +4,70 @@
  <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
+ <state state_id="draft" title="First draft">
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Authenticated</permission-role>
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>ProofReader</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Authenticated</permission-role>
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>ProofReader</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="marked_for_deletion" title="Marked for deletion">
+  <description>This item has been marked for permanent deletion. It will be deleted at a later stage by an automatic cleanup process.</description>
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+ </state>
  <state state_id="published" title="Published">
-  <exit-transition transition_id="reject"/>
-  <exit-transition transition_id="retract"/>
+  <exit-transition transition_id="markForDeletion"/>
   <permission-map name="Access contents information" acquired="True">
    <permission-role>Anonymous</permission-role>
    <permission-role>ContentManager</permission-role>
@@ -30,6 +91,32 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
+ <transition transition_id="markForDeletion" title="Mark for deletion" new_state="marked_for_deletion" trigger="USER" before_script="" after_script="">
+  <description>This transition is used to mark item for deletion, like putting the items in a waste bin. Useful when users do not have deletion permissions. Items can then be deleted by a scheduled process with specific rights.</description>
+  <action url="" category="workflow" icon="">Mark for deletion</action>
+  <guard>
+   <guard-role>Editor</guard-role>
+   <guard-role>ContentManager</guard-role>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Publish</action>
+  <guard>
+   <guard-role>Contributor</guard-role>
+   <guard-role>Editor</guard-role>
+   <guard-role>ContentManager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="retract" title="Retract" new_state="draft" trigger="USER" before_script="" after_script="">
+  <description>Unpublish item</description>
+  <action url="" category="workflow" icon="">Retract / Unpublish</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Reviewer</guard-role>
+   <guard-role>WebReviewer</guard-role>
+  </guard>
+ </transition>
  <worklist worklist_id="reviewer_queue" title="">
   <description>Reviewer tasks</description>
   <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>

@@ -16,6 +16,13 @@
    <criteria>ATSimpleIntCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
+  <index name="commentators"
+     description="Users who have commented on the item" enabled="True"
+     friendlyName="Commentators">
+   <criteria>ATCurrentAuthorCriterion</criteria>
+   <criteria>ATSimpleStringCriterion</criteria>
+   <criteria>ATListCriterion</criteria>
+  </index>
   <index name="countReferences" description="" enabled="False"
      friendlyName="">
    <criteria>ATBooleanCriterion</criteria>
@@ -560,6 +567,11 @@
      enabled="True" friendlyName="Title">
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
+  <index name="total_comments"
+     description="Total number of comments on this item." enabled="False"
+     friendlyName="Total number of comments">
+   <criteria>ATSimpleIntCriterion</criteria>
+  </index>
   <index name="Type" description="An item's type (e.g. Event)" enabled="True"
      friendlyName="Item Type">
    <criteria>ATPortalTypeCriterion</criteria>
@@ -578,7 +590,11 @@
   </index>
  </topic_indexes>
  <topic_metadata>
+  <metadata name="author_name" description="" enabled="False"
+     friendlyName=""/>
   <metadata name="cmf_uid" description="" enabled="False" friendlyName=""/>
+  <metadata name="commentators" description="" enabled="False"
+     friendlyName=""/>
   <metadata name="comments" description="" enabled="False" friendlyName=""/>
   <metadata name="created"
      description="The time and date an item was created (non-ISO)"
@@ -611,6 +627,7 @@
      enabled="False" friendlyName="Expiration Date (non-ISO)"/>
   <metadata name="filename" description="" enabled="False" friendlyName=""/>
   <metadata name="filetype" description="" enabled="False" friendlyName=""/>
+  <metadata name="geotags" description="" enabled="False" friendlyName=""/>
   <metadata name="get_codes"
      description="Indicator SET code, used to identify indicators in various sets, like CSI 002 or TERM 005."
      enabled="True" friendlyName="Indicator SET"/>
@@ -673,6 +690,8 @@
      enabled="True" friendlyName="Visibility level"/>
   <metadata name="id" description="" enabled="False"
      friendlyName="Short Name (duplicate)"/>
+  <metadata name="in_response_to" description="" enabled="False"
+     friendlyName=""/>
   <metadata name="is_default_page" description="" enabled="False"
      friendlyName=""/>
   <metadata name="is_empty" description="" enabled="False" friendlyName=""/>
@@ -681,6 +700,8 @@
      friendlyName="Folder-like"/>
   <metadata name="isOutdated" description="" enabled="False" friendlyName=""/>
   <metadata name="Language" description="" enabled="False" friendlyName=""/>
+  <metadata name="last_comment_date" description="" enabled="False"
+     friendlyName=""/>
   <metadata name="lingua_state" description="" enabled="False"
      friendlyName=""/>
   <metadata name="listCreators" description="" enabled="False"
@@ -720,6 +741,9 @@
      description="Tags are used for ad-hoc organization of content"
      enabled="True" friendlyName="Tags"/>
   <metadata name="Title" description="" enabled="True" friendlyName="Title"/>
+  <metadata name="total_comments"
+     description="Total number of comments on this item." enabled="True"
+     friendlyName="Total number of comments"/>
   <metadata name="Type" description="An item's type (e.g. Event)"
      enabled="True" friendlyName="Item Type"/>
   <metadata name="UID" description="" enabled="False" friendlyName=""/>

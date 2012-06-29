@@ -258,4 +258,8 @@
     meta_type="Factory-based Type Information with dynamic views"/>
  <object name="SparqlBookmarksFolder"
     meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="CloudVideo"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="DataFileLink"
+    meta_type="Factory-based Type Information with dynamic views"/>
 </object>

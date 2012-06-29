@@ -36,6 +36,7 @@
  </state>
  <state state_id="draft" title="First draft">
   <description>This is the first state when a new item is created</description>
+  <exit-transition transition_id="markForDeletion"/>
   <exit-transition transition_id="publishEionet"/>
   <exit-transition transition_id="quickPublish"/>
   <exit-transition transition_id="show"/>
@@ -66,6 +67,33 @@
    <permission-role>ProofReader</permission-role>
    <permission-role>Reviewer</permission-role>
    <permission-role>WebReviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="marked_for_deletion" title="Marked for deletion">
+  <description>This item has been marked for permanent deletion. It will be deleted at a later stage by an automatic cleanup process.</description>
+  <exit-transition transition_id="enable"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
   </permission-map>
  </state>
  <state state_id="published" title="Published">
@@ -128,6 +156,7 @@
  <state state_id="retracted" title="Retracted">
   <description>Items in this state have been retracted from one of the publishing state due to discovered relevant errors in content.</description>
   <exit-transition transition_id="enable"/>
+  <exit-transition transition_id="markForDeletion"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
@@ -169,10 +198,11 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <transition transition_id="enable" title="enable" new_state="draft" trigger="USER" before_script="" after_script="">
+ <transition transition_id="enable" title="enable" new_state="draft" trigger="USER" before_script="" after_script="sendWorkflowEmail">
   <action url="" category="workflow" icon="">enable</action>
   <guard>
    <guard-role>Manager</guard-role>
+   <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
  <transition transition_id="fake_publish" title="Pre-publish check" new_state="" trigger="USER" before_script="fake_transition" after_script="">
@@ -189,6 +219,15 @@
   <guard>
    <guard-role>Reviewer</guard-role>
    <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="markForDeletion" title="Mark for deletion" new_state="marked_for_deletion" trigger="USER" before_script="" after_script="sendWorkflowEmail">
+  <description>This transition is used to mark item for deletion, like putting the items in a waste bin. Useful when users do not have deletion permissions. Items can then be deleted by a scheduled process with specific rights.</description>
+  <action url="" category="workflow" icon="">Mark for deletion</action>
+  <guard>
+   <guard-role>Editor</guard-role>
+   <guard-role>ContentManager</guard-role>
+   <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
  <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="sendWorkflowEmail">
@@ -222,7 +261,7 @@
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
- <transition transition_id="retract" title="Retract" new_state="retracted" trigger="USER" before_script="" after_script="">
+ <transition transition_id="retract" title="Retract" new_state="retracted" trigger="USER" before_script="" after_script="sendWorkflowEmail">
   <action url="" category="workflow" icon="">Retract</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -237,19 +276,11 @@
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="simpleSubmit" title="Submit for final publishing" new_state="" trigger="USER" before_script="" after_script="sendWorkflowEmail">
-  <description>This workflow action will not change state. It will just notify for publishing.</description>
-  <action url="" category="workflow" icon="">Submit for final publishing</action>
-  <guard>
-   <guard-role>ContentManager</guard-role>
-   <guard-expression>python: here.portal_type in  ['Assessment', 'Specification'] and here.Language() == 'en'</guard-expression>
-  </guard>
- </transition>
  <transition transition_id="submitContentReview" title="Submit for final web publishing" new_state="content_pending" trigger="USER" before_script="" after_script="sendWorkflowEmail">
   <action url="%(content_url)s/content_submit_form" category="workflow" icon="">Submit for final web publishing</action>
   <guard>
    <guard-role>ContentManager</guard-role>
-   <guard-expression>python: here.portal_type in  ['Assessment', 'Specification'] and here.Language() == 'en'</guard-expression>
+   <guard-expression>python:not here.portal_membership.getAuthenticatedMember().has_role('Reviewer') and (here.portal_type in  ['Assessment', 'Specification'] and here.Language() == 'en')</guard-expression>
   </guard>
  </transition>
  <worklist worklist_id="contentReview" title="">

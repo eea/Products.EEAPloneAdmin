@@ -1,39 +1,31 @@
 <?xml version="1.0"?>
-<object name="PressRelease"
+<object name="CloudVideo"
    meta_type="Factory-based Type Information with dynamic views"
-   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Press Release</property>
- <property name="description" i18n:translate="">Press release</property>
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Cloud Video</property>
  <property
-    name="icon_expr">string:${portal_url}/press-release_icon.gif</property>
- <property name="content_meta_type">PressRelease</property>
+    name="description">An external video that can be also uploaded to the site.</property>
+ <property name="icon_expr">string:${portal_url}/file_icon.gif</property>
+ <property name="content_meta_type">CloudVideo</property>
  <property name="product">EEAContentTypes</property>
- <property name="factory">addPressRelease</property>
+ <property name="factory">addCloudVideo</property>
  <property name="add_view_expr"></property>
  <property name="link_target"></property>
- <property name="immediate_view">base_view</property>
+ <property name="immediate_view">file_view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">False</property>
- <property name="allowed_content_types">
-  <element value="File"/>
-  <element value="FlashFile"/>
-  <element value="Folder"/>
-  <element value="Image"/>
- </property>
+ <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>
- <property name="default_view">pressrelease_view</property>
- <property name="view_methods">
-  <element value="pressrelease_view"/>
- </property>
+ <property name="default_view">file_view</property>
+ <property name="view_methods"/>
  <property name="default_view_fallback">False</property>
- <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="(Default)" to="index_html"/>
  <alias from="edit" to="atct_edit"/>
  <alias from="index.html" to="(dynamic view)"/>
- <alias from="properties" to="base_metadata"/>
  <alias from="sharing" to="@@sharing"/>
  <alias from="view" to="(selected layout)"/>
  <action title="View" action_id="view" category="object" condition_expr=""
-    icon_expr="" link_target="" url_expr="string:${object_url}"
+    icon_expr="" link_target="" url_expr="string:${object_url}/view"
     visible="True">
   <permission value="View"/>
  </action>
@@ -47,10 +39,16 @@
     link_target="" url_expr="string:${object_url}/reference_graph"
     visible="True">
   <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
  </action>
- <action title="Folder Listing" action_id="folderlisting" category="folder"
-    condition_expr="object/isPrincipiaFolderish" icon_expr="" link_target=""
-    url_expr="string:${folder_url}/view" visible="False">
+ <action title="Download" action_id="download" category="object"
+    condition_expr="member" icon_expr="" link_target=""
+    url_expr="string:${object_url}/download" visible="False">
   <permission value="View"/>
+ </action>
+ <action title="External Edit" action_id="external_edit" category="object"
+    condition_expr="object/externalEditorEnabled" icon_expr="" link_target=""
+    url_expr="string:${object_url}/external_edit" visible="False">
+  <permission value="Modify portal content"/>
  </action>
 </object>

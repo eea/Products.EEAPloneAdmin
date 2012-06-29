@@ -136,6 +136,7 @@
       <role name="CommonEditor"/>
       <role name="ContentManager"/>
       <role name="EventsManager"/>
+      <role name="Manager"/>
       <role name="Owner"/>
       <role name="ProofReader"/>
       <role name="Site Administrator"/>
@@ -304,11 +305,8 @@
     <permission name="Query Vocabulary" acquire="True">
       <role name="ContentManager"/>
     </permission>
-    <permission name="Reply to item" acquire="True">
-      <role name="ContentManager"/>
-      <role name="Manager"/>
-      <role name="Member"/>
-      <role name="Site Administrator"/>
+    <permission name="Reply to item" acquire="False">
+      <role name="Authenticated"/>
     </permission>
     <permission name="Request review" acquire="True">
       <role name="ContentManager"/>
@@ -316,6 +314,10 @@
       <role name="Manager"/>
       <role name="Owner"/>
       <role name="Site Administrator"/>
+    </permission>
+    <permission name="Review comments" acquire="True">
+      <role name="Manager"/>
+      <role name="Reviewer"/>
     </permission>
     <permission name="Review portal content" acquire="True">
       <role name="CommonEditor"/>
@@ -399,7 +401,6 @@
       <role name="Site Administrator"/>
     </permission>
     <permission name="eea.daviz: Add presentation" acquire="True">
-      <role name="ContentManager"/>
       <role name="Editor"/>
       <role name="Manager"/>
       <role name="Owner"/>
@@ -411,7 +412,6 @@
       <role name="Owner"/>
     </permission>
     <permission name="eea.sparql: Add Sparql" acquire="False">
-      <role name="ContentManager"/>
       <role name="Contributor"/>
       <role name="Manager"/>
     </permission>

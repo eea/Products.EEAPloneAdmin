@@ -1,85 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="portal_relations" meta_type="EEARelationsTool">
- <object name="generic" meta_type="EEARelationsContentType">
-  <property name="title">Generic</property>
-  <property name="ct_type"></property>
-  <property
-     name="ct_interface">Products.Archetypes.interfaces._base.IBaseObject</property>
-  <property name="ct_default_location">None</property>
-  <criteria>
-   <criterion name="c0">
-    <property name="widget">text</property>
-    <property name="title">Search on title</property>
-    <property name="position">top</property>
-    <property name="section">default</property>
-    <property name="hidden">0</property>
-    <property name="index">Title</property>
-    <property name="default"></property>
-   </criterion>
-   <criterion name="c2">
-    <property name="widget">criteria</property>
-    <property name="title">Current search</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">0</property>
-   </criterion>
-   <criterion name="c1">
-    <property name="widget">alphabetic</property>
-    <property name="title">Title starts with</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">0</property>
-    <property name="index">Title</property>
-    <property name="count">0</property>
-    <property name="hidezerocount">0</property>
-    <property name="default"></property>
-   </criterion>
-   <criterion name="c5">
-    <property name="widget">select</property>
-    <property name="title">Creator</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">0</property>
-    <property name="index">Creator</property>
-    <property name="vocabulary"></property>
-    <property name="catalog">portal_catalog</property>
-    <property name="sortreversed">0</property>
-    <property name="count">0</property>
-    <property name="hidezerocount">0</property>
-    <property name="default"></property>
-   </criterion>
-   <criterion name="c4">
-    <property name="widget">sorting</property>
-    <property name="title">Sort on</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">1</property>
-    <property name="vocabulary"></property>
-    <property name="default">created(reverse)</property>
-   </criterion>
-   <criterion name="c3">
-    <property name="widget">resultsperpage</property>
-    <property name="title">Results per page</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">1</property>
-    <property name="start">1</property>
-    <property name="end">10</property>
-    <property name="step">1</property>
-    <property name="default">5</property>
-   </criterion>
-  </criteria>
- </object>
- <object name="generic-generic" meta_type="EEAPossibleRelation">
-  <property name="from">generic</property>
-  <property name="to">generic</property>
-  <property name="title">Generic -&gt; Generic</property>
-  <property name="forward_label">Related content</property>
-  <property name="backward_label">Related content</property>
-  <property name="description"></property>
-  <property name="required">False</property>
-  <property name="required_for"/>
- </object>
  <object name="indicator-specification" meta_type="EEARelationsContentType">
   <property name="title">Indicator Specification</property>
   <property name="ct_type">Specification</property>
@@ -365,7 +285,7 @@
   <property name="ct_type">ExternalDataSpec</property>
   <property name="ct_interface"></property>
   <property
-     name="ct_default_location">/www/data-and-maps/data/external/createObject?type_name=ExternalDataSpec</property>
+     name="ct_default_location">&lt;ATBTreeFolder at external&gt;</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -382,17 +302,6 @@
     <property name="position">left</property>
     <property name="section">default</property>
     <property name="hidden">0</property>
-   </criterion>
-   <criterion name="c1">
-    <property name="widget">alphabetic</property>
-    <property name="title">Title starts with</property>
-    <property name="position">left</property>
-    <property name="section">default</property>
-    <property name="hidden">0</property>
-    <property name="index">Title</property>
-    <property name="count">0</property>
-    <property name="hidezerocount">0</property>
-    <property name="default">H</property>
    </criterion>
    <criterion name="c5">
     <property name="widget">select</property>
@@ -417,7 +326,7 @@
     <property name="start">1</property>
     <property name="end">10</property>
     <property name="step">1</property>
-    <property name="default">5</property>
+    <property name="default">10</property>
    </criterion>
    <criterion name="c4">
     <property name="widget">sorting</property>
@@ -427,6 +336,14 @@
     <property name="hidden">1</property>
     <property name="vocabulary"></property>
     <property name="default">created(reverse)</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">portlet</property>
+    <property name="title">Create new data reference</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="macro">here/portlet_addcontent/macros/portlet</property>
    </criterion>
   </criteria>
  </object>
@@ -641,7 +558,7 @@
   <property name="title">Indicator Fact Sheet</property>
   <property name="ct_type">IndicatorFactSheet</property>
   <property name="ct_interface"></property>
-  <property name="ct_default_location">None</property>
+  <property name="ct_default_location">python:None</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -738,8 +655,9 @@
   <property name="from">eea-figure</property>
   <property name="to">eea-data</property>
   <property name="title">EEA Figure -&gt; EEA Data</property>
-  <property name="forward_label">Related EEA Products</property>
-  <property name="backward_label"></property>
+  <property name="forward_label">Related dataset</property>
+  <property
+     name="backward_label">Figures produced with this dataset</property>
   <property name="description"></property>
   <property name="required">False</property>
   <property name="required_for"/>
@@ -818,8 +736,8 @@
   <property name="from">eea-figure</property>
   <property name="to">publication</property>
   <property name="title">EEA Figure -&gt; Publication</property>
-  <property name="forward_label">Related EEA Products</property>
-  <property name="backward_label"></property>
+  <property name="forward_label">Used in publications</property>
+  <property name="backward_label">Figures used in this publication</property>
   <property name="description"></property>
   <property name="required">False</property>
   <property name="required_for"/>
@@ -896,7 +814,7 @@
   <property name="title">Daviz Visualization</property>
   <property name="ct_type">DavizVisualization</property>
   <property name="ct_interface"></property>
-  <property name="ct_default_location">None</property>
+  <property name="ct_default_location">python:None</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -951,8 +869,8 @@
   <property name="title">Data (daviz json)</property>
   <property name="ct_type"></property>
   <property
-     name="ct_interface">eea.daviz.subtypes.interfaces.IExhibitJson</property>
-  <property name="ct_default_location">None</property>
+     name="ct_interface">eea.app.visualization.subtypes.interfaces.IVisualizationEnabled</property>
+  <property name="ct_default_location">python:None</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -1016,15 +934,23 @@
     <property name="hidezerocount">0</property>
     <property name="default"></property>
    </criterion>
+   <criterion name="c6">
+    <property name="widget">lastversion</property>
+    <property name="title">only last version</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
   </criteria>
  </object>
- <object name="daviz-presentation-daviz-sources"
+ <object name="daviz-visualization-data-daviz-json"
     meta_type="EEAPossibleRelation">
   <property name="from">daviz-presentation</property>
   <property name="to">daviz-sources</property>
-  <property name="title">Daviz Visualization -&gt; Daviz Sources</property>
-  <property name="forward_label"></property>
-  <property name="backward_label"></property>
+  <property
+     name="title">Daviz Visualization -&gt; Data (daviz json)</property>
+  <property name="forward_label">Based on following data</property>
+  <property name="backward_label">Visualisations of this data</property>
   <property name="description"></property>
   <property name="required">False</property>
   <property name="required_for"/>
@@ -1220,11 +1146,130 @@
   <property name="required">False</property>
   <property name="required_for"/>
  </object>
- <object name="linked-open-data" meta_type="EEARelationsContentType">
-  <property name="title">Linked Open Data</property>
+ <object name="linked-open-data-sparql" meta_type="EEARelationsContentType">
+  <property name="title">Linked Open Data (Sparql)</property>
   <property name="ct_type">Sparql</property>
   <property name="ct_interface"></property>
-  <property name="ct_default_location">None</property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">8</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">lastversion</property>
+    <property name="title">show only last version</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-visualization-linked-open-data-sparql"
+    meta_type="EEAPossibleRelation">
+  <property name="from">daviz-presentation</property>
+  <property name="to">linked-open-data-sparql</property>
+  <property
+     name="title">Daviz Visualization -&gt; Linked Open Data (Sparql)</property>
+  <property name="forward_label">Based on linked open data</property>
+  <property
+     name="backward_label">Visualizations of this sparql query</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="eea-figure-eea-figure" meta_type="EEAPossibleRelation">
+  <property name="from">eea-figure</property>
+  <property name="to">eea-figure</property>
+  <property name="title">EEA Figure -&gt; EEA Figure</property>
+  <property name="forward_label">Related figures</property>
+  <property name="backward_label">Related figures</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="interactive-data-charts-eea-data"
+    meta_type="EEAPossibleRelation">
+  <property name="from">interactive-data</property>
+  <property name="to">eea-data</property>
+  <property name="title">Interactive data charts -&gt; EEA Data</property>
+  <property name="forward_label">Based on the following data</property>
+  <property name="backward_label">Visualisations of this data</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="interactive-data-charts-publication"
+    meta_type="EEAPossibleRelation">
+  <property name="from">interactive-data</property>
+  <property name="to">publication</property>
+  <property name="title">Interactive data charts -&gt; Publication</property>
+  <property name="forward_label">Related publication</property>
+  <property name="backward_label">Related data visualisation</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="external-data-reference-eea-data"
+    meta_type="EEAPossibleRelation">
+  <property name="from">external-data-reference</property>
+  <property name="to">eea-data</property>
+  <property name="title">External Data Reference -&gt; EEA Data</property>
+  <property name="forward_label">Based on following data</property>
+  <property name="backward_label">Derived dataset</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="all" meta_type="EEARelationsContentType">
+  <property name="title">All</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">eea.relations.content.interfaces.IBaseObject</property>
+  <property name="ct_default_location">python:None</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -1275,14 +1320,12 @@
    </criterion>
   </criteria>
  </object>
- <object name="daviz-visualization-linked-open-data"
-    meta_type="EEAPossibleRelation">
-  <property name="from">daviz-presentation</property>
-  <property name="to">linked-open-data</property>
-  <property name="title">Daviz Visualization -&gt; Linked Open Data</property>
-  <property name="forward_label">Based on linked open data</property>
-  <property
-     name="backward_label">Visualizations of this sparql query</property>
+ <object name="all-all" meta_type="EEAPossibleRelation">
+  <property name="from">all</property>
+  <property name="to">all</property>
+  <property name="title">All -&gt; All</property>
+  <property name="forward_label">See also</property>
+  <property name="backward_label">See also</property>
   <property name="description"></property>
   <property name="required">False</property>
   <property name="required_for"/>

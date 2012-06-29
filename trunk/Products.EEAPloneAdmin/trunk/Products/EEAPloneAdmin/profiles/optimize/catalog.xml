@@ -2,6 +2,7 @@
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
  <property name="title">Indexes all content in the site</property>
  <property name="unwrapobjects" type="boolean">True</property>
+ <object name="get_broken_discussions" meta_type="Script (Python)"/>
  <object name="htmltext_lexicon" meta_type="ZCTextIndex Lexicon">
   <element name="HTML aware splitter" group="Word Splitter"/>
   <element name="Case Normalizer" group="Case Normalizer"/>
@@ -57,6 +58,9 @@
  </index>
  <index name="cmf_uid" meta_type="FieldIndex">
   <indexed_attr value="cmf_uid"/>
+ </index>
+ <index name="commentators" meta_type="KeywordIndex">
+  <indexed_attr value="commentators"/>
  </index>
  <index name="countReferences" meta_type="FieldIndex">
   <indexed_attr value="countReferences"/>
@@ -238,6 +242,9 @@
  <index name="start" meta_type="DateIndex">
   <property name="index_naive_time_as_local">True</property>
  </index>
+ <index name="total_comments" meta_type="FieldIndex">
+  <indexed_attr value="total_comments"/>
+ </index>
  <column value="CreationDate"/>
  <column value="Creator"/>
  <column value="Date"/>
@@ -250,7 +257,9 @@
  <column value="Title"/>
  <column value="Type"/>
  <column value="UID"/>
+ <column value="author_name"/>
  <column value="cmf_uid"/>
+ <column value="commentators"/>
  <column value="comments"/>
  <column value="created"/>
  <column value="dataSource"/>
@@ -261,6 +270,7 @@
  <column value="expires"/>
  <column value="filename"/>
  <column value="filetype"/>
+ <column value="geotags"/>
  <column value="getAudiences"/>
  <column value="getAwardNotice"/>
  <column value="getDataOwner"/>
@@ -290,9 +300,11 @@
  <column value="getVisibilityLevel"/>
  <column value="get_codes"/>
  <column value="id"/>
+ <column value="in_response_to"/>
  <column value="isOutdated"/>
  <column value="is_default_page"/>
  <column value="is_folderish"/>
+ <column value="last_comment_date"/>
  <column value="lingua_state"/>
  <column value="listCreators"/>
  <column value="location"/>
@@ -308,4 +320,5 @@
  <column value="review_state"/>
  <column value="serial_title"/>
  <column value="start"/>
+ <column value="total_comments"/>
 </object>

@@ -182,6 +182,11 @@
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression=""
+    id="++resource++plone.app.discussion.stylesheets/discussion.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="ploneKss.css" media="screen"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
@@ -253,16 +258,14 @@
     cacheable="True" compression="full" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="solgemaportletsmanager.css" media="all"
     rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="True"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression=""
-    id="++resource++quickupload_static/uploadify.css" media=""
+ <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="on"
+    expression="" id="++resource++quickupload_static/uploadify.css" media=""
     rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="True"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression=""
-    id="++resource++quickupload_static/fileuploader.css" media=""
-    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="on"
+    expression="" id="++resource++quickupload_static/fileuploader.css"
+    media="" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="ploneCustom.css" media="all"
@@ -284,16 +287,20 @@
     enabled="on" expression="" id="ploneAdmin.css" media="" rel="stylesheet"
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="IE 9"
+    cacheable="True" compression="safe" conditionalcomment="IE 8"
+    cookable="True" enabled="on" expression="" id="IE8Fixes.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="IE 7"
+    cookable="True" enabled="on" expression="" id="IE7Fixes.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="lt IE 9"
     cookable="True" enabled="on" expression="" id="IEFixes.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="IE 7"
-    cookable="True" enabled="on" expression="exists: portal/IE7Fixes.css"
-    id="IE7Fixes.css" media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="IE 8"
-    cookable="True" enabled="on" expression="" id="IE8Fixes.css"
+    cacheable="True" compression="safe" conditionalcomment="IE 9"
+    cookable="True" enabled="on" expression="" id="IE9Fixes.css"
     media="screen" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
@@ -311,4 +318,27 @@
     expression="python:'daviz-edit.html' in request.URL0"
     id="++resource++eea.googlecharts.edit.css" media="all" rel="stylesheet"
     rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="++resource++eea.sparql.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="python:'daviz-view.html' in request.URL0"
+    id="++resource++eea.exhibit.view.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="python:'daviz-edit.html' in request.URL0"
+    id="++resource++eea.exhibit.edit.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression=""
+    id="++resource++eea.socialmedia.stylesheets/EEASocialMedia.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="++resource++jquery.jqgrid.css"
+    media="screen" rel="stylesheet" rendering="link"/>
 </object>

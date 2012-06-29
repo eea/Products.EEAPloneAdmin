@@ -14,7 +14,7 @@
  <required tool_id="portal_controlpanel" class="Products.CMFPlone.PloneControlPanel.PloneControlPanel"/>
  <required tool_id="portal_css" class="Products.ResourceRegistries.tools.CSSRegistry.CSSRegistryTool"/>
  <required tool_id="portal_diff" class="Products.CMFDiffTool.CMFDiffTool.CMFDiffTool"/>
- <required tool_id="portal_discussion" class="Products.CMFPlone.DiscussionTool.DiscussionTool"/>
+ <required tool_id="portal_discussion" class="plone.app.discussion.tool.CommentingTool"/>
  <required tool_id="portal_enquiry_catalog" class="Products.EEAEnquiry.tools.catalog.EnquiryCatalog"/>
  <required tool_id="portal_faceted" class="eea.faceted.tool.tool.FacetedTool"/>
  <required tool_id="portal_factory" class="Products.CMFPlone.FactoryTool.FactoryTool"/>

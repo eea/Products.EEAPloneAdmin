@@ -16,6 +16,9 @@
     directory="Products.DataGridField:skins/DataGridWidget"/>
  <object name="EEAContentTypes" meta_type="Filesystem Directory View"
     directory="Products.EEAContentTypes:skins/EEAContentTypes"/>
+ <object name="EEAContentTypes_popupedit"
+    meta_type="Filesystem Directory View"
+    directory="Products.EEAContentTypes:skins/EEAContentTypes_popupedit"/>
  <object name="EEAContentTypes_public" meta_type="Filesystem Directory View"
     directory="Products.EEAContentTypes:skins/EEAContentTypes_public"/>
  <object name="EEAEnquiry" meta_type="Filesystem Directory View"
@@ -186,6 +189,8 @@
  <skin-path name="EEADesign2006">
   <layer name="custom_images"/>
   <layer name="custom"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="EEAContentTypes_popupedit"/>
   <layer name="eea_forms"/>
   <layer name="eea_multimedia"/>
   <layer name="eea_design"/>
@@ -203,6 +208,7 @@
   <layer name="eeadesign_public_cmsandwww"/>
   <layer name="eeadesign_style_docs"/>
   <layer name="wisetheme_images"/>
+  <layer name="eea_workflow_templates"/>
   <layer name="linguaflow_templates"/>
   <layer name="indicators_overrides"/>
   <layer name="indicators_templates"/>
@@ -223,13 +229,11 @@
   <layer name="orderablereferencefield"/>
   <layer name="eea_webapplication"/>
   <layer name="AddRemoveWidget"/>
-  <layer name="eea_workflow_templates"/>
   <layer name="versions_templates"/>
   <layer name="EEAEnquiry"/>
   <layer name="eeatemplatesservice"/>
   <layer name="eea_mediacentre"/>
   <layer name="eea_promotion"/>
-  <layer name="eea_socialmedia"/>
   <layer name="LocationWidget"/>
   <layer name="eea_sitestructurediff"/>
   <layer name="eea_signals"/>
@@ -275,6 +279,8 @@
   <layer name="custom_admin"/>
   <layer name="custom_images"/>
   <layer name="custom"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="EEAContentTypes_popupedit"/>
   <layer name="eea_forms"/>
   <layer name="eea_multimedia"/>
   <layer name="solgemaportletsmanager"/>
@@ -293,6 +299,7 @@
   <layer name="eeadesign_public_cmsandwww"/>
   <layer name="eeadesign_style_docs"/>
   <layer name="wisetheme_images"/>
+  <layer name="eea_workflow_templates"/>
   <layer name="linguaflow_templates"/>
   <layer name="indicators_overrides"/>
   <layer name="indicators_templates"/>
@@ -313,13 +320,11 @@
   <layer name="orderablereferencefield"/>
   <layer name="eea_webapplication"/>
   <layer name="AddRemoveWidget"/>
-  <layer name="eea_workflow_templates"/>
   <layer name="versions_templates"/>
   <layer name="EEAEnquiry"/>
   <layer name="eeatemplatesservice"/>
   <layer name="eea_mediacentre"/>
   <layer name="eea_promotion"/>
-  <layer name="eea_socialmedia"/>
   <layer name="LocationWidget"/>
   <layer name="eea_sitestructurediff"/>
   <layer name="eea_signals"/>
@@ -383,6 +388,10 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="EEAContentTypes_popupedit"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
   <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
@@ -398,8 +407,6 @@
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
-  <layer name="EEAContentTypes_public"/>
-  <layer name="EEAContentTypes"/>
   <layer name="LocationWidget"/>
   <layer name="reports_templates"/>
   <layer name="AddRemoveWidget"/>
@@ -408,7 +415,6 @@
   <layer name="plone_help_center"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
-  <layer name="eea_socialmedia"/>
   <layer name="eea_sitestructurediff"/>
   <layer name="eea_signals"/>
   <layer name="eea_relations"/>
@@ -457,6 +463,10 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="EEAContentTypes_popupedit"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
   <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
@@ -472,8 +482,6 @@
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
-  <layer name="EEAContentTypes_public"/>
-  <layer name="EEAContentTypes"/>
   <layer name="LocationWidget"/>
   <layer name="reports_templates"/>
   <layer name="AddRemoveWidget"/>
@@ -482,7 +490,6 @@
   <layer name="plone_help_center"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
-  <layer name="eea_socialmedia"/>
   <layer name="eea_sitestructurediff"/>
   <layer name="eea_signals"/>
   <layer name="eea_relations"/>
@@ -532,6 +539,10 @@
   <layer name="plone_3rdParty"/>
   <layer name="cmf_legacy"/>
   <layer name="custom"/>
+  <layer name="eea_socialmedia"/>
+  <layer name="EEAContentTypes_popupedit"/>
+  <layer name="EEAContentTypes_public"/>
+  <layer name="EEAContentTypes"/>
   <layer name="eea_forms"/>
   <layer name="tinymce"/>
   <layer name="solgemaportletsmanager"/>
@@ -547,8 +558,6 @@
   <layer name="themecentre_templates"/>
   <layer name="themecentre_styles"/>
   <layer name="themecentre_images"/>
-  <layer name="EEAContentTypes_public"/>
-  <layer name="EEAContentTypes"/>
   <layer name="LocationWidget"/>
   <layer name="reports_templates"/>
   <layer name="AddRemoveWidget"/>
@@ -557,7 +566,6 @@
   <layer name="plone_help_center"/>
   <layer name="NavigationManager"/>
   <layer name="linguaflow_templates"/>
-  <layer name="eea_socialmedia"/>
   <layer name="eea_sitestructurediff"/>
   <layer name="eea_signals"/>
   <layer name="eea_relations"/>

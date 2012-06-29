@@ -50,10 +50,12 @@
   <element value="CacheTool"/>
   <element value="CallForInterest"/>
   <element value="CallForTender"/>
+  <element value="CloudVideo"/>
   <element value="CommonalityReport"/>
   <element value="ContentCacheRule"/>
   <element value="Data"/>
   <element value="DataFile"/>
+  <element value="DataFileLink"/>
   <element value="DataSourceLink"/>
   <element value="DataTable"/>
   <element value="DavizVisualization"/>
