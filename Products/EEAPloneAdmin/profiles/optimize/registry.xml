@@ -34,11 +34,11 @@
       <element key="HelpCenterHowTo">plone.content.itemView</element>
       <element key="SOERKeyFact">plone.content.itemView</element>
       <element key="Enquiry">plone.content.itemView</element>
-      <element key="Organisation">plone.content.itemView</element>
+      <element key="EnquiryFolder">plone.content.itemView</element>
       <element key="HelpCenterTutorialPage">plone.content.itemView</element>
       <element key="KeyMessage">plone.content.itemView</element>
       <element key="HelpCenterFAQFolder">plone.content.itemView</element>
-      <element key="HelpCenterLink">plone.content.itemView</element>
+      <element key="Speech">plone.content.itemView</element>
       <element key="HelpCenter">plone.content.itemView</element>
       <element key="MethodologyReference">plone.content.itemView</element>
       <element key="Folder">plone.content.folderView</element>
@@ -47,52 +47,55 @@
       <element key="Newsletter">plone.content.itemView</element>
       <element key="AssessmentPart">plone.content.itemView</element>
       <element key="SOERCountry">plone.content.itemView</element>
-      <element key="FactSheetDocument">plone.content.itemView</element>
+      <element key="EEAVacancy">plone.content.itemView</element>
       <element key="News Item">plone.content.itemView</element>
       <element key="CallForInterest">plone.content.itemView</element>
       <element key="Assessment">plone.content.itemView</element>
+      <element key="DavizVisualization">plone.content.itemView</element>
       <element key="FlashFile">plone.content.file</element>
       <element key="HelpCenterFAQ">plone.content.itemView</element>
       <element key="EpubFile">plone.content.folderView</element>
       <element key="NewsletterRichReference">plone.content.itemView</element>
-      <element key="RationaleReference">plone.content.itemView</element>
+      <element key="EcoTip">plone.content.itemView</element>
       <element key="NewsletterTopic">plone.content.itemView</element>
       <element key="EnquiryRequestorFolder">plone.content.itemView</element>
-      <element key="ExternalDataSpec">plone.content.itemView</element>
-      <element key="EcoTip">plone.content.itemView</element>
-      <element key="Data">plone.content.itemView</element>
-      <element key="EnquiryFolder">plone.content.itemView</element>
-      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
-      <element key="DataFile">plone.content.file</element>
-      <element key="Specification">plone.content.itemView</element>
-      <element key="PolicyQuestion">plone.content.itemView</element>
-      <element key="WorkItem">plone.content.itemView</element>
-      <element key="HelpCenterHowToFolder">plone.content.itemView</element>
       <element key="Report">plone.content.itemView</element>
+      <element key="RationaleReference">plone.content.itemView</element>
+      <element key="Data">plone.content.itemView</element>
+      <element key="Organisation">plone.content.itemView</element>
+      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
+      <element key="Sparql">eea.content.staleResources</element>
+      <element key="Specification">plone.content.itemView</element>
+      <element key="FactSheetDocument">plone.content.itemView</element>
+      <element key="GIS Application">plone.content.itemView</element>
+      <element key="HelpCenterHowToFolder">plone.content.itemView</element>
+      <element key="ExternalDataSpec">plone.content.itemView</element>
       <element key="HelpCenterTutorial">plone.content.itemView</element>
       <element key="Article">plone.content.itemView</element>
       <element key="Highlight">plone.content.itemView</element>
       <element key="Promotion">plone.content.itemView</element>
       <element key="PolicyDocumentReference">plone.content.itemView</element>
       <element key="DataTable">plone.content.itemView</element>
-      <element key="CallForTender">plone.content.itemView</element>
-      <element key="GIS Application">plone.content.itemView</element>
+      <element key="WorkItem">plone.content.itemView</element>
+      <element key="DataFile">plone.content.file</element>
       <element key="NewsletterReference">plone.content.itemView</element>
+      <element key="QuickEvent">plone.content.itemView</element>
       <element key="SOERMessage">plone.content.itemView</element>
       <element key="IndicatorFactSheet">plone.content.itemView</element>
-      <element key="Image">plone.content.file</element>
-      <element key="EyewitnessStory">plone.content.itemView</element>
-      <element key="Event">plone.content.itemView</element>
-      <element key="Topic">eea.content.frontPage</element>
-      <element key="EEAVacancy">plone.content.itemView</element>
-      <element key="EnquiryRequestor">plone.content.itemView</element>
-      <element key="ImageFS">plone.content.file</element>
       <element key="File">plone.content.file</element>
+      <element key="Image">plone.content.file</element>
+      <element key="SparqlBookmarksFolder">eea.content.staleResources</element>
+      <element key="EyewitnessStory">plone.content.itemView</element>
+      <element key="EnquiryRequestor">plone.content.itemView</element>
+      <element key="Topic">eea.content.frontPage</element>
+      <element key="PolicyQuestion">plone.content.itemView</element>
+      <element key="ImageFS">plone.content.file</element>
+      <element key="CallForTender">plone.content.itemView</element>
       <element key="PressRelease">plone.content.itemView</element>
-      <element key="Speech">plone.content.itemView</element>
+      <element key="HelpCenterLink">plone.content.itemView</element>
       <element key="NewsletterBTree">plone.content.itemView</element>
       <element key="NewsletterTheme">plone.content.itemView</element>
-      <element key="QuickEvent">plone.content.itemView</element>
+      <element key="Event">plone.content.itemView</element>
     </value>
   </record>
   <record field="enableCompression" interface="plone.app.caching.interfaces.IPloneCacheSettings" name="plone.app.caching.interfaces.IPloneCacheSettings.enableCompression">
@@ -126,6 +129,7 @@
       <element>Data</element>
       <element>DataFile</element>
       <element>DataTable</element>
+      <element>DavizVisualization</element>
       <element>EEAVacancy</element>
       <element>EEAFigure</element>
       <element>EEAFigureFile</element>
@@ -177,6 +181,8 @@
       <element>SOERCountry</element>
       <element>SOERKeyFact</element>
       <element>SOERMessage</element>
+      <element>Sparql</element>
+      <element>SparqlBookmarksFolder</element>
       <element>Speech</element>
       <element>HelpCenterTutorial</element>
       <element>HelpCenterTutorialPage</element>
@@ -198,31 +204,40 @@
       </value_type>
     </field>
     <value>
+      <element key="download.xml">eea.content.staleResources</element>
+      <element key="download.exhibit">eea.content.staleResources</element>
       <element key="image_view">plone.content.itemView</element>
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>
+      <element key="daviz-view.json">eea.content.staleResources</element>
       <element key="faceted_counter">eea.content.frontPage</element>
       <element key="download">plone.content.itemView</element>
       <element key="staff.html">plone.content.itemView</element>
       <element key="organigram.html">plone.content.itemView</element>
       <element key="accessibility-info">plone.content.itemView</element>
-      <element key="search_rss">plone.content.feed</element>
+      <element key="download.table">eea.content.staleResources</element>
       <element key="frontpage_view">eea.content.frontPage</element>
+      <element key="search_rss">plone.content.feed</element>
+      <element key="download.csv">eea.content.staleResources</element>
       <element key="faceted_query">eea.content.frontPage</element>
       <element key="multimedia_popup_view">plone.content.file</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
-      <element key="sendto_form">plone.content.itemView</element>
+      <element key="daviz-relateditems.json">eea.content.staleResources</element>
       <element key="RSS2">plone.content.itemView</element>
       <element key="image_view_fullscreen">plone.content.itemView</element>
-      <element key="search">plone.content.itemView</element>
+      <element key="video_popup_view">plone.content.file</element>
+      <element key="download.tsv">eea.content.staleResources</element>
       <element key="file_view">plone.content.itemView</element>
       <element key="home_yourlang">plone.content.itemView</element>
       <element key="not_available_lang">plone.content.itemView</element>
       <element key="highlights.rdf">plone.content.itemView</element>
-      <element key="video_popup_view">plone.content.file</element>
+      <element key="download.schema.xml">eea.content.staleResources</element>
+      <element key="search">plone.content.itemView</element>
       <element key="reports.rdf">plone.content.itemView</element>
       <element key="folder_contents">plone.content.itemView</element>
       <element key="folder_summary">plone.content.itemView</element>
+      <element key="sendto_form">plone.content.itemView</element>
+      <element key="download.json">eea.content.staleResources</element>
       <element key="rdf">plone.content.itemView</element>
       <element key="tagscloud_counter">eea.content.frontPage</element>
       <element key="sitemap">plone.content.itemView</element>
@@ -335,6 +350,34 @@
       <title>Only cache for anonymous users</title>
     </field>
     <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.anonOnly">
+    <field ref="plone.app.caching.strongCaching.anonOnly" />
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.etags">
+    <field ref="plone.app.caching.strongCaching.etags" />
+    <value />
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified" />
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.maxage">
+    <field ref="plone.app.caching.strongCaching.maxage" />
+    <value>2592000</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.ramCache">
+    <field ref="plone.app.caching.strongCaching.ramCache" />
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.smaxage">
+    <field ref="plone.app.caching.strongCaching.smaxage" />
+    <value />
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.vary">
+    <field ref="plone.app.caching.strongCaching.vary" />
+    <value>Accept-Encoding, X-Username</value>
   </record>
   <record name="plone.app.caching.strongCaching.etags">
     <field type="plone.registry.field.Tuple">
@@ -475,6 +518,86 @@
     </field>
     <value />
   </record>
+  <record field="anonymous_comments" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.anonymous_comments">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_anonymous_comments</description>
+      <required>False</required>
+      <title>label_anonymous_comments</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record field="captcha" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.captcha">
+    <field type="plone.registry.field.Choice">
+      <default>disabled</default>
+      <description>help_captcha</description>
+      <title>label_captcha</title>
+      <vocabulary>plone.app.discussion.vocabularies.CaptchaVocabulary</vocabulary>
+    </field>
+    <value>disabled</value>
+  </record>
+  <record field="globally_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_globally_enabled</description>
+      <required>False</required>
+      <title>label_globally_enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record field="moderation_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.moderation_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_moderation_enabled</description>
+      <required>False</required>
+      <title>label_moderation_enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record field="moderator_email" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.moderator_email">
+    <field type="plone.registry.field.ASCIILine">
+      <description>help_moderator_email</description>
+      <required>False</required>
+      <title>label_moderator_email</title>
+    </field>
+    <value />
+  </record>
+  <record field="moderator_notification_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.moderator_notification_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_moderator_notification_enabled</description>
+      <required>False</required>
+      <title>label_moderator_notification_enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record field="show_commenter_image" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.show_commenter_image">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>help_show_commenter_image</description>
+      <required>False</required>
+      <title>label_show_commenter_image</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record field="text_transform" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.text_transform">
+    <field type="plone.registry.field.Choice">
+      <default>text/plain</default>
+      <description>help_text_transform</description>
+      <title>label_text_transform</title>
+      <vocabulary>plone.app.discussion.vocabularies.TextTransformVocabulary</vocabulary>
+    </field>
+    <value>text/plain</value>
+  </record>
+  <record field="user_notification_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" name="plone.app.discussion.interfaces.IDiscussionSettings.user_notification_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_user_notification_enabled</description>
+      <required>False</required>
+      <title>label_user_notification_enabled</title>
+    </field>
+    <value>True</value>
+  </record>
   <record field="cachingProxies" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies">
     <field type="plone.registry.field.Tuple">
       <description>Provide the URLs of each proxy to which PURGE requests shoudl be sent.</description>
@@ -540,6 +663,7 @@
       <element key="plone.resource">plone.app.caching.strongCaching</element>
       <element key="eea.content.frontPage">plone.app.caching.moderateCaching</element>
       <element key="plone.stableResource">plone.app.caching.strongCaching</element>
+      <element key="eea.content.staleResources">plone.app.caching.strongCaching</element>
       <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
       <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
       <element key="plone.content.folderView">plone.app.caching.moderateCaching</element>

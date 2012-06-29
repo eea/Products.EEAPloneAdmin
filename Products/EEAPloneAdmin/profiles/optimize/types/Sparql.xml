@@ -4,7 +4,8 @@
    i18n:domain="eea.sparql" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Sparql</property>
  <property name="description" i18n:translate="">Sparql</property>
- <property name="icon_expr">string:${portal_url}/rdf-icon.gif</property>
+ <property
+    name="icon_expr">string:${portal_url}/++resource++eea.sparql.images/rdf-icon.gif</property>
  <property name="content_meta_type">Sparql</property>
  <property name="product">eea.sparql</property>
  <property name="factory">addSparql</property>
@@ -15,9 +16,9 @@
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>
- <property name="default_view">base_view</property>
+ <property name="default_view">view</property>
  <property name="view_methods">
-  <element value="base_view"/>
+  <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
  <alias from="(Default)" to="(dynamic view)"/>

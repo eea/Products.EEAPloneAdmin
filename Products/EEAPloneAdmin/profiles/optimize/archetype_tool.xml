@@ -97,6 +97,9 @@
   <type portal_type="GISMapApplication">
    <catalog value="portal_catalog"/>
   </type>
+  <type portal_type="CloudVideo">
+   <catalog value="portal_catalog"/>
+  </type>
   <type portal_type="FlashFile">
    <catalog value="portal_catalog"/>
   </type>

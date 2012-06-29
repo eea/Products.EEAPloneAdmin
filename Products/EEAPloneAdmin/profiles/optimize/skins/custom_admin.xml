@@ -2,5 +2,5 @@
 <object name="custom_admin" meta_type="Folder">
  <property name="title"></property>
  <object name="deleted" meta_type="Folder"/>
- <object name="eeareferencebrowser" meta_type="Page Template"/>
+ <object name="global_statusmessage" meta_type="Page Template"/>
 </object>

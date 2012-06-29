@@ -43,15 +43,18 @@
   <property name="noOfMedium" type="int">4</property>
   <property name="noOfLow" type="int">3</property>
   <property name="development" type="boolean">False</property>
-  <property name="noOfMultimedia" type="int">6</property>
+  <property name="noOfMultimedia" type="int">8</property>
   <property name="noOfAnimations" type="int">15</property>
-  <property name="noOfArticles" type="int">6</property>
-  <property name="noOfPublications" type="int">6</property>
+  <property name="noOfArticles" type="int">8</property>
+  <property name="noOfPublications" type="int">8</property>
   <property name="noOfPromotions" type="int">10</property>
   <property name="noOfEachProduct" type="int">3</property>
-  <property name="noOfDatasets" type="int">6</property>
-  <property name="noOfLatestDefault" type="int">6</property>
+  <property name="noOfDatasets" type="int">8</property>
+  <property name="noOfLatestDefault" type="int">8</property>
   <property name="noOfVideos" type="int">60</property>
+  <property name="youtubePlaylists"
+     type="string">5A7072A58A14ED00, CA768A2FDBA259DE</property>
+  <property name="noOfNews" type="int">8</property>
  </object>
  <object name="geographical_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA Geographical properties</property>
@@ -140,23 +143,38 @@
    <element value="ATCurrentAuthorCriterion"/>
    <element value="ATDateCriteria"/>
    <element value="ATDateRangeCriterion"/>
+   <element value="ATFile"/>
+   <element value="ATImage"/>
    <element value="ATListCriterion"/>
    <element value="ATPathCriterion"/>
    <element value="ATPortalTypeCriterion"/>
    <element value="ATReferenceCriterion"/>
+   <element value="ATRelativePathCriterion"/>
    <element value="ATSelectionCriterion"/>
    <element value="ATSimpleIntCriterion"/>
    <element value="ATSimpleStringCriterion"/>
    <element value="ATSortCriterion"/>
+   <element value="AliasVocabulary"/>
    <element value="AssessmentPart"/>
    <element value="CFTRequestor"/>
+   <element value="CMF Document"/>
+   <element value="CMF Event"/>
+   <element value="CMF Favorite"/>
+   <element value="CMF File"/>
+   <element value="CMF Folder"/>
+   <element value="CMF Image"/>
+   <element value="CMF Large Plone Folder"/>
    <element value="CMF Link"/>
+   <element value="CMF News Item"/>
+   <element value="CMF Topic"/>
    <element value="CacheTool"/>
    <element value="CallForInterest"/>
    <element value="CallForTender"/>
    <element value="CommonalityReport"/>
+   <element value="ContentCacheRule"/>
    <element value="Data"/>
    <element value="DataSourceLink"/>
+   <element value="DavizVisualization"/>
    <element value="Discussion Item"/>
    <element value="DiversityReport"/>
    <element value="EEAFigure"/>
@@ -170,9 +188,10 @@
    <element value="Event"/>
    <element value="ExternalDataSpec"/>
    <element value="File"/>
-   <element value="ATFile"/>
    <element value="FlashFile"/>
    <element value="FlexibilityReport"/>
+   <element value="HeaderSet"/>
+   <element value="HeaderSetFolder"/>
    <element value="HelpCenterDefinition"/>
    <element value="HelpCenterErrorReference"/>
    <element value="HelpCenterFAQ"/>
@@ -183,9 +202,9 @@
    <element value="HelpCenterReferenceManualPage"/>
    <element value="HelpCenterTutorial"/>
    <element value="HelpCenterTutorialPage"/>
+   <element value="Highlight"/>
    <element value="Image"/>
    <element value="ImageFS"/>
-   <element value="ATImage"/>
    <element value="IndicatorFactSheet"/>
    <element value="Link"/>
    <element value="MethodologyReference"/>
@@ -194,16 +213,21 @@
    <element value="Organisation"/>
    <element value="Plone Site"/>
    <element value="PolicyDocumentReference"/>
+   <element value="PolicyHTTPCacheManagerCacheRule"/>
    <element value="PolicyQuestion"/>
+   <element value="PressRelease"/>
    <element value="QuickEvent"/>
-   <element value="RDFEvent"/>
    <element value="RationaleReference"/>
    <element value="RelatedIndicatorLink"/>
    <element value="Requestor"/>
+   <element value="RuleFolder"/>
+   <element value="Sparql"/>
    <element value="Specification"/>
    <element value="Speech"/>
    <element value="Subscriber"/>
    <element value="TempFolder"/>
+   <element value="TemplateCacheRule"/>
+   <element value="VdexVocabulary"/>
    <element value="VocabularyLibrary"/>
   </property>
   <property name="enable_wf_state_filtering" type="boolean">False</property>
@@ -235,6 +259,10 @@
    <element value="allowDiscussion"/>
    <element value="file"/>
    <element value="image"/>
+   <element value="creator"/>
+   <element value="excludeFromNav"/>
+   <element value="nextPreviousEnabled"/>
+   <element value="contributors"/>
   </property>
   <property name="mymetatype_blacklist" type="lines">
    <element
@@ -253,14 +281,17 @@
    <element value="language"/>
    <element value="allowDiscussion"/>
    <element value="image"/>
+   <element value="creator"/>
+   <element value="contributors"/>
   </property>
   <property name="specification_blacklist" type="lines">
-   <element value="codes"/>
    <element value="constrainTypesMode"/>
    <element value="locallyAllowedTypes"/>
    <element value="immediatelyAddableTypes"/>
    <element value="language"/>
    <element value="allowDiscussion"/>
+   <element value="creator"/>
+   <element value="contributors"/>
   </property>
   <property name="article_blacklist" type="lines">
    <element value="media"/>
@@ -269,6 +300,9 @@
    <element value="immediatelyAddableTypes"/>
    <element value="language"/>
    <element value="allowDiscussion"/>
+   <element value="creator"/>
+   <element value="excludeFromNav"/>
+   <element value="contributors"/>
   </property>
  </object>
  <object name="site_properties" meta_type="Plone Property Sheet">
@@ -471,16 +505,7 @@
   <property name="many_groups" type="boolean">False</property>
   <property name="number_of_days_to_keep" type="int">7</property>
   <property name="webstats_js"
-     type="string">&lt;!-- ClickTale Bottom part --&gt;
-   &lt;div id="ClickTaleDiv" style="display: none;"&gt;&lt;/div&gt;
-   &lt;script type="text/javascript"&gt;
-   if(document.location.protocol!='https:')
-     document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRc5.js'%20type='text/javascript'%3E%3C/script%3E"));
-   &lt;/script&gt;
-   &lt;script type="text/javascript"&gt;
-   if(typeof ClickTale=='function') ClickTale(1650,0.0013,"www09");
-   &lt;/script&gt;
-   &lt;!-- ClickTale end of Bottom part --&gt;</property>
+     type="string">&lt;!-- ClickTale Bottom part --&gt;&lt;div id="ClickTaleDiv" style="display: none;"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;if(document.location.protocol!='https:')  document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRc9.js'%20type='text/javascript'%3E%3C/script%3E"));&lt;/script&gt;&lt;script type="text/javascript"&gt;if(typeof ClickTale=='function') ClickTale(7137,0.072,"www09");&lt;/script&gt;&lt;!-- ClickTale end of Bottom part --&gt;</property>
   <property name="icon_visibility" type="string">enabled</property>
   <property name="disable_nonfolderish_sections"
      type="boolean">False</property>
@@ -529,6 +554,29 @@
   <property name="allow_external_login_sites" type="lines"/>
   <property name="external_login_url" type="string"></property>
   <property name="external_logout_url" type="string"></property>
+  <property name="watermark_positions" type="lines">
+   <element value="Disabled"/>
+   <element value="Top Left"/>
+   <element value="Top Right"/>
+   <element value="Bottom Left"/>
+   <element value="Bottom Right"/>
+  </property>
+  <property name="QRCode_Position" select_variable="watermark_positions"
+     type="selection">Bottom Left</property>
+  <property name="QRCode_Horizontal_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="QRCode_Vertical_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="Watermark_Image"
+     type="string">http://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
+  <property name="Watermark_Position" select_variable="watermark_positions"
+     type="selection">Bottom Right</property>
+  <property name="Watermark_Horizontal_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="Watermark_Vertical_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="quick_event_anonymous_creator"
+     type="string">anonymous</property>
  </object>
  <object name="soer_properties" meta_type="Plone Property Sheet">
   <property name="title">SOER channel properties</property>

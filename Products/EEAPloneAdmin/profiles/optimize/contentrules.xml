@@ -1,2 +1,9 @@
 <?xml version="1.0"?>
-<contentrules/>
+<contentrules>
+ <rule name="rule-1" title="Content added to this folder" description=""
+    enabled="True" event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    stop-after="False">
+  <conditions/>
+  <actions/>
+ </rule>
+</contentrules>

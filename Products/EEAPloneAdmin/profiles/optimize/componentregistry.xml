@@ -14,6 +14,18 @@
      for="zope.interface.Interface
            plone.portlets.interfaces.IPortletManager"
      provides="plone.portlets.interfaces.IPortletRetriever"/>
+  <adapter name="related_title"
+     factory="five.customerize.zpt.eea.indicators.content.interfaces.iexternaldataspec-related_title"
+     for="eea.indicators.content.interfaces.IExternalDataSpec
+           zope.publisher.interfaces.browser.IDefaultBrowserLayer"
+     provides="zope.interface.Interface"/>
+  <adapter name="plone.colophon"
+     factory="five.customerize.zpt.zope.interface.interface-plone.colophon"
+     for="zope.interface.Interface
+           eea.design.browser.interfaces.IEEACommonLayer
+           zope.browser.interfaces.IBrowserView
+           plone.app.layout.viewlets.interfaces.IPortalFooter"
+     provides="zope.viewlet.interfaces.IViewlet"/>
  </adapters>
  <subscribers/>
  <utilities>
@@ -68,6 +80,8 @@
   <utility interface="p4a.plonevideoembed.interfaces.IVideoLinkSupport"
      object=""/>
   <utility interface="p4a.video.interfaces.IVideoSupport" object=""/>
+  <utility interface="plone.app.discussion.interfaces.ICommentingTool"
+     object="portal_discussion"/>
   <utility interface="plone.app.i18n.locales.interfaces.IContentLanguages"
      object="plone_app_content_languages"/>
   <utility interface="plone.app.i18n.locales.interfaces.ICountries"
@@ -94,6 +108,9 @@
      interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
   <utility name="collective.js.jqueryui"
      factory="zope.interface.interface.InterfaceClass" id="IJqueryUILayer"
+     interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
+  <utility name="plone.app.discussion"
+     factory="zope.interface.interface.InterfaceClass" id="IDiscussionLayer"
      interface="plone.browserlayer.interfaces.ILocalBrowserLayerType"/>
   <utility name="plone.app.z3cform"
      factory="zope.interface.interface.InterfaceClass" id="IPloneFormLayer"

@@ -145,12 +145,6 @@
     visible="True">
   <permission>Manage portal</permission>
  </configlet>
- <configlet title="Configuration Registry" action_id="plone.app.registry"
-    appId="plone.app.registry" category="Plone" condition_expr=""
-    icon_expr="string:$portal_url/++resource++plone.app.registry/icon.png"
-    url_expr="string:${portal_url}/portal_registry" visible="True">
-  <permission>Manage portal</permission>
- </configlet>
  <configlet title="Caching" action_id="plone.app.caching"
     appId="plone.app.caching" category="Plone" condition_expr=""
     icon_expr="string:$portal_url/++resource++plone.app.caching.gif"
@@ -231,6 +225,18 @@
     appId="collective.quickupload" category="Products" condition_expr=""
     icon_expr="string:${portal_url}/++resource++quickupload_static/upload.png"
     url_expr="string:${portal_url}/@@quickupload-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Configuration Registry" action_id="plone.app.registry"
+    appId="plone.app.registry" category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/++resource++plone.app.registry/icon.png"
+    url_expr="string:${portal_url}/portal_registry" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Discussion" action_id="discussion"
+    appId="plone.app.discussion" category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/discussionitem_icon.gif"
+    url_expr="string:${portal_url}/@@discussion-settings" visible="True">
   <permission>Manage portal</permission>
  </configlet>
 </object>
