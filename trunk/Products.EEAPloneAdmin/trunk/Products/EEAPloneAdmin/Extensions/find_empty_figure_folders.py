@@ -45,7 +45,10 @@ def fix_1(self):
 
     fix = []
     i = 0
-    for o in find(self)[0]:
+    all = find(self)
+    to_fix = all[0] + all[1]
+
+    for o in to_fix:
         fix.append(o.absolute_url())
         o._at_creation_flag = False
 
