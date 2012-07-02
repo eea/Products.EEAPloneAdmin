@@ -3,6 +3,11 @@ Changelog
 
 5.1-dev - (unreleased)
 ----------------------
+* Bug fix: added external methods to fix the problematic unfinished
+  folders from EEAFigures
+  [tiberich refs #5312]
+* Feature: added a manager-only @@gopdb view to enable dropping to pdb console
+  [tiberich]
 
 5.0 - (2012-06-20)
 ------------------
