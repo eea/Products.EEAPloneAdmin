@@ -8,9 +8,7 @@ import transaction
 def find(self):
     """find folders that are empty inside EEAFigure objects
     """
-    context = self
-
-    cat = context.portal_catalog
+    cat = self.portal_catalog
     figures = cat.searchResults({'meta_type': ['EEAFigure']})
 
     empty = []
@@ -33,7 +31,6 @@ def show(self):
     """Run in browser to see problematic folders
     """
 
-    context = self
     empty = find(self)
     return "\n".join([ "Folder that are empty inside EEAFigures"] + 
                         [o.absolute_url() for o in empty[0]] + 
