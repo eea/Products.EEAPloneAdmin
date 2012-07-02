@@ -14,16 +14,19 @@ def find(self):
     figures = cat.searchResults({'meta_type': ['EEAFigure']})
 
     empty = []
+    filled = []
     for brain in figures:
         fig = brain.getObject()
         for brain in fig.getFolderContents({'portal_type':'Folder'}):
             folder = brain.getObject()
             has_content = len(list(folder.getFolderContents()))
+            obj = brain.getObject()
             if not has_content:
-                obj = brain.object()
                 empty.append(obj)
+            else:
+                filled.append(obj)
 
-    return empty
+    return empty, filled
 
 
 def show(self):
@@ -31,9 +34,12 @@ def show(self):
     """
 
     context = self
-    msg = "Folder that are empty inside EEAFigures"
-    empty = [o.absolute_url() for o in find(self)]
-    return "\n".join([msg] + empty)
+    empty = find(self)
+    return "\n".join([ "Folder that are empty inside EEAFigures"] + 
+                        [o.absolute_url() for o in empty[0]] + 
+                     ['Folders that are filled inside eeafigures'] + 
+                        [o.absolute_url() for o in empty[1]] 
+    )
 
 
 def fix_1(self):
@@ -42,7 +48,7 @@ def fix_1(self):
 
     fix = []
     i = 0
-    for o in find(self):
+    for o in find(self)[0]:
         fix.append(o.absolute_url())
         o._at_creation_flag = False
 
@@ -60,7 +66,7 @@ def fix_2(self):
     dels = []
 
     i = 0
-    for o in find(self):
+    for o in find(self)[0]:
         dels.append(o.absolute_url())
         parent = o.aq_parent
         parent.manage_delObjects(ids=[o.getId()])
