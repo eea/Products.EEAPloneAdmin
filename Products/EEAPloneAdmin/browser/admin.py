@@ -355,3 +355,16 @@ class RegenerateKSS(SaveResourcesOnDisk):
         """ Tool
         """
         return getToolByName(self.context, "portal_kss")
+
+
+class GoPDB(BrowserView):
+    """pdb view 
+    """
+
+    def __call__(self):
+        #mtool = getToolByName(self.context, 'portal_membership')
+        #has = mtool.checkPermission("Manage portal", self.context)
+        #if has:
+        import pdb; pdb.set_trace()
+
+        return "Ok"

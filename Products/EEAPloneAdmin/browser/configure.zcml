@@ -7,6 +7,14 @@
 
     <browser:page
         for="*"
+        name="gopdb"
+        class=".admin.GoPDB"
+        permission="cmf.ManagePortal"
+        >
+    </browser:page>
+
+    <browser:page
+        for="*"
         name="regen_js"
         class=".admin.RegenerateJS"
         permission="cmf.ManagePortal"
