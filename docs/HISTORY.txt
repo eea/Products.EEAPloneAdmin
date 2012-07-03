@@ -8,6 +8,16 @@ Changelog
   [tiberich refs #5312]
 * Feature: added a manager-only @@gopdb view to enable dropping to pdb console
   [tiberich]
+* Upgrade step: fix _at_creation_flag for folders in eeafigures:
+      Create an external method with module name: 
+          Products.EEAPloneAdmin.find_empty_figure_folders
+      function name: 
+          fix_1
+      Execute it, save the output for future reference.
+  [tiberich refs #5312]
+* Upgrade step: in portal_types, remove Folder as allowed addable content for
+  EEAFigure 
+  [tiberich refs #5312]
 
 5.0 - (2012-06-20)
 ------------------
