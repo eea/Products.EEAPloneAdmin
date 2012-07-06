@@ -3,6 +3,9 @@ Changelog
 
 5.1-dev - (unreleased)
 ----------------------
+* Feature: added basic external method migrateRelations to be used 
+  for migration of relations from one ob to another simply via python scripts.
+  [demarant refs #3213]
 * Bug fix: added external methods to fix the problematic unfinished
   folders from EEAFigures
   [tiberich refs #5312]
