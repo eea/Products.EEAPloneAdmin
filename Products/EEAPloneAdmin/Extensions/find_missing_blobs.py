@@ -231,6 +231,6 @@ def find_missing_scales(self):
                 broken.append((obj, size))
 
     f = open("/tmp/out.txt", "w")
-    f.writelines(map(lambda x:" - ".join(x), broken))
+    f.writelines([" - ".join(x) for x in broken])
     return """<html><body><h3>Broken:</h3><ul>%s</ul></body></html""" % \
-            "\n".join(map(lambda x:"<li>%s - %s</li>" % x, broken))
+            "\n".join(["<li>%s - %s</li>" % x for x in broken])

@@ -163,7 +163,7 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description,
         title = name.split('.')[0].replace('_',' ').replace('-',' ')
     if newid in context.objectIds() :
         # only here for flashupload method since a check_id is done
-        # in standard uploader - see also XXX in quick_upload.py
+        # in standard uploader - see also ZZZ in quick_upload.py
         raise NameError, 'Object id %s already exists' % newid
     else :
         upload_lock.acquire()
@@ -190,7 +190,7 @@ def QuickUploadCapableFileFactory__call__(self, name, title, description,
                         # mimetype arg works with blob files
                         mutator(data, content_type=content_type,
                                 mimetype=content_type)
-                        # XXX when getting file through request.BODYFILE
+                        # ZZZ when getting file through request.BODYFILE
                         # (XHR direct upload) the filename is not inside
                         # the file and the filename must be a string, not
                         # unicode otherwise Archetypes raise an error

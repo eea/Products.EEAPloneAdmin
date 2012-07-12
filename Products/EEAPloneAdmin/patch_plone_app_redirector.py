@@ -1,5 +1,6 @@
 """ Patching plone.app.redirector to also redirect direct file download
-    links (e.g. at_download/fileField) when the containing object defines an alias
+    links (e.g. at_download/fileField) when the containing object 
+    defines an alias
 """
 
 def RedirectionStorage_get(self, old_path, default=None):

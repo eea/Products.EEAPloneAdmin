@@ -1,3 +1,6 @@
+"""fix external data specs
+"""
+
 from Products.CMFPlone.utils import getToolByName
 from StringIO import StringIO
 import transaction

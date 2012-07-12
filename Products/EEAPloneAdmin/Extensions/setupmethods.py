@@ -38,22 +38,22 @@ def migrateRelations(self, old_ob_path, new_ob_path):
     brains = cat(**query)
 
     if len(brains)>0:
-	old_ob = brains[0].getObject()
+    old_ob = brains[0].getObject()
     
     query = {'path': {'query': new_ob_path, 'depth': 0}}
     brains = cat(**query)
     
     if len(brains)>0:
-	new_ob = brains[0].getObject()
+    new_ob = brains[0].getObject()
     
     # Move all the forward relations to the new_ob. 
     forwards = old_ob.getRelatedItems()
     info('INFO: forward relations for object: %s' % (forwards))
     
     if forwards:
-	new_ob.setRelatedItems(forwards)
-	old_ob.setRelatedItems([])
-	info('INFO: copying forward relations to new object')
+    new_ob.setRelatedItems(forwards)
+    old_ob.setRelatedItems([])
+    info('INFO: copying forward relations to new object')
     
     # Take all back refs (objects that refer to old_ob)
     # and make them point to new_ob
@@ -61,29 +61,29 @@ def migrateRelations(self, old_ob_path, new_ob_path):
     backs_topro = []    
     relations = queryAdapter(old_ob, IRelations)
     if relations:
-	backs = relations.backReferences()
-	#get also back references from other non standard relation field
+    backs = relations.backReferences()
+    #get also back references from other non standard relation field
         backs_topro = relations.backReferences(relatesTo='relatesToProducts')
-	info('INFO: standard back refs: %s' % (backs))
-	info('INFO: relatesToProducts back refs: %s' % (backs_topro))
-	
+    info('INFO: standard back refs: %s' % (backs))
+    info('INFO: relatesToProducts back refs: %s' % (backs_topro))
+    
     for ob in backs:
-	related = ob.getRelatedItems()
-	info('INFO: BEFORE updating standard relations on backrefs: %s' % (related))
-	#remove reference to old_ob
-	del related[related.index(old_ob)]
-	related.append(new_ob)
-	ob.setRelatedItems(related)
-	info('INFO: AFTER updating standard relations on backrefs: %s' % (related))
+    related = ob.getRelatedItems()
+    info('INFO: BEFORE updating standard relations on backrefs: %s' % (related))
+    #remove reference to old_ob
+    del related[related.index(old_ob)]
+    related.append(new_ob)
+    ob.setRelatedItems(related)
+    info('INFO: AFTER updating standard relations on backrefs: %s' % (related))
 
     for ob in backs_topro:
-	related = ob.getRelatedProducts()
-	info('INFO: BEFORE updating relatedProducts on backrefs: %s' % (related))
-	#remove reference to old_ob
-	del related[related.index(old_ob)]
-	related.append(new_ob)
-	ob.setRelatedProducts(related)
-	info('INFO: AFTER updating relatedProducts on backrefs: %s' % (related))
+    related = ob.getRelatedProducts()
+    info('INFO: BEFORE updating relatedProducts on backrefs: %s' % (related))
+    #remove reference to old_ob
+    del related[related.index(old_ob)]
+    related.append(new_ob)
+    ob.setRelatedProducts(related)
+    info('INFO: AFTER updating relatedProducts on backrefs: %s' % (related))
     
 
     info('INFO: finished migrating relations')
@@ -95,9 +95,11 @@ def testTimeoutA(self):
     time.sleep(600)
     return 'done'
 
-def updateMimeTypes(self, brains=[], extension=None, newmime=None, batchnr=20):
+def updateMimeTypes(self, brains=None, extension=None, newmime=None, batchnr=20):
     """ Update mime types for file fields and their catalog index
     """
+    if brains is None:
+        brains = []
     info('INFO: starting mime types update')
     trans_count = 0
     totobs = len(brains)
@@ -126,9 +128,11 @@ def updateMimeTypes(self, brains=[], extension=None, newmime=None, batchnr=20):
 
     info('INFO: completed mime types update')
 
-def bulkDelete(self, brains=[], batchnr=20, delete_versions=False):
+def bulkDelete(self, brains=None, batchnr=20, delete_versions=False):
     """ Delete many objects in batches (multi transactions). BE CAUTIUS.
     """
+    if brains is None:
+        brains = []
     info('INFO: starting bulk delete')
     request = self.REQUEST
     debug = request.get('debug', None)
@@ -529,7 +533,7 @@ def unmarkCreationFlagForBrains(self, brains=None):
     i = 0
     for b in brains:
         i += 1
-	info('INFO: processing %s of %s' % (str(i),str(tot)))
+    info('INFO: processing %s of %s' % (str(i), str(tot)))
         try:
             o = b.getObject()
             if o.checkCreationFlag():
@@ -880,7 +884,7 @@ The EEA webteam
         mailMsg.epilogue = "\n" # To ensure that message ends with newline
 
         try:
-            #TODO: is
+            #ZZZ: is
             #theme.sendmail("no-reply@eea.europa.eu",
             #[("", email)], mailMsg, subject = subject)
             mailhost.send(messageText=body, mto=email,

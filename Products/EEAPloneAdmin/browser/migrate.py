@@ -152,7 +152,7 @@ class MigrateTheme(object):
         # map old theme id to new
         related = [ themeIdMap.get(r, r) for r in related ]
 
-        # XXX need to find UID for the related theme centres
+        # ZZZ need to find UID for the related theme centres
         related = [ themeCentres.get(rel) for rel in related ]
         related = [ rl for rl in related if rl is not None ]
         theme.related = related

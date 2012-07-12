@@ -1,3 +1,6 @@
+"""script to symlink maildrop 
+"""
+
 import os.path
 import subprocess
 import Products.MaildropHost.maildrop.maildrop as md
@@ -7,6 +10,8 @@ import sys
 MAILDROP = 'maildrop'
 
 def link():
+    """symlink maildrop script
+    """
     if len(sys.argv) != 2:
         raise ValueError("Need path to buildout 'bin' folder as argument")
 

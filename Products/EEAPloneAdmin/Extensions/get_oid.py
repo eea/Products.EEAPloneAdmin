@@ -5,6 +5,7 @@ import os
 import binascii
 
 def get_oid(self):
+    """get oid"""
     field = self.getField('image')
     blob = field.getRaw(self).getBlob()
     oid = blob._p_oid
