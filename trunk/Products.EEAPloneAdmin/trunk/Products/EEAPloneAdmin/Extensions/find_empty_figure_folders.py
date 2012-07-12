@@ -17,12 +17,13 @@ def find(self):
         fig = brain.getObject()
         for brain in fig.getFolderContents({'portal_type':'Folder'}):
             folder = brain.getObject()
-            has_content = len(list(folder.getFolderContents()))
-            obj = brain.getObject()
-            if not has_content:
-                empty.append(obj)
-            else:
-                filled.append(obj)
+            empty.append(folder)
+
+            #has_content = len(list(folder.getFolderContents()))
+            #if not has_content:
+                #empty.append(folder)
+            #else:
+                #filled.append(folder)
 
     return empty, filled
 
