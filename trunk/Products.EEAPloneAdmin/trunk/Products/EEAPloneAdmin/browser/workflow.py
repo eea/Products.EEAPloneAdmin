@@ -141,7 +141,7 @@ class WorkflowManagement(object):
         # 'Importance' and 'X-MSMail-Priority' are used by Outlook and
         #   Outlook Express while 'X-Priority' is used by Thunderbird and Eudora
 
-        #TODO: plone4 ichimdav this was unused, see if it's still needed
+        #ZZZ: plone4 ichimdav this was unused, see if it's still needed
         #kwargs = {'Importance': 'Normal',
         #    'X-MSMail-Priority': 'Normal',
         #    'X-Priority': '3',

@@ -103,9 +103,7 @@ def migrate_discussions(self, filter_callback=None):
         for reply in replies:
 
             # log
-            indent = "  "
-            for i in range(depth):
-                indent += "  "
+            indent = "  " * depth + 1
             log("%smigrate_reply: '%s'." % (indent, reply.title))
 
             should_migrate = True

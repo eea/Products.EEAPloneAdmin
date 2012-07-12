@@ -22,6 +22,8 @@ def patched_resolve_image(self, src):
     appendix = ''
 
     def traversal_stack(base, path):
+        """traversal stack
+        """
         if path.startswith('/'):
             base = getSite()
             path = path[1:]
@@ -47,6 +49,8 @@ def patched_resolve_image(self, src):
         return stack
 
     def traverse_path(base, path):
+        """traverse path
+        """
         stack = traversal_stack(base, path)
         if stack is None:
             return

@@ -38,7 +38,7 @@ class ContentMenuView(Implicit, PloneKSSView):
             plonecommands.refreshContentMenu()
             return self.render()
 
-        (proto, host, path, query, anchor) = urlsplit(url)
+        (_proto, _host, path, query, _anchor) = urlsplit(url)
         if not path.endswith('content_status_modify'):
             raise KSSExplicitError, 'content_status_modify is not handled'
         action = query.split("workflow_action=")[-1].split('&')[0]

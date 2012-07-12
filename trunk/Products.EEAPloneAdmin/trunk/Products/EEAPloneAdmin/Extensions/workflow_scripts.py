@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 def moveObject(self, state_change, **kw):
     """ Move object
     """
-    #TODO ichimdav: i've added these because of unfound vars from line 15,
+    #ZZZ: ichimdav: i've added these because of unfound vars from line 15,
     #               check if is correct
     news_folder = kw['news_folder']
     highlight_folder = kw['highlight_folder']

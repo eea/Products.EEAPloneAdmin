@@ -111,7 +111,7 @@ class PloneAdmin(Plone):
             that are path expressions and the second value is a
             1 for use-macro, 0 for render path expression.
         """
-        # TODO: implement this for plone4, at this moment this method is
+        # ZZZ: implement this for plone4, at this moment this method is
         # not called
         # tiberich: at this moment there's nothing in our zope
         # that will call this method.
@@ -243,7 +243,7 @@ class PortalState(BasePortalState):
         """
         # NOTE: this used to be globalized with p2.5 method,
         # this in no longer possible
-        # TODO: BAD STYLE: this method used to have side effects,
+        # ZZZ: BAD STYLE: this method used to have side effects,
         # by changing site actions urls
         portal = self.portal()
         language = self.language()
@@ -256,7 +256,7 @@ class PortalState(BasePortalState):
                 root.getTranslation(language) is not None):
                 local_site = '%s/%s' % (portal_url, language)
 
-        #TODO: implement this for plone4
+        #ZZZ: implement this for plone4
         #for action in self._data['actions']['site_actions']:
             #action['url'] = action['url'].replace('LOCAL_SITE',
                                                       #self._data['local_site'])

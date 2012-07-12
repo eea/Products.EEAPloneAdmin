@@ -365,6 +365,7 @@ class GoPDB(BrowserView):
         #mtool = getToolByName(self.context, 'portal_membership')
         #has = mtool.checkPermission("Manage portal", self.context)
         #if has:
-        import pdb; pdb.set_trace()
+        import pdb
+        pdb.set_trace()
 
         return "Ok"
