@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_relations" meta_type="EEARelationsTool">
+ <object name="indicator-specification" meta_type="EEARelationsContentType">
+  <property name="title">Indicator Specification</property>
+  <property name="ct_type">Specification</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">/www/data-and-maps/indicators/createObject?type_name=Specification</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="eea-data" meta_type="EEARelationsContentType">
+  <property name="title">EEA Data</property>
+  <property name="ct_type">Data</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">/www/data-and-maps/data/createObject?type_name=Data</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="eea-figure" meta_type="EEARelationsContentType">
+  <property name="title">EEA Figure</property>
+  <property name="ct_type">EEAFigure</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">/www/data-and-maps/figures/createObject?type_name=EEAFigure</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="policy-document-reference" meta_type="EEARelationsContentType">
+  <property name="title">Policy Document Reference</property>
+  <property name="ct_type">PolicyDocumentReference</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">/www/policy-documents/createObject?type_name=PolicyDocumentReference</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="external-data-reference" meta_type="EEARelationsContentType">
+  <property name="title">External Data Reference</property>
+  <property name="ct_type">ExternalDataSpec</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">&lt;ATBTreeFolder at external&gt;</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">10</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">portlet</property>
+    <property name="title">Create new data reference</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="macro">here/portlet_addcontent/macros/portlet</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="indicator-assessment-part" meta_type="EEARelationsContentType">
+  <property name="title">Indicator Assessment Part</property>
+  <property name="ct_type">AssessmentPart</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">/www/data-and-maps/createObject?type_name=AssessmentPart</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="policy-question" meta_type="EEARelationsContentType">
+  <property name="title">Policy Question</property>
+  <property name="ct_type">PolicyQuestion</property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">../@@edit_aggregated</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="indicator-specification-eea-data"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-specification</property>
+  <property name="to">eea-data</property>
+  <property name="title">Indicator Specification -&gt; EEA Data</property>
+  <property
+     name="forward_label">EEA Data sets used in this indicator</property>
+  <property name="backward_label">Indicators using this data set</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="indicator-specification-policy-document-reference"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-specification</property>
+  <property name="to">policy-document-reference</property>
+  <property
+     name="title">Indicator Specification -&gt; Policy Document Reference</property>
+  <property
+     name="forward_label">Relevant policy documents for this indicator</property>
+  <property
+     name="backward_label">Indicators related to this policy document</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="indicator-specification-external-data-reference"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-specification</property>
+  <property name="to">external-data-reference</property>
+  <property
+     name="title">Indicator Specification -&gt; External Data Reference</property>
+  <property
+     name="forward_label">Data references used for this indicator</property>
+  <property name="backward_label">Indicators using this dataset</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="indicator-assessment-part-policy-question"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-assessment-part</property>
+  <property name="to">policy-question</property>
+  <property
+     name="title">Indicator Assessment Part -&gt; Policy Question</property>
+  <property name="forward_label">Related policy questions</property>
+  <property
+     name="backward_label">Indicator assessments answering this policy question</property>
+  <property name="description"></property>
+  <property name="required">True</property>
+  <property name="required_for">
+   <element value="published"/>
+  </property>
+ </object>
+ <object name="indicator-assessment-part-eea-figure"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-assessment-part</property>
+  <property name="to">eea-figure</property>
+  <property name="title">Indicator Assessment Part -&gt; EEA Figure</property>
+  <property name="forward_label">Figures supporting this assessment</property>
+  <property
+     name="backward_label">Assessments supported by this figure</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for">
+   <element value="published"/>
+  </property>
+ </object>
+ <object name="indicator-fact-sheet" meta_type="EEARelationsContentType">
+  <property name="title">Indicator Fact Sheet</property>
+  <property name="ct_type">IndicatorFactSheet</property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="indicator-fact-sheet-eea-figure"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-fact-sheet</property>
+  <property name="to">eea-figure</property>
+  <property name="title">Indicator Fact Sheet -&gt; EEA Figure</property>
+  <property
+     name="forward_label">Figures supporting this indicator assessment</property>
+  <property
+     name="backward_label">Indicator assessments supported by this figure</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for">
+   <element value="published"/>
+  </property>
+ </object>
+ <object name="indicator-specification-indicator-specification"
+    meta_type="EEAPossibleRelation">
+  <property name="from">indicator-specification</property>
+  <property name="to">indicator-specification</property>
+  <property
+     name="title">Indicator Specification -&gt; Indicator Specification</property>
+  <property name="forward_label">Strongly related indicators</property>
+  <property name="backward_label">Strongly related indicators</property>
+  <property
+     name="description">Indicators which are strictly related, for example they are heavily overlapping but still different is some aspects. For example one indicator can be extended and include more graphs and more policy questions than another similar indicator which stays at a more generic level</property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="eea-figure-eea-data" meta_type="EEAPossibleRelation">
+  <property name="from">eea-figure</property>
+  <property name="to">eea-data</property>
+  <property name="title">EEA Figure -&gt; EEA Data</property>
+  <property name="forward_label">Related dataset</property>
+  <property
+     name="backward_label">Figures produced with this dataset</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="publication" meta_type="EEARelationsContentType">
+  <property name="title">Publication</property>
+  <property name="ct_type">Report</property>
+  <property name="ct_interface"></property>
+  <property
+     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Creator</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="eea-figure-publication" meta_type="EEAPossibleRelation">
+  <property name="from">eea-figure</property>
+  <property name="to">publication</property>
+  <property name="title">EEA Figure -&gt; Publication</property>
+  <property name="forward_label">Used in publications</property>
+  <property name="backward_label">Figures used in this publication</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="eea-figure-external-data-reference"
+    meta_type="EEAPossibleRelation">
+  <property name="from">eea-figure</property>
+  <property name="to">external-data-reference</property>
+  <property name="title">EEA Figure -&gt; External Data Reference</property>
+  <property name="forward_label">Data references</property>
+  <property name="backward_label">Produced figures</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="interactive-data" meta_type="EEARelationsContentType">
+  <property name="title">Interactive data charts</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">Products.EEAContentTypes.content.interfaces.IInteractiveData</property>
+  <property
+     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">effective(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-presentation" meta_type="EEARelationsContentType">
+  <property name="title">Daviz Visualization</property>
+  <property name="ct_type">DavizVisualization</property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">effective(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-sources" meta_type="EEARelationsContentType">
+  <property name="title">Data (daviz json)</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">eea.app.visualization.subtypes.interfaces.IVisualizationEnabled</property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">radio</property>
+    <property name="title">Data owner</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">getDataOwner</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="maxitems">0</property>
+    <property name="sortreversed">0</property>
+    <property name="count">1</property>
+    <property name="hidezerocount">1</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">effective(reverse)</property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c6">
+    <property name="widget">lastversion</property>
+    <property name="title">only last version</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-visualization-data-daviz-json"
+    meta_type="EEAPossibleRelation">
+  <property name="from">daviz-presentation</property>
+  <property name="to">daviz-sources</property>
+  <property
+     name="title">Daviz Visualization -&gt; Data (daviz json)</property>
+  <property name="forward_label">Based on following data</property>
+  <property name="backward_label">Visualisations of this data</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="news-and-articles" meta_type="EEARelationsContentType">
+  <property name="title">News and articles</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">Products.EEAContentTypes.content.interfaces.IExternalHighlight</property>
+  <property
+     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c6">
+    <property name="widget">select</property>
+    <property name="title">Topics</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">getThemes</property>
+    <property name="vocabulary">themes</property>
+    <property name="catalog"></property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">select</property>
+    <property name="title">Created in CMS by</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Creator</property>
+    <property name="vocabulary"></property>
+    <property name="catalog">portal_catalog</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="news-and-articles-publication" meta_type="EEAPossibleRelation">
+  <property name="from">news-and-articles</property>
+  <property name="to">publication</property>
+  <property name="title">News and articles -&gt; Publication</property>
+  <property name="forward_label">Related publications</property>
+  <property name="backward_label">News about this publication</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="news-and-articles-news-and-articles"
+    meta_type="EEAPossibleRelation">
+  <property name="from">news-and-articles</property>
+  <property name="to">news-and-articles</property>
+  <property name="title">News and articles -&gt; News and articles</property>
+  <property name="forward_label">News and articles</property>
+  <property name="backward_label">News and articles</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="news-and-articles-eea-data" meta_type="EEAPossibleRelation">
+  <property name="from">news-and-articles</property>
+  <property name="to">eea-data</property>
+  <property name="title">News and articles -&gt; EEA Data</property>
+  <property name="forward_label">Related data</property>
+  <property name="backward_label">News and articles about this data</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="indicator" meta_type="EEARelationsContentType">
+  <property name="title">Indicator</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">eea.indicators.content.interfaces.IIndicatorAssessment</property>
+  <property
+     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">lastversion</property>
+    <property name="title">last version only</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="news-and-articles-indicator" meta_type="EEAPossibleRelation">
+  <property name="from">news-and-articles</property>
+  <property name="to">indicator</property>
+  <property name="title">News and articles -&gt; Indicator</property>
+  <property name="forward_label">Related indicators</property>
+  <property
+     name="backward_label">News and articles about this indicator</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="linked-open-data-sparql" meta_type="EEARelationsContentType">
+  <property name="title">Linked Open Data (Sparql)</property>
+  <property name="ct_type">Sparql</property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">8</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">created(reverse)</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">lastversion</property>
+    <property name="title">show only last version</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-visualization-linked-open-data-sparql"
+    meta_type="EEAPossibleRelation">
+  <property name="from">daviz-presentation</property>
+  <property name="to">linked-open-data-sparql</property>
+  <property
+     name="title">Daviz Visualization -&gt; Linked Open Data (Sparql)</property>
+  <property name="forward_label">Based on linked open data</property>
+  <property
+     name="backward_label">Visualizations of this sparql query</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="eea-figure-eea-figure" meta_type="EEAPossibleRelation">
+  <property name="from">eea-figure</property>
+  <property name="to">eea-figure</property>
+  <property name="title">EEA Figure -&gt; EEA Figure</property>
+  <property name="forward_label">Related figures</property>
+  <property name="backward_label">Related figures</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="interactive-data-charts-eea-data"
+    meta_type="EEAPossibleRelation">
+  <property name="from">interactive-data</property>
+  <property name="to">eea-data</property>
+  <property name="title">Interactive data charts -&gt; EEA Data</property>
+  <property name="forward_label">Based on the following data</property>
+  <property name="backward_label">Visualisations of this data</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="interactive-data-charts-publication"
+    meta_type="EEAPossibleRelation">
+  <property name="from">interactive-data</property>
+  <property name="to">publication</property>
+  <property name="title">Interactive data charts -&gt; Publication</property>
+  <property name="forward_label">Related publication</property>
+  <property name="backward_label">Related data visualisation</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="external-data-reference-eea-data"
+    meta_type="EEAPossibleRelation">
+  <property name="from">external-data-reference</property>
+  <property name="to">eea-data</property>
+  <property name="title">External Data Reference -&gt; EEA Data</property>
+  <property name="forward_label">Based on following data</property>
+  <property name="backward_label">Derived dataset</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+ <object name="all" meta_type="EEARelationsContentType">
+  <property name="title">All</property>
+  <property name="ct_type"></property>
+  <property
+     name="ct_interface">eea.relations.content.interfaces.IBaseObject</property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">effective(reverse)</property>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="all-all" meta_type="EEAPossibleRelation">
+  <property name="from">all</property>
+  <property name="to">all</property>
+  <property name="title">All -&gt; All</property>
+  <property name="forward_label">See also</property>
+  <property name="backward_label">See also</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+</object>

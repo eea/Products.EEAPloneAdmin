@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff SYSTEM "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<!-- XLIFF Format Copyright © OASIS Open 2001-2003 -->
+<xliff version="1.0">
+<file
+original="/index_html"
+product-name="Localizer"
+product-version="1.1.x"
+datatype="plaintext"
+source-language="en"
+target-language="it"
+date="2008-03-12T11:40:27Z"
+>
+<header>
+</header>
+<body>
+<trans-unit id="body">
+ <source>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;The EEA in 30 seconds&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+&lt;p&gt;&lt;b&gt;
+Mission
+&lt;/b&gt;&lt;br/&gt;
+The EEA's task is to provide timely, targeted, relevant and reliable environmental information. We serve those concerned with framing and implementing European and national environmental policy, and the general public. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Supporting the policy makers
+&lt;/b&gt;&lt;br/&gt;
+Our information helps the EU and Agency member countries make informed decisions about improving the environment, integrate environmental considerations into economic policies and move towards sustainability. We focus on supporting key users at vital points in the policy process at the European level.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Environmental information
+&lt;/b&gt;&lt;br/&gt;
+In our work we draw on existing organisations knowledge/information; we cooperate with them, coordinate the work at European level and seek to avoid duplication. We bring together the best available environmental data from individual countries. After a thorough compilation of data and its validation through our institutional network (EIONET), information is made accessible in various reporting formats to our users. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Membership countries
+&lt;/b&gt;&lt;br/&gt;
+Although the EEA is a European Union body, membership is open to non-EU countries that share our objectives. The EEA now has 32 member countries: all 27 EU Member States, Iceland, Liechtenstein, Norway, Switzerland and Turkey.
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Read more about the EEA&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;</source>
+ <target>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;L'Agenzia in breve&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+				&lt;p&gt;&lt;b&gt;Missione&lt;/b&gt;&lt;br/&gt;Il compito dell'Agenzia è di fornire informazioni ambientali tempestive, mirate, pertinenti e affidabili. Lavoriamo al servizio di quanti sono incaricati di formulare e implementare le politiche ambientali europee e nazionali nonché del pubblico in generale. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Sostegno ai decisori politici&lt;/b&gt;&lt;br/&gt; Le nostre informazioni consentono agli Stati membri dell'UE e dell'Agenzia di adottare decisioni volte al miglioramento dell'ambiente, all'integrazione di considerazioni ambientali nelle politiche economiche e all'avvicinamento alla sostenibilità. La nostra attenzione è rivolta al sostegno dei principali utenti nei punti chiave del processo politico a livello europeo. 
+				
+				&lt;p&gt;&lt;b&gt;Informazioni ambientali&lt;/b&gt;&lt;br/&gt;Nello svolgimento del nostro compito utilizziamo informazioni provenienti da altre organizzazioni, collaboriamo con loro, coordiniamo il lavoro a livello europeo e cerchiamo di evitare duplicazioni. Raccogliamo i migliori dati ambientali disponibili nei singoli paesi. Dopo una compilazione attenta dei dati e la loro convalida da parte della nostra rete istituzionale (EIONET), le informazioni vengono messe a disposizione dei nostri utenti in vari formati. 				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Paesi membri&lt;/b&gt;&lt;br/&gt;Benché l'Agenzia sia un organismo dell'Unione europea, la partecipazione è aperta anche ai paesi non appartenenti all'UE che condividono i nostri obiettivi. Attualmente l'Agenzia conta 32 stati membri: tutti i 27 Stati membri dell'UE, l'Islanda, il Liechtenstein, la Norvegia, la Svizzera e la Turchia. 
+				&lt;/p&gt;
+				&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Altre informazioni&lt;/a&gt;&lt;/p&gt;
+				&lt;br/&gt;
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+&lt;br/&gt;&lt;br/&gt;</target>
+</trans-unit>
+<trans-unit id="title">
+ <source>Introduction</source>
+ <target>Introduzione</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

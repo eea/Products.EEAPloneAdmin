@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<object>
+ <default_language value="en"/>
+ <use_path_negotiation value="True"/>
+ <use_cookie_negotiation value="False"/>
+ <set_cookie_everywhere value="False"/>
+ <use_request_negotiation value="False"/>
+ <use_cctld_negotiation value="False"/>
+ <use_content_negotiation value="True"/>
+ <use_combined_language_codes value="False"/>
+ <display_flags value="False"/>
+ <start_neutral value="False"/>
+ <use_subdomain_negotiation value="False"/>
+ <authenticated_users_only value="False"/>
+ <supported_langs>
+  <element value="sq"/>
+  <element value="ar"/>
+  <element value="bs"/>
+  <element value="bg"/>
+  <element value="zh"/>
+  <element value="hr"/>
+  <element value="cs"/>
+  <element value="da"/>
+  <element value="nl"/>
+  <element value="en"/>
+  <element value="et"/>
+  <element value="fi"/>
+  <element value="fr"/>
+  <element value="de"/>
+  <element value="el"/>
+  <element value="hu"/>
+  <element value="is"/>
+  <element value="ga"/>
+  <element value="it"/>
+  <element value="lv"/>
+  <element value="lt"/>
+  <element value="mk"/>
+  <element value="mt"/>
+  <element value="me"/>
+  <element value="no"/>
+  <element value="pl"/>
+  <element value="pt"/>
+  <element value="ro"/>
+  <element value="ru"/>
+  <element value="sr"/>
+  <element value="sk"/>
+  <element value="sl"/>
+  <element value="es"/>
+  <element value="sv"/>
+  <element value="tr"/>
+ </supported_langs>
+</object>

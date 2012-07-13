@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+ <property name="title">Indexes all content in the site</property>
+ <property name="unwrapobjects" type="boolean">True</property>
+ <object name="get_broken_discussions" meta_type="Script (Python)"/>
+ <object name="htmltext_lexicon" meta_type="ZCTextIndex Lexicon">
+  <element name="HTML aware splitter" group="Word Splitter"/>
+  <element name="Case Normalizer" group="Case Normalizer"/>
+  <element name="Remove listed stop words only" group="Stop Words"/>
+ </object>
+ <object name="plaintext_lexicon" meta_type="ZCTextIndex Lexicon">
+  <element name="Whitespace splitter" group="Word Splitter"/>
+  <element name="Case Normalizer" group="Case Normalizer"/>
+  <element name="Remove listed stop words only" group="Stop Words"/>
+ </object>
+ <object name="plone_lexicon" meta_type="ZCTextIndex Lexicon">
+  <element name="Unicode Whitespace splitter" group="Word Splitter"/>
+  <element name="Unicode Case Normalizer" group="Case Normalizer"/>
+ </object>
+ <index name="Creator" meta_type="FieldIndex">
+  <indexed_attr value="Creator"/>
+ </index>
+ <index name="Date" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="Description" meta_type="ZCTextIndex">
+  <indexed_attr value="Description"/>
+  <extra name="index_type" value="Okapi BM25 Rank"/>
+  <extra name="lexicon_id" value="plone_lexicon"/>
+ </index>
+ <index name="Format" meta_type="FieldIndex">
+  <indexed_attr value="Format"/>
+ </index>
+ <index name="Language" meta_type="FieldIndex">
+  <indexed_attr value="Language"/>
+ </index>
+ <index name="SearchableText" meta_type="ZCTextIndex">
+  <indexed_attr value="SearchableText"/>
+  <extra name="index_type" value="Okapi BM25 Rank"/>
+  <extra name="lexicon_id" value="plone_lexicon"/>
+ </index>
+ <index name="Subject" meta_type="KeywordIndex">
+  <indexed_attr value="Subject"/>
+ </index>
+ <index name="Title" meta_type="ZCTextIndex">
+  <indexed_attr value="Title"/>
+  <extra name="index_type" value="Okapi BM25 Rank"/>
+  <extra name="lexicon_id" value="plone_lexicon"/>
+ </index>
+ <index name="Type" meta_type="FieldIndex">
+  <indexed_attr value="Type"/>
+ </index>
+ <index name="UID" meta_type="UUIDIndex">
+  <indexed_attr value="UID"/>
+ </index>
+ <index name="allowedRolesAndUsers" meta_type="KeywordIndex">
+  <indexed_attr value="allowedRolesAndUsers"/>
+ </index>
+ <index name="cmf_uid" meta_type="FieldIndex">
+  <indexed_attr value="cmf_uid"/>
+ </index>
+ <index name="commentators" meta_type="KeywordIndex">
+  <indexed_attr value="commentators"/>
+ </index>
+ <index name="countReferences" meta_type="FieldIndex">
+  <indexed_attr value="countReferences"/>
+ </index>
+ <index name="created" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="eeaid" meta_type="FieldIndex">
+  <indexed_attr value="eeaid"/>
+ </index>
+ <index name="effective" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="effectiveRange" meta_type="DateRangeIndex"
+    since_field="effective" until_field="expires"/>
+ <index name="end" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="expires" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="filename" meta_type="FieldIndex">
+  <indexed_attr value="filename"/>
+ </index>
+ <index name="filetype" meta_type="KeywordIndex">
+  <indexed_attr value="filetype"/>
+ </index>
+ <index name="frontpage_section" meta_type="FieldIndex">
+  <indexed_attr value="frontpage_section"/>
+ </index>
+ <index name="getAudiences" meta_type="KeywordIndex">
+  <indexed_attr value="getAudiences"/>
+ </index>
+ <index name="getDataOwner" meta_type="KeywordIndex">
+  <indexed_attr value="getDataOwner"/>
+ </index>
+ <index name="getGeographicCoverage" meta_type="KeywordIndex">
+  <indexed_attr value="getGeographicCoverage"/>
+ </index>
+ <index name="getId" meta_type="FieldIndex">
+  <indexed_attr value="getId"/>
+ </index>
+ <index name="getImageCopyright" meta_type="FieldIndex">
+  <indexed_attr value="getImageCopyright"/>
+ </index>
+ <index name="getImageNote" meta_type="ZCTextIndex">
+  <indexed_attr value="getImageNote"/>
+  <extra name="index_type" value="Cosine Measure"/>
+  <extra name="lexicon_id" value="plaintext_lexicon"/>
+ </index>
+ <index name="getImageSource" meta_type="FieldIndex">
+  <indexed_attr value="getImageSource"/>
+ </index>
+ <index name="getNewsTitle" meta_type="FieldIndex">
+  <indexed_attr value="getNewsTitle"/>
+ </index>
+ <index name="getObjPositionInParent" meta_type="GopipIndex">
+  <indexed_attr value="getObjPositionInParent"/>
+ </index>
+ <index name="getOwnership" meta_type="KeywordIndex">
+  <indexed_attr value="getOwnership"/>
+ </index>
+ <index name="getProcessor" meta_type="KeywordIndex">
+  <indexed_attr value="getProcessor"/>
+ </index>
+ <index name="getQuotationSource" meta_type="KeywordIndex">
+  <indexed_attr value="getQuotationSource"/>
+ </index>
+ <index name="getQuotationText" meta_type="KeywordIndex">
+  <indexed_attr value="getQuotationText"/>
+ </index>
+ <index name="getRawRelatedItems" meta_type="KeywordIndex">
+  <indexed_attr value="getRawRelatedItems"/>
+ </index>
+ <index name="getSections" meta_type="KeywordIndex">
+  <indexed_attr value="getSections"/>
+ </index>
+ <index name="getShortId" meta_type="FieldIndex">
+  <indexed_attr value="getShortId"/>
+ </index>
+ <index name="getSoerContentType" meta_type="FieldIndex">
+  <indexed_attr value="getSoerContentType"/>
+ </index>
+ <index name="getSoerCountry" meta_type="FieldIndex">
+  <indexed_attr value="getSoerCountry"/>
+ </index>
+ <index name="getSoerQuestion" meta_type="FieldIndex">
+  <indexed_attr value="getQuestion"/>
+ </index>
+ <index name="getSoerSection" meta_type="FieldIndex">
+  <indexed_attr value="getSection"/>
+ </index>
+ <index name="getSoerTopic" meta_type="FieldIndex">
+  <indexed_attr value="getTopic"/>
+ </index>
+ <index name="getStartHere" meta_type="FieldIndex">
+  <indexed_attr value="getStartHere"/>
+ </index>
+ <index name="getTeaser" meta_type="ZCTextIndex">
+  <indexed_attr value="getTeaser"/>
+  <extra name="index_type" value="Cosine Measure"/>
+  <extra name="lexicon_id" value="plaintext_lexicon"/>
+ </index>
+ <index name="getTemporalCoverage" meta_type="KeywordIndex">
+  <indexed_attr value="getTemporalCoverage"/>
+ </index>
+ <index name="getThemes" meta_type="KeywordIndex">
+  <indexed_attr value="getThemes"/>
+ </index>
+ <index name="getUrl" meta_type="FieldIndex">
+  <indexed_attr value="getUrl"/>
+ </index>
+ <index name="getVersionId" meta_type="FieldIndex">
+  <indexed_attr value="getVersionId"/>
+ </index>
+ <index name="getVersions" meta_type="KeywordIndex">
+  <indexed_attr value="getVersions"/>
+ </index>
+ <index name="getVisibilityLevel" meta_type="FieldIndex">
+  <indexed_attr value="getVisibilityLevel"/>
+ </index>
+ <index name="get_codes" meta_type="KeywordIndex">
+  <indexed_attr value="get_codes"/>
+ </index>
+ <index name="id" meta_type="FieldIndex">
+  <indexed_attr value="id"/>
+ </index>
+ <index name="in_reply_to" meta_type="FieldIndex">
+  <indexed_attr value="in_reply_to"/>
+ </index>
+ <index name="isOutdated" meta_type="FieldIndex">
+  <indexed_attr value="isOutdated"/>
+ </index>
+ <index name="isSubReport" meta_type="FieldIndex">
+  <indexed_attr value="isSubReport"/>
+ </index>
+ <index name="is_default_page" meta_type="BooleanIndex">
+  <indexed_attr value="is_default_page"/>
+ </index>
+ <index name="is_folderish" meta_type="BooleanIndex">
+  <indexed_attr value="is_folderish"/>
+ </index>
+ <index name="lingua_state" meta_type="FieldIndex">
+  <indexed_attr value="lingua_state"/>
+ </index>
+ <index name="media_types" meta_type="KeywordIndex">
+  <indexed_attr value="media_types"/>
+ </index>
+ <index name="meta_type" meta_type="FieldIndex">
+  <indexed_attr value="meta_type"/>
+ </index>
+ <index name="modified" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="navSection" meta_type="KeywordIndex">
+  <indexed_attr value="navSection"/>
+ </index>
+ <index name="object_provides" meta_type="KeywordIndex">
+  <indexed_attr value="object_provides"/>
+ </index>
+ <index name="path" meta_type="ExtendedPathIndex"/>
+ <index name="portal_type" meta_type="FieldIndex">
+  <indexed_attr value="portal_type"/>
+ </index>
+ <index name="publication_groups" meta_type="KeywordIndex">
+  <indexed_attr value="publication_groups"/>
+ </index>
+ <index name="review_state" meta_type="FieldIndex">
+  <indexed_attr value="review_state"/>
+ </index>
+ <index name="serial_title" meta_type="ZCTextIndex">
+  <indexed_attr value="serial_title"/>
+  <extra name="index_type" value="Cosine Measure"/>
+  <extra name="lexicon_id" value="plaintext_lexicon"/>
+ </index>
+ <index name="sortable_title" meta_type="FieldIndex">
+  <indexed_attr value="sortable_title"/>
+ </index>
+ <index name="start" meta_type="DateIndex">
+  <property name="index_naive_time_as_local">True</property>
+ </index>
+ <index name="total_comments" meta_type="FieldIndex">
+  <indexed_attr value="total_comments"/>
+ </index>
+ <column value="CreationDate"/>
+ <column value="Creator"/>
+ <column value="Date"/>
+ <column value="Description"/>
+ <column value="EffectiveDate"/>
+ <column value="ExpirationDate"/>
+ <column value="Language"/>
+ <column value="ModificationDate"/>
+ <column value="Subject"/>
+ <column value="Title"/>
+ <column value="Type"/>
+ <column value="UID"/>
+ <column value="author_name"/>
+ <column value="cmf_uid"/>
+ <column value="commentators"/>
+ <column value="comments"/>
+ <column value="created"/>
+ <column value="dataSource"/>
+ <column value="eeaid"/>
+ <column value="effective"/>
+ <column value="end"/>
+ <column value="exclude_from_nav"/>
+ <column value="expires"/>
+ <column value="filename"/>
+ <column value="filetype"/>
+ <column value="geotags"/>
+ <column value="getAudiences"/>
+ <column value="getAwardNotice"/>
+ <column value="getDataOwner"/>
+ <column value="getGeographicCoverage"/>
+ <column value="getIcon"/>
+ <column value="getId"/>
+ <column value="getImageCopyright"/>
+ <column value="getImageNote"/>
+ <column value="getImageSource"/>
+ <column value="getNewsTitle"/>
+ <column value="getObjSize"/>
+ <column value="getOwnership"/>
+ <column value="getProcessor"/>
+ <column value="getQuotationSource"/>
+ <column value="getQuotationText"/>
+ <column value="getRemoteUrl"/>
+ <column value="getSections"/>
+ <column value="getShortId"/>
+ <column value="getStartHere"/>
+ <column value="getTeaser"/>
+ <column value="getTemporalCoverage"/>
+ <column value="getThemes"/>
+ <column value="getTranslationLanguages"/>
+ <column value="getUrl"/>
+ <column value="getVersionId"/>
+ <column value="getVersions"/>
+ <column value="getVisibilityLevel"/>
+ <column value="get_codes"/>
+ <column value="id"/>
+ <column value="in_response_to"/>
+ <column value="isOutdated"/>
+ <column value="is_default_page"/>
+ <column value="is_folderish"/>
+ <column value="last_comment_date"/>
+ <column value="lingua_state"/>
+ <column value="listCreators"/>
+ <column value="location"/>
+ <column value="media_types"/>
+ <column value="meta_type"/>
+ <column value="modified"/>
+ <column value="navSection"/>
+ <column value="object_provides"/>
+ <column value="portal_type"/>
+ <column value="promotion_macro"/>
+ <column value="publication_groups"/>
+ <column value="published_readiness"/>
+ <column value="review_state"/>
+ <column value="serial_title"/>
+ <column value="start"/>
+ <column value="total_comments"/>
+</object>

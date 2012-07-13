@@ -1,0 +1,641 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="alchemyapi" meta_type="Plone Property Sheet">
+  <property name="title">Alchemy API</property>
+  <property name="key"
+     type="string">1111122baa0b58161cc1b893f13a701a59d646fc</property>
+ </object>
+ <object name="eea_internal_ips" meta_type="Plone Property Sheet">
+  <property name="title">EEA Internal IPs</property>
+  <property name="allowed_ips" type="lines">
+   <element value="10.92"/>
+   <element value="10.30"/>
+   <element value="192.168.60"/>
+   <element value="192.168.61"/>
+   <element value="192.168.62"/>
+   <element value="192.168.63"/>
+   <element value="192.168.64"/>
+   <element value="192.168.65"/>
+   <element value="217.74.209"/>
+   <element value="127.0.0.1"/>
+  </property>
+ </object>
+ <object name="eeastaff_properties" meta_type="Plone Property Sheet">
+  <property name="title">Staff and organisation properties</property>
+  <property name="organisations" type="lines">
+   <element value="EDO"/>
+   <element value="ACC"/>
+   <element value="ADS"/>
+   <element value="COM"/>
+   <element value="GAN"/>
+   <element value="IEA"/>
+   <element value="NSV"/>
+   <element value="OSE"/>
+   <element value="SES"/>
+  </property>
+  <property name="eeastaff_fs" type="string">../../var/eeastaff.xml</property>
+  <property name="eeastaff_cms" type="string">eeastaff</property>
+ </object>
+ <object name="frontpage_properties" meta_type="Plone Property Sheet">
+  <property name="title">EEA Frontpage properties</property>
+  <property name="promotionFolder" type="string">quicklinks</property>
+  <property name="noOfHigh" type="int">1</property>
+  <property name="noOfMedium" type="int">4</property>
+  <property name="noOfLow" type="int">3</property>
+  <property name="development" type="boolean">False</property>
+  <property name="noOfMultimedia" type="int">8</property>
+  <property name="noOfAnimations" type="int">15</property>
+  <property name="noOfArticles" type="int">8</property>
+  <property name="noOfPublications" type="int">8</property>
+  <property name="noOfPromotions" type="int">10</property>
+  <property name="noOfEachProduct" type="int">3</property>
+  <property name="noOfDatasets" type="int">8</property>
+  <property name="noOfLatestDefault" type="int">8</property>
+  <property name="noOfVideos" type="int">60</property>
+  <property name="youtubePlaylists"
+     type="string">5A7072A58A14ED00, CA768A2FDBA259DE</property>
+  <property name="noOfNews" type="int">8</property>
+ </object>
+ <object name="geographical_properties" meta_type="Plone Property Sheet">
+  <property name="title">EEA Geographical properties</property>
+  <property name="geo_services" type="lines">
+   <element value="None"/>
+   <element value="Google Maps"/>
+   <element value="Yahoo Maps"/>
+   <element value="Mapquest (not implemented)"/>
+   <element value="Microsoft Virtual Earth (not implemented)"/>
+   <element value="EEA GeoNode (not implemented)"/>
+  </property>
+  <property name="map_service_to_use" select_variable="geo_services"
+     type="selection">Yahoo Maps</property>
+  <property name="geocoding_service_priority" type="lines">
+   <element value="Google Maps"/>
+   <element value="Yahoo Maps"/>
+  </property>
+  <property name="google_key"
+     type="string">ABQIAAAAIteM3tF8Srr-dzhpkwhjCRSOwAppsLlW9WiWq6VLro1wjD1TSRQBojyTt3WMRFtv4y6ks-HTxtsMxQ</property>
+  <property name="yahoo_key"
+     type="string">c5h5YSHV34ExDn1gtsTGwh6JK5TtSSqZrzJ1UHxhFQGZgkKNBDXKlGnguYCpWjdvT3TaYnz.3xE-</property>
+  <property name="mapquest_key" type="string"></property>
+  <property name="PointZoom_single" type="string">14</property>
+  <property name="MapLoc_single" type="string">Wien, Austria</property>
+  <property name="MapZoom_single" type="string">4</property>
+  <property name="MapLoc_multi" type="string">Wien, Austria</property>
+  <property name="MapZoom_multi" type="string">5</property>
+  <property name="geonames_key" type="string">eeacms</property>
+ </object>
+ <object name="imaging_properties" meta_type="Plone Property Sheet">
+  <property name="title">Image handling properties</property>
+  <property name="allowed_sizes" type="lines">
+   <element value="xlarge 633:356"/>
+   <element value="wide 325:183"/>
+   <element value="large 768:768"/>
+   <element value="preview 400:400"/>
+   <element value="mini 200:200"/>
+   <element value="thumb 128:128"/>
+   <element value="tile 64:64"/>
+   <element value="icon 32:32"/>
+   <element value="listing 16:16"/>
+  </property>
+ </object>
+ <object name="jqueryui_properties" meta_type="Plone Property Sheet">
+  <property name="title">JQueryUI properties</property>
+  <property name="global_include" type="boolean">True</property>
+  <property name="views_and_templates" type="lines">
+   <element value="example.jqueryui"/>
+  </property>
+ </object>
+ <object name="linguaplone_properties" meta_type="Plone Property Sheet">
+  <property name="title">LinguaPlone properties</property>
+  <property name="hide_right_column_on_translate_form"
+     type="boolean">True</property>
+ </object>
+ <object name="navtree_properties" meta_type="Plone Property Sheet">
+  <property name="title">NavigationTree properties</property>
+  <property name="sortAttribute"
+     type="string">getObjPositionInParent</property>
+  <property name="sortOrder" type="string">asc</property>
+  <property name="sitemapDepth" type="int">6</property>
+  <property name="includeTop" type="boolean">False</property>
+  <property name="topLevel" type="int">0</property>
+  <property name="idsNotToList" type="lines">
+   <element value="portal_navigationmanager"/>
+   <element value="templates"/>
+  </property>
+  <property name="showAllParents" type="boolean">True</property>
+  <property name="parentMetaTypesNotToQuery" type="lines">
+   <element value="TempFolder"/>
+   <element value="Large Plone Folder"/>
+   <element value="HelpCenterHowTo"/>
+   <element value="HelpCenterTutorial"/>
+   <element value="HelpCenterErrorReference"/>
+   <element value="HelpCenterFAQ"/>
+   <element value="HelpCenterDefinition"/>
+   <element value="HelpCenterLink"/>
+   <element value="HelpCenterInstructionalVideo"/>
+   <element value="HelpCenterReferenceManual"/>
+   <element value="HelpCenterTutorialPage"/>
+   <element value="HelpCenterReferenceManualPage"/>
+  </property>
+  <property name="bottomLevel" type="int">0</property>
+  <property name="metaTypesNotToList" type="lines">
+   <element value="ATBooleanCriterion"/>
+   <element value="ATCurrentAuthorCriterion"/>
+   <element value="ATDateCriteria"/>
+   <element value="ATDateRangeCriterion"/>
+   <element value="ATFile"/>
+   <element value="ATImage"/>
+   <element value="ATListCriterion"/>
+   <element value="ATPathCriterion"/>
+   <element value="ATPortalTypeCriterion"/>
+   <element value="ATReferenceCriterion"/>
+   <element value="ATRelativePathCriterion"/>
+   <element value="ATSelectionCriterion"/>
+   <element value="ATSimpleIntCriterion"/>
+   <element value="ATSimpleStringCriterion"/>
+   <element value="ATSortCriterion"/>
+   <element value="AliasVocabulary"/>
+   <element value="AssessmentPart"/>
+   <element value="CFTRequestor"/>
+   <element value="CMF Document"/>
+   <element value="CMF Event"/>
+   <element value="CMF Favorite"/>
+   <element value="CMF File"/>
+   <element value="CMF Folder"/>
+   <element value="CMF Image"/>
+   <element value="CMF Large Plone Folder"/>
+   <element value="CMF Link"/>
+   <element value="CMF News Item"/>
+   <element value="CMF Topic"/>
+   <element value="CacheTool"/>
+   <element value="CallForInterest"/>
+   <element value="CallForTender"/>
+   <element value="CommonalityReport"/>
+   <element value="ContentCacheRule"/>
+   <element value="Data"/>
+   <element value="DataSourceLink"/>
+   <element value="DavizVisualization"/>
+   <element value="Discussion Item"/>
+   <element value="DiversityReport"/>
+   <element value="EEAFigure"/>
+   <element value="EEAPossibleRelation"/>
+   <element value="EEARelationsContentType"/>
+   <element value="EEARelationsTool"/>
+   <element value="EEAVacancy"/>
+   <element value="EcoTip"/>
+   <element value="Enquiry"/>
+   <element value="EnquiryRequestor"/>
+   <element value="Event"/>
+   <element value="ExternalDataSpec"/>
+   <element value="File"/>
+   <element value="FlashFile"/>
+   <element value="FlexibilityReport"/>
+   <element value="HeaderSet"/>
+   <element value="HeaderSetFolder"/>
+   <element value="HelpCenterDefinition"/>
+   <element value="HelpCenterErrorReference"/>
+   <element value="HelpCenterFAQ"/>
+   <element value="HelpCenterHowTo"/>
+   <element value="HelpCenterInstructionalVideo"/>
+   <element value="HelpCenterLink"/>
+   <element value="HelpCenterReferenceManual"/>
+   <element value="HelpCenterReferenceManualPage"/>
+   <element value="HelpCenterTutorial"/>
+   <element value="HelpCenterTutorialPage"/>
+   <element value="Highlight"/>
+   <element value="Image"/>
+   <element value="ImageFS"/>
+   <element value="IndicatorFactSheet"/>
+   <element value="Link"/>
+   <element value="MethodologyReference"/>
+   <element value="News Item"/>
+   <element value="Newsletter"/>
+   <element value="Organisation"/>
+   <element value="Plone Site"/>
+   <element value="PolicyDocumentReference"/>
+   <element value="PolicyHTTPCacheManagerCacheRule"/>
+   <element value="PolicyQuestion"/>
+   <element value="PressRelease"/>
+   <element value="QuickEvent"/>
+   <element value="RationaleReference"/>
+   <element value="RelatedIndicatorLink"/>
+   <element value="Requestor"/>
+   <element value="RuleFolder"/>
+   <element value="Sparql"/>
+   <element value="Specification"/>
+   <element value="Speech"/>
+   <element value="Subscriber"/>
+   <element value="TempFolder"/>
+   <element value="TemplateCacheRule"/>
+   <element value="VdexVocabulary"/>
+   <element value="VocabularyLibrary"/>
+  </property>
+  <property name="enable_wf_state_filtering" type="boolean">False</property>
+  <property name="wf_states_to_show" type="lines">
+   <element value="published"/>
+  </property>
+  <property name="currentFolderOnlyInNavtree" type="boolean">False</property>
+  <property name="root" type="string">/</property>
+  <property name="name" type="string"></property>
+  <property name="maxChildren" type="int">10</property>
+  <property name="listAllTemplate" type="string">folder_listing</property>
+ </object>
+ <object name="quickupload_properties" meta_type="Plone Property Sheet">
+  <property name="title">Quick Upload properties</property>
+  <property name="use_flashupload" type="boolean">False</property>
+  <property name="auto_upload" type="boolean">False</property>
+  <property name="fill_titles" type="boolean">True</property>
+  <property name="fill_descriptions" type="boolean">False</property>
+  <property name="size_limit" type="int">0</property>
+  <property name="sim_upload_limit" type="int">2</property>
+ </object>
+ <object name="rdfmarshaller_properties" meta_type="Plone Property Sheet">
+  <property name="title">eea.rdfmarshaller  properties</property>
+  <property name="blacklist" type="lines">
+   <element value="constrainTypesMode"/>
+   <element value="locallyAllowedTypes"/>
+   <element value="immediatelyAddableTypes"/>
+   <element value="language"/>
+   <element value="allowDiscussion"/>
+   <element value="file"/>
+   <element value="image"/>
+   <element value="creator"/>
+   <element value="excludeFromNav"/>
+   <element value="nextPreviousEnabled"/>
+   <element value="contributors"/>
+  </property>
+  <property name="mymetatype_blacklist" type="lines">
+   <element
+      value="#example where you can add a black list for specific metatype. copy the generic and add more fields"/>
+  </property>
+  <property name="figure_blacklist" type="lines">
+   <element value="creation_date"/>
+   <element value="modification_date"/>
+   <element value="creators"/>
+   <element value="subject"/>
+   <element value="effectiveDate"/>
+   <element value="expirationDate"/>
+   <element value="constrainTypesMode"/>
+   <element value="locallyAllowedTypes"/>
+   <element value="immediatelyAddableTypes"/>
+   <element value="language"/>
+   <element value="allowDiscussion"/>
+   <element value="image"/>
+   <element value="creator"/>
+   <element value="contributors"/>
+  </property>
+  <property name="specification_blacklist" type="lines">
+   <element value="constrainTypesMode"/>
+   <element value="locallyAllowedTypes"/>
+   <element value="immediatelyAddableTypes"/>
+   <element value="language"/>
+   <element value="allowDiscussion"/>
+   <element value="creator"/>
+   <element value="contributors"/>
+  </property>
+  <property name="article_blacklist" type="lines">
+   <element value="media"/>
+   <element value="constrainTypesMode"/>
+   <element value="locallyAllowedTypes"/>
+   <element value="immediatelyAddableTypes"/>
+   <element value="language"/>
+   <element value="allowDiscussion"/>
+   <element value="creator"/>
+   <element value="excludeFromNav"/>
+   <element value="contributors"/>
+  </property>
+ </object>
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <property name="title">EEA</property>
+  <property name="allowAnonymousViewAbout" type="boolean">False</property>
+  <property name="localTimeFormat" type="string">%d %b %Y</property>
+  <property name="localLongTimeFormat" type="string">%d %b %Y %H:%M</property>
+  <property name="default_language" type="string">en</property>
+  <property name="default_charset" type="string">utf-8</property>
+  <property name="use_folder_tabs" type="lines">
+   <element value="RuleFolder"/>
+   <element value="HelpCenterReferenceManualFolder"/>
+   <element value="HelpCenterHowTo"/>
+   <element value="HelpCenterErrorReference"/>
+   <element value="TreeVocabulary"/>
+   <element value="MacroFolder"/>
+   <element value="HelpCenterFAQFolder"/>
+   <element value="Speech"/>
+   <element value="HelpCenterLinkFolder"/>
+   <element value="Large Plone Folder"/>
+   <element value="HelpCenter"/>
+   <element value="HelpCenterInstructionalVideoFolder"/>
+   <element value="Folder"/>
+   <element value="CallForInterest"/>
+   <element value="VdexTerm"/>
+   <element value="HelpCenterErrorReferenceFolder"/>
+   <element value="Plone Site"/>
+   <element value="Pack Composite"/>
+   <element value="HeaderSetFolder"/>
+   <element value="EnquiryRequestorFolder"/>
+   <element value="EnquiryFolder"/>
+   <element value="HelpCenterReferenceManual"/>
+   <element value="HelpCenterTutorialFolder"/>
+   <element value="VdexVocabulary"/>
+   <element value="HelpCenterGlossary"/>
+   <element value="HelpCenterHowToFolder"/>
+   <element value="VdexMediaDescriptor"/>
+   <element value="HelpCenterTutorial"/>
+   <element value="HelpCenterReferenceManualSection"/>
+   <element value="ExternalHighlight"/>
+   <element value="Highlight"/>
+   <element value="Promotion"/>
+   <element value="CompositePack Layout Container"/>
+   <element value="TreeVocabularyTerm"/>
+   <element value="NavigationManager"/>
+   <element value="Ad"/>
+   <element value="NavigationItem"/>
+   <element value="CompositePack Viewlet Container"/>
+   <element value="VocabularyLibrary"/>
+   <element value="CallForTender"/>
+   <element value="PressRelease"/>
+   <element value="NewsletterBTree"/>
+   <element value="SimpleVocabulary"/>
+  </property>
+  <property name="ext_editor" type="boolean">True</property>
+  <property name="available_editors" type="lines">
+   <element value="None"/>
+   <element value="Kupu"/>
+  </property>
+  <property name="allowRolesToAddKeywords" type="lines">
+   <element value="CommonEditor"/>
+   <element value="Manager"/>
+  </property>
+  <property name="auth_cookie_length" type="int">0</property>
+  <property name="calendar_starting_year" type="int">1970</property>
+  <property name="calendar_future_years_available" type="int">5</property>
+  <property name="invalid_ids" type="lines">
+   <element value="actions"/>
+  </property>
+  <property name="default_page" type="lines">
+   <element value="index_html"/>
+   <element value="index.html"/>
+   <element value="index.htm"/>
+   <element value="FrontPage"/>
+  </property>
+  <property name="search_results_description_length" type="int">160</property>
+  <property name="ellipsis" type="string">...</property>
+  <property name="typesLinkToFolderContentsInFC" type="lines">
+   <element value="RuleFolder"/>
+   <element value="HelpCenterReferenceManualFolder"/>
+   <element value="HelpCenterInstructionalVideoFolder"/>
+   <element value="HelpCenterErrorReference"/>
+   <element value="TreeVocabulary"/>
+   <element value="MacroFolder"/>
+   <element value="HelpCenterFAQFolder"/>
+   <element value="Speech"/>
+   <element value="HelpCenterLinkFolder"/>
+   <element value="Highlight"/>
+   <element value="HelpCenter"/>
+   <element value="Folder"/>
+   <element value="CallForInterest"/>
+   <element value="VdexTerm"/>
+   <element value="HelpCenterErrorReferenceFolder"/>
+   <element value="Pack Composite"/>
+   <element value="HeaderSetFolder"/>
+   <element value="EnquiryRequestorFolder"/>
+   <element value="EnquiryFolder"/>
+   <element value="HelpCenterReferenceManual"/>
+   <element value="HelpCenterTutorialFolder"/>
+   <element value="VdexVocabulary"/>
+   <element value="HelpCenterGlossary"/>
+   <element value="HelpCenterHowToFolder"/>
+   <element value="VdexMediaDescriptor"/>
+   <element value="HelpCenterTutorial"/>
+   <element value="HelpCenterReferenceManualSection"/>
+   <element value="CacheTool"/>
+   <element value="Large Plone Folder"/>
+   <element value="Promotion"/>
+   <element value="CompositePack Layout Container"/>
+   <element value="TreeVocabularyTerm"/>
+   <element value="NavigationManager"/>
+   <element value="Ad"/>
+   <element value="NavigationItem"/>
+   <element value="CompositePack Viewlet Container"/>
+   <element value="VocabularyLibrary"/>
+   <element value="CallForTender"/>
+   <element value="PressRelease"/>
+   <element value="NewsletterBTree"/>
+   <element value="SimpleVocabulary"/>
+  </property>
+  <property name="visible_ids" type="boolean">False</property>
+  <property name="exposeDCMetaTags" type="boolean">False</property>
+  <property name="types_not_searched" type="lines">
+   <element value="ATBooleanCriterion"/>
+   <element value="ATCurrentAuthorCriterion"/>
+   <element value="ATDateCriteria"/>
+   <element value="ATDateRangeCriterion"/>
+   <element value="ATListCriterion"/>
+   <element value="ATPathCriterion"/>
+   <element value="ATPortalTypeCriterion"/>
+   <element value="ATReferenceCriterion"/>
+   <element value="ATSelectionCriterion"/>
+   <element value="ATSimpleIntCriterion"/>
+   <element value="ATSimpleStringCriterion"/>
+   <element value="ATSortCriterion"/>
+   <element value="AliasVocabulary"/>
+   <element value="CFTRequestor"/>
+   <element value="CMF Document"/>
+   <element value="CMF Event"/>
+   <element value="CMF Favorite"/>
+   <element value="CMF File"/>
+   <element value="CMF Folder"/>
+   <element value="CMF Image"/>
+   <element value="CMF Large Plone Folder"/>
+   <element value="CMF Link"/>
+   <element value="CMF News Item"/>
+   <element value="CMF Topic"/>
+   <element value="Discussion Item"/>
+   <element value="Enquiry"/>
+   <element value="Plone Site"/>
+   <element value="Requestor"/>
+   <element value="Subscriber"/>
+   <element value="TempFolder"/>
+   <element value="VdexVocabulary"/>
+   <element value="CacheTool"/>
+   <element value="ContentCacheRule"/>
+   <element value="TemplateCacheRule"/>
+   <element value="PolicyHTTPCacheManagerCacheRule"/>
+   <element value="RuleFolder"/>
+   <element value="HeaderSet"/>
+   <element value="HeaderSetFolder"/>
+   <element value="MacroCacheRule"/>
+   <element value="MacroFolder"/>
+  </property>
+  <property name="disable_folder_sections" type="boolean">False</property>
+  <property name="typesUseViewActionInListings" type="lines">
+   <element value="Image"/>
+   <element value="File"/>
+  </property>
+  <property name="verify_login_name" type="boolean">True</property>
+  <property name="enable_livesearch" type="boolean">True</property>
+  <property name="default_page_types" type="lines">
+   <element value="Document"/>
+   <element value="Event"/>
+   <element value="Link"/>
+   <element value="News Item"/>
+   <element value="Topic"/>
+   <element value="FlashFile"/>
+   <element value="Highlight"/>
+  </property>
+  <property name="use_folder_contents" type="lines"/>
+  <property name="many_users" type="boolean">True</property>
+  <property name="refwidget_startupdirectories" type="lines"/>
+  <property name="default_contenttype" type="string">text/html</property>
+  <property name="forbidden_contenttypes" type="lines">
+   <element value="text/structured"/>
+   <element value="text/restructured"/>
+   <element value="text/x-rst"/>
+   <element value="text/plain"/>
+   <element value="text/plain-pre"/>
+   <element value="text/x-python"/>
+   <element value="text/x-web-markdown"/>
+   <element value="text/x-web-intelligent"/>
+   <element value="text/x-html-captioned"/>
+  </property>
+  <property name="enable_link_integrity_checks" type="boolean">True</property>
+  <property name="enable_sitemap" type="boolean">False</property>
+  <property name="external_links_open_new_window"
+     type="string">false</property>
+  <property name="many_groups" type="boolean">False</property>
+  <property name="number_of_days_to_keep" type="int">7</property>
+  <property name="webstats_js"
+     type="string">&lt;!-- ClickTale Bottom part --&gt;&lt;div id="ClickTaleDiv" style="display: none;"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;if(document.location.protocol!='https:')  document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRc9.js'%20type='text/javascript'%3E%3C/script%3E"));&lt;/script&gt;&lt;script type="text/javascript"&gt;if(typeof ClickTale=='function') ClickTale(7137,0.072,"www09");&lt;/script&gt;&lt;!-- ClickTale end of Bottom part --&gt;</property>
+  <property name="icon_visibility" type="string">enabled</property>
+  <property name="disable_nonfolderish_sections"
+     type="boolean">False</property>
+  <property name="enable_inline_editing" type="boolean">False</property>
+  <property name="redirect_links" type="boolean">False</property>
+  <property name="lock_on_ttw_edit" type="boolean">True</property>
+  <property name="use_email_as_login" type="boolean">False</property>
+  <property name="default_editor" type="string">TinyMCE</property>
+  <property name="search_review_state_for_anon"
+     type="boolean">False</property>
+  <property name="search_enable_title_search" type="lines"/>
+  <property name="search_enable_description_search" type="lines"/>
+  <property name="search_enable_sort_on" type="lines">
+   <element value="auth"/>
+   <element value="anon"/>
+  </property>
+  <property name="search_enable_batch_size" type="lines">
+   <element value="auth"/>
+   <element value="anon"/>
+  </property>
+  <property name="search_collapse_options" type="boolean">True</property>
+  <property name="user_registration_fields" type="lines">
+   <element value="fullname"/>
+   <element value="username"/>
+   <element value="email"/>
+   <element value="password"/>
+   <element value="mail_me"/>
+  </property>
+  <property name="enable_checkout_workflow" type="boolean">False</property>
+  <property name="checkout_workflow_policy"
+     type="string">checkout_workflow_policy</property>
+  <property name="localTimeOnlyFormat" type="string">%I:%M %p</property>
+  <property name="mark_special_links" type="string">True</property>
+  <property name="can_be_empty" type="lines">
+   <element value="Folder"/>
+   <element value="Large Plone Folder"/>
+   <element value="HelpCenter"/>
+   <element value="HelpCenterFAQFolder"/>
+   <element value="HelpCenterHowToFolder"/>
+   <element value="HelpCenterLinkFolder"/>
+   <element value="HelpCenterReferenceManualFolder"/>
+   <element value="HelpCenterTutorialFolder"/>
+   <element value="TempFolder"/>
+   <element value="EnquiryFolder"/>
+  </property>
+  <property name="allow_external_login_sites" type="lines"/>
+  <property name="external_login_url" type="string"></property>
+  <property name="external_logout_url" type="string"></property>
+  <property name="watermark_positions" type="lines">
+   <element value="Disabled"/>
+   <element value="Top Left"/>
+   <element value="Top Right"/>
+   <element value="Bottom Left"/>
+   <element value="Bottom Right"/>
+  </property>
+  <property name="QRCode_Position" select_variable="watermark_positions"
+     type="selection">Bottom Left</property>
+  <property name="QRCode_Horizontal_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="QRCode_Vertical_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="Watermark_Image"
+     type="string">http://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
+  <property name="Watermark_Position" select_variable="watermark_positions"
+     type="selection">Bottom Right</property>
+  <property name="Watermark_Horizontal_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="Watermark_Vertical_Space_For_PNG_Export"
+     type="int">0</property>
+  <property name="quick_event_anonymous_creator"
+     type="string">anonymous</property>
+ </object>
+ <object name="soer_properties" meta_type="Plone Property Sheet">
+  <property name="title">SOER channel properties</property>
+  <property name="organisationName" type="string">EEA</property>
+  <property name="organisationURL"
+     type="string">http://www.eea.europa.eu/soer/</property>
+  <property name="organisationContactURL"
+     type="string">http://www.eea.europa.eu/address.html</property>
+  <property name="organisationLogoURL"
+     type="string">http://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
+  <property name="license"
+     type="string">http://creativecommons.org/licenses/by/2.5/</property>
+ </object>
+ <object name="template_service" meta_type="Plone Property Sheet">
+  <property name="title">Template service</property>
+  <property name="invalidate_cache" type="lines"/>
+  <property name="template_urls" type="lines"/>
+  <property name="external_urls" type="lines"/>
+ </object>
+ <object name="workflow_properties" meta_type="Plone Property Sheet">
+  <property name="title">EEA workflow properties</property>
+  <property name="default_webqa" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+   <element value="marie.jaegly@eea.europa.eu"/>
+  </property>
+  <property name="default_reviewer" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+  <property name="default_proofreader" type="lines">
+   <element value="samantha.wilson@eea.europa.eu"/>
+  </property>
+  <property name="highlight_webqa" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+  <property name="send_confirmation_mail" type="lines">
+   <element value="reviewer"/>
+   <element value="proofreader"/>
+   <element value="webqa"/>
+   <element value="owner"/>
+  </property>
+  <property name="cms_url" type="string">http://www.eea.europa.eu/</property>
+  <property name="highlight_confirmation" type="lines">
+   <element value="reviewer"/>
+   <element value="proofreader"/>
+   <element value="webqa"/>
+   <element value="owner"/>
+  </property>
+  <property name="default_" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+  <property name="highlight_owner" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+  <property name="quickevent_webqa" type="lines">
+   <element value="marie.jaegly@eea.europa.eu"/>
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+  <property name="default_owner" type="lines">
+   <element value="antonio.de.marinis@eea.europa.eu"/>
+  </property>
+ </object>
+</object>
