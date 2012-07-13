@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.1-dev - (unreleased)
-----------------------
+5.1 - (2012-07-13)
+------------------
 * Bug fix: cleanup warnings for jenkings [tiberich]
 * Feature: added basic external method migrateRelations to be used 
   for migration of relations from one ob to another simply via python scripts.
