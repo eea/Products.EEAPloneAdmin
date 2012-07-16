@@ -16,11 +16,10 @@ Changelog
 * Feature: added a manager-only @@gopdb view to enable dropping to pdb console
   [tiberich]
 * Upgrade step: delete folders in eeafigures:
-      Create an external method with module name: 
-          Products.EEAPloneAdmin.find_empty_figure_folders
-      function name: 
-          fix_2
-      Execute it, save the output for future reference.
+    - Create an external method with module name
+       - Products.EEAPloneAdmin.find_empty_figure_folders
+       - function name: fix_2
+    - Execute it, save the output for future reference.
   [tiberich refs #5312]
 * Upgrade step: in portal_types, remove Folder as allowed addable content for
   EEAFigure 
