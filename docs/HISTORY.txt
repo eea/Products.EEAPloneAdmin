@@ -20,7 +20,7 @@ Changelog
        - Products.EEAPloneAdmin.find_empty_figure_folders
        - function name: fix_2
     - Execute it, save the output for future reference.
-  [tiberich refs #5312]
+      [tiberich refs #5312]
 * Upgrade step: in portal_types, remove Folder as allowed addable content for
   EEAFigure 
   [tiberich refs #5312]
