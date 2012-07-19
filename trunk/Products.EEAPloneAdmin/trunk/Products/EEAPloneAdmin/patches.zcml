@@ -252,4 +252,9 @@
                   original="notify_configuration_changed"
                   replacement=".patch_plone_app_discussion.notify_configuration_changed" / -->
 
+    <monkey:patch description=" #5353 Monkeypatch validateSingleEmailAddress to corectly fail for bad email addresses"
+                     class="Products.CMFPlone.PloneTool.PloneTool"
+                     original="validateSingleEmailAddress"
+                     replacement=".patch_email_validation.validateSingleEmailAddress"
+                     preserveOriginal="false" />
 </configure>
