@@ -3,6 +3,9 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject
+  emails which are not of proper format
+  [ichimdav #5353]
 
 5.1 - (2012-07-13)
 ------------------
