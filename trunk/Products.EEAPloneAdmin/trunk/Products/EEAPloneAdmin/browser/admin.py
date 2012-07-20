@@ -145,6 +145,10 @@ def save_resources_on_disk(registry, request=None):
             logging.debug("%s does not exists. Creating it." % dest)
             os.makedirs(dest)
 
+        if not getattr(registry, 'concatenatedresources', None):
+            logging.warning("No concatenated resources in registry")
+            continue
+
         for name in registry.concatenatedresources:
             try:
                 content = getResourceContent(registry, name, registry)
