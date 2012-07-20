@@ -140,11 +140,12 @@
 
 
     <!-- Patch for Products.TinyMCE ver 1.2.10 to fix bug in getContentType -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
+    fixed in 1.2.12
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
                   class="Products.TinyMCE.utility.TinyMCE"
                   original="getContentType"
                   replacement=".patch_tinymce.patched_getContentType"
-                  preserveOriginal="false" />
+                  preserveOriginal="false" /-->
 
     <!-- Patch for Products.TinyMCE ver 1.2.10 to make root of site www/SITE -->
     <monkey:patch description="Monkeypatch Products.TinyMCE.utility to make root of site www/SITE"
