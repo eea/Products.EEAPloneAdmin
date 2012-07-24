@@ -45,7 +45,7 @@ setup(name=name,
           'munin.zope',
           'munin.plone',
       ],
-      entry_points= {'console_scripts': [
-        "link_to_maildrop = Products.EEAPloneAdmin.scripts.link_maildrop:link",
-        ]},
+      #entry_points= {'console_scripts': [
+        #"link_to_maildrop = Products.EEAPloneAdmin.scripts.link_maildrop:link",
+        #]},
       )
