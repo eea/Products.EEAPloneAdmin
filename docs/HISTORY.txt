@@ -3,6 +3,8 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Bug fix: remove entry point to symlink maildrop
+  [tiberich refs #5382]
 * Bug fix: remove patch for TinyMce's getContentType, no longer needed
   in latest version of Products.TinyMCE
   [tiberich #5346]
