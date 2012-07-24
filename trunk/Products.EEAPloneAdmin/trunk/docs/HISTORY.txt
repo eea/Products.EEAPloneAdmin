@@ -13,6 +13,10 @@ Changelog
 * Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject 
   emails which are not of proper format 
   [ichimdav #5353] 
+* Upgrade Step: on a serviceWWW instance, go to the root of the Zope.
+  You will be prompted to upgrade the Plone instance. You can "dry run" first
+  and then, if no issues are reported, you can run the real Plone migration
+  [tiberich #5346]
 
 5.1 - (2012-07-13)
 ------------------
