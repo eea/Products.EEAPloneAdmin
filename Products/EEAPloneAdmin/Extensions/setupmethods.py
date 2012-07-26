@@ -38,13 +38,13 @@ def migrateRelations(self, old_ob_path, new_ob_path):
     brains = cat(**query)
 
     if len(brains)>0:
-    old_ob = brains[0].getObject()
+        old_ob = brains[0].getObject()
     
     query = {'path': {'query': new_ob_path, 'depth': 0}}
     brains = cat(**query)
     
     if len(brains)>0:
-    new_ob = brains[0].getObject()
+        new_ob = brains[0].getObject()
     
     # Move all the forward relations to the new_ob. 
     forwards = old_ob.getRelatedItems()
@@ -61,29 +61,29 @@ def migrateRelations(self, old_ob_path, new_ob_path):
     backs_topro = []    
     relations = queryAdapter(old_ob, IRelations)
     if relations:
-    backs = relations.backReferences()
+        backs = relations.backReferences()
     #get also back references from other non standard relation field
         backs_topro = relations.backReferences(relatesTo='relatesToProducts')
     info('INFO: standard back refs: %s' % (backs))
     info('INFO: relatesToProducts back refs: %s' % (backs_topro))
     
     for ob in backs:
-    related = ob.getRelatedItems()
-    info('INFO: BEFORE updating standard relations on backrefs: %s' % (related))
-    #remove reference to old_ob
-    del related[related.index(old_ob)]
-    related.append(new_ob)
-    ob.setRelatedItems(related)
-    info('INFO: AFTER updating standard relations on backrefs: %s' % (related))
+        related = ob.getRelatedItems()
+        info('INFO: BEFORE updating standard relations on backrefs: %s' % (related))
+        #remove reference to old_ob
+        del related[related.index(old_ob)]
+        related.append(new_ob)
+        ob.setRelatedItems(related)
+        info('INFO: AFTER updating standard relations on backrefs: %s' % (related))
 
     for ob in backs_topro:
-    related = ob.getRelatedProducts()
-    info('INFO: BEFORE updating relatedProducts on backrefs: %s' % (related))
-    #remove reference to old_ob
-    del related[related.index(old_ob)]
-    related.append(new_ob)
-    ob.setRelatedProducts(related)
-    info('INFO: AFTER updating relatedProducts on backrefs: %s' % (related))
+        related = ob.getRelatedProducts()
+        info('INFO: BEFORE updating relatedProducts on backrefs: %s' % (related))
+        #remove reference to old_ob
+        del related[related.index(old_ob)]
+        related.append(new_ob)
+        ob.setRelatedProducts(related)
+        info('INFO: AFTER updating relatedProducts on backrefs: %s' % (related))
     
 
     info('INFO: finished migrating relations')
@@ -846,6 +846,7 @@ def setActiveSubscribers(self):
 def sendMistakeEmail(self):
     """ Send email
     """
+    return
     import email as emailutils
 
     portal = self.portal_url.getPortalObject()
