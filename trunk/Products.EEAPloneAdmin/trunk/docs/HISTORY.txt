@@ -8,7 +8,8 @@ Changelog
 * Bug fix: remove patch for TinyMce's getContentType, no longer needed
   in latest version of Products.TinyMCE
   [tiberich #5346]
-* Bug fix: fix error when running upgrade step for Plone 4.2 migration
+* Bug fix: refactor saving resources on disk, due to changes in 
+  Products.ResourceRegistries
   [tiberich #5346]
 * Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject 
   emails which are not of proper format 
