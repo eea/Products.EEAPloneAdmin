@@ -1,16 +1,10 @@
 """ Admin
 """
-from AccessControl import Unauthorized
-from Acquisition import aq_base
 from App.config import getConfiguration
 from Products.ATContentTypes.config import MX_TIDY_OPTIONS
 from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from Products.Five.browser.resource import Resource as z3_Resource
-from Products.ResourceRegistries.tools.BaseRegistry import \
-        getCharsetFromContentType
-from ZPublisher.Iterators import IStreamIterator
 import codecs
 import logging
 import os
@@ -122,7 +116,7 @@ def save_resources_on_disk(registry, request=None):
 
     portal_url_tool = getToolByName(registry, 'portal_url')
     portal_url      = portal_url_tool()
-    portal          = portal_url_tool.getPortalObject()
+    #portal          = portal_url_tool.getPortalObject()
     skins           = getToolByName(registry,
                                     'portal_skins').getSkinSelections()
     conf            = getConfiguration()
