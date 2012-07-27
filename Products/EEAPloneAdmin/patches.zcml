@@ -182,26 +182,6 @@
                   replacement=".patch_plone_outputfilters.patched_resolve_image"
                   preserveOriginal="false" />
 
-    <configure zcml:condition="installed Products.MaildropHost">
-        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
-        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
-                      class="Products.MaildropHost.MaildropHost.MaildropHost"
-                      original="getConfigPath"
-                      replacement=".patch_maildrophost.patched_getConfigPath" />
-
-        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
-        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
-                      class="Products.MaildropHost.MaildropHost.MaildropHost"
-                      original="getCandidateConfigPaths"
-                      replacement=".patch_maildrophost.patched_getCandidateConfigPaths" />
-
-        <!-- Do not remove the below patch, see patch_maildrophost.py for more info -->
-        <monkey:patch description="Monkeypatch Products.MaildropHost.MaildropHost to load EEA config"
-                      class="Products.MaildropHost.MaildropHost.MaildropHost"
-                      original="setConfigPath"
-                      replacement=".patch_maildrophost.patched_setConfigPath" />
-    </configure>
-
     <!-- Patch for plone.app.viewletmanager ver 2.0.2 to save viewlets order for both skins, see #4939 -->
     <monkey:patch description="Patch for plone.app.viewletmanager to save viewlets order for both skins, see #4939"
                   class="plone.app.viewletmanager.manager.ManageViewlets"
