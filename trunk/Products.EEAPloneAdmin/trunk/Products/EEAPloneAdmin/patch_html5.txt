@@ -1,7 +1,0 @@
-Instrutions of what should be removed once we switch to Plone 4.2
-=================================================================
-
- - cleanup Products.EEAPloneAdmin overrides.zcml
- - cleanup Products.EEAPloneAdmin configure.zcml
- - cleanup Products.EEAPloneAdmin patch_html5.py
- - cleanup eea.design modernizr.js
