@@ -3,6 +3,8 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Cleanup: removed back ported HTML5 functionality from Plone 4.2
+  [ghicaale refs #5346]
 * Bug fix: removed patch for Products.MaildropHost
   [tiberich #5382]
 * Bug fix: remove entry point to symlink maildrop

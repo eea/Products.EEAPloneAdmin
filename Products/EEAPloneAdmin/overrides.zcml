@@ -55,29 +55,7 @@
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot" />
 
-    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
-    <browser:viewletManager name="plone.resourceregistries.kineticstylesheets"
-                            provides="Products.ResourceRegistries.interfaces.IHtmlHeadStyles"
-                            template="kss.pt"
-                            permission="zope2.View" />
-
-    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
-    <browser:page name="manage-portlets"
-                  for="plone.portlets.interfaces.ILocalPortletAssignable"
-                  class="plone.app.portlets.browser.manage.ManageContextualPortlets"
-                  permission="plone.app.portlets.ManagePortlets"
-                  template="manage-contextual.pt" />
-
-    <!-- Related to HTML5 validation, see #4444. To be removed when we switch to Plone 4.2 -->
-    <configure zcml:condition="installed Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer">
-        <browser:page for="plone.portlets.interfaces.ILocalPortletAssignable"
-                      name="manage-portlets"
-                      class="plone.app.portlets.browser.manage.ManageContextualPortlets"
-                      template="solgema-manage-contextual.pt"
-                      permission="plone.app.portlets.ManagePortlets"
-                      layer="Solgema.PortletsManager.interfaces.ISolgemaPortletsManagerLayer" />
-    </configure>
-
+    <!-- Related to #4590, fixed redirects when Apache in front -->
     <browser:resource name="manage-portlets.kss"
                       file="browser/portlets.kss" />
 

@@ -87,19 +87,6 @@
                   original="write_ofsfile_to_tempfile"
                   replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />
 
-    <!-- Related to HTML5 integration, to be removed when we switch to Plone 4.2 -->
-    <monkey:patch description="Monkeypatch plone.app.layout.links.viewlets.NavigationViewlet to remove deprecate link rel=xxx tags. To be removed when we switch to Plone 4.2"
-                  module="plone.app.layout.links.viewlets"
-                  original="NavigationViewlet"
-                  replacement=".patch_html5.PatchedNavigationViewlet" />
-
-    <!-- Related to HTML5 integration, to be removed when we switch to Plone 4.2 -->
-    <monkey:patch description="Monkeypatch plone.app.kss to fix kss-base-url in order to validate HTML5. To be removed when we switch to Plone 4.2"
-                  class="plone.app.kss.headerviewlet.KSSBaseUrlViewlet"
-                  original="render"
-                  replacement=".patch_html5.render"
-                  preserveOriginal="false" />
-
     <!-- See TODO under __init__.py -->
     <!-- Patch for plone.app.caching ver 1.0 to add extra headers -->
     <!-- configure zcml:condition="installed plone.app.caching">
