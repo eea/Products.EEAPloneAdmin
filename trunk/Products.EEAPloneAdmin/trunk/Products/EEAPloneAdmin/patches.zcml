@@ -10,12 +10,13 @@
                      replacement=".patch_catalog.searchResults"
                      preserveOriginal="true" / -->
 
-    <!-- Patch of Products.ATContentTypes ver 2.1.5 to also look for z3 views as default pages -->
-    <monkey:patch description="Monkeypatch ATCTFolderMixin.HEAD to also look for z3 views as default pages"
-                  class="Products.ATContentTypes.content.base.ATCTFolderMixin"
+    <!-- #2316 implement HEAD for zope3 BrowserView -->
+    <monkey:patch description="Monkeypatch Five.browser.BrowserView to implement HEAD method"
+                  module="Products.Five.browser.BrowserView"
                   original="HEAD"
+                  ignoreOriginal="true"
                   replacement=".patch_atctmixin.HEAD"
-                  preserveOriginal="true" />
+                  preserveOriginal="false" />
 
     <!-- Patch of Products.ATContentTypes ver 2.0.7 -->
     <monkey:patch description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
