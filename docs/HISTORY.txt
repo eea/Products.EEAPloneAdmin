@@ -24,6 +24,8 @@ Changelog
   You will be prompted to upgrade the Plone instance. You can "dry run" first
   and then, if no issues are reported, you can run the real Plone migration
   [tiberich #5346]
+* Upgrade Step: install collective.z3cform.datetimewidget from Add/Remove
+  products
 
 5.1 - (2012-07-13)
 ------------------
