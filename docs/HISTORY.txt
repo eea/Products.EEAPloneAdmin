@@ -3,6 +3,14 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Bugfix: added external method force_sent_status
+  [szabozo0 refs #5399]
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.force_sent_status
+        - function name: force_sent_status
+    - Execute it
+  [szabozo0 refs #5399]
 * Feature: add HEAD method for zope3 browser views
   [ichimdav #2316]
 * Cleanup: removed back ported HTML5 functionality from Plone 4.2
