@@ -21,7 +21,9 @@ def patch_cookResources(self):
     """Patch for cookResources to trigger the ObjectModifiedEvent
     """
     self._old_cookResources()
-    notify(ObjectModifiedEvent(self))
+    event = ObjectModifiedEvent(self)
+    event.force = True
+    notify(event)
 
 
 #def _initResources(self, node):
