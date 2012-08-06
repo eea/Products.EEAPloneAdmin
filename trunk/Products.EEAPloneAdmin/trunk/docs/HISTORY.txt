@@ -34,6 +34,10 @@ Changelog
   [tiberich #5346]
 * Upgrade Step: install collective.z3cform.datetimewidget from Add/Remove
   products
+* Upgrade Step: install plone.app.collection from Add/Remove products;
+  Go to /www/portal_types/Topic/manage_propertiesForm and change the title
+  to "Collection - old"
+  [tiberich #5346]
 
 5.1 - (2012-07-13)
 ------------------
