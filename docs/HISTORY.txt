@@ -38,6 +38,9 @@ Changelog
   Go to /www/portal_types/Topic/manage_propertiesForm and change the title
   to "Collection - old"
   [tiberich #5397]
+* Bug fix: avoid triggering save on disk twice when resources are saved in a 
+  portal resource registry
+  [tiberich #5286]
 
 5.1 - (2012-07-13)
 ------------------
