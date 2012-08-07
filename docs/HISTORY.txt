@@ -3,6 +3,9 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Bugfix: fixed wrong indentation in setupmethods.py and moved the
+  migrateRelations to own file.
+  [demarant]
 * Bugfix: added external method force_sent_status
   [szabozo0 refs #5399]
 * Upgrade step:
