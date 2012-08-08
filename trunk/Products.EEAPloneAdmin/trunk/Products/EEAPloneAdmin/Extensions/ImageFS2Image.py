@@ -17,7 +17,7 @@ def ImageFS2Image(self):
 
     ctool = getToolByName(portal, 'portal_catalog')
 #    brains = ctool.unrestrictedSearchResults(portal_type='ImageFS')
-    brains = ctool.unrestrictedSearchResults(Title='img16')
+    brains = ctool.unrestrictedSearchResults(Title='zotya-img19')
     total = len(brains)
     logger.info(('Migrating %s instances of '
                  'ImageFS to Image'), total)
@@ -37,6 +37,8 @@ def ImageFS2Image(self):
 
 
 class imageMigrator(ATImageToBlobImageMigrator):
+    src_portal_type = "ImageFS"
+    src_meta_type = "ImageFS"
     """ Migrator """
     def migrate_at_uuid(self):
         """ migrate at uuid """
@@ -44,5 +46,5 @@ class imageMigrator(ATImageToBlobImageMigrator):
             return  # old object doesn't support AT uuids
         uid = self.old.UID()
         self.old._uncatalogUID(self.parent)
-#        import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         self.new._setUID(uid)
