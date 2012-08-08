@@ -46,5 +46,5 @@ class imageMigrator(ATImageToBlobImageMigrator):
             return  # old object doesn't support AT uuids
         uid = self.old.UID()
         self.old._uncatalogUID(self.parent)
-        import pdb; pdb.set_trace()
+#        import pdb; pdb.set_trace()
         self.new._setUID(uid)
