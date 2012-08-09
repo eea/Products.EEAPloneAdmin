@@ -470,20 +470,20 @@ def unmarkCreationFlagForBrains(self, brains=None):
     for b in brains:
         i += 1
     info('INFO: processing %s of %s' % (str(i), str(tot)))
-        try:
-            o = b.getObject()
-            if o.checkCreationFlag():
-                msg = 'INFO: Unmarking creation flag for %s - %s' % (
-                    o.getId(), o.absolute_url())
-                o.unmarkCreationFlag()
-                info(msg)
-            else:
-                msg = 'Already marked for %s - %s' % (
-                    o.getId(), o.absolute_url())
-                info(msg)
-        except WorkflowException, err:
-                info('ERROR: unmarking flag for %s' % o.absolute_url())
-                info_exception('Exception: %s ', err)
+    try:
+        o = b.getObject()
+        if o.checkCreationFlag():
+            msg = 'INFO: Unmarking creation flag for %s - %s' % (
+                o.getId(), o.absolute_url())
+            o.unmarkCreationFlag()
+            info(msg)
+        else:
+            msg = 'Already marked for %s - %s' % (
+                o.getId(), o.absolute_url())
+            info(msg)
+    except WorkflowException, err:
+            info('ERROR: unmarking flag for %s' % o.absolute_url())
+            info_exception('Exception: %s ', err)
 
     info('INFO: DONE unmark creation flag')
 

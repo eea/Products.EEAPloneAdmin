@@ -10,7 +10,7 @@ def main():
     if len(sys.argv) != 3:
         print "You need to provide paths to input and output file"
 
-    input, output = [s.strip() for s in sys.argv[1:])]
+    input, output = [s.strip() for s in sys.argv[1:]]
 
     _type = None
 
