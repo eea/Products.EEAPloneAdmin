@@ -4,7 +4,7 @@
 from Products.CMFCore.utils import getToolByName
 
 def listSubtopics(self):
-    """Return a list of our subtopics.
+    """ Return a list of our subtopics.
     """
     val = self.objectValues(self.meta_type)
     check_p = getToolByName(self, 'portal_membership').checkPermission

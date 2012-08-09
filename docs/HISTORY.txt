@@ -44,7 +44,7 @@ Changelog
   to "Collection - old"
   [tiberich #5397]
 * Upgrade Step: go to /portal_properties/site_properties/manage_workspace
-  and in the "available_editors" text box add "TinyMCE"
+  and in the "available_editors" text box add "TinyMCE" and delete "Kupu"
   [tiberich #5414]
 * Bug fix: avoid triggering save on disk twice when resources are saved in a 
   portal resource registry
