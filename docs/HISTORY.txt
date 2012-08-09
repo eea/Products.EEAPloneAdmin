@@ -3,6 +3,12 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.themecentre_scripts
+        - function name: fix_themecentre_intro_pages
+    - Execute it
+  [ichimdav refs #5412]
 * Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf 
   [ichimdav #5346]
 * Bugfix: fixed wrong indentation in setupmethods.py and moved the
