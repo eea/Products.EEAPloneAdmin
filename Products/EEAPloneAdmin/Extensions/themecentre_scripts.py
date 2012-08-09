@@ -10,7 +10,7 @@ def fix_themecentre_intro_pages(self):
             'eea.themecentre.interfaces.IThemeCentre',
                 'path' :
             {'query': '/www/SITE/themes', 'depth': 1}}
-    res = getToolByName(self.context, 'portal_catalog').searchResults(query)
+    res = getToolByName(self, 'portal_catalog').searchResults(query)
     res = [obj.getObject() for obj in res]
     for obj in res:
         translations = obj.getTranslations()
@@ -32,5 +32,5 @@ def fix_themecentre_intro_pages(self):
             if intro.hasProperty('layout'):
                 intro.manage_delProperties(['layout'])
             intro.reindexObject(idxs=['is_default_page'])
-        transaction.get().commit(True)
+        transaction.savepoint()
     return "Done"
