@@ -43,6 +43,9 @@ Changelog
   Go to /www/portal_types/Topic/manage_propertiesForm and change the title
   to "Collection - old"
   [tiberich #5397]
+* Upgrade Step: go to /portal_properties/site_properties/manage_workspace
+  and in the "available_editors" text box add "TinyMCE"
+  [tiberich #5414]
 * Bug fix: avoid triggering save on disk twice when resources are saved in a 
   portal resource registry
   [tiberich #5286]
