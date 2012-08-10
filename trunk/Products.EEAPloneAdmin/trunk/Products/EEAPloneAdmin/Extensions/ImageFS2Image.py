@@ -10,7 +10,6 @@ from Products.CMFCore.utils import getToolByName
 
 
 #from plone.app.blob.migrations import migrateATBlobImages
-from plone.app.blob.migrations import ATImageToBlobImageMigrator
 from Products.Archetypes.ArchetypeTool import getType
 from Acquisition import aq_base
 from Acquisition import aq_parent
