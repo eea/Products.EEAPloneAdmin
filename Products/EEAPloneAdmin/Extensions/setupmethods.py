@@ -4,7 +4,7 @@ import sys
 import time
 import transaction
 from zope.i18n import translate as realTranslate
-from zope.component import queryAdapter
+#from zope.component import queryAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
 from zope.interface import alsoProvides
@@ -16,7 +16,7 @@ from zope.component import getUtility
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from Products.CMFCore.WorkflowCore import WorkflowException
 from DateTime import DateTime
-from eea.dataservice.relations import IRelations
+#from eea.dataservice.relations import IRelations
 
 # Logging
 import logging
@@ -31,7 +31,8 @@ def testTimeoutA(self):
     time.sleep(600)
     return 'done'
 
-def updateMimeTypes(self, brains=None, extension=None, newmime=None, batchnr=20):
+def updateMimeTypes(self, brains=None, extension=None, newmime=None, 
+                                                                batchnr=20):
     """ Update mime types for file fields and their catalog index
     """
     if brains is None:
@@ -469,19 +470,19 @@ def unmarkCreationFlagForBrains(self, brains=None):
     i = 0
     for b in brains:
         i += 1
-    info('INFO: processing %s of %s' % (str(i), str(tot)))
-    try:
-        o = b.getObject()
-        if o.checkCreationFlag():
-            msg = 'INFO: Unmarking creation flag for %s - %s' % (
-                o.getId(), o.absolute_url())
-            o.unmarkCreationFlag()
-            info(msg)
-        else:
-            msg = 'Already marked for %s - %s' % (
-                o.getId(), o.absolute_url())
-            info(msg)
-    except WorkflowException, err:
+        info('INFO: processing %s of %s' % (str(i), str(tot)))
+        try:
+            o = b.getObject()
+            if o.checkCreationFlag():
+                msg = 'INFO: Unmarking creation flag for %s - %s' % (
+                    o.getId(), o.absolute_url())
+                o.unmarkCreationFlag()
+                info(msg)
+            else:
+                msg = 'Already marked for %s - %s' % (
+                    o.getId(), o.absolute_url())
+                info(msg)
+        except WorkflowException, err:
             info('ERROR: unmarking flag for %s' % o.absolute_url())
             info_exception('Exception: %s ', err)
 
@@ -782,7 +783,7 @@ def setActiveSubscribers(self):
 def sendMistakeEmail(self):
     """ Send email
     """
-    return
+    # return
     import email as emailutils
 
     portal = self.portal_url.getPortalObject()
