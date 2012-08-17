@@ -9,6 +9,9 @@ from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
 from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
 from p4a.video.interfaces import IVideo
+from plone.app.blob.browser.migration import BlobMigrationView
+from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
+from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
 import csv
@@ -935,3 +938,29 @@ class FixImages(BrowserView):
 
         logger.info("Migration of field image filenames done")
         return "Done"
+
+
+class ImageFSToBlobImageMigrator(ATFileToBlobMigrator):
+    src_portal_type = "ImageFS"
+    src_meta_type = "ImageFS"
+    dst_portal_type = "Image"
+    dst_meta_type = "ATBlob"
+
+    fields_map = {'image':None}
+
+    def migrate_data(self):
+        self.new.getField('image').getMutator(self.new)(self.old)
+
+def getImageFSMigrationWalker(self):
+    return getMigrationWalker(self, migrator=ImageFSToBlobImageMigrator)
+
+
+class MigrateImageFS(BlobMigrationView):
+    """migration
+    """
+
+    walker = getImageFSMigrationWalker
+
+    def migration(self):
+        return migrate(self, walker=getImageFSMigrationWalker)
+
