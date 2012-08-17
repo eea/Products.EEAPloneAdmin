@@ -65,4 +65,12 @@
         file="rewriterules.js"
     />
 
+    <browser:page
+        name="migrate_imagefs"
+        for="zope.interface.Interface"
+        class=".migrate.MigrateImageFS"
+        permission="cmf.ManagePortal"
+        template="migration.pt"
+        />
+
 </configure>
