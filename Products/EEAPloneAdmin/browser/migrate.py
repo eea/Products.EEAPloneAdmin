@@ -941,6 +941,8 @@ class FixImages(BrowserView):
 
 
 class ImageFSToBlobImageMigrator(ATFileToBlobMigrator):
+    """migrator
+    """
     src_portal_type = "ImageFS"
     src_meta_type = "ImageFS"
     dst_portal_type = "Image"
@@ -949,9 +951,13 @@ class ImageFSToBlobImageMigrator(ATFileToBlobMigrator):
     fields_map = {'image':None}
 
     def migrate_data(self):
+        """override for migrate_data
+        """
         self.new.getField('image').getMutator(self.new)(self.old)
 
 def getImageFSMigrationWalker(self):
+    """walker
+    """
     return getMigrationWalker(self, migrator=ImageFSToBlobImageMigrator)
 
 
@@ -962,5 +968,7 @@ class MigrateImageFS(BlobMigrationView):
     walker = getImageFSMigrationWalker
 
     def migration(self):
+        """does migration
+        """
         return migrate(self, walker=getImageFSMigrationWalker)
 
