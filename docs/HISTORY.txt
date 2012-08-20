@@ -3,6 +3,9 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Bug fix: temporary patched decode cookie from Products.statusmessages
+  in order to catch the source of badly formatted cookies
+  [ghicaale refs #5460]
 * Upgrade step:
     - Create an external method with:
         - module name: Products.EEAPloneAdmin.themecentre_scripts
