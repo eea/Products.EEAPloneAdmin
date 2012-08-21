@@ -15,7 +15,6 @@ logger = logging.getLogger('statusmessages')
 def _decodeCookieValue(string):
     """Decode a cookie value to a list of Messages.
     """
-    import pdb; pdb.set_trace()
     results = []
     # Return nothing if the cookie is marked as deleted
     if string == 'deleted':
