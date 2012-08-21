@@ -164,13 +164,13 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     if allow_buttons is not None:
         allow_buttons = self.translateButtonsFromKupu(context=context,
                                                         buttons=allow_buttons)
-        results['buttons'] = filter(lambda x: x in results['buttons'],
-                                                                allow_buttons)
+        results['buttons'] = [x for x in allow_buttons \
+                                        if x in results['buttons']]
     if filter_buttons is not None:
         filter_buttons = self.translateButtonsFromKupu(context=context,
                                                        buttons=filter_buttons)
-        results['buttons'] = filter(lambda x: x not in filter_buttons,
-                                                           results['buttons'])
+        results['buttons'] = [x for x in results[buttons] 
+                                    if x not in filter_buttons]
 
     # Get valid html elements
     results['valid_elements'] = self.getValidElements()
@@ -372,19 +372,19 @@ def patched_getListing(self, filter_portal_types, rooted,
     catalog_results = []
     results = {}
 
-    object = aq_inner(self.context)
+    obj = aq_inner(self.context)
     normalizer = getUtility(IIDNormalizer)
 
     # check if object is a folderish object, if not, get it's parent.
-    if not IFolderish.providedBy(object):
-        object = aq_parent(object)
+    if not IFolderish.providedBy(obj):
+        obj = aq_parent(obj)
 
     #plone4 if INavigationRoot.providedBy(object) or
     #(rooted == "True" and document_base_url[:-1] == object.absolute_url()):
-    if (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
+    if (rooted == "True" and document_base_url[:-1] == obj.absolute_url()):
         results['parent_url'] = ''
     else:
-        results['parent_url'] = aq_parent(object).absolute_url()
+        results['parent_url'] = aq_parent(obj).absolute_url()
 
     if rooted == "True":
         results['path'] = self.getBreadcrumbs(results['parent_url'])
@@ -407,8 +407,8 @@ def patched_getListing(self, filter_portal_types, rooted,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish
                 })
-    if object.portal_type == 'Topic':
-        for brain in object.queryCatalog(sort_on='getObjPositionInParent'):
+    if obj.portal_type == 'Topic':
+        for brain in obj.queryCatalog(sort_on='getObjPositionInParent'):
             cat_results(brain)
     else:
         for brain in self.context.getFolderContents({'portal_type':
@@ -421,10 +421,10 @@ def patched_getListing(self, filter_portal_types, rooted,
     # decide whether to show the upload new button
     results['upload_allowed'] = False
     if upload_type:
-        portal_types = getToolByName(object, 'portal_types')
+        portal_types = getToolByName(obj, 'portal_types')
         fti = getattr(portal_types, upload_type, None)
         if fti is not None:
-            results['upload_allowed'] = fti.isConstructionAllowed(object)
+            results['upload_allowed'] = fti.isConstructionAllowed(obj)
 
     # return results in JSON format
     return json.dumps(results)
