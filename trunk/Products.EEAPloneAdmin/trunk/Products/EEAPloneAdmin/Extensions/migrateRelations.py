@@ -56,16 +56,19 @@ def migrateRelations(self, old_ob_path, new_ob_path):
 
     for ob in backs:
         related = ob.getRelatedItems()
-        info('INFO: BEFORE updating standard relations on backrefs: %s' % (related))
+        info('INFO: BEFORE updating standard relations'
+                'on backrefs: %s' % (related))
         #remove reference to old_ob
         del related[related.index(old_ob)]
         related.append(new_ob)
         ob.setRelatedItems(related)
-        info('INFO: AFTER updating standard relations on backrefs: %s' % (related))
+        info('INFO: AFTER updating standard '
+             'relations on backrefs: %s' % (related))
 
     for ob in backs_topro:
         related = ob.getRelatedProducts()
-        info('INFO: BEFORE updating relatedProducts on backrefs: %s' % (related))
+        info('INFO: BEFORE updating relatedProducts '
+             'on backrefs: %s' % (related))
         #remove reference to old_ob
         del related[related.index(old_ob)]
         related.append(new_ob)
