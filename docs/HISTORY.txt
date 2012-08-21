@@ -60,7 +60,9 @@ Changelog
   [tiberich #5286]
 * Feature: added migration of ImageFS objects to Image
   [tiberich #4190]
-* Upgrade Step: WIP: go to /@@migrate_imagefs and click on the migration button
+* Upgrade Step:
+    - this step takes a couple of hours, must be run on a serviceWWW instance
+    - go to /@@migrate_imagefs and click on the migration button
 
 5.1 - (2012-07-13)
 ------------------
