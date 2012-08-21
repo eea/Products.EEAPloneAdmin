@@ -948,12 +948,14 @@ class ImageFSToBlobImageMigrator(ATFileToBlobMigrator):
     dst_portal_type = "Image"
     dst_meta_type = "ATBlob"
 
-    fields_map = {'image':None}
+    fields_map = {'image':'image'}
 
     def migrate_data(self):
         """override for migrate_data
         """
-        self.new.getField('image').getMutator(self.new)(self.old)
+        #this is not needed because imagefs is already a blob
+        #self.new.getField('image').getMutator(self.new)(self.old)
+
 
 def getImageFSMigrationWalker(self):
     """walker

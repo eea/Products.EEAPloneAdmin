@@ -58,7 +58,7 @@ Changelog
 * Bug fix: avoid triggering save on disk twice when resources are saved in a 
   portal resource registry
   [tiberich #5286]
-* Feature WIP: added migration of ImageFS objects to Image
+* Feature: added migration of ImageFS objects to Image
   [tiberich #4190]
 * Upgrade Step: WIP: go to /@@migrate_imagefs and click on the migration button
 
