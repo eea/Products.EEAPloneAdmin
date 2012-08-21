@@ -10,20 +10,20 @@ def main():
     if len(sys.argv) != 3:
         print "You need to provide paths to input and output file"
 
-    input, output = [s.strip() for s in sys.argv[1:]]
+    inp, output = [s.strip() for s in sys.argv[1:]]
 
     _type = None
 
-    if 'cssregistry.xml' in input:
+    if 'cssregistry.xml' in inp:
         _type = 'stylesheet'
-    if 'jsregistry.xml' in input:
+    if 'jsregistry.xml' in inp:
         _type = 'javascript'
 
     if not _type:
         print "Invalid named input file, has ",
         print "to be either jsregistry.xml or cssregistry.xml"
 
-    with open(input) as f:
+    with open(inp) as f:
         s = f.read()
 
     e = lxml.etree.fromstring(s)

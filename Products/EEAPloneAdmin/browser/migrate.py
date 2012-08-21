@@ -244,8 +244,8 @@ class InitialThemeCentres(object):
         if toMigrate:
             for theme in themeids:
                 tc = context[theme]
-                migrate = MigrateTheme(tc, self.request)
-                migrate()
+                _migrate = MigrateTheme(tc, self.request)
+                _migrate()
 
         if not hasattr(aq_base(context), 'right_slots'):
             slots = ['here/portlet_themes_related/macros/portlet',

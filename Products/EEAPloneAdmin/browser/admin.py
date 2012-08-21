@@ -144,7 +144,7 @@ def save_resources_on_disk(registry, request=None):
             logging.warning("No concatenated resources in registry")
             continue
 
-        for theme, resources in registry.concatenatedResourcesByTheme.items():
+        for _theme, resources in registry.concatenatedResourcesByTheme.items():
             for name in resources:
                 try:
                     #content = getResourceContent(registry, name, registry)

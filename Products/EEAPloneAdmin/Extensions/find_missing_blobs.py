@@ -233,4 +233,4 @@ def find_missing_scales(self):
     f = open("/tmp/out.txt", "w")
     f.writelines([" - ".join(x) for x in broken])
     return """<html><body><h3>Broken:</h3><ul>%s</ul></body></html""" % \
-            "\n".join(["<li>%s - %s</li>" % x for x in broken])
+            "\n".join(["<li>%s - %s</li>" % (y, y) for y in broken])
