@@ -169,7 +169,7 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
     if filter_buttons is not None:
         filter_buttons = self.translateButtonsFromKupu(context=context,
                                                        buttons=filter_buttons)
-        results['buttons'] = [x for x in results[buttons] 
+        results['buttons'] = [x for x in results['buttons'] 
                                     if x not in filter_buttons]
 
     # Get valid html elements
