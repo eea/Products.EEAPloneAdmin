@@ -21,7 +21,6 @@ def FindMissingBlobs(self):
     cat = getToolByName(self, 'portal_catalog', None)
     #content_types = ['EEAFigureFile',
     #                 'Image',
-    #                 'ImageFS',
     #                 'DataFile',
     #                 'File',
     #                 'FlashFile',
@@ -32,7 +31,7 @@ def FindMissingBlobs(self):
     #                 'Promotion',
     #                 'Highlight',
     #                 'Article']
-    content_types = ['ImageFS']
+    content_types = ['Image']
 
     # Test everything will go well
     logger.info('Start testing')
@@ -130,7 +129,6 @@ def get_list_of_blobs(self):
 #               'HelpCenterInstructionalVideo',
 #               'Highlight',
 #               'Image',
-#               'ImageFS',
 #               'PressRelease',
 #               'Promotion',
 #               'Report'
@@ -192,7 +190,6 @@ def find_missing_scales(self):
 
     content_types = ['EEAFigureFile',
                      'Image',
-                     'ImageFS',
                      'DataFile',
                      'File',
                      'FlashFile',

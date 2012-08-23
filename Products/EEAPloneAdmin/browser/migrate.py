@@ -904,7 +904,6 @@ class FixImages(BrowserView):
                 'query':[
                     'Image',
                     'Highlight',
-                    'ImageFS',
                     'Article',
                     'Promotion',
                     'Speech',
