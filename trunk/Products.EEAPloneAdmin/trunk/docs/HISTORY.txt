@@ -3,6 +3,8 @@ Changelog
 
 5.2-dev - (unreleased)
 ----------------------
+* Feature: cleaned up references to ImageFS
+  [ghicaale refs #4190]
 * Upgrade step:
     - Update both frontend servers (svn up)
     - Run buildout
