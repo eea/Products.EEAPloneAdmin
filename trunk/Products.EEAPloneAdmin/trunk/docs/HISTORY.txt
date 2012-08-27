@@ -10,6 +10,7 @@ Changelog
     - Run buildout
     - ZEO must be restarted to send its logs to Graylog2, this is a delicate operation
       and Dascalu must be ask to do it
+    - [ghicaale refs #5411]
 * Bug fix: temporary patched decode cookie from Products.statusmessages
   in order to catch the source of badly formatted cookies
   [ghicaale refs #5460]
@@ -67,9 +68,14 @@ Changelog
   [tiberich #5286]
 * Feature: added migration of ImageFS objects to Image
   [tiberich #4190]
-* Upgrade Step:
+* Upgrade step:
     - this step takes a couple of hours, must be run on a serviceWWW instance
     - go to /@@migrate_imagefs and click on the migration button
+    - [tiberich refs #4190]
+* Upgrade step:
+    - under /www/portal_types/EEAFigureFile add 'Image' under 'Allowed content types'
+    - under /www/portal_workflow we should decide what to do with 'eea_imagefs_workflow', delete?
+    - [ghicaale refs #4190]
 
 5.1 - (2012-07-13)
 ------------------
