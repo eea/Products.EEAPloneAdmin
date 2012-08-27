@@ -1,0 +1,595 @@
+<tal:block tal:define="foo python:request.set('disable_plone.leftcolumn', 1);
+                       bar python:request.set('disable_plone.rightcolumn', 1);"/>
+<html xmlns::tal="http://xml.zope.org/namespaces/tal"
+        xmlns:metal="http://xml.zope.org/namespaces/metal"
+        metal:use-macro="here/main_template/macros/master"
+        i18n:domain="eea.translations">
+<head>
+
+<metal:organigramcss fill-slot="style_slot">
+
+<style type="text/css" media="print">
+#eea-comments {
+    display: none;
+}
+
+.discussion {
+    display: none;
+}
+
+.org_container dt, .director_container dt { font-weight:bold }
+
+.org_container dd, .director_container dd {
+    margin:0 !important;
+    padding:0 !important;
+}
+
+#organisation-chart-container dl {
+   margin-bottom: 0px !important;
+}
+
+
+#organisation-chart-container .visualClear {
+clear:both !important;
+display:block !important;
+}
+
+.director_container {
+    margin:0;
+    padding:0;
+    width: 100% !important;
+}
+
+.director_head {
+    position: relative;
+    margin:0;
+    padding:0;
+    background-color: #cccccc;
+    border: 1px solid #888888;
+    padding: 10px;
+    width:250px !important;
+    font-size:8px;
+    height: 150px !important;
+    font-family:Verdana,sans-serif;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    text-align:left;
+    float:left;
+}
+
+* html .org_container {
+    width: 90px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+:first-child+html .org_container {
+    width: 90px !important;
+}
+
+.org_container {
+    float: left;
+    width: 100px !important;
+}
+
+.org_head {
+    position: relative;
+    border:1px solid #888888;
+    background-color:#CCCCCC;
+    height:135px !important;
+    width:80px !important;
+    margin:0 10px 0 10px;
+    padding:0 3px 0 3px;
+    font-family:Verdana,sans-serif;
+    font-size:7px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    text-align:left;
+}
+*:first-child+html .org_head {
+    width: 65px !important;
+}
+* html .org_head {
+    width: 55px !important;
+}
+* html  .org_subhead {
+    margin: 5px 0 0 0 !important;
+    width: 60px !important;
+}
+
+*:first-child+html .org_subhead {
+    width: 60px !important;
+    margin:10px 0 0 0 !important;
+}
+
+.org_subhead {
+    border:1px solid #888888;
+    background-color:#EFEFEF;
+    margin:10px 0 0 23px;
+    padding:6px 3px 0 3px;
+    height:128px !important;
+    width:75px !important;
+    font-family:Verdana,sans-serif;
+    font-size:7px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    text-align:left;
+}
+.org_staff_number {
+    /*
+    position: relative;
+    bottom:0;
+    right:0;
+    */
+}
+.org_staff_total {
+    /* bottom: 1em; */
+    padding-bottom: 2px;
+}
+
+.org_line {
+    height:20px !important;
+    margin: 15px 0 0 0;
+    padding:0;
+    border-top: 1px solid black;
+    font-size:10px;
+    font-family:Verdana,sans-serif;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    text-align:left;
+}
+
+* html  .org_line_first {
+    margin:0pt 0pt 0pt 12px;
+    /* Remove the comment below for non custom EDO first */
+    /* margin:0pt 0pt 0pt 56px; */
+}
+:first-child+html .org_line {
+    margin: 17px 0 0 0;
+}
+
+:first-child+html .org_line_first {
+    margin:0pt 0pt 0pt 15px;
+    /* Remove the comment below for non custom EDO first */
+    /* margin:0pt 0pt 0pt 56px; */
+}
+
+.org_line_first {
+    border-left:1px solid black;
+    margin:0pt 0pt 0pt 20px;
+    height:20px !important;
+    /* Remove the comment below for non custom EDO first */
+    /* margin:0pt 0pt 0pt 56px; */
+}
+
+.org_line_upper {
+    border-left:1px solid black;
+    height:15px !important;
+    margin-left:56px;
+}
+
+.org_line_last {
+    width: 57px !important;
+}
+
+.org_line div {
+    border-right: 1px solid black;
+    height:20px !important;
+    width: 56px !important;
+}
+
+* html .org_child {
+    margin: 0 0 0 6px !important;
+    width: 2px !important;
+}
+* html .org_child1 {
+    page-break-after: always;
+}
+
+* html .org_child2 {
+    position: relative;
+    right: 9px;
+}
+
+* html div.org_child3 {
+    margin: 0 !important;
+    position: relative !important;
+    right: 12px;
+}
+
+* html dl.org_child3 {
+    position: relative !important;
+    right: 12px;
+}
+
+* html div.org_child4 {
+    margin: 0 !important;
+    position: relative !important;
+    right: 15px;
+}
+
+* html dl.org_child4 {
+    margin: 0 !important;
+    position: relative;
+    bottom: 70px;
+    left: 9px;
+}
+
+:first-child+html .org_child {
+    margin: 0 0 0 15px !important;
+    height: 146px !important;
+}
+
+.org_child {
+    float:left;
+    border-left: 1px solid black;
+    height: 145px !important;
+    padding: 0 !important;
+    width: 2px !important;
+    margin: 0 0 0 20px !important;
+}
+
+* html .org_child_last {
+    margin: 0 0 0 6px !important;
+    height: 76px !important;
+}
+
+*:first-child+html .org_child_last {
+    height: 76px !important;
+}
+
+.org_child_last {
+    height: 76px !important;
+}
+
+*:first-child+html .org_child4 {
+    margin: 2px 0 0 0 !important;
+    position: relative;
+    right: 3px;
+}
+
+.org_child div {
+    border-bottom: 1px solid black;
+    margin-top: 75px;
+}
+
+.documentActions, #portal-column-one, #selectetc_form, #portal-searchbox, #portal-colophon, #selectlang_form, #cross-site-top, #logo-en, #portal-footer, #portal-globalnav, .share-title {
+    display: none;
+}
+
+.org_start3 {
+page-break-after: always;
+}
+
+#EDO1, #EDO2 {
+  margin: 0 10px;
+  float:left;
+}
+
+</style>
+
+<style type="text/css" media="screen">
+.org_container dt, .director_container dt { font-weight:bold }
+
+.org_container dd, .director_container dd {
+margin:0 !important;
+padding:0 !important;
+}
+
+#organisation-chart-container dl {
+   margin-bottom: 0px !important;
+}
+
+.director_container {
+margin:0;
+padding:0;
+}
+
+.director_head {
+position: relative;
+margin:0;
+padding:0;
+background-color: #cccccc;
+border: 1px solid #888888;
+padding: 10px;
+width:245px;
+font-size:10px;
+height: 150px;
+font-family:Verdana,sans-serif;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+text-align:left;
+}
+
+* html .org_container {
+width: 109px;
+padding: 0;
+margin: 0;
+}
+
+:first-child+html .org_container {
+width: 109px;
+}
+
+.org_container {
+float: left;
+width: 108px;
+}
+
+* html .org_head {
+margin: 0;
+}
+
+:first-child+html .org_head {
+margin: 0;
+}
+
+.org_head {
+position: relative;
+border:1px solid #888888;
+background-color:#CCCCCC;
+height:128px;
+width:85px;
+margin:0 10px 0 10px;
+padding:0 3px 0 3px;
+font-family:Verdana,sans-serif;
+font-size:9px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+text-align:left;
+}
+
+* html .org_subhead {
+margin:10px 5px 0 5px;
+}
+
+:first-child+html .org_subhead {
+margin:10px 5px 0 5px;
+}
+
+.org_subhead {
+position: relative;
+border:1px solid #888888;
+background-color:#EFEFEF;
+margin:10px 35px 0 26px;
+padding:6px 3px 0 3px;
+height:128px;
+width:85px;
+font-family:Verdana,sans-serif;
+font-size:9px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+text-align:left;
+}
+
+.org_staff_number {
+position: absolute;
+bottom:0;
+right:0;
+}
+.org_staff_total {
+bottom: 1em;
+padding-bottom: 2px;
+}
+
+.org_line {
+height:20px;
+margin: 15px 0 0 0;
+padding:0;
+border-top: 1px solid black;
+font-size:10px;
+font-family:Verdana,sans-serif;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+text-align:left;
+}
+
+* html  .org_line_first {
+margin:0pt 0pt 0pt 2px;
+/* Remove the comment below for non custom EDO first */
+/* margin:0pt 0pt 0pt 56px; */
+}
+
+:first-child+html .org_line_first {
+margin:0pt 0pt 0pt 5px;
+/* Remove the comment below for non custom EDO first */
+/* margin:0pt 0pt 0pt 56px; */
+}
+
+.org_line_first {
+border-left:1px solid black;
+margin:0pt 0pt 0pt 20px;
+height:20px;
+/* Remove the comment below for non custom EDO first */
+/* margin:0pt 0pt 0pt 56px; */
+}
+
+.org_line_upper {
+border-left:1px solid black;
+height:15px;
+margin-left:56px;
+}
+
+.org_line_last {
+width: 57px;
+}
+
+.org_line div {
+border-right: 1px solid black;
+height:20px;
+width: 56px;
+}
+
+* html .org_child {
+margin: 0 0 0 0;
+}
+
+:first-child+html .org_child {
+margin: 0 0 0 5px;
+}
+
+.org_child {
+float:left;
+border-left: 1px solid black;
+height: 146px;
+width: 5px;
+margin: 0 0 0 20px;
+padding: 0;
+}
+
+.org_child_last {
+height: 76px;
+}
+
+.org_child div {
+border-bottom: 1px solid black;
+margin-top: 75px;
+}
+
+#EDO1, #EDO2 {
+  margin: 0 10px;
+}
+
+</style>
+</metal:organigramcss>
+</head>
+
+<body>
+<metal:main fill-slot="main"
+            tal:define="view here/@@eeaorganisation;
+                        orgs_data here/@@eeaorglist">
+
+    <h1 i18n:translate="title_eeastaff_list"  class="documentFirstHeading">
+        EEA Organisational chart
+    </h1>
+    <p>
+        <strong i18n:translate="">Last updated on:</strong>
+        <tal:block tal:define="last_upload here/@@eealastupdated"
+            tal:content="python:here.toLocalizedTime(last_upload)" />
+    </p>
+
+    <div class="portalMessage" tal:condition="not:context/portal_membership/isAnonymousUser">
+    <span>The source file XML contains the following organisations:</span>
+    &nbsp;
+    <tal:Orgs repeat="org orgs_data/orgs">
+        <span tal:content="org"/>&nbsp;
+    </tal:Orgs>
+    </div>
+
+    <div tal:condition="view/validData" tal:define="
+        orgs view/getOrgUnits;
+        width python:109 * len(orgs)"
+        tal:attributes="style string:width:${width}px"
+        id="organisation-chart-container">
+        <div class="director_container">
+         <tal:director define="director view/getDirector; deputy_director view/getDeputyDirector">
+                <div style="float:left"><metal:orgDirector use-macro="here/organigram_macros/macros/director" /></div>
+          </tal:director>
+         <tal:orgs repeat="org python:orgs[:1]">
+                <tal:orgUnits repeat="unit org">
+                    <tal:cond condition="unit"
+                              define="first_unit repeat/unit/start;
+                                      last_unit repeat/unit/end;
+                                      first_org repeat/org/start;
+                                      last_org repeat/org/end;
+                                      orgid unit/orgname;">
+
+                        <tal:block condition="python:(not first_unit) and orgid in ['EDO1','EDO2']">
+                            <span class="" tal:attributes="class string:edoorg_start${repeat/unit/index}"></span>
+                            <div class=""  tal:attributes="class string:edoorg_child org_child${repeat/unit/index}"><div></div></div>
+                            <div style="float:left">
+                               <div class="org_line" tal:condition="python:(not first_unit) and (not last_unit)"><div></div></div>
+                               <div class="org_line org_line_last" tal:condition="last_unit"><div></div></div>
+                               <metal:orgUnit use-macro="here/organigram_macros/macros/unit" />
+                            </div>
+                        </tal:block>
+                    </tal:cond>
+                </tal:orgUnits>
+         </tal:orgs>
+
+
+        </div>
+         <div class="visualClear"><!-- --></div>
+
+        <tal:orgs repeat="org python:orgs[1:]">
+            <div class="org_container">
+                <tal:orgUnits repeat="unit org">
+                    <tal:cond condition="unit"
+                              define="first_unit repeat/unit/start;
+                                      last_unit repeat/unit/end;
+                                      first_org repeat/org/start;
+                                      last_org repeat/org/end;
+                                      orgid unit/orgname;">
+                     <tal:block condition="python:(orgid.find('EDO')==-1)">
+                        <tal:block condition="first_unit">
+                            <tal:block condition="first_org">
+                                <div class="org_line_upper"></div>
+                                <div class="org_line org_line_first"></div>
+                            </tal:block>
+                            <div class="org_line" tal:condition="python:(not first_org) and (not last_org)"><div></div></div>
+                            <div class="org_line org_line_last" tal:condition="last_org"><div></div></div>
+                            <metal:orgUnit use-macro="here/organigram_macros/macros/head" />
+                        </tal:block>
+
+                        <tal:block condition="python:(not first_unit) and (not last_unit)">
+                            <span class="" tal:attributes="class string:org_start${repeat/unit/index}"></span>
+                            <div class="" tal:attributes="class string:org_child org_child${repeat/unit/index}"><div></div></div>
+                            <metal:orgUnit use-macro="here/organigram_macros/macros/unit" />
+                        </tal:block>
+
+                        <tal:block condition="last_unit">
+                            <span class="" tal:attributes="class string:org_start${repeat/unit/index}"></span>
+                            <div class="" tal:attributes="class string:org_child org_child_last org_child${repeat/unit/index}"><div></div></div>
+                            <metal:orgUnit use-macro="here/organigram_macros/macros/unit" />
+                        </tal:block>
+                     </tal:block>
+                    </tal:cond>
+                </tal:orgUnits>
+            </div>
+        </tal:orgs>
+
+        <div class="visualClear"><!-- --></div>
+
+
+
+
+    </div>
+
+    <tal:block condition="not:view/validData">
+        <p i18n:translate="loading_data">loading data ...</p>
+    </tal:block>
+</metal:main>
+</body>
+</html>
