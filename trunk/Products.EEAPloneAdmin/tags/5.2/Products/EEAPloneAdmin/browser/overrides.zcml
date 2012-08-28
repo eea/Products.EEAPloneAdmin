@@ -1,0 +1,37 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="Products.EEAPloneAdmin">
+
+
+    <configure zcml:condition="have plone.app.discussion-captcha">
+        <adapter
+            factory=".captcha.CaptchaExtender"
+            provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    </configure>
+
+    <browser:viewlet
+        name="plone.comments"
+        for="Products.CMFCore.interfaces.IContentish"
+        layer="plone.app.discussion.interfaces.IDiscussionLayer"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        view="plone.app.layout.globals.interfaces.IViewView"
+        class=".comments.CommentsViewlet"
+        permission="zope2.View"
+        />
+
+
+
+    We override because of incorect parsing of datetime. Only one
+    line has changed from the original module, it comes from 
+    plone.app.form/widgets/datecomponents v1.2
+
+    <browser:page
+        name="date_components_support"
+        for="*" 
+        permission="zope2.View"
+        class=".datecomponents.DateComponents"
+        allowed_interface="plone.app.form.widgets.interfaces.IDateComponents"
+        /> 
+
+</configure>

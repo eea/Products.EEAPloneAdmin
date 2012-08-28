@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <object name="document_actions" meta_type="CMF Action Category">
+
+    <object name="rss" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">RSS feed of this listing</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$object_url/RSS</property>
+      <property name="link_target"></property>
+      <property name="icon_expr">string:$portal_url/rss.gif</property>
+      <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">False</property>
+
+    </object>
+    <object name="rss2" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">RSS2 feed of this listing</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$object_url/RSS2</property>
+      <property name="link_target"></property>
+      <property name="icon_expr">string:$portal_url/rss.gif</property>
+      <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+
+    </object>
+    <object name="skos" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">SKOS feed of this listing</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$object_url/SKOS</property>
+      <property name="link_target"></property>
+      <property name="icon_expr">string:$portal_url/rdf.gif</property>
+      <property name="available_expr">python:portal.portal_syndication.isSyndicationAllowed(object)</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">False</property>
+    </object>
+
+    <object name="gearth" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">Google Earth view</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:$object_url/google_earth</property>
+      <property name="link_target"></property>
+      <property name="icon_expr">string:$portal_url/google_earth.gif</property>
+      <property name="available_expr">here/@@isGeoContainer</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+
+    <object name="full_screen" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">Toggle full screen mode</property>
+      <property name="description" i18n:translate=""></property>
+      <property
+        name="url_expr">string:javascript:toggleFullScreenMode();</property>
+      <property
+        name="icon_expr">string:$portal_url/fullscreenexpand_icon.gif</property>
+      <property name="available_expr">not: here/@@inApplication</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+
+    <object name="print" meta_type="CMF Action" i18n:domain="plone">
+      <property name="title" i18n:translate="">Print this</property>
+      <property name="description" i18n:translate=""></property>
+      <property name="url_expr">string:javascript:this.print();</property>
+      <property name="icon_expr">string:$portal_url/print_icon.gif</property>
+      <property name="available_expr"></property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+
+  <object name="rdf" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">RDF (Semantic data export)</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${object_url}/@@rdf</property>
+   <property name="link_target"></property>
+   <property name="icon_expr">string:$portal_url/rdf.png</property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="sendto" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Send this</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:$object_url/sendto_form</property>
+   <property name="link_target"></property>
+   <property name="icon_expr">string:$portal_url/mail_icon.gif</property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+</object>
