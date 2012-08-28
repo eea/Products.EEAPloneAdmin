@@ -1,6 +1,9 @@
 Changelog
 =========
 
+5.3-dev - (unreleased)
+----------------------
+
 5.2 - (2012-08-28)
 ------------------
 * Feature: cleaned up references to ImageFS
