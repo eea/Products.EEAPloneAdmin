@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+  <!-- TODO: replace with proper entries-->
+
+  <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="patch_tinymce.js" inline="False"
+    position-before="tiny_mce.js"/>
+
+  <javascript
+    id="++resource++eeaploneadmin.rewriterules.js"
+    authenticated="True"
+    />
+
+</object>

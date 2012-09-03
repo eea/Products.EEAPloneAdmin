@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff SYSTEM "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<!-- XLIFF Format Copyright © OASIS Open 2001-2003 -->
+<xliff version="1.0">
+<file
+original="/index_html"
+product-name="Localizer"
+product-version="1.1.x"
+datatype="plaintext"
+source-language="en"
+target-language="sk"
+date="2008-03-12T12:27:26Z"
+>
+<header>
+</header>
+<body>
+<trans-unit id="body">
+ <source>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;The EEA in 30 seconds&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+&lt;p&gt;&lt;b&gt;
+Mission
+&lt;/b&gt;&lt;br/&gt;
+The EEA's task is to provide timely, targeted, relevant and reliable environmental information. We serve those concerned with framing and implementing European and national environmental policy, and the general public. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Supporting the policy makers
+&lt;/b&gt;&lt;br/&gt;
+Our information helps the EU and Agency member countries make informed decisions about improving the environment, integrate environmental considerations into economic policies and move towards sustainability. We focus on supporting key users at vital points in the policy process at the European level.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Environmental information
+&lt;/b&gt;&lt;br/&gt;
+In our work we draw on existing organisations knowledge/information; we cooperate with them, coordinate the work at European level and seek to avoid duplication. We bring together the best available environmental data from individual countries. After a thorough compilation of data and its validation through our institutional network (EIONET), information is made accessible in various reporting formats to our users. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Membership countries
+&lt;/b&gt;&lt;br/&gt;
+Although the EEA is a European Union body, membership is open to non-EU countries that share our objectives. The EEA now has 32 member countries: all 27 EU Member States, Iceland, Liechtenstein, Norway, Switzerland and Turkey.
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Read more about the EEA&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;</source>
+ <target>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;EEA za 30 sekúnd&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+				&lt;p&gt;&lt;b&gt;Poslanie &lt;/b&gt;&lt;br/&gt; Úlohou EEA je včas poskytnúť cielené, relevantné a spoľahlivé informácie o životnom prostredí. Slúžime širokej verejnosti a tým, ktorí zodpovedajú za vytváranie a zavádzanie environmentálnej politiky na európskej a na národnej úrovni. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt; Podporujeme tvorcov politiky&lt;/b&gt;&lt;br/&gt; Naše informácie pomáhajú členským krajinám EÚ a agentúry byť dobre informovaný pri prijímaní rozhodnutí týkajúcich sa zlepšovania životného prostredia, integrovania environmentálneho aspektu do hospodárskych politík a pri smerovaní k trvalo udržateľnému rozvoju.  Zameriavame sa na podporu kľúčových užívateľov na dôležitých miestach v rámci politického procesu na európskej úrovni.
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt; Informácie o životnom prostredí&lt;/b&gt;&lt;br/&gt; Našu prácu staviame na jestvujúcich poznatkoch/informáciách, ktoré dostávame od organizácií, spolupracujeme s nimi, koordinujeme prácu na európskej úrovni a snažíme sa vyhnúť duplicitnej práci. Zhromažďujeme najkvalitnejšie údaje o životnom prostredí, ktoré sú dostupné v jednotlivých krajinách. Po dôkladnom zostavení údajov a ich potvrdení prostredníctvom našej siete inštitúcií (EIONET) sú tieto informácie dostupné pre našich užívateľov  v rôznych typoch správ.  
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt; Členské krajiny&lt;/b&gt;&lt;br/&gt; Napriek tomu, že EEA je inštitúciou Európskej únie, členstvo je otvorené aj pre krajiny, ktoré nie sú členmi EÚ ale majú v tejto oblasti rovnaké ciele. EEA má v súčasnosti 32 členských krajín: všetkých 27 členských štátov EÚ, Island, Lichtenštajnsko, Nórsko, Švajčiarsko a Turecko.
+				&lt;/p&gt;
+				&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Viac informácií o EEA&lt;/a&gt;&lt;/p&gt;
+				&lt;br/&gt;
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+&lt;br/&gt;&lt;br/&gt;</target>
+</trans-unit>
+<trans-unit id="title">
+ <source>Introduction</source>
+ <target></target>
+</trans-unit>
+</body>
+</file>
+</xliff>
