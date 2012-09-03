@@ -3,6 +3,13 @@ Changelog
 
 5.3-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Added upgrade step to setup on all existing EEAFigureFile objects the local workflow policy for images
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.update_eeafigurefile_workflowpolicy
+        - function name: updateLocalPolicy
+    - Execute it
+    - [ghicaale refs #5499]
 
 5.2 - (2012-08-28)
 ------------------
@@ -22,7 +29,7 @@ Changelog
         - module name: Products.EEAPloneAdmin.themecentre_scripts
         - function name: fix_themecentre_intro_pages
     - Execute it
-      [ichimdav refs #5412]
+    - [ichimdav refs #5412]
 * Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf 
   [ichimdav #5346]
 * Bugfix: fixed wrong indentation in setupmethods.py and moved the
@@ -35,7 +42,7 @@ Changelog
         - module name: Products.EEAPloneAdmin.force_sent_status
         - function name: force_sent_status
     - Execute it
-      [szabozo0 refs #5399]
+    - [szabozo0 refs #5399]
 * Feature: add HEAD method for zope3 browser views
   [ichimdav #2316]
 * Cleanup: removed back ported HTML5 functionality from Plone 4.2
@@ -96,7 +103,7 @@ Changelog
        - Products.EEAPloneAdmin.find_empty_figure_folders
        - function name: fix_2
     - Execute it, save the output for future reference.
-      [tiberich refs #5312]
+    - [tiberich refs #5312]
 * Upgrade step: in portal_types, remove Folder as allowed addable content for
   EEAFigure 
   [tiberich refs #5312]
@@ -148,7 +155,7 @@ Changelog
       http://localhost:8080/www/@@discussion-settings
     - Within ZMI > portal_setup > Import Tab import 'Manage the configuration
       registry' from 'EEA Plone Admin: caching settings' 
-      [voineali #5121]
+    - [voineali #5121]
 * Bug fix: fixed markup of HISTORY.txt file
   [ciobabog refs #5231]
 * Feature: Upgraded commenting system
