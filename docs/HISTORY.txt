@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.3-dev - (unreleased)
-----------------------
+5.3 - (2012-09-03)
+------------------
 * Upgrade step:
     - Added upgrade step to setup on all existing EEAFigureFile objects the local workflow policy for images
     - Create an external method with:
