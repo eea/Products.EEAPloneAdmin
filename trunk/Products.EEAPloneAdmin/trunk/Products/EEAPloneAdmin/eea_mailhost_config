@@ -31,7 +31,7 @@ MAILDROP_HOME="/tmp/maildrop"
 MAILDROP_LOG_FILE="/var/log/maildrop/maildrop.log"
 
 # The SMTP server to be used for sending out email (e.g. smtp-relay.domain.com)
-SMTP_HOST="mail.eea.europa.eu"
+SMTP_HOST="ironports.eea.europa.eu"
 
 # The SMTP server port used for sending out email
 SMTP_PORT=25

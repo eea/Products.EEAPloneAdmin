@@ -6,6 +6,8 @@ Changelog
 
 5.3 - (2012-09-03)
 ------------------
+* Change: changed smarthost from mail.eea.europa.eu to ironports.eea.europa.eu
+  [ghicaale refs #5516]
 * Upgrade step:
     - Added upgrade step to setup on all existing EEAFigureFile objects the local workflow policy for images
     - Create an external method with:
