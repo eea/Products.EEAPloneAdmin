@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* WIP Bug fix: added monkeypatch to export PageTemplates as ascii instead of
+  unicode, because GenericSetup expects them to be ascii
+  [tiberich #5520]
 
 5.3 - (2012-09-03)
 ------------------

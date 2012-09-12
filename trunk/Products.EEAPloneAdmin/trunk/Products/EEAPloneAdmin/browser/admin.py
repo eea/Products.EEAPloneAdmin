@@ -11,7 +11,6 @@ import os
 import re
 import subprocess
 
-#import urllib
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
 

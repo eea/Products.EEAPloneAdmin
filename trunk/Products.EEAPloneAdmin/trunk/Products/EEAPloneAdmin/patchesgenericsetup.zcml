@@ -1,0 +1,13 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:monkey="http://namespaces.plone.org/monkey"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="eea">
+
+    <!-- #5520 force ascii on exported page templates -->
+    <monkey:patch description="Monkeypatch Products.GenericSetup.PageTemplates.exportimport.ZopePageTemplateBodyAdapter to export content as ascii"
+                  class="Products.GenericSetup.PageTemplates.exportimport.ZopePageTemplateBodyAdapter"
+                  original="_exportBody"
+                  replacement=".patch_genericsetup.patched_exportBody"
+                  preserveOriginal="false" />
+
+</configure>
