@@ -40,3 +40,16 @@ def __patched_init__( self, tool, encoding=None ):
     self._archive_filename = archive_name
     self._archive = TarFile.open( archive_name, 'w:tar'
                                 , self._archive_stream )
+
+
+def patched_exportBody():
+    """Products.PageTemplates.ZopePageTemplates always sets
+    its text as unicode, while GenericSetup doesn't want to
+    write any unicode in files.
+
+    Solution is to force the ZopePageTemplateBodyAdapter to
+    return ascii as content.
+    """
+    import pdb; pdb.set_trace()
+    return self.context.read().encode('ascii', 'replace')
+

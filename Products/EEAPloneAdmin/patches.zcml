@@ -3,13 +3,6 @@
            xmlns:zcml="http://namespaces.zope.org/zcml"
            i18n_domain="eea">
 
-    <!-- XXX Deprecated patch. Remove me -->
-    <!-- monkey:patch description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
-                     class="Products.CMFPlone.CatalogTool.CatalogTool "
-                     original="searchResults"
-                     replacement=".patch_catalog.searchResults"
-                     preserveOriginal="true" / -->
-
     <!-- #2316 implement HEAD for zope3 BrowserView -->
     <monkey:patch description="Monkeypatch Five.browser.BrowserView to implement HEAD method"
                   module="Products.Five.browser.BrowserView"
@@ -26,23 +19,16 @@
                   preserveOriginal="false" />
 
     <!-- Patch of Products.ATContentTypes ver 2.1.7 for calendar view with location as tuple  #5284 -->
-        <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
-                  class="Products.ATContentTypes.lib.calendarsupport"
-                  original="vformat"
-                  replacement=".patch_atct.vformat"
-                  preserveOriginal="false" />
-        <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
-                  class="Products.ATContentTypes.lib.calendarsupport"
-                  original="foldLine"
-                  replacement=".patch_atct.foldLine"
-                  preserveOriginal="false" />
-
-    <!-- XXX Deprecated patch. Remove me -->
-    <!-- monkey:patch description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
-                      class="Products.CMFPlone.CatalogTool.CatalogTool "
-                      original="__call__"
-                      replacement=".patch_catalog.searchResults"
-                      preserveOriginal="true" / -->
+    <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
+              class="Products.ATContentTypes.lib.calendarsupport"
+              original="vformat"
+              replacement=".patch_atct.vformat"
+              preserveOriginal="false" />
+    <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
+              class="Products.ATContentTypes.lib.calendarsupport"
+              original="foldLine"
+              replacement=".patch_atct.foldLine"
+              preserveOriginal="false" />
 
     <!-- Patch of Products.ResourceRegistries ver 2.0.4 to generate better ids; Solves #3962 -->
     <monkey:patch description="Monkeypatch BaseRegistry tools to generate better ids; Solves #3962"
@@ -57,12 +43,6 @@
                   original="cookResources"
                   replacement=".patch_baseregistry.patch_cookResources"
                   preserveOriginal="true" />
-
-    <!--<monkey:patch description="Monkeypatch BaseRegistry GS import to regenerate disk resources #4603"-->
-                  <!--class="Products.ResourceRegistries.exportimport.resourceregistry.ResourceRegistryNodeAdapter"-->
-                  <!--original="_initResources"-->
-                  <!--replacement=".patch_baseregistry._initResources"-->
-                  <!--preserveOriginal="true" />-->
 
     <!-- Patch of hachoir_core ver 1.2, see  patch_hachoir_core.py for more info -->
     <monkey:patch description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
@@ -88,26 +68,6 @@
                   original="write_ofsfile_to_tempfile"
                   replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />
 
-    <!-- See TODO under __init__.py -->
-    <!-- Patch for plone.app.caching ver 1.0 to add extra headers -->
-    <!-- configure zcml:condition="installed plone.app.caching">
-        <monkey:patch description="Patch for plone.app.caching to add extra headers"
-                      module="plone.app.caching.operations.utils"
-                      original="doNotCache"
-                      replacement=".patch_cache.doNotCache"
-                      preserveOriginal="true" />
-    </configure -->
-
-    <!-- See TODO under __init__.py -->
-    <!-- Patch for plone.app.caching ver 1.0 to add extra headers -->
-    <!-- configure zcml:condition="installed plone.app.caching">
-        <monkey:patch description="Patch for plone.app.caching to add extra headers"
-                      module="plone.app.caching.operations.utils"
-                      original="cacheInBrowser"
-                      replacement=".patch_cache.cacheInBrowser"
-                      preserveOriginal="true" />
-    </configure -->
-
     <!-- Patch for Products.GenericSetup ver 1.6.3 to create valid tar.gz files -->
     <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.context.py"
                   class="Products.GenericSetup.context.TarballExportContext"
@@ -126,14 +86,6 @@
                   original="__call__"
                   replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
 
-
-    <!-- Patch for Products.TinyMCE ver 1.2.10 to fix bug in getContentType -->
-    fixed in 1.2.12
-    <!--monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
-                  class="Products.TinyMCE.utility.TinyMCE"
-                  original="getContentType"
-                  replacement=".patch_tinymce.patched_getContentType"
-                  preserveOriginal="false" /-->
 
     <!-- Patch for Products.TinyMCE ver 1.2.10 to make root of site www/SITE -->
     <monkey:patch description="Monkeypatch Products.TinyMCE.utility to make root of site www/SITE"
@@ -214,6 +166,17 @@
                   replacement=".patch_plone_app_discussion.conversation_enabled" />
 
 
+
+    <monkey:patch description=" #5353 Monkeypatch validateSingleEmailAddress to corectly fail for bad email addresses"
+                     class="Products.CMFPlone.PloneTool.PloneTool"
+                     original="validateSingleEmailAddress"
+                     replacement=".patch_email_validation.validateSingleEmailAddress"
+                     preserveOriginal="false" />
+
+
+
+    ==================== this code should be reviewed and removed, it is cruft ===============
+
     <!-- See TODO under __init__.py -->
     <!-- Patch plone.app.discussion ver >= 2.0.10, not to fail on migrate workflows when "Discussion Item" has no workflow assigned -->
     <!-- monkey:patch description="Fix plone.app.discussion not to fail on migrate workflows when 'Discussion Item' has no workflow assigned"
@@ -221,9 +184,54 @@
                   original="notify_configuration_changed"
                   replacement=".patch_plone_app_discussion.notify_configuration_changed" / -->
 
-    <monkey:patch description=" #5353 Monkeypatch validateSingleEmailAddress to corectly fail for bad email addresses"
-                     class="Products.CMFPlone.PloneTool.PloneTool"
-                     original="validateSingleEmailAddress"
-                     replacement=".patch_email_validation.validateSingleEmailAddress"
-                     preserveOriginal="false" />
+    <!-- See TODO under __init__.py -->
+    <!-- Patch for plone.app.caching ver 1.0 to add extra headers -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="doNotCache"
+                      replacement=".patch_cache.doNotCache"
+                      preserveOriginal="true" />
+    </configure -->
+
+    <!-- See TODO under __init__.py -->
+    <!-- Patch for plone.app.caching ver 1.0 to add extra headers -->
+    <!-- configure zcml:condition="installed plone.app.caching">
+        <monkey:patch description="Patch for plone.app.caching to add extra headers"
+                      module="plone.app.caching.operations.utils"
+                      original="cacheInBrowser"
+                      replacement=".patch_cache.cacheInBrowser"
+                      preserveOriginal="true" />
+    </configure -->
+
+
+    <!-- XXX Deprecated patch. Remove me -->
+    <!-- monkey:patch description="Monkeypatch catalog.searchResults to automatically filter results for anonymous users"
+                     class="Products.CMFPlone.CatalogTool.CatalogTool "
+                     original="searchResults"
+                     replacement=".patch_catalog.searchResults"
+                     preserveOriginal="true" / -->
+
+    <!-- Patch for Products.TinyMCE ver 1.2.10 to fix bug in getContentType -->
+    fixed in 1.2.12
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.utility to fix bug in getContentType"
+                  class="Products.TinyMCE.utility.TinyMCE"
+                  original="getContentType"
+                  replacement=".patch_tinymce.patched_getContentType"
+                  preserveOriginal="false" /-->
+
+    <!--<monkey:patch description="Monkeypatch BaseRegistry GS import to regenerate disk resources #4603"-->
+                  <!--class="Products.ResourceRegistries.exportimport.resourceregistry.ResourceRegistryNodeAdapter"-->
+                  <!--original="_initResources"-->
+                  <!--replacement=".patch_baseregistry._initResources"-->
+                  <!--preserveOriginal="true" />-->
+
+    <!-- XXX Deprecated patch. Remove me -->
+    <!-- monkey:patch description="Monkeypatch catalog.__call__ to automatically filter results for anonymous users"
+                      class="Products.CMFPlone.CatalogTool.CatalogTool "
+                      original="__call__"
+                      replacement=".patch_catalog.searchResults"
+                      preserveOriginal="true" / -->
+
+
 </configure>
