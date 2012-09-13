@@ -3,6 +3,12 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.cleanSmartView
+        - function name:clean_smart_view 
+    - Execute it
+    - [ichimdav #5463]
 * WIP Bug fix: added monkeypatch to export PageTemplates as ascii instead of
   unicode, because GenericSetup expects them to be ascii
   [tiberich #5520]
