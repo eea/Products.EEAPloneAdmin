@@ -3,6 +3,10 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step: 
+    - In ZMI > portal_types > Folder, Document and Topic:
+        - At 'Available view methods' replace smart_view with uberlisting_view 
+    - [ichimdav #5463]
 * Upgrade step:
     - Create an external method with:
         - module name: Products.EEAPloneAdmin.cleanSmartView
