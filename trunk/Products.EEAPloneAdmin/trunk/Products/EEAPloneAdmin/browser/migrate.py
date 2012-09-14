@@ -973,3 +973,32 @@ class MigrateImageFS(BlobMigrationView):
         """
         return migrate(self, walker=getImageFSMigrationWalker)
 
+
+class MigratePortalRegistry(BrowserView):
+    """ Fix portal_registry tuple field records
+    """
+    def __call__(self):
+        util = getToolByName(self.context, 'portal_registry')
+        recs = util.records
+        faulty = []
+        for k, v in recs.items():
+            if not hasattr(v.field, 'defaultFactory'):
+                v.field.defaultFactory = None
+                faulty.append((k, v.fieldName))
+
+            if hasattr(v.field, 'value_type'):
+                ff = v.field.value_type
+                if not hasattr(ff, 'defaultFactory'):
+                    ff.defaultFactory = None
+                    faulty.append((k, v.fieldName, 'value_type', ff))
+
+            if hasattr(v.field, 'key_type'):
+                ff = v.field.key_type
+                if not hasattr(ff, 'defaultFactory'):
+                    ff.defaultFactory = None
+                    faulty.append((k, v.fieldName, 'key_type', ff))
+
+        return "Fixed %s" % faulty
+
+    
+

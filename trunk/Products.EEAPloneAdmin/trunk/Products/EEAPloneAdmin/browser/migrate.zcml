@@ -118,4 +118,9 @@
                   class=".migrate.FixImages"
                   permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+                  name="fix-portalregistry"
+                  class=".migrate.MigratePortalRegistry"
+                  permission="cmf.ManagePortal" />
+
 </configure>
