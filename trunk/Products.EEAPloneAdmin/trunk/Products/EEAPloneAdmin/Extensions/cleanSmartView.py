@@ -3,13 +3,14 @@
 import logging
 
 # Log info 
-logger = logging.getLogger("Change Smart_view for folders: ")
+logger = logging.getLogger("Replaced smart_view for: ")
 info = logger.info
 info_exception = logger.exception
 
 def clean_smart_view(self):
     """ Replace smart_view with uberlisting for predefined folders """
-    context = self.context
+    info("Starting smart_view replacement")
+    context = self
     items = ['/www/SITE/atlas/teeb', '/www/SITE/code/gis/esri-api-examples', 
     '/www/SITE/themes/biodiversity/document-library/natura-2000', 
     '/www/SITE/themes/biodiversity/document-library', 
@@ -52,4 +53,6 @@ def clean_smart_view(self):
     for item in items:
         found = context.unrestrictedTraverse(item)
         found.setLayout('uberlisting_view')
+        info("%s" % item)
+    info("Done")
 
