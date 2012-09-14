@@ -25,7 +25,7 @@
  <property name="view_methods">
   <element value="subfolder_view"/>
   <element value="folder_summary_search_view"/>
-  <element value="smart_view"/>
+  <element value="uberlisting_view"/>
   <element value="atct_topic_view"/>
   <element value="cft_listing_view"/>
   <element value="folder_summary_view"/>
