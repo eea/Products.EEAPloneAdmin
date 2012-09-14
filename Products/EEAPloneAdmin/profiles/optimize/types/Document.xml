@@ -19,7 +19,7 @@
  <property name="view_methods">
   <element value="document_view"/>
   <element value="document_mediatop_view"/>
-  <element value="smart_view"/>
+  <element value="uberlisting_view"/>
   <element value="folder_accordion_view"/>
   <element value="folder_tabs_view"/>
   <element value="folder_summary_view"/>
