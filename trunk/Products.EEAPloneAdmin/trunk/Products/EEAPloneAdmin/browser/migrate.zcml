@@ -84,6 +84,10 @@
                   permission="cmf.ManagePortal" />
 
     <browser:page for="*"
+                  name="AddIVideoToVideos"
+                  class=".migrate.AddIVideoToVideos"
+                  permission="cmf.ManagePortal" />
+    <browser:page for="*"
                   name="addFolderAsLocallyAllowedTypeInLinks"
                   class=".migrate.AddFolderAsLocallyAllowedTypeInLinks"
                   permission="cmf.ManagePortal" />
