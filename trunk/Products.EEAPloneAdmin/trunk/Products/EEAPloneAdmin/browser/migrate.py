@@ -15,6 +15,7 @@ from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
+from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 import csv
 import logging
 import os
@@ -602,11 +603,12 @@ class AddIVideoToVideos(object):
         count = 0
         for brain in brains:
             vfile = brain.getObject()
-            alsoProvides(vfile, MIVideo)
-            vfile.reindexObject(idxs=["object_provides"])
-            count += 1
-            if count % 50 == 0:
-                transaction.savepoint(optimistic=True)
+            if not IFlashAnimation.providedBy(vfile):
+                alsoProvides(vfile, MIVideo)
+                vfile.reindexObject(idxs=["object_provides"])
+                count += 1
+                if count % 50 == 0:
+                    transaction.savepoint(optimistic=True)
         return str(len(brains)) + " videos where migrated."
 
 class AddFolderAsLocallyAllowedTypeInLinks(object):
