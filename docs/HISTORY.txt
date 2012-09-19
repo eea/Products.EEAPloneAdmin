@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Go to /www/@@AddIVideoToVideos, record the output in ticket #5480
+    [ichimdav #5480]
 * Bug fix: added a page that will fix records in portal_registry
   to enable them to be exportable by GenericSetup
   [tiberich #5520]

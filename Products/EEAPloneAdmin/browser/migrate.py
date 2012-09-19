@@ -14,10 +14,12 @@ from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
+from eea.mediacentre.interfaces import IVideo as MIVideo
 import csv
 import logging
 import os
 import urllib
+import transaction
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -585,6 +587,27 @@ class AddRichTextDescriptionToVideos(object):
 
         return str(len(brains)) + " videos where migrated."
 
+class AddIVideoToVideos(object):
+    """ Adds mediacentre IVideo marker interface to IVideoEnhanced objects
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog.searchResults(
+            object_provides='p4a.video.interfaces.IVideoEnhanced',
+            Language='all', show_inactive=True)
+        count = 0
+        for brain in brains:
+            vfile = brain.getObject()
+            alsoProvides(vfile, MIVideo)
+            vfile.reindexObject(idxs=["object_provides"])
+            count += 1
+            if count % 50 == 0:
+                transaction.savepoint(optimistic=True)
+        return str(len(brains)) + " videos where migrated."
 
 class AddFolderAsLocallyAllowedTypeInLinks(object):
     """ Add the 'Folder' type as a locally addable type to
