@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for jQuery UI 1.8.16.10.dev
+  [ichimdav]
 * Upgrade step:
     - Go to /www/@@AddIVideoToVideos, record the output in ticket #5480
     [ichimdav #5480]
