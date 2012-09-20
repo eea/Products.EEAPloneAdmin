@@ -1,7 +1,7 @@
-""" This is patch related to #5460
+""" This patch is related to ticket #5460
 
     The patch aim to catch the source of badly formatter cookies.
-    This is a temporary fix, the final one will come up
+    This is a temporary fix, the final solution will come up
     once the source of badly formatted cookies is identified.
 """
 
