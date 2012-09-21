@@ -611,6 +611,27 @@ class AddIVideoToVideos(object):
                     transaction.savepoint(optimistic=True)
         return str(len(brains)) + " videos where migrated."
 
+
+class SetIVideoToAllVideosTopic(object):
+    """ Change criteria on object_provides for all-videos Topic
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        video = self.context.unrestrictedTraverse(
+                                            'www/SITE/multimedia/all-videos')
+        trans = video.getTranslations()
+        for i in trans.values():
+            topic = i[0]
+            criteria = getattr(topic, 
+                    'crit__object_provides_ATSelectionCriterion', '')
+            if criteria:
+                criteria.setValue('eea.mediacentre.interfaces.IVideo')
+        return "Done setting eea.mediacentre.interfaces.IVideo for all-videos"
+
+
 class AddFolderAsLocallyAllowedTypeInLinks(object):
     """ Add the 'Folder' type as a locally addable type to
         all 'External link' folders in themecentres.
