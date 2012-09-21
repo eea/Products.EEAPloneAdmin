@@ -3,13 +3,17 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step: Within Site Setup > Caching settings > Caching operations Tab >
+  Stale resources:
+    - remove daviz-view.json and daviz-relateditems.json;
+    - add daviz.json if not existing.
 * Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
-    - multimedia/all-videos/configure_faceted.html - uncheck 
-      the "p4a.video.interfaces.IVideoEnhanced" and check the 
+    - multimedia/all-videos/configure_faceted.html - uncheck
+      the "p4a.video.interfaces.IVideoEnhanced" and check the
       "eea.mediacentre.interfaces.IVideo"
     - multimedia/all/configure_faceted.html - same step as with all-videos
     - www/@@SetIVideoToAllVideosTopic - to change criteria for all-videos Topic
-    - www/portal_relations/video/edit - set the selected interface to 
+    - www/portal_relations/video/edit - set the selected interface to
       "eea.mediacentre.interfaces.IVideo"
     - [ichimdav #5480]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
@@ -21,20 +25,20 @@ Changelog
 * Bug fix: added a page that will fix records in portal_registry
   to enable them to be exportable by GenericSetup
   [tiberich #5520]
-* Upgrade step: 
+* Upgrade step:
     - In ZMI > portal_types > Folder, Document and Topic:
-        - At 'Available view methods' replace smart_view with uberlisting_view 
+        - At 'Available view methods' replace smart_view with uberlisting_view
     - [ichimdav #5463]
 * Upgrade step:
     - Create an external method with:
         - module name: Products.EEAPloneAdmin.cleanSmartView
-        - function name:clean_smart_view 
+        - function name:clean_smart_view
     - Execute it
     - [ichimdav #5463]
 * Upgrade step:
     - Go to /www/@@fix-portalregistry, record the output in ticket #5520
     - [tiberich refs #5520]
-  
+
 
 5.3 - (2012-09-03)
 ------------------
@@ -67,7 +71,7 @@ Changelog
         - function name: fix_themecentre_intro_pages
     - Execute it
     - [ichimdav refs #5412]
-* Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf 
+* Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf
   [ichimdav #5346]
 * Bugfix: fixed wrong indentation in setupmethods.py and moved the
   migrateRelations to own file.
@@ -91,12 +95,12 @@ Changelog
 * Bug fix: remove patch for TinyMce's getContentType, no longer needed
   in latest version of Products.TinyMCE
   [tiberich #5346]
-* Bug fix: refactor saving resources on disk, due to changes in 
+* Bug fix: refactor saving resources on disk, due to changes in
   Products.ResourceRegistries
   [tiberich #5346]
-* Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject 
-  emails which are not of proper format 
-  [ichimdav #5353] 
+* Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject
+  emails which are not of proper format
+  [ichimdav #5353]
 * Upgrade Step: on a serviceWWW instance, go to the root of the Zope.
   You will be prompted to upgrade the Plone instance. You can "dry run" first
   and then, if no issues are reported, you can run the real Plone migration
@@ -110,7 +114,7 @@ Changelog
 * Upgrade Step: go to /portal_properties/site_properties/manage_workspace
   and in the "available_editors" text box add "TinyMCE" and delete "Kupu"
   [tiberich #5414]
-* Bug fix: avoid triggering save on disk twice when resources are saved in a 
+* Bug fix: avoid triggering save on disk twice when resources are saved in a
   portal resource registry
   [tiberich #5286]
 * Feature: added migration of ImageFS objects to Image
@@ -127,7 +131,7 @@ Changelog
 5.1 - (2012-07-13)
 ------------------
 * Bug fix: cleanup warnings for jenkings [tiberich]
-* Feature: added basic external method migrateRelations to be used 
+* Feature: added basic external method migrateRelations to be used
   for migration of relations from one ob to another simply via python scripts.
   [demarant refs #3213]
 * Bug fix: added external methods to fix the problematic unfinished
@@ -142,7 +146,7 @@ Changelog
     - Execute it, save the output for future reference.
     - [tiberich refs #5312]
 * Upgrade step: in portal_types, remove Folder as allowed addable content for
-  EEAFigure 
+  EEAFigure
   [tiberich refs #5312]
 
 5.0 - (2012-06-20)
@@ -173,9 +177,9 @@ Changelog
 * Bug fix: added script to migrate provider_url on ExternalDataSpecs
   [tiberich fixes #5232]
 * Upgrade step:
-    - Create an external method with module name: 
-       Products.EEAPloneAdmin.fix_externaldataspecs 
-    - function name: 
+    - Create an external method with module name:
+       Products.EEAPloneAdmin.fix_externaldataspecs
+    - function name:
        fix_externaldataspecs
     - Execute it, save the output for future reference.
     - [tiberich #5232]
@@ -183,7 +187,7 @@ Changelog
   [tiberich #5236]
 * Upgrade step:
     - Within ZMI > portal_setup > Upgrades Tab run upgrades for
-      Products.CMFPlone (4.1.2 -> 4.1.5) 
+      Products.CMFPlone (4.1.2 -> 4.1.5)
       [voineali #5116]
     - Within ZMI > portal_setup > Import Tab > Import All Steps from
       'Plone Discussions'
@@ -191,7 +195,7 @@ Changelog
     - Enable comments and notification mails on
       http://localhost:8080/www/@@discussion-settings
     - Within ZMI > portal_setup > Import Tab import 'Manage the configuration
-      registry' from 'EEA Plone Admin: caching settings' 
+      registry' from 'EEA Plone Admin: caching settings'
     - [voineali #5121]
 * Bug fix: fixed markup of HISTORY.txt file
   [ciobabog refs #5231]

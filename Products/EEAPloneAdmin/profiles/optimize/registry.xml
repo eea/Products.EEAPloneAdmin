@@ -209,7 +209,7 @@
       <element key="image_view">plone.content.itemView</element>
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>
-      <element key="daviz-view.json">eea.content.staleResources</element>
+      <element key="daviz.json">eea.content.staleResources</element>
       <element key="faceted_counter">eea.content.frontPage</element>
       <element key="download">plone.content.itemView</element>
       <element key="staff.html">plone.content.itemView</element>
@@ -222,7 +222,6 @@
       <element key="faceted_query">eea.content.frontPage</element>
       <element key="multimedia_popup_view">plone.content.file</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
-      <element key="daviz-relateditems.json">eea.content.staleResources</element>
       <element key="RSS2">plone.content.itemView</element>
       <element key="image_view_fullscreen">plone.content.itemView</element>
       <element key="video_popup_view">plone.content.file</element>

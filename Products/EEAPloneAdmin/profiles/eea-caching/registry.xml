@@ -204,8 +204,7 @@
       </value_type>
     </field>
     <value>
-      <element key="daviz-view.json">eea.content.staleResources</element>
-      <element key="daviz-relateditems.json">eea.content.staleResources</element>
+      <element key="daviz.json">eea.content.staleResources</element>
       <element key="download.json">eea.content.staleResources</element>
       <element key="download.xml">eea.content.staleResources</element>
       <element key="download.exhibit">eea.content.staleResources</element>
