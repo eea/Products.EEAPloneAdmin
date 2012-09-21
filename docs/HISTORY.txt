@@ -3,6 +3,12 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
+    - multimedia/all-videos/configure_faceted.html where you should uncheck 
+      the "p4a.video.interfaces.IVideoEnhanced" and check the 
+      "eea.mediacentre.interfaces.IVideo"
+    - www/@@SetIVideoToAllVideosTopic to change criteria for all-videos Topic
+    [ichimdav #5480]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for jQuery UI 1.8.16.10.dev
   [ichimdav]
