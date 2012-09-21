@@ -8,12 +8,15 @@ Changelog
     - remove daviz-view.json and daviz-relateditems.json;
     - add daviz.json if not existing.
 * Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
-    - multimedia/all-videos/configure_faceted.html - uncheck
-      the "p4a.video.interfaces.IVideoEnhanced" and check the
+    - multimedia/all-videos/configure_faceted.html - uncheck 
+      the "p4a.video.interfaces.IVideoEnhanced" and check the 
       "eea.mediacentre.interfaces.IVideo"
-    - multimedia/all/configure_faceted.html - same step as with all-videos
+    - multimedia/all/configure_faceted.html - uncheck 
+      the "p4a.video.interfaces.IVideoEnhanced" and check the 
+      "eea.mediacentre.interfaces.IVideo" and 
+      "Products.EEAContentTypes.content.interfaces.IFlashAnimation"
     - www/@@SetIVideoToAllVideosTopic - to change criteria for all-videos Topic
-    - www/portal_relations/video/edit - set the selected interface to
+    - www/portal_relations/video/edit - set the selected interface to 
       "eea.mediacentre.interfaces.IVideo"
     - [ichimdav #5480]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
