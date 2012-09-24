@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: patched plone.app.querystring to return results from site root 
+  instead of navigation root
+  [ichimdav #5533]
 * Upgrade step: Within Site Setup > Caching settings > Caching operations Tab >
   Stale resources:
     - remove daviz-view.json and daviz-relateditems.json;
