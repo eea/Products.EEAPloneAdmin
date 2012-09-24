@@ -3,6 +3,13 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Site Setup -> Add-ons -> Install "User tracker"
+    - Under Plone root add "Active Users" portlet
+    - [ghicaale refs #5542]
+* Feature: added override zcml for collective.portlet.usertrack to
+  store user statistics via memcache
+  [ghicaale refs #5540]
 * Bug fix: patched plone.app.querystring to return results from site root 
   instead of navigation root
   [ichimdav #5533]
