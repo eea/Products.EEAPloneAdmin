@@ -232,9 +232,10 @@
                      replacement=".patch_email_validation.validateSingleEmailAddress"
                      preserveOriginal="false" />
 
-    <monkey:patch description="#5533 Fix different results for Collection query based on context"
-                     class="plone.app.querystring.querybuilder.QueryBuilder"
-                     original="_makequery"
-                     replacement=".patch_plone_app_querystring._makequery"
+    <monkey:patch description="#5533 patch getNavigationRoot to return language root instead of the first folder with INavigationRoot"
+                     module="Products.CMFPlone.browser.navtree"
+                     original="getNavigationRoot"
+                     replacement=".patch_plone_app_layout.getNavigationRoot"
                      preserveOriginal="false" />
+
 </configure>
