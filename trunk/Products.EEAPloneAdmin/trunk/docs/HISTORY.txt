@@ -10,7 +10,7 @@ Changelog
 * Feature: added override zcml for collective.portlet.usertrack to
   store user statistics via memcache
   [ghicaale refs #5540]
-* Bug fix: patched plone.app.querystring to return results from site root 
+* Bug fix: patched plone.app.layout navigation to return results from site root 
   instead of navigation root
   [ichimdav #5533]
 * Upgrade step: Within Site Setup > Caching settings > Caching operations Tab >
