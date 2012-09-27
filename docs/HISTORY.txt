@@ -49,6 +49,13 @@ Changelog
     - Execute it
     - [ichimdav #5463]
 * Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.clean_empty_folders
+        - function name:clean_folders
+    - Execute it, record the output in #5141. The broken content should be
+      manually cleaned by editors
+    - [tiberich #5141]
+* Upgrade step:
     - Go to /www/@@fix-portalregistry, record the output in ticket #5520
     - [tiberich refs #5520]
 
