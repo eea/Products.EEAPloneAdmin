@@ -7,11 +7,16 @@ import logging
 import transaction
 from zope.component import queryUtility
 from Products.CMFCore.interfaces import IPropertiesTool
+from plone.app.linkintegrity.exceptions import \
+    LinkIntegrityNotificationException
+from plone.app.linkintegrity.interfaces import ILinkIntegrityInfo
+from StringIO import StringIO
 
 # Log info 
 logger = logging.getLogger("Delete empty folder: ")
 info = logger.info
 info_exception = logger.exception
+
 
 def clean_folder(self):
     """find folders that are empty and delete them
@@ -19,14 +24,6 @@ def clean_folder(self):
        folders to cancel
     """
 
-    # We need to disable link integrity check to avoid the 
-    # LinkIntegrityNotificationException error if folders 
-    # have a link pointing to them
-    ptool = queryUtility(IPropertiesTool)
-    props = getattr(ptool, 'site_properties', None)
-    old_check = props.getProperty('enable_link_integrity_checks', False)
-    props.enable_link_integrity_checks = False
-    
     catalog = self.portal_catalog
     total = 0
     transaction_threshold = 20
@@ -36,6 +33,9 @@ def clean_folder(self):
 
     # Start information log
     info("START")
+    out = StringIO()
+
+    forced_delete = []
 
     while empty_count != 0:
 
@@ -49,23 +49,38 @@ def clean_folder(self):
 
         # Find empty folders and delete them
         for folder in folders:
-            obj =  folder._unrestrictedGetObject()
+            obj = folder._unrestrictedGetObject()
             if len(obj.getFolderContents()) == 0:
                 empty_count += 1
                 total += 1
-                obj.aq_parent.manage_delObjects([folder.id])
+                refs = obj.getBRefs(relationship='isReferencing')
+                try:
+                    obj.aq_parent.manage_delObjects([folder.id])
+                except LinkIntegrityNotificationException:
+                    li = ILinkIntegrityInfo(self.REQUEST)
+                    self.REQUEST.environ['link_integrity_info'] = li.encodeConfirmedItems([obj])
+                    forced_delete.append((obj.absolute_url(), refs))
+
                 info(obj.absolute_url())
 
                 # Commiting transaction
                 if empty_count % transaction_threshold == 0:
                     info("Commit: delete %s folders" % transaction_threshold)
-                    transaction.commit()
+                    transaction.savepoint()
 
     # End information log
     info("COMPLETE, %s folders deleted" % total)
+    print >> out, ("The following linkintegrity conflicts were encountered:")
+    print >> out, ("The conflicting objects have been deleted, but the referencing pages should be updated.")
 
-    # We put back the link integrity check
-    props.enable_link_integrity_checks = old_check
+    for failed, referencing in forced_delete:
+        print >> out, "This object failed reference integrity: ", failed
+        print >> out, "It was referenced by:"
+        for r in referencing:
+            print >> out, r.absolute_url()
 
-    return total
+    print >> out, "Total objects deleted %s" % total
+    out.seek(0)
+
+    return out.read()
 
