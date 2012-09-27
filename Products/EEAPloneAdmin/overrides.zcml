@@ -6,18 +6,18 @@
 
     <!-- override for collective.portlet.usertrack to use memcache when storing statistics -->
     <configure zcml:condition="installed collective.portlet.usertrack">
-	<utility factory="collective.portlet.usertrack.storage.MemcacheStorage"
-                 provides="collective.portlet.usertrack.interfaces.ITrackerStorage" />
-    </configure>
+        <utility factory="collective.portlet.usertrack.storage.MemcacheStorage"
+                    provides="collective.portlet.usertrack.interfaces.ITrackerStorage" />
 
-    <plone:portlet name="collective.portlet.usertrack.Usertrack"
-                   interface="collective.portlet.usertrack.usertrack.IUsertrack"
-                   assignment="collective.portlet.usertrack.usertrack.Assignment"
-                   view_permission="cmf.ManagePortal"
-                   edit_permission="cmf.ManagePortal"
-                   renderer="collective.portlet.usertrack.usertrack.Renderer"
-                   addview="collective.portlet.usertrack.usertrack.AddForm"
-                   editview="collective.portlet.usertrack.usertrack.EditForm" />
+        <plone:portlet name="collective.portlet.usertrack.Usertrack"
+                    interface="collective.portlet.usertrack.usertrack.IUsertrack"
+                    assignment="collective.portlet.usertrack.usertrack.Assignment"
+                    view_permission="cmf.ManagePortal"
+                    edit_permission="cmf.ManagePortal"
+                    renderer="collective.portlet.usertrack.usertrack.Renderer"
+                    addview="collective.portlet.usertrack.usertrack.AddForm"
+                    editview="collective.portlet.usertrack.usertrack.EditForm" />
+    </configure>
 
     <!-- override these pages to give them Public permission, 
          so that we don't need user/pass -->
