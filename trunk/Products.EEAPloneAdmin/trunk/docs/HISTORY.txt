@@ -4,6 +4,10 @@ Changelog
 5.4-dev - (unreleased)
 ----------------------
 * Upgrade step:
+    - Site Setup -> Add-ons -> Install "User login history"
+    - Under Plone root add "User login history" portlet
+    - [ghicaale refs #5542]
+* Upgrade step:
     - Site Setup -> Add-ons -> Install "User tracker"
     - Under Plone root add "Active Users" portlet
     - [ghicaale refs #5542]
