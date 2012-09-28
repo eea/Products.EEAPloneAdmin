@@ -237,4 +237,10 @@
                      replacement=".patch_plone_app_layout.getNavigationRoot"
                      preserveOriginal="false" />
 
+    <!-- Backport change of contentMethod from plone.app.content 2.1a1 to 2.0.X to be removed after we have plone.app.content 2.0.12 -->
+    <monkey:patch description="#5533 patch contentsMethod from FolderContentsTable to display query results also for new style Collections"
+                     class="plone.app.content.browser.foldercontents.FolderContentsTable"
+                     original="contentsMethod"
+                     replacement=".patch_plone_app_content.contentsMethod"
+                     preserveOriginal="false" />
 </configure>
