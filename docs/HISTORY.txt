@@ -5,6 +5,9 @@ Changelog
 ----------------------
 * Cleanup: removed code that was already been merged to Plone core
   [ghicaale refs #5553]
+* Bug fix: patched archetypes.querywidget to sort the multiselect values which
+  is used by Collections to display tags
+  [ichimdav #5533]
 * Bug fix: patched contentsMethod from plone.app.content in order for new 
   Collections to return results when viewing folder_contents
   [ichimdav #5533]

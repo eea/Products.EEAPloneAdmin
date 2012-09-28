@@ -81,6 +81,16 @@
                   name="changeWorkflowState"
                   permission="zope2.View" />
 
+    <!-- Patch archetypes.querywidget to sort multiselect values, to be deleted after archetypes.querywidget 1.0.6  -->
+    <browser:page
+                name="archetypes-querywidget-multipleselectionwidget"
+                permission="zope2.View"
+                for="*"
+                template="browser/patched_multiple_selection_widget.pt"
+                class=".patch_archetypes_querywidget.MultiSelectWidget"
+                allowed_attributes="macros"
+                />
+
     <include package=".browser" file="overrides.zcml"/>
 
 </configure>
