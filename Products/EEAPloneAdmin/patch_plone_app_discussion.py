@@ -3,7 +3,6 @@
         - allow comments on folderish objects
 """
 from Products.CMFCore.utils import getToolByName
-from zope.app.component.hooks import getSite
 from zope.component import queryUtility
 from plone.app.discussion.interfaces import IDiscussionSettings
 from plone.registry.interfaces import IRegistry
