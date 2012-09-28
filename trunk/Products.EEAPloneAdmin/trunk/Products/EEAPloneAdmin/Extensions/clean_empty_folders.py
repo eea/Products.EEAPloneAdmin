@@ -5,8 +5,6 @@ it is better to cancel all of them
 
 import logging
 import transaction
-from zope.component import queryUtility
-from Products.CMFCore.interfaces import IPropertiesTool
 from plone.app.linkintegrity.exceptions import \
     LinkIntegrityNotificationException
 from plone.app.linkintegrity.interfaces import ILinkIntegrityInfo
