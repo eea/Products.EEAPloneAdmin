@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: patched contentsMethod from plone.app.content in order for new 
+  Collections to return results when viewing folder_contents
+  [ichimdav #5533]
 * Upgrade step:
     - Site Setup -> Add-ons -> Install "User login history"
     - Under Plone root add "User login history" portlet
