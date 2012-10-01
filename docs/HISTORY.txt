@@ -3,6 +3,8 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - go to /www/@@plone-upgrade and migrate Plone to the 4.2.1 version 
 * Bug fix: add aliases-controlpanel case to the rewriterules.js file
   [tiberich refs #5557]
 * Cleanup: removed code that was already been merged to Plone core
