@@ -3,6 +3,8 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: add aliases-controlpanel case to the rewriterules.js file
+  [tiberich refs #5557]
 * Cleanup: removed code that was already been merged to Plone core
   [ghicaale refs #5553]
 * Bug fix: patched archetypes.querywidget to sort the multiselect values which

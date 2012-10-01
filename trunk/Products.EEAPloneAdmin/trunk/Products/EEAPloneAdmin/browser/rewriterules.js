@@ -41,6 +41,15 @@ jQuery.eearewriterules = function(context){
 
   var form;
 
+  form = jQuery('form[action*="@@aliases-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@aliases-controlpanel',
+      newVal: 'www/@@aliases-controlpanel'
+    });
+  }
+
   // @usergroup-userprefs
   form = jQuery('form[action*="@@usergroup-userprefs"]', context);
   if(form.length){
