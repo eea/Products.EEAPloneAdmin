@@ -17,6 +17,8 @@ from Products.EEAPloneAdmin import patch_plone_app_discussion
 
 from Products.EEAPloneAdmin import patch_statusmessages
 
+from Products.EEAPloneAdmin import patch_plone_app_layout
 __all__ = [ patch_cache.__name__,
             patch_plone_app_discussion.__name__,
+            patch_plone_app_layout.__name__,
             patch_statusmessages.__name__ ]
