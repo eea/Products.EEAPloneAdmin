@@ -2,6 +2,7 @@
 """
 
 from plone.app.layout.navigation.root import getNavigationRootObject
+from plone.app.layout.navigation import root 
 from Products.CMFCore.utils import getToolByName
 
 
@@ -57,3 +58,5 @@ def getNavigationRoot(context, relativeRoot=None):
         portal = portal_url.getPortalObject()
         root = getNavigationRootObject(context, portal)
         return '/'.join(root.getPhysicalPath())
+
+root.getNavigationRoot = getNavigationRoot
