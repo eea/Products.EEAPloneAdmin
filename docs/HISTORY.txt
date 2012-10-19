@@ -4,6 +4,10 @@ Changelog
 5.4-dev - (unreleased)
 ----------------------
 * Upgrade step:
+    - Adrian must notified about the replace of serviceWWWW with
+      www7 and www8 so he can update production HA
+    - [ghicaale refs #5292]
+* Upgrade step:
     - go to /www/@@plone-upgrade and migrate Plone to the 4.2.1 version 
 * Bug fix: add aliases-controlpanel case to the rewriterules.js file
   [tiberich refs #5557]
