@@ -11,7 +11,6 @@ import os
 import re
 import subprocess
 
-
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
 try:
@@ -26,7 +25,6 @@ else:
     mx_tidy = lambda x, **y:x
 
 OBJNAME = re.compile('(.*)-([A-Za-z]{2})([.][A-Za-z]{3})*$')
-
 
 class LinguaPlone(BrowserView):
     """ LinguaPlone
@@ -92,14 +90,12 @@ class TidyContent(BrowserView):
                     fixed['err'].append(obj.absolute_url())
         return fixed
 
-
 def localize(content, default_url, portal_url):
     """ Localize
     """
     if default_url == portal_url:
         return content
     return content.replace(unicode(portal_url), unicode(default_url))
-
 
 def save_resources_on_disk(registry, request=None):
     """ Reads merged resources from registry and saves them on disk
@@ -186,7 +182,6 @@ def save_resources_on_disk(registry, request=None):
 
     logger.info(u"Finished saving resources on disk for registry %s" % registry)
 
-
 class SaveResourcesOnDisk(BrowserView):
     """ Base class to save resources on disk
     """
@@ -222,7 +217,6 @@ class RegenerateKSS(SaveResourcesOnDisk):
         """ Tool
         """
         return getToolByName(self.context, "portal_kss")
-
 
 class GoPDB(BrowserView):
     """pdb view 
