@@ -1,6 +1,5 @@
 """ Blob patch
 """
-
 from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import POSKeyError
 from ZODB.utils import oid_repr
@@ -14,9 +13,8 @@ import os.path
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
-
 def patched_field_get_size(self):
-    """Patch for get_size
+    """ Patch for get_size
     """
     try:
         blob = openBlob(self.blob)
@@ -41,9 +39,8 @@ def patched_field_get_size(self):
         size = 0
     return size
 
-
 def patched_class_get_size(self):
-    """Patch for get_size
+    """ Patch for get_size
     """
     f = self.getPrimaryField()
     if f is None:
@@ -55,10 +52,9 @@ def patched_class_get_size(self):
                        "for field %r for %r" % (f, self))
         return 0
 
-
 def patched_field_index_html(self, instance, REQUEST=None,
                            RESPONSE=None, disposition='inline'):
-    """Patch for index_html for field
+    """ Patch for index_html for field
     """
     try:
         blob = self._old_index_html(instance, REQUEST=REQUEST,
@@ -76,9 +72,8 @@ def patched_field_index_html(self, instance, REQUEST=None,
                             instance.absolute_url_path(), type='error')
         RESPONSE.redirect(instance.absolute_url()+'/view')
 
-
 def patched_getScale(self, instance, scale=None, **kwargs):
-    """Patch for getScale
+    """ Patch for getScale
     """
     if scale is None:
         return self.getUnwrapped(instance, **kwargs)
@@ -91,9 +86,9 @@ def patched_getScale(self, instance, scale=None, **kwargs):
                            "scale %r for %r" % (scale, instance))
     return None
 
-
 def patched_getSize(self):
-    """ return image dimensions of the blob """
+    """ Return image dimensions of the blob
+    """
     try:
         blob = openBlob(self.blob)
     except POSKeyError:
@@ -120,6 +115,3 @@ def patched_getSize(self):
     size = getImageSize(blob)
     blob.close()
     return size
-
-# vim: set sw=4 ts=4 ai et:
-
