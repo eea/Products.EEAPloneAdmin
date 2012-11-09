@@ -1046,5 +1046,16 @@ class MigratePortalRegistry(BrowserView):
 
         return "Fixed %s" % faulty
 
-    
 
+class FixPortalRelationItems(object):
+    """ Fix attribute _at_creation_flag wrongly set to True of items to avoid 
+    id renaming on title change
+    """
+
+    def __call__(self):
+        relations = getToolByName(self.context, 'portal_relations')
+        items = relations.objectItems()
+        for i in items:
+            if i[1]._at_creation_flag == True:
+                i[1]._at_creation_flag = False
+        return 'success'

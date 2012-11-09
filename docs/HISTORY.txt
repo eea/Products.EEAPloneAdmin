@@ -4,6 +4,9 @@ Changelog
 5.4-dev - (unreleased)
 ----------------------
 * Upgrade step:
+    - go to /www/@@fix-portalrelationsItems to fix creation flag for portal relations items
+    - [ichimdav #9547]
+* Upgrade step:
     - Adrian must notified about the replace of serviceWWWW with
       www7 and www8 so he can update production HA.
     - [ghicaale refs #5292]
@@ -33,8 +36,7 @@ Changelog
 * Bug fix: patched plone.app.layout navigation to return results from site root 
   instead of navigation root
   [ichimdav #5533]
-* Upgrade step: Within Site Setup > Caching settings > Caching operations Tab >
-  Stale resources:
+* Upgrade step: Within Site Setup > Caching settings > Caching operations Tab > Stale resources:
     - remove daviz-view.json and daviz-relateditems.json;
     - add daviz.json if not existing.
 * Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
