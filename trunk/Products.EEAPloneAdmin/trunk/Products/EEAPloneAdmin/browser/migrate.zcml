@@ -133,4 +133,8 @@
                   class=".migrate.MigratePortalRegistry"
                   permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+                  name="fix-portalrelationsItems"
+                  class=".migrate.FixPortalRelationItems"
+                  permission="cmf.ManagePortal" />
 </configure>
