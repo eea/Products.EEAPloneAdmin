@@ -5,7 +5,6 @@ from plone.app.layout.navigation.root import getNavigationRootObject
 from plone.app.layout.navigation import root 
 from Products.CMFCore.utils import getToolByName
 
-
 def getNavigationRoot(context, relativeRoot=None):
     """Get the path to the root of the navigation tree.
 
@@ -47,6 +46,9 @@ def getNavigationRoot(context, relativeRoot=None):
 
     ### Start patch
     if relativeRoot:
+        if relativeRoot[0] != '/':
+            relativeRoot = '/' + relativeRoot
+
         portalPath = portal_url.getPortalPath()
         lang = context.Language()
         # set relativeRoot to be the language of the context
