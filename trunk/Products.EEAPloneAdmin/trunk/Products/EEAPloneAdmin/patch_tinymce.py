@@ -2,8 +2,6 @@
 """
 from Acquisition import aq_base
 from Products.Archetypes.interfaces import IBaseObject
-
-# needed by patched_getConfiguration
 from Products.CMFCore.utils import getToolByName
 from zope.i18n import translate
 from Products.TinyMCE import TMCEMessageFactory as _
@@ -14,13 +12,11 @@ from Products.CMFCore.interfaces._content import IFolderish
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 import json
-
-# needed by patched_getListing
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 def patched_getContentType(self, object=None, fieldname=None):
-    """Original code here. Notice that it doesn't treat properly the
+    """ Original code here. Notice that it doesn't treat properly the
     case that fieldname is None
 
     def getContentType(self, object=None, fieldname=None):
@@ -64,7 +60,6 @@ def patched_getContentType(self, object=None, fieldname=None):
         if mimetype is not None:
             return mimetype
     return 'text/html'
-
 
 def patched_getConfiguration(self, context=None, field=None, request=None):
     """ Patched configuration to set NavigationRoot to www/SITE since
@@ -326,10 +321,9 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
 
     return json.dumps(results)
 
-
-
 def patched_getBreadcrumbs(self, path=None):
-    """Get breadcrumbs with navigation root set to www/SITE"""
+    """ Get breadcrumbs with navigation root set to www/SITE
+    """
     result = []
 
     # #5229
@@ -365,10 +359,10 @@ def patched_getBreadcrumbs(self, path=None):
                                   'url': root_url + '/' + '/'.join(now)})
     return result
 
-
 def patched_getListing(self, filter_portal_types, rooted,
                                     document_base_url, upload_type=None):
-    """Returns the actual listing"""
+    """ Returns the actual listing
+    """
     catalog_results = []
     results = {}
 
@@ -429,9 +423,9 @@ def patched_getListing(self, filter_portal_types, rooted,
     # return results in JSON format
     return json.dumps(results)
 
-
 def patched_getSearchResults(self, filter_portal_types, searchtext):
-    """Returns the actual search result"""
+    """ Returns the actual search result
+    """
     catalog_results = []
     results = {}
 
