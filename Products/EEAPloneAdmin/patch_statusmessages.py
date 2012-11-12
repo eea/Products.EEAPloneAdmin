@@ -1,4 +1,4 @@
-""" This patch is related to ticket #5460
+""" This patch is related to ticket #9445
 
     The patch aim to catch the source of badly formatter cookies.
     This is a temporary fix, the final solution will come up

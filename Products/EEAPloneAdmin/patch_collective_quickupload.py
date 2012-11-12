@@ -127,7 +127,6 @@ def quick_upload_file(self):
 def detect_context_rules(context, portal_type):
     """ Detect context rules
     """
-
     # Rule for uploading DataFile(s) under DataTable(s)
     if context.portal_type == 'DataTable':
         portal_type = 'DataFile'
@@ -140,7 +139,6 @@ def detect_context_rules(context, portal_type):
 def QuickUploadCapableFileFactory__call__(self, name, title, description,
                                             content_type, data, portal_type):
     """ Patched __call__ for QuickUploadCapableFileFactory """
-
     context = aq_inner(self.context)
     charset = context.getCharset()
     filename = name

@@ -1,4 +1,4 @@
-""" plone.app.layout patches
+""" Patch plone.app.layout ver 2.2.7, due to #9518
 """
 
 from plone.app.layout.navigation.root import getNavigationRootObject
@@ -30,9 +30,10 @@ def getNavigationRoot(context, relativeRoot=None):
         portal_properties = getToolByName(context, 'portal_properties')
         navtree_properties = getattr(portal_properties, 'navtree_properties')
         relativeRoot = navtree_properties.getProperty('root', None)
-    
-    ### original
-    # if relativeRoot has a meaningful value,
+
+    ### Original code:
+
+    ## if relativeRoot has a meaningful value,
     #if relativeRoot and relativeRoot != '/':
     #    # use it
     #
@@ -44,15 +45,15 @@ def getNavigationRoot(context, relativeRoot=None):
     #    portalPath = portal_url.getPortalPath()
     #    return portalPath + relativeRoot
 
-    ### patch
+    ### Start patch
     if relativeRoot:
         portalPath = portal_url.getPortalPath()
         lang = context.Language()
         # set relativeRoot to be the language of the context
         relativeRoot = relativeRoot + lang if lang != 'en' else '/SITE'
         return portalPath + relativeRoot
-    ### end patch
-    
+    ### End patch
+
     else:
         # compute the root
         portal = portal_url.getPortalObject()
