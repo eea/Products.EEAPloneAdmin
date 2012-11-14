@@ -7,6 +7,7 @@ from zope.i18n import translate
 from Products.TinyMCE import TMCEMessageFactory as _
 from types import StringTypes
 from plone.app.layout.globals.portal import RIGHT_TO_LEFT
+from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.app.component.hooks import getSite
 from Products.CMFCore.interfaces._content import IFolderish
 from Acquisition import aq_inner
@@ -336,9 +337,8 @@ def patched_getListing(self, filter_portal_types, rooted,
     if not IFolderish.providedBy(obj):
         obj = aq_parent(obj)
 
-    #plone4 if INavigationRoot.providedBy(object) or
-    #(rooted == "True" and document_base_url[:-1] == object.absolute_url()):
-    if (rooted == "True" and document_base_url[:-1] == obj.absolute_url()):
+    if INavigationRoot.providedBy(object) or (rooted == "True" and 
+                            document_base_url[:-1] == object.absolute_url()):
         results['parent_url'] = ''
     else:
         results['parent_url'] = aq_parent(obj).absolute_url()
@@ -349,7 +349,7 @@ def patched_getListing(self, filter_portal_types, rooted,
         # get all items from siteroot to context (title and url)
         results['path'] = self.getBreadcrumbs()
 
-    # get all portal types and get information from brains
+    # start patch -> get all portal types and get information from brains
     # plone4 added ability to click topics and get the query results
     def cat_results(brain):
         """ utility function to avoid repetition of code
@@ -364,13 +364,16 @@ def patched_getListing(self, filter_portal_types, rooted,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish
                 })
-    if obj.portal_type == 'Topic':
+        
+    base_obj = aq_base(obj)
+    if hasattr(base_obj, 'queryCatalog'):
         for brain in obj.queryCatalog(sort_on='getObjPositionInParent'):
             cat_results(brain)
     else:
         for brain in self.context.getFolderContents({'portal_type':
                     filter_portal_types, 'sort_on': 'getObjPositionInParent'}):
             cat_results(brain)
+    ## end patch
 
     # add catalog_ressults
     results['items'] = catalog_results
