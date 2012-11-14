@@ -88,13 +88,6 @@
 
     ===========================[ TinyMCE patches ]==========================
 
-    <!-- Patch for Products.TinyMCE ver 1.2.10 to make root of site www/SITE -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.utility to make root of site www/SITE"
-                  class="Products.TinyMCE.utility.TinyMCE"
-                  original="getConfiguration"
-                  replacement=".patch_tinymce.patched_getConfiguration"
-                  preserveOriginal="false" />
-
     <!-- Patch for Products.TinyMCE ver 1.2.10 and higher to display Topic results when clicking on them in a tinymce listing -->
     <monkey:patch description="Monkeypatch Products.TinyMCE.getListing to display Topic results when clicking on them in a tinymce listing"
                   class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"

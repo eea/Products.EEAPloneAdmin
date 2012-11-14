@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Change: removed patched_getBreadcrumbs and patched_getConfiguration from 
+  patch_tinymce.py since we patch getNavigationRoot and getNavigationRootObject
+  [ichimdav #5533 #9518]
 * Upgrade step:
     - go to /www/@@fix-portalrelationsItems to fix creation flag for portal relations items
     - [ichimdav #9547]
