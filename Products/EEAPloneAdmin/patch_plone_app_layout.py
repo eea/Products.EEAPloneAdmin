@@ -1,9 +1,27 @@
 """ Patch plone.app.layout ver 2.2.7, due to #9518
 """
 
-from plone.app.layout.navigation.root import getNavigationRootObject
-from plone.app.layout.navigation import root 
+from plone.app.layout.navigation import root as nav_root 
 from Products.CMFCore.utils import getToolByName
+
+
+def getNavigationRootObject(context, portal):
+    """ Patched getNavigationRootObject in order to return site root
+    """
+    if context is None:
+        return None
+    
+    ### patch #9518 return root + context language as navigationRootObject
+    portal_url = '/'.join(portal.getPhysicalPath())
+    if portal_url[-1] != '/':
+        portal_url += '/'
+    lang = context.Language()
+    obj = context
+    obj = obj.restrictedTraverse(portal_url + lang if lang != 'en' else 
+                                                        portal_url + 'SITE')
+    ### end patch
+    return obj
+
 
 def getNavigationRoot(context, relativeRoot=None):
     """Get the path to the root of the navigation tree.
@@ -62,4 +80,6 @@ def getNavigationRoot(context, relativeRoot=None):
         root = getNavigationRootObject(context, portal)
         return '/'.join(root.getPhysicalPath())
 
-root.getNavigationRoot = getNavigationRoot
+
+nav_root.getNavigationRoot = getNavigationRoot
+nav_root.getNavigationRootObject = getNavigationRootObject

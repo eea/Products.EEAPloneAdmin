@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: patch getNavigationRootObject to return object with the same logic
+  as the patched getNavigationRoot
+  [ichimdav #9518]
 * Change: removed patched_getBreadcrumbs and patched_getConfiguration from 
   patch_tinymce.py since we patch getNavigationRoot and getNavigationRootObject
   [ichimdav #5533 #9518]
