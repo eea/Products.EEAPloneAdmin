@@ -3,12 +3,7 @@
 from Acquisition import aq_base
 from Products.Archetypes.interfaces import IBaseObject
 from Products.CMFCore.utils import getToolByName
-from zope.i18n import translate
-from Products.TinyMCE import TMCEMessageFactory as _
-from types import StringTypes
-from plone.app.layout.globals.portal import RIGHT_TO_LEFT
 from plone.app.layout.navigation.interfaces import INavigationRoot
-from zope.app.component.hooks import getSite
 from Products.CMFCore.interfaces._content import IFolderish
 from Acquisition import aq_inner
 from Acquisition import aq_parent
