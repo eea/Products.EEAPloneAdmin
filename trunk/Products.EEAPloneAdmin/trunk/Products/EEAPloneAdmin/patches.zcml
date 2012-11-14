@@ -96,13 +96,6 @@
                   preserveOriginal="false" />
 
     <!-- Patch for Products.TinyMCE ver 1.2.10 to make navigationRoot of site www/SITE -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.getBreadcrumbs to make navigationRoot of site www/SITE"
-                  class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"
-                  original="getBreadcrumbs"
-                  replacement=".patch_tinymce.patched_getBreadcrumbs"
-                  preserveOriginal="false" />
-
-    <!-- Patch for Products.TinyMCE ver 1.2.10 to make navigationRoot of site www/SITE -->
     <monkey:patch description="Monkeypatch Products.TinyMCE.getListing to make navigationRoot of site www/SITE"
                   class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"
                   original="getListing"

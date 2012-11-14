@@ -321,43 +321,6 @@ def patched_getConfiguration(self, context=None, field=None, request=None):
 
     return json.dumps(results)
 
-def patched_getBreadcrumbs(self, path=None):
-    """ Get breadcrumbs with navigation root set to www/SITE
-    """
-    result = []
-
-    # #5229
-    lang = self.context.Language()
-    if lang == "en":
-        root_url = "/www/SITE/"
-    else:
-        root_url = "/www/" + lang
-
-    root = aq_inner(self.context.restrictedTraverse(root_url))
-    root_url = root.absolute_url()
-
-    if path is not None:
-        root_abs_url = root.absolute_url()
-        path = path.replace(root_abs_url, '', 1)
-        path = path.strip('/')
-        root = aq_inner(root.restrictedTraverse(path))
-
-    relative = aq_inner(self.context) \
-            .getPhysicalPath()[len(root.getPhysicalPath()):]
-    if path is None:
-        # Add siteroot
-        result.append({'title': root.title_or_id(),
-                                'url': '/'.join(root.getPhysicalPath())})
-
-    for i in range(len(relative)):
-        now = relative[:i + 1]
-        obj = aq_inner(root.restrictedTraverse(now))
-
-        if IFolderish.providedBy(obj):
-            if not now[-1] == 'talkback':
-                result.append({'title': obj.title_or_id(),
-                                  'url': root_url + '/' + '/'.join(now)})
-    return result
 
 def patched_getListing(self, filter_portal_types, rooted,
                                     document_base_url, upload_type=None):
