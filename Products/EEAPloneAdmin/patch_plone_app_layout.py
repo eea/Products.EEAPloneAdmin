@@ -19,9 +19,10 @@ def getNavigationRootObject(context, portal):
     obj = context
     # check if portal_url is /www as this code could be reached from tests
     # where we don't have SITE
-    url = portal_url + 'SITE' if portal_url == '/www/' else portal_url
+    if portal_url != '/www/':
+        return portal
     obj = obj.restrictedTraverse(portal_url + lang if lang and lang != 'en'
-                                         else url)
+                                         else portal_url + 'SITE')
     ### end patch
     return obj
 
