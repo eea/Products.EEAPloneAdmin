@@ -17,8 +17,11 @@ def getNavigationRootObject(context, portal):
         portal_url += '/'
     lang = context.Language()
     obj = context
-    obj = obj.restrictedTraverse(portal_url + lang if lang != 'en' else 
-                                                        portal_url + 'SITE')
+    # check if portal_url is /www as this code could be reached from tests
+    # where we don't have SITE
+    url = portal_url + 'SITE' if portal_url == '/www/' else portal_url
+    obj = obj.restrictedTraverse(portal_url + lang if lang and lang != 'en'
+                                         else url)
     ### end patch
     return obj
 
@@ -70,7 +73,8 @@ def getNavigationRoot(context, relativeRoot=None):
         portalPath = portal_url.getPortalPath()
         lang = context.Language()
         # set relativeRoot to be the language of the context
-        relativeRoot = relativeRoot + lang if lang != 'en' else '/SITE'
+        relativeRoot = relativeRoot + lang if lang and lang != 'en' \
+                                                                else '/SITE'
         return portalPath + relativeRoot
     ### End patch
 
