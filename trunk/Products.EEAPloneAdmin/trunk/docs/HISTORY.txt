@@ -3,6 +3,9 @@ Changelog
 
 5.4-dev - (unreleased)
 ----------------------
+* Bug fix: return SITE as navigationRoot if the language of the context isn't
+  found in the root of the portal, this is a bugfix for logic from ticket 9518
+  [ichimdav #10071]
 * Bug fix: patch getNavigationRootObject to return object with the same logic
   as the patched getNavigationRoot
   [ichimdav #9518]
