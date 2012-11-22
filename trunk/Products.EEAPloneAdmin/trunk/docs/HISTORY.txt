@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.4-dev - (unreleased)
-----------------------
+5.4 - (2012-11-22)
+------------------
 * Bug fix: return context root as navigationRoot if the language of the context 
   isn't found in the root of the portal, or the language of the context isn't
   the same as the root of the context, this is a bugfix for logic from 
@@ -91,7 +91,6 @@ Changelog
 * Upgrade step:
     - Go to /www/@@fix-portalregistry, record the output in ticket #5520
     - [tiberich refs #5520]
-
 
 5.3 - (2012-09-03)
 ------------------
@@ -577,3 +576,4 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
+
