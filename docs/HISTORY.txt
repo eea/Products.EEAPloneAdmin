@@ -1,6 +1,9 @@
 Changelog
 =========
 
+5.5-dev - (unreleased)
+----------------------
+
 5.4 - (2012-11-22)
 ------------------
 * Bug fix: return context root as navigationRoot if the language of the context 
