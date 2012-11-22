@@ -7,6 +7,7 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.interfaces._content import IFolderish
 from Acquisition import aq_inner
 from Acquisition import aq_parent
+from Acquisition import ImplicitAcquisitionWrapper
 import json
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import IIDNormalizer
@@ -99,10 +100,8 @@ def patched_getListing(self, filter_portal_types, rooted,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish
                 })
-        
-    base_obj = aq_base(obj)
-    if hasattr(base_obj, 'queryCatalog'):
-        for brain in obj.queryCatalog(sort_on='getObjPositionInParent'):
+    if type(obj.queryCatalog) != ImplicitAcquisitionWrapper:
+        for brain in obj.queryCatalog():
             cat_results(brain)
     else:
         for brain in self.context.getFolderContents({'portal_type':
