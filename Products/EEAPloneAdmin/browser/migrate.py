@@ -21,6 +21,7 @@ import logging
 import os
 import urllib
 import transaction
+import json
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -1059,3 +1060,24 @@ class FixPortalRelationItems(object):
             if i[1]._at_creation_flag == True:
                 i[1]._at_creation_flag = False
         return 'success'
+
+class MigrateGeotagsCountryGroups(BrowserView):
+    """ Add Geotags Country Groups as individual countries
+    """
+    def __call__(self):
+        country_groups = ["EU15", "EU25", "EU27", "EEA32", "EFTA4", 
+                                                    "Pan-Europa"]
+        catalog = getToolByName(self.context, 'portal_catalog')
+        res = catalog.searchResults(object_provides =
+                                'eea.geotags.storage.interfaces.IGeoTagged')
+        for item in res:
+            try:
+                geo = json.loads(item.geotags)
+            except ValueError:
+                logger.error('%s couldnt be decoded', item.getURL())
+            for feature in geo['features']:
+                title = feature['properties'].get('Title')
+                if title and title in country_groups:
+                    logger.warn('%s for %s', feature, item.getURL())
+        return "DONE"
+
