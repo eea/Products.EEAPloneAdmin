@@ -137,4 +137,9 @@
                   name="fix-portalrelationsItems"
                   class=".migrate.FixPortalRelationItems"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateGeotagsCountryGroups"
+                  class=".migrate.MigrateGeotagsCountryGroups"
+                  permission="cmf.ManagePortal" />
 </configure>
