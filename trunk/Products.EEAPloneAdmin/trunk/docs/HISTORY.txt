@@ -3,6 +3,11 @@ Changelog
 
 5.5-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - go to /www/migrateGeotagsCountryGroups to set individual countries 
+      for the geotags contry groups
+    - copy the output in a txt file for future reference
+    - [ichimdav #9998]
 
 5.4 - (2012-11-22)
 ------------------
@@ -579,4 +584,3 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
-

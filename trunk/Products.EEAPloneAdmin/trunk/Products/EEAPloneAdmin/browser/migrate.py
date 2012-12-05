@@ -1148,14 +1148,14 @@ class MigrateGeotagsCountryGroups(BrowserView):
                     features = geotags['features']
                     features.extend(country_dict[title])
                     location = obj.getField('location')
-                    location.set(obj, features)
+                    location.set(obj, geotags)
                     try:
                         obj.reindexObject(idxs=['geotags', 'location'])
                     except Exception:
                         logger.error('%s --> couldnt be reindexed', 
-                                                        item.getURL())
+                                                        obj.absolute_url(1))
                         continue
-                    logger.info('%s --> migrated' % item.getURL())
+                    logger.info('%s' % obj.absolute_url(1))
                     count += 1
                     if count % 50 == 0:
                         transaction.savepoint(optimistic=True)
