@@ -1156,11 +1156,11 @@ class MigrateGeotagsCountryGroups(BrowserView):
                                                         item.getURL())
                         continue
                     logger.info('%s --> migrated' % item.getURL())
-            count += 1
-            if count % 50 == 0:
-                transaction.savepoint(optimistic=True)
+                    count += 1
+                    if count % 50 == 0:
+                        transaction.savepoint(optimistic=True)
 
         logger.info("%s number of items were migrated with individual contries"
-                                                                % len(res)) 
+                                                                % count) 
         logger.info("Ending step of individual Countries for Country Groups")
         return self.stopCapture()
