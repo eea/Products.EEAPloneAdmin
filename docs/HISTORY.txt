@@ -4,6 +4,11 @@ Changelog
 5.5-dev - (unreleased)
 ----------------------
 * Upgrade step:
+    - Inside the buildout, execute tools/cleanup_buildout.sh
+    This should be run as the first thing in the upgrade, on each
+    squirrel machine
+    [tiberich refs #9598]
+* Upgrade step:
     - go to /www/migrateGeotagsCountryGroups to set individual countries 
       for the geotags contry groups
     - copy the output in a txt file for future reference
