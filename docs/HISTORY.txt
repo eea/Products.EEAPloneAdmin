@@ -4,7 +4,10 @@ Changelog
 5.5-dev - (unreleased)
 ----------------------
 * Upgrade step:
-    - Inside the buildout, execute tools/cleanup_buildout.sh
+    - Inside the buildout, execute:
+        rm -rf eggs/zc.buildout* eggs/setuptools-*
+        /usr/bin/python2.6 bootstrap.py
+        bin/buildout -c backend.cfg
     This should be run as the first thing in the upgrade, on each
     squirrel machine
     [tiberich refs #9598]
