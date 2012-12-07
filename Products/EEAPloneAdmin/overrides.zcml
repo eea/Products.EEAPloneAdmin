@@ -91,6 +91,29 @@
                 allowed_attributes="macros"
                 />
 
+    <!-- #9993 send resources with https when context has https in url -->
+    <browser:viewletManager
+        name="plone.resourceregistries.scripts"
+        provides="Products.ResourceRegistries.interfaces.IHtmlHeadScripts"
+        template="patch_products_registry_resources_scripts.pt"
+        permission="zope2.View"
+    />
+
+    <browser:viewletManager
+        name="plone.resourceregistries.styles"
+        provides="Products.ResourceRegistries.interfaces.IHtmlHeadStyles"
+        template="patch_products_registry_resources_styles.pt"
+        permission="zope2.View"
+        />
+
+    <browser:viewletManager
+        name="plone.resourceregistries.kineticstylesheets"
+        provides="Products.ResourceRegistries.interfaces.IHtmlHeadStyles"
+        template="patch_products_registry_resources_kss.pt"
+        permission="zope2.View"
+        />
+    <!-- end #9993 overrides -->
+
     <include package=".browser" file="overrides.zcml"/>
 
 </configure>
