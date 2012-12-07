@@ -6,6 +6,7 @@ Changelog
 * Pre-upgrade step:
     - Inside the buildout, execute:
       ./tools/cleanup_buildout.sh
+      ./bin/buildout -c backend.cfg
     This should be run as the first thing in the upgrade, on each
     squirrel machine
     [tiberich refs #9598]
