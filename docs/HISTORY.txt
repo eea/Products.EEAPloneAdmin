@@ -3,7 +3,7 @@ Changelog
 
 5.5-dev - (unreleased)
 ----------------------
-* Upgrade step:
+* Pre-upgrade step:
     - Inside the buildout, execute:
       ./tools/cleanup_buildout.sh
     This should be run as the first thing in the upgrade, on each
