@@ -627,7 +627,7 @@ class SetIVideoToAllVideosTopic(object):
         trans = video.getTranslations()
         for i in trans.values():
             topic = i[0]
-            criteria = getattr(topic, 
+            criteria = getattr(topic,
                     'crit__object_provides_ATSelectionCriterion', '')
             if criteria:
                 criteria.setValue('eea.mediacentre.interfaces.IVideo')
@@ -965,7 +965,7 @@ class FixImages(BrowserView):
         brains = self.context.portal_catalog(query)
         for brain in brains:
             obj = brain.getObject()
-            
+
             fields = ['image', 'screenshot']
 
             for name in fields:
@@ -975,12 +975,12 @@ class FixImages(BrowserView):
                     try:
                         if not raw.filename:
                             logger.info(
-                                "Settings filename for field %s for %s" % 
+                                "Settings filename for field %s for %s" %
                                 (name, obj))
                             raw.filename = obj.getId()
                     except Exception:
                         logger.error(
-                            "MIGRATION ERROR when setting filename for %s", 
+                            "MIGRATION ERROR when setting filename for %s",
                             brain.getURL())
 
         logger.info("Migration of field image filenames done")
@@ -1067,7 +1067,7 @@ class FixPortalRelationItems(object):
 class MigrateGeotagsCountryGroups(BrowserView):
     """ Add Geotags Country Groups as individual countries
     """
-    
+
     def startCapture(self, newLogLevel = None):
         """ Start capturing log output to a string buffer.
 
@@ -1078,46 +1078,44 @@ class MigrateGeotagsCountryGroups(BrowserView):
         logging.DEBUG
         """
         self.buffer = StringIO()
-        
+
         print >> self.buffer, "Log output"
-        
+
         rootLogger = logging.getLogger()
-         
+
         if newLogLevel:
             self.oldLogLevel = rootLogger.getEffectiveLevel()
             rootLogger.setLevel(newLogLevel)
         else:
             self.oldLogLevel = None
-            
+
         self.logHandler = logging.StreamHandler(self.buffer)
         formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s"
                                                             " - %(message)s")
         self.logHandler.setFormatter(formatter)
-        rootLogger.addHandler(self.logHandler)    
-            
+        rootLogger.addHandler(self.logHandler)
+
     def stopCapture(self):
         """ Stop capturing log output.
-        
-        @return: Collected log output as string        
+        @return: Collected log output as string
         """
-                                
+
         # Remove our handler
-        rootLogger = logging.getLogger()        
+        rootLogger = logging.getLogger()
 
         # Restore logging level (if any)
         if self.oldLogLevel:
             rootLogger.setLevel(self.oldLogLevel)
 
-        
         rootLogger.removeHandler(self.logHandler)
-        
+
         self.logHandler.flush()
         self.buffer.flush()
-        
+
         return self.buffer.getvalue()
 
     def __call__(self):
-        country_groups = ["EU15", "EU25", "EU27", "EEA32", "EFTA4", 
+        country_groups = ["EU15", "EU25", "EU27", "EEA32", "EFTA4",
                                                     "Pan-Europa"]
         catalog = getToolByName(self.context, 'portal_catalog')
         res = catalog.searchResults(object_provides =
@@ -1131,28 +1129,30 @@ class MigrateGeotagsCountryGroups(BrowserView):
         country_dict['EFTA4'] = {'geometry': {'type': 'Point', 'coordinates': [65, -18]}, 'type': 'Feature', 'bbox': [], 'properties': {'center': [65, -18], 'name': '2629691', 'title': u'Iceland', 'country': u'IS', 'description': u'Iceland', 'tags': u'independent political entity', 'adminCode1': u'00', 'adminName1': u''}}, {'geometry': {'type': 'Point', 'coordinates': [47.000158375286397, 8.0142688751220703]}, 'type': 'Feature', 'bbox': [], 'properties': {'center': [47.000158375286397, 8.0142688751220703], 'name': '2658434', 'title': u'Switzerland', 'country': u'CH', 'description': u'Switzerland', 'tags': u'independent political entity', 'adminCode1': u'00', 'adminName1': u''}}, {'geometry': {'type': 'Point', 'coordinates': [47.1666667, 9.5333333000000007]}, 'type': 'Feature', 'bbox': [], 'properties': {'center': [47.1666667, 9.5333333000000007], 'name': '3042058', 'title': u'Liechtenstein', 'country': u'LI', 'description': u'Liechtenstein', 'tags': u'independent political entity', 'adminCode1': u'00', 'adminName1': u''}}, {'geometry': {'type': 'Point', 'coordinates': [62, 10]}, 'type': 'Feature', 'bbox': [], 'properties': {'center': [62, 10], 'name': '3144096', 'title': u'Norway', 'country': u'NO', 'description': u'Norway', 'tags': u'independent political entity', 'adminCode1': u'00', 'adminName1': u''}}
         count = 0
         self.startCapture(logging.DEBUG)
-                
-        logger.info("Starting Addition of individual Countries for Country" 
+        logger.info("Starting Addition of individual Countries for Country"
                                                                     " Groups")
         for item in res:
             try:
                 if item.geotags and item.geotags != "{ }":
                     geotags = json.loads(item.geotags)
             except ValueError:
-                logger.error('%s --> couldnt be decoded', item.getURL())
+                logger.error("%s --> couldn't be decoded", item.getURL())
                 continue
-            for feature in geotags['features']:
+            features = geotags['features']
+            for feature in features:
                 title = feature['properties'].get('title')
-                if title and title  in country_groups:
+                if title and title in country_groups:
                     obj = item.getObject()
-                    features = geotags['features']
                     features.extend(country_dict[title])
+                    # remove country group from the geotags feature list
+                    features.remove(feature)
+
                     location = obj.getField('location')
                     location.set(obj, geotags)
                     try:
                         obj.reindexObject(idxs=['geotags', 'location'])
                     except Exception:
-                        logger.error('%s --> couldnt be reindexed', 
+                        logger.error("%s --> couldn't be reindexed",
                                                         obj.absolute_url(1))
                         continue
                     logger.info('%s' % obj.absolute_url(1))
@@ -1160,7 +1160,7 @@ class MigrateGeotagsCountryGroups(BrowserView):
                     if count % 50 == 0:
                         transaction.savepoint(optimistic=True)
 
-        logger.info("%s number of items were migrated with individual contries"
-                                                                % count) 
+        logger.info("%s number of items were migrated with individual countries"
+                                                                % count)
         logger.info("Ending step of individual Countries for Country Groups")
         return self.stopCapture()
