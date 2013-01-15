@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.5-dev - (unreleased)
-----------------------
+5.5 - (2013-01-15)
+------------------
 * Pre-upgrade step:
     - Inside the buildout, execute:
       ./tools/cleanup_buildout.sh
@@ -591,3 +591,4 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
+
