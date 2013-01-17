@@ -1,12 +1,11 @@
 Changelog
 =========
 
-5.6-dev - (unreleased)
-----------------------
+5.6 - (2013-01-17)
+------------------
 * Bug fix: added patch for Products.UserAndGroupSelectionWidget search 
   method to allow searching for fullname and email 
   [tiberich refs #9972]
-
 
 5.5 - (2013-01-15)
 ------------------
