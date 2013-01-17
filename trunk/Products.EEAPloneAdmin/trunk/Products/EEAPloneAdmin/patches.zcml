@@ -225,4 +225,11 @@
                      original="contentsMethod"
                      replacement=".patch_plone_app_content.contentsMethod"
                      preserveOriginal="false" />
+
+    <monkey:patch description="#9972 patch _searchUsers from MemberLookup to search for fullname and email"
+                     class="Products.UserAndGroupSelectionWidget.memberlookup.MemberLookup"
+                     original="_searchUsers"
+                     replacement=".patch_userandgroupselectionwidget._patched_search_users"
+                     preserveOriginal="false" />
+
 </configure>
