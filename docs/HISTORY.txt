@@ -3,6 +3,9 @@ Changelog
 
 5.7-dev - (unreleased)
 ----------------------
+* Upgrade Step: 
+    - go to /www/@@FixFigureCategoryType to fix Figure Categories 
+    - [ichimdav #10234]
 
 5.6 - (2013-01-17)
 ------------------

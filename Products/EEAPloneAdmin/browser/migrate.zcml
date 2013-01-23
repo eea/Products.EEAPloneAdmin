@@ -39,6 +39,11 @@
                   permission="zope.Public" />
 
     <browser:page for="*"
+                  name="FixFigureCategoryType"
+                  class=".migrate.FixFigureCategoryType"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
                   name="migrateTopic"
                   class=".migrate.UpdateSmartFoldersAndTitles"
                   permission="cmf.ModifyPortalContent" />

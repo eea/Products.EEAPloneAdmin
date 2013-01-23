@@ -23,6 +23,8 @@ import urllib
 import transaction
 import json
 from cStringIO import StringIO
+from zope.interface import directlyProvides, directlyProvidedBy
+from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -1164,3 +1166,42 @@ class MigrateGeotagsCountryGroups(BrowserView):
                                                                 % count)
         logger.info("Ending step of individual Countries for Country Groups")
         return self.stopCapture()
+
+
+class FixFigureCategoryType(BrowserView):
+    """ Fix Figure category to only have either Map or Graph as provided
+    interface
+    """
+
+    def __call__(self):
+        """ BrowserView call
+        """
+        context = self.context
+        res = context.portal_catalog.searchResults(portal_type='EEAFigure')
+        maps = "eea.dataservice.interfaces.IEEAFigureMap"
+        graph = "eea.dataservice.interfaces.IEEAFigureGraph"
+        count = 0
+        for figure in res:
+            if all([items in figure.object_provides for items in (maps,
+                                                                  graph)]):
+                obj = figure.getObject()
+                figureType = obj.getField('figureType').getRaw(obj)
+                if figureType == 'map':
+                    directlyProvides(obj,
+                                     directlyProvidedBy(obj) - IEEAFigureGraph)
+                    logger.info('%s item has %s removed' % (
+                        obj.get_absolute_url(1), 'IEEAFigureGraph interface'))
+                elif figureType == 'graph':
+                    directlyProvides(obj,
+                                     directlyProvidedBy(obj) - IEEAFigureMap)
+                    logger.info('%s item has %s removed' % (obj.absolute_url(
+                        1), 'IEEAFigureMap interface'))
+                obj.reindexObject(idxs=['object_provides'])
+                count += 1
+                if count % 50 == 0:
+                    transaction.savepoint(optimistic=True)
+
+        logger.info("%s number of items were migrated with fixed "
+                    "FigureCategory"
+                    % count)
+        return "Done"
