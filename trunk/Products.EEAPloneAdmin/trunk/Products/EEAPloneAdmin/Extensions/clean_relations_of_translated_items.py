@@ -2,10 +2,6 @@
 managed automaticaly, reflecting the canonical object (EN).
 """
 import logging
-from plone.app.linkintegrity.exceptions import \
-    LinkIntegrityNotificationException
-from plone.app.linkintegrity.interfaces import ILinkIntegrityInfo
-from StringIO import StringIO
 
 # Log info 
 logger = logging.getLogger("Delete relations on translations: ")
