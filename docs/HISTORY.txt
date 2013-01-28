@@ -3,6 +3,8 @@ Changelog
 
 5.8-dev - (unreleased)
 ----------------------
+* Bug fix: Correct erros in code.
+
 
 5.7 - (2013-01-28)
 ------------------
