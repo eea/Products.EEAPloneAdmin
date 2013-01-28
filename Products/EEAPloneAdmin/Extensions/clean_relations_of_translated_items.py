@@ -66,7 +66,8 @@ def clean_relations(self):
     # End information log
     info("Objects updated: %s" % total_objects)  
     info("Relations removed: %s" % total_relations)
-    message += "Total Objects: %s / Total Relations: %s" % (total_objects, total_relations)
+    message += "Total Objects: %s / Total Relations: %s" % (total_objects, 
+                                                            total_relations)
     info("COMPLETE")
 
     return message
