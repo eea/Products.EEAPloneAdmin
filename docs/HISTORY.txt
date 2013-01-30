@@ -4,7 +4,9 @@ Changelog
 5.8-dev - (unreleased)
 ----------------------
 * Bug fix: Correct erros in code.
-
+* Bug Fix: Fixed the script to remove the relations belonging to translated
+  object. Tested and working 
+  [prospchr refs #9569]
 
 5.7 - (2013-01-28)
 ------------------
