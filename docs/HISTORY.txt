@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.8-dev - (unreleased)
-----------------------
+5.8 - (2013-02-04)
+------------------
 * Bug fix: Correct erros in code.
 * Bug Fix: Fixed the script to remove the relations belonging to translated
   object. Tested and working 
