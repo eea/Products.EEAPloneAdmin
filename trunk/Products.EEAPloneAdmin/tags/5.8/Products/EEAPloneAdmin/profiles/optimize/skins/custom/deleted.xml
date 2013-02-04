@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<object name="deleted" meta_type="Folder">
+ <property name="title"></property>
+ <object name="DEPRECATED2_frontpage_view" meta_type="Page Template"/>
+ <object name="DEPRECATED_default_error_message" meta_type="Page Template"/>
+ <object name="DEPRECATED_folder_listing_in_design_52"
+    meta_type="Page Template"/>
+ <object name="DEPRECATED_frontpage_macros" meta_type="Page Template"/>
+ <object name="DEPRECATED_frontpage_view" meta_type="Page Template"/>
+ <object name="DEPRECATED_gallery_view_eea_signals_47"
+    meta_type="Page Template"/>
+ <object name="DEPRECATED_portlet_cache" meta_type="Page Template"/>
+ <object name="DEPRECATED_portlet_versions" meta_type="Page Template"/>
+ <object name="DEPRECATED_rssAllowed" meta_type="Script (Python)"/>
+ <object name="DEPRECATED_soercountry_view" meta_type="Page Template"/>
+ <object name="cft_listing_view" meta_type="Page Template"/>
+ <object name="copy2_of_dataset_view" meta_type="Page Template"/>
+ <object name="copy2_of_folder_listing" meta_type="Page Template"/>
+ <object name="copy_of_dataset_view" meta_type="Page Template"/>
+ <object name="copy_of_event_view" meta_type="Page Template"/>
+ <object name="copy_of_folder_listing" meta_type="Page Template"/>
+ <object name="copy_of_highlight_view" meta_type="Page Template"/>
+ <object name="copy_of_jobs_view" meta_type="Page Template"/>
+ <object name="copy_of_soercountry_view" meta_type="Page Template"/>
+ <object name="dataset_view" meta_type="Page Template"/>
+ <object name="datatable_view" meta_type="Page Template"/>
+ <object name="default_error_message" meta_type="Page Template"/>
+ <object name="design_elements" meta_type="Page Template"/>
+ <object name="disable_atct_topic_view" meta_type="Page Template"/>
+ <object name="disable_main_template" meta_type="Page Template"/>
+ <object name="eeafigure_view" meta_type="Page Template"/>
+ <object name="eeareferencebrowser" meta_type="Page Template"/>
+ <object name="event_view" meta_type="Page Template"/>
+ <object name="folder_accordion_view" meta_type="Page Template"/>
+ <object name="folder_listing" meta_type="Page Template"/>
+ <object name="folder_tabs_view" meta_type="Page Template"/>
+ <object name="highlight_view" meta_type="Page Template"/>
+ <object name="jobs_view" meta_type="Page Template"/>
+ <object name="login_form" meta_type="Controller Page Template"/>
+ <object name="mail_password_form" meta_type="Page Template"/>
+ <object name="main_template" meta_type="Page Template"/>
+ <object name="media_macros" meta_type="Page Template"/>
+ <object name="organigram-NEW" meta_type="Page Template"/>
+ <object name="plonegazette_mua_formatter" meta_type="Page Template"/>
+ <object name="raiseNotFound" meta_type="Script (Python)"/>
+ <object name="register_newsletter" meta_type="Script (Python)"/>
+ <object name="soercountry_view" meta_type="Page Template"/>
+</object>
