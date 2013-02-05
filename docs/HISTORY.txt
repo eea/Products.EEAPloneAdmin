@@ -3,6 +3,13 @@ Changelog
 
 5.9-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - Go under site setup -> Add-ons: /www/prefs_install_products_form
+        - Install collective.xmpp.chat
+    - Go udner site setup -> XMPP Integration: /www/@@xmpp-settings
+        - Setup Jabber server
+    - Go under portal_css in ZMI and move above ploneCustom.css the two XMPP css resources
+    - [ghicaale refs #13782]
 
 5.8 - (2013-02-04)
 ------------------
