@@ -8,47 +8,46 @@ Changelog
 ------------------
 * Bug fix: Correct erros in code.
 * Bug Fix: Fixed the script to remove the relations belonging to translated
-  object. Tested and working 
+  object. Tested and working
   [prospchr refs #9569]
 
 5.7 - (2013-01-28)
 ------------------
-* Upgrade Step: 
-    - go to /www/@@FixFigureCategoryType to fix Figure Categories 
+* Upgrade step:
+    - go to /www/@@FixFigureCategoryType to fix Figure Categories
     - [ichimdav #10234]
 
 5.6 - (2013-01-17)
 ------------------
-* Bug fix: added patch for Products.UserAndGroupSelectionWidget search 
-  method to allow searching for fullname and email 
+* Bug fix: added patch for Products.UserAndGroupSelectionWidget search
+  method to allow searching for fullname and email
   [tiberich refs #9972]
 
 5.5 - (2013-01-15)
 ------------------
 * Pre-upgrade step:
     - Inside the buildout, execute:
-      ./tools/cleanup_buildout.sh
-      ./bin/buildout -c backend.cfg
-    This should be run as the first thing in the upgrade, on each
-    squirrel machine
-    [tiberich refs #9598]
+        - ./tools/cleanup_buildout.sh
+        - ./bin/buildout -c backend.cfg
+    - This should be run as the first thing in the upgrade, on each squirrel machine
+    - [tiberich refs #9598]
 * Upgrade step:
-    - go to /www/migrateGeotagsCountryGroups to set individual countries 
+    - go to /www/migrateGeotagsCountryGroups to set individual countries
       for the geotags contry groups
     - copy the output in a txt file for future reference
     - [ichimdav #9998]
 
 5.4 - (2012-11-22)
 ------------------
-* Bug fix: return context root as navigationRoot if the language of the context 
+* Bug fix: return context root as navigationRoot if the language of the context
   isn't found in the root of the portal, or the language of the context isn't
-  the same as the root of the context, this is a bugfix for logic from 
+  the same as the root of the context, this is a bugfix for logic from
   ticket 9518
   [ichimdav #10071]
 * Bug fix: patch getNavigationRootObject to return object with the same logic
   as the patched getNavigationRoot
   [ichimdav #9518]
-* Change: removed patched_getBreadcrumbs and patched_getConfiguration from 
+* Change: removed patched_getBreadcrumbs and patched_getConfiguration from
   patch_tinymce.py since we patch getNavigationRoot and getNavigationRootObject
   [ichimdav #5533 #9518]
 * Upgrade step:
@@ -59,7 +58,7 @@ Changelog
       www7 and www8 so he can update production HA.
     - [ghicaale refs #5292]
 * Upgrade step:
-    - go to /www/@@plone-upgrade and migrate Plone to the 4.2.1 version 
+    - go to /www/@@plone-upgrade and migrate Plone to the 4.2.1 version
 * Bug fix: add aliases-controlpanel case to the rewriterules.js file
   [tiberich refs #5557]
 * Cleanup: removed code that was already been merged to Plone core
@@ -67,7 +66,7 @@ Changelog
 * Bug fix: patched archetypes.querywidget to sort the multiselect values which
   is used by Collections to display tags
   [ichimdav #5533]
-* Bug fix: patched contentsMethod from plone.app.content in order for new 
+* Bug fix: patched contentsMethod from plone.app.content in order for new
   Collections to return results when viewing folder_contents
   [ichimdav #5533]
 * Upgrade step:
@@ -81,22 +80,22 @@ Changelog
 * Feature: added override zcml for collective.portlet.usertrack to
   store user statistics via memcache
   [ghicaale refs #5540]
-* Bug fix: patched plone.app.layout navigation to return results from site root 
+* Bug fix: patched plone.app.layout navigation to return results from site root
   instead of navigation root
   [ichimdav #5533]
 * Upgrade step: Within Site Setup > Caching settings > Caching operations Tab > Stale resources:
     - remove daviz-view.json and daviz-relateditems.json;
     - add daviz.json if not existing.
 * Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
-    - multimedia/all-videos/configure_faceted.html - uncheck 
-      the "p4a.video.interfaces.IVideoEnhanced" and check the 
+    - multimedia/all-videos/configure_faceted.html - uncheck
+      the "p4a.video.interfaces.IVideoEnhanced" and check the
       "eea.mediacentre.interfaces.IVideo"
-    - multimedia/all/configure_faceted.html - uncheck 
-      the "p4a.video.interfaces.IVideoEnhanced" and check the 
-      "eea.mediacentre.interfaces.IVideo" and 
+    - multimedia/all/configure_faceted.html - uncheck
+      the "p4a.video.interfaces.IVideoEnhanced" and check the
+      "eea.mediacentre.interfaces.IVideo" and
       "Products.EEAContentTypes.content.interfaces.IFlashAnimation"
     - www/@@SetIVideoToAllVideosTopic - to change criteria for all-videos Topic
-    - www/portal_relations/video/edit - set the selected interface to 
+    - www/portal_relations/video/edit - set the selected interface to
       "eea.mediacentre.interfaces.IVideo"
     - [ichimdav #5480]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
@@ -613,4 +612,3 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
-
