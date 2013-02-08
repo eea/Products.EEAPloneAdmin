@@ -3,6 +3,13 @@ Changelog
 
 5.9-dev - (unreleased)
 ----------------------
+* Bug fix: Removed patched for Archetypes Query Widget, as it's been fixed
+  upstream
+  [tiberich #10255]
+* Upgrade step:
+    - Go to aq_parent/ ZMI, portal migrations and upgrade Plone to the latest
+      version
+      [tiberich #10255]
 * Upgrade step:
     - Go under site setup -> Add-ons: /www/prefs_install_products_form
         - Install collective.xmpp.chat
