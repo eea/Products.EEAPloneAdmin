@@ -6,7 +6,7 @@ Changelog
 * Bug fix: Removed patched for Archetypes Query Widget, as it's been fixed
   upstream
   [tiberich #10255]
-* Upgrade step: 
+* WIP: Upgrade step: 
     - Go to /aq_parent/prefs_install_products_form and activate Collective CDN
     - Make sure CDN hosts are ready to serve content
     - Go to aq_parent/@cdn-controlpanel and configure CDN there:
@@ -14,6 +14,9 @@ Changelog
         cdn4.eea.europa.eu to CDN Hostnames
       - Save
   [tiberich #7655]
+* WIP: Feature: Merge resources based on cdn settings to allow simultaneous faster
+  loading of resources
+  [tiberich #10231]
 * Upgrade step:
     - Go to aq_parent/ ZMI, follow the link at the top to do the Plone
       migration to latest plone 4.2.4
