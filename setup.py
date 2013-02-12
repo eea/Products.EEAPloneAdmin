@@ -44,7 +44,7 @@ setup(name=name,
           # We do overrides on these
           'munin.zope',
           'munin.plone',
-
+          'collective.cdn.multiplehostnames',
       ],
       #entry_points= {'console_scripts': [
         #"link_to_maildrop = Products.EEAPloneAdmin.scripts.link_maildrop:link",
