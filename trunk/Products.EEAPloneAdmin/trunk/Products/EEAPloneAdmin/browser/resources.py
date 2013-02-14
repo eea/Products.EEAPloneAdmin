@@ -7,6 +7,11 @@ from Products.ResourceRegistries.browser.kss import KSSView as BaseKSSView
 from Products.ResourceRegistries.browser.scripts import ScriptsView as BaseScriptsView
 from Products.ResourceRegistries.browser.styles import StylesView as BaseStylesView
 from collective.cdn.core.browser.base import BaseRegistryView
+from Products.Five import BrowserView
+from StringIO import StringIO
+import logging
+
+logger = logging.getLogger("Products.EEAPloneAdmin")
 
 
 def chunks(l, n):
@@ -31,9 +36,12 @@ def process_url(url, hosts, index):
         index = 0
     protocol, path = url.split('://')
     slash = path.find('/')
-    _replace, path = path[:slash], path[slash:]
+    original_host, path = path[:slash], path[slash:]
 
-    host = hosts[index]
+    if not getDevelMode():
+        host = hosts[index]
+    else:
+        host = original_host
     
     # join everything
     url = '%s://%s/%s' % (protocol, host, path)
@@ -50,7 +58,8 @@ def process(resources, hosts, marker):
       #'media': 'screen',
       #'rel': 'stylesheet',
       #'rendering': 'link',
-      #'src': u'http://static2/localhost/www/portal_css//EEADesign2006/IE9Fixes.css',
+      #'src': u'http://static2/localhost/www/portal_css/
+      #                               EEADesign2006/IE9Fixes.css',
       #'title': None}]
     out = []
     batches = chunks(resources, chunk_size)   #concatenate 6 files
@@ -58,18 +67,17 @@ def process(resources, hosts, marker):
     for index, batch in enumerate(batches):
         first = batch[0].copy()
         start = first['src'].find(marker)
-        base_url = first['src'][:start] + "@@merge"
+        base_url = first['src'][:start] + marker + "@@merge"
         s = []
         for l in batch:
             res_id = l['src'][start+len(marker):]
             s.append(res_id)    #strip slashes
-        url = base_url + "?r[]=" + s[0]
+        url = base_url + "?r=" + s[0]
         if len(s) > 1:
-         url += "&r[]=" + "&r[]=".join(s[1:])
+         url += "&r=" + "&r=".join(s[1:])
         first['src'] = process_url(url, hosts, index)
         out.append(first)
 
-    #print out
     return out
 
 
@@ -85,9 +93,6 @@ class ScriptsView(BaseScriptsView, BaseRegistryView):
         result = BaseScriptsView.scripts(self)
 
         if not self.use_cdn:
-            return result
-
-        if getDevelMode():
             return result
 
         cdn   = self.cdn_provider()
@@ -110,9 +115,6 @@ class StylesView(BaseStylesView, BaseRegistryView):
         if not self.use_cdn:
             return result
 
-        if getDevelMode():
-            return result
-
         cdn   = self.cdn_provider()
         hosts = cdn.hostname
 
@@ -133,11 +135,34 @@ class KSSView(BaseKSSView, BaseRegistryView):
         if not self.use_cdn:
             return result
 
-        if getDevelMode():
-            return result
-
         cdn   = self.cdn_provider()
         hosts = cdn.hostname
 
         return process(result, hosts, marker=self.registry_id+'/')
 
+
+class MergeResources(BrowserView):
+    def __call__(self):
+        ids = self.request.form.get('r')
+        registry = self.context
+    
+        out = StringIO()
+        for id in ids:
+            skin, name = id[:id.find('/')], id[id.find('/')+1:]
+            name = name.replace(' ', '+')
+            try:    #this is the same code used to save resources on disk
+                content = registry.getResourceContent(name, 
+                                            context=registry, theme=skin)
+                out.write(content)
+            except TypeError:
+                continue    #old merged resource
+            except (KeyError, AttributeError, AssertionError), e:
+                if not str(e).strip():   #on empty error, content is saved
+                    continue
+                #this is for DTML base_properties problem
+                logger.warning("Could not generate content "
+                                "for %s in skin %s because: %s" % 
+                                    (name, skin, e))
+
+        out.seek(0)
+        return out.read()

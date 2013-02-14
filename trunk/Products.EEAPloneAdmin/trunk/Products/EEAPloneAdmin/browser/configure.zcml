@@ -105,4 +105,12 @@
           />
     </configure>
 
+    <browser:page
+        for="*"
+        name="merge"
+        class=".resources.MergeResources"
+        permission="zope.Public"
+
+        />
+
 </configure>
