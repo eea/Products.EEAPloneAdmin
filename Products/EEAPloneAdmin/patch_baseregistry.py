@@ -5,9 +5,6 @@ from time import time
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 
-#from Products.CMFCore.utils import getToolByName
-#from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
-
 
 def generateId(self, *args, **kwargs):
     """ Better unique ids for js/css resources
@@ -24,12 +21,4 @@ def patch_cookResources(self):
     event = ObjectModifiedEvent(self)
     event.force = True
     notify(event)
-
-
-#def _initResources(self, node):
-    #""" Init Resources
-    #"""
-    #registry = getToolByName(self.context, self.registry_id)
-    #self._old__initResources(node)
-    #save_resources_on_disk(registry)
 

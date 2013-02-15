@@ -140,9 +140,10 @@ def save_resources_on_disk(registry, request=None):
             continue
 
         for _theme, resources in registry.concatenatedResourcesByTheme.items():
+            if _theme not in ['EEADesignCMS', 'EEADesign2006']:
+                continue
             for name in resources:
                 try:
-                    #content = getResourceContent(registry, name, registry)
                     content = registry.getResourceContent(name, 
                                                 context=registry, theme=skin)
                 except TypeError:
