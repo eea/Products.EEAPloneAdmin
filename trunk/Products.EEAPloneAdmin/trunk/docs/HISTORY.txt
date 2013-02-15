@@ -3,6 +3,9 @@ Changelog
 
 5.9-dev - (unreleased)
 ----------------------
+* Bug fix: skip skins other then EEADesign2006 and EEADesignCMS when saving
+  resources on disk
+  [tiberich #13871]
 * Bug fix: Removed patched for Archetypes Query Widget, as it's been fixed
   upstream
   [tiberich #10255]
