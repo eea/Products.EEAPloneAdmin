@@ -70,6 +70,12 @@ def process(resources, hosts, marker):
         base_url = first['src'][:start] + marker + "@@merge"
         s = []
         for l in batch:
+            src = l.get('src')
+            if not src:
+                #this has to do with content that is inserted inline
+                #key: "content"
+                #WIP:
+                continue
             res_id = l['src'][start+len(marker):]
             s.append(res_id)    #strip slashes
         url = base_url + "?r=" + s[0]

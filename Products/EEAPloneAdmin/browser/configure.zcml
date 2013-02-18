@@ -76,7 +76,7 @@
 
 
     <!-- cdn pages -->
-    <configure zcml:condition="not-have devmode">
+    <!--configure zcml:condition="not-have devmode">
       <browser:page
           for="*"
           name="resourceregistries_scripts_view"
@@ -103,7 +103,7 @@
           layer="eea.design.browser.interfaces.IEEACommonLayer"
           allowed_interface="collective.cdn.core.browser.interfaces.IKSSView"
           />
-    </configure>
+    </configure-->
 
     <browser:page
         for="*"
