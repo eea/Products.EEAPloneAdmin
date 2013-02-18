@@ -1,8 +1,8 @@
 Changelog
 =========
 
-5.9-dev - (unreleased)
-----------------------
+5.9 - (2013-02-18)
+------------------
 * Bug fix: skip skins other then EEADesign2006 and EEADesignCMS when saving
   resources on disk
   [tiberich #13871]
@@ -640,3 +640,4 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
+
