@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object name="custom" meta_type="Folder">
+ <property name="title"></property>
+ <object name="atct_topic_view" meta_type="Page Template"/>
+ <object name="contact-info" meta_type="Controller Page Template"/>
+ <object name="dataset_view" meta_type="Page Template"/>
+ <object name="datatable_view" meta_type="Page Template"/>
+ <object name="deleted" meta_type="Folder"/>
+ <object name="enquiry_edit" meta_type="Page Template"/>
+ <object name="enquiry_macros" meta_type="Page Template"/>
+ <object name="google_earth" meta_type="Page Template"/>
+ <object name="logged_out" meta_type="Controller Page Template"/>
+ <object name="mywf_state" meta_type="Page Template"/>
+ <object name="organigram.html" meta_type="Page Template"/>
+ <object name="organigram_macros" meta_type="Page Template"/>
+ <object name="promotion_view" meta_type="Page Template"/>
+ <object name="rss_template" meta_type="Page Template"/>
+ <object name="search_form" meta_type="Page Template"/>
+ <object name="staff.html" meta_type="Page Template"/>
+</object>
