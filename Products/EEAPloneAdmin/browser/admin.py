@@ -132,49 +132,48 @@ def save_resources_on_disk(registry, request=None):
         dest = os.path.join(base, skin)
 
         if not os.path.exists(dest):
-            logging.debug("%s does not exists. Creating it." % dest)
+            logger.debug("%s does not exists. Creating it." % dest)
             os.makedirs(dest)
 
         if not getattr(registry, 'concatenatedResourcesByTheme', None):
-            logging.warning("No concatenated resources in registry")
+            logger.warning("No concatenated resources in registry")
             continue
 
-        for _theme, resources in registry.concatenatedResourcesByTheme.items():
-            if _theme not in ['EEADesignCMS', 'EEADesign2006']:
-                continue
-            for name in resources:
-                try:
-                    content = registry.getResourceContent(name, 
-                                                context=registry, theme=skin)
-                except TypeError:
-                    continue    #old merged resource
-                except (KeyError, AttributeError, AssertionError), e:
-                    if not str(e).strip():   #on empty error, content is saved
-                        continue
-                    #this is for DTML base_properties problem
-                    logging.warning("Could not generate content "
-                                    "for %s in skin %s because: %s" % 
-                                        (name, skin, e))
+        resources = registry.concatenatedResourcesByTheme[skin]
+
+        for name in resources:
+            try:
+                content = registry.getResourceContent(name, 
+                                            context=registry, theme=skin)
+            except TypeError:
+                continue    #old merged resource
+            except (KeyError, AttributeError, AssertionError), e:
+                if not str(e).strip():   #on empty error, content is saved
                     continue
+                #this is for DTML base_properties problem
+                logger.warning("Could not generate content "
+                                "for %s in skin %s because: %s" % 
+                                    (name, skin, e))
+                continue
 
-                if isinstance(content, str):
-                    content = content.decode('utf-8', 'ignore')
+            if isinstance(content, str):
+                content = content.decode('utf-8', 'ignore')
 
-                content = localize(content, default_url, portal_url)
+            content = localize(content, default_url, portal_url)
 
-                try:
-                    fpath = os.path.join(dest, name)
-                    parent = os.path.dirname(fpath)
-                    if not os.path.exists(parent):
-                        logging.debug("%s does not exists. Creating it." % dest)
-                        os.makedirs(parent)
+            try:
+                fpath = os.path.join(dest, name)
+                parent = os.path.dirname(fpath)
+                if not os.path.exists(parent):
+                    logger.debug("%s does not exists. Creating it." % dest)
+                    os.makedirs(parent)
 
-                    f = codecs.open(fpath, 'w', 'utf-8')
-                    f.write(content)
-                    f.close()
-                    logging.debug("Wrote %s on disk." % fpath)
-                except IOError:
-                    logging.warning("Could not write %s on disk." % fpath)
+                f = codecs.open(fpath, 'w', 'utf-8')
+                f.write(content)
+                f.close()
+                logger.info("Wrote %s on disk." % fpath)
+            except IOError:
+                logger.warning("Could not write %s on disk." % fpath)
 
     if script:
         res = subprocess.call([script, base])
