@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.0-dev - (unreleased)
+----------------------
+
 5.9 - (2013-02-18)
 ------------------
 * Bug fix: skip skins other then EEADesign2006 and EEADesignCMS when saving
