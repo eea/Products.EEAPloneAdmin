@@ -3,6 +3,12 @@ Changelog
 
 6.0-dev - (unreleased)
 ----------------------
+* Bug fix: added script to fix attribute _at_creation_flag wrongly set to True of
+  vocabulary terms to avoid id renaming on title change
+  [ghicaale refs #13885]
+* Upgrade step:
+    - go to /www/@@fix-vocabularytermse to fix creation flag on vocabulary terms
+    - [ghicaale refs #13885]
 
 5.9 - (2013-02-18)
 ------------------
@@ -12,7 +18,7 @@ Changelog
 * Bug fix: Removed patched for Archetypes Query Widget, as it's been fixed
   upstream
   [tiberich #10255]
-* Upgrade step: 
+* Upgrade step:
     - Go to /aq_parent/prefs_install_products_form and activate Collective CDN
     - Make sure CDN hosts are ready to serve content
     - Go to aq_parent/@cdn-controlpanel and configure CDN there:

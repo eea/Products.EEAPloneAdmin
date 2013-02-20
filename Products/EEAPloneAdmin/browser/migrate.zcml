@@ -144,6 +144,11 @@
                   permission="cmf.ManagePortal" />
 
     <browser:page for="*"
+                  name="fix-vocabularyterms"
+                  class=".migrate.FixVocabularyTerms"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
                   name="migrateGeotagsCountryGroups"
                   class=".migrate.MigrateGeotagsCountryGroups"
                   permission="cmf.ManagePortal" />
