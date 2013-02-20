@@ -1065,6 +1065,29 @@ class FixPortalRelationItems(object):
         return 'success'
 
 
+class FixVocabularyTerms(object):
+    """ Fix attribute _at_creation_flag wrongly set to True of
+        vocabulary terms to avoid id renaming on title change
+    """
+
+    def __call__(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        res = catalog.searchResults(portal_type =
+                                    ['SimpleVocabularyTerm',
+                                     'TreeVocabularyTerm'])
+        for brain in res:
+            obj = brain.getObject()
+            try:
+                if obj._at_creation_flag == True:
+                    obj._at_creation_flag = False
+                    obj._p_changed = True
+                    logger.info("Creation flag updated: %s" % obj.absolute_url())
+            except AttributeError:
+                obj._at_creation_flag = False
+                logger.info("Set creation flag: %s" % obj.absolute_url())
+        return 'Vocabulary term updated.'
+
+
 
 class MigrateGeotagsCountryGroups(BrowserView):
     """ Add Geotags Country Groups as individual countries
