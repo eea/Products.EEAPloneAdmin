@@ -9,6 +9,16 @@ Changelog
 * Upgrade step:
     - go to /www/@@fix-vocabularytermse to fix creation flag on vocabulary terms
     - [ghicaale refs #13885]
+* Bug fix: Correct all absolute links in the portaltab menu, change absolute
+  url with relative ones.
+  [prospchr fixes #10143]
+* Upgrade step:
+    - Backup
+    - Go to ZMI/0maintenance
+    - Create an external method for ex: check_portal_navigation_items
+    - Module name: Products.EEAPloneAdmin.check_portal_navigation_items
+    - Function name: check_navigation
+    - run it!
 
 5.9 - (2013-02-18)
 ------------------
