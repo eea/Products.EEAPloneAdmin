@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.0-dev - (unreleased)
-----------------------
+6.0 - (2013-02-25)
+------------------
 * Bug fix: added script to fix attribute _at_creation_flag wrongly set to True of
   vocabulary terms to avoid id renaming on title change
   [ghicaale refs #13885]
