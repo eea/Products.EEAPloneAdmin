@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.1-dev - (unreleased)
+----------------------
+
 6.0 - (2013-02-25)
 ------------------
 * Bug fix: added script to fix attribute _at_creation_flag wrongly set to True of
