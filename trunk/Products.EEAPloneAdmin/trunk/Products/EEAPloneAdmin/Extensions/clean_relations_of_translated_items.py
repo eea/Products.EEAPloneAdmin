@@ -20,10 +20,10 @@ def clean_relations(self):
     total_relations = 0
     transaction_threshold = 20
     message = ""
-    languages = ['ar','bg','bs','ca','cs','cz','da','de','ee','el',
-                 'es','et','fi','fr','ga','hr','hu','is','it','lt',
-                 'lv','me','mk','mt','nl','no','pl','pt','ro','ru',
-                 'sk','sl','sq','sr','sv','tr','zh']
+    languages = ['ar', 'bg', 'bs', 'ca', 'cs', 'cz', 'da', 'de', 'ee', 'el', 
+                 'es', 'et', 'fi', 'fr', 'ga', 'hr', 'hu', 'is', 'it', 'lt', 
+                 'lv', 'me', 'mk', 'mt', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 
+                 'sk', 'sl', 'sq', 'sr', 'sv', 'tr', 'zh']
     #languages = ['sq']
     
     # Start information log
@@ -59,9 +59,10 @@ def clean_relations(self):
                                                 in rels_canon):
                     continue
                 else :
-                    info("Warning, relation doesn't match canonical object: %s for %s" % (obj.absolute_url(), 
-                                                        str(relation)))
-                    message += "Warning, relation doesn't match canonical object: " + str(obj.absolute_url()) + "\n"
+                    info("Warning, relation doesn't match canonical object: "
+                         "%s for %s" % (obj.absolute_url(), str(relation)))
+                    message += ("Warning, relation doesn't match canonical "
+                                "object: " + str(obj.absolute_url()) + "\n")
                     message += "for " + str(relation) + "\n"
             
             #Remove relations

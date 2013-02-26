@@ -1081,7 +1081,8 @@ class FixVocabularyTerms(object):
                 if obj._at_creation_flag == True:
                     obj._at_creation_flag = False
                     obj._p_changed = True
-                    logger.info("Creation flag updated: %s" % obj.absolute_url())
+                    logger.info("Creation flag updated: %s" % \
+                                obj.absolute_url())
             except AttributeError:
                 obj._at_creation_flag = False
                 logger.info("Set creation flag: %s" % obj.absolute_url())

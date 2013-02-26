@@ -26,7 +26,8 @@ def updateLocalPolicy(self):
         info('Adding local workflow policy for %s' % brain.getId)
         config = ppw.getWorkflowPolicyConfig(fig_object)
         if not config:
-            fig_object.manage_addProduct['CMFPlacefulWorkflow'].manage_addWorkflowPolicyConfig()
+            fig_object.manage_addProduct['CMFPlacefulWorkflow'].\
+                manage_addWorkflowPolicyConfig()
             config = ppw.getWorkflowPolicyConfig(fig_object)
 
         config.setPolicyBelow('eeafigurefile_image_workflow', False)

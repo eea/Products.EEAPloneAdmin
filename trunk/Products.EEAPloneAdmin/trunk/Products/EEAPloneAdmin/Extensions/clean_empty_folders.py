@@ -56,7 +56,8 @@ def clean_folder(self):
                     obj.aq_parent.manage_delObjects([folder.id])
                 except LinkIntegrityNotificationException:
                     li = ILinkIntegrityInfo(self.REQUEST)
-                    self.REQUEST.environ['link_integrity_info'] = li.encodeConfirmedItems([obj])
+                    self.REQUEST.environ['link_integrity_info'] = \
+                        li.encodeConfirmedItems([obj])
                     forced_delete.append((obj.absolute_url(), refs))
 
                 info(obj.absolute_url())
@@ -69,7 +70,8 @@ def clean_folder(self):
     # End information log
     info("COMPLETE, %s folders deleted" % total)
     print >> out, ("The following linkintegrity conflicts were encountered:")
-    print >> out, ("The conflicting objects have been deleted, but the referencing pages should be updated.")
+    print >> out, ("The conflicting objects have been deleted, "
+                   "but the referencing pages should be updated.")
 
     for failed, referencing in forced_delete:
         print >> out, "This object failed reference integrity: ", failed
