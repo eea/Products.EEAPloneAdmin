@@ -74,43 +74,4 @@
         template="migration.pt"
         />
 
-
-    <!-- cdn pages -->
-    <!--configure zcml:condition="not-have devmode">
-      <browser:page
-          for="*"
-          name="resourceregistries_scripts_view"
-          class=".resources.ScriptsView"
-          permission="zope.Public"
-          layer="eea.design.browser.interfaces.IEEACommonLayer"
-          allowed_interface="collective.cdn.core.browser.interfaces.IScriptsView"
-        />
-
-      <browser:page
-          for="*"
-          name="resourceregistries_styles_view"
-          class=".resources.StylesView"
-          permission="zope.Public"
-          layer="eea.design.browser.interfaces.IEEACommonLayer"
-          allowed_interface="collective.cdn.core.browser.interfaces.IStylesView"
-          />
-      
-      <browser:page
-          for="*"
-          name="resourceregistries_kss_view"
-          class=".resources.KSSView"
-          permission="zope.Public"
-          layer="eea.design.browser.interfaces.IEEACommonLayer"
-          allowed_interface="collective.cdn.core.browser.interfaces.IKSSView"
-          />
-    </configure-->
-
-    <browser:page
-        for="*"
-        name="merge"
-        class=".resources.MergeResources"
-        permission="zope.Public"
-
-        />
-
 </configure>
