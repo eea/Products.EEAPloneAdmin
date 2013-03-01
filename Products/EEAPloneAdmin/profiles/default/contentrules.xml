@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<contentrules>
+    <rule name="rule-5"
+          title="Notify user when geographicalCoverage input is different from location input"
+          description="This rule will display a warning to the user for Data and EEAFigure when the geographicalCoverage field value is different from that of the geotags location field."
+          enabled="True" event="zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+          stop-after="False">
+        <conditions>
+            <condition type="plone.conditions.PortalType">
+                <property name="check_types">
+                    <element>EEAFigure</element>
+                    <element>Data</element>
+                </property>
+            </condition>
+            <condition type="plone.conditions.TalesExpression">
+                <property
+                        name="tales_expression">python:object.getField('geographicCoverage').getAccessor(object)() == ('Dynamic',) and object.getField('location').getAccessor(object)() != ('Dynamic',) or object.getField('location').getAccessor(object)() == ('Dynamic',) and object.getField('geographicCoverage').getAccessor(object)() != ('Dynamic',)</property>
+            </condition>
+        </conditions>
+        <actions>
+            <action type="plone.actions.Notify">
+                <property
+                        name="message">Please fill in the new geo tags field with same coverage as the geographical coverage field.</property>
+                <property name="message_type">error</property>
+            </action>
+        </actions>
+    </rule>
+    <assignment name="rule-5" bubbles="True" enabled="True"
+                location="/SITE/data-and-maps"/>
+</contentrules>
