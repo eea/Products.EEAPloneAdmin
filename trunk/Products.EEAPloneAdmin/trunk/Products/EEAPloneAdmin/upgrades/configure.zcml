@@ -15,4 +15,15 @@
 
   </genericsetup:upgradeSteps>
 
+    <genericsetup:upgradeSteps
+            source="*"
+            destination="6.1"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import modified steps from Products.EEAPloneAdmin profile: contentrules"
+                import_steps="contentrules"
+
+                />
+    </genericsetup:upgradeSteps>
 </configure>
