@@ -3,12 +3,6 @@ Changelog
 
 6.1-dev - (unreleased)
 ----------------------
-* Upgrade step:
-    - Go under site setup -> Add-ons: /www/prefs_install_products_form
-    - Hit Update button for Products.EEAPloneAdmin
-* Feature: added content rule for Data and EEAFigure which warns user when
-  geographicalCoverage is set to dynamic but not on location and vice versa
-  [ichimdav #13985]
 * Bug fix: remove cdn related code that we won't need
   [tiberich #7655]
 
