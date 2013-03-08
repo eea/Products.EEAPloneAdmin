@@ -152,4 +152,13 @@
                   name="migrateGeotagsCountryGroups"
                   class=".migrate.MigrateGeotagsCountryGroups"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateGeographicalCoverageToGeotags"
+                  class=".migrate.MigrateGeographicalCoverageToGeotags"
+                  permission="cmf.ManagePortal" />
+    <browser:page for="*"
+                  name="removeInactivePromotions"
+                  class=".migrate.RemoveInactivePromotions"
+                  permission="cmf.ManagePortal" />
 </configure>

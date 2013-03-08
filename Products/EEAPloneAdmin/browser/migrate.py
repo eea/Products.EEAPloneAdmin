@@ -4,6 +4,7 @@ from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from eea.mediacentre.interfaces import IMediaType
+from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
@@ -23,8 +24,11 @@ import urllib
 import transaction
 import json
 from cStringIO import StringIO
-from zope.interface import directlyProvides, directlyProvidedBy
+from zope.interface import directlyProvides, directlyProvidedBy, noLongerProvides
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
+from plone.i18n.locales.interfaces import ICountryAvailability
+from zope.component import queryUtility
+
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -1229,3 +1233,66 @@ class FixFigureCategoryType(BrowserView):
                     "FigureCategory"
                     % count)
         return "Done"
+
+class RemoveInactivePromotions(object):
+    """ Old promotions might have themes as strings instead of lists
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        query = {
+            'object_provides':
+                'eea.promotion.interfaces.IPromoted'
+        }
+        brains = catalog.searchResults(query)
+        not_migrated = ''
+        for brain in brains:
+            obj = brain.getObject()
+            promo = IPromotion(obj)
+            if not promo.active:
+                #import pdb; pdb.set_trace()
+                noLongerProvides(obj, IPromoted)
+                obj.reindexObject(idxs=['object_provides'])
+        if not_migrated:
+            return 'Some objects were not migrated\n' + not_migrated
+        else:
+            return 'success'
+
+
+class MigrateGeographicalCoverageToGeotags(object):
+    """ Migrate Geographical Coverage to Geotags
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        catalog = getToolByName(self.context, 'portal_catalog')
+        query = {
+            'portal_type':
+                'Data'
+        }
+
+        util = queryUtility(ICountryAvailability)
+        all_countries = util.getCountries()
+        countries_names = []
+        brains = catalog.searchResults(query)
+        differentGeotagsLength = []
+        for brain in brains:
+            len_location = len(brain.location)
+            len_coverage = len(brain.getGeographicCoverage)
+            if len_location < len_coverage:
+                for country in brain.getGeographicCoverage:
+                    countries_names.append(all_countries.get(country)['name'])
+                differentGeotagsLength.append(brain.getURL())
+        if differentGeotagsLength:
+            return 'Some objects were not migrated\n' + ",\n".join(
+                   differentGeotagsLength) + " items " + str(len(
+                differentGeotagsLength))
+        else:
+            return 'success'
