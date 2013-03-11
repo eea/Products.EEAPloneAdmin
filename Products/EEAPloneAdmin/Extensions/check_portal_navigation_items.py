@@ -8,25 +8,25 @@ def check_navigation(self):
     """
 
     catalog = self.portal_catalog
-    message = ""    
-    
+    message = ""
+
     #get list of navigation items, depth 2 from navigation
     data = catalog.unrestrictedSearchResults(
-        portal_type = 'NavigationItem', 
+        portal_type = 'NavigationItem',
         path = {'query': '/www/portal_navigationmanager', 'depth': 2})
-     
+
     for d in data:
         if d.review_state == 'published':
-             obj = d.getObject()
-             obj_url = obj.getUrl()
-             obj_path = obj.getPhysicalPath()
-             if ("default" not in obj.getId()) and \
-                ("http" in obj_url) and ("contacts" not in obj_path) and \
-                ("products" not in obj_path) and ("eeahome" not in obj_path):
-                 message += str('/'.join(obj_path)) + " " + obj_url + " " \
-                            + obj_url.replace('http://www.eea.europa.eu','') \
-                            + "\n"
-                 obj.setUrl(obj_url.replace('http://www.eea.europa.eu','')) 
+            obj = d.getObject()
+            obj_url = obj.getUrl()
+            obj_path = obj.getPhysicalPath()
+            if ("default" not in obj.getId()) and \
+                   ("http" in obj_url) and ("contacts" not in obj_path) and \
+                   ("products" not in obj_path) and ("eeahome" not in obj_path):
+                message += str('/'.join(obj_path)) + " " + obj_url + " " \
+                           + obj_url.replace('http://www.eea.europa.eu','') \
+                           + "\n"
+                obj.setUrl(obj_url.replace('http://www.eea.europa.eu',''))
 
     return message
     
