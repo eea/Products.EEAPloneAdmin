@@ -1280,15 +1280,19 @@ class MigrateGeographicalCoverageToGeotags(object):
 
         util = queryUtility(ICountryAvailability)
         all_countries = util.getCountries()
-        countries_names = []
         brains = catalog.searchResults(query)
         differentGeotagsLength = []
         for brain in brains:
-            len_location = len(brain.location)
-            len_coverage = len(brain.getGeographicCoverage)
+            countries_names = set()
+            location = brain.location
+            coverage = brain.getGeographicCoverage
+            len_location = len(location)
+            len_coverage = len(coverage)
             if len_location < len_coverage:
-                for country in brain.getGeographicCoverage:
-                    countries_names.append(all_countries.get(country)['name'])
+                for country in coverage:
+                    countries_names.add(all_countries.get(country)['name'])
+                #extra_countries = countries_names.difference(location)
+                #for country in extra_countries:
                 differentGeotagsLength.append(brain.getURL())
         if differentGeotagsLength:
             return 'Some objects were not migrated\n' + ",\n".join(
