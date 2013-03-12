@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Bug fix: remove cdn related code that we won't need
   [tiberich #7655]
+* Optimized CSS resources to reduce the number of requested generated
+  [ghicaale refs #14067]
 
 6.0 - (2013-02-25)
 ------------------
