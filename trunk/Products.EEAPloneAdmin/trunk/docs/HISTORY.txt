@@ -9,6 +9,17 @@ Changelog
   [ghicaale refs #14067]
 * Optimized KSS resources to reduce the number of requested generated
   [ghicaale refs #14067]
+* Removed all title attributes from CSS resources under portal_css to avoid
+  being interpreted as atlernative stylesheets
+  [ghicaale refs #14067]
+* Pre-upgrade step:
+    - go under /portal_setup/manage_importSteps
+    - select "EEA Plone Admin: CSS/JS reorder" profile
+    - select "Stylesheet registry"
+    - make sure "Include dependencies?" is deselected
+    - press "Import selected steps"
+    - repeat the steps above for "KSS setup / mimetype"
+    - [ghicaale refs #14067]
 
 6.0 - (2013-02-25)
 ------------------
