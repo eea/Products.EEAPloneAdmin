@@ -7,6 +7,8 @@ Changelog
   [tiberich #7655]
 * Optimized CSS resources to reduce the number of requested generated
   [ghicaale refs #14067]
+* Optimized KSS resources to reduce the number of requested generated
+  [ghicaale refs #14067]
 
 6.0 - (2013-02-25)
 ------------------
