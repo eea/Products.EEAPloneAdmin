@@ -29,6 +29,10 @@ from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.component import queryUtility
 
+from Products.EEAPloneAdmin.browser.migration_helper_data import countryDicts
+from zope.annotation import IAnnotations
+
+
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
@@ -1282,6 +1286,8 @@ class MigrateGeographicalCoverageToGeotags(object):
         all_countries = util.getCountries()
         brains = catalog.searchResults(query)
         differentGeotagsLength = []
+        country_dicts = countryDicts()
+        count = 0
         for brain in brains:
             countries_names = set()
             location = brain.location
@@ -1291,8 +1297,24 @@ class MigrateGeographicalCoverageToGeotags(object):
             if len_location < len_coverage:
                 for country in coverage:
                     countries_names.add(all_countries.get(country)['name'])
-                #extra_countries = countries_names.difference(location)
-                #for country in extra_countries:
+                extra_countries = countries_names.difference(location)
+                obj = brain.getObject()
+                geotags = json.loads(brain.geotags)
+                for country in extra_countries:
+                    features = geotags['features']
+                    features.extend(country_dicts.get(country, ''))
+                location = obj.getField('location')
+                location.set(obj, geotags)
+                try:
+                    obj.reindexObject(idxs=['geotags', 'location'])
+                except Exception:
+                    logger.error("%s --> couldn't be reindexed",
+                                 obj.absolute_url(1))
+                    continue
+                logger.info('%s' % obj.absolute_url(1))
+                count += 1
+                if count % 50 == 0:
+                    transaction.savepoint(optimistic=True)
                 differentGeotagsLength.append(brain.getURL())
         if differentGeotagsLength:
             return 'Some objects were not migrated\n' + ",\n".join(
