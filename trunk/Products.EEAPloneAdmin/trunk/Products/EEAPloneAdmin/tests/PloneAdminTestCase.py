@@ -23,6 +23,7 @@ PROFILES = [
         'valentine.linguaflow:default',
         ]
 
+PloneTestCase.installProduct('ATVocabularyManager')
 #PloneTestCase.installProduct('valentine.linguaflow')
 #PloneTestCase.installPackage('valentine.linguaflow')
 
