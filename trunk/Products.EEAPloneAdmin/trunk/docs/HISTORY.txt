@@ -13,11 +13,13 @@ Changelog
   being interpreted as atlernative stylesheets
   [ghicaale refs #14067]
 * Pre-upgrade step:
+    - this step should be done as first manual upgrade step by ghicaale
     - go under /portal_setup/manage_importSteps
     - select "EEA Plone Admin: CSS/JS reorder" profile
     - select "Stylesheet registry"
     - make sure "Include dependencies?" is deselected
     - press "Import selected steps"
+    - remove title property from all CSS that have render type equal to link
     - repeat the steps above for "KSS setup / mimetype"
     - [ghicaale refs #14067]
 
