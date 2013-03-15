@@ -3,6 +3,8 @@ Changelog
 
 6.1-dev - (unreleased)
 ----------------------
+* Bug fix: specifically install ATVocabularyManager in tests setup
+  [tiberich]
 * Bug fix: remove cdn related code that we won't need
   [tiberich #7655]
 * Optimized CSS resources to reduce the number of requested generated
