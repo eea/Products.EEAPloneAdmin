@@ -1461,7 +1461,7 @@ def countryDicts():
                                       'name': '798544',
                                       'tags': u'independent political entity',
                                       'title': u'Poland'},
-                               'type': 'Feature'},
+                               'type': 'Feature'}
     countriesDict['Romania'] = {'bbox': [],
                                 'geometry': {'coordinates': [46, 25],
                                              'type': 'Point'},
@@ -1574,6 +1574,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Czechia'},
                                 'type': 'Feature'}
+    countriesDict['Czech Republic'] = countriesDict['Czechia']
     countriesDict['Italy'] = {'bbox': [],
                               'geometry': {
                               'coordinates': [42.8333333, 12.8333333],
@@ -1825,4 +1826,261 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Slovenia'},
                                  'type': 'Feature'}
+    countriesDict['Ukraine'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [49, 32]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [49, 32],
+                                        'name': '690791',
+                                        'title': u'Ukraine',
+                                        'country': u'UA',
+                                        'description': u'Ukraine',
+                                        'tags': u'independent political entity',
+                                        'adminCode1': u'00',
+                                        'adminName1': u''}}
+
+    countriesDict['Russia'] = {
+                      'geometry': {'type': 'Point',
+                                   'coordinates': [60, 100]},
+                      'type': 'Feature', 'bbox': [],
+                      'properties': {'center': [60, 100],
+                                     'name': '2017370',
+                                     'title': u'Russia',
+                                     'country': u'RU',
+                                     'description': u'Russia',
+                                     'tags': u'independent political entity',
+                                     'adminCode1': u'00',
+                                     'adminName1': u''}}
+
+    countriesDict['Russian Federation'] = countriesDict['Russia']
+    countriesDict['Albania'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [41, 20]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [41, 20],
+                                        'name': '783754',
+                                        'title': u'Albania',
+                                        'country': u'AL',
+                                        'description': u'Albania',
+                                        'tags': u'independent political entity',
+                                        'adminCode1': u'00',
+                                        'adminName1': u''}}
+    countriesDict['Belarus'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [53, 28]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [53, 28],
+                                        'name': '630336',
+                                        'title': u'Belarus',
+                                        'country': u'BY',
+                                        'description': u'Belarus',
+                                        'tags': u'independent political entity',
+                                        'adminCode1': u'00',
+                                        'adminName1': u''}}
+    countriesDict['Bosnia and Herzegovina'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [44.25,
+                                                              17.8333333]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [44.25, 17.8333333],
+                                       'name': '3277605',
+                                       'title': u'Bosnia and Herzegovina',
+                                       'country': u'BA',
+                                       'description': u'Bosnia and Herzegovina',
+                                       'tags': u'independent political entity',
+                                       'adminCode1': u'00',
+                                       'adminName1': u''}}
+    countriesDict['Croatia'] = {'geometry': {'type': 'Point',
+                                       'coordinates': [45.1666667, 15.5]},
+                          'type': 'Feature', 'bbox': [],
+                          'properties': {'center': [45.1666667, 15.5],
+                                     'name': '3202326', 'title': u'Croatia',
+                                     'country': u'HR',
+                                     'description': u'Croatia',
+                                     'tags': u'independent political entity',
+                                     'adminCode1': u'00',
+                                     'adminName1': u''}}
+
+    countriesDict['Kosovo'] = {
+                                 'geometry': {'type': 'Point', 'coordinates': [
+                                     42.583333000000003, 21]},
+                                 'type': 'Feature', 'bbox': [], 'properties': {
+    'center': [42.583333000000003, 21], 'name': '831053', 'title': u'Kosovo',
+    'country': u'XK', 'description': u'Kosovo',
+    'tags': u'independent political entity', 'adminCode1': u'00',
+    'adminName1': u''}}
+    countriesDict['Luxembourg'] = {'geometry': {'type': 'Point', 'coordinates':
+                                                                        [49.75,
+                                                        6.1666667000000004]},
+                          'type': 'Feature', 'bbox': [],
+                          'properties': {'center': [49.75, 6.1666667000000004],
+                                     'name': '2960313',
+                                     'title': u'Luxembourg',
+                                     'country': u'LU',
+                                     'description': u'Luxembourg',
+                                     'tags': u'independent political entity',
+                                     'adminCode1': u'00',
+                                     'adminName1': u''}}
+
+    countriesDict['Macedonia'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [41.8333333, 22]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [41.8333333, 22],
+                                        'name': '718075',
+                                        'title': u'Macedonia',
+                                        'country': u'MK',
+                                        'description': u'Macedonia',
+                                        'tags': u'independent political entity',
+                                        'adminCode1': u'00',
+                                        'adminName1': u''}}
+    countriesDict['Macedonia the former Yugoslavian Republic of'] = \
+                                                countriesDict['Macedonia']
+    countriesDict['Moldova'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [47, 29]},
+                                 'type': 'Feature', 'bbox': [],
+                                 'properties': {'center': [47, 29],
+                                        'name': '617790',
+                                        'title': u'Moldova',
+                                        'country': u'MD',
+                                        'description': u'Moldova',
+                                        'tags': u'independent political entity',
+                                        'adminCode1': u'00',
+                                        'adminName1': u''}}
+    countriesDict['Moldova Republic of'] = countriesDict['Moldova']
+    countriesDict['Monaco'] = {
+                                 'geometry': {'type': 'Point', 'coordinates': [
+                                     43.731414013768998, 7.4190330505371103]},
+                                 'type': 'Feature', 'bbox': [], 'properties': {
+    'center': [43.731414013768998, 7.4190330505371103], 'name': '2993457',
+    'title': u'Monaco', 'country': u'MC', 'description': u'Monaco',
+    'tags': u'independent political entity', 'adminCode1': u'00',
+    'adminName1': u''}}
+    countriesDict['Montenegro'] = {
+                                 'geometry': {'type': 'Point',
+                                              'coordinates': [42.5,
+                                                          19.300000000000001]},
+                                 'type': 'Feature', 'bbox': [], 'properties': {
+    'center': [42.5, 19.300000000000001], 'name': '3194884',
+    'title': u'Montenegro', 'country': u'ME', 'description': u'Montenegro',
+    'tags': u'independent political entity', 'adminCode1': u'00',
+    'adminName1': u''}}
+    countriesDict['Norway'] = {'geometry': {'type': 'Point',
+                                                    'coordinates': [62,
+                                                                    10]},
+                                       'type': 'Feature', 'bbox': [],
+                                       'properties': {
+                                       'center': [62, 10],
+                                       'name': '3144096',
+                                       'title': u'Norway',
+                                       'country': u'NO',
+                                       'description': u'Norway',
+                                       'tags': u'independent political entity',
+                                       'adminCode1': u'00',
+                                       'adminName1': u''}}
+
+    countriesDict['San Marino'] = {
+                                 'geometry': {'type': 'Point', 'coordinates': [
+                                     43.936700000000002, 12.446300000000001]},
+                                 'type': 'Feature', 'bbox': [], 'properties': {
+    'center': [43.936700000000002, 12.446300000000001], 'name': '3168068',
+    'title': u'San Marino', 'country': u'SM', 'description': u'San Marino',
+    'tags': u'independent political entity', 'adminCode1': u'00',
+    'adminName1': u''}},
+    countriesDict['Serbia'] = {
+                                 'geometry': {'type': 'Point', 'coordinates': [
+                                     44.818924690689002, 20.459976196289102]},
+                                 'type': 'Feature', 'bbox': [], 'properties': {
+    'center': [44.818924690689002, 20.459976196289102], 'name': '6290252',
+    'title': u'Serbia', 'country': u'RS', 'description': u'Serbia',
+    'tags': u'independent political entity', 'adminCode1': u'00',
+    'adminName1': u''}}
+    countriesDict['Turkey'] = {u'bbox': [],
+                       u'geometry': {
+                           u'coordinates': [39.059012000000003,
+                                            34.911546000000001],
+                           u'type': u'Point'},
+                       u'properties': {u'adminCode1': u'00',
+                                       u'adminName1': u'',
+                                       u'center': [39.059012000000003,
+                                                   34.911546000000001],
+                                       u'country': u'TR',
+                                       u'description': u'Turkey',
+                                       u'name': u'298795',
+                                       u'tags': u'independent political entity',
+                                       u'title': u'Turkey'},
+                        u'type': u'Feature'}
+    countriesDict['Kazakhstan'] = {u'bbox': [],
+                  u'geometry': {u'coordinates': [48, 68], u'type': u'Point'},
+                  u'properties': {u'adminCode1': u'00',
+                                  u'adminName1': u'',
+                                  u'center': [48, 68],
+                                  u'country': u'KZ',
+                                  u'description': u'Kazakhstan',
+                                  u'name': u'1522867',
+                                  u'tags': u'independent political entity',
+                                  u'title': u'Kazakhstan'},
+                  u'type': u'Feature'}
+    countriesDict['Georgia'] =  {u'bbox': [],
+                            u'geometry': {u'coordinates': [41.999980999999998,
+                                                           43.499904999999998],
+                                                            u'type': u'Point'},
+          u'properties': {u'adminCode1': u'00',
+                          u'adminName1': u'',
+                          u'center': [41.999980999999998, 43.499904999999998],
+                          u'country': u'GE',
+                          u'description': u'Georgia',
+                          u'name': u'614540',
+                          u'tags': u'independent political entity',
+                          u'title': u'Georgia'},
+          u'type': u'Feature'}
+    countriesDict['Azerbaijan'] = {u'bbox': [38.391990100000001,
+                                             44.764683099999957,
+                                             41.912340200000003,
+                                             50.368065699999988],
+      u'geometry': {u'coordinates': [[38.391990100000001, 44.764683099999957],
+                                     [38.391990100000001, 50.368065699999988],
+                                     [41.912340200000003, 50.368065699999988],
+                                     [41.912340200000003, 44.764683099999957]],
+                u'type': u'Polygon'},
+          u'properties': {u'center': [40.143104999999998, 47.576927000000069],
+                  u'description': u'Azerbaijan',
+                  u'name': u'',
+                  u'tags': [u'country', u'political'],
+                  u'title': u'Azerbaijan'},
+          u'type': u'Feature'}
+    countriesDict['Armenia'] =  {u'bbox': [],
+                  u'geometry': {u'coordinates': [40, 45], u'type': u'Point'},
+                  u'properties': {u'adminCode1': u'00',
+                                  u'adminName1': u'',
+                                  u'center': [40, 45],
+                                  u'country': u'AM',
+                                  u'description': u'Armenia',
+                                  u'name': u'174982',
+                                  u'tags': u'independent political entity',
+                                  u'title': u'Armenia'},
+                  u'type': u'Feature'}
+    countriesDict['Andorra'] = {u'bbox': [],
+                  u'geometry': {u'coordinates': [42.5, 1.5], u'type': u'Point'},
+                  u'properties': {u'adminCode1': u'00',
+                                  u'adminName1': u'',
+                                  u'center': [42.5, 1.5],
+                                  u'country': u'AD',
+                                  u'description': u'Andorra',
+                                  u'name': u'3041565',
+                                  u'tags': u'independent political entity',
+                                  u'title': u'Andorra'},
+                  u'type': u'Feature'}
+    countriesDict['Albania'] = {u'bbox': [],
+                  u'geometry': {u'coordinates': [41, 20], u'type': u'Point'},
+                  u'properties': {u'adminCode1': u'00',
+                                  u'adminName1': u'',
+                                  u'center': [41, 20],
+                                  u'country': u'AL',
+                                  u'description': u'Albania',
+                                  u'name': u'783754',
+                                  u'tags': u'independent political entity',
+                                  u'title': u'Albania'},
+                  u'type': u'Feature'}
     return countriesDict
