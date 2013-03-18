@@ -24,7 +24,8 @@ import urllib
 import transaction
 import json
 from cStringIO import StringIO
-from zope.interface import directlyProvides, directlyProvidedBy, noLongerProvides
+from zope.interface import directlyProvides, directlyProvidedBy, \
+                                             noLongerProvides
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.component import queryUtility
@@ -1272,8 +1273,7 @@ class MigrateGeographicalCoverageToGeotags(object):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         query = {
-            'portal_type':
-                'Data'
+            'portal_type': ['Data', 'EEAFigure']
         }
 
         util = queryUtility(ICountryAvailability)
@@ -1293,10 +1293,18 @@ class MigrateGeographicalCoverageToGeotags(object):
                     countries_names.add(all_countries.get(country)['name'])
                 extra_countries = countries_names.difference(location)
                 obj = brain.getObject()
-                geotags = json.loads(brain.geotags)
+                if brain.geotags and brain.geotags != "{ }":
+                    geotags = json.loads(brain.geotags)
+                else:
+                    geotags = {'type': "FeatureCollection", 'features': []}
+                features = geotags['features']
                 for country in extra_countries:
-                    features = geotags['features']
-                    features.extend(country_dicts.get(country, ''))
+                    res = country_dicts.get(country, '')
+                    if res:
+                        features.append(res)
+                    else:
+                        logger.warn('No match for country %s' % country)
+                        continue
                 location = obj.getField('location')
                 location.set(obj, geotags)
                 try:
@@ -1311,8 +1319,7 @@ class MigrateGeographicalCoverageToGeotags(object):
                     transaction.savepoint(optimistic=True)
                 differentGeotagsLength.append(brain.getURL())
         if differentGeotagsLength:
-            return 'Some objects were not migrated\n' + ",\n".join(
-                   differentGeotagsLength) + " items " + str(len(
-                differentGeotagsLength))
+            return 'These %d objects were migrated\n %s' % (len(
+                differentGeotagsLength), ",\n".join(differentGeotagsLength))
         else:
-            return 'success'
+            return 'No objects were migrated'
