@@ -87,7 +87,7 @@
  <object name="imaging_properties" meta_type="Plone Property Sheet">
   <property name="title">Image handling properties</property>
   <property name="allowed_sizes" type="lines">
-   <element value="xlarge 633:356"/>
+   <element value="xlarge 950:950"/>
    <element value="wide 325:183"/>
    <element value="large 768:768"/>
    <element value="preview 400:400"/>
@@ -104,11 +104,14 @@
   <property name="views_and_templates" type="lines">
    <element value="example.jqueryui"/>
   </property>
+  <property name="example_activated" type="boolean">False</property>
  </object>
  <object name="linguaplone_properties" meta_type="Plone Property Sheet">
   <property name="title">LinguaPlone properties</property>
   <property name="hide_right_column_on_translate_form"
      type="boolean">True</property>
+  <property name="hide_left_column_on_translate_form"
+     type="boolean">False</property>
  </object>
  <object name="navtree_properties" meta_type="Plone Property Sheet">
   <property name="title">NavigationTree properties</property>
@@ -204,7 +207,6 @@
    <element value="HelpCenterTutorialPage"/>
    <element value="Highlight"/>
    <element value="Image"/>
-   <element value="ImageFS"/>
    <element value="IndicatorFactSheet"/>
    <element value="Link"/>
    <element value="MethodologyReference"/>
@@ -229,6 +231,7 @@
    <element value="TemplateCacheRule"/>
    <element value="VdexVocabulary"/>
    <element value="VocabularyLibrary"/>
+   <element value="DepictionTool"/>
   </property>
   <property name="enable_wf_state_filtering" type="boolean">False</property>
   <property name="wf_states_to_show" type="lines">
@@ -360,11 +363,12 @@
   <property name="ext_editor" type="boolean">True</property>
   <property name="available_editors" type="lines">
    <element value="None"/>
-   <element value="Kupu"/>
+   <element value="TinyMCE"/>
   </property>
   <property name="allowRolesToAddKeywords" type="lines">
    <element value="CommonEditor"/>
    <element value="Manager"/>
+   <element value="Site Administrator"/>
   </property>
   <property name="auth_cookie_length" type="int">0</property>
   <property name="calendar_starting_year" type="int">1970</property>
@@ -423,7 +427,7 @@
    <element value="NewsletterBTree"/>
    <element value="SimpleVocabulary"/>
   </property>
-  <property name="visible_ids" type="boolean">False</property>
+  <property name="visible_ids" type="boolean">True</property>
   <property name="exposeDCMetaTags" type="boolean">False</property>
   <property name="types_not_searched" type="lines">
    <element value="ATBooleanCriterion"/>
@@ -466,11 +470,13 @@
    <element value="HeaderSetFolder"/>
    <element value="MacroCacheRule"/>
    <element value="MacroFolder"/>
+   <element value="DepictionTool"/>
   </property>
   <property name="disable_folder_sections" type="boolean">False</property>
   <property name="typesUseViewActionInListings" type="lines">
    <element value="Image"/>
    <element value="File"/>
+   <element value="CloudVideo"/>
   </property>
   <property name="verify_login_name" type="boolean">True</property>
   <property name="enable_livesearch" type="boolean">True</property>
@@ -483,7 +489,9 @@
    <element value="FlashFile"/>
    <element value="Highlight"/>
   </property>
-  <property name="use_folder_contents" type="lines"/>
+  <property name="use_folder_contents" type="lines">
+   <element value="DepictionTool"/>
+  </property>
   <property name="many_users" type="boolean">True</property>
   <property name="refwidget_startupdirectories" type="lines"/>
   <property name="default_contenttype" type="string">text/html</property>
@@ -504,8 +512,7 @@
      type="string">false</property>
   <property name="many_groups" type="boolean">False</property>
   <property name="number_of_days_to_keep" type="int">7</property>
-  <property name="webstats_js"
-     type="string">&lt;!-- ClickTale Bottom part --&gt;&lt;div id="ClickTaleDiv" style="display: none;"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;if(document.location.protocol!='https:')  document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRc9.js'%20type='text/javascript'%3E%3C/script%3E"));&lt;/script&gt;&lt;script type="text/javascript"&gt;if(typeof ClickTale=='function') ClickTale(7137,0.072,"www09");&lt;/script&gt;&lt;!-- ClickTale end of Bottom part --&gt;</property>
+  <property name="webstats_js" type="string"></property>
   <property name="icon_visibility" type="string">enabled</property>
   <property name="disable_nonfolderish_sections"
      type="boolean">False</property>
@@ -554,27 +561,6 @@
   <property name="allow_external_login_sites" type="lines"/>
   <property name="external_login_url" type="string"></property>
   <property name="external_logout_url" type="string"></property>
-  <property name="watermark_positions" type="lines">
-   <element value="Disabled"/>
-   <element value="Top Left"/>
-   <element value="Top Right"/>
-   <element value="Bottom Left"/>
-   <element value="Bottom Right"/>
-  </property>
-  <property name="QRCode_Position" select_variable="watermark_positions"
-     type="selection">Bottom Left</property>
-  <property name="QRCode_Horizontal_Space_For_PNG_Export"
-     type="int">0</property>
-  <property name="QRCode_Vertical_Space_For_PNG_Export"
-     type="int">0</property>
-  <property name="Watermark_Image"
-     type="string">http://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
-  <property name="Watermark_Position" select_variable="watermark_positions"
-     type="selection">Bottom Right</property>
-  <property name="Watermark_Horizontal_Space_For_PNG_Export"
-     type="int">10</property>
-  <property name="Watermark_Vertical_Space_For_PNG_Export"
-     type="int">0</property>
   <property name="quick_event_anonymous_creator"
      type="string">anonymous</property>
   <property name="metatypes_showpubdate" type="lines">
@@ -604,6 +590,8 @@
    <element value="Data"/>
    <element value="EEAFigure"/>
   </property>
+  <property name="clean_epub_file_names" type="boolean">True</property>
+  <property name="memcached_defaultLifetime" type="int">86400</property>
  </object>
  <object name="soer_properties" meta_type="Plone Property Sheet">
   <property name="title">SOER channel properties</property>
@@ -620,8 +608,143 @@
  <object name="template_service" meta_type="Plone Property Sheet">
   <property name="title">Template service</property>
   <property name="invalidate_cache" type="lines"/>
-  <property name="template_urls" type="lines"/>
-  <property name="external_urls" type="lines"/>
+  <property name="template_urls" type="lines">
+   <element value="/templates/v2/getRequiredHead"/>
+   <element value="/templates/v2/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/getHeader"/>
+   <element value="/templates/v2/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/getFooter"/>
+   <element value="/templates/v2/bg/getRequiredHead"/>
+   <element value="/templates/v2/bg/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/bg/getHeader"/>
+   <element value="/templates/v2/bg/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/bg/getFooter"/>
+   <element value="/templates/v2/cs/getRequiredHead"/>
+   <element value="/templates/v2/cs/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/cs/getHeader"/>
+   <element value="/templates/v2/cs/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/cs/getFooter"/>
+   <element value="/templates/v2/da/getRequiredHead"/>
+   <element value="/templates/v2/da/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/da/getHeader"/>
+   <element value="/templates/v2/da/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/da/getFooter"/>
+   <element value="/templates/v2/nl/getRequiredHead"/>
+   <element value="/templates/v2/nl/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/nl/getHeader"/>
+   <element value="/templates/v2/nl/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/nl/getFooter"/>
+   <element value="/templates/v2/el/getRequiredHead"/>
+   <element value="/templates/v2/el/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/el/getHeader"/>
+   <element value="/templates/v2/el/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/el/getFooter"/>
+   <element value="/templates/v2/en/getRequiredHead"/>
+   <element value="/templates/v2/en/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/en/getHeader"/>
+   <element value="/templates/v2/en/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/en/getFooter"/>
+   <element value="/templates/v2/et/getRequiredHead"/>
+   <element value="/templates/v2/et/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/et/getHeader"/>
+   <element value="/templates/v2/et/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/et/getFooter"/>
+   <element value="/templates/v2/fi/getRequiredHead"/>
+   <element value="/templates/v2/fi/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/fi/getHeader"/>
+   <element value="/templates/v2/fi/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/fi/getFooter"/>
+   <element value="/templates/v2/fr/getRequiredHead"/>
+   <element value="/templates/v2/fr/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/fr/getHeader"/>
+   <element value="/templates/v2/fr/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/fr/getFooter"/>
+   <element value="/templates/v2/de/getRequiredHead"/>
+   <element value="/templates/v2/de/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/de/getHeader"/>
+   <element value="/templates/v2/de/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/de/getFooter"/>
+   <element value="/templates/v2/hu/getRequiredHead"/>
+   <element value="/templates/v2/hu/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/hu/getHeader"/>
+   <element value="/templates/v2/hu/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/hu/getFooter"/>
+   <element value="/templates/v2/is/getRequiredHead"/>
+   <element value="/templates/v2/is/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/is/getHeader"/>
+   <element value="/templates/v2/is/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/is/getFooter"/>
+   <element value="/templates/v2/it/getRequiredHead"/>
+   <element value="/templates/v2/it/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/it/getHeader"/>
+   <element value="/templates/v2/it/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/it/getFooter"/>
+   <element value="/templates/v2/lv/getRequiredHead"/>
+   <element value="/templates/v2/lv/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/lv/getHeader"/>
+   <element value="/templates/v2/lv/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/lv/getFooter"/>
+   <element value="/templates/v2/lt/getRequiredHead"/>
+   <element value="/templates/v2/lt/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/lt/getHeader"/>
+   <element value="/templates/v2/lt/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/lt/getFooter"/>
+   <element value="/templates/v2/mt/getRequiredHead"/>
+   <element value="/templates/v2/mt/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/mt/getHeader"/>
+   <element value="/templates/v2/mt/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/mt/getFooter"/>
+   <element value="/templates/v2/no/getRequiredHead"/>
+   <element value="/templates/v2/no/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/no/getHeader"/>
+   <element value="/templates/v2/no/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/no/getFooter"/>
+   <element value="/templates/v2/pl/getRequiredHead"/>
+   <element value="/templates/v2/pl/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/pl/getHeader"/>
+   <element value="/templates/v2/pl/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/pl/getFooter"/>
+   <element value="/templates/v2/pt/getRequiredHead"/>
+   <element value="/templates/v2/pt/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/pt/getHeader"/>
+   <element value="/templates/v2/pt/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/pt/getFooter"/>
+   <element value="/templates/v2/ro/getRequiredHead"/>
+   <element value="/templates/v2/ro/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/ro/getHeader"/>
+   <element value="/templates/v2/ro/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/ro/getFooter"/>
+   <element value="/templates/v2/sk/getRequiredHead"/>
+   <element value="/templates/v2/sk/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/sk/getHeader"/>
+   <element value="/templates/v2/sk/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/sk/getFooter"/>
+   <element value="/templates/v2/sl/getRequiredHead"/>
+   <element value="/templates/v2/sl/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/sl/getHeader"/>
+   <element value="/templates/v2/sl/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/sl/getFooter"/>
+   <element value="/templates/v2/es/getRequiredHead"/>
+   <element value="/templates/v2/es/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/es/getHeader"/>
+   <element value="/templates/v2/es/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/es/getFooter"/>
+   <element value="/templates/v2/sv/getRequiredHead"/>
+   <element value="/templates/v2/sv/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/sv/getHeader"/>
+   <element value="/templates/v2/sv/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/sv/getFooter"/>
+   <element value="/templates/v2/tr/getRequiredHead"/>
+   <element value="/templates/v2/tr/getRequiredHead?jsdisable='all'"/>
+   <element value="/templates/v2/tr/getHeader"/>
+   <element value="/templates/v2/tr/getHeader?jsdisable='all'"/>
+   <element value="/templates/v2/tr/getFooter"/>
+  </property>
+  <property name="external_urls" type="lines">
+   <element value="http://community.eea.europa.eu/invalidateCache"/>
+   <element
+      value="http://glossary.eea.europa.eu/templates_client/invalidate_cache"/>
+  </property>
  </object>
  <object name="workflow_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA workflow properties</property>
@@ -660,6 +783,7 @@
   <property name="quickevent_webqa" type="lines">
    <element value="marie.jaegly@eea.europa.eu"/>
    <element value="antonio.de.marinis@eea.europa.eu"/>
+   <element value="nicole.kobosil@eea.europa.eu"/>
   </property>
   <property name="default_owner" type="lines">
    <element value="antonio.de.marinis@eea.europa.eu"/>

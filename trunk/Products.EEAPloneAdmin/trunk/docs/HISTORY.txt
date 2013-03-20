@@ -3,6 +3,8 @@ Changelog
 
 6.2-dev - (unreleased)
 ----------------------
+* Bug fix: updated propertiestool.xml in optimize profile for the template service
+  [szabozo0 refs #14189]
 
 6.1 - (2013-03-15)
 ------------------
