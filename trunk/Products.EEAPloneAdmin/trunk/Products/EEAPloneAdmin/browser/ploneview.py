@@ -12,6 +12,11 @@ from plone.memoize.view import memoize
 from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 from zope.interface import implements, Interface
 
+from AccessControl.SecurityManagement import _managers
+import logging
+logger = logging.getLogger('ploneadmin')
+import thread
+
 class ObjectTitle(object):
     """ Object title
     """
@@ -260,5 +265,20 @@ class PortalState(BasePortalState):
         #for action in self._data['actions']['site_actions']:
             #action['url'] = action['url'].replace('LOCAL_SITE',
                                                       #self._data['local_site'])
-
         return local_site
+
+    def showSecurityUser(self):
+        """ Method to display active member names for current thread and other
+        threads or saved managers found in AccessControl
+        in order to test add portal_state/showSecurityUser call to main_template
+        """
+        logger.info('called showSecurityUser')
+        logger.info('There are %d ammount of managers' % len(_managers))
+        keys = _managers.keys()
+        for item in keys:
+            logger.info('For manager %d this user is active %s' %
+                   (item, _managers[item]._context.user.getUserName()))
+        logger.info('Active user for current thread %d is  %s' % ( 
+            thread.get_ident(),  _managers[thread.get_ident()]
+                                            ._context.user.getUserName()))
+        return True

@@ -3,6 +3,9 @@ Changelog
 
 6.2-dev - (unreleased)
 ----------------------
+* Feature: added script to show current user returned by security for the given
+  context
+  [ichimdav #14182]
 * Bug fix: updated propertiestool.xml in optimize profile for the template service
   [szabozo0 refs #14189]
 
