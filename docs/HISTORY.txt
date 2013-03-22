@@ -3,6 +3,14 @@ Changelog
 
 6.2-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - On www8 through tunnel run /www/@@migrateGeographicalCoverageToGeotags
+    to migrate geographicalCoverage to geotags for Data and EEAFigure.
+    - This will take at least 5 minutes since there are 3800+ items touched
+    in the migration
+    - Save output for future reference since it's logging some country names
+    which will not be converted
+    - [ichimdav refs #14182]
 * Feature: added script to show current user returned by security for the given
   context
   [ichimdav #14182]
