@@ -1987,7 +1987,7 @@ def countryDicts():
     'center': [43.936700000000002, 12.446300000000001], 'name': '3168068',
     'title': u'San Marino', 'country': u'SM', 'description': u'San Marino',
     'tags': u'independent political entity', 'adminCode1': u'00',
-    'adminName1': u''}},
+    'adminName1': u''}}
     countriesDict['Serbia'] = {
                                  'geometry': {'type': 'Point', 'coordinates': [
                                      44.818924690689002, 20.459976196289102]},
@@ -2050,7 +2050,7 @@ def countryDicts():
                   u'tags': [u'country', u'political'],
                   u'title': u'Azerbaijan'},
           u'type': u'Feature'}
-    countriesDict['Armenia'] =  {u'bbox': [],
+    countriesDict['Armenia'] = {u'bbox': [],
                   u'geometry': {u'coordinates': [40, 45], u'type': u'Point'},
                   u'properties': {u'adminCode1': u'00',
                                   u'adminName1': u'',
