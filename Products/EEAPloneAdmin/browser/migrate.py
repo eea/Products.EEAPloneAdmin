@@ -35,7 +35,7 @@ from Products.EEAPloneAdmin.browser.migration_helper_data import \
 
 
 
-logger = logging.getLogger("Products.EEAPloneAdmin")
+logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
 
@@ -1252,7 +1252,6 @@ class RemoveInactivePromotions(object):
             obj = brain.getObject()
             promo = IPromotion(obj)
             if not promo.active:
-                #import pdb; pdb.set_trace()
                 noLongerProvides(obj, IPromoted)
                 obj.reindexObject(idxs=['object_provides'])
         if not_migrated:
@@ -1275,22 +1274,38 @@ class MigrateGeographicalCoverageToGeotags(object):
         query = {
             'portal_type': ['Data', 'EEAFigure']
         }
+        logger = logging.getLogger("GeographicalCoverageToGeotags")
 
         util = queryUtility(ICountryAvailability)
         all_countries = util.getCountries()
         brains = catalog.searchResults(query)
         differentGeotagsLength = []
         country_dicts = countryDicts()
+        missing_countries_message = set()
+        non_matching_countries_message = set()
         count = 0
         for brain in brains:
+            brain_url = brain.getURL()
             countries_names = set()
             location = brain.location
             coverage = brain.getGeographicCoverage
             len_location = len(location)
             len_coverage = len(coverage)
+            missing_countries = []
+            non_matching_countries = []
             if len_location < len_coverage:
                 for country in coverage:
-                    countries_names.add(all_countries.get(country)['name'])
+                    try:
+                        countries_names.add(all_countries.get(country)['name'])
+                    except Exception:
+                        missing_countries.append(country)
+                    continue
+                if missing_countries:
+                    missing_countries_message.add("For %s --> %s countries "
+                                                  "DO NOT EXIST" % (
+                        brain_url, missing_countries
+                    ))
+
                 extra_countries = countries_names.difference(location)
                 obj = brain.getObject()
                 if brain.geotags and brain.geotags != "{ }":
@@ -1303,23 +1318,40 @@ class MigrateGeographicalCoverageToGeotags(object):
                     if res:
                         features.append(res)
                     else:
-                        logger.warn('No match for country %s' % country)
+                        non_matching_countries.append(country)
                         continue
+                if non_matching_countries:
+                    non_matching_countries_message.add("For %s --> %s "
+                                                "countries ARE NOT FOUND" % (
+                        brain_url, non_matching_countries
+                    ))
                 location = obj.getField('location')
-                location.set(obj, geotags)
                 try:
+                    location.set(obj, geotags)
                     obj.reindexObject(idxs=['geotags', 'location'])
                 except Exception:
                     logger.error("%s --> couldn't be reindexed",
                                  obj.absolute_url(1))
                     continue
-                logger.info('%s' % obj.absolute_url(1))
                 count += 1
                 if count % 50 == 0:
                     transaction.savepoint(optimistic=True)
-                differentGeotagsLength.append(brain.getURL())
+                differentGeotagsLength.append(brain_url)
         if differentGeotagsLength:
-            return 'These %d objects were migrated\n %s' % (len(
+            length_message = 'These %d objects were migrated\n %s' % (len(
                 differentGeotagsLength), ",\n".join(differentGeotagsLength))
-        else:
-            return 'No objects were migrated'
+
+            non_existing_country_message = "\n\n these objects had countries " \
+                        "which aren't existing %s" % \
+                                        ",\n".join(missing_countries_message)
+
+            not_found_country_message = '\n\n these objects had countries ' \
+                        'which are not found %s' % \
+                                    ",\n".join(non_matching_countries_message)
+
+            logger.info(length_message + not_found_country_message +
+                            non_existing_country_message)
+
+            return length_message + not_found_country_message + \
+                            non_existing_country_message
+
