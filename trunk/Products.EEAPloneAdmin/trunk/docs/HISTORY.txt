@@ -18,6 +18,8 @@ Changelog
   [szabozo0 refs #14189]
 * Cleanup: clean spaces and fixed docstrings
   [ghicaale refs #13992]
+* Bug fix: expire cookie after timeout and when its invalid
+  [ghicaale refs #13992]
 
 6.1 - (2013-03-15)
 ------------------
