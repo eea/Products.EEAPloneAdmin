@@ -1,10 +1,8 @@
 """ Monkey patches for BaseRegistryTool
 """
-
 from time import time
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-
 
 def generateId(self, *args, **kwargs):
     """ Better unique ids for js/css resources
@@ -12,7 +10,6 @@ def generateId(self, *args, **kwargs):
     now = "%.09f" % time()
     now = now.replace('.', '')
     return '%s%s%s' % (self.filename_base, now, self.filename_appendix)
-
 
 def patch_cookResources(self):
     """Patch for cookResources to trigger the ObjectModifiedEvent

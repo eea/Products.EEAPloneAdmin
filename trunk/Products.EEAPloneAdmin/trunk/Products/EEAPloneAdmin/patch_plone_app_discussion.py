@@ -1,4 +1,4 @@
-""" Patch plone.app.discussion ver >= 2.0.10: 
+""" Patch plone.app.discussion ver >= 2.0.10:
         - migration script;
         - allow comments on folderish objects
 """
@@ -19,8 +19,8 @@ from plone.app.discussion.interfaces import IConversation, IReplies, IComment
 import transaction
 
 def migrate_discussions(self, filter_callback=None):
-    """Migrate discussions"""
-
+    """ Migrate discussions
+    """
     context = aq_inner(self.context)
     out = []
     self.total_comments_migrated = 0
@@ -183,7 +183,7 @@ def migrate_discussions(self, filter_callback=None):
 
     if self.total_comments_migrated != count_comments_old:
         log("%s comments could not be migrated."
-            % (count_comments_old - self.total_comments_migrated)) 
+            % (count_comments_old - self.total_comments_migrated))
         log("Please make sure your portal catalog is up-to-date.")
 
     if dry_run and not test:

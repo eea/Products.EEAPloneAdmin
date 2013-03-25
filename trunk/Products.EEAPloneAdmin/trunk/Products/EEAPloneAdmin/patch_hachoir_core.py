@@ -8,7 +8,6 @@
     This patch fixes below error while running tests:
     AttributeError: UnicodeStdout instance has no attribute 'writelines'
 """
-
 from hachoir_core.i18n import UnicodeStdout as BaseUnicodeStdout
 import hachoir_core.i18n
 

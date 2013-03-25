@@ -1,16 +1,14 @@
 """ Patch plone.app.layout ver 2.2.7, due to #9518
 """
-
-from plone.app.layout.navigation import root as nav_root 
+from plone.app.layout.navigation import root as nav_root
 from Products.CMFCore.utils import getToolByName
-
 
 def getNavigationRootObject(context, portal):
     """ Patched getNavigationRootObject in order to return site root
     """
     if context is None:
         return None
-    
+
     ### patch #9518 return root + context language as navigationRootObject
     portal_url = '/'.join(portal.getPhysicalPath())
     if portal_url[-1] != '/':
@@ -21,7 +19,7 @@ def getNavigationRootObject(context, portal):
     if portal_url != '/www/':
         return portal
     if lang:
-        # use  same logic for getting the navigationRootObject like the 
+        # use  same logic for getting the navigationRootObject like the
         # one used and explained in getNavigationRoot
         context_path_root = context.getPhysicalPath()
         context_path_root = context_path_root[2] if \
@@ -75,7 +73,7 @@ def getNavigationRoot(context, relativeRoot=None):
     #    return portalPath + relativeRoot
 
     ### Start patch
-    
+
     if relativeRoot:
         if relativeRoot[0] != '/':
             relativeRoot = '/' + relativeRoot
@@ -90,20 +88,20 @@ def getNavigationRoot(context, relativeRoot=None):
             lang = lang if lang != 'en' else 'SITE'
             context_path_root = context.getPhysicalPath()
             # check if length of physicalPath is greater than 2 as we might
-            # get a result where we are on the root path and it results in 
+            # get a result where we are on the root path and it results in
             # ('', 'www')
             context_path_root = context_path_root[2] if \
                     len(context_path_root) > 2 else context_path_root[-1]
-            # context_path_root will return the path after www, from the 
-            # context, if it is not equal to lang then it means that the 
-            # context is of different language from the root of the context 
+            # context_path_root will return the path after www, from the
+            # context, if it is not equal to lang then it means that the
+            # context is of different language from the root of the context
             # but we should use that context_path_root in order to preserve
             # correct listing ex: /www/SITE/tests/romanian-page should return
             # /www/SITE as the navigationRoot and not /www/ro even thou the
             # page is romanian since it is created in the /www/SITE english
             # folder
             if context_path_root != lang:
-                return portalPath + '/' + context_path_root 
+                return portalPath + '/' + context_path_root
             else:
                 return portalPath + '/' + lang
         return portalPath + relativeRoot
@@ -114,7 +112,6 @@ def getNavigationRoot(context, relativeRoot=None):
         portal = portal_url.getPortalObject()
         root = getNavigationRootObject(context, portal)
         return '/'.join(root.getPhysicalPath())
-
 
 nav_root.getNavigationRoot = getNavigationRoot
 nav_root.getNavigationRootObject = getNavigationRootObject

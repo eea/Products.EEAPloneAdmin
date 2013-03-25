@@ -2,7 +2,6 @@
 """
 from Acquisition import  aq_inner
 
-
 def contentsMethod(self):
     """ #5533 backported contentMethod from plone.app.content 2.1a1 to display
         results in folder_contents for new style collections
