@@ -1,6 +1,5 @@
 """ Init patches
 """
-
 from Products.LinguaPlone import config
 
 config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
@@ -21,7 +20,11 @@ from Products.EEAPloneAdmin import patch_statusmessages
 # Patch plone.app.layout ver 2.2.7, due to #9518
 from Products.EEAPloneAdmin import patch_plone_app_layout
 
+# Patch plone.session ver 3.5.2, due to #13992
+from Products.EEAPloneAdmin import patch_plone_session
+
 __all__ = [ patch_cache.__name__,
             patch_plone_app_discussion.__name__,
             patch_plone_app_layout.__name__,
-            patch_statusmessages.__name__ ]
+            patch_statusmessages.__name__,
+            patch_plone_session.__name__ ]

@@ -1,5 +1,5 @@
 """ Patching plone.app.redirector to also redirect direct file download
-    links (e.g. at_download/fileField) when the containing object 
+    links (e.g. at_download/fileField) when the containing object
     defines an alias
 """
 
