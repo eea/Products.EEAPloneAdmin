@@ -21,6 +21,7 @@ from Products.EEAPloneAdmin import patch_statusmessages
 from Products.EEAPloneAdmin import patch_plone_app_layout
 
 # Patch plone.session ver 3.5.2, due to #13992
+# To be removed once plone.session ver > 3.5.2 (patch submitted to Plone core)
 from Products.EEAPloneAdmin import patch_plone_session
 
 __all__ = [ patch_cache.__name__,
