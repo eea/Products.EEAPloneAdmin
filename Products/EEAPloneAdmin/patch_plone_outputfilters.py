@@ -8,7 +8,6 @@ from Acquisition import aq_base, aq_acquire
 from zope.publisher.interfaces import NotFound as ztkNotFound
 from zExceptions import NotFound
 
-
 def patched_resolve_image(self, src):
     """ Patched because of bug in code in plone
     """
@@ -88,4 +87,3 @@ def patched_resolve_image(self, src):
     src = image.absolute_url() + appendix
     description = aq_acquire(fullimage, 'Description')()
     return image, fullimage, src, description
-

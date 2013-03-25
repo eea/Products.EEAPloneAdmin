@@ -36,7 +36,6 @@ def patched_getContentType(self, object=None, fieldname=None):
                 return mimetype
         return 'text/html'
     """
-
     context = aq_base(object)
     if IBaseObject.providedBy(context):
         # support Archetypes fields
@@ -58,7 +57,6 @@ def patched_getContentType(self, object=None, fieldname=None):
             return mimetype
     return 'text/html'
 
-
 def patched_getListing(self, filter_portal_types, rooted,
                                     document_base_url, upload_type=None):
     """ Returns the actual listing
@@ -73,7 +71,7 @@ def patched_getListing(self, filter_portal_types, rooted,
     if not IFolderish.providedBy(obj):
         obj = aq_parent(obj)
 
-    if INavigationRoot.providedBy(object) or (rooted == "True" and 
+    if INavigationRoot.providedBy(object) or (rooted == "True" and
                             document_base_url[:-1] == object.absolute_url()):
         results['parent_url'] = ''
     else:

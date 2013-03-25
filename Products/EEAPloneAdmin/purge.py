@@ -16,11 +16,13 @@ class EEAContentPurgePaths(object):
     adapts(IDynamicType)
 
     def __init__(self, context):
-        """ init """
+        """ init
+        """
         self.context = context
 
     def getRelativePaths(self):
-        """ Get relative paths """
+        """ Get relative paths
+        """
         prefix = self.context.absolute_url_path()
         portal_type = getattr(self.context, 'portal_type', None)
 
@@ -52,5 +54,6 @@ class EEAContentPurgePaths(object):
             yield prefix + '/' + template
 
     def getAbsolutePaths(self):
-        """ get absolute paths """
+        """ Get absolute paths
+        """
         return []

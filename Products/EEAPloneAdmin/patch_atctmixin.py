@@ -4,9 +4,7 @@
  done for Five.BrowserView in order to handle HEAD requests
  for all zope3 views.
 """
-
 from webdav.Resource import Resource as WebdavResoure
-
 
 def HEAD(self, REQUEST, RESPONSE):
     """ Patch Five.BrowserView to have a HEAD method just like other resources

@@ -1,7 +1,11 @@
 """ Monkey patches for ATCT
 """
-
 from Products.CMFCore.utils import getToolByName
+from OFS.Folder import Folder
+from Products.ATContentTypes.content.folder import ATFolder, ATBTreeFolder
+
+ATFolder.manage_options = Folder.manage_options
+ATBTreeFolder.manage_options = Folder.manage_options
 
 def listSubtopics(self):
     """ Return a list of our subtopics.
@@ -16,14 +20,6 @@ def listSubtopics(self):
     tops = [t[1] for t in tops]
     return tops
 
-
-from OFS.Folder import Folder
-from Products.ATContentTypes.content.folder import ATFolder, ATBTreeFolder
-
-ATFolder.manage_options = Folder.manage_options
-ATBTreeFolder.manage_options = Folder.manage_options
-
-
 def vformat(s):
     """ Patch ATContentTypes calendarsuport vformat to accept location as tuple
     """
@@ -33,7 +29,6 @@ def vformat(s):
         s = ", ".join(s)
 
     return s.strip().replace(',', '\,').replace(':', '\:').replace(';', '\;')
-
 
 def foldLine(s):
     """ Patch ATContentTypes calendarsuport fldLine to accept location as tuple

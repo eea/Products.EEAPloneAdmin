@@ -16,6 +16,8 @@ Changelog
   [ichimdav #14182]
 * Bug fix: updated propertiestool.xml in optimize profile for the template service
   [szabozo0 refs #14189]
+* Cleanup: clean spaces and fixed docstrings
+  [ghicaale refs #13992]
 
 6.1 - (2013-03-15)
 ------------------

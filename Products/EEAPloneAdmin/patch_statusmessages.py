@@ -4,7 +4,6 @@
     This is a temporary fix, the final solution will come up
     once the source of badly formatted cookies is identified.
 """
-
 import binascii
 import logging
 from Products.statusmessages import adapter

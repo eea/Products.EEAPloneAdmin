@@ -9,18 +9,14 @@ from collective.quickupload.browser.quick_upload import getDataFromAllRequests
 from collective.quickupload.browser.interfaces import IQuickUploadFileFactory
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner
-
 from thread import allocate_lock
-
 import transaction
 from AccessControl import Unauthorized
 from ZODB.POSException import ConflictError
 from zope.event import notify
 from zope.app.container.interfaces import INameChooser
-
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.Archetypes.event import ObjectInitializedEvent
-
 from Products.Archetypes.utils import shasattr
 
 upload_lock = allocate_lock()
@@ -138,7 +134,8 @@ def detect_context_rules(context, portal_type):
 
 def QuickUploadCapableFileFactory__call__(self, name, title, description,
                                             content_type, data, portal_type):
-    """ Patched __call__ for QuickUploadCapableFileFactory """
+    """ Patched __call__ for QuickUploadCapableFileFactory
+    """
     context = aq_inner(self.context)
     charset = context.getCharset()
     filename = name

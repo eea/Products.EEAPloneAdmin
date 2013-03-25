@@ -3,9 +3,9 @@
 from Products.CMFPlone.PloneTool import EMAIL_CUTOFF_RE
 from email.Utils import getaddresses
 
-
 def validateSingleEmailAddress(self, address):
-    """Validate a single email address, see also validateEmailAddresses."""
+    """ Validate a single email address, see also validateEmailAddresses.
+    """
     if not isinstance(address, basestring):
         return False
     sub = EMAIL_CUTOFF_RE.match(address)

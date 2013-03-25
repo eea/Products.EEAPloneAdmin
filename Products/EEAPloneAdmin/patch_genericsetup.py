@@ -1,5 +1,9 @@
 """ Monkey patches for GenericSetup
 """
+import time
+from StringIO import StringIO
+from tarfile import TarFile
+from Products.GenericSetup.context import BaseContext
 
 def manage_deleteImportSteps(self, ids, request=None):
     """ Delete import steps
@@ -23,11 +27,6 @@ def manage_deleteExportSteps(self, ids, request=None):
     url = self.absolute_url()
     request.RESPONSE.redirect("%s/manage_stepRegistry" % url)
 
-import time
-from StringIO import StringIO
-from tarfile import TarFile
-from Products.GenericSetup.context import BaseContext
-
 def __patched_init__( self, tool, encoding=None ):
 
     BaseContext.__init__( self, tool, encoding )
@@ -38,5 +37,5 @@ def __patched_init__( self, tool, encoding=None ):
 
     self._archive_stream = StringIO()
     self._archive_filename = archive_name
-    self._archive = TarFile.open( archive_name, 'w:tar', 
+    self._archive = TarFile.open( archive_name, 'w:tar',
                                   self._archive_stream )
