@@ -1,4 +1,5 @@
-""" Patch for plone.session version 3.5.2 to expire cookie on timeout
+""" Patch for plone.session version 3.5.2 to expire cookie on timeout and
+    to allow cookie_domain override from os environment
 """
 import time
 from email.Utils import formatdate
@@ -8,8 +9,8 @@ import plone.session.plugins.session
 class PatchedSessionPlugin(BasedSessionPlugin):
     """ Session authentication plugin.
 
-    We patch: 
-    * ``refresh`` to delete the auth cookie when it is expired
+    We patch:
+    * ``refresh`` to expire/delete the auth cookie when it is timeout/invalid
     * ``_setCookie`` and ``resetCredentials`` to allow cookie_domain override
     from os environment. See http://taskman.eionet.europa.eu/issues/14118
     and http://taskman.eionet.europa.eu/issues/13992
@@ -51,7 +52,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
         # Allow override based on system environment
         # during tests, config.environment doesn't exist
-        environ = getattr(config, 'environment', os.environ) 
+        environ = getattr(config, 'environment', os.environ)
         cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
         if cookie_domain:
             options['domain'] = cookie_domain
@@ -61,7 +62,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
     def resetCredentials(self, request, response):
         response=self.REQUEST["RESPONSE"]
-        environ = getattr(config, 'environment', os.environ) 
+        environ = getattr(config, 'environment', os.environ)
         cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
         if cookie_domain:
             response.expireCookie(
