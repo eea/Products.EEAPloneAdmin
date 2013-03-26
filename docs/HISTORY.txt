@@ -20,6 +20,8 @@ Changelog
   [ghicaale refs #13992]
 * Bug fix: expire cookie after timeout and when its invalid
   [ghicaale refs #13992]
+* Bug fix: added patch that allows override from system environment for cookie_domain
+  [tiberich refs #14118]
 
 6.1 - (2013-03-15)
 ------------------
