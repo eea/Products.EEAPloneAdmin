@@ -218,6 +218,8 @@ class RegenerateKSS(SaveResourcesOnDisk):
         """
         return getToolByName(self.context, "portal_kss")
 
+
+
 class GoPDB(BrowserView):
     """pdb view 
     """
@@ -226,6 +228,16 @@ class GoPDB(BrowserView):
         #mtool = getToolByName(self.context, 'portal_membership')
         #has = mtool.checkPermission("Manage portal", self.context)
         #if has:
+
+        def classtree(cls, indent):
+            print '.'*indent, cls.__name__        # print class name here
+            for supercls in cls.__bases__:        # recur to all superclasses
+                classtree(supercls, indent+3)     # may visit super > once
+
+        def instancetree(inst):
+            print 'Tree of', inst                 # show instance
+            classtree(inst.__class__, 3)          # climb to its class
+
         import pdb
         pdb.set_trace()
 

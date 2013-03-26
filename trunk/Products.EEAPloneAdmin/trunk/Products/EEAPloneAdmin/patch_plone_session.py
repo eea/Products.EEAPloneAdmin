@@ -7,6 +7,12 @@ import plone.session.plugins.session
 
 class PatchedSessionPlugin(BasedSessionPlugin):
     """ Session authentication plugin.
+
+    We patch: 
+    * ``refresh`` to delete the auth cookie when it is expired
+    * ``_setCookie`` and ``resetCredentials`` to allow cookie_domain override
+    from os environment. See http://taskman.eionet.europa.eu/issues/14118
+    and http://taskman.eionet.europa.eu/issues/13992
     """
 
     def refresh(self, REQUEST):
@@ -31,5 +37,36 @@ class PatchedSessionPlugin(BasedSessionPlugin):
        'private, must-revalidate, proxy-revalidate, max-age=%d, s-max-age=0' %
                                 self.refresh_interval)
         return self._refresh_content(REQUEST)
+
+    def _setCookie(self, cookie, response):
+        cookie=binascii.b2a_base64(cookie).rstrip()
+        # disable secure cookie in development mode, to ease local testing
+        config = getConfiguration()
+        if config.debug_mode:
+            secure = False
+        else:
+            secure = self.secure
+
+        options = dict(path=self.path, secure=secure, http_only=True)
+
+        # Allow override based on system environment
+        # during tests, config.environment doesn't exist
+        environ = getattr(config, 'environment', os.environ) 
+        cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
+        if cookie_domain:
+            options['domain'] = cookie_domain
+        if self.cookie_lifetime:
+            options['expires'] = cookie_expiration_date(self.cookie_lifetime)
+        response.setCookie(self.cookie_name, cookie, **options)
+
+    def resetCredentials(self, request, response):
+        response=self.REQUEST["RESPONSE"]
+        environ = getattr(config, 'environment', os.environ) 
+        cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
+        if cookie_domain:
+            response.expireCookie(
+                self.cookie_name, path=self.path, domain=cookie_domain)
+        else:
+            response.expireCookie(self.cookie_name, path=self.path)
 
 plone.session.plugins.session.SessionPlugin = PatchedSessionPlugin
