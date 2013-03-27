@@ -12,6 +12,12 @@
     />
 
   <cache:rulesetType
+    name="eea.content.ajax"
+    title="AJAX"
+    description="These templates are loaded using AJAX calls (e.g. faceted_query, faceted_counter) and they are not cached in browser"
+    />
+
+  <cache:rulesetType
     name="eea.content.staleResources"
     title="Stale resources"
     description="These are resources which can be cached for at least one month e.g. of these are sparql downloadable resources and files"
