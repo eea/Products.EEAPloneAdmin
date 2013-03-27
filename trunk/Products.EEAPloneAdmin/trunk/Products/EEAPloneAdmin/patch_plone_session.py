@@ -1,10 +1,15 @@
 """ Patch for plone.session version 3.5.2 to expire cookie on timeout and
     to allow cookie_domain override from os environment
 """
-import time
+
+from App.config import getConfiguration
 from email.Utils import formatdate
 from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
+import binascii
+import os
 import plone.session.plugins.session
+import time
+
 
 class PatchedSessionPlugin(BasedSessionPlugin):
     """ Session authentication plugin.
