@@ -3,6 +3,9 @@ Changelog
 
 6.3-dev - (unreleased)
 ----------------------
+* Upgrade step: Go to aq_parent / ZMI, follow the link at the top to do the
+  Plone migration to latest plone 4.2.5
+  [voineali refs #14222]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for Products.EEAPloneAdmin. This updates
   caching policy for AJAX templates (faceted_query, faceted_counter, etc)
