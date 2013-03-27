@@ -1438,6 +1438,7 @@ def countryDicts():
     :return: a dict with EU countries
     """
     countriesDict = {}
+
     countriesDict['Greece'] = {'bbox': [],
                                'geometry': {'coordinates': [39, 22],
                                             'type': 'Point'},
@@ -1450,6 +1451,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Greece'},
                                'type': 'Feature'}
+
     countriesDict['Poland'] = {'bbox': [],
                                'geometry': {'coordinates': [52, 20],
                                             'type': 'Point'},
@@ -1462,6 +1464,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Poland'},
                                'type': 'Feature'}
+
     countriesDict['Romania'] = {'bbox': [],
                                 'geometry': {'coordinates': [46, 25],
                                              'type': 'Point'},
@@ -1474,6 +1477,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Romania'},
                                 'type': 'Feature'}
+
     countriesDict['Portugal'] = {'bbox': [],
                                  'geometry': {'coordinates': [39.5, -8],
                                               'type': 'Point'},
@@ -1486,6 +1490,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Portugal'},
                                  'type': 'Feature'}
+
     countriesDict['Spain'] = {'bbox': [],
                               'geometry': {'coordinates': [40, -4],
                                            'type': 'Point'},
@@ -1498,6 +1503,7 @@ def countryDicts():
                                      'tags': u'independent political entity',
                                      'title': u'Spain'},
                               'type': 'Feature'}
+
     countriesDict['United Kingdom'] = {'bbox': [],
                                        'geometry': {
                                        'coordinates': [54.75844423584778,
@@ -1514,6 +1520,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'United Kingdom'},
                                        'type': 'Feature'}
+
     countriesDict['Netherlands'] = {'bbox': [],
                                     'geometry': {'coordinates': [52.5, 5.75],
                                                  'type': 'Point'},
@@ -1526,6 +1533,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Netherlands'},
                                     'type': 'Feature'}
+
     countriesDict['Belgium'] = {'bbox': [],
                                 'geometry': {'coordinates': [50.8333333, 4],
                                              'type': 'Point'},
@@ -1538,6 +1546,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Belgium'},
                                 'type': 'Feature'}
+
     countriesDict['Germany'] = {'bbox': [],
                                 'geometry': {'coordinates': [51.5, 10.5],
                                              'type': 'Point'},
@@ -1550,6 +1559,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Germany'},
                                 'type': 'Feature'}
+
     countriesDict['France'] = {'bbox': [],
                                'geometry': {'coordinates': [46, 2],
                                             'type': 'Point'},
@@ -1562,6 +1572,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'France'},
                                'type': 'Feature'}
+
     countriesDict['Czechia'] = {'bbox': [],
                                 'geometry': {'coordinates': [49.75, 15],
                                              'type': 'Point'},
@@ -1575,6 +1586,7 @@ def countryDicts():
                                        'title': u'Czechia'},
                                 'type': 'Feature'}
     countriesDict['Czech Republic'] = countriesDict['Czechia']
+
     countriesDict['Italy'] = {'bbox': [],
                               'geometry': {
                               'coordinates': [42.8333333, 12.8333333],
@@ -1588,6 +1600,7 @@ def countryDicts():
                                      'tags': u'independent political entity',
                                      'title': u'Italy'},
                               'type': 'Feature'}
+
     countriesDict['Cyprus'] = {'bbox': [],
                                'geometry': {'coordinates': [35, 33],
                                             'type': 'Point'},
@@ -1600,6 +1613,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Cyprus'},
                                'type': 'Feature'}
+
     countriesDict['Estonia'] = {'bbox': [],
                                 'geometry': {'coordinates': [59, 26],
                                              'type': 'Point'},
@@ -1612,6 +1626,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Estonia'},
                                 'type': 'Feature'}
+
     countriesDict['Latvia'] = {'bbox': [],
                                'geometry': {'coordinates': [57, 25],
                                             'type': 'Point'},
@@ -1624,6 +1639,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Latvia'},
                                'type': 'Feature'}
+
     countriesDict['Lithuania'] = {'bbox': [],
                                   'geometry': {'coordinates': [56, 24],
                                                'type': 'Point'},
@@ -1636,6 +1652,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Lithuania'},
                                   'type': 'Feature'}
+
     countriesDict['Finland'] = {'bbox': [],
                                 'geometry': {'coordinates': [64, 26],
                                              'type': 'Point'},
@@ -1648,6 +1665,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Finland'},
                                 'type': 'Feature'}
+
     countriesDict['Hungary'] = {'bbox': [],
                                 'geometry': {'coordinates': [47, 20],
                                              'type': 'Point'},
@@ -1660,6 +1678,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Hungary'},
                                 'type': 'Feature'}
+
     countriesDict['Bulgaria'] = {'bbox': [],
                                  'geometry': {'coordinates': [43, 25],
                                               'type': 'Point'},
@@ -1672,6 +1691,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Bulgaria'},
                                  'type': 'Feature'}
+
     countriesDict['Malta'] = {'bbox': [],
                               'geometry': {
                               'coordinates': [35.916667, 14.433333],
@@ -1685,6 +1705,7 @@ def countryDicts():
                                      'tags': u'independent political entity',
                                      'title': u'Malta'},
                               'type': 'Feature'}
+
     countriesDict['Denmark'] = {'bbox': [],
                                 'geometry': {'coordinates': [56, 10],
                                              'type': 'Point'},
@@ -1697,6 +1718,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Denmark'},
                                 'type': 'Feature'}
+
     countriesDict['Iceland'] = {'bbox': [],
                                 'geometry': {'coordinates': [65, -18],
                                              'type': 'Point'},
@@ -1709,6 +1731,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Iceland'},
                                 'type': 'Feature'}
+
     countriesDict['Switzerland'] = {'bbox': [],
                                     'geometry': {
                                     'coordinates': [47.0001583752864,
@@ -1724,6 +1747,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Switzerland'},
                                     'type': 'Feature'}
+
     countriesDict['Sweden'] = {'bbox': [],
                                'geometry': {'coordinates': [62, 15],
                                             'type': 'Point'},
@@ -1736,6 +1760,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Sweden'},
                                'type': 'Feature'}
+
     countriesDict['Austria'] = {'bbox': [],
                                 'geometry': {
                                 'coordinates': [47.3333333, 13.3333333],
@@ -1750,6 +1775,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Austria'},
                                 'type': 'Feature'}
+
     countriesDict['Luxembourg'] = {'bbox': [],
                                    'geometry': {
                                    'coordinates': [49.75, 6.1666667],
@@ -1763,6 +1789,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Luxembourg'},
                                    'type': 'Feature'}
+
     countriesDict['Ireland'] = {'bbox': [],
                                 'geometry': {'coordinates': [53, -8],
                                              'type': 'Point'},
@@ -1775,6 +1802,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'title': u'Ireland'},
                                 'type': 'Feature'}
+
     countriesDict['Liechtenstein'] = {'bbox': [],
                                       'geometry': {
                                       'coordinates': [47.1666667, 9.5333333],
@@ -1789,6 +1817,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Liechtenstein'},
                                       'type': 'Feature'}
+
     countriesDict['Slovakia'] = {'bbox': [],
                                  'geometry': {'coordinates': [48.6666667, 19.5],
                                               'type': 'Point'},
@@ -1801,6 +1830,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Slovakia'},
                                  'type': 'Feature'}
+
     countriesDict['Norway'] = {'bbox': [],
                                'geometry': {'coordinates': [62, 10],
                                             'type': 'Point'},
@@ -1813,6 +1843,7 @@ def countryDicts():
                                       'tags': u'independent political entity',
                                       'title': u'Norway'},
                                'type': 'Feature'}
+
     countriesDict['Slovenia'] = {'bbox': [],
                                  'geometry': {
                                  'coordinates': [46.25, 15.1666667],
@@ -1826,6 +1857,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'title': u'Slovenia'},
                                  'type': 'Feature'}
+
     countriesDict['Ukraine'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [49, 32]},
@@ -1853,6 +1885,7 @@ def countryDicts():
                                      'adminName1': u''}}
 
     countriesDict['Russian Federation'] = countriesDict['Russia']
+
     countriesDict['Albania'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [41, 20]},
@@ -1865,6 +1898,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'adminCode1': u'00',
                                         'adminName1': u''}}
+
     countriesDict['Belarus'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [53, 28]},
@@ -1877,6 +1911,7 @@ def countryDicts():
                                         'tags': u'independent political entity',
                                         'adminCode1': u'00',
                                         'adminName1': u''}}
+
     countriesDict['Bosnia and Herzegovina'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [44.25,
@@ -1890,6 +1925,7 @@ def countryDicts():
                                        'tags': u'independent political entity',
                                        'adminCode1': u'00',
                                        'adminName1': u''}}
+
     countriesDict['Croatia'] = {'geometry': {'type': 'Point',
                                        'coordinates': [45.1666667, 15.5]},
                           'type': 'Feature', 'bbox': [],
@@ -1909,6 +1945,7 @@ def countryDicts():
     'country': u'XK', 'description': u'Kosovo',
     'tags': u'independent political entity', 'adminCode1': u'00',
     'adminName1': u''}}
+
     countriesDict['Luxembourg'] = {'geometry': {'type': 'Point', 'coordinates':
                                                                         [49.75,
                                                         6.1666667000000004]},
@@ -1936,6 +1973,7 @@ def countryDicts():
                                         'adminName1': u''}}
     countriesDict['Macedonia the former Yugoslavian Republic of'] = \
                                                 countriesDict['Macedonia']
+
     countriesDict['Moldova'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [47, 29]},
@@ -1949,6 +1987,7 @@ def countryDicts():
                                         'adminCode1': u'00',
                                         'adminName1': u''}}
     countriesDict['Moldova Republic of'] = countriesDict['Moldova']
+
     countriesDict['Monaco'] = {
                                  'geometry': {'type': 'Point', 'coordinates': [
                                      43.731414013768998, 7.4190330505371103]},
@@ -1957,6 +1996,7 @@ def countryDicts():
     'title': u'Monaco', 'country': u'MC', 'description': u'Monaco',
     'tags': u'independent political entity', 'adminCode1': u'00',
     'adminName1': u''}}
+
     countriesDict['Montenegro'] = {
                                  'geometry': {'type': 'Point',
                                               'coordinates': [42.5,
@@ -1966,6 +2006,7 @@ def countryDicts():
     'title': u'Montenegro', 'country': u'ME', 'description': u'Montenegro',
     'tags': u'independent political entity', 'adminCode1': u'00',
     'adminName1': u''}}
+
     countriesDict['Norway'] = {'geometry': {'type': 'Point',
                                                     'coordinates': [62,
                                                                     10]},
@@ -1988,6 +2029,7 @@ def countryDicts():
     'title': u'San Marino', 'country': u'SM', 'description': u'San Marino',
     'tags': u'independent political entity', 'adminCode1': u'00',
     'adminName1': u''}}
+
     countriesDict['Serbia'] = {
                                  'geometry': {'type': 'Point', 'coordinates': [
                                      44.818924690689002, 20.459976196289102]},
@@ -1996,6 +2038,7 @@ def countryDicts():
     'title': u'Serbia', 'country': u'RS', 'description': u'Serbia',
     'tags': u'independent political entity', 'adminCode1': u'00',
     'adminName1': u''}}
+
     countriesDict['Turkey'] = {u'bbox': [],
                        u'geometry': {
                            u'coordinates': [39.059012000000003,
@@ -2011,6 +2054,7 @@ def countryDicts():
                                        u'tags': u'independent political entity',
                                        u'title': u'Turkey'},
                         u'type': u'Feature'}
+
     countriesDict['Kazakhstan'] = {u'bbox': [],
                   u'geometry': {u'coordinates': [48, 68], u'type': u'Point'},
                   u'properties': {u'adminCode1': u'00',
@@ -2022,6 +2066,7 @@ def countryDicts():
                                   u'tags': u'independent political entity',
                                   u'title': u'Kazakhstan'},
                   u'type': u'Feature'}
+
     countriesDict['Georgia'] =  {u'bbox': [],
                             u'geometry': {u'coordinates': [41.999980999999998,
                                                            43.499904999999998],
@@ -2035,6 +2080,7 @@ def countryDicts():
                           u'tags': u'independent political entity',
                           u'title': u'Georgia'},
           u'type': u'Feature'}
+
     countriesDict['Azerbaijan'] = {u'bbox': [38.391990100000001,
                                              44.764683099999957,
                                              41.912340200000003,
@@ -2050,6 +2096,7 @@ def countryDicts():
                   u'tags': [u'country', u'political'],
                   u'title': u'Azerbaijan'},
           u'type': u'Feature'}
+
     countriesDict['Armenia'] = {u'bbox': [],
                   u'geometry': {u'coordinates': [40, 45], u'type': u'Point'},
                   u'properties': {u'adminCode1': u'00',
@@ -2061,6 +2108,7 @@ def countryDicts():
                                   u'tags': u'independent political entity',
                                   u'title': u'Armenia'},
                   u'type': u'Feature'}
+
     countriesDict['Andorra'] = {u'bbox': [],
                   u'geometry': {u'coordinates': [42.5, 1.5], u'type': u'Point'},
                   u'properties': {u'adminCode1': u'00',
@@ -2072,15 +2120,5 @@ def countryDicts():
                                   u'tags': u'independent political entity',
                                   u'title': u'Andorra'},
                   u'type': u'Feature'}
-    countriesDict['Albania'] = {u'bbox': [],
-                  u'geometry': {u'coordinates': [41, 20], u'type': u'Point'},
-                  u'properties': {u'adminCode1': u'00',
-                                  u'adminName1': u'',
-                                  u'center': [41, 20],
-                                  u'country': u'AL',
-                                  u'description': u'Albania',
-                                  u'name': u'783754',
-                                  u'tags': u'independent political entity',
-                                  u'title': u'Albania'},
-                  u'type': u'Feature'}
+
     return countriesDict

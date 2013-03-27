@@ -1284,6 +1284,13 @@ class MigrateGeographicalCoverageToGeotags(object):
         missing_countries_message = set()
         non_matching_countries_message = set()
         count = 0
+
+        acronymes = {
+            'Russian Federation': 'Russia',
+            'Czech Republic': 'Czechia',
+            'Macedonia the former Yugoslavian Republic of': 'Macedonia',
+            'Moldova Republic of': 'Moldova'}
+
         for brain in brains:
             brain_url = brain.getURL()
             countries_names = set()
@@ -1296,7 +1303,13 @@ class MigrateGeographicalCoverageToGeotags(object):
             if len_location < len_coverage:
                 for country in coverage:
                     try:
-                        countries_names.add(all_countries.get(country)['name'])
+                        name = all_countries.get(country)['name']
+                        potential_dulicated_name = acronymes.get(name)
+                        if potential_dulicated_name and \
+                                        potential_dulicated_name in \
+                            location:
+                            continue
+                        countries_names.add(name)
                     except Exception:
                         missing_countries.append(country)
                     continue
@@ -1325,6 +1338,7 @@ class MigrateGeographicalCoverageToGeotags(object):
                                                 "countries ARE NOT FOUND" % (
                         brain_url, non_matching_countries
                     ))
+                features.sort(key=lambda k: k['properties']['title'])
                 location = obj.getField('location')
                 try:
                     location.set(obj, geotags)
