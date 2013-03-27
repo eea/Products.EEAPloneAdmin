@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<object name="reference_catalog" meta_type="ZCatalog">
+ <property name="title">Archetypes Reference Catalog</property>
+ <index name="UID" meta_type="FieldIndex">
+  <indexed_attr value="UID"/>
+ </index>
+ <index name="relationship" meta_type="FieldIndex">
+  <indexed_attr value="relationship"/>
+ </index>
+ <index name="sourceUID" meta_type="FieldIndex">
+  <indexed_attr value="sourceUID"/>
+ </index>
+ <index name="targetId" meta_type="FieldIndex">
+  <indexed_attr value="targetId"/>
+ </index>
+ <index name="targetUID" meta_type="FieldIndex">
+  <indexed_attr value="targetUID"/>
+ </index>
+ <column value="Language"/>
+ <column value="UID"/>
+ <column value="relationship"/>
+ <column value="sourceUID"/>
+ <column value="targetId"/>
+ <column value="targetUID"/>
+</object>

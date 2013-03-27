@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<archetypetool>
+ <catalogmap>
+  <type portal_type="ATBooleanCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATSortCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATSimpleIntCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATTopic">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATSelectionCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATDocument">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATPathCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATImage">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATPortalTypeCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATEvent">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATReferenceCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATNewsItem">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATSimpleStringCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATCurrentAuthorCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATListCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATLink">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATDateRangeCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATDateCriteria">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATRelativePathCriterion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATFile">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="TreeVocabularyTerm">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="TreeVocabulary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="SortedSimpleVocabulary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="IMSVDEXVocabulary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="VocabularyLibrary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="AliasVocabulary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="SimpleVocabulary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="SimpleVocabularyTerm">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Speech">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="PressRelease">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="GISMapApplication">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="CloudVideo">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="FlashFile">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Highlight">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="CallForTender">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Promotion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Article">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="CFTRequestor">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="CallForInterest">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="QuickEvent">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EnquiryRequestor">
+   <catalog value="portal_enquiry_catalog"/>
+  </type>
+  <type portal_type="EnquiryRequestorFolder">
+   <catalog value="portal_enquiry_catalog"/>
+  </type>
+  <type portal_type="EnquiryFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Enquiry">
+   <catalog value="portal_enquiry_catalog"/>
+  </type>
+  <type portal_type="NavigationManager">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="NavigationItem">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="NewsletterRichReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="NewsletterBTree">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="NewsletterReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterInstructionalVideo">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterTutorialFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterFAQ">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterDefinition">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterErrorReferenceFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterErrorReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterTutorialPage">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterTutorial">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterGlossary">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenter">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterReferenceManual">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterFAQFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterKnowledgeBase">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterLinkFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterHowTo">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterHowToFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterLink">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterLeafPage">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterInstructionalVideoFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterReferenceManualFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterReferenceManualSection">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="HelpCenterReferenceManualPage">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATProxiedContent">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Data">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EEAFigure">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Organisation">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="DataFile">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="DataTable">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EEAFigureFile">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ImageFS">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="DavizVisualization">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="AssessmentPart">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Specification">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ExternalDataSpec">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="MethodologyReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="WorkItem">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="PolicyQuestion">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Assessment">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="FactSheetDocument">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="RationaleReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="PolicyDocumentReference">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="KeyMessage">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="IndicatorFactSheet">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EEARelationsContentType">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EEARelationsTool">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="EEAPossibleRelation">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="CommonalityReport">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="FlexibilityReport">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="DiversityReport">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="SOERCountry">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="Sparql">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="SparqlBookmarksFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATBlob">
+   <catalog value="portal_catalog"/>
+  </type>
+  <type portal_type="ATFolder">
+   <catalog value="portal_catalog"/>
+  </type>
+ </catalogmap>
+</archetypetool>
