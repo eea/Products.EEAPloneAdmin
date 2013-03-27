@@ -4,6 +4,19 @@
   i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="4.0"
+    destination="6.2"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Update caching policy for AJAX templates"
+      import_profile="Products.EEAPloneAdmin:eea-caching"
+      import_steps="plone.app.registry"
+      />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="*"
     destination="4.0"
     profile="Products.EEAPloneAdmin:default">

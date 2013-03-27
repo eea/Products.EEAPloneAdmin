@@ -215,14 +215,14 @@
       <element key="image_view">plone.content.itemView</element>
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>
-      <element key="faceted_counter">eea.content.frontPage</element>
+      <element key="faceted_counter">eea.content.ajax</element>
       <element key="download">plone.content.itemView</element>
       <element key="staff.html">plone.content.itemView</element>
       <element key="organigram.html">plone.content.itemView</element>
       <element key="accessibility-info">plone.content.itemView</element>
       <element key="search_rss">plone.content.feed</element>
       <element key="frontpage_view">eea.content.frontPage</element>
-      <element key="faceted_query">eea.content.frontPage</element>
+      <element key="faceted_query">eea.content.ajax</element>
       <element key="multimedia_popup_view">plone.content.file</element>
       <element key="RSS2?type=.rss">plone.content.itemView</element>
       <element key="sendto_form">plone.content.itemView</element>
@@ -238,7 +238,7 @@
       <element key="folder_contents">plone.content.itemView</element>
       <element key="folder_summary">plone.content.itemView</element>
       <element key="rdf">plone.content.itemView</element>
-      <element key="tagscloud_counter">eea.content.frontPage</element>
+      <element key="tagscloud_counter">eea.content.ajax</element>
       <element key="sitemap">plone.content.itemView</element>
       <element key="RSS">plone.content.feed</element>
     </value>
@@ -250,6 +250,30 @@
       <title>Only cache for anonymous users</title>
     </field>
     <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly" />
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.etags">
+    <field ref="plone.app.caching.moderateCaching.etags" />
+    <value />
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified" />
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache" />
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage" />
+    <value>3600</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.vary">
+    <field ref="plone.app.caching.moderateCaching.vary" />
+    <value>Accept-Encoding, X-Username</value>
   </record>
   <record name="plone.app.caching.moderateCaching.eea.content.frontPage.anonOnly">
     <field ref="plone.app.caching.moderateCaching.anonOnly" />
@@ -580,6 +604,7 @@
     </field>
     <value>
       <element key="plone.resource">plone.app.caching.strongCaching</element>
+      <element key="eea.content.ajax">plone.app.caching.moderateCaching</element>
       <element key="eea.content.frontPage">plone.app.caching.moderateCaching</element>
       <element key="plone.stableResource">plone.app.caching.strongCaching</element>
       <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
