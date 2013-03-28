@@ -230,11 +230,16 @@ class GoPDB(BrowserView):
         #if has:
 
         def classtree(cls, indent):
+            """ method used in conjunction with instantree to display class 
+                tree 
+            """
             print '.'*indent, cls.__name__        # print class name here
             for supercls in cls.__bases__:        # recur to all superclasses
                 classtree(supercls, indent+3)     # may visit super > once
 
         def instancetree(inst):
+            """ Helper method to recursively print all superclasses
+            """
             print 'Tree of', inst                 # show instance
             classtree(inst.__class__, 3)          # climb to its class
 
