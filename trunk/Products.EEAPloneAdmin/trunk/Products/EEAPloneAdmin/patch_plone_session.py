@@ -7,7 +7,8 @@ from email.Utils import formatdate
 from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 import binascii
 import os
-import plone.session.plugins.session
+import plone.session.plugins.session as plsession
+
 import time
 
 
@@ -45,7 +46,9 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         return self._refresh_content(REQUEST)
 
     def _setCookie(self, cookie, response):
-        cookie=binascii.b2a_base64(cookie).rstrip()
+        """ Set cookie helper method
+        """
+        cookie = binascii.b2a_base64(cookie).rstrip()
         # disable secure cookie in development mode, to ease local testing
         config = getConfiguration()
         if config.debug_mode:
@@ -62,11 +65,15 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         if cookie_domain:
             options['domain'] = cookie_domain
         if self.cookie_lifetime:
-            options['expires'] = cookie_expiration_date(self.cookie_lifetime)
+            options['expires'] = plsession.cookie_expiration_date(
+                                                        self.cookie_lifetime)
         response.setCookie(self.cookie_name, cookie, **options)
 
     def resetCredentials(self, request, response):
-        response=self.REQUEST["RESPONSE"]
+        """ resetCredential by expiring auth cookie
+        """ 
+        response = self.REQUEST["RESPONSE"]
+        config = getConfiguration()
         environ = getattr(config, 'environment', os.environ)
         cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
         if cookie_domain:
@@ -75,4 +82,4 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         else:
             response.expireCookie(self.cookie_name, path=self.path)
 
-plone.session.plugins.session.SessionPlugin = PatchedSessionPlugin
+plsession.SessionPlugin = PatchedSessionPlugin

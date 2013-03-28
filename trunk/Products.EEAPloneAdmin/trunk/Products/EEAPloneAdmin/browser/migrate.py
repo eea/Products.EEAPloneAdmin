@@ -1274,7 +1274,7 @@ class MigrateGeographicalCoverageToGeotags(object):
         query = {
             'portal_type': ['Data', 'EEAFigure']
         }
-        logger = logging.getLogger("GeographicalCoverageToGeotags")
+        log = logging.getLogger("GeographicalCoverageToGeotags")
 
         util = queryUtility(ICountryAvailability)
         all_countries = util.getCountries()
@@ -1344,7 +1344,7 @@ class MigrateGeographicalCoverageToGeotags(object):
                     location.set(obj, geotags)
                     obj.reindexObject(idxs=['geotags', 'location'])
                 except Exception:
-                    logger.error("%s --> couldn't be reindexed",
+                    log.error("%s --> couldn't be reindexed",
                                  obj.absolute_url(1))
                     continue
                 count += 1
@@ -1363,7 +1363,7 @@ class MigrateGeographicalCoverageToGeotags(object):
                         'which are not found %s' % \
                                     ",\n".join(non_matching_countries_message)
 
-            logger.info(length_message + not_found_country_message +
+            log.info(length_message + not_found_country_message +
                             non_existing_country_message)
 
             return length_message + not_found_country_message + \
