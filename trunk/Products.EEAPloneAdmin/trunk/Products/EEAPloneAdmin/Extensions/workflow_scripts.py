@@ -46,3 +46,24 @@ def moveObject(self, state_change, **kw):
 
     # pass new_obj to the error, *twice*
     raise state_change.ObjectMoved(new_obj, new_obj)
+
+
+def check_selfqa(statechange, **kwds):
+    """Checks if self-qa has been performed.
+
+    This script should be used only for the indicators_workflow,
+    the publish transition, as a 'script before'.
+    """
+    if "Self-QA" in context.REQUEST.form.get("comment", ""):
+        return True
+
+    context.plone_utils.addPortalMessage(u'Cannot publish %s from bulk '
+                u'publishing. Please publish from '
+                u'its viewing page.' % state.object.Title())
+
+    #There is no middle ground between a "before script" and a guard. 
+    #Output from beforescript is not checked to see if transition should 
+    #continue as it's expected that guards should take care of that problem.
+
+    raise ValueError
+

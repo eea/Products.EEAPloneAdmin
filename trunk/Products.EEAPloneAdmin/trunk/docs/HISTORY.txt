@@ -3,6 +3,16 @@ Changelog
 
 6.3-dev - (unreleased)
 ----------------------
+* Bug fix: don't allow executing publish transition for indicators_workflow
+  if the self-qa publish dialog has not been used
+  [tiberich #14220]
+* Upgrade step: In a tunnel instance, go to /wwww/portal_workflow/indicators_workflow/scripts/manage_main
+  and add an external method:
+  Id: self-qa
+  Module name: Products.EEAPloneAdmin.workflow_scripts
+  Function name: self-qa
+  Go to /www/portal_workflow/indicators_workflow/transitions/publish/manage_properties
+  and assign the self-qa script to the Script (before) dropdown.
 * Upgrade step: Go to aq_parent / ZMI, follow the link at the top to do the
   Plone migration to latest plone 4.2.5
   [voineali refs #14222]
