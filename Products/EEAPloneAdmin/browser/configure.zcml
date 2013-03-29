@@ -74,4 +74,9 @@
         template="migration.pt"
         />
 
+  <browser:page name="recreate-scales"
+      class=".scales.RecreateImageScales"
+      for="*"
+      permission="cmf.ModifyPortalContent" />
+
 </configure>
