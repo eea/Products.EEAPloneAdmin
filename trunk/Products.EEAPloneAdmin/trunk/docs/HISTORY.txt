@@ -26,6 +26,8 @@ Changelog
 * Bug fix: Added caching policy for templates called via AJAX in order not to
   cache them in browser
   [voineali refs #14152]
+* Bug fix: expire cookie after timeout and when its invalid
+  [ghicaale refs #13992]
 
 6.2 - (2013-03-27)
 ------------------
