@@ -22,6 +22,25 @@ class PatchedSessionPlugin(BasedSessionPlugin):
     and http://taskman.eionet.europa.eu/issues/13992
     """
 
+    # IAuthenticationPlugin implementation
+    def authenticateCredentials(self, credentials):
+        if not credentials.get("source", None)=="plone.session":
+            return None
+
+        ticket=credentials["cookie"]
+        ticket_data = self._validateTicket(ticket)
+        if ticket_data is None:
+            self.refresh(self.REQUEST)
+            return None
+        (digest, userid, tokens, user_data, timestamp) = ticket_data
+        pas=self._getPAS()
+        info=pas._verifyUser(pas.plugins, user_id=userid)
+        if info is None:
+            self.refresh(self.REQUEST)
+            return None
+
+        return (info['id'], info['login'])
+
     def refresh(self, REQUEST):
         """Refresh the cookie"""
         setHeader = REQUEST.response.setHeader
@@ -33,7 +52,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         refreshed = self._refreshSession(REQUEST, now)
         if not refreshed:
             # We have an unauthenticated user
-            REQUEST.response.expireCookie(self.cookie_name, path='/')
+            self.resetCredentials(REQUEST, REQUEST.response)
             setHeader('Cache-Control',
                       'public, must-revalidate, max-age=%d, s-max-age=86400' %
                                 self.refresh_interval)
@@ -71,8 +90,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
     def resetCredentials(self, request, response):
         """ resetCredential by expiring auth cookie
-        """ 
-        response = self.REQUEST["RESPONSE"]
+        """
         config = getConfiguration()
         environ = getattr(config, 'environment', os.environ)
         cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
