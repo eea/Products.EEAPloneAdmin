@@ -1272,7 +1272,7 @@ class MigrateGeographicalCoverageToGeotags(object):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         query = {
-            'portal_type': ['Data', 'EEAFigure']
+            'portal_type': ['Assessment', 'Data', 'EEAFigure']
         }
         log = logging.getLogger("GeographicalCoverageToGeotags")
 
