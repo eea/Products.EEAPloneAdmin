@@ -2121,4 +2121,104 @@ def countryDicts():
                                   u'title': u'Andorra'},
                   u'type': u'Feature'}
 
+    countriesDict['Kyrgyzstan'] = {
+        'geometry': {
+            'type': "Point",
+            'coordinates': [
+                41,
+                75
+            ]
+        },
+        'type': "Feature",
+        'bbox': [ ],
+        'properties': {
+            'adminCode1': "00",
+            'name': "1527747",
+            'title': "Kyrgyzstan",
+            'adminName1': "",
+            'country': "KG",
+            'tags': "independent political entity",
+            'center': [
+                41,
+                75
+            ],
+            'description': "Kyrgyzstan"
+        }
+    }
+
+    countriesDict['Tajikistan'] = {
+        'geometry': {
+        'type': "Point",
+        'coordinates': [
+            39,
+            71
+        ]
+    },
+        'type': "Feature",
+        'bbox': [ ],
+        'properties': {
+            'adminCode1': "00",
+            'name': "1220409",
+            'title': "Tajikistan",
+            'adminName1': "",
+            'country': "TJ",
+            'tags': "independent political entity",
+            'center': [
+                39,
+                71
+            ],
+            'description': "Tajikistan"
+        }
+    }
+
+    countriesDict['Turkmenistan'] = {
+        'geometry': {
+            'type': "Point",
+            'coordinates': [
+                40,
+                60
+            ]
+        },
+        'type': "Feature",
+        'bbox': [ ],
+        'properties': {
+            'adminCode1': "00",
+            'name': "1218197",
+            'title': "Turkmenistan",
+            'adminName1': "",
+            'country': "TM",
+            'tags': "independent political entity",
+            'center': [
+                40,
+                60
+            ],
+            'description': "Turkmenistan"
+        }
+    }
+
+    countriesDict['Uzbekistan'] = {
+        'geometry': {
+            'type': "Point",
+            'coordinates': [
+                41.707542,
+                63.84911
+            ]
+        },
+        'type': "Feature",
+        'bbox': [ ],
+        'properties': {
+            'adminCode1': "00",
+            'name': "1512440",
+            'title': "Uzbekistan",
+            'adminName1': "",
+            'country': "UZ",
+            'tags': "independent political entity",
+            'center': [
+                 41.707542,
+                 63.84911
+            ],
+            'description': "Uzbekistan"
+        }
+    }
+
     return countriesDict
