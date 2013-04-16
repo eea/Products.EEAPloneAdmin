@@ -28,11 +28,12 @@ from zope.interface import directlyProvides, directlyProvidedBy, \
                                              noLongerProvides
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
-from zope.component import queryUtility
+from zope.component import queryUtility, queryAdapter
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups
 
+from eea.geotags.interfaces import IJsonProvider
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
@@ -1290,6 +1291,7 @@ class MigrateGeographicalCoverageToGeotags(object):
             'Czech Republic': 'Czechia',
             'Macedonia the former Yugoslavian Republic of': 'Macedonia',
             'Moldova Republic of': 'Moldova'}
+        jsonservice = queryAdapter(self.context, IJsonProvider)
 
         for brain in brains:
             brain_url = brain.getURL()
@@ -1331,8 +1333,19 @@ class MigrateGeographicalCoverageToGeotags(object):
                     if res:
                         features.append(res)
                     else:
-                        non_matching_countries.append(country)
-                        continue
+                        if country == 'Serbia and Montenegro':
+                            features.append(country_dicts.get('Serbia'))
+                            features.append(country_dicts.get(
+                                'Montenegro'))
+                            continue
+                        match = jsonservice.search(q=country,
+                                                   maxRows=1)['features']
+                        if match:
+                            match = match[0]
+                            features.append(match)
+                            country_dicts[country] = match
+                        else:
+                            non_matching_countries.append(country)
                 if non_matching_countries:
                     non_matching_countries_message.add("For %s --> %s "
                                                 "countries ARE NOT FOUND" % (
