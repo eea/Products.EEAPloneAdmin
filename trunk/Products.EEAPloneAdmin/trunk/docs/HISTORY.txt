@@ -3,6 +3,8 @@ Changelog
 
 6.3-dev - (unreleased)
 ----------------------
+* Bug fix: fixed HISTORY.txt RST markup
+  [ghicaale refs #14321]
 * Bug fix: don't allow executing publish transition for indicators_workflow
   if the self-qa publish dialog has not been used
   [tiberich #14220]
@@ -32,12 +34,13 @@ Changelog
 6.2 - (2013-03-27)
 ------------------
 * Upgrade step:
+
     - On www8 through tunnel run /www/@@migrateGeographicalCoverageToGeotags
-    to migrate geographicalCoverage to geotags for Data and EEAFigure.
+      to migrate geographicalCoverage to geotags for Data and EEAFigure.
     - This will take at least 5 minutes since there are 3800+ items touched
-    in the migration
+      in the migration
     - Save output for future reference since it's logging some country names
-    which will not be converted
+      which will not be converted
     - [ichimdav refs #14182]
 * Feature: added script to show current user returned by security for the given
   context
