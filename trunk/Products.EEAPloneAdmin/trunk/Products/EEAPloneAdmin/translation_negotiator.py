@@ -1,5 +1,7 @@
 """ Override user interface language setting and setting it to english.
     See #14087 for details
+    This code is derived from Silvuple
+    https://github.com/miohtama/silvuple.git
 """
 
 # W0703:105,11:_patched_translate: Catching too general exception Exception
@@ -33,6 +35,10 @@ def get_editor_language(request):
     if cached:
         return cached
 
+    isAnon = getattr(request, "_isAnon", None)
+    if isAnon:
+        return None
+
     context = find_context(request)
 
     # Filter out CSS and other non-sense
@@ -45,11 +51,12 @@ def get_editor_language(request):
     if not getSecurityManager().checkPermission(permissions.ModifyPortalContent,
                                                                     context):
         # Anon visitor, normal language ->
+        request._isAnon = True
         return None
 
     language = 'en'
 
-    # Fake new language for all authenticated users
+    # english for all authenticated users
     request._cached_admin_language = language
     return language
 
