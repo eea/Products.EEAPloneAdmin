@@ -70,6 +70,11 @@ def _patched_translate(self, msgid, mapping=None, context=None,
 
     :param context: HTTPRequest object
     """
+    # return unpatched translation if no context is present ( happened with
+    # comments )
+    if not context:
+        return _unpatched_translate(self, msgid, mapping, context,
+                                    target_language, default)
     try:
         language = get_editor_language(context)
         if language:
