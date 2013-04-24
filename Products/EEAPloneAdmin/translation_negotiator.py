@@ -9,8 +9,7 @@
 
 import logging
 
-from AccessControl import getSecurityManager
-from Products.CMFCore import permissions
+from zope.component import getMultiAdapter
 from Products.CMFCore.interfaces import IContentish, IFolderish
 
 
@@ -48,8 +47,9 @@ def get_editor_language(request):
         return None
 
     # Check if we are the editor
-    if not getSecurityManager().checkPermission(permissions.ModifyPortalContent,
-                                                                    context):
+    portal_state = getMultiAdapter((context, request),
+                                                    name="plone_portal_state")
+    if portal_state.anonymous():
         # Anon visitor, normal language ->
         request._isAnon = True
         return None
