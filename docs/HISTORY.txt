@@ -3,7 +3,9 @@ Changelog
 
 6.4-dev - (unreleased)
 ----------------------
-* Feature: Patched zope.i18n.translationDomain to always return english as 
+* Cleanup: Remove "eea.related_multimedia" viewlet
+  [voineali refs #9552]
+* Feature: Patched zope.i18n.translationDomain to always return english as
   target domain for authenticated users
   [ichimdav #14087]
 
