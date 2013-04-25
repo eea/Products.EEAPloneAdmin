@@ -62,9 +62,8 @@ def check_selfqa(statechange):
                 u'publishing. Please publish from '
                 u'its viewing page.' % context.Title())
 
-    #There is no middle ground between a "before script" and a guard. 
-    #Output from beforescript is not checked to see if transition should 
+    #There is no middle ground between a "before script" and a guard.
+    #Output from beforescript is not checked to see if transition should
     #continue as it's expected that guards should take care of that problem.
 
     raise ValueError
-
