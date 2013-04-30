@@ -3,6 +3,10 @@ Changelog
 
 6.4-dev - (unreleased)
 ----------------------
+* Upgrade step:
+    - On www8 through tunnel run /www/@@renameCzechiaLocation
+      to fit location name from Czechia to Czech Republic 
+    - [ichimdav refs #14363]
 * Cleanup: Remove "eea.related_multimedia" viewlet
   [voineali refs #9552]
 * Feature: Patched zope.i18n.translationDomain to always return english as

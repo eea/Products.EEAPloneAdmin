@@ -157,6 +157,12 @@
                   name="migrateGeographicalCoverageToGeotags"
                   class=".migrate.MigrateGeographicalCoverageToGeotags"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="renameCzechiaLocation"
+                  class=".migrate.RenameCzechiaLocation"
+                  permission="cmf.ManagePortal" />
+
     <browser:page for="*"
                   name="removeInactivePromotions"
                   class=".migrate.RemoveInactivePromotions"

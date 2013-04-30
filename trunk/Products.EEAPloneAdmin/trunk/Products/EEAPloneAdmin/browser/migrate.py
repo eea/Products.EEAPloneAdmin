@@ -1382,3 +1382,48 @@ class MigrateGeographicalCoverageToGeotags(object):
             return length_message + not_found_country_message + \
                             non_existing_country_message
 
+
+
+class RenameCzechiaLocation(object):
+    """ Rename Czechia location to Czech Republic
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("RenameCzechiaGeotag")
+        catalog = getToolByName(self.context, 'portal_catalog')
+        query = {
+            'portal_type': ['Assessment', 'Data', 'EEAFigure']
+        }
+        count = 0
+        found = 0
+        res = catalog.unrestrictedSearchResults(query)
+        for brain in res:
+            if 'Czechia' in brain.location:
+                obj = brain.getObject()
+                geotags = json.loads(brain.geotags)
+                features = geotags['features']
+                for feature in features:
+                    if feature['properties']['description'] == 'Czechia':
+                        feature['properties']['description'] = 'Czech Republic'
+                        feature['properties']['title'] = 'Czech Republic'
+                        break
+                try:
+                    location = obj.getField('location')
+                    location.set(obj, geotags)
+                    obj.reindexObject(idxs=['geotags', 'location'])
+
+                except Exception:
+                    log.error("%s --> couldn't be reindexed",
+                              obj.absolute_url(1))
+                    continue
+                count += 1
+                found += 1
+                if count % 50 == 0:
+                    transaction.commit()
+
+        return "Done renaming %d objects" % found
