@@ -1,6 +1,5 @@
 """ Workflow Scripts for: Enquiry
 """
-
 import quopri
 
 enquiryTemplate = """From: %s

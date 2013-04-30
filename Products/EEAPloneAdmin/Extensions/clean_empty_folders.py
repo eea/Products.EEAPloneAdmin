@@ -1,6 +1,6 @@
 """ The problem with translated emtpy folders
-is that they appeared in the site map confusing the users, 
-it is better to cancel all of them
+    is that they appeared in the site map confusing the users,
+    it is better to cancel all of them
 """
 
 import logging
@@ -10,24 +10,21 @@ from plone.app.linkintegrity.exceptions import \
 from plone.app.linkintegrity.interfaces import ILinkIntegrityInfo
 from StringIO import StringIO
 
-# Log info 
 logger = logging.getLogger("Delete empty folder: ")
 info = logger.info
 info_exception = logger.exception
 
-
 def clean_folder(self):
-    """find folders that are empty and delete them
-       the loop run recursively until there is no more 
-       folders to cancel
+    """ find folders that are empty and delete them
+        the loop run recursively until there is no more
+        folders to cancel
     """
-
     catalog = self.portal_catalog
     total = 0
     transaction_threshold = 20
 
     # var for infinite loop
-    empty_count = 42 
+    empty_count = 42
 
     # Start information log
     info("START")
@@ -38,9 +35,9 @@ def clean_folder(self):
     while empty_count != 0:
 
         # Secure infinite loop
-        empty_count = 0 
+        empty_count = 0
 
-        # Get all folders 
+        # Get all folders
         folders = catalog.unrestrictedSearchResults({
                                     'portal_type': ('ATFolder', 'Folder')
                                     })
@@ -83,4 +80,3 @@ def clean_folder(self):
     out.seek(0)
 
     return out.read()
-

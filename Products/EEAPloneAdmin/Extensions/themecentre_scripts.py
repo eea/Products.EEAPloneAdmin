@@ -4,7 +4,7 @@ from Products.CMFCore.utils import getToolByName
 import transaction
 
 def fix_themecentre_intro_pages(self):
-    """ reindex intro pages and make sure they aren't default pages anymore 
+    """ reindex intro pages and make sure they aren't default pages anymore
     """
     query = { 'object_provides' :
             'eea.themecentre.interfaces.IThemeCentre',

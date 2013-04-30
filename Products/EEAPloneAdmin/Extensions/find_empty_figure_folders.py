@@ -1,12 +1,11 @@
-"""the problem with the emtpy folders inside figures
-is that they are not finished, their _at_creation_flag
-is set to True
+""" the problem with the emtpy folders inside figures
+    is that they are not finished, their _at_creation_flag
+    is set to True
 """
-
 import transaction
 
 def find(self):
-    """find folders that are empty inside EEAFigure objects
+    """ find folders that are empty inside EEAFigure objects
     """
     cat = self.portal_catalog
     figures = cat.searchResults({'meta_type': ['EEAFigure']})
@@ -27,23 +26,20 @@ def find(self):
 
     return empty, filled
 
-
 def show(self):
-    """Run in browser to see problematic folders
+    """ Run in browser to see problematic folders
     """
 
     empty = find(self)
-    return "\n".join([ "Folder that are empty inside EEAFigures"] + 
-                        [o.absolute_url() for o in empty[0]] + 
-                     ['Folders that are filled inside eeafigures'] + 
-                        [o.absolute_url() for o in empty[1]] 
+    return "\n".join([ "Folder that are empty inside EEAFigures"] +
+                        [o.absolute_url() for o in empty[0]] +
+                     ['Folders that are filled inside eeafigures'] +
+                        [o.absolute_url() for o in empty[1]]
     )
 
-
 def fix_1(self):
-    """Fix empty folders by properly setting their creation flag
+    """ Fix empty folders by properly setting their creation flag
     """
-
     fix = []
     i = 0
     _all = find(self)
@@ -58,7 +54,6 @@ def fix_1(self):
             transaction.savepoint()
 
     return "\n".join(['Fixed creation flag for the following folders'] + fix)
-        
 
 def fix_2(self):
     """Fix empty folders by deleting them

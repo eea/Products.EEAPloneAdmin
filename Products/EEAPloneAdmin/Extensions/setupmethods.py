@@ -4,7 +4,6 @@ import sys
 import time
 import transaction
 from zope.i18n import translate as realTranslate
-#from zope.component import queryAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
 from zope.interface import alsoProvides
@@ -16,14 +15,11 @@ from zope.component import getUtility
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from Products.CMFCore.WorkflowCore import WorkflowException
 from DateTime import DateTime
-#from eea.dataservice.relations import IRelations
-
-# Logging
 import logging
+
 logger = logging.getLogger('EEAPloneAdmin.setupmethods')
 info = logger.info
 info_exception = logger.exception
-
 
 def testTimeoutA(self):
     """ Test
@@ -31,7 +27,7 @@ def testTimeoutA(self):
     time.sleep(600)
     return 'done'
 
-def updateMimeTypes(self, brains=None, extension=None, newmime=None, 
+def updateMimeTypes(self, brains=None, extension=None, newmime=None,
                                                                 batchnr=20):
     """ Update mime types for file fields and their catalog index
     """
@@ -202,7 +198,6 @@ def bulkChangeState(self):
             info('Subtransaction committed to zodb.')
 
     info('Done changing state.')
-
 
 def printCheckInterval(self):
     """ Get/set python check interval """
@@ -547,7 +542,8 @@ def hideMapsDataFolders(self):
     return printed
 
 def setNavContext(self):
-    """moving the data centric object under data centre section. """
+    """ moving the data centric object under data centre section.
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     pubs = cat.searchResults({ 'id' : 'datasets' , 'path': '/www/SITE/themes/'})
@@ -564,7 +560,8 @@ def setNavContext(self):
     return printed
 
 def setNavContextForLiveMaps(self):
-    """moving the live maps objects under data centre section. """
+    """ moving the live maps objects under data centre section.
+    """
     context = self
     cat = getToolByName(context, 'portal_catalog')
     pubs = cat.searchResults({ 'navSection' : 'quicklinks' })
@@ -831,6 +828,5 @@ The EEA webteam
         except Exception, e:
             info("Got exception %s for %s" % (e, email))
             errors.append(email)
-
 
     return str(errors)

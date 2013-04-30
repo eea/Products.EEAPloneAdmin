@@ -1,13 +1,12 @@
 """ Invalidate untraslated folders
 """
-
 from Products.CMFCore.utils import getToolByName
 
 COMMENT = "Was not able to translate the title of this folder automatically. \
         One needs to be set manually."
 
 def invalidateUntranslatedFolders(context):
-    """Invalidate folder translations that have the same title as the original.
+    """ Invalidate folder translations that have the same title as the original.
     """
     #plone_utils = getToolByName(context, 'plone_utils')
     #urltool = getToolByName(context, 'portal_url')

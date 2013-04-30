@@ -5,7 +5,8 @@ import os
 import binascii
 
 def get_oid(self):
-    """get oid"""
+    """ get oid
+    """
     field = self.getField('image')
     blob = field.getRaw(self).getBlob()
     oid = blob._p_oid
@@ -23,4 +24,3 @@ def get_oid(self):
     cached (path to cached blob): %s <br/>
     </body></html>
     """ % (oid_repr(oid), oid.__repr__(), path, cached)
-

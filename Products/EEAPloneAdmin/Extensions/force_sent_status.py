@@ -1,7 +1,8 @@
-""" Force sent status for newsletters """
-
+""" Force sent status for newsletters
+"""
 def force_sent_status(self):
-    """ Force sent status for newsletters """
+    """ Force sent status for newsletters
+    """
     newsletters_to_mark = [
     'subscription/eea_main_subscription/water-for-agriculture',
     'subscription/eea_main_subscription/eionet-priority-data-flows-2012',
@@ -29,4 +30,3 @@ def force_sent_status(self):
                 nl[1].dateEmitted = nl[1].modification_date
 
     return "done"
-
