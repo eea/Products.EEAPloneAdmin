@@ -6,7 +6,6 @@ def check_navigation(self):
     """find all link with absolute url and change it in a
        relative address
     """
-
     catalog = self.portal_catalog
     message = ""
 

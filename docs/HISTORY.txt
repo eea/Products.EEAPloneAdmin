@@ -5,13 +5,22 @@ Changelog
 ----------------------
 * Upgrade step:
     - On www8 through tunnel run /www/@@renameCzechiaLocation
-      to fit location name from Czechia to Czech Republic 
+      to fit location name from Czechia to Czech Republic
     - [ichimdav refs #14363]
 * Cleanup: Remove "eea.related_multimedia" viewlet
   [voineali refs #9552]
 * Feature: Patched zope.i18n.translationDomain to always return english as
   target domain for authenticated users
   [ichimdav #14087]
+* Bug fix: cleanup code
+  [ghicaale]
+* Feature: added script to get facetednavs using Subject
+  [ghicaale refs #14383]
+* Upgrade step:
+    - In ZMI under /www/0maintenance add an externl method with bellow settings
+    - module: Products.EEAPloneAdmin.find_search_areas_using_subjects
+    - function: find_faceted_navigation
+    - [ghicaale refs #14383]
 
 6.3 - (2013-04-17)
 ------------------
