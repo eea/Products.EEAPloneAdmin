@@ -15,7 +15,7 @@ def find_faceted_navigation(self):
          'eea.facetednavigation.subtypes.interfaces.IFacetedNavigable'
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    result = []
+    result = {}
 
     brains = cat.unrestrictedSearchResults( object_provides = faceted_interface )
 
@@ -25,7 +25,7 @@ def find_faceted_navigation(self):
         query = obj.restrictedTraverse('faceted_query')
         xml = query.criteria()
         if 'Subject' in xml.keys():
-            result.append(xml['Subject']['query'])
+            result[obj.absolute_url()] = xml['Subject']['query']
 
     info('Done searching for facetednav with Subject as criteria')
     return result
