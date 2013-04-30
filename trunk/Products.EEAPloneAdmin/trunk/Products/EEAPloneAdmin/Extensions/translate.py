@@ -1,6 +1,5 @@
 """ Translate
 """
-
 from Products.CMFPlone import PloneMessageFactory
 from eea.translations import _ as eeaTranslationFactory
 from zope.i18n import translate

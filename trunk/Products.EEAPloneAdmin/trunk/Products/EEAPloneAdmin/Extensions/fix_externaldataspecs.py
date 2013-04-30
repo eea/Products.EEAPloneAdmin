@@ -1,10 +1,8 @@
-"""fix external data specs
+""" fix external data specs
 """
-
 from Products.CMFPlone.utils import getToolByName
 from StringIO import StringIO
 import transaction
-
 
 def getOrganisationByUrl(catalog, url):
     """ get Organisation by given url
@@ -20,7 +18,7 @@ def getOrganisationByUrl(catalog, url):
 
 
 def fix_externaldataspecs(self):
-    """fix external data specs
+    """ fix external data specs
     """
     catalog = getToolByName(self, 'portal_catalog')
     brains = catalog.searchResults(portal_type="ExternalDataSpec")
@@ -56,11 +54,11 @@ def fix_externaldataspecs(self):
         org = getOrganisationByUrl(catalog, url)
         if org:
             print >> out, "The following organisation exists for " \
-                          "that url: %s > %s" % (org.absolute_url(), 
+                          "that url: %s > %s" % (org.absolute_url(),
                                                  org.Title())
         else:
             print >> out, "There is no organisation for that url"
-        
+
     out.seek(0)
 
     return out.read()

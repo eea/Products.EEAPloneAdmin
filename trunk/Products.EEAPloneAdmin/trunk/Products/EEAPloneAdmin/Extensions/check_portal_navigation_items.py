@@ -1,9 +1,9 @@
-""" Correct all absolute links in the portaltab menu. Change only the first 
-level,ie: themenu that we see in the blue bar.
+""" Correct all absolute links in the portaltab menu. Change only the first
+    level,ie: themenu that we see in the blue bar.
 """
 
 def check_navigation(self):
-    """find all link with absolute url and change it in a 
+    """find all link with absolute url and change it in a
        relative address
     """
 
@@ -29,6 +29,3 @@ def check_navigation(self):
                 obj.setUrl(obj_url.replace('http://www.eea.europa.eu',''))
 
     return message
-    
-
-

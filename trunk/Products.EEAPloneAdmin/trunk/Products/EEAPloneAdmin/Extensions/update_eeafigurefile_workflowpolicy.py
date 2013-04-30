@@ -1,10 +1,8 @@
 """ Update EEAFigureFile local workflow policy for Images
 """
-
 from Products.CMFCore.utils import getToolByName
-
-# Logging
 import logging
+
 logger = logging.getLogger('EEAPloneAdmin.updatelocalpolicy')
 info = logger.info
 info_exception = logger.exception

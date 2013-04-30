@@ -1,12 +1,9 @@
 """ Workflow Scripts for: tender_requestor_workflow
 """
 
-#from Products.EEAPloneAdmin.config import DEBUG
-
 def sendCFTLink(self, state_change, **kw):
     """ Send CFT Link
     """
-
     obj = state_change.object
     mhost = self.MailHost
     fromEmail = "%s <%s>" % (self.email_from_name, self.email_from_address)

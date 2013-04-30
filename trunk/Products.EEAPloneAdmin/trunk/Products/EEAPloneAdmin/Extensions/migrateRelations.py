@@ -1,16 +1,13 @@
 """ Migrate relations from one object to another
 """
-
 from zope.component import queryAdapter
 from Products.CMFCore.utils import getToolByName
 from eea.dataservice.relations import IRelations
-
-# Logging
 import logging
+
 logger = logging.getLogger('EEAPloneAdmin.migrateRelations')
 info = logger.info
 info_exception = logger.exception
-
 
 def migrateRelations(self, old_ob_path, new_ob_path):
     """ Migrate relations from one object to another

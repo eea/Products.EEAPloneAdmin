@@ -1,6 +1,5 @@
 """ Find missing blobs
 """
-
 from Products.CMFCore.utils import getToolByName
 from ZODB.utils import oid_repr
 from plone.app.blob.interfaces import IBlobField
@@ -11,7 +10,6 @@ import os
 import pprint
 
 logger = logging.getLogger('eea')
-
 
 def FindMissingBlobs(self):
     """ Find missing blobs
@@ -84,7 +82,6 @@ def FindMissingBlobs(self):
 
     logger.info('Report done.')
     return "Done."
-
 
 def getBlobOid(self):
     """ Get blob oid
@@ -185,7 +182,8 @@ def find_missing_blob_scales(self):
     return 'Done.'
 
 def find_missing_scales(self):
-    """ Find missing scales """
+    """ Find missing scales
+    """
     cat = getToolByName(self, 'portal_catalog', None)
 
     content_types = ['EEAFigureFile',
