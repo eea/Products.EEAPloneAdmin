@@ -107,7 +107,7 @@ def save_resources_on_disk(registry, request=None):
         return
 
     logger.info(
-        u"Starting to save resources on disk for registry %s" % registry)
+        u"Starting to save resources on disk for registry %s", registry)
 
     portal_url_tool = getToolByName(registry, 'portal_url')
     portal_url      = portal_url_tool()
@@ -132,7 +132,7 @@ def save_resources_on_disk(registry, request=None):
         dest = os.path.join(base, skin)
 
         if not os.path.exists(dest):
-            logger.debug("%s does not exists. Creating it." % dest)
+            logger.debug("%s does not exists. Creating it.", dest)
             os.makedirs(dest)
 
         if not getattr(registry, 'concatenatedResourcesByTheme', None):
@@ -151,9 +151,8 @@ def save_resources_on_disk(registry, request=None):
                 if not str(e).strip():   #on empty error, content is saved
                     continue
                 #this is for DTML base_properties problem
-                logger.warning("Could not generate content "
-                                "for %s in skin %s because: %s" % 
-                                    (name, skin, e))
+                logger.warning("Could not generate content for %s in skin %s "
+                               "because: %s", name, skin, e)
                 continue
 
             if isinstance(content, str):
@@ -165,22 +164,22 @@ def save_resources_on_disk(registry, request=None):
                 fpath = os.path.join(dest, name)
                 parent = os.path.dirname(fpath)
                 if not os.path.exists(parent):
-                    logger.debug("%s does not exists. Creating it." % dest)
+                    logger.debug("%s does not exists. Creating it.", dest)
                     os.makedirs(parent)
 
                 f = codecs.open(fpath, 'w', 'utf-8')
                 f.write(content)
                 f.close()
-                logger.info("Wrote %s on disk." % fpath)
+                logger.info("Wrote %s on disk.", fpath)
             except IOError:
-                logger.warning("Could not write %s on disk." % fpath)
+                logger.warning("Could not write %s on disk.", fpath)
 
     if script:
         res = subprocess.call([script, base])
         if res != 0:
             raise ValueError("Unsuccessful synchronisation of disk resources")
 
-    logger.info(u"Finished saving resources on disk for registry %s" % registry)
+    logger.info(u"Finished saving resources on disk for registry %s", registry)
 
 class SaveResourcesOnDisk(BrowserView):
     """ Base class to save resources on disk
@@ -227,21 +226,23 @@ class GoPDB(BrowserView):
     def __call__(self):
         #mtool = getToolByName(self.context, 'portal_membership')
         #has = mtool.checkPermission("Manage portal", self.context)
-        #if has:
 
-        def classtree(cls, indent):
-            """ method used in conjunction with instantree to display class 
-                tree 
-            """
-            print '.'*indent, cls.__name__        # print class name here
-            for supercls in cls.__bases__:        # recur to all superclasses
-                classtree(supercls, indent+3)     # may visit super > once
+        #this code is helpful in debugging inheritance trees
+        #pyflakes complains that it's unused, so we disable it here
+        #enable if you need it
+#       def classtree(cls, indent):
+#           """ method used in conjunction with instantree to display class 
+#               tree 
+#           """
+#           print '.'*indent, cls.__name__        # print class name here
+#           for supercls in cls.__bases__:        # recur to all superclasses
+#               classtree(supercls, indent+3)     # may visit super > once
 
-        def instancetree(inst):
-            """ Helper method to recursively print all superclasses
-            """
-            print 'Tree of', inst                 # show instance
-            classtree(inst.__class__, 3)          # climb to its class
+#       def instancetree(inst):
+#           """ Helper method to recursively print all superclasses
+#           """
+#           print 'Tree of', inst                 # show instance
+#           classtree(inst.__class__, 3)          # climb to its class
 
         import pdb
         pdb.set_trace()
