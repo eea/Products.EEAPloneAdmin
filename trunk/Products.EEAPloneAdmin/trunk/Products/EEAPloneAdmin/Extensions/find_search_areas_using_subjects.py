@@ -19,7 +19,7 @@ def find_faceted_navigation(self):
 
     brains = cat.unrestrictedSearchResults( object_provides = faceted_interface )
 
-    count = 1
+    #count = 1
     for brain in brains:
         obj = brain.getObject()
         query = obj.restrictedTraverse('faceted_query')
