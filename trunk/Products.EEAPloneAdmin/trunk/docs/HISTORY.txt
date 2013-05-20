@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.5-dev - (unreleased)
-----------------------
+6.5 - (2013-05-20)
+------------------
 * Bug fix: improve the way we calculate PLONE_COOKIE_DOMAIN
   [tiberich]
 
