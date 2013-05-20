@@ -8,8 +8,10 @@ from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 import binascii
 import os
 import plone.session.plugins.session as plsession
-
 import time
+
+
+COOKIENAME = "PLONE_COOKIE_DOMAIN"
 
 
 class PatchedSessionPlugin(BasedSessionPlugin):
@@ -64,6 +66,22 @@ class PatchedSessionPlugin(BasedSessionPlugin):
                                 self.refresh_interval)
         return self._refresh_content(REQUEST)
 
+    def _get_cookie_domain(self, config):
+        """Get the proper cookie domain for the environment.
+
+        Order of priorities:
+        * os.environ gets 1st priority
+        * zope.conf environment, can be set in buildout file, comes second
+        * last is option set in Data.fs
+        """
+        cookie_domain = os.environ.get(COOKIENAME, None)
+        if cookie_domain:
+            return cookie_domain
+
+        environ = getattr(config, 'environment', {})
+        cookie_domain = environ.get(COOKIENAME, self.cookie_domain)
+        return cookie_domain
+
     def _setCookie(self, cookie, response):
         """ Set cookie helper method
         """
@@ -77,10 +95,10 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
         options = dict(path=self.path, secure=secure, http_only=True)
 
+        cookie_domain = self._get_cookie_domain(config)
+
         # Allow override based on system environment
         # during tests, config.environment doesn't exist
-        environ = getattr(config, 'environment', os.environ)
-        cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
         if cookie_domain:
             options['domain'] = cookie_domain
         if self.cookie_lifetime:
@@ -92,8 +110,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         """ resetCredential by expiring auth cookie
         """
         config = getConfiguration()
-        environ = getattr(config, 'environment', os.environ)
-        cookie_domain = environ.get('PLONE_COOKIE_DOMAIN', self.cookie_domain)
+        cookie_domain = self._get_cookie_domain(config)
         if cookie_domain:
             response.expireCookie(
                 self.cookie_name, path=self.path, domain=cookie_domain)
