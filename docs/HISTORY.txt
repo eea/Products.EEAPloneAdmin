@@ -4,10 +4,12 @@ Changelog
 6.6-dev - (unreleased)
 ----------------------
 * Upgrade step: at www/++rule++rule-4/@@manage-elements
-    - For the *Notify IMS support team when indicators change workflow state* 
-    - Edit the *send email* rule and replace {review_state} with 
+    - For the *Notify IMS support team when indicators change workflow state*
+    - Edit the *send email* rule and replace {review_state} with
       {review_state_title}
     - [ichimdav #14599]
+* Change: added full system path of blob files stored in Plone objects when running get_list_of_blobs external method
+  [ghicaale refs #14690]
 
 6.5 - (2013-05-20)
 ------------------
