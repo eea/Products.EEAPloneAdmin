@@ -8,6 +8,7 @@ import binascii
 import logging
 import os
 import pprint
+import Globals
 
 logger = logging.getLogger('eea')
 
@@ -114,33 +115,35 @@ def getBlobOid(self):
 def get_list_of_blobs(self):
     """ Get list of all blobs with their OID
     """
-#   query = {'portal_type':{
-#           'query':[
-#               'Article',
-#               'Blob' ,
-#               'DataFile',
-#               'EEAFigureFile',
-#               'FactSheetDocument',
-#               'File',
-#               'FlashFile',
-#               'HelpCenterInstructionalVideo',
-#               'Highlight',
-#               'Image',
-#               'PressRelease',
-#               'Promotion',
-#               'Report'
-#               'Speech',
-#               ],
-#           'operator':'or'
-#       }}
+    logger.info('Start report')
+    query1 = {'portal_type':{
+             'query':[
+#                'Article',
+#                'Blob' ,
+#                'DataFile',
+#                'EEAFigureFile',
+#                'FactSheetDocument',
+#                'File',
+#                'FlashFile',
+#                'HelpCenterInstructionalVideo',
+#                'Highlight',
+#                'Image',
+#                'PressRelease',
+#                'Promotion',
+#                'Report'
+                'Speech',
+                ],
+            'operator':'or'
+        }}
 
-    query = {
+    query2 = {
         'Language': 'all',
     }
     tree = {}
 
     cat = getToolByName(self, 'portal_catalog', None)
-    brains = cat(**query)
+    brains = cat(**query2)
+    logger.info('%d objects will to be processed' % len(brains))
     for brain in brains:
         obj = brain.getObject()
         schema = getattr(obj.aq_inner.aq_self, 'schema', None)
@@ -150,10 +153,19 @@ def get_list_of_blobs(self):
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
+
+            oid = blob._p_oid
+            serial = blob._p_serial
+            conn = Globals.DB.open()
+            file_path = conn._storage.fshelper.getBlobFilename(oid, serial)
+            conn.close()
+
             tree[oid_repr(blob._p_oid)] = (f.getName(),
+                                           file_path,
                                            brain.portal_type,
                                            brain.getURL())
 
+    logger.info('Done report!')
     return pprint.pformat(tree)
 
 def find_missing_blob_scales(self):
