@@ -11,7 +11,7 @@ import plone.session.plugins.session as plsession
 import time
 
 
-COOKIENAME = "PLONE_COOKIE_DOMAIN"
+COOKIENAME = "DISABLE_PLONE_COOKIE_DOMAIN"
 
 
 class PatchedSessionPlugin(BasedSessionPlugin):
@@ -74,13 +74,16 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         * zope.conf environment, can be set in buildout file, comes second
         * last is option set in Data.fs
         """
-        cookie_domain = os.environ.get(COOKIENAME, None)
-        if cookie_domain:
-            return cookie_domain
+        disable = os.environ.get(COOKIENAME, None)
+        if disable:
+            return ""   #an empty string makes the cookie bind to current url
 
         environ = getattr(config, 'environment', {})
-        cookie_domain = environ.get(COOKIENAME, self.cookie_domain)
-        return cookie_domain
+        disable = environ.get(COOKIENAME)
+        if disable:
+            return ""
+
+        return self.cookie_domain
 
     def _setCookie(self, cookie, response):
         """ Set cookie helper method
@@ -101,6 +104,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         # during tests, config.environment doesn't exist
         if cookie_domain:
             options['domain'] = cookie_domain
+
         if self.cookie_lifetime:
             options['expires'] = plsession.cookie_expiration_date(
                                                         self.cookie_lifetime)
