@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.6-dev - (unreleased)
-----------------------
+6.6 - (2013-06-17)
+------------------
 * Upgrade step: at www/++rule++rule-4/@@manage-elements
     - For the *Notify IMS support team when indicators change workflow state*
     - Edit the *send email* rule and replace {review_state} with
