@@ -11,7 +11,7 @@ Changelog
 * Change: added full system path of blob files stored in Plone objects when running get_list_of_blobs external method
   [ghicaale refs #14690]
 * Bug fix: no longer rely on a domain to override the cookie domain,
-  and completely exclude the domain from being included in the cookie. 
+  and completely exclude the domain from being included in the cookie.
   This allows easier control on remote tunnel logins
   Note: use DISABLE_PLONE_COOKIE_DOMAIN=true env variable instead of
   PLONE_COOKIE_DOMAIN
