@@ -150,17 +150,23 @@ def get_list_of_blobs(self):
         if not schema:
             continue
         fields = [f for f in schema.fields() if IBlobField.providedBy(f)]
+        if not len(fields) and obj.getField('file'):
+            fields = [obj.getField('file')]
         for f in fields:
             bw = f.getRaw(obj)
             blob = bw.getBlob()
-
             oid = blob._p_oid
             serial = blob._p_serial
             conn = Globals.DB.open()
             file_path = conn._storage.fshelper.getBlobFilename(oid, serial)
             conn.close()
+            try:
+                full_path = blob.committed()
+            except:
+                full_path = 'missing blob'
 
             tree[oid_repr(blob._p_oid)] = (f.getName(),
+                                           full_path,
                                            file_path,
                                            brain.portal_type,
                                            brain.getURL())
