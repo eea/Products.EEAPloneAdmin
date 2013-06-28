@@ -116,8 +116,9 @@ def get_list_of_blobs(self):
     """ Get list of all blobs with their OID
     """
     logger.info('Start report')
-    query1 = {'portal_type':{
-             'query':[
+
+#    query = {'portal_type':{
+#             'query':[
 #                'Article',
 #                'Blob' ,
 #                'DataFile',
@@ -131,18 +132,18 @@ def get_list_of_blobs(self):
 #                'PressRelease',
 #                'Promotion',
 #                'Report'
-                'Speech',
-                ],
-            'operator':'or'
-        }}
+#                'Speech',
+#                ],
+#            'operator':'or'
+#        }}
 
-    query2 = {
+    query = {
         'Language': 'all',
     }
     tree = {}
 
     cat = getToolByName(self, 'portal_catalog', None)
-    brains = cat(**query2)
+    brains = cat(**query)
     logger.info('%d objects will to be processed' % len(brains))
     for brain in brains:
         obj = brain.getObject()
