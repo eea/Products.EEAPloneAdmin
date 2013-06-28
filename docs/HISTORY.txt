@@ -5,6 +5,9 @@ Changelog
 ----------------------
 * Upgrade step: upgrade collective.traceview from sources (I submited some fixes)
   [ghicaale]
+* Change: fixed the method to report the full path from the blobstorage of Plone file/iamge objects
+  so now we get the blob filename too
+  [ghicaale refs #14690]
 
 6.6 - (2013-06-17)
 ------------------
