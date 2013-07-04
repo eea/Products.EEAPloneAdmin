@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.7-dev - (unreleased)
-----------------------
+6.7 - (2013-07-04)
+------------------
 * Bug fix: always search from the root of the site and within all languages
   when using TinyMCE search dialog
   [ichimdav #14922]
