@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="eea">
+
+  <head><title></title></head>
+
+  <body>
+
+  <metal:view_macro define-macro="view">
+    <metal:slot define-slot="body">
+      <div metal:use-macro="here/eea_relateditems/macros/relatedItemsWithThumbs" />
+    </metal:slot>
+  </metal:view_macro>
+
+  <tal:comment condition="nothing">
+<!--
+Macro parameters:
+
+  @@param fieldName required
+  @@param value required
+  @@param field optional
+  @@param widget optional
+
+Usage:
+
+  <metal:popup use-macro="here/eeareferencebrowser/macros/popup" />
+
+-->
+  </tal:comment>
+
+  <div metal:define-macro="popup" class="eea-widget-referencebrowser"
+    tal:attributes="id string:$fieldName-widget"
+    tal:define="
+      fieldName fieldName;
+      field nocall:field | nothing;
+      widget nocall:widget | nothing;
+      value value | python:[];
+      uids python:value or [];
+      uids python:same_type(value, []) and value or [value];
+      multiVal python:test(field, field.multiValued, True);
+      required python:test(field, field.required, False);
+      ">
+
+      <!-- Edit -->
+      <metal:slot define-slot="edit">
+        <input type="hidden" value=""
+          tal:condition="multiVal"
+          tal:attributes="name string:$fieldName:default" />
+        <select style="display:none" tal:attributes="
+          multiple python:multiVal and 'multiple' or None;
+          name string:$fieldName:list; id fieldName;">
+          <tal:uids repeat="uid uids">
+            <option selected="selected"
+              tal:condition="uid" tal:attributes="value uid" tal:content="uid" />
+          </tal:uids>
+        </select>
+      </metal:slot>
+
+      <!-- View -->
+      <metal:slot define-slot="view">
+        <div class="eea-ref-selecteditems eea-ref-selecteditems-box"
+          tal:define="popup_view nocall:here/@@eeareferencebrowser-popup-selecteditems.html"
+          tal:content="structure python:popup_view(field=fieldName, uids=uids)" />
+      </metal:slot>
+
+      <!-- Popup -->
+      <metal:popup define-slot="popup">
+        <div tal:attributes="
+          title python:widget and 'Edit %s' % widget.Label(here) or 'Edit';
+          id string:$fieldName-popup">
+          <tal:popup define="popup_view nocall:here/@@eeareferencebrowser-popup.html"
+            replace="structure python:popup_view(field=fieldName, uids=uids)" />
+        </div>
+      </metal:popup>
+
+      <!-- Button -->
+      <metal:button define-slot="button">
+        <input class="searchButton eea-ref-popup-button" type="button"
+          value="Edit..." i18n:attributes="value"/>
+      </metal:button>
+
+      <!-- Script -->
+      <metal:script define-slot="script">
+        <script type="text/javascript" tal:content="string:
+          var popup = new EEAReferenceBrowser.Widget('$fieldName');
+        "></script>
+      </metal:script>
+
+  </div>
+
+  <metal:edit_macro define-macro="edit">
+    <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+      <metal:fill fill-slot="widget_body">
+        <metal:use use-macro="here/eeareferencebrowser/macros/popup" />
+      </metal:fill>
+    </metal:use>
+  </metal:edit_macro>
+
+  <metal:search_macro define-macro="search">
+    <div metal:use-macro="here/eeareferencebrowser/macros/edit"></div>
+  </metal:search_macro>
+
+</body>
+</html>
