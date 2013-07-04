@@ -3,6 +3,9 @@ Changelog
 
 6.7-dev - (unreleased)
 ----------------------
+* Bug fix: always search from the root of the site and within all languages
+  when using TinyMCE search dialog
+  [ichimdav #14922]
 * Upgrade step: upgrade collective.traceview from sources (I submited some fixes)
   [ghicaale]
 * Change: fixed the method to report the full path from the blobstorage of Plone file/image objects

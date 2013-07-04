@@ -132,10 +132,14 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     if searchtext:
         # plone4 it was search by SearchableText instead of title which gave
         # thousands of searches just vaguely related to the keywords
-        folder_path = '/'.join(self.context.getPhysicalPath())
+        #folder_path = '/'.join(self.context.getPhysicalPath())
+        # #14922 do a site wide search from now on instead of being bounded
+        # by navigation root and context language
+        folder_path = '/www'
         res = self.context.portal_catalog.searchResults(
                 Title='%s*' % searchtext, portal_type=filter_portal_types,
-                Language=self.context.Language(), path={'query': folder_path})
+                Language="all",
+                path={'query': folder_path})
         for brain in res:
             catalog_results.append({
                 'id': brain.getId,
