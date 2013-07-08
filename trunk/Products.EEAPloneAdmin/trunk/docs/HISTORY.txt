@@ -1,8 +1,8 @@
 Changelog
 =========
 
-6.8-dev - (unreleased)
-----------------------
+6.8 - (2013-07-08)
+------------------
 * Upgrade step: ask ichimdav to re-enable the chat on production
   [ichimdav #14518]
 
