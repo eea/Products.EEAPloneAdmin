@@ -3,6 +3,9 @@ Changelog
 
 6.9-dev - (unreleased)
 ----------------------
+* Upgrade step: This step should be done AFTER the upgrade step of eea.geotags:
+    - with www8 run www/@@renameMisnamedLocations
+    - [ichimdav #14667]
 * Upgrade step: Within ZMI > www/manage_components remove p4a.subtyper adapter
   [voineali #15234]
 * Cleanup: Removed p4a.subtyper dependency
