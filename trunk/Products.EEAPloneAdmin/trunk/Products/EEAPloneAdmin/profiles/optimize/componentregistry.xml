@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <componentregistry>
  <adapters>
-  <adapter name="subtypes" factory="p4a.subtyper.submenu.SubtypesSubMenuItem"
-     for="zope.interface.Interface
-           zope.interface.Interface"
-     provides="plone.app.contentmenu.interfaces.IContentMenuItem"/>
   <adapter
      factory="Solgema.PortletsManager.exportimport.SolgemaPortletAssignmentImportExportHandler"
      for="zope.interface.Interface"
