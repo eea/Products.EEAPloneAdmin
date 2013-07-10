@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.0-dev - (unreleased)
+----------------------
+
 6.9 - (2013-07-10)
 ------------------
 * Upgrade step: This step should be done AFTER the upgrade step of eea.geotags:
