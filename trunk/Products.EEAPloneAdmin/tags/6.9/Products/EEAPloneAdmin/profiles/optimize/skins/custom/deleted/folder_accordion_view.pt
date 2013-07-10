@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="eea">
+
+<body>
+    <div metal:fill-slot="content-core">
+    <metal:main-macro define-macro="main">
+
+        <metal:listingmacro define-macro="listing" tal:define="subfolderView subfolderView|context/@@subfolder_view_logic;
+                                                               folderContents folderContents|python:None">
+            <tal:foldercontents tal:define="formattedFolderContents python:subfolderView.folder_contents(size_limit=10, 
+                                            folderContents=folderContents, obj_link=True); 
+                                            nonFolderishItems formattedFolderContents/nonfolderish; 
+                                            FolderishItems formattedFolderContents/folderish;
+                                            isAnon isAnon|context/@@plone_portal_state/anonymous">
+
+            <div tal:condition="python:not FolderishItems and not isAnon" class="portalMessage info">
+                <h3 i18n:translate="">Info: only Published content will be displayed in this view</h3>
+            </div>
+            <div class="eea-accordion-panels">
+                <div class="eea-accordion-panel" tal:repeat="child FolderishItems">
+                    <h2><a tal:content="python:'%s' % (child['title'])" tal:attributes="href child/listing_url"></a></h2>
+                    <div class="pane">
+                        <p class="subfolder-description" tal:condition="child/description" tal:content="child/description"></p>
+                        <div class="subfolder-contents" tal:define="subFolderContents child/contents">
+                            <p tal:condition="not:child/nitems">No items to display.</p>
+                            <div class="photoAlbumEntry"
+                                 tal:attributes="class python:item['portal_type'] == 'EyewitnessStory' and 'photoAlbumEntry photoAlbumFolder' or 'photoAlbumEntry'"
+                                 tal:repeat="item subFolderContents">
+                                 <a tal:attributes="href item/listing_url;
+                                                    title item/description;
+                                                    class python:item['portal_type'] == 'EyewitnessStory' and 'gallery-fancybox' or ''">
+                                    <span class="photoAlbumEntryWrapper">
+                                        <img tal:attributes="src python: item['portal_type'] == 'FeedItem' and item['image'] or '%s/image_thumb' % item['url']"/>
+                                    </span>
+                                    <span class="photoAlbumEntryTitle" tal:content="item/title"></span>
+                                </a>
+                            </div>
+                            <div class="visualClear"></div>
+                        </div>
+                        <div class="portletFooter">
+                        <a class="standardButton" i18n:translate="" tal:attributes="href child/listing_url" tal:condition="child/has_more">All Items</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div tal:define="nitems python:len(nonFolderishItems)"
+                    tal:condition="nitems"
+                    class="eea-accordion-panel">
+                    <h2><a href="#">Other resources</a></h2>
+                    <div class="pane">
+                        <div class="subfolder-contents">
+                            <div class="photoAlbumEntry"
+                                tal:attributes="class python:item['portal_type'] == 'EyewitnessStory' and 'photoAlbumEntry photoAlbumFolder' or 'photoAlbumEntry'"
+                                tal:repeat="item nonFolderishItems">
+                                <a tal:attributes="href item/listing_url;
+                                    title item/description;
+                                    class python:item['portal_type'] == 'EyewitnessStory' and 'gallery-fancybox' or ''">
+                                    <span class="photoAlbumEntryWrapper">
+                                        <img tal:attributes="src string:${item/url}/image_thumb"/>
+                                    </span>
+                                    <span class="photoAlbumEntryTitle" tal:content="item/title"></span>
+                                </a>
+                            </div>
+                            <div class="visualClear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </tal:foldercontents>
+        </metal:listingmacro>
+
+    </metal:main-macro>
+    </div>
+</body>
+</html>

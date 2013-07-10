@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<tal:comment tal:replace="nothing">
+$Id: newsletter_mua_formatter.pt 37 2004-12-07 17:45:51Z zope $
+
+Customizing this template
+=========================
+
+* CSS stylesheet: Embed the stylesheet in that template, don't refer to an external stylesheet.
+* Avoid javasripts: the various MUAs don't handle javascripts, most users disable javascripts for security issues.
+* Images and hyperlinks MUST have an absolute URL.
+* Customize tal code : don't forget to modify "Newsletter_view.pt" too.
+* Use of images in the template :
+{img src="#"
+     tal:condition="ishtml"
+     tal:replace="structure here/some_image_object" /}
+{whatever tal:condition="not: ishtml"}
+ An alternate text
+{/whatever}
+</tal:comment>
+
+<html i18n:domain="eea"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US"
+      lang="en-US"
+      tal:define="ishtml options/html;
+                  charset here/portal_properties/site_properties/default_charset | string:utf-8">
+
+<head>
+<meta http-equiv="Content-Type"
+        tal:condition="ishtml"
+        tal:attributes="content string:text/html;;charset=${charset}" />
+
+<style type="text/css">
+<![CDATA[
+body {
+    color:#000000;
+    font-family:Verdana,Lucida,Helvetica,Arial,sans-serif;
+    font-size:0.75em;
+}
+
+#notification-footer, #notification-header  {
+   background-color:#95B229;
+   color:white;
+   float:none;
+   font-size:x-small;
+   margin:0em;
+   padding:1em;
+   text-align:left;
+}
+
+#notification-footer {
+font-weight:bold;
+}
+
+#userpage-info {
+   font-size:x-small;
+   padding:1em;
+}
+
+
+#notification-footer a {
+color: white;
+border: none;
+}
+#notification-footer a:visited {
+color: white;
+}
+#notification-footer a:hover {
+color: #8e004d;
+background-color: transparent;
+}
+
+#notification-header {
+   font-size:1.25em;
+   padding:1.5em 0.5em;
+   line-height:1.25em;
+   font-weight:bold;
+}
+
+#notification-body {
+   padding:0.5em 0.5em 1em 0.5em;
+   line-height:1.25em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+border-bottom:1px solid #E9EFCD;
+background-color:transparent;
+color:#2D749C;
+font-weight:bold;
+}
+
+h1 {
+border-bottom:1px solid #E9EFCD;
+color:#00446A;
+margin:0.67em 0pt;
+padding-bottom:0.25em;
+line-height:1.25em;
+font-size:1.25em;
+}
+
+h2 {
+font-size:1em;
+}
+
+h3,h4 ,h5 ,h6 {
+font-size:0.9em;
+}
+
+#notification-header h1 {
+ color:white;
+ border-bottom:medium none;
+ margin:0;
+ padding-bottom:0;
+ font-size:1em;
+}
+hr {
+border: medium none;
+color:white;
+}
+]]>
+</style>
+</head>
+
+ <body tal:define="newsletter python:getattr(here, options['id']);
+                   objects newsletter/getObjects">
+
+
+<div id="notification-header">  
+<h3>European Environment Agency (EEA)<br/>
+www.eea.europa.eu</h3>
+</div>
+<div id="notification-body">
+  <h1 tal:content="options/title" />
+  <div tal:define="description options/description" style="font-weight : bold"
+       tal:condition="description"
+       tal:content="description" />
+  <div tal:replace="structure options/body">
+   The body...
+  </div>
+  <metal:block metal:use-macro="here/NewsletterMacros/macros/newsletter_dynamic_content">
+    Dynamic content
+  </metal:block>
+</div>
+<br/>
+<div id="notification-footer">
+<p>Best regards<br/>
+<a href="http://www.eea.europa.eu/help/contact-info">EEA Web Team</a><br/><br/>
+<a href="http://www.eea.europa.eu">European Environment Agency</a>, Kongens Nytorv 6, 1050 Copenhagen K, Denmark - Phone: +45 3336 7100  <br />
+<a rel="cc:morePermissions" xmlns:cc="http://creativecommons.org/ns#" href="http://www.eea.europa.eu/legal/copyright">Legal notice</a>, 
+<a href="http://www.eea.europa.eu/disclaimer">Disclaimer</a> and  <a href="http://www.eea.europa.eu/privacy/">Privacy policy</a>    
+</p>
+<p>More subscriptions are available at <a href="http://www.eea.europa.eu/subscription">EEA Subscriptions</a></p>
+</div>
+<div id="userpage-info">
+<div tal:replace="structure options/newsletterFooter" />
+</div>
+ </body>
+</html>
