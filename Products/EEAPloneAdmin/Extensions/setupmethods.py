@@ -10,8 +10,7 @@ from zope.interface import alsoProvides
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from Products.NavigationManager.interfaces import INavigationSectionPosition
-from p4a.subtyper.interfaces import ISubtyper
-from zope.component import getUtility
+from zope.component import getMultiAdapter
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from Products.CMFCore.WorkflowCore import WorkflowException
 from DateTime import DateTime
@@ -269,8 +268,9 @@ def setIndicatorsFacets(self):
    # Example:
    #    >>> fid = portal.invokeFactory('Folder', 'heritor')
    #    >>> heritor = portal._getOb(fid)
-   #    >>> subtyper.change_type(heritor,
-   #    ...     'eea.faceted.inheritance.FolderFacetedHeritor')
+   #    >>> subtyper = getMultiAdapter((heritor, heritor.REQUEST),
+   #    ...                             name=u'facetedheritor_subtyper')
+   #    >>> subtyper.enable()
    #
    #  Connect heritor with ancestor
    #
@@ -280,14 +280,15 @@ def setIndicatorsFacets(self):
    #    '/plone/ancestor'
 
     pubs = cat.searchResults({'id':'indicators', 'path': '/www/SITE/themes/'})
-    subtyper = getUtility(ISubtyper)
+    request = getattr(context, 'REQUEST', None)
     printed = "Indicators sections for new IMSv3\n"
 
     for indf in pubs:
         indfo = indf.getObject()
         printed = printed + indfo.absolute_url() + '\n'
-        subtyper.change_type(indfo,
-                             'eea.faceted.inheritance.FolderFacetedHeritor')
+        subtyper = getMultiAdapter((indfo, request),
+                                   name=u'facetedheritor_subtyper')
+        subtyper.enable()
         IHeritorAccessor(indfo
                          ).ancestor = '/www/SITE/themes/indicators-ancestor'
         try:

@@ -3,6 +3,10 @@ Changelog
 
 6.9-dev - (unreleased)
 ----------------------
+* Upgrade step: Within ZMI > www/manage_components remove p4a.subtyper adapter
+  [voineali #15234]
+* Cleanup: Removed p4a.subtyper dependency
+  [voineali #15234]
 
 6.8 - (2013-07-08)
 ------------------
