@@ -1384,8 +1384,9 @@ class MigrateGeographicalCoverageToGeotags(object):
 
 
 
-class RenameCzechiaLocation(object):
-    """ Rename Czechia location to Czech Republic
+class RenameMisnamedLocations(object):
+    """ Rename Country Names with mapping found withing countries_mapping
+        vocabulary
     """
     def __init__(self, context, request):
         self.context = context
@@ -1394,36 +1395,44 @@ class RenameCzechiaLocation(object):
     def __call__(self):
         """ Call method
         """
-        log = logging.getLogger("RenameCzechiaGeotag")
+        log = logging.getLogger("RenameMisnamedLocations")
+        log.info("Starting Renaming of CountryNames")
         catalog = getToolByName(self.context, 'portal_catalog')
         query = {
-            'portal_type': ['Assessment', 'Data', 'EEAFigure']
+            'object_provides': 'eea.geotags.storage.interfaces.IGeoTagged'
         }
+        atvm = getToolByName(self.context, 'portal_vocabularies')
+        voc = atvm.get('countries_mapping')
+        mappings = voc.values()
+        keys = voc.keys()
+        values = [mapping.title for mapping in mappings]
         count = 0
         found = 0
         res = catalog.unrestrictedSearchResults(query)
         for brain in res:
-            if 'Czechia' in brain.location:
-                obj = brain.getObject()
-                geotags = json.loads(brain.geotags)
-                features = geotags['features']
-                for feature in features:
-                    if feature['properties']['description'] == 'Czechia':
-                        feature['properties']['description'] = 'Czech Republic'
-                        feature['properties']['title'] = 'Czech Republic'
-                        break
-                try:
-                    location = obj.getField('location')
-                    location.set(obj, geotags)
-                    obj.reindexObject(idxs=['geotags', 'location'])
+            for i, key in enumerate(keys):
+                if key in brain.location:
+                    obj = brain.getObject()
+                    geotags = json.loads(brain.geotags)
+                    features = geotags['features']
+                    title = values[i]
+                    for feature in features:
+                        if feature['properties']['description'] == key:
+                            feature['properties']['description'] = title
+                            feature['properties']['title'] = title
+                            break
+                    try:
+                        location = obj.getField('location')
+                        location.set(obj, geotags)
+                        log.info(obj.absolute_url(1))
+                        obj.reindexObject(idxs=['geotags', 'location'])
 
-                except Exception:
-                    log.error("%s --> couldn't be reindexed",
-                              obj.absolute_url(1))
-                    continue
-                count += 1
-                found += 1
-                if count % 50 == 0:
-                    transaction.commit()
-
-        return "Done renaming %d objects" % found
+                    except Exception:
+                        log.error("%s --> couldn't be reindexed",
+                                  obj.absolute_url(1))
+                        continue
+                    count += 1
+                    if count % 50 == 0:
+                        transaction.commit()
+        log.info("Ending Renaming of CountryNames")
+        return "Done renaming objects"
