@@ -1403,36 +1403,38 @@ class RenameMisnamedLocations(object):
         }
         atvm = getToolByName(self.context, 'portal_vocabularies')
         voc = atvm.get('countries_mapping')
-        mappings = voc.values()
         keys = voc.keys()
-        values = [mapping.title for mapping in mappings]
         count = 0
         found = 0
+        set_keys = set(keys)
         res = catalog.unrestrictedSearchResults(query)
         for brain in res:
-            for i, key in enumerate(keys):
-                if key in brain.location:
-                    obj = brain.getObject()
-                    geotags = json.loads(brain.geotags)
-                    features = geotags['features']
-                    title = values[i]
+            set_brain = set(brain.location)
+            matches = set_keys.intersection(set_brain)
+            if matches:
+                obj = brain.getObject()
+                geotags = json.loads(brain.geotags)
+                features = geotags['features']
+                for key in matches:
+                    title = voc.get(key).title
                     for feature in features:
                         if feature['properties']['description'] == key:
                             feature['properties']['description'] = title
                             feature['properties']['title'] = title
                             break
-                    try:
-                        location = obj.getField('location')
-                        location.set(obj, geotags)
-                        log.info(obj.absolute_url(1))
-                        obj.reindexObject(idxs=['geotags', 'location'])
+                try:
+                    location = obj.getField('location')
+                    location.set(obj, geotags)
+                    log.info(obj.absolute_url(1))
+                    obj.reindexObject(idxs=['geotags', 'location'])
 
-                    except Exception:
-                        log.error("%s --> couldn't be reindexed",
-                                  obj.absolute_url(1))
-                        continue
-                    count += 1
-                    if count % 50 == 0:
-                        transaction.commit()
+                except Exception:
+                    log.error("%s --> couldn't be reindexed",
+                              obj.absolute_url(1))
+                    continue
+                found += 1
+                count += 1
+                if count % 50 == 0:
+                    transaction.commit()
         log.info("Ending Renaming of CountryNames")
-        return "Done renaming objects"
+        return "Done renaming %s objects" % found
