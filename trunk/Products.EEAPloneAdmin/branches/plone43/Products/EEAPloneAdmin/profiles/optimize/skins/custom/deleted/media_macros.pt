@@ -1,0 +1,158 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+      
+<body>
+
+<metal:img define-macro="image" 
+           tal:define="figure_scale figure_scale|string:mini;">
+                <a href="" title="" class="noPrint"
+                   tal:attributes="href figure_link|nothing;
+                   title figure_title;"
+                   tal:condition="figure_link|nothing">
+                  <span tal:replace="structure python:figure_obj.getScale(figure_scale).tag()"> </span> 
+                 </a>
+                <tal:noLink tal:condition="not: figure_link|nothing">
+                    <span tal:replace="structure python:figure_obj.getScale(figure_scale).tag()"> </span>
+                </tal:noLink>
+</metal:img>
+
+
+<metal:img define-macro="image-wide" 
+           tal:define="figure_scale figure_scale|string:large;
+                       imageSrc python:figure_obj.getScale(figure_scale).absolute_url();">
+                <a href="" title="" class="noPrint"
+                   tal:attributes="href figure_link|nothing;
+                   title figure_title;"
+                   tal:condition="figure_link|nothing">
+                  <img tal:attributes="src imageSrc;alt figure_title;" style="min-height: 348px; min-width: 600px; width: 100%;" />
+                 </a>
+                <tal:noLink tal:condition="not: figure_link|nothing">
+                  <img tal:attributes="src imageSrc;alt figure_title;" style="min-height: 348px; min-width: 600px; width: 100%;" />
+                </tal:noLink>
+</metal:img>
+
+<div metal:define-macro="figure-right" tal:omit-tag=""
+     tal:define="figure_title figure/Title;
+                 figure_nr string:;
+                 figure_note figure/Description|nothing;
+                 figure_source_copyright figure/Rights|nothing;
+                 figure_obj figure/obj|figure;">
+
+   <div class="figure-right">
+      <div class="figure">
+         <metal:img use-macro="here/media_macros/macros/image" />
+      </div>
+   </div>
+</div>
+
+<div metal:define-macro="figure-left" tal:omit-tag=""
+     tal:define="figure_title figure/Title;
+                 figure_nr string:;
+                 figure_note figure/Description|nothing;
+                 figure_source_copyright figure/Rights|nothing;
+                 figure_obj figure/obj|figure;">
+
+   <div class="figure-left">
+      <div class="figure">
+         <metal:img use-macro="here/media_macros/macros/image" />
+      </div>
+   </div>
+</div>
+
+<div metal:define-macro="figure-plus" tal:omit-tag=""
+     tal:define="figure_title figure_title|figure/Title;
+                 figure_nr string:;
+                 figure_note figure_note|figure/Description|nothing;
+                 figure_source_copyright figure_source_copyright|figure/Rights|nothing;
+                 figure_obj figure/obj|figure;
+                 figure_scale figure_scale|string:mini;
+                 figure_class python:'figure-plus '+'figure-container-image'+figure_scale">
+    <div class="figure-plus-container">
+        <div class="figure-plus" tal:attributes="class figure_class">
+            <div class="figure-image">
+               <metal:img use-macro="here/media_macros/macros/image" />
+            </div>
+            <p class="figure-title">
+                 <span class="figure-nr" 
+                       tal:content="python:'Fig. '+figure_nr+': '" 
+                       tal:condition="figure_nr|nothing" >Fig. number: </span><tal:title content="figure_title">Image title</tal:title>
+            </p>
+            <p class="figure-note" 
+               tal:content="figure_note"
+               tal:condition="figure_note|nothing">
+                Additional figure note	  
+            </p>
+            <p class="figure-source-copyright"
+               tal:condition="figure_source_copyright|nothing">
+                &copy; <tal:copyright tal:content="figure_source_copyright">
+                Additional source and copyright information
+               </tal:copyright>
+            </p>
+        </div>
+     </div>
+</div>
+
+
+
+<div metal:define-macro="figure-plus-wide" tal:omit-tag=""
+     tal:define="figure_title figure_title|figure/Title;
+                 figure_nr string:;
+                 figure_note figure_note|figure/Description|nothing;
+                 figure_source_copyright figure_source_copyright|figure/Rights|nothing;
+                 figure_obj figure/obj|figure;
+                 figure_scale figure_scale|string:large;
+                 figure_class python:'figure-plus-wide '+'figure-container-image'+figure_scale">
+    <div class="figure-plus-container-wide">
+        <div class="figure-plus-wide" tal:attributes="class figure_class">
+            <div class="figure-image">
+               <metal:img use-macro="here/media_macros/macros/image-wide" />
+            </div>
+            <p>
+               <span class="figure-nr" 
+                       tal:content="python:'Fig. '+figure_nr+': '" 
+                       tal:condition="figure_nr|nothing" >Fig. number: </span>
+               <span class="figure-title" 
+                     tal:content="figure_title">Image title</span>
+               <span class="figure-source-copyright"
+                     tal:condition="figure_source_copyright|nothing"> 
+                &nbsp;Image &copy; <tal:copyright tal:content="figure_source_copyright">
+                Additional source and image copyright information
+               </tal:copyright></span>
+            </p>
+
+            <p class="figure-note" 
+               tal:content="figure_note"
+               tal:condition="figure_note|nothing">
+                Additional figure note	  
+            </p>
+
+        </div>
+     </div>
+</div>
+
+
+<div metal:define-macro="figure-caption" tal:omit-tag=""
+     tal:define="figure_title figure_title|figure/Title;
+                 figure_nr string:;
+                 figure_note figure_note|figure/Description|nothing;
+                 figure_source_copyright figure_source_copyright|figure/Rights|nothing;
+                 figure_scale figure_scale|string:mini;
+                 figure_obj figure/obj|figure;
+                 figure_class python:'figure-plus '+'figure-container-image'+figure_scale">
+    <div class="figure-plus-container">
+      <div tal:attributes="class figure_class">
+            <div class="figure-image">
+               <metal:img use-macro="here/media_macros/macros/image" />
+            </div>
+            <p class="figure-title">
+                 <span class="figure-nr" 
+                       tal:content="python:'Fig. '+figure_nr+': '" 
+                       tal:condition="figure_nr|nothing" >Fig. number: </span><tal:title content="figure_title">Image title</tal:title>
+            </p>
+        </div>
+     </div>
+</div>
+
+</body>
+</html>
