@@ -208,7 +208,7 @@ def printCheckInterval(self):
     else:
         return sys.getcheckinterval()
 
-def bulkReindexObjects(self, brains):
+def bulkReindexObjects(self, brains, idxs=[]):
     """ Bulk reindex objects using multi-transactions """
     info('INFO: Start reindexing')
     done = 0
@@ -217,7 +217,10 @@ def bulkReindexObjects(self, brains):
             done += 1
             info('INFO: reindexing %s', brain.getId)
             obj = brain.getObject()
-            obj.reindexObject()
+            if idxs:
+                obj.reindexObject(idxs=idxs)
+            else:
+                obj.reindexObject()
             if done % 10 == 0:
                 transaction.commit()
                 info('INFO: Subtransaction committed to zodb')
