@@ -78,10 +78,6 @@
                   class=".migrate.EnsureAllObjectsHaveTags"
                   permission="cmf.ManagePortal" />
 
-    <browser:page for="*"
-                  name="changeMediaTypesDefault"
-                  class=".migrate.ChangeMediaTypesDefault"
-                  permission="cmf.ManagePortal" />
 
     <browser:page for="*"
                   name="addRichTextDescriptionToVideos"
