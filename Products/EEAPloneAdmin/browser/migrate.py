@@ -3,7 +3,6 @@
 from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from eea.mediacentre.interfaces import IMediaType
 from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
@@ -557,28 +556,6 @@ class EnsureAllObjectsHaveTags(object):
                         count += 1
 
         return str(count) + " objects were tagged"
-
-
-class ChangeMediaTypesDefault(object):
-    """ Changes the media type on file's don't have any media type set.
-        If media type not set, the type 'other' is set on the file.
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(
-            object_provides='p4a.video.interfaces.IVideoEnhanced')
-        for brain in brains:
-            bfile = brain.getObject()
-            media = IMediaType(bfile)
-            if not media.types:
-                media.types = ['other']
-            file.reindexObject()
-
-        return "migration successful"
 
 
 class AddRichTextDescriptionToVideos(object):
