@@ -3,6 +3,8 @@ Changelog
 
 7.0-dev - (unreleased)
 ----------------------
+* Change: Removed p4a.* logic 
+  [ichimdav #15234]
 
 6.9 - (2013-07-10)
 ------------------

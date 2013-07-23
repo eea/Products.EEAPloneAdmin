@@ -8,7 +8,7 @@ from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
 from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
-from p4a.video.interfaces import IVideo
+# from p4a.video.interfaces import IVideo
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -558,26 +558,26 @@ class EnsureAllObjectsHaveTags(object):
         return str(count) + " objects were tagged"
 
 
-class AddRichTextDescriptionToVideos(object):
-    """ Adds an empty string to the rich_description field on all
-        IVideoEnhanced objects. As this is a new field it's None
-        and the edit page fails with a traceback.
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog.searchResults(
-            object_provides='p4a.video.interfaces.IVideoEnhanced')
-        for brain in brains:
-            vfile = brain.getObject()
-            video = IVideo(vfile)
-            video.rich_description = u''
-            video.urls = ()
-
-        return str(len(brains)) + " videos where migrated."
+# class AddRichTextDescriptionToVideos(object):
+#     """ Adds an empty string to the rich_description field on all
+#         IVideoEnhanced objects. As this is a new field it's None
+#         and the edit page fails with a traceback.
+#     """
+#     def __init__(self, context, request):
+#         self.context = context
+#         self.request = request
+#
+#     def __call__(self):
+#         catalog = getToolByName(self.context, 'portal_catalog')
+#         brains = catalog.searchResults(
+#             object_provides='p4a.video.interfaces.IVideoEnhanced')
+#         for brain in brains:
+#             vfile = brain.getObject()
+#             video = IVideo(vfile)
+#             video.rich_description = u''
+#             video.urls = ()
+#
+#         return str(len(brains)) + " videos where migrated."
 
 class AddIVideoToVideos(object):
     """ Adds mediacentre IVideo marker interface to IVideoEnhanced objects
