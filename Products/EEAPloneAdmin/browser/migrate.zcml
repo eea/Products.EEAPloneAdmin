@@ -78,12 +78,6 @@
                   class=".migrate.EnsureAllObjectsHaveTags"
                   permission="cmf.ManagePortal" />
 
-
-    <browser:page for="*"
-                  name="addRichTextDescriptionToVideos"
-                  class=".migrate.AddRichTextDescriptionToVideos"
-                  permission="cmf.ManagePortal" />
-
     <browser:page for="*"
                   name="AddIVideoToVideos"
                   class=".migrate.AddIVideoToVideos"
