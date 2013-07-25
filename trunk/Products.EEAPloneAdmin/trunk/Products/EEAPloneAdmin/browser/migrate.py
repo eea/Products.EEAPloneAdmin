@@ -1415,3 +1415,32 @@ class RenameMisnamedLocations(object):
                     transaction.commit()
         log.info("Ending Renaming of CountryNames")
         return "Done renaming %s objects" % found
+
+
+class RemoveISubtypedFromTranslations(object):
+    """ Rename p4a.subtyper ISubtyped from translations
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("RemoveISubtypedFromTranslations")
+        log.info("STARTING removal of ISubtyped from p4a.subtyper")
+        count = 0
+        if HAS_Subtyper:
+            ca = self.context.portal_catalog
+            res = ca.searchResults(
+                object_provides="p4a.subtyper.interfaces.ISubtyped")
+            for f in res:
+                obj = f.getObject()
+                noLongerProvides(obj, ISubtyped)
+                obj.reindexObject(idxs=["object_provides"])
+                log.info("Removed ISubtyped for %s", obj.absolute_url(1))
+                count += 1
+                if count % 50 == 0:
+                    transaction.commit()
+        log.info("ENDING removal of ISubtyped from p4a.subtyper")
+

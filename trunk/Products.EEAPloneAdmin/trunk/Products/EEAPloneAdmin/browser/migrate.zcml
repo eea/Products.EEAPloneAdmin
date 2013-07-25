@@ -157,4 +157,10 @@
                   name="removeInactivePromotions"
                   class=".migrate.RemoveInactivePromotions"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="removeISubtypedFromTranslations"
+                  class=".migrate.RemoveISubtypedFromTranslations"
+                  permission="cmf.ManagePortal" />
+
 </configure>
