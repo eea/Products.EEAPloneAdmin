@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.0-dev - (unreleased)$
-----------------------$
+7.0 - (2013-07-25)
+------------------
 * Upgrade step:$
   - Uninstall p4a.plonevideo, p4a.plonevideoembed and p4a.video$
   [ichimdav #15234]$
