@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="eea.translations">
+  <head>
+
+    <metal:hideemailjs fill-slot="javascript_slot">
+
+    </metal:hideemailjs>
+  </head>
+  <body>
+
+    <div metal:fill-slot="main">
+      <metal:main-macro define-macro="main">
+
+        <h1 i18n:translate="EEA Staff list"  class="documentFirstHeading">
+          EEA Staff list
+        </h1>
+        <p>
+          <strong i18n:translate="">Last updated on:</strong>
+          <tal:block tal:define="last_upload here/@@eealastupdated"
+            tal:content="python:here.toLocalizedTime(last_upload)" />
+        </p>
+
+        <tal:block define="org_id python:request.get('orgid', False);
+          orgs_data python:here.portal_properties.eeastaff_properties.organisations;
+          orgs_info here/@@eeaorglist;
+          org_name python:orgs_info['orgs_names'].get(org_id, org_id)">
+          <p tal:condition="org_id">Members of <strong tal:content="org_name" />.</p>
+          <p tal:condition="not:org_id">You can sort the table by clicking on the column or filtering by the programme name:</p>
+          <div><a href="staff.html" title="EEA Staff list" tal:condition="org_id">All staff</a><strong tal:condition="not:org_id">All staff</strong><tal:Orgs repeat="org orgs_data">&nbsp;|&nbsp;<a tal:condition="python:org!=org_id" tal:attributes="href string:staff.html?orgid=${org}; title python:'Members of ' + orgs_info['orgs_names'].get(org, org)" tal:content="org"/><strong tal:condition="python:org==org_id" tal:content="org"/></tal:Orgs>
+          <br>See also: <a href="guest-scientists"><strong>Guest scientists</strong></a></div>
+        </tal:block>
+
+        <metal:listingmacro define-macro="listing">
+          <tal:foldercontents define="limit_display limit_display|request/limit_display|nothing;
+            more_url more_url|request/more_url|string:folder_contents;
+            folderContents folderContents|here/@@eeastafflist;
+            org_name python:request.get('orgid', '');
+            use_view_action site_properties/typesUseViewActionInListings|python:();
+            over_limit python: limit_display and len(folderContents) > limit_display;
+            folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
+            show_about python:not isAnon or site_properties.allowAnonymousViewAbout">
+            <tal:listing condition="folderContents">
+
+              <!-- Navigation -->
+              <table class="listing"
+                summary="Content listing"
+                i18n:attributes="summary summary_content_listing;">
+                <thead>
+                  <tr>
+                    <th>&nbsp;<tal:title i18n:translate="First name"
+                        >First name</tal:title>&nbsp;</th>
+                    <th>&nbsp;<tal:title i18n:translate="Last name"
+                        >Last name</tal:title>&nbsp;</th>
+                    <th class="nosort">&nbsp;<tal:title i18n:translate="Contact"
+                        >Contact</tal:title>&nbsp;</th>
+                    <th>&nbsp;<tal:title i18n:translate="Job title"
+                        >Job title</tal:title>&nbsp;</th>
+                    <th>&nbsp;<tal:title i18n:translate="Programme"
+                        >Programme</tal:title>&nbsp;</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tal:items repeat="item folderContents">
+                    <tr metal:define-macro="listitem"
+                      tal:define="oddrow repeat/item/odd;"
+                      tal:attributes="class python:test(oddrow, 'even', 'odd');
+                      id item/personnelNb"
+                      tal:condition="python: (org_name in item['org_name'] and org_name != '') or (org_name == '')">
+
+                      <td tal:content="item/first_name"></td>
+                      <td tal:content="item/last_name"></td>
+                      <td><tal:emailjs replace="structure item/email" /></td>
+                      <td tal:content="item/job_title"></td>
+                      <td tal:content="item/programme"></td>
+
+                    </tr>
+                  </tal:items>
+                </tbody>
+              </table>
+
+              <!-- Navigation -->
+
+            </tal:listing>
+
+          </tal:foldercontents>
+        </metal:listingmacro>
+
+      </metal:main-macro>
+    </div>
+
+  </body>
+</html>
