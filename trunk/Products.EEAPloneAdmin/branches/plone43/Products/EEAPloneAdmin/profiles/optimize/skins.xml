@@ -109,8 +109,6 @@
     directory="eea.design:skins/eeadesign_templates"/>
  <object name="eeatemplatesservice" meta_type="Filesystem Directory View"
     directory="Products.EEATemplatesService:skins/eeatemplatesservice"/>
- <object name="fatsyndication" meta_type="Filesystem Directory View"
-    directory="Products.fatsyndication:skins/fatsyndication"/>
  <object name="indicators_images" meta_type="Filesystem Directory View"
     directory="eea.indicators:skins/indicators_images"/>
  <object name="indicators_overrides" meta_type="Filesystem Directory View"

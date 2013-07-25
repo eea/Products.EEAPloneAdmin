@@ -146,3 +146,12 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     self.context.REQUEST.response.setHeader("Content-type",
                                             "application/json")
     return json.dumps(results)
+
+
+def patched_getConfiguration(self, *args, **kwargs):
+    configuration = self._old_getConfiguration(*args, **kwargs)
+    props = getToolByName(self, 'portal_properties')
+    plone_livesearch = props.site_properties.getProperty('enable_livesearch', False)
+    livesearch = props.site_properties.getProperty('enable_tinymce_livesearch', plone_livesearch)
+    configuration['livesearch'] = livesearch
+    return configuration
