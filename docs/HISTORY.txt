@@ -1,10 +1,17 @@
 Changelog
 =========
 
-7.0-dev - (unreleased)
-----------------------
-* Change: Removed p4a.* logic 
-  [ichimdav #15234]
+7.0-dev - (unreleased)$
+----------------------$
+* Upgrade step:$
+  - Uninstall p4a.plonevideo, p4a.plonevideoembed and p4a.video$
+  [ichimdav #15234]$
+* Upgrade step:$
+    - with www8 run www/@@removeISubtypedFromTranslations$
+    - [ichimdav #15234]$
+* Feature: added migration script to remove ISubtyped from translations$
+* Change: Removed p4a.* logic-$
+  [ichimdav #15234]$
 
 6.9 - (2013-07-10)
 ------------------
