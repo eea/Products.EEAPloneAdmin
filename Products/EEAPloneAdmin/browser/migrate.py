@@ -34,6 +34,11 @@ from Products.EEAPloneAdmin.browser.migration_helper_data import \
 
 from eea.geotags.interfaces import IJsonProvider
 
+HAS_Subtyper = True
+try:
+    from p4a.subtyper.interfaces import ISubtyped
+except ImportError:
+    HAS_Subtyper = False
 
 logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 
@@ -964,8 +969,8 @@ class FixImages(BrowserView):
                     try:
                         if not raw.filename:
                             logger.info(
-                                "Settings filename for field %s for %s" %
-                                (name, obj))
+                                "Settings filename for field %s for %s",
+                                name, obj)
                             raw.filename = obj.getId()
                     except Exception:
                         logger.error(
@@ -1068,11 +1073,11 @@ class FixVocabularyTerms(object):
                 if obj._at_creation_flag == True:
                     obj._at_creation_flag = False
                     obj._p_changed = True
-                    logger.info("Creation flag updated: %s" % \
+                    logger.info("Creation flag updated: %s",
                                 obj.absolute_url())
             except AttributeError:
                 obj._at_creation_flag = False
-                logger.info("Set creation flag: %s" % obj.absolute_url())
+                logger.info("Set creation flag: %s", obj.absolute_url())
         return 'Vocabulary term updated.'
 
 
@@ -1162,13 +1167,13 @@ class MigrateGeotagsCountryGroups(BrowserView):
                         logger.error("%s --> couldn't be reindexed",
                                                         obj.absolute_url(1))
                         continue
-                    logger.info('%s' % obj.absolute_url(1))
+                    logger.info('%s', obj.absolute_url(1))
                     count += 1
                     if count % 50 == 0:
                         transaction.savepoint(optimistic=True)
 
         logger.info("%s number of items were migrated with individual countries"
-                                                                % count)
+                                                                , count)
         logger.info("Ending step of individual Countries for Country Groups")
         return self.stopCapture()
 
@@ -1194,21 +1199,20 @@ class FixFigureCategoryType(BrowserView):
                 if figureType == 'map':
                     directlyProvides(obj,
                                      directlyProvidedBy(obj) - IEEAFigureGraph)
-                    logger.info('%s item has %s removed' % (
-                        obj.get_absolute_url(1), 'IEEAFigureGraph interface'))
+                    logger.info('%s item has %s removed',
+                        obj.get_absolute_url(1), 'IEEAFigureGraph interface')
                 elif figureType == 'graph':
                     directlyProvides(obj,
                                      directlyProvidedBy(obj) - IEEAFigureMap)
-                    logger.info('%s item has %s removed' % (obj.absolute_url(
-                        1), 'IEEAFigureMap interface'))
+                    logger.info('%s item has %s removed', obj.absolute_url(
+                        1), 'IEEAFigureMap interface')
                 obj.reindexObject(idxs=['object_provides'])
                 count += 1
                 if count % 50 == 0:
                     transaction.savepoint(optimistic=True)
 
         logger.info("%s number of items were migrated with fixed "
-                    "FigureCategory"
-                    % count)
+                    "FigureCategory", count)
         return "Done"
 
 class RemoveInactivePromotions(object):
