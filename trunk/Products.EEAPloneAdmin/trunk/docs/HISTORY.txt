@@ -3,8 +3,25 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
-* Pre-upgrade step: update collective.traceview from sources (just git pull, its already under /src)
+* Pre-upgrade step: update collective.traceview from sources ( just git pull,
+  it's already under /src)
   [ghicaale]
+* Upgrade step: WARNING, This will take a very long time
+   - with www8 run in any order:
+      - www/@@removeIPossibleVideoContainer
+      - www/@@removeIAnyVideoCapable
+      - www/@@removeIPossibleVideo
+      - www/@@removeIAnyVideoLinkCapable
+      - [ichimdav #15234]
+* Feature: added migration scripts in order to remove the leftover interfaces
+  from p4a.* which were assigned from zcml
+  [ichimdav #15234]
+* Bugfix: fixed migration script which removes ISubtyper from translations
+  [ichimdav #15234]
+* Feature: added a browser page checkRemainingInterfaces which when passed
+  a search term will return all interfaces that match the search term from
+  all of the objects
+  [ichimdav #15234]
 
 7.0 - (2013-07-25)
 ------------------
