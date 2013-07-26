@@ -3,6 +3,8 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
+* Pre-upgrade step: update collective.traceview from sources (just git pull, its already under /src)
+  [ghicaale]
 
 7.0 - (2013-07-25)
 ------------------
