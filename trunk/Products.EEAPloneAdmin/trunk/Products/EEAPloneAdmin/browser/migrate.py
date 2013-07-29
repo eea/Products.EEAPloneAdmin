@@ -4,13 +4,11 @@ from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from pprint import pprint
-from zope.component.interface import nameToInterface
 from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
 from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
-# from p4a.video.interfaces import IVideo
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -1436,21 +1434,29 @@ class RemoveISubtypedFromTranslations(object):
         log = logging.getLogger("RemoveISubtypedFromTranslations")
         log.info("STARTING removal of ISubtyped from p4a.subtyper")
         count = 0
+        iname = "p4a.subtyper.interfaces.ISubtyped"
         if HAS_Subtyper:
             ca = self.context.portal_catalog
             res = ca.searchResults(
-                object_provides="p4a.subtyper.interfaces.ISubtyped",
+                object_provides=iname,
                 Language="all")
             for f in res:
                 obj = f.getObject()
                 noLongerProvides(obj, ISubtyped)
-                obj.reindexObject(idxs=["object_provides"])
-                log.info("Removed ISubtyped for %s", obj.absolute_url(1))
+                try:
+                    obj.reindexObject(idxs=["object_provides"])
+                except Exception:
+                    log.error("%s --> couldn't be reindexed",
+                              obj.absolute_url(1))
+                count += 1
                 count += 1
                 if count % 50 == 0:
                     transaction.commit()
         log.info("ENDING removal of %s obj with ISubtyped from p4a.subtyper",
                  count)
+
+        return "ENDED removal of %s from all %s, objects that provide it" % \
+               (iname, count)
 
 
 class CheckRemainingInterfaces(object):
@@ -1491,20 +1497,16 @@ def remove_interface(context, iname):
     log.info("STARTED removal of %s from all objects that provide it",
              iname)
     count = 0
-    try:
-        iface = nameToInterface(context, iname)
-    except ComponentLookupError:
-        log.info('Cant find the interface %s', iname)
-        return
 
-    log.info("STARTED removal of %s from all objects that provide it",
-             iname)
     ca = context.portal_catalog
     res = ca.searchResults(object_provides=iname, Language="all")
     for f in res:
         obj = f.getObject()
-        noLongerProvides(obj, iface)
-        obj.reindexObject(idxs=["object_provides"])
+        try:
+            obj.reindexObject(idxs=["object_provides"])
+        except Exception:
+            log.error("%s --> couldn't be reindexed",
+                      obj.absolute_url(1))
         count += 1
         if count % 50 == 0:
             transaction.commit()
