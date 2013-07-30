@@ -12,6 +12,11 @@
       title="Enable RSS2 feed using Plone 4.3 syndication"
       handler=".evolve70.enable_rss2"
       />
+
+    <genericsetup:upgradeStep
+      title="Reindex ZCTextIndex indexes"
+      handler=".evolve70.reindexZCTextIndex"
+      />
   </genericsetup:upgradeSteps>
 
   <genericsetup:upgradeSteps
