@@ -1,7 +1,6 @@
 """ Upgrade to version 7.0
 """
 import logging
-import transaction
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
@@ -9,11 +8,10 @@ from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from Products.CMFPlone.interfaces.syndication import (
     ISiteSyndicationSettings, IFeedSettings)
 from Products.ZCTextIndex.interfaces import IZCTextIndex
+import utils
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
-info = logger.info
-info_exception = logger.exception
 
 
 def enable_rss2(context):
@@ -56,27 +54,6 @@ def enable_rss2(context):
             logger.info(message)
 
 
-def bulkReindexObjects(self, brains, idxs=[]):
-    """ Bulk reindex objects using multi-transactions """
-    total = len(brains)
-    info('INFO: Start reindexing')
-    info('INFO: reindexing %s brains', total)
-    for index, brain in enumerate(brains):
-        try:
-            obj = brain.getObject()
-            if idxs:
-                obj.reindexObject(idxs=idxs)
-            else:
-                obj.reindexObject()
-            if index % 100 == 0:
-                transaction.commit()
-                info('INFO: Subtransaction committed to zodb (%s/%s)', index, total)
-        except Exception, err:
-            info('ERROR: error during reindexing')
-            info_exception('Exception: %s ', err)
-    info('INFO: Done reindexing')
-
-
 def reindexZCTextIndex(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     catalog = getToolByName(portal, 'portal_catalog')
@@ -88,4 +65,4 @@ def reindexZCTextIndex(context):
         if IZCTextIndex.providedBy(index):
             idxs.append(index.getId())
 
-    bulkReindexObjects(context, brains, idxs)
+    utils.bulkReindexObjects(context, brains, idxs)

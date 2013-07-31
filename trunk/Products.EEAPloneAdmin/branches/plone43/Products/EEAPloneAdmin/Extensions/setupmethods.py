@@ -16,6 +16,8 @@ from Products.CMFCore.WorkflowCore import WorkflowException
 from DateTime import DateTime
 import logging
 
+from Products.EEAPloneAdmin.upgrades import utils
+
 logger = logging.getLogger('EEAPloneAdmin.setupmethods')
 info = logger.info
 info_exception = logger.exception
@@ -209,25 +211,7 @@ def printCheckInterval(self):
         return sys.getcheckinterval()
 
 def bulkReindexObjects(self, brains, idxs=[]):
-    """ Bulk reindex objects using multi-transactions """
-    info('INFO: Start reindexing')
-    done = 0
-    for brain in brains:
-        try:
-            done += 1
-            info('INFO: reindexing %s', brain.getId)
-            obj = brain.getObject()
-            if idxs:
-                obj.reindexObject(idxs=idxs)
-            else:
-                obj.reindexObject()
-            if done % 10 == 0:
-                transaction.commit()
-                info('INFO: Subtransaction committed to zodb')
-        except Exception, err:
-            info('ERROR: error during reindexing')
-            info_exception('Exception: %s ', err)
-    info('INFO: Done reindexing')
+    return utils.bulkReindexObjects(self, brains, idxs)
 
 def reindexAllIndicators(self):
     """ Incremental commit and indexing of indicators """
