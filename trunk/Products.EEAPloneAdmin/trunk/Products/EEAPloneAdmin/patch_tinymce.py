@@ -1,7 +1,5 @@
 """ Patch TinyMCE
 """
-from Acquisition import aq_base
-from Products.Archetypes.interfaces import IBaseObject
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.interfaces._content import IFolderish
@@ -12,70 +10,25 @@ import json
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
-def patched_getContentType(self, object=None, fieldname=None):
-    """ Original code here. Notice that it doesn't treat properly the
-    case that fieldname is None
 
-    def getContentType(self, object=None, fieldname=None):
-        context = aq_base(object)
-        if IBaseObject.providedBy(context):
-            # support Archetypes fields
-            if fieldname is None:
-                field = context.getPrimaryField()
-            else:
-                field = context.getField(
-                    fieldname) or getattr(context, fieldname, None)
-            if field and hasattr(aq_base(field), 'getContentType'):
-                return field.getContentType(context)
-        elif '.widgets.' in fieldname:
-            # support plone.app.textfield RichTextValues
-            fieldname = fieldname.split('.widgets.')[-1]
-            field = getattr(context, fieldname, None)
-            mimetype = getattr(field, 'mimeType', None)
-            if mimetype is not None:
-                return mimetype
-        return 'text/html'
-    """
-    context = aq_base(object)
-    if IBaseObject.providedBy(context):
-        # support Archetypes fields
-        if fieldname is None:
-            field = context.getPrimaryField()
-        else:
-            field = context.getField(fieldname) or getattr(
-                context, fieldname, None)
-        if field and hasattr(aq_base(field), 'getContentType'):
-            return field.getContentType(context)
-    elif fieldname == None:
-        return 'text/html'
-    elif '.widgets.' in fieldname:
-        # support plone.app.textfield RichTextValues
-        fieldname = fieldname.split('.widgets.')[-1]
-        field = getattr(context, fieldname, None)
-        mimetype = getattr(field, 'mimeType', None)
-        if mimetype is not None:
-            return mimetype
-    return 'text/html'
-
-def patched_getListing(self, filter_portal_types, rooted,
-                                    document_base_url, upload_type=None):
-    """ Returns the actual listing
-    """
+def patched_getListing(self, filter_portal_types, rooted, document_base_url, upload_type=None, image_types=None):
+    """Returns the actual listing"""
     catalog_results = []
     results = {}
+    image_types = image_types or []
 
-    obj = aq_inner(self.context)
+    object = aq_inner(self.context)
+    portal_catalog = getToolByName(object, 'portal_catalog')
     normalizer = getUtility(IIDNormalizer)
 
     # check if object is a folderish object, if not, get it's parent.
-    if not IFolderish.providedBy(obj):
-        obj = aq_parent(obj)
+    if not IFolderish.providedBy(object):
+        object = aq_parent(object)
 
-    if INavigationRoot.providedBy(object) or (rooted == "True" and
-                            document_base_url[:-1] == object.absolute_url()):
+    if INavigationRoot.providedBy(object) or (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
         results['parent_url'] = ''
     else:
-        results['parent_url'] = aq_parent(obj).absolute_url()
+        results['parent_url'] = aq_parent(object).absolute_url()
 
     if rooted == "True":
         results['path'] = self.getBreadcrumbs(results['parent_url'])
@@ -83,29 +36,47 @@ def patched_getListing(self, filter_portal_types, rooted,
         # get all items from siteroot to context (title and url)
         results['path'] = self.getBreadcrumbs()
 
+    plone_layout = self.context.restrictedTraverse('@@plone_layout', None)
+    if plone_layout is None:
+        # Plone 3
+        plone_view = self.context.restrictedTraverse('@@plone')
+        getIcon = lambda brain: plone_view.getIcon(brain).html_tag()
+    else:
+        # Plone >= 4
+        getIcon = lambda brain: plone_layout.getIcon(brain)()
+
+    # get all portal types and get information from brains
+
     # start patch -> get all portal types and get information from brains
     # plone4 added ability to click topics and get the query results
-    def cat_results(brain):
-        """ utility function to avoid repetition of code
-        """
-        return  catalog_results.append({
-                'id': brain.getId,
-                'uid': brain.UID or None,  # Maybe Missing.Value
-                'url': brain.getURL(),
-                'portal_type': brain.portal_type,
-                'normalized_type': normalizer.normalize(brain.portal_type),
-                'title': brain.Title == "" and brain.id or brain.Title,
-                'icon': brain.getIcon,
-                'is_folderish': brain.is_folderish
-                })
-    if type(obj.queryCatalog) != ImplicitAcquisitionWrapper:
-        for brain in obj.queryCatalog():
-            cat_results(brain)
+    if type(object.queryCatalog) != ImplicitAcquisitionWrapper:
+        brains = object.queryCatalog()
     else:
-        for brain in self.context.getFolderContents({'portal_type':
-                    filter_portal_types, 'sort_on': 'getObjPositionInParent'}):
-            cat_results(brain)
+        path = '/'.join(object.getPhysicalPath())
+        query = self.listing_base_query.copy()
+        query.update({'portal_type': filter_portal_types,
+                      'sort_on': 'getObjPositionInParent',
+                      'path': {'query': path, 'depth': 1}})
+        brains = portal_catalog(**query)
+    for brain in brains:
+        description = u''
+        if isinstance(brain.Description, unicode):
+            description = brain.Description
+        else:
+            description = unicode(brain.Description, 'utf-8', 'ignore')
+        catalog_results.append({
+            'id': brain.getId,
+            'uid': brain.UID or None,  # Maybe Missing.Value
+            'url': brain.getURL(),
+            'portal_type': brain.portal_type,
+            'normalized_type': normalizer.normalize(brain.portal_type),
+            'title': brain.Title == "" and brain.id or brain.Title,
+            'icon': getIcon(brain),
+            'description': description,
+            'is_folderish': brain.is_folderish,
+            })
     ## end patch
+
 
     # add catalog_ressults
     results['items'] = catalog_results
@@ -113,42 +84,56 @@ def patched_getListing(self, filter_portal_types, rooted,
     # decide whether to show the upload new button
     results['upload_allowed'] = False
     if upload_type:
-        portal_types = getToolByName(obj, 'portal_types')
+        portal_types = getToolByName(object, 'portal_types')
         fti = getattr(portal_types, upload_type, None)
         if fti is not None:
-            results['upload_allowed'] = fti.isConstructionAllowed(obj)
+            results['upload_allowed'] = fti.isConstructionAllowed(object)
 
     # return results in JSON format
+    self.context.REQUEST.response.setHeader("Content-type", "application/json")
     return json.dumps(results)
 
 def patched_getSearchResults(self, filter_portal_types, searchtext):
-    """ Returns the actual search result
-    """
-    catalog_results = []
-    results = {}
+    """Returns the actual search result"""
 
-    results['parent_url'] = ''
-    results['path'] = []
+    if '*' not in searchtext:
+        searchtext += '*'
+
+    catalog_results = []
+    results = {
+        'parent_url': '',
+        'path': [],
+    }
+    query = {
+        'Title': '%s' % searchtext,
+        'portal_type': filter_portal_types,
+        'sort_on': 'sortable_title',
+        'path': '/'.join(self.context.getPhysicalPath()),
+        'SearchableText': searchtext,
+        'Language': self.context.Language(),
+    }
     if searchtext:
-        # plone4 it was search by SearchableText instead of title which gave
-        # thousands of searches just vaguely related to the keywords
-        #folder_path = '/'.join(self.context.getPhysicalPath())
-        # #14922 do a site wide search from now on instead of being bounded
-        # by navigation root and context language
-        folder_path = '/www'
-        res = self.context.portal_catalog.searchResults(
-                Title='%s*' % searchtext, portal_type=filter_portal_types,
-                Language="all",
-                path={'query': folder_path})
-        for brain in res:
+        plone_layout = self.context.restrictedTraverse('@@plone_layout',
+                                                       None)
+        if plone_layout is None:
+            # Plone 3
+            plone_view = self.context.restrictedTraverse('@@plone')
+            getIcon = lambda brain: plone_view.getIcon(brain).html_tag()
+        else:
+            # Plone >= 4
+            getIcon = lambda brain: plone_layout.getIcon(brain)()
+
+        brains = self.context.portal_catalog.searchResults(**query)
+        for brain in brains:
             catalog_results.append({
                 'id': brain.getId,
                 'uid': brain.UID,
                 'url': brain.getURL(),
                 'portal_type': brain.portal_type,
                 'title': brain.Title == "" and brain.id or brain.Title,
-                'icon': brain.getIcon,
-                'is_folderish': brain.is_folderish
+                'icon': getIcon(brain),
+                'description': brain.Description,
+                'is_folderish': brain.is_folderish,
                 })
 
     # add catalog_results
@@ -158,4 +143,15 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     results['upload_allowed'] = False
 
     # return results in JSON format
+    self.context.REQUEST.response.setHeader("Content-type",
+                                            "application/json")
     return json.dumps(results)
+
+
+def patched_getConfiguration(self, *args, **kwargs):
+    configuration = self._old_getConfiguration(*args, **kwargs)
+    props = getToolByName(self, 'portal_properties')
+    plone_livesearch = props.site_properties.getProperty('enable_livesearch', False)
+    livesearch = props.site_properties.getProperty('enable_tinymce_livesearch', plone_livesearch)
+    configuration['livesearch'] = livesearch
+    return configuration

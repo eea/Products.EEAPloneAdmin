@@ -4,6 +4,22 @@
   i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="6.2"
+    destination="7.0"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeStep
+      title="Enable RSS2 feed using Plone 4.3 syndication"
+      handler=".evolve70.enable_rss2"
+      />
+
+    <genericsetup:upgradeStep
+      title="Reindex ZCTextIndex indexes"
+      handler=".evolve70.reindexZCTextIndex"
+      />
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="4.0"
     destination="6.2"
     profile="Products.EEAPloneAdmin:default">
