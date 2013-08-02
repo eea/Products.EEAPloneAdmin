@@ -3,6 +3,8 @@ Changelog
 
 7.2-dev - (unreleased)
 ----------------------
+* Change: updated migration script for removal of p4a.* interfaces
+  [ichimdav #15234]
 
 7.1 - (2013-07-31)
 ------------------
