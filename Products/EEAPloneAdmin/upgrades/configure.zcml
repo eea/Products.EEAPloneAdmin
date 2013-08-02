@@ -28,4 +28,15 @@
 
   </genericsetup:upgradeSteps>
 
+    <genericsetup:upgradeSteps
+            source="*"
+            destination="7.2"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+                title="Cleanup broken p4a.* objects"
+                handler="Products.EEAPloneAdmin.upgrades.evolve72.cleanupBrokenP4AObjects"
+                />
+
+    </genericsetup:upgradeSteps>
 </configure>

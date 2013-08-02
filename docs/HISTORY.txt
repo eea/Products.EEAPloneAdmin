@@ -3,6 +3,11 @@ Changelog
 
 7.2-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade 
+  button for Products.EEAPloneAdmin
+  [ichimdav #15234]
+* Feature: added script to cleanup broken p4a.* objects
+  [ichimdav #15234]
 * Change: updated migration script for removal of p4a.* interfaces
   [ichimdav #15234]
 
