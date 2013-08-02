@@ -3,13 +3,18 @@ Changelog
 
 7.2-dev - (unreleased)
 ----------------------
-* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade 
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
   button for Products.EEAPloneAdmin
   [ichimdav #15234]
 * Feature: added script to cleanup broken p4a.* objects
   [ichimdav #15234]
 * Change: updated migration script for removal of p4a.* interfaces
   [ichimdav #15234]
+* Feature: Plone 4.3 compatibility
+    - updated TinyMCE patches to work with Products.TinyMCE 1.3.4
+    - added migration upgrade scripts
+    - removed kss patches (KSS no longer used)
+    - [batradav refs #14323]
 
 7.1 - (2013-07-31)
 ------------------
