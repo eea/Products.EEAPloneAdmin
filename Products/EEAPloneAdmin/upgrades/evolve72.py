@@ -5,7 +5,7 @@
 def cleanupBrokenP4AObjects(self):
     """ uncatalog broken p4a objects
     """
-    catalog = self.context.portal_catalog
+    catalog = self.portal_catalog
     objs = ['/www/portal_factory/HelpCenter/rdfstype/faq',
             '/www/portal_factory/HelpCenter/rdfstype/how-to',
             '/www/portal_factory/HelpCenter/rdfstype/tutorial',
