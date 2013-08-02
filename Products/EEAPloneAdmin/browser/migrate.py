@@ -28,6 +28,7 @@ from zope.interface import directlyProvides, directlyProvidedBy, \
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.component import queryUtility, queryAdapter, ComponentLookupError
+from zope.component.interface import nameToInterface
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups
@@ -1494,26 +1495,36 @@ def remove_interface(context, iname):
     """ Helper method to get rid of p4a.interfaces
     """
     log = logging.getLogger("remove_interface")
-    log.info("STARTED removal of %s from all objects that provide it",
-             iname)
     count = 0
 
     ca = context.portal_catalog
     res = ca.searchResults(object_provides=iname, Language="all")
+    total = len(res)
+    log.info("STARTED removal of %s from all %s objects that provide it",
+             iname, total)
+    try:
+        provided_interface = nameToInterface(context, iname)
+    except ComponentLookupError:
+        log.warn('Cant find interface from %s name', iname)
+        provided_interface = False
     for f in res:
         obj = f.getObject()
         try:
+            if provided_interface:
+                noLongerProvides(obj, provided_interface)
             obj.reindexObject(idxs=["object_provides"])
         except Exception:
             log.error("%s --> couldn't be reindexed",
                       obj.absolute_url(1))
         count += 1
-        if count % 50 == 0:
+        if count % 100 == 0:
             transaction.commit()
+            log.info('INFO: Subtransaction committed to zodb (%s/%s)', count,
+                                                                          total)
     log.info("ENDED removal of %s from all %s, objects that provide it",
              iname, count)
     return "ENDED removal of %s from all %s, objects that provide it" % (iname,
-                                                                         count)
+                                                                         total)
 
 
 class RemoveIPossibleVideoContainer(object):
