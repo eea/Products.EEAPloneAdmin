@@ -5,6 +5,13 @@ import transaction
 from zope.component import ComponentLookupError
 from zope.component.interface import nameToInterface
 from zope.interface import noLongerProvides
+HAS_Subtyper = True
+try:
+    from p4a.subtyper.interfaces import ISubtyped
+except ImportError:
+    HAS_Subtyper = False
+
+
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
@@ -18,11 +25,12 @@ def bulkReindexObjects(context, brains, idxs=None):
     info('INFO: Start reindexing')
     info('INFO: reindexing %s brains', total)
     inames = [
-        "p4a.subtyper.interfaces.ISubtyped",
         "p4a.video.interfaces.IAnyVideoCapable",
         "p4a.video.interfaces.IPossibleVideoContainer",
         "p4a.video.interfaces.IPossibleVideo",
         "p4a.plonevideoembed.interfaces.IAnyVideoLinkCapable",
+        "p4a.video.interfaces.IVideoEnhanced",
+        "p4a.video.interfaces.IVideoContainerEnhanced"
     ]
     ifaces = []
     for iname in inames:
@@ -30,6 +38,10 @@ def bulkReindexObjects(context, brains, idxs=None):
              ifaces.append(nameToInterface(context, iname))
         except ComponentLookupError:
             info_exception('Cant find interface from %s name', iname)
+    # add ISubtyped since for some reason it gives a ComponentLookupError
+    if HAS_Subtyper:
+        inames.append("p4a.video.interfaces.IVideoContainerEnhanced")
+        ifaces.append(ISubtyped)
 
     if idxs and type(idxs) == list:
         idxs.append('object_provides')

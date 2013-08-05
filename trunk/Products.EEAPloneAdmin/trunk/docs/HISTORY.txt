@@ -21,14 +21,7 @@ Changelog
 * Pre-upgrade step: update collective.traceview from sources ( just git pull,
   it's already under /src)
   [ghicaale]
-* Upgrade step: WARNING, This will take a very long time
-   - with www8 AFTER uninstalling the p4a.* packages run in the following order:
-      - www/@@removeIAnyVideoCapable
-      - www/@@removeIPossibleVideoContainer
-      - www/@@removeIPossibleVideo
-      - www/@@removeIAnyVideoLinkCapable
-      - [ichimdav #15234]
-* Feature: added migration scripts in order to remove the leftover interfaces
+ Feature: added migration scripts in order to remove the leftover interfaces
   from p4a.* which were assigned from zcml
   [ichimdav #15234]
 * Bugfix: fixed migration script which removes ISubtyper from translations
@@ -43,9 +36,6 @@ Changelog
 * Upgrade step:$
   - Uninstall p4a.plonevideo, p4a.plonevideoembed and p4a.video$
   [ichimdav #15234]$
-* Upgrade step:$
-    - with www8 run www/@@removeISubtypedFromTranslations$
-    - [ichimdav #15234]$
 * Feature: added migration script to remove ISubtyped from translations$
 * Change: Removed p4a.* logic-$
   [ichimdav #15234]$
