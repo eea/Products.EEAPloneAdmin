@@ -163,29 +163,4 @@
                   class=".migrate.CheckRemainingInterfaces"
                   permission="cmf.ManagePortal" />
 
-    <!-- REMOVE p4a.* interfaces -->
-    <browser:page for="*"
-                  name="removeISubtypedFromTranslations"
-                  class=".migrate.RemoveISubtypedFromTranslations"
-                  permission="cmf.ManagePortal" />
-
-    <browser:page for="*"
-                  name="removeIAnyVideoCapable"
-                  class=".migrate.RemoveIAnyVideoCapable"
-                  permission="cmf.ManagePortal" />
-
-    <browser:page for="*"
-                  name="removeIPossibleVideoContainer"
-                  class=".migrate.RemoveIPossibleVideoContainer"
-                  permission="cmf.ManagePortal" />
-
-    <browser:page for="*"
-                  name="removeIPossibleVideo"
-                  class=".migrate.RemoveIPossibleVideo"
-                  permission="cmf.ManagePortal" />
-
-    <browser:page for="*"
-                  name="removeIAnyVideoLinkCapable"
-                  class=".migrate.RemoveIAnyVideoLinkCapable"
-                  permission="cmf.ManagePortal" />
 </configure>

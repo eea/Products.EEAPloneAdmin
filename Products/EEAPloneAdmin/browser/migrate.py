@@ -1422,44 +1422,6 @@ class RenameMisnamedLocations(object):
         return "Done renaming %s objects" % found
 
 
-class RemoveISubtypedFromTranslations(object):
-    """ Rename p4a.subtyper ISubtyped from translations
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        """ Call method
-        """
-        log = logging.getLogger("RemoveISubtypedFromTranslations")
-        log.info("STARTING removal of ISubtyped from p4a.subtyper")
-        count = 0
-        iname = "p4a.subtyper.interfaces.ISubtyped"
-        if HAS_Subtyper:
-            ca = self.context.portal_catalog
-            res = ca.searchResults(
-                object_provides=iname,
-                Language="all")
-            for f in res:
-                obj = f.getObject()
-                noLongerProvides(obj, ISubtyped)
-                try:
-                    obj.reindexObject(idxs=["object_provides"])
-                except Exception:
-                    log.error("%s --> couldn't be reindexed",
-                              obj.absolute_url(1))
-                count += 1
-                count += 1
-                if count % 50 == 0:
-                    transaction.commit()
-        log.info("ENDING removal of %s obj with ISubtyped from p4a.subtyper",
-                 count)
-
-        return "ENDED removal of %s from all %s, objects that provide it" % \
-               (iname, count)
-
-
 class CheckRemainingInterfaces(object):
     """ Check all objects on site for matching text found within the
         object_provides tuple
@@ -1492,7 +1454,7 @@ class CheckRemainingInterfaces(object):
 
 
 def remove_interface(context, iname):
-    """ Helper method to get rid of p4a.interfaces
+    """ Helper method to get rid of interfaces
     """
     log = logging.getLogger("remove_interface")
     count = 0
@@ -1526,58 +1488,3 @@ def remove_interface(context, iname):
     return "ENDED removal of %s from all %s, objects that provide it" % (iname,
                                                                          total)
 
-
-class RemoveIPossibleVideoContainer(object):
-    """ Remove Specified Interface from all objects on site that provide it
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        """ Call method
-        """
-        return remove_interface(self.context,
-                                'p4a.video.interfaces.IPossibleVideoContainer')
-
-
-class RemoveIAnyVideoCapable(object):
-    """ Remove Specified Interface from all objects on site that provide it
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        """ Call method
-        """
-        return remove_interface(self.context,
-                                'p4a.video.interfaces.IAnyVideoCapable')
-
-
-class RemoveIPossibleVideo(object):
-    """ Remove Specified Interface from all objects on site that provide it
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        """ Call method
-        """
-        return remove_interface(self.context,
-                                'p4a.video.interfaces.IPossibleVideo')
-
-
-class RemoveIAnyVideoLinkCapable(object):
-    """ Remove Specified Interface from all objects on site that provide it
-    """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self):
-        """ Call method
-        """
-        return remove_interface(self.context,
-                        'p4a.plonevideoembed.interfaces.IAnyVideoLinkCapable')
