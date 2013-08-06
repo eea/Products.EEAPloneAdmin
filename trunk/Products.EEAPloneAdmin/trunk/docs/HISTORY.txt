@@ -3,6 +3,14 @@ Changelog
 
 7.2-dev - (unreleased)
 ----------------------
+* Pre-upgrade step:
+    - Inside the buildout folder, execute:
+        - svn ip
+        - ./tools/cleanup_buildout.sh
+        - ./install.sh
+        - ./bin/buildout -c backend.cfg
+    - This should be run as the first thing in the upgrade, on each squirrel machine
+    - [ghicaale refs #15607]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
   button for Products.EEAPloneAdmin
   [ichimdav #15234]
