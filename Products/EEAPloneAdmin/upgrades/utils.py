@@ -52,7 +52,10 @@ def bulkReindexObjects(context, brains, idxs=None):
             if idxs:
                 for iface in ifaces:
                     if iface.providedBy(obj):
-                        noLongerProvides(obj, iface)
+                        try:
+                            noLongerProvides(obj, iface)
+                        except ValueError:
+                            pass
                 obj.reindexObject(idxs=idxs)
             else:
                 obj.reindexObject()
