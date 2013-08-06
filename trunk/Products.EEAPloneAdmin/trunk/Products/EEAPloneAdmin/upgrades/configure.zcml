@@ -4,7 +4,7 @@
   i18n_domain="eea">
 
   <genericsetup:upgradeSteps
-      source="6.2"
+      source="*"
       destination="7.2"
       profile="Products.EEAPloneAdmin:default">
 
