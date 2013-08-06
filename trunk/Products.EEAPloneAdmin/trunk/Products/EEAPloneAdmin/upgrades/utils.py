@@ -12,8 +12,6 @@ except ImportError:
     HAS_Subtyper = False
 
 
-
-
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
 info = logger.info
 info_exception = logger.exception
@@ -25,17 +23,17 @@ def bulkReindexObjects(context, brains, idxs=None):
     info('INFO: Start reindexing')
     info('INFO: reindexing %s brains', total)
     inames = [
-        "p4a.video.interfaces.IAnyVideoCapable",
-        "p4a.video.interfaces.IPossibleVideoContainer",
-        "p4a.video.interfaces.IPossibleVideo",
-        "p4a.plonevideoembed.interfaces.IAnyVideoLinkCapable",
-        "p4a.video.interfaces.IVideoEnhanced",
-        "p4a.video.interfaces.IVideoContainerEnhanced"
-    ]
+            "p4a.video.interfaces.IAnyVideoCapable",
+            "p4a.video.interfaces.IPossibleVideoContainer",
+            "p4a.video.interfaces.IPossibleVideo",
+            "p4a.plonevideoembed.interfaces.IAnyVideoLinkCapable",
+            "p4a.video.interfaces.IVideoEnhanced",
+            "p4a.video.interfaces.IVideoContainerEnhanced"
+            ]
     ifaces = []
     for iname in inames:
         try:
-             ifaces.append(nameToInterface(context, iname))
+            ifaces.append(nameToInterface(context, iname))
         except ComponentLookupError:
             info_exception('Cant find interface from %s name', iname)
     # add ISubtyped since for some reason it gives a ComponentLookupError
