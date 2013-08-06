@@ -11,6 +11,9 @@ Changelog
         - ./bin/buildout -c backend.cfg
     - This should be run as the first thing in the upgrade, on each squirrel machine
     - [ghicaale refs #15607]
+    - Add an External Method for:
+      module = Products.EEAPloneAdmin.fixKeywords
+      method = fixKeywords
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
   button for Products.EEAPloneAdmin
   [ichimdav #15234]
