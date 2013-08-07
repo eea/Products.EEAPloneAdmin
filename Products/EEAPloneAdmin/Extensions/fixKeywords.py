@@ -2392,15 +2392,8 @@ def _fixKeywords(brain, catalog):
     mine = doc.getField('subject').getAccessor(doc)()
     if set(mine).symmetric_difference(original):
         doc.getField('subject').getMutator(doc)(original)
-
-        # Reindex
-        try:
-            doc.reindexObject(idxs=['Subject'])
-        except Exception:
-            catalog.uncatalog_object(catalog.getpath(brain.data_record_id_))
-            doc.reindexObject()
-        return True
-    return False
+        return doc
+    return None
 
 def fixKeywords(self):
     """ Fix language independent keywords
@@ -2409,24 +2402,37 @@ def fixKeywords(self):
     catalog = getToolByName(site, 'portal_catalog')
     brains = catalog.unrestrictedSearchResults()
     total = len(brains)
+
     logger.info('Fixing keywords for %s documents...', total)
 
     step = 1
+    changed = set()
     for index, brain in enumerate(brains):
         try:
             fixed = _fixKeywords(brain, catalog)
         except Exception as err:
-            logger.warn("")
+            logger.warn("ERROR: %s", brain.getURL())
             logger.exception(err)
             continue
 
         if not fixed:
             continue
 
+        changed.add((fixed, brain))
+
         step += 1
         if step % 100 == 0:
             logger.info('Fixing keywords...%s/%s', index, total)
             transaction.commit()
+
+    # Reindex
+    logger.info('Reindexing % changed objects...', len(changed))
+    for doc, brain in changed:
+        try:
+            doc.reindexObject(idxs=['Subject'])
+        except Exception:
+            catalog.uncatalog_object(catalog.getpath(brain.data_record_id_))
+            doc.reindexObject()
 
     msg = "Fixing keywords for %s documents... DONE" % total
     logger.info(msg)
