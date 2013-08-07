@@ -2426,7 +2426,7 @@ def fixKeywords(self):
             transaction.commit()
 
     # Reindex
-    logger.info('Reindexing % changed objects...', len(changed))
+    logger.info('Reindexing %s changed objects...', len(changed))
     for doc, brain in changed:
         try:
             doc.reindexObject(idxs=['Subject'])
