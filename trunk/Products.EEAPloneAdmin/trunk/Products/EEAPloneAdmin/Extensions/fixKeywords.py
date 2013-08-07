@@ -2426,13 +2426,19 @@ def fixKeywords(self):
             transaction.commit()
 
     # Reindex
-    logger.info('Reindexing %s changed objects...', len(changed))
-    for doc, brain in changed:
+    total = len(changed)
+    logger.info('Reindexing %s changed objects...', total)
+    for index, (doc, brain) in enumerate(changed):
         try:
             doc.reindexObject(idxs=['Subject'])
         except Exception:
+            logger.warn("Forcing reindex of %s", brain.getURL())
             catalog.uncatalog_object(catalog.getpath(brain.data_record_id_))
             doc.reindexObject()
+
+        if (index + 1) % 300 == 0:
+            logger.info('Reindexing changed objects... %s/%s', (index+1), total)
+            transaction.commit()
 
     msg = "Fixing keywords for %s documents... DONE" % total
     logger.info(msg)
