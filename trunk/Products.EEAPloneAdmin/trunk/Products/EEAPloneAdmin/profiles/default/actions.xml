@@ -27,7 +27,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">True</property>
+      <property name="visible">False</property>
 
     </object>
     <object name="skos" meta_type="CMF Action" i18n:domain="plone">
@@ -53,7 +53,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">True</property>
+      <property name="visible">False</property>
     </object>
 
     <object name="full_screen" meta_type="CMF Action" i18n:domain="plone">
@@ -67,7 +67,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">True</property>
+      <property name="visible">False</property>
     </object>
 
     <object name="print" meta_type="CMF Action" i18n:domain="plone">
@@ -79,7 +79,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">True</property>
+      <property name="visible">False</property>
     </object>
   </object>
 
@@ -93,7 +93,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
 
   <object name="sendto" meta_type="CMF Action" i18n:domain="plone">
@@ -106,7 +106,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
 
 </object>
