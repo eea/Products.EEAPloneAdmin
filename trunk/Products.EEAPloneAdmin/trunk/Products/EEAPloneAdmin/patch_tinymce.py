@@ -104,13 +104,18 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
         'parent_url': '',
         'path': [],
     }
+
+    #folder_path = '/'.join(self.context.getPhysicalPath())
+    # #14922 do a site wide search from now on instead of being bounded
+    # by navigation root and context language
+    folder_path = '/www'
     query = {
         'Title': '%s' % searchtext,
         'portal_type': filter_portal_types,
         'sort_on': 'sortable_title',
-        'path': '/'.join(self.context.getPhysicalPath()),
+        'path': folder_path,
         'SearchableText': searchtext,
-        'Language': self.context.Language(),
+        'Language': 'all',
     }
     if searchtext:
         plone_layout = self.context.restrictedTraverse('@@plone_layout',
