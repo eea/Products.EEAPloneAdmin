@@ -39,8 +39,6 @@
     directory="Products.Archetypes:skins/archetypes"/>
  <object name="archetypes_kss" meta_type="Filesystem Directory View"
     directory="Products.Archetypes:skins/archetypes_kss"/>
- <object name="bda_feed" meta_type="Filesystem Directory View"
-    directory="bda.feed:skin"/>
  <object name="classic_ecmascript" meta_type="Filesystem Directory View"
     directory="plonetheme.classic:skins/classic_ecmascript"/>
  <object name="classic_styles" meta_type="Filesystem Directory View"
