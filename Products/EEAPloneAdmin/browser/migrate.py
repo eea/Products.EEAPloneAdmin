@@ -1442,15 +1442,17 @@ class CheckRemainingInterfaces(object):
                  search_term)
         ca = self.context.portal_catalog
         res = ca.searchResults(Language="all")
+        objs = []
         for f in res:
             provides = f.object_provides
             for item in provides:
                 if search_term in item:
+                    objs.append(f.getURL())
                     if item not in match:
                         match.append(item)
         log.info("END checking for %s within object_provides of all objects",
                  search_term)
-        return pprint(match)
+        return pprint((match, objs))
 
 
 def remove_interface(context, iname):
