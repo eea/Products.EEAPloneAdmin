@@ -119,7 +119,7 @@ def save_resources_on_disk(registry, request=None):
     if not hasattr(conf, 'environment'):
         return  #this happens during unit tests, we skip this procedure
 
-    base            = conf.environment['saved_resources']
+    base            = conf.environment.get('saved_resources')
     script          = conf.environment.get('sync_resources')
     default_url     = conf.environment.get('portal_url', portal_url)
 
@@ -170,9 +170,10 @@ def save_resources_on_disk(registry, request=None):
                 f = codecs.open(fpath, 'w', 'utf-8')
                 f.write(content)
                 f.close()
-                logger.info("Wrote %s on disk.", fpath)
+                # logger.info("Wrote %s on disk.", fpath)
             except IOError:
                 logger.warning("Could not write %s on disk.", fpath)
+        logger.info(u"Finished saving %s resources on disk for registry %s", len(resources), registry)
 
     if script:
         res = subprocess.call([script, base])
