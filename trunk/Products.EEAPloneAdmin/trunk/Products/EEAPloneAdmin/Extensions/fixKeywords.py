@@ -2407,3 +2407,30 @@ def fixKeywords(self):
     msg = "Fixing keywords for %s documents... DONE" % total
     logger.info(msg)
     return msg
+
+def fixRussianKeywords(self):
+    """ Fix Russian keywords
+    """
+    site = getSite()
+    catalog = getToolByName(site, 'portal_catalog')
+
+    subject = catalog.Indexes.get('Subject')
+    tags = subject.uniqueValues()
+    tags = [tag for tag in tags if tag.lower() not in allowed]
+
+    brains = catalog(Subject={'query': tags, 'operator': 'or'},
+                     Language='all', showInactive=True)
+    total = len(brains)
+
+    logger.info('Fixing keywords for %s documents...', total)
+    for brain in brains:
+        logger.info('Reindex object %s', brain.getURL())
+        doc = brain.getObject()
+        doc.reindexObject(idxs=['Subject'])
+
+        logger.info('Forcing index cleanup of tags %s', tags)
+        subject.unindex_objectKeywords(brain.data_record_id_, tags)
+
+    msg = "Fixing keywords for %s documents... DONE" % total
+    logger.info(msg)
+    return msg
