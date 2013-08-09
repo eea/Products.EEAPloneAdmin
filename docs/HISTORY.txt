@@ -7,12 +7,15 @@ Changelog
   for TinyMCE that ships with Plone 4.3
   [ichimdav refs #14323]
 * Pre-upgrade step:
-    - Add an External Method for and run it:
+    - Add an External Method and run it:
         module = Products.EEAPloneAdmin.fixKeywords
         method = fixUnicodeKeywords
-    - Add an External Method for and run it:
+    - Add an External Method and run it (3 times until there is only one document left):
         module = Products.EEAPloneAdmin.fixKeywords
         method = fixKeywords
+      - Add an External Method and run it:
+        module = Products.EEAPloneAdmin.fixKeywords
+        method = fixRussianKeywords
     - Inside the buildout folder, execute:
         - svn ip
         - ./tools/cleanup_buildout.sh
