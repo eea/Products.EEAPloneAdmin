@@ -8,7 +8,13 @@ def handle_resourceregistry_change(obj, event):
     """ Handle resource registry modification
     """
     portal_properties = getToolByName(obj, 'portal_properties')
+
     site_properties = portal_properties.get('site_properties')
+    if not site_properties:
+        if getattr(event, 'force', False):
+            save_resources_on_disk(obj)
+        return
+
     if not site_properties.getProperty('disableResourceDiskSaving'):
         if getattr(event, 'force', False):
             save_resources_on_disk(obj)
