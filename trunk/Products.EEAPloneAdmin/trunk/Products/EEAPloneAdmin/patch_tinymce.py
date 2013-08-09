@@ -15,23 +15,24 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
     """Returns the actual listing"""
     catalog_results = []
     results = {}
-    image_types = image_types or []
+    # code written in Products.TinyMCE which isn't actually used
+    #image_types = image_types or []
 
-    object = aq_inner(self.context)
-    portal_catalog = getToolByName(object, 'portal_catalog')
+    obj = aq_inner(self.context)
+    portal_catalog = getToolByName(obj, 'portal_catalog')
     normalizer = getUtility(IIDNormalizer)
 
     # check if object is a folderish object, if not, get it's parent.
-    if not IFolderish.providedBy(object):
-        object = aq_parent(object)
+    if not IFolderish.providedBy(obj):
+        obj = aq_parent(obj)
 
-    if INavigationRoot.providedBy(object) or (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
+    if INavigationRoot.providedBy(obj) or (rooted == "True" and document_base_url[:-1] == obj.absolute_url()):
         results['parent_url'] = ''
     else:
-        results['parent_url'] = aq_parent(object).absolute_url()
+        results['parent_url'] = aq_parent(obj).absolute_url()
 
     if rooted == "True":
-        results['path'] = self.getBreadcrumbs(results['parent_url'])
+        results['path'] = self.getBreadc    if '*' not in searchtext:rumbs(results['parent_url'])
     else:
         # get all items from siteroot to context (title and url)
         results['path'] = self.getBreadcrumbs()
@@ -49,10 +50,10 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
 
     # start patch -> get all portal types and get information from brains
     # plone4 added ability to click topics and get the query results
-    if type(object.queryCatalog) != ImplicitAcquisitionWrapper:
-        brains = object.queryCatalog()
+    if type(obj.queryCatalog) != ImplicitAcquisitionWrapper:
+        brains = obj.queryCatalog()
     else:
-        path = '/'.join(object.getPhysicalPath())
+        path = '/'.join(obj.getPhysicalPath())
         query = self.listing_base_query.copy()
         query.update({'portal_type': filter_portal_types,
                       'sort_on': 'getObjPositionInParent',
@@ -84,10 +85,10 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
     # decide whether to show the upload new button
     results['upload_allowed'] = False
     if upload_type:
-        portal_types = getToolByName(object, 'portal_types')
+        portal_types = getToolByName(obj, 'portal_types')
         fti = getattr(portal_types, upload_type, None)
         if fti is not None:
-            results['upload_allowed'] = fti.isConstructionAllowed(object)
+            results['upload_allowed'] = fti.isConstructionAllowed(obj)
 
     # return results in JSON format
     self.context.REQUEST.response.setHeader("Content-type", "application/json")
@@ -95,7 +96,6 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
 
 def patched_getSearchResults(self, filter_portal_types, searchtext):
     """Returns the actual search result"""
-
     if '*' not in searchtext:
         searchtext += '*'
 
@@ -110,7 +110,6 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     # by navigation root and context language
     folder_path = '/www'
     query = {
-        'Title': '%s' % searchtext,
         'portal_type': filter_portal_types,
         'sort_on': 'sortable_title',
         'path': folder_path,
