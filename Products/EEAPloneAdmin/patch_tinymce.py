@@ -32,7 +32,7 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
         results['parent_url'] = aq_parent(obj).absolute_url()
 
     if rooted == "True":
-        results['path'] = self.getBreadc    if '*' not in searchtext:rumbs(results['parent_url'])
+        results['path'] = self.getBreadcrumbs(results['parent_url'])
     else:
         # get all items from siteroot to context (title and url)
         results['path'] = self.getBreadcrumbs()
