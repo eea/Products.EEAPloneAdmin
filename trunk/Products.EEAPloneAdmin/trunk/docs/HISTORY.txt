@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.3-dev - (unreleased)
+----------------------
+
 7.2 - (2013-08-19)
 ------------------
 * Change: updated actions.xml profile with Plone 4.3 changes
