@@ -14,7 +14,7 @@
       <property name="permissions">
         <element value="View"/>
       </property>
-      <property name="visible">False</property>
+      <property name="visible">True</property>
 
     </object>
     <object name="rss2" meta_type="CMF Action" i18n:domain="plone">
@@ -93,7 +93,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">False</property>
+   <property name="visible">True</property>
   </object>
 
   <object name="sendto" meta_type="CMF Action" i18n:domain="plone">
@@ -106,7 +106,7 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">False</property>
+   <property name="visible">True</property>
   </object>
 
 </object>
