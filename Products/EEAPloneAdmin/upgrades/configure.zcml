@@ -8,6 +8,11 @@
       destination="7.2"
       profile="Products.EEAPloneAdmin:default">
 
+      <genericsetup:upgradeDepends
+          title="Import actions steps from Products.EEAPloneAdmin profile"
+          import_steps="actions"
+          />
+
       <genericsetup:upgradeStep
           title="Enable RSS2 feed using Plone 4.3 syndication"
           handler=".evolve72.enable_rss2"
