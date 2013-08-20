@@ -10,10 +10,9 @@ from Products.CMFPlone.interfaces.syndication import (
     ISiteSyndicationSettings, IFeedSettings)
 from Products.ZCTextIndex.interfaces import IZCTextIndex
 import utils
-
+import transaction
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
-
 
 def enable_rss2(context):
     """ Enable the new-style RSS2 feed #14323
@@ -40,6 +39,7 @@ def enable_rss2(context):
     for _type in at_tool.listPortalTypesWithInterfaces([ISyndicatable]):
         folder_types.add(_type.getId())
     folder_types = folder_types
+    index = 0
     for brain in catalog(portal_type=tuple(folder_types)):
         obj = brain.getObject()
         try:
@@ -53,6 +53,11 @@ def enable_rss2(context):
             settings.feed_types = tuple(set(current_feeds))
             message = 'Enabling RSS2 for %s' % brain.getURL()
             logger.info(message)
+        if index % 100 == 0:
+            transaction.commit()
+            logger.info('Transaction commited')
+        index += 1
+    logger.info('Done enable RSS2')
 
 
 def reindexZCTextIndex(context):
