@@ -1434,7 +1434,7 @@ class CheckRemainingInterfaces(object):
         """ Call method
         """
         log = logging.getLogger("CheckRemainingInterfaces")
-        match = []
+        match = {}
         search_term = self.request.get('term')
         if not search_term:
             return "NO search terms has been passed"
@@ -1447,7 +1447,9 @@ class CheckRemainingInterfaces(object):
             for item in provides:
                 if search_term in item:
                     if item not in match:
-                        match.append(item)
+                        match[item] = 1
+                    else:
+                        match[item] += 1
         log.info("END checking for %s within object_provides of all objects",
                  search_term)
         return pprint(match)
