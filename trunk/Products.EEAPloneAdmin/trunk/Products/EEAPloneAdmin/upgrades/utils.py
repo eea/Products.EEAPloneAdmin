@@ -15,7 +15,7 @@ from ZODB.POSException import POSKeyError
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
 info = logger.info
-info_exception = logger.error
+info_exception = logger.exception
 
 
 def bulkReindexObjects(context, brains, idxs=None):
