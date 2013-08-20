@@ -10,11 +10,12 @@ try:
     from p4a.subtyper.interfaces import ISubtyped
 except ImportError:
     HAS_Subtyper = False
+from ZODB.POSException import POSKeyError
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
 info = logger.info
-info_exception = logger.exception
+info_exception = logger.error
 
 
 def bulkReindexObjects(context, brains, idxs=None):
@@ -62,6 +63,7 @@ def bulkReindexObjects(context, brains, idxs=None):
                 msg = 'INFO: Subtransaction committed to zodb (%s/%s)'
                 info(msg, index, total)
         except Exception, err:
-            info('ERROR: error during reindexing')
-            info_exception('Exception: %s ', err)
+            info('ERROR: error during reindexing of %s', brain.getURL(1))
+            if type(err) != POSKeyError:
+                import pdb; pdb.set_trace()
     info('INFO: Done reindexing')
