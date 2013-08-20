@@ -3,6 +3,9 @@ Changelog
 
 7.3-dev - (unreleased)
 ----------------------
+* Bugfix: added intermediate transaction commits not to endup in database
+  conflict error while performing large operatation on upgrades.
+  [ghicaale refs #14323]
 
 7.2 - (2013-08-19)
 ------------------
@@ -11,9 +14,9 @@ Changelog
 * Change: no longer log every resource when saving resources to disk, instead
   just display the total number of resources saved
   [ichimdav refs #14323]
-* Feature: added ability to disable saving of resources on disk by adding a 
+* Feature: added ability to disable saving of resources on disk by adding a
   boolean property named *disableResourceDiskSaving* inside site_properties
-  useful when performing site upgrades and you want to avoid having the 
+  useful when performing site upgrades and you want to avoid having the
   resources saved every time an upgrade step cooks the resources
   [ichimdav refs #14323]
 * Change: readded code that searches through all languages within TinyMCE
@@ -30,7 +33,7 @@ Changelog
         module = Products.EEAPloneAdmin.fixKeywords
         method = fixRussianKeywords
     - Inside the buildout folder, execute:
-        - svn ip
+        - svn up
         - ./tools/cleanup_buildout.sh
         - ./install.sh
         - ./bin/buildout -c backend.cfg
