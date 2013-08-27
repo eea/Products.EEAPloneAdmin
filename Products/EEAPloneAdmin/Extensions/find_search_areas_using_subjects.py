@@ -17,7 +17,7 @@ def find_faceted_navigation(self):
     cat = getToolByName(context, 'portal_catalog')
     result = {}
 
-    brains = cat.unrestrictedSearchResults( object_provides = faceted_interface )
+    brains = cat.unrestrictedSearchResults(object_provides=faceted_interface)
 
     #count = 1
     for brain in brains:

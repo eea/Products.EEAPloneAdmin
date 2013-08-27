@@ -210,8 +210,10 @@ def printCheckInterval(self):
     else:
         return sys.getcheckinterval()
 
-def bulkReindexObjects(self, brains, idxs=[]):
-    return utils.bulkReindexObjects(self, brains, idxs)
+def bulkReindexObjects(self, brains, idxs=None):
+    """ Bulk reindex
+    """
+    return utils.bulkReindexObjects(self, brains, idxs or [])
 
 def reindexAllIndicators(self):
     """ Incremental commit and indexing of indicators """
