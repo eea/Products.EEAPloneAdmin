@@ -34,8 +34,8 @@ def patched_field_get_size(self):
         logger.error("BLOBWARNING: Could not get "
                        "field size for blob %r. Info about blob: "
                        "OID (oid, repr, path on zeo storage): %r > %r > %r "
-                       "CACHED (path to cached blob): %r "
-                        % (self, oid_repr(oid), oid.__repr__(), path, cached))
+                       "CACHED (path to cached blob): %r ",
+                        self, oid_repr(oid), oid.__repr__(), path, cached)
         size = 0
     return size
 
@@ -49,7 +49,7 @@ def patched_class_get_size(self):
         return f.get_size(self) or 0
     except POSKeyError:
         logger.error("BLOBWARNING: Error when doing get_size "
-                       "for field %r for %r" % (f, self))
+                     "for field %r for %r", f, self)
         return 0
 
 def patched_field_index_html(self, instance, REQUEST=None,
@@ -64,7 +64,7 @@ def patched_field_index_html(self, instance, REQUEST=None,
         raise POSKeyError()
     except POSKeyError:
         logger.error("BLOBWARNING: Error when doing index_html "
-           "for field %r for %r with request %r" % (self, instance, REQUEST))
+           "for field %r for %r with request %r", self, instance, REQUEST)
         if not RESPONSE:
             RESPONSE = instance.REQUEST.RESPONSE
         putils = getToolByName(instance, 'plone_utils')
@@ -83,7 +83,7 @@ def patched_getScale(self, instance, scale=None, **kwargs):
             return handler.getScale(instance, scale)
         except POSKeyError:
             logger.error("BLOBWARNING: Could not get "
-                           "scale %r for %r" % (scale, instance))
+                           "scale %r for %r", scale, instance)
     return None
 
 def patched_getSize(self):
@@ -104,11 +104,11 @@ def patched_getSize(self):
         cached = self.blob._p_blob_committed
 
         logger.error("BLOBWARNING: Could not get "
-                       "image size for blob %r. Info about blob: "
-                       "OID (oid, repr, path on zeo storage): %r > %r > %r "
-                       "CACHED (path to cached blob): %r "
-                        % (self.blob._p_oid, oid_repr(oid),
-                           oid.__repr__(), path, cached))
+                     "image size for blob %r. Info about blob: "
+                     "OID (oid, repr, path on zeo storage): %r > %r > %r "
+                     "CACHED (path to cached blob): %r ",
+                     self.blob._p_oid, oid_repr(oid),
+                     oid.__repr__(), path, cached)
 
         return 0
 

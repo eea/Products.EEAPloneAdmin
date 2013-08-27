@@ -35,7 +35,7 @@ def FindMissingBlobs(self):
     # Test everything will go well
     logger.info('Start testing')
     for ctype in content_types:
-        logger.info('Testing %s' % ctype)
+        logger.info('Testing %s', ctype)
         tquery = { 'portal_type': [ctype],
                    'Language': 'all', }
         tbrains = cat(**tquery)
@@ -43,7 +43,7 @@ def FindMissingBlobs(self):
         for tk in tbrains[:1]:
             obj = tk.getObject()
             blob_path = getBlobOid(obj)
-            logger.info('*** %s *** /%s' % (tk.getPath(), blob_path))
+            logger.info('*** %s *** /%s', tk.getPath(), blob_path)
             if obj.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
                 file_field = obj.getField('file')
@@ -69,8 +69,8 @@ def FindMissingBlobs(self):
         i += 1
         obj = k.getObject()
         blob_path = getBlobOid(obj)
-        logger.info('###--- %s *** %s *** %s *** /%s' % (i, k.portal_type,
-                        k.getPath(), blob_path))
+        logger.info('###--- %s *** %s *** %s *** /%s', i, k.portal_type,
+                        k.getPath(), blob_path)
 
         if obj.portal_type in ['EEAFigureFile', 'DataFile', 'File',
                             'FlashFile', 'FactSheetDocument', 'Report']:
@@ -144,7 +144,7 @@ def get_list_of_blobs(self):
 
     cat = getToolByName(self, 'portal_catalog', None)
     brains = cat(**query)
-    logger.info('%d objects will to be processed' % len(brains))
+    logger.info('%d objects will to be processed', len(brains))
     for brain in brains:
         obj = brain.getObject()
         schema = getattr(obj.aq_inner.aq_self, 'schema', None)
@@ -163,7 +163,7 @@ def get_list_of_blobs(self):
             conn.close()
             try:
                 full_path = blob.committed()
-            except:
+            except Exception:
                 full_path = 'missing blob'
 
             tree[oid_repr(blob._p_oid)] = (f.getName(),
@@ -187,7 +187,7 @@ def find_missing_blob_scales(self):
     for brain in brains:
         obj = brain.getObject()
 
-        logger.info('Object path /%s' % obj.absolute_url(1))
+        logger.info('Object path /%s', obj.absolute_url(1))
         sizes = obj.getField('image').getAvailableSizes(obj)
         for size in sizes:
             scale = obj.getField('image').getScale(obj, size)
@@ -196,7 +196,7 @@ def find_missing_blob_scales(self):
             scale_field = scale.getField('image')
             scalefield = scale_field.getAccessor(scale)()
             scale_size = scalefield.get_size()
-            logger.info('%s *** %s' % (size, scale_size))
+            logger.info('%s *** %s', size, scale_size)
 
     return 'Done.'
 

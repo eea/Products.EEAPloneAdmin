@@ -35,12 +35,6 @@ from Products.EEAPloneAdmin.browser.migration_helper_data import \
 
 from eea.geotags.interfaces import IJsonProvider
 
-HAS_Subtyper = True
-try:
-    from p4a.subtyper.interfaces import ISubtyped
-except ImportError:
-    HAS_Subtyper = False
-
 logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
@@ -1045,7 +1039,7 @@ class MigratePortalRegistry(BrowserView):
 
 
 class FixPortalRelationItems(object):
-    """ Fix attribute _at_creation_flag wrongly set to True of items to avoid 
+    """ Fix attribute _at_creation_flag wrongly set to True of items to avoid
     id renaming on title change
     """
 
@@ -1093,7 +1087,7 @@ class MigrateGeotagsCountryGroups(BrowserView):
         http://opensourcehacker.com/2011/02/23/
                 temporarily-capturing-python-logging-output-to-a-string-buffer/
 
-        @param newLogLevel: Optionally change the global logging level, e.g. 
+        @param newLogLevel: Optionally change the global logging level, e.g.
         logging.DEBUG
         """
         self.buffer = StringIO()
