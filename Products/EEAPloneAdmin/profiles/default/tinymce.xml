@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object>
+    <layout>
+        <styles>
+            <element value="Heading|h2"/>
+            <element value="Subheading|h3"/>
+            <element value="Literal|pre"/>
+            <element value="Discreet|span|discreet"/>
+
+            <!-- Custom Dropdown styles -->
+            <element value="Portal Message|div|portalMessage"/>
+            <element value="Information Message|div|portalMessage informationMessage"/>
+            <element value="Warning Message|div|portalMessage warningMessage"/>
+            <element value="Thumbs Up Message|div|portalMessage thumbsUpMessage"/>
+            <element value="Attention Message|div|portalMessage attentionMessage"/>
+            <element value="Yes Message|div|portalMessage yesMessage"/>
+            <element value="No Message|div|portalMessage noMessage"/>
+            <element value="Note Message|div|portalMessage noteMessage"/>
+            <element value="Rosette Message|div|portalMessage rosetteMessage"/>
+            <element value="Idea Message|div|portalMessage ideaMessage"/>
+            <element value="Smiley Message|div|portalMessage smileyMessage"/>
+            <element value="Key Fact|li|keyFact"/>
+            <!-- End Custom Dropdown styles -->
+
+            <element value="Pull-quote|blockquote|pullquote"/>
+            <element value="Call-out|p|callout"/>
+            <element value="Highlight|span|visualHighlight"/>
+            <element value="Disc|ul|listTypeDisc"/>
+            <element value="Square|ul|listTypeSquare"/>
+            <element value="Circle|ul|listTypeCircle"/>
+            <element value="Numbers|ol|listTypeDecimal"/>
+            <element value="Lower Alpha|ol|listTypeLowerAlpha"/>
+            <element value="Upper Alpha|ol|listTypeUpperAlpha"/>
+            <element value="Lower Roman|ol|listTypeLowerRoman"/>
+            <element value="Upper Roman|ol|listTypeUpperRoman"/>
+            <element value="Definition term|dt"/>
+            <element value="Definition description|dd"/>
+            <element value="Odd row|tr|odd"/>
+            <element value="Even row|tr|even"/>
+            <element value="Heading cell|th|"/>
+            <element value="Page break (print only)|div|pageBreak"/>
+            <element value="Clear floats|div|visualClear"/>
+        </styles>
+    </layout>
+</object>
