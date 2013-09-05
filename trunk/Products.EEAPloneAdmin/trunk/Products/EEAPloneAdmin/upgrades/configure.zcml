@@ -5,6 +5,18 @@
 
   <genericsetup:upgradeSteps
       source="*"
+      destination="7.3"
+      profile="Products.EEAPloneAdmin:default">
+
+      <genericsetup:upgradeDepends
+          title="Import tinymce steps from Products.EEAPloneAdmin profile"
+          import_steps="tinymce"
+          />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+      source="*"
       destination="7.2"
       profile="Products.EEAPloneAdmin:default">
 

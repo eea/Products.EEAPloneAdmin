@@ -3,6 +3,13 @@ Changelog
 
 7.3-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav #9476]
+* Feature: added keyFact style to TinyMCE dropdown styles selection
+  [ichimdav #9476]
+* Change: moved TinyMCE layout styles from eea.design to EEAPloneAdmin
+  [ichimdav]
 * Bugfix: added intermediate transaction commits not to endup in database
   conflict error while performing large operatation on upgrades.
   [ghicaale refs #14323]
