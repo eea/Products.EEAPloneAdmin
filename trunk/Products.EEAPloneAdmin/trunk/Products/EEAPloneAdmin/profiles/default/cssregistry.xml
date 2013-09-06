@@ -190,10 +190,6 @@
     enabled="on" expression="" id="promo_gallery.css" media="screen"
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="full" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="solgemaportletsmanager.css" media="all"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="helpcenter.css" media="all"
     rel="stylesheet" rendering="link"/>
