@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.4-dev - (unreleased)
+----------------------
+
 7.3 - (2013-09-06)
 ------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
