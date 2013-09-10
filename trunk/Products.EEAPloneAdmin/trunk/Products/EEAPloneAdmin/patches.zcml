@@ -240,4 +240,11 @@
                      replacement=".patch_userandgroupselectionwidget._patched_search_users"
                      preserveOriginal="false" />
 
+    <!-- Patch Products.LinguaPlone translation creation to clear the archetypes.schemaextender REQUEST cache before copying fields -->
+    <monkey:patch description="#14436 patch getFieldsToCopy from LanguageIndependentFields to clear schemaextender cache"
+                 class="Products.LinguaPlone.utils.LanguageIndependentFields"
+                 original="getFieldsToCopy"
+                 replacement=".patch_linguaplone._patched_getFieldsToCopy"
+                 preserveOriginal="true" />
+
 </configure>
