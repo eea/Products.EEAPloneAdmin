@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="linguaflow" title="Linguaworkflow" description="" state_variable="review_state" initial_state="valid" manager_bypass="False">
+ <state state_id="invalid" title="invalid">
+  <exit-transition transition_id="invalidate"/>
+  <exit-transition transition_id="validate"/>
+  <exit-transition transition_id="nochange"/>
+  <exit-transition transition_id="validateall"/>
+ </state>
+ <state state_id="valid" title="valid">
+  <exit-transition transition_id="invalidate"/>
+  <exit-transition transition_id="invalidateall"/>
+  <exit-transition transition_id="nochange"/>
+ </state>
+ <transition transition_id="invalidate" title="Invalidate translation" new_state="invalid" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Invalidate translation</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-expression>not:here/isCanonical</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="invalidateall" title="Invalidate all translations" new_state="invalid" trigger="USER" before_script="" after_script="">
+  <action url="@@linguaflow_invalidateall" category="workflow" icon="">Invalidate all translations</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-expression>here/isCanonical</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="nochange" title="No change" new_state="" trigger="USER" before_script="" after_script="">
+  
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="validate" title="Validate translation" new_state="valid" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Validate translation</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="validateall" title="Validate all translations" new_state="valid" trigger="USER" before_script="" after_script="">
+  <action url="@@linguaflow_validateall" category="workflow" icon="">Validate all translations</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-role>Manager</guard-role>
+   <guard-expression>here/isCanonical</guard-expression>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="lingua_state" for_catalog="True" for_status="False" update_always="True">
+  <default>
+   
+   <expression>status/review_state|state_change/new_state</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
