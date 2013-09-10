@@ -1,6 +1,10 @@
 Changelog
 =========
 
+7.5-dev - (unreleased)
+----------------------
+
+
 7.4 - (2013-09-10)
 ------------------
 * Bugfix: patching Products.LinguaPlone to clear archetypes.schemaextender
