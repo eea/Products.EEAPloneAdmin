@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.4-dev - (unreleased)
-----------------------
+7.4 - (2013-09-10)
+------------------
 * Bugfix: patching Products.LinguaPlone to clear archetypes.schemaextender
   before copying languageIndependent values to translation
   [batradav #14436]
