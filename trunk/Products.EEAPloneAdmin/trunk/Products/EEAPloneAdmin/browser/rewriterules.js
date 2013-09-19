@@ -177,11 +177,17 @@ jQuery.eearewriterules = function(context){
   form = jQuery('form:has(input[value*="@@manage-group-portlets"])', context);
   if(form.length){
     jQuery.each(form, function(){
-      var selfform = jQuery(this);
+      var selfform = jQuery(this),
+          action = selfform.attr('action');
+
+      if(action.indexOf('/www') === -1){
+        action = action + '/www';
+      }
+
       jQuery(selfform).eearewrite({
         attr: 'action',
-        oldVal: selfform.attr('action'),
-        newVal: selfform.attr('action') + '/www'
+        oldVal: action,
+        newVal: action
       });
     });
   }
@@ -190,11 +196,17 @@ jQuery.eearewriterules = function(context){
   form = jQuery('form:has(input[value*="@@manage-group-dashboard"])', context);
   if(form.length){
     jQuery.each(form, function(){
-      var selfform = jQuery(this);
+      var selfform = jQuery(this),
+          action = selfform.attr('action');
+
+      if (action.indexOf('/www') === -1) {
+        action = action + '/www';
+      }
+
       jQuery(selfform).eearewrite({
         attr: 'action',
-        oldVal: selfform.attr('action'),
-        newVal: selfform.attr('action') + '/www'
+        oldVal: action,
+        newVal: action
       });
     });
   }
@@ -222,11 +234,16 @@ jQuery.eearewriterules = function(context){
   form = jQuery('form:has(input[value*="@@manage-content-type-portlets"])', context);
   if(form.length){
     jQuery.each(form, function(){
-      var selfform = jQuery(this);
+      var selfform = jQuery(this),
+          action = selfform.attr('action');
+      if(action.indexOf('/www') === -1){
+        action = action + '/www';
+      }
+
       jQuery(selfform).eearewrite({
         attr: 'action',
-        oldVal: selfform.attr('action'),
-        newVal: selfform.attr('action') + '/www'
+        oldVal: action,
+        newVal: action
       });
     });
   }
