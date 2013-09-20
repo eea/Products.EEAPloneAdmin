@@ -11,10 +11,6 @@ Changelog
 * Change: added Key Facts class to TinyMCE style selection in order to markup 
   key facts
   [ichimdav refs #9476]
-* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
-  button for Products.EEAPloneAdmin
-  [ichimdav #9476]
-
 
 7.4 - (2013-09-10)
 ------------------
