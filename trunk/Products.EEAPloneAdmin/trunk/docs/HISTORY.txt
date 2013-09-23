@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.5-dev - (unreleased)
-----------------------
+7.5 - (2013-09-23)
+------------------
 * Bug fix: fixed form action for links that already contained www within
   rewriterules.js
   [ichimdav refs #16720]
