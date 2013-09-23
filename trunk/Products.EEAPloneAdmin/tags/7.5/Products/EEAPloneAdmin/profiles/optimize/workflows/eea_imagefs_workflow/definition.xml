@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="eea_imagefs_workflow" title="EEA imagefs workflow" description="" state_variable="review_state" initial_state="visible" manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>Delete objects</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="published_eionet" title="Published for Eionet (Circa login)">
+  <description>This state will make the content available to visitor with Eionet/Circa login.</description>
+  <exit-transition transition_id="publish"/>
+  <exit-transition transition_id="retract"/>
+  <exit-transition transition_id="show"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>ProofReader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Authenticated</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="retracted" title="Retracted">
+  <description>Items in this state have been retracted from one of the publishing state due to discovered relevant errors in content.</description>
+  <exit-transition transition_id="enable"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>ContentManager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>ContentManager</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="visible" title="Visible">
+  <description>Item still visible with direct link, but hidden is searches and listings on the site. Usable for external light reviews with no login required.</description>
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Authenticated</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="True">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>ContentManager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>ProofReader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>WebReviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Authenticated</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="enable" title="enable" new_state="visible" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">enable</action>
+  <guard>
+   <guard-role>ContentManager</guard-role>
+   <guard-role>Reviewer</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="publishEionet" title="Publish for Eionet (visible with circa log in)" new_state="published_eionet" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Publish Eionet</action>
+  <guard>
+   <guard-role>ContentManager</guard-role>
+   <guard-role>Reviewer</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="retract" title="Retract / Hide" new_state="retracted" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Retract / Hide</action>
+  <guard>
+   <guard-role>ContentManager</guard-role>
+   <guard-role>Reviewer</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="show" title="Make visible" new_state="visible" trigger="USER" before_script="" after_script="">
+  <description>This will make the image item visible</description>
+  <action url="" category="workflow" icon="">Make visible</action>
+  <guard>
+   <guard-role>WebReviewer</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <worklist worklist_id="contentReview" title="">
+  <description>For content review</description>
+  <action url="" category="global" icon="">Content review pennding</action>
+  <guard>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+  <match name="review_state" values="content_pending"/>
+ </worklist>
+ <worklist worklist_id="newAndDraft" title="">
+  <description>Content pending in first draft</description>
+  
+  <guard>
+   <guard-role>Manager</guard-role>
+  </guard>
+  <match name="review_state" values="draft"/>
+ </worklist>
+ <worklist worklist_id="pendingWebQA" title="">
+  <description>pending for web QA (final web publishing)</description>
+  
+  <guard>
+   <guard-role>WebReviewer</guard-role>
+  </guard>
+  <match name="review_state" values="webqa_pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <script script_id="publish" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="publish"/>
+ <script script_id="reject" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="reject"/>
+ <script script_id="sendWorkflowEmail" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="sendWorkflowEmail"/>
+ <script script_id="submitForContentReview" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForContentReview"/>
+ <script script_id="submitForProofReading" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForProofReading"/>
+ <script script_id="submitForWebQA" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForWebQA"/>
+</dc-workflow>

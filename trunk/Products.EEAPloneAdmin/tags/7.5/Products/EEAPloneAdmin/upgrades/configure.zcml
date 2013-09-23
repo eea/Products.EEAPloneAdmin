@@ -1,0 +1,72 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="eea">
+
+
+    <!--genericsetup:upgradeSteps
+            source="*"
+            destination="7.4"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import tinymce.xml actions steps from Products.EEAPloneAdmin profile"
+                import_steps="tinymce_settings"
+                />
+    </genericsetup:upgradeSteps -->
+
+
+  <genericsetup:upgradeSteps
+      source="*"
+      destination="7.2"
+      profile="Products.EEAPloneAdmin:default">
+
+      <genericsetup:upgradeDepends
+          title="Import actions steps from Products.EEAPloneAdmin profile"
+          import_steps="actions"
+          />
+
+      <genericsetup:upgradeStep
+          title="Enable RSS2 feed using Plone 4.3 syndication"
+          handler=".evolve72.enable_rss2"
+          />
+
+      <genericsetup:upgradeStep
+          title="Reindex ZCTextIndex indexes"
+          handler=".evolve72.reindexZCTextIndex"
+          />
+
+      <genericsetup:upgradeStep
+          title="Cleanup broken p4a.* objects"
+          handler="Products.EEAPloneAdmin.upgrades.evolve72.cleanupBrokenP4AObjects"
+          />
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+    source="4.0"
+    destination="6.2"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Update caching policy for AJAX templates"
+      import_profile="Products.EEAPloneAdmin:eea-caching"
+      import_steps="plone.app.registry"
+      />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+    source="*"
+    destination="4.0"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.EEAPloneAdmin profile"
+      import_profile="Products.EEAPloneAdmin:default"
+      />
+
+  </genericsetup:upgradeSteps>
+
+
+
+</configure>
