@@ -8,7 +8,7 @@ Changelog
   [ichimdav refs #16720]
 * Bug fix: corrected import of TinyMCE step from Products.EEAPloneAdmin 7.3
   [ichimdav  refs #9476]
-* Change: added Key Facts class to TinyMCE style selection in order to markup 
+* Change: added Key Facts class to TinyMCE style selection in order to markup
   key facts
   [ichimdav refs #9476]
 
