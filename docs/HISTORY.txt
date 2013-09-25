@@ -3,6 +3,9 @@ Changelog
 
 7.6-dev - (unreleased)
 ----------------------
+* Bug fix: added a script that traverses ZODB and reports objects which are not
+  indexed in the main catalog
+  [tiberich #16803]
 
 7.5 - (2013-09-23)
 ------------------
