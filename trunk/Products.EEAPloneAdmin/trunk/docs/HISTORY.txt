@@ -3,6 +3,9 @@ Changelog
 
 7.6-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav #9476]
 * Bug fix: added a script that traverses ZODB and reports objects which are not
   indexed in the main catalog
   [tiberich #16803]
