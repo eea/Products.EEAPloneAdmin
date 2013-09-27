@@ -6,7 +6,7 @@
 
     <genericsetup:upgradeSteps
             source="*"
-            destination="7.4"
+            destination="7.6"
             profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeDepends
