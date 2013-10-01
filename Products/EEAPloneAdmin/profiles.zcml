@@ -41,6 +41,15 @@
             />
     </configure>
 
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="EEA Plone Admin: Uninstall profile"
+        directory="profiles/uninstall"
+        description="Extension profile EEA Plone site"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
     <genericsetup:importStep
         name="eea-various"
         title="EEA site setup" description=""
