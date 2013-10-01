@@ -1,6 +1,6 @@
 """ Patch due to #4832
 """
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from urlparse import urlsplit
 from urllib import unquote
 from ZODB.POSException import ConflictError

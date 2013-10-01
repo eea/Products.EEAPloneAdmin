@@ -14,7 +14,7 @@ import transaction
 from AccessControl import Unauthorized
 from ZODB.POSException import ConflictError
 from zope.event import notify
-from zope.app.container.interfaces import INameChooser
+from zope.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.Archetypes.event import ObjectInitializedEvent
 from Products.Archetypes.utils import shasattr
