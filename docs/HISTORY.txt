@@ -4,7 +4,7 @@ Changelog
 7.6-dev - (unreleased)
 ----------------------
 * Change: updated zope imports with the versions that require minimum Plone 4.1
-  for Products.EEAPloneAdmin 
+  for Products.EEAPloneAdmin
   [ichimdav refs #15651]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
   button for Products.EEAPloneAdmin
@@ -14,8 +14,8 @@ Changelog
   [tiberich #16803]
 * Pre-upgrade step: shared-blob is now on and blobstorage path was changed. Prio
   to production upgrade double check with Adrian if the new storage is available.
-  Buildout should be first run on frontends and ZEO restarted to connet to the
-  new storage location.
+  Steps to be done are, run buildout on frontends, run buildout on backends, stop
+  all ZEO clients, stop ZEO, resync blobs, start ZEO and start ZEO clients.
   [ghicaale refs #16729]
 
 7.5 - (2013-09-23)
