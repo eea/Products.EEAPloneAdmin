@@ -21,6 +21,8 @@ Changelog
   Steps to be done are, run buildout on frontends, run buildout on backends, stop
   all ZEO clients, stop ZEO, resync blobs, start ZEO and start ZEO clients.
   [ghicaale refs #16729]
+* Bug fix: no more 404 when calling search_rss outside PloneSite context
+  [ghicaale refs #16912]
 
 7.5 - (2013-09-23)
 ------------------
@@ -35,7 +37,7 @@ Changelog
 
 7.4 - (2013-09-10)
 ------------------
-* Bugfix: patching Products.LinguaPlone to clear archetypes.schemaextender
+* Bug fix: patching Products.LinguaPlone to clear archetypes.schemaextender
   before copying languageIndependent values to translation
   [batradav #14436]
 
@@ -48,7 +50,7 @@ Changelog
   [ichimdav #9476]
 * Change: moved TinyMCE layout styles from eea.design to EEAPloneAdmin
   [ichimdav]
-* Bugfix: added intermediate transaction commits not to endup in database
+* Bug fix: added intermediate transaction commits not to endup in database
   conflict error while performing large operatation on upgrades.
   [ghicaale refs #14323]
 * Change: moved Solgema.PortletsManager customisations to forked package
@@ -107,7 +109,7 @@ Changelog
  Feature: added migration scripts in order to remove the leftover interfaces
   from p4a.* which were assigned from zcml
   [ichimdav #15234]
-* Bugfix: fixed migration script which removes ISubtyper from translations
+* Bug fix: fixed migration script which removes ISubtyper from translations
   [ichimdav #15234]
 * Feature: added a browser page checkRemainingInterfaces which when passed
   a search term will return all interfaces that match the search term from
@@ -463,10 +465,10 @@ Changelog
     - [ichimdav refs #5412]
 * Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf
   [ichimdav #5346]
-* Bugfix: fixed wrong indentation in setupmethods.py and moved the
+* Bug fix: fixed wrong indentation in setupmethods.py and moved the
   migrateRelations to own file.
   [demarant]
-* Bugfix: added external method force_sent_status
+* Bug fix: added external method force_sent_status
   [szabozo0 refs #5399]
 * Upgrade step:
     - Create an external method with:
@@ -812,13 +814,13 @@ Changelog
   [demarant]
 * Bug fix: added fix for #4606 for p4a.fileimage
   [tiberich #4606]
-* Bugfix: Added monkeypatch for fixing export all steps
+* Bug fix: Added monkeypatch for fixing export all steps
   [szabozo0 #4583]
 * Bug fix: added override to use nice template layout for formlib based forms
   [tiberich #4589]
 * Change: Removed overrides for control panel pages, we solved it with url rewrites
   [szabozo0 #4510]
-* Bugfix: started fixing views/templates called on /www context
+* Bug fix: started fixing views/templates called on /www context
   [szabozo0 #4510]
 * Patch: added patch_tinymce.js to fix tinymce loading; added tinymce_themes skin path for same purposes
   [tiberich #4510]
@@ -828,13 +830,13 @@ Changelog
   [ghicaale #4394]
 * Change: Cleanup, removed eea_patch_kukit.js
   [szabozo0 #4441]
-* Bugfix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets
+* Bug fix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets
   [szabozo0 #4441]
 * Feature: Added profile for caching settings
   [ghicaale #4394]
 * Feature: Added patch_html5 in support of HTML5 integration
   [ghicaale #4444]
-* Bugfix: Enabled table_sorter.js for not authenticated users
+* Bug fix: Enabled table_sorter.js for not authenticated users
   [szabozo0 #4446]
 * Change: synchronized with resources on testing server
   [szabozo0 #4440]
