@@ -180,11 +180,6 @@
               replacement=".patch_atct.foldLine"
               preserveOriginal="false" />
 
-    <!-- Patch of hachoir_core ver 1.2, see  patch_hachoir_core.py for more info -->
-    <monkey:patch description="Monkeypatch hachoir-core-1.2.i18n.UnicodeStdout to have writelines() method"
-                  module="hachoir_core.i18n"
-                  original="UnicodeStdout"
-                  replacement=".patch_hachoir_core.PatchedUnicodeStdout" />
 
     <!-- Patch for p4a.fileimage, illegal characters are found when adding a FlashFile -->
     <!-- #15234 Commented since p4a.* packages are deprecated -->
