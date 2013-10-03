@@ -180,14 +180,6 @@
               replacement=".patch_atct.foldLine"
               preserveOriginal="false" />
 
-
-    <!-- Patch for p4a.fileimage, illegal characters are found when adding a FlashFile -->
-    <!-- #15234 Commented since p4a.* packages are deprecated -->
-    <!--<monkey:patch description="Monkeypatch p4a.fileimage.utils.py"-->
-                  <!--module="p4a.fileimage.utils"-->
-                  <!--original="write_ofsfile_to_tempfile"-->
-                  <!--replacement=".patch_p4a_fileimage.write_ofsfile_to_tempfile" />-->
-
     <!-- Patch for collective.quickupload ver 1.2.1 to permit contextual uploads -->
     <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.quick_upload.py"
                   class="collective.quickupload.browser.quick_upload.QuickUploadFile"
