@@ -3,6 +3,8 @@ Changelog
 
 7.6-dev - (unreleased)
 ----------------------
+* Change: removed p4a_fileimage patch from EEAPloneAdmin
+  [ichimdav refs #15651]
 * Change: removed hachoir_core patches since we no longer use hachoir packages
   [ichimdav refs #15651]
 * Change: updated zope imports with the versions that require minimum Plone 4.1
