@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.6-dev - (unreleased)
-----------------------
+7.6 - (2013-10-04)
+------------------
 * Change: removed p4a_fileimage patch from EEAPloneAdmin
   [ichimdav refs #15651]
 * Change: removed hachoir_core patches since we no longer use hachoir packages
