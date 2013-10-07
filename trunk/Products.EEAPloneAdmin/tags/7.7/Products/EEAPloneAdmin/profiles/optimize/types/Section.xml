@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<object name="Section" meta_type="Factory-based Type Information"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate=""></property>
+ <property name="description" i18n:translate=""></property>
+ <property name="icon_expr">string:${portal_url}/Section.gif</property>
+ <property name="content_meta_type">Section</property>
+ <property name="product">PloneGazette</property>
+ <property name="factory">addSection</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">folder_listing</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Topic"/>
+  <element value="NewsletterReference"/>
+  <element value="NewsletterRichReference"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="Section_view"/>
+ <alias from="edit" to="Section_editForm"/>
+ <alias from="properties" to="metadata_edit_form"/>
+ <alias from="view" to="Section_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/Section_view"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Folder Listing" action_id="folderlisting" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_contents" visible="True">
+  <permission value="PNL Change Newsletter"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/Section_editForm" visible="True">
+  <permission value="PNL Change Newsletter"/>
+ </action>
+</object>
