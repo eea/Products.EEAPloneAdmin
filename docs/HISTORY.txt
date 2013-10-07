@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.8-dev - (unreleased)
+----------------------
+
 7.7 - (2013-10-07)
 ------------------
 * Upgrade step: Install a new cron job to cleanup pdfs. To do this, add:
