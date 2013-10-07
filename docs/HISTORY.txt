@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.7-dev - (unreleased)
-----------------------
+7.7 - (2013-10-07)
+------------------
 * Upgrade step: Install a new cron job to cleanup pdfs. To do this, add:
   0 */2 * * * /var/eea-buildout-plone4/etc/cron/cleanup_pdf_tmp.sh
   in /var/spool/cron/root
