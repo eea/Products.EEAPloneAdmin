@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.8-dev - (unreleased)
-----------------------
+7.8 - (2013-10-08)
+------------------
 * Change: disabled the tinymce upgrade step because of ticket 17005
   [ichimdav refs #17005]
 
