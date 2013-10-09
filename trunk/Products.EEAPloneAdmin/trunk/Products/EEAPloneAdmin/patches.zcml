@@ -180,12 +180,6 @@
               replacement=".patch_atct.foldLine"
               preserveOriginal="false" />
 
-    <!-- Patch for collective.quickupload ver 1.2.1 to permit contextual uploads -->
-    <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.quick_upload.py"
-                  class="collective.quickupload.browser.quick_upload.QuickUploadFile"
-                  original="quick_upload_file"
-                  replacement=".patch_collective_quickupload.quick_upload_file" />
-
     <!-- Patch for collective.quickupload ver 1.2.1 to set filename as title, #4643 -->
     <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.uploadcapable.py"
                   class="collective.quickupload.browser.uploadcapable.QuickUploadCapableFileFactory"
