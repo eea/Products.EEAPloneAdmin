@@ -75,6 +75,13 @@
              for="*"
              provides="Products.CMFPlone.interfaces.syndication.ISearchFeed" />
 
+    <!-- Fixed a Plone bug, see #17040 and https://github.com/plone/Products.CMFPlone/pull/72-->
+    <browser:page for="*"
+                  class="Products.CMFPlone.browser.syndication.views.SearchFeedView"
+                  name="search_rss"
+                  permission="zope2.View"
+                  template="browser/search-rss.pt" />
+
     <include package=".browser" file="overrides.zcml"/>
 
 </configure>
