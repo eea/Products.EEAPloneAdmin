@@ -3,6 +3,9 @@ Changelog
 
 7.9-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed item.body call in search-rss.pt so now works even
+  when item.body is an AcquisitionWrapper.
+  [ghicaale refs #17040]
 
 7.8 - (2013-10-08)
 ------------------
