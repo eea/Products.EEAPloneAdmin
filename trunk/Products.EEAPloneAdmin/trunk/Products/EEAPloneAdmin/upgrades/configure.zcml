@@ -14,16 +14,16 @@
             />
     </genericsetup:upgradeSteps>
 
-    <!-- genericsetup:upgradeSteps
+    <genericsetup:upgradeSteps
         source="*"
-        destination="7.6"
+        destination="7.9"
         profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeDepends
             title="Import tinymce.xml actions steps from Products.EEAPloneAdmin profile"
             import_steps="tinymce_settings"
             />
-    </genericsetup:upgradeSteps -->
+    </genericsetup:upgradeSteps>
 
 
     <genericsetup:upgradeSteps
