@@ -82,6 +82,9 @@
                   permission="zope2.View"
                   template="browser/search-rss.pt" />
 
+    <!-- Override quickupload ArchetypesFileSetter adapter to set filename as title on blobfile #16997-->
+    <adapter factory=".quickupload.ArchetypesFileSetter" />
+
     <include package=".browser" file="overrides.zcml"/>
 
 </configure>

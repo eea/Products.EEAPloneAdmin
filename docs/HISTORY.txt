@@ -3,8 +3,8 @@ Changelog
 
 7.9-dev - (unreleased)
 ----------------------
-* Change: Removed redundant collective.quickupload patch to permit contextual
-  uploads.
+* Bug fix: Refactor collective.quickupload patches to take advantage of the latest
+  upstream version
   [tiberich #16997]
 * Bug fix: Fixed item.body call in search-rss.pt so now works even
   when item.body is an AcquisitionWrapper.

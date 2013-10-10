@@ -180,12 +180,6 @@
               replacement=".patch_atct.foldLine"
               preserveOriginal="false" />
 
-    <!-- Patch for collective.quickupload ver 1.2.1 to set filename as title, #4643 -->
-    <monkey:patch description="Monkeypatch collective.quickupload-1.2.1.browser.uploadcapable.py"
-                  class="collective.quickupload.browser.uploadcapable.QuickUploadCapableFileFactory"
-                  original="__call__"
-                  replacement=".patch_collective_quickupload.QuickUploadCapableFileFactory__call__" />
-
     <!-- Patch for plone.outputfilters ver 1.0 to solve logic bug in Plone code -->
     <monkey:patch description="Monkeypatch plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter to solve logic bug in Plone code"
                   class="plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter"
