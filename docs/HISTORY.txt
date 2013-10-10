@@ -3,6 +3,9 @@ Changelog
 
 7.9-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav refs #17005]
 * Bug fix: Refactor collective.quickupload patches to take advantage of the latest
   upstream version
   [tiberich #16997]
