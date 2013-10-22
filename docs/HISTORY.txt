@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.9-dev - (unreleased)
-----------------------
+7.9 - (2013-10-22)
+------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
   button for Products.EEAPloneAdmin
   [ichimdav refs #17005]
