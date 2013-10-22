@@ -55,8 +55,10 @@ class DateComponents(BrowserView):
         dates = portal_state.locale().dates
 
         timepattern = dates.getFormatter('time').getPattern()
-        if 'a' in timepattern:
-            use_ampm = True
+        # don't force ampm because of 'a' in locale date representation
+        # refs #16783
+        #if 'a' in timepattern:
+        #    use_ampm = True
         month_names = dates.getFormatter('date').calendar.months
 
         # 'id' is what shows up.  December for month 12. 
