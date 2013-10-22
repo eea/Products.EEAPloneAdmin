@@ -12,6 +12,9 @@ Changelog
 * Bug fix: Fixed item.body call in search-rss.pt so now works even
   when item.body is an AcquisitionWrapper.
   [ghicaale refs #17040]
+* Feature: commented out forcing ampm widget because 'a' descriptor is present
+  in locale of date representation
+  [simiamih refs #16783]
 
 7.8 - (2013-10-08)
 ------------------
