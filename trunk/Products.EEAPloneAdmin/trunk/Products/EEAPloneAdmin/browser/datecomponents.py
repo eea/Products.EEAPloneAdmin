@@ -55,8 +55,7 @@ class DateComponents(BrowserView):
         dates = portal_state.locale().dates
 
         timepattern = dates.getFormatter('time').getPattern()
-        # don't force ampm because of 'a' in locale date representation
-        # refs #16783
+        #PATCH: we fix #16783 don't force ampm when 'a' in locale date pattern
         #if 'a' in timepattern:
         #    use_ampm = True
         month_names = dates.getFormatter('date').calendar.months
