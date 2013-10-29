@@ -3,6 +3,8 @@ Changelog
 
 8.0-dev - (unreleased)
 ----------------------
+* Added patch for inspecting occasional exception
+  [simiamih refs #17240]
 
 7.9 - (2013-10-22)
 ------------------
