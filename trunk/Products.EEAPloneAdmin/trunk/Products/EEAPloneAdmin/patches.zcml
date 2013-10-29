@@ -222,4 +222,11 @@
                  replacement=".patch_linguaplone._patched_getFieldsToCopy"
                  preserveOriginal="true" />
 
+    <!-- Temporary patch to inspect misterious OSError in rdflib when rendering EEA Organisational Graph page -->
+    <monkey:patch description="#7240 patch absolutize from NamespaceManager in rdflib to learn more about an OSError"
+                 class="rdflib.syntax.NamespaceManager.NamespaceManager"
+                 original="absolutize"
+                 replacement=".patch_rdflib_namespacemanager._patched_absolutize"
+                 preserveOriginal="true" />
+
 </configure>
