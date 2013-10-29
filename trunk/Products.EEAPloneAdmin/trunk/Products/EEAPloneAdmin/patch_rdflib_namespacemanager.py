@@ -1,4 +1,5 @@
 import os
+import time
 import logging
 from urllib import pathname2url
 from urlparse import urljoin, urldefrag
@@ -15,7 +16,7 @@ def _patched_absolutize(self, uri, defrag=1):
     except OSError:
         # log, wait a little and try again
         logger.exception("First attempt to get cwd failed")
-        sleep(0.5)
+        time.sleep(0.5)
         cwd = os.getcwd()
         logger.exception("Second attempt to get cwd succeeded, value: %r", cwd)
     path_url = pathname2url(cwd)
