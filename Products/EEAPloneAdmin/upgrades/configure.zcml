@@ -5,6 +5,18 @@
 
     <genericsetup:upgradeSteps
         source="*"
+        destination="8.0"
+        profile="Products.EEAPloneAdmin:optimize">
+
+        <genericsetup:upgradeDepends
+            title="Import step with changes: registry"
+            import_profile="Products.EEAPloneAdmin:optimize"
+            import_steps="registry"
+            />
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="*"
         destination="7.7"
         profile="Products.EEAPloneAdmin:default">
 
