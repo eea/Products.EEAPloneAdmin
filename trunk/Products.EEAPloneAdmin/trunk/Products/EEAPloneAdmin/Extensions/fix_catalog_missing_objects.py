@@ -102,6 +102,7 @@ def reindex_unindexed(self):
 
     missing = []
 
-    for obj in _children(context, debug=False):
+    for obj in _children_all(context, debug=False):
         if obj.meta_type == "Discussion Item":
+            print "Reindexing: ", obj
             obj.reindexObject()
