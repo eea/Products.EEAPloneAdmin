@@ -4,8 +4,10 @@ in the portal_catalog
 
 from OFS.interfaces import IFolder
 from Products.Archetypes.interfaces import IBaseObject
-from persistent.interfaces import IPersistent
 from collections import deque
+from persistent.interfaces import IPersistent
+from plone.app.discussion.interfaces import IConversation
+from zope.annotation.interfaces import IAttributeAnnotatable
 
 
 def is_ok(id):
@@ -79,11 +81,12 @@ def _children_all(tree, debug=False):
     while to_crawl:
         current = to_crawl.popleft()
         child_list.append(current)
-        print "Looking at ", current.absolute_url()
+        #print "Looking at ", current.absolute_url()
+        print "."
 
         if IFolder.providedBy(current):
             node_children = [o for o in current.objectValues() if \
-                    IPersistent.providedBy(o) and is_ok(o.getId())]
+                    IAttributeAnnotatable.providedBy(o) and is_ok(o.getId())]
             to_crawl.extend(node_children)
 
         i += 1
@@ -103,6 +106,9 @@ def reindex_unindexed(self):
     missing = []
 
     for obj in _children_all(context, debug=False):
-        if obj.meta_type == "Discussion Item":
-            print "Reindexing: ", obj
-            obj.reindexObject()
+        annot = getattr(obj, "__annotations__", {})
+        if annot.get("plone.app.discussion:conversation"):
+            comments = IConversation(obj)
+            for comment in comments.values():
+                comment.reindexObject()
+                print "Reindexing: ", comment
