@@ -4,6 +4,7 @@ in the portal_catalog
 
 from OFS.interfaces import IFolder
 from Products.Archetypes.interfaces import IBaseObject
+from persistent.interfaces import IPersistent
 from collections import deque
 
 
@@ -19,7 +20,7 @@ def is_ok(id):
     return True
 
 
-def _children(tree, debug=False):
+def _children_archetypes(tree, debug=False):
     """returns a list of every child"""
 
     objects = [o for o in tree.objectValues() if IBaseObject.providedBy(o)]
@@ -54,7 +55,7 @@ def discover_unindexed(self):
 
     missing = []
 
-    for obj in _children(context, debug=False):
+    for obj in _children_archetypes(context, debug=False):
         if not hasattr(obj, 'UID'):
             continue
         if not catalog.searchResults(UID=obj.UID()):
@@ -65,3 +66,42 @@ def discover_unindexed(self):
 
     return [obj.absolute_url() for obj in missing]
 
+
+def _children_all(tree, debug=False):
+    """returns a list of every child"""
+
+    objects = [o for o in tree.objectValues() if IPersistent.providedBy(o)]
+
+    child_list = []
+    to_crawl = deque(objects)
+
+    i = 0
+    while to_crawl:
+        current = to_crawl.popleft()
+        child_list.append(current)
+        print "Looking at ", current.absolute_url()
+
+        if IFolder.providedBy(current):
+            node_children = [o for o in current.objectValues() if \
+                    IPersistent.providedBy(o) and is_ok(o.getId())]
+            to_crawl.extend(node_children)
+
+        i += 1
+        if debug and (i > 1000):
+            break
+
+    return child_list
+
+
+def reindex_unindexed(self):
+    """ reindex objects which are not indexed
+    """
+
+    catalog = self.portal_catalog
+    context = self
+
+    missing = []
+
+    for obj in _children(context, debug=False):
+        if obj.meta_type = "Discussion Item":
+            obj.reindexObject()
