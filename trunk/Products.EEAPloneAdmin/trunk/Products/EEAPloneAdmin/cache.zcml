@@ -23,4 +23,12 @@
     description="These are resources which can be cached for at least one month e.g. of these are sparql downloadable resources and files"
     />
 
+  <cache:rulesetType
+    name="eea.content.contentImages"
+    title="Content images"
+    description="These resources are using the Image content-type or similar
+                and use a different caching strategy than Plone's 'Content files
+                and images' where we will only select File-type content types."
+    />
+
 </configure>
