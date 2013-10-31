@@ -11,7 +11,7 @@
         <genericsetup:upgradeDepends
             title="Import step with changes: registry"
             import_profile="Products.EEAPloneAdmin:optimize"
-            import_steps="registry"
+            import_steps="plone.app.registry"
             />
     </genericsetup:upgradeSteps>
 
