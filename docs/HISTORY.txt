@@ -3,6 +3,8 @@ Changelog
 
 8.0-dev - (unreleased)
 ----------------------
+* Bug fix: fixed import step
+  [simiamih refs #14808]
 * new cache ruleset for Content files
   [simiamih refs #14808]
 * Added patch for inspecting occasional exception
