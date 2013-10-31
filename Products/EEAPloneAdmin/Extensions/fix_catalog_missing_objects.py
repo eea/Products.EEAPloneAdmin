@@ -82,7 +82,7 @@ def _children_all(tree, debug=False):
         current = to_crawl.popleft()
         child_list.append(current)
         #print "Looking at ", current.absolute_url()
-        print "."
+        print ".",
 
         if IFolder.providedBy(current):
             node_children = [o for o in current.objectValues() if \
@@ -100,15 +100,12 @@ def reindex_unindexed(self):
     """ reindex objects which are not indexed
     """
 
-    catalog = self.portal_catalog
-    context = self
-
-    missing = []
-
-    for obj in _children_all(context, debug=False):
+    for obj in _children_all(self, debug=False):
         annot = getattr(obj, "__annotations__", {})
         if annot.get("plone.app.discussion:conversation"):
             comments = IConversation(obj)
             for comment in comments.values():
                 comment.reindexObject()
                 print "Reindexing: ", comment
+
+    return "Done"
