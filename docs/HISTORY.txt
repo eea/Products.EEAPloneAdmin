@@ -13,7 +13,10 @@ Changelog
   [tiberich]
 * Pre-upgrade step: stop sendmail daemon on all backends and start it on
   one of the frontends. After the production upgrade is done check if email
-  sending is working fine.
+  sending is working fine. Clenup symlink of zopesendmail_ctl
+  on all backends /etc/init.d
+  [ghicaale refs #17239]
+* Upgrade step: run buildout on frontends
   [ghicaale refs #17239]
 
 7.9 - (2013-10-22)
