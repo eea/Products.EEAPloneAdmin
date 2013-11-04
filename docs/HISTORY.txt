@@ -11,6 +11,9 @@ Changelog
   [simiamih refs #17240]
 * Bug fix: added a script to catalog objects that are not indexed
   [tiberich]
+* Pre-upgrade step: stop sendmail daemon on all backends and start it on
+  one of the frontends
+  [ghicaale refs #17239]
 
 7.9 - (2013-10-22)
 ------------------
