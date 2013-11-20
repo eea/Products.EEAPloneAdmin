@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eea">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<metal:main fill-slot="main"
+     tal:define="portal context/@@plone_portal_state/portal;
+                 email_from_address portal/email_from_address;
+                 isAnon context/@@plone_portal_state/anonymous;">
+
+    <h1 class="documentFirstHeading"
+        i18n:translate="heading_contact_form">Contact EEA Web Team</h1>
+
+    <div class="documentDescription">Send comments, issues, ideas for the EEA website</div>
+    <p><a title="Visit the EEA Forum" href="http://community.eea.europa.eu">Post your question/idea to the EEA Forum</a>. Use the category "Technical Topics".
+    </p>
+    <p>We will do our best to reply as soon as possible.<br><br>Kind regards<br>EEA Web Team</p>
+    <br><br>
+    <p class="discreet">For questions not related to the website you may also add your question to the relevant section under <a href="http://community.eea.europa.eu">EEA Forum</a></p>
+</metal:main>
+</body>
+</html>
