@@ -3,6 +3,8 @@ Changelog
 
 8.1-dev - (unreleased)
 ----------------------
+* Pre-upgrade step: uninstall ejabberd from production and from Unicorn
+  [ghicaale refs #17513]
 
 8.0 - (2013-11-20)
 ------------------
