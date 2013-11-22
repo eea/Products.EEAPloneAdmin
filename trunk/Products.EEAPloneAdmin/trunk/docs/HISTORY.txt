@@ -9,6 +9,8 @@ Changelog
   "EEA Plone Admin: Uninstall profile", check "Manage the configuration registry"
    and click "Import selected steps"
   [ghicaale refs #17513]
+* Upgrade step: delete /www/portal_view_customizations/zope.interface.interface-eea.js_belowbodytag
+  [ghicaale refs #17513]
 * Change: cleanup IXMPPSettings from portal_registry
   [ghicaale refs #17513]
 
