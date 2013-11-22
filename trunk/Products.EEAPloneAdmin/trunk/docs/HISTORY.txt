@@ -5,12 +5,18 @@ Changelog
 ----------------------
 * Pre-upgrade step: uninstall ejabberd from production and from Unicorn
   [ghicaale refs #17513]
+* Upgrade step: under /www/portal_setup/manage_importSteps select profile
+  "EEA Plone Admin: Uninstall profile", check "Manage the configuration registry"
+   and click "Import selected steps"
+  [ghicaale refs #17513]
+* Change: cleanup IXMPPSettings from portal_registry
+  [ghicaale refs #17513]
 
 8.0 - (2013-11-20)
 ------------------
 * Bug fix: fixed import step
   [simiamih refs #14808]
-* new cache ruleset for Content files
+* Feature: new cache ruleset for Content files
   [simiamih refs #14808]
 * Added patch for inspecting occasional exception
   [simiamih refs #17240]
