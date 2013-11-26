@@ -47,12 +47,6 @@ function showDefinition(context) {
 //-->
     </script>
 
-    <!-- Versions -->
-    <metal:versions use-macro="here/portlet_versions/macros/versions">
-      <metal:new fill-slot="old" />
-    </metal:versions>
-
-
     <!-- Tables -->
     <tal:tables define="tablesData context/@@getTablesByCategory;
                         categories python:tablesData[0];
@@ -619,11 +613,6 @@ function showDefinition(context) {
     </div>
 
     <div class="visualClear">&nbsp;</div>
-
-    <!-- Older versions -->
-    <metal:versions use-macro="here/portlet_versions/macros/versions">
-      <metal:old fill-slot="new" />
-    </metal:versions>
 
 </div>
 </body>
