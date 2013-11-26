@@ -9,6 +9,20 @@ Changelog
   [ghicaale refs #17513]
 * Upgrade step: uninstall eea.locationwidget from /www/prefs_install_products_form
   [ghicaale refs #9155]
+* Upgrade step: from /www/portal_properties/geographical_properties delete the following properties
+    - geo_services
+    - map_service_to_use
+    - geocoding_service_priority
+    - yahoo_key
+    - mapquest_key
+    - PointZoom_single
+    - MapLoc_single
+    - MapZoom_single
+    - MapLoc_multi
+    - MapZoom_multi
+  [ghicaale refs #9155]
+* Upgrade step: from /www/portal_skins/manage_propertiesForm delete 'LocationWidget' layer
+  [ghicaale refs #9155]
 * Upgrade step: uninstall collective.xmpp.chat and collective.xmpp.core
   from /www/prefs_install_products_form
   [ghicaale refs #17513]
@@ -31,7 +45,7 @@ Changelog
   [simiamih refs #14808]
 * Feature: new cache ruleset for Content files
   [simiamih refs #14808]
-* Added patch for inspecting occasional exception
+* Feature: added patch for inspecting occasional exception
   [simiamih refs #17240]
 * Bug fix: added a script to catalog objects that are not indexed
   [tiberich]
