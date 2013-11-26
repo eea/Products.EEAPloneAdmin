@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Pre-upgrade step: uninstall ejabberd from production and from Unicorn
   [ghicaale refs #17513]
+* Upgrade step: uninstall eea.locationwidget from /www/prefs_install_products_form
+  [ghicaale refs #9155]
 * Upgrade step: uninstall collective.xmpp.chat and collective.xmpp.core
   from /www/prefs_install_products_form
   [ghicaale refs #17513]
