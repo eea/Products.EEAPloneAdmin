@@ -3,8 +3,8 @@ Changelog
 
 8.1-dev - (unreleased)
 ----------------------
-* removed versions macro; now using viewlet 
- [simiamih refs #17321]
+* Change: removed versions macro; now using viewlet
+  [simiamih refs #17321]
 * Pre-upgrade step: uninstall ejabberd from production and from Unicorn
   [ghicaale refs #17513]
 * Upgrade step: uninstall eea.locationwidget from /www/prefs_install_products_form
