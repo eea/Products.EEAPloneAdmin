@@ -43,6 +43,8 @@ Changelog
   [ghicaale refs #9155 #17513]
 * Change: cleanup IXMPPSettings from portal_registry
   [ghicaale refs #17513]
+* Change: removed the dependecy to eea.locationwidget
+  [ghicaale refs #9155]
 
 8.0 - (2013-11-20)
 ------------------
