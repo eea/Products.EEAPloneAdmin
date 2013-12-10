@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.1-dev - (unreleased)
-----------------------
+8.1 - (2013-12-10)
+------------------
 * Change: removed versions macro; now using viewlet
   [simiamih refs #17321]
 * Pre-upgrade step: uninstall ejabberd from production and from Unicorn
