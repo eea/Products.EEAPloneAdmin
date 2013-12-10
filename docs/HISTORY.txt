@@ -3,6 +3,8 @@ Changelog
 
 8.2-dev - (unreleased)
 ----------------------
+* Bug fix: fixed ReST markup of HISTORY.txt
+  [ghicaale refs #17716]
 
 8.1 - (2013-12-10)
 ------------------
@@ -23,7 +25,7 @@ Changelog
     - MapZoom_single
     - MapLoc_multi
     - MapZoom_multi
-  [ghicaale refs #9155]
+    - [ghicaale refs #9155]
 * Upgrade step: from /www/portal_skins/manage_propertiesForm delete 'LocationWidget' layer
   [ghicaale refs #9155]
 * Upgrade step: from /www/portal_actions/document_actions delete 'gearth' action
@@ -43,7 +45,7 @@ Changelog
     - commit changes
     - re-run buildout
     - restart instances
-  [ghicaale refs #9155 #17513]
+    - [ghicaale refs #9155 #17513]
 * Change: cleanup IXMPPSettings from portal_registry
   [ghicaale refs #17513]
 * Change: removed the dependecy to eea.locationwidget
@@ -94,9 +96,9 @@ Changelog
 
 7.7 - (2013-10-07)
 ------------------
-* Upgrade step: Install a new cron job to cleanup pdfs. To do this, add:
-  0 */2 * * * /var/eea-buildout-plone4/etc/cron/cleanup_pdf_tmp.sh
-  in /var/spool/cron/root
+* Upgrade step: Install a new cron job to cleanup pdfs. To do this, add in /var/spool/cron/root:
+
+    ``0 */2 * * * /var/eea-buildout-plone4/etc/cron/cleanup_pdf_tmp.sh``
 
 7.6 - (2013-10-04)
 ------------------
@@ -170,19 +172,19 @@ Changelog
   [ichimdav refs #14323]
 * Pre-upgrade step:
     - Add an External Method and run it:
-        module = Products.EEAPloneAdmin.fixKeywords
-        method = fixUnicodeKeywords
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixUnicodeKeywords
     - Add an External Method and run it (3 times until there is only one document left):
-        module = Products.EEAPloneAdmin.fixKeywords
-        method = fixKeywords
-      - Add an External Method and run it:
-        module = Products.EEAPloneAdmin.fixKeywords
-        method = fixRussianKeywords
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixKeywords
+    - Add an External Method and run it:
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixRussianKeywords
     - Inside the buildout folder, execute:
-        - svn up
-        - ./tools/cleanup_buildout.sh
-        - ./install.sh
-        - ./bin/buildout -c backend.cfg
+       - svn up
+       - ./tools/cleanup_buildout.sh
+       - ./install.sh
+       - ./bin/buildout -c backend.cfg
     - This should be run as the first thing in the upgrade, on each squirrel machine
     - [ghicaale refs #15607]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
@@ -200,10 +202,9 @@ Changelog
 
 7.1 - (2013-07-31)
 ------------------
-* Pre-upgrade step: update collective.traceview from sources ( just git pull,
-  it's already under /src)
+* Pre-upgrade step: update collective.traceview from sources, just git pull
   [ghicaale]
- Feature: added migration scripts in order to remove the leftover interfaces
+* Feature: added migration scripts in order to remove the leftover interfaces
   from p4a.* which were assigned from zcml
   [ichimdav #15234]
 * Bug fix: fixed migration script which removes ISubtyper from translations
@@ -1013,4 +1014,3 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
-
