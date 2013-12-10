@@ -1,0 +1,2954 @@
+<registry>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.allowed" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="allowed">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>Allow syndication for collections and folders on site.</description>
+      <title>Allowed</title>
+    </field>
+    <value>1</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.allowed_feed_types" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="allowed_feed_types">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>RSS|RSS 1.0</element>
+        <element>rss.xml|RSS 2.0</element>
+        <element>atom.xml|Atom</element>
+        <element>itunes.xml|iTunes</element>
+      </default>
+      <description>Separate view name and title by '|'</description>
+      <title>Allowed Feed Types</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>RSS|RSS 1.0</element>
+      <element>rss.xml|RSS 2.0</element>
+      <element>atom.xml|Atom</element>
+      <element>itunes.xml|iTunes</element>
+      <element>RSS2|RSS 2.0 EEA</element>
+    </value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.default_enabled" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="default_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>If syndication should be enabled by default for all folders and collections.</description>
+      <title>Enabled by default</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.max_items" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="max_items">
+    <field type="plone.registry.field.Int">
+      <default>15</default>
+      <description>help_syndication_max_items</description>
+      <title>label_syndication_max_items</title>
+    </field>
+    <value>15</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.search_rss_enabled" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="search_rss_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>Allows users to subscribe to feeds of search results</description>
+      <title>Search RSS enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.show_author_info" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="show_author_info">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>Should feeds include author information</description>
+      <title>Show author info</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.show_syndication_button" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="show_syndication_button">
+    <field type="plone.registry.field.Bool">
+      <description>Makes it possible to customize syndication settings for particular folders and collections </description>
+      <title>Show Settings Button</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.show_syndication_link" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="show_syndication_link">
+    <field type="plone.registry.field.Bool">
+      <description>Enable RSS link document action on the syndication content item.</description>
+      <title>Show Feed Link</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.site_rss_items" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="site_rss_items">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>/news/aggregator</element>
+      </default>
+      <description>Paths to folders and collections to link to at the portal root.</description>
+      <required>False</required>
+      <title>Site RSS</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.SyndicatableFeedItems</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>/news/aggregator</element>
+    </value>
+  </record>
+  <record name="Products.ResourceRegistries.interfaces.settings.IResourceRegistriesSettings.resourceBundlesForThemes" interface="Products.ResourceRegistries.interfaces.settings.IResourceRegistriesSettings" field="resourceBundlesForThemes">
+    <field type="plone.registry.field.Dict">
+      <description>Maps skin names to lists of resource bundle names</description>
+      <key_type type="plone.registry.field.ASCIILine"/>
+      <title>Resource bundles for themes</title>
+      <value_type type="plone.registry.field.List">
+        <value_type type="plone.registry.field.ASCIILine"/>
+      </value_type>
+    </field>
+    <value>
+      <element key="(default)">
+        <element>jquery</element>
+        <element>default</element>
+        <element>jqueryui</element>
+      </element>
+    </value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUICSS.css" interface="collective.js.jqueryui.controlpanel.IJQueryUICSS" field="css">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Activate the JQueryUI theme 'Sunburst'</description>
+      <title>Sunburst CSS for jqueryui</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUICSS.patch" interface="collective.js.jqueryui.controlpanel.IJQueryUICSS" field="patch">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Activate the integration between                                 JQueryUI 'Sunburst' theme and the Plone                                 'Sunburst' theme</description>
+      <title>Sunburst CSS Integration</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_accordion" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_accordion">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Accordion</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_autocomplete" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_autocomplete">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Autocomplete</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_button" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_button">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Button</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_core" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_core">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>The core of jQuery UI, required for all interactions   and widgets.</description>
+      <required>False</required>
+      <title>Core</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_datepicker" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_datepicker">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Date picker</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_dialog" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_dialog">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Dialog</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_draggable" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_draggable">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Draggable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_droppable" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_droppable">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Droppable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'core'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_blind" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_blind">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'blind'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_bounce" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_bounce">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'bounce'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_clip" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_clip">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'clip'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_drop" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_drop">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'drop'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_explode" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_explode">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'explode'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_fade" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_fade">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'fade'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_fold" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_fold">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'fold</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_highlight" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_highlight">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'highlight'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_pulsate" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_pulsate">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'pulsate'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_scale" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_scale">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'scale'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_shake" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_shake">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'shake'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_slide" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_slide">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'slide'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_effect_transfer" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_effect_transfer">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Effects 'transfer'</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_menu" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_menu">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Menu</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_mouse" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_mouse">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Mouse</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_position" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_position">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Position</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_progressbar" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_progressbar">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Progress bar</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_resizable" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_resizable">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Resizable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_selectable" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_selectable">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Selectable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_slider" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_slider">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Slider</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_sortable" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_sortable">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_spinner" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_spinner">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Spinner</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_tabs" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_tabs">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Tabs</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_tooltip" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_tooltip">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Tooltip</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.js.jqueryui.controlpanel.IJQueryUIPlugins.ui_widget" interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins" field="ui_widget">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title>Widget</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.admin_jid" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="admin_jid">
+    <field type="plone.registry.field.TextLine">
+      <default>admin@localhost</default>
+      <description>help_xmpp_admin_jid</description>
+      <title>label_xmpp_admin_jid</title>
+    </field>
+    <value>admin@backends.eea</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.admin_password" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="admin_password">
+    <field type="plone.registry.field.Password">
+      <default>admin</default>
+      <title>label_xmpp_admin_password</title>
+    </field>
+    <value>admin</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.auto_register_on_login" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="auto_register_on_login">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_xmpp_auto_register_on_login</description>
+      <title>label_xmpp_auto_register_on_login</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.auto_subscribe" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="auto_subscribe">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_xmpp_auto_subscribe</description>
+      <title>label_xmpp_auto_subscribe</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.hostname" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="hostname">
+    <field type="plone.registry.field.TextLine">
+      <default>localhost</default>
+      <description>help_server_hostname</description>
+      <title>label_server_hostname</title>
+    </field>
+    <value>jabber.backends.eea-disabled</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.port" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="port">
+    <field type="plone.registry.field.Int">
+      <default>5222</default>
+      <description>help_server_port</description>
+      <title>label_server_port</title>
+    </field>
+    <value>5222</value>
+  </record>
+  <record name="collective.xmpp.core.interfaces.IXMPPSettings.xmpp_domain" interface="collective.xmpp.core.interfaces.IXMPPSettings" field="xmpp_domain">
+    <field type="plone.registry.field.TextLine">
+      <default>localhost</default>
+      <description>help_xmpp_domain</description>
+      <title>label_xmpp_domain</title>
+    </field>
+    <value>backends.eea-disabled</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoRelations" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoRelations">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Lookup internal links within object content and automatically update related items</description>
+      <required>False</required>
+      <title>Enable auto-relations</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoRelationsFields" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoRelationsFields">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>text</element>
+        <element>body</element>
+      </default>
+      <description>Lookup these fields for internal links</description>
+      <title>Auto-relations fields</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>text</element>
+      <element>body</element>
+    </value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoTagging" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoTagging">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Hyperlink tags within page body</description>
+      <required>False</required>
+      <title>Enable auto-tagging</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoTaggingBlackList" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoTaggingBlackList">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>h1</element>
+        <element>h2</element>
+        <element>h3</element>
+      </default>
+      <description>Do not apply auto-tagging if the tag is a child of the following HTML elements. (use CSS3 selectors like: div.documentByLine) By default auto-tagging will not be applied on text that is already a child of an &lt;a&gt; HTML tag</description>
+      <required>False</required>
+      <title>Auto-tagging blacklist</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>h1</element>
+      <element>h2</element>
+      <element>h3</element>
+    </value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoTaggingDelimiter" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoTaggingDelimiter">
+    <field type="plone.registry.field.TextLine">
+      <default>,</default>
+      <description>If the schema fields define above are of type text (not iterable) use this delimiter to split tags. If left empty the entire content of the field will be considered one tag</description>
+      <required>False</required>
+      <title>Auto-tagging delimiter</title>
+    </field>
+    <value>,</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoTaggingFirstOnly" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoTaggingFirstOnly">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>Hyperlink only the first occurence of a tag wihin page body</description>
+      <required>False</required>
+      <title>Auto-tagging mark only first occurrence</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.autoTaggingTable" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="autoTaggingTable">
+    <field type="plone.registry.field.Dict">
+      <default>
+        <element key="subject">@@search?Subject=</element>
+      </default>
+      <description>Define pairs of 'schema field' where to lookup tags and the link where these tags should point, usually a search page. (e.g. 'subject=&gt;@@search?Subject=' or 'location=&gt;@@search?getLocation=')</description>
+      <key_type type="plone.registry.field.ASCIILine"/>
+      <title>Auto-tagging mapping dict (field, link)</title>
+      <value_type type="plone.registry.field.ASCIILine"/>
+    </field>
+    <value>
+      <element key="subject">@@search?Subject=</element>
+    </value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.modalDisplay" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="modalDisplay">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Display results in modal window</description>
+      <required>False</required>
+      <title>Display results in modal window</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.onlyExistingKeywords" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="onlyExistingKeywords">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Discover keywords that already exists in the existing keywords list(Token is not required)</description>
+      <required>False</required>
+      <title>Discover only existing keywords</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="eea.alchemy.controlpanel.interfaces.IAlchemySettings.token" interface="eea.alchemy.controlpanel.interfaces.IAlchemySettings" field="token">
+    <field type="plone.registry.field.TextLine">
+      <default></default>
+      <description>Provide token from http://www.alchemyapi.com/api/register.html</description>
+      <title>Token</title>
+    </field>
+    <value>1111122baa0b58161cc1b893f13a701a59d646fc</value>
+  </record>
+  <record name="eea.progressbar.controlpanel.interfaces.ISettings.viewletVisibleFor" interface="eea.progressbar.controlpanel.interfaces.ISettings" field="viewletVisibleFor">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>Document</element>
+        <element>Collection</element>
+        <element>Folder</element>
+        <element>News Item</element>
+        <element>Event</element>
+      </default>
+      <description>Progressbar viewlet is visible for the following content-types</description>
+      <required>False</required>
+      <title>Enable progressbar viewlet</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.ReallyUserFriendlyTypes</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>Document</element>
+      <element>Collection</element>
+      <element>Folder</element>
+      <element>News Item</element>
+      <element>Event</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.cacheStopRequestVariables" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="cacheStopRequestVariables">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>statusmessages</element>
+        <element>SearchableText</element>
+      </default>
+      <description>Variables in the request that prevent caching if present</description>
+      <title>Request variables that prevent caching</title>
+      <value_type type="plone.registry.field.ASCIILine">
+        <title>Request variables</title>
+      </value_type>
+    </field>
+    <value>
+      <element>statusmessages</element>
+      <element>SearchableText</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.contentTypeRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="contentTypeRulesetMapping">
+    <field type="plone.registry.field.Dict">
+      <description>Maps content type names to ruleset names</description>
+      <key_type type="plone.registry.field.ASCIILine">
+        <title>Content type name</title>
+      </key_type>
+      <title>Content type/ruleset mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Ruleset name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="EEAFigureFile">plone.content.file</element>
+      <element key="EEAFigure">plone.content.itemView</element>
+      <element key="HelpCenterHowTo">plone.content.itemView</element>
+      <element key="SOERKeyFact">plone.content.itemView</element>
+      <element key="Enquiry">plone.content.itemView</element>
+      <element key="Organisation">plone.content.itemView</element>
+      <element key="HelpCenterTutorialPage">plone.content.itemView</element>
+      <element key="KeyMessage">plone.content.itemView</element>
+      <element key="HelpCenterFAQFolder">plone.content.itemView</element>
+      <element key="HelpCenterLink">plone.content.itemView</element>
+      <element key="HelpCenter">plone.content.itemView</element>
+      <element key="MethodologyReference">plone.content.itemView</element>
+      <element key="Folder">plone.content.folderView</element>
+      <element key="Document">plone.content.itemView</element>
+      <element key="Assessment">plone.content.itemView</element>
+      <element key="Newsletter">plone.content.itemView</element>
+      <element key="AssessmentPart">plone.content.itemView</element>
+      <element key="SOERCountry">plone.content.itemView</element>
+      <element key="FactSheetDocument">plone.content.itemView</element>
+      <element key="News Item">plone.content.itemView</element>
+      <element key="CallForInterest">plone.content.itemView</element>
+      <element key="BaseCacheRule">plone.content.feed</element>
+      <element key="DavizVisualization">plone.content.itemView</element>
+      <element key="FlashFile">plone.content.file</element>
+      <element key="HelpCenterFAQ">plone.content.itemView</element>
+      <element key="EpubFile">plone.content.folderView</element>
+      <element key="NewsletterRichReference">plone.content.itemView</element>
+      <element key="RationaleReference">plone.content.itemView</element>
+      <element key="NewsletterTopic">plone.content.itemView</element>
+      <element key="EnquiryRequestorFolder">plone.content.itemView</element>
+      <element key="ExternalDataSpec">plone.content.itemView</element>
+      <element key="EcoTip">plone.content.itemView</element>
+      <element key="Data">plone.content.itemView</element>
+      <element key="EnquiryFolder">plone.content.itemView</element>
+      <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
+      <element key="Sparql">eea.content.staleResources</element>
+      <element key="Specification">plone.content.itemView</element>
+      <element key="PolicyQuestion">plone.content.itemView</element>
+      <element key="WorkItem">plone.content.itemView</element>
+      <element key="HelpCenterHowToFolder">plone.content.itemView</element>
+      <element key="Report">plone.content.itemView</element>
+      <element key="HelpCenterTutorial">plone.content.itemView</element>
+      <element key="GIS Application">plone.content.itemView</element>
+      <element key="Article">plone.content.itemView</element>
+      <element key="Highlight">plone.content.itemView</element>
+      <element key="Promotion">plone.content.itemView</element>
+      <element key="PolicyDocumentReference">plone.content.itemView</element>
+      <element key="DataTable">plone.content.itemView</element>
+      <element key="CallForTender">plone.content.itemView</element>
+      <element key="DataFile">plone.content.file</element>
+      <element key="NewsletterReference">plone.content.itemView</element>
+      <element key="SOERMessage">plone.content.itemView</element>
+      <element key="IndicatorFactSheet">plone.content.itemView</element>
+      <element key="Image">eea.content.contentImages</element>
+      <element key="SparqlBookmarksFolder">eea.content.staleResources</element>
+      <element key="EyewitnessStory">plone.content.itemView</element>
+      <element key="EnquiryRequestor">plone.content.itemView</element>
+      <element key="Topic">eea.content.frontPage</element>
+      <element key="EEAVacancy">plone.content.itemView</element>
+      <element key="File">plone.content.file</element>
+      <element key="PressRelease">plone.content.itemView</element>
+      <element key="Speech">plone.content.itemView</element>
+      <element key="NewsletterBTree">plone.content.itemView</element>
+      <element key="NewsletterTheme">plone.content.itemView</element>
+      <element key="QuickEvent">plone.content.itemView</element>
+      <element key="Event">plone.content.itemView</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.enableCompression" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="enableCompression">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>Determine whether GZip compression should be enabled for standard responses</description>
+      <title>Enable GZip compression</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.purgedContentTypes" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="purgedContentTypes">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>File</element>
+        <element>Image</element>
+        <element>News Item</element>
+      </default>
+      <description>List content types which should be purged when modified</description>
+      <title>Content types to purge</title>
+      <value_type type="plone.registry.field.ASCIILine">
+        <title>Content type name</title>
+      </value_type>
+    </field>
+    <value>
+      <element>FlashFile</element>
+      <element>Article</element>
+      <element>AssessmentPart</element>
+      <element>CallForInterest</element>
+      <element>CallForTender</element>
+      <element>Topic</element>
+      <element>Data</element>
+      <element>DataFile</element>
+      <element>DataTable</element>
+      <element>DavizVisualization</element>
+      <element>EEAVacancy</element>
+      <element>EEAFigure</element>
+      <element>EEAFigureFile</element>
+      <element>EcoTip</element>
+      <element>Enquiry</element>
+      <element>EnquiryFolder</element>
+      <element>EnquiryRequestor</element>
+      <element>EnquiryRequestorFolder</element>
+      <element>EpubFile</element>
+      <element>Event</element>
+      <element>ExternalDataSpec</element>
+      <element>EyewitnessStory</element>
+      <element>HelpCenterFAQ</element>
+      <element>HelpCenterFAQFolder</element>
+      <element>FactSheetDocument</element>
+      <element>File</element>
+      <element>Folder</element>
+      <element>GIS Application</element>
+      <element>HelpCenter</element>
+      <element>HelpCenterLink</element>
+      <element>Highlight</element>
+      <element>HelpCenterHowTo</element>
+      <element>HelpCenterHowToFolder</element>
+      <element>Image</element>
+      <element>Assessment</element>
+      <element>IndicatorFactSheet</element>
+      <element>Specification</element>
+      <element>KeyMessage</element>
+      <element>Link</element>
+      <element>MethodologyReference</element>
+      <element>FlexibilityReport</element>
+      <element>News Item</element>
+      <element>Newsletter</element>
+      <element>NewsletterBTree</element>
+      <element>NewsletterReference</element>
+      <element>NewsletterRichReference</element>
+      <element>NewsletterTheme</element>
+      <element>NewsletterTopic</element>
+      <element>Organisation</element>
+      <element>Document</element>
+      <element>PolicyDocumentReference</element>
+      <element>PolicyQuestion</element>
+      <element>PressRelease</element>
+      <element>Promotion</element>
+      <element>Report</element>
+      <element>QuickEvent</element>
+      <element>RationaleReference</element>
+      <element>SOERCountry</element>
+      <element>SOERKeyFact</element>
+      <element>SOERMessage</element>
+      <element>Sparql</element>
+      <element>SparqlBookmarksFolder</element>
+      <element>Speech</element>
+      <element>HelpCenterTutorial</element>
+      <element>HelpCenterTutorialPage</element>
+      <element>HelpCenterTutorialFolder</element>
+      <element>HelpCenterInstructionalVideo</element>
+      <element>WorkItem</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="templateRulesetMapping">
+    <field type="plone.registry.field.Dict">
+      <description>Maps skin layer page template names to ruleset names</description>
+      <key_type type="plone.registry.field.ASCIILine">
+        <title>Page template name</title>
+      </key_type>
+      <title>Page template/ruleset mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Ruleset name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="download.xml">eea.content.staleResources</element>
+      <element key="download.exhibit">eea.content.staleResources</element>
+      <element key="image_view">plone.content.itemView</element>
+      <element key="overview">plone.content.itemView</element>
+      <element key="daviz.json">eea.content.staleResources</element>
+      <element key="recently_modified">plone.content.itemView</element>
+      <element key="faceted_counter">eea.content.ajax</element>
+      <element key="download">plone.content.itemView</element>
+      <element key="staff.html">plone.content.itemView</element>
+      <element key="organigram.html">plone.content.itemView</element>
+      <element key="accessibility-info">plone.content.itemView</element>
+      <element key="download.table">eea.content.staleResources</element>
+      <element key="download.csv">eea.content.staleResources</element>
+      <element key="search_rss">plone.content.feed</element>
+      <element key="frontpage_view">eea.content.frontPage</element>
+      <element key="faceted_query">eea.content.ajax</element>
+      <element key="multimedia_popup_view">plone.content.file</element>
+      <element key="RSS2?type=.rss">plone.content.itemView</element>
+      <element key="sendto_form">plone.content.itemView</element>
+      <element key="RSS2">plone.content.itemView</element>
+      <element key="image_view_fullscreen">plone.content.itemView</element>
+      <element key="search">plone.content.itemView</element>
+      <element key="download.tsv">eea.content.staleResources</element>
+      <element key="file_view">plone.content.itemView</element>
+      <element key="home_yourlang">plone.content.itemView</element>
+      <element key="not_available_lang">plone.content.itemView</element>
+      <element key="highlights.rdf">plone.content.itemView</element>
+      <element key="download.schema.xml">eea.content.staleResources</element>
+      <element key="video_popup_view">plone.content.file</element>
+      <element key="reports.rdf">plone.content.itemView</element>
+      <element key="folder_contents">plone.content.itemView</element>
+      <element key="folder_summary">plone.content.itemView</element>
+      <element key="download.json">eea.content.staleResources</element>
+      <element key="rdf">plone.content.itemView</element>
+      <element key="tagscloud_counter">eea.content.ajax</element>
+      <element key="sitemap">plone.content.itemView</element>
+      <element key="RSS">plone.content.feed</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.anonOnly">
+    <field type="plone.registry.field.Bool">
+      <description>Ensure logging users always get a fresh page. Note that if you are caching pages in a proxy cache, you'll still need to use a Vary response header to keep anonymous and authenticated content separate.</description>
+      <required>False</required>
+      <title>Only cache for anonymous users</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>3600</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.ajax.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.contentImages.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>3600</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.eea.content.frontPage.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.etags">
+    <field type="plone.registry.field.Tuple">
+      <description>A list of ETag component names to include</description>
+      <required>False</required>
+      <title>ETags</title>
+      <value_type type="plone.registry.field.ASCIILine"/>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.lastModified">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on Last-Modified headers</description>
+      <required>False</required>
+      <title>Last-modified validation</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>3600</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.file.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.ramCache">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on caching in Zope memory</description>
+      <required>False</required>
+      <title>RAM cache</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.smaxage">
+    <field type="plone.registry.field.Int">
+      <description>Time (in seconds) to cache the response in the caching proxy</description>
+      <required>False</required>
+      <title>Shared maximum age</title>
+    </field>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.vary">
+    <field type="plone.registry.field.ASCIILine">
+      <description>Name(s) of HTTP headers that must match for the caching proxy to return a cached response</description>
+      <required>False</required>
+      <title>Vary</title>
+    </field>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.anonOnly">
+    <field type="plone.registry.field.Bool">
+      <description>Ensure logging users always get a fresh page. Note that if you are caching pages in a proxy cache, you'll still need to use a Vary response header to keep anonymous and authenticated content separate.</description>
+      <required>False</required>
+      <title>Only cache for anonymous users</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.anonOnly">
+    <field ref="plone.app.caching.strongCaching.anonOnly"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.etags">
+    <field ref="plone.app.caching.strongCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.maxage">
+    <field ref="plone.app.caching.strongCaching.maxage"/>
+    <value>2592000</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.ramCache">
+    <field ref="plone.app.caching.strongCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.smaxage">
+    <field ref="plone.app.caching.strongCaching.smaxage"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.eea.content.staleResources.vary">
+    <field ref="plone.app.caching.strongCaching.vary"/>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.etags">
+    <field type="plone.registry.field.Tuple">
+      <description>A list of ETag component names to include</description>
+      <required>False</required>
+      <title>ETags</title>
+      <value_type type="plone.registry.field.ASCIILine"/>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.lastModified">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on Last-Modified headers</description>
+      <required>False</required>
+      <title>Last-modified validation</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.maxage">
+    <field type="plone.registry.field.Int">
+      <description>Time (in seconds) to cache the response in the browser or caching proxy</description>
+      <required>False</required>
+      <title>Maximum age</title>
+    </field>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.resource.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.resource.maxage">
+    <field ref="plone.app.caching.strongCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.maxage">
+    <field ref="plone.app.caching.strongCaching.maxage"/>
+    <value>31536000</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.ramCache">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on caching in Zope memory</description>
+      <required>False</required>
+      <title>RAM cache</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.smaxage">
+    <field type="plone.registry.field.Int">
+      <description>Time (in seconds) to cache the response in the caching proxy. Leave blank to use value from "Maximum age" field.</description>
+      <required>False</required>
+      <title>Shared maximum age</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.vary">
+    <field type="plone.registry.field.ASCIILine">
+      <description>Name(s) of HTTP headers that must match for the caching proxy to return a cached response</description>
+      <required>False</required>
+      <title>Vary</title>
+    </field>
+    <value>Accept-Encoding, X-Username</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.anonOnly">
+    <field type="plone.registry.field.Bool">
+      <description>Ensure logging users always get a fresh page. Note that if you are caching pages in a proxy cache, you'll still need to use a Vary response header to keep anonymous and authenticated content separate.</description>
+      <required>False</required>
+      <title>Only cache for anonymous users</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.etags">
+    <field type="plone.registry.field.Tuple">
+      <description>A list of ETag component names to include</description>
+      <required>False</required>
+      <title>ETags</title>
+      <value_type type="plone.registry.field.ASCIILine"/>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.caching.weakCaching.lastModified">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on Last-Modified headers</description>
+      <required>False</required>
+      <title>Last-modified validation</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.folderView.etags">
+    <field ref="plone.app.caching.weakCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+      <element>locked</element>
+      <element>copy</element>
+      <element>resourceRegistries</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.folderView.ramCache">
+    <field ref="plone.app.caching.weakCaching.ramCache"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.itemView.etags">
+    <field ref="plone.app.caching.weakCaching.etags"/>
+    <value>
+      <element>userid</element>
+      <element>catalogCounter</element>
+      <element>userLanguage</element>
+      <element>gzip</element>
+      <element>skin</element>
+      <element>locked</element>
+      <element>resourceRegistries</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.weakCaching.plone.content.itemView.ramCache">
+    <field ref="plone.app.caching.weakCaching.ramCache"/>
+    <value>True</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.ramCache">
+    <field type="plone.registry.field.Bool">
+      <description>Turn on caching in Zope memory</description>
+      <required>False</required>
+      <title>RAM cache</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.weakCaching.vary">
+    <field type="plone.registry.field.ASCIILine">
+      <description>Name(s) of HTTP headers that must match for the caching proxy to return a cached response</description>
+      <required>False</required>
+      <title>Vary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.anonymous_comments" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="anonymous_comments">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_anonymous_comments</description>
+      <required>False</required>
+      <title>label_anonymous_comments</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.anonymous_email_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="anonymous_email_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_anonymous_email_enabled</description>
+      <required>False</required>
+      <title>label_anonymous_email_enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.captcha" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="captcha">
+    <field type="plone.registry.field.Choice">
+      <default>disabled</default>
+      <description>help_captcha</description>
+      <title>label_captcha</title>
+      <vocabulary>plone.app.discussion.vocabularies.CaptchaVocabulary</vocabulary>
+    </field>
+    <value>disabled</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="globally_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_globally_enabled</description>
+      <required>False</required>
+      <title>label_globally_enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.moderation_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="moderation_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_moderation_enabled</description>
+      <required>False</required>
+      <title>label_moderation_enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.moderator_email" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="moderator_email">
+    <field type="plone.registry.field.ASCIILine">
+      <description>help_moderator_email</description>
+      <required>False</required>
+      <title>label_moderator_email</title>
+    </field>
+    <value>demarant@eea.europa.eu</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.moderator_notification_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="moderator_notification_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_moderator_notification_enabled</description>
+      <required>False</required>
+      <title>label_moderator_notification_enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.show_commenter_image" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="show_commenter_image">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>help_show_commenter_image</description>
+      <required>False</required>
+      <title>label_show_commenter_image</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.text_transform" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="text_transform">
+    <field type="plone.registry.field.Choice">
+      <default>text/plain</default>
+      <description>help_text_transform</description>
+      <title>label_text_transform</title>
+      <vocabulary>plone.app.discussion.vocabularies.TextTransformVocabulary</vocabulary>
+    </field>
+    <value>text/plain</value>
+  </record>
+  <record name="plone.app.discussion.interfaces.IDiscussionSettings.user_notification_enabled" interface="plone.app.discussion.interfaces.IDiscussionSettings" field="user_notification_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>help_user_notification_enabled</description>
+      <required>False</required>
+      <title>label_user_notification_enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.layout.globals.bodyClass.depth">
+    <field type="plone.registry.field.Int">
+      <description>Depth relative the site root that body class are generated for.
+            </description>
+      <title>Body class path depth</title>
+    </field>
+    <value>4</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The person that created an item</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.is</element>
+      <element>plone.app.querystring.operation.string.currentUser</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Creator</value>
+  </record>
+  <record name="plone.app.querystring.field.Creator.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.Description.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>An item's description</value>
+  </record>
+  <record name="plone.app.querystring.field.Description.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Description.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Text</value>
+  </record>
+  <record name="plone.app.querystring.field.Description.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.contains</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.Description.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.Description.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Description</value>
+  </record>
+  <record name="plone.app.querystring.field.Description.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Text search of an item's contents</value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Text</value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.contains</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Searchable text</value>
+  </record>
+  <record name="plone.app.querystring.field.SearchableText.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.Subject.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Tags are used for organization of content</value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Text</value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.selection.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Tag</value>
+  </record>
+  <record name="plone.app.querystring.field.Subject.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value>plone.app.vocabularies.Keywords</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Text search of an item's title</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Text</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.contains</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.Title.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Title</value>
+  </record>
+  <record name="plone.app.querystring.field.Title.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.created.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The date an item was created</value>
+  </record>
+  <record name="plone.app.querystring.field.created.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.created.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.created.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.created.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.created.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Creation date</value>
+  </record>
+  <record name="plone.app.querystring.field.created.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.effective.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The time and date an item was first published</value>
+  </record>
+  <record name="plone.app.querystring.field.effective.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.effective.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.effective.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.effective.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.effective.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Effective date</value>
+  </record>
+  <record name="plone.app.querystring.field.effective.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Querying this is undefined</value>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Effective range</value>
+  </record>
+  <record name="plone.app.querystring.field.effectiveRange.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.end.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The end date and time of an event</value>
+  </record>
+  <record name="plone.app.querystring.field.end.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.end.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.end.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.end.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.end.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Event end date</value>
+  </record>
+  <record name="plone.app.querystring.field.end.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.expires.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The time and date an item was expired</value>
+  </record>
+  <record name="plone.app.querystring.field.expires.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.expires.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.expires.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.expires.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.expires.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Expiration date</value>
+  </record>
+  <record name="plone.app.querystring.field.expires.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.getId.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The short name of an item (used in the url)</value>
+  </record>
+  <record name="plone.app.querystring.field.getId.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.getId.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.getId.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.getId.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.getId.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Short name (id)</value>
+  </record>
+  <record name="plone.app.querystring.field.getId.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The order of an item in its parent folder</value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.int.is</element>
+      <element>plone.app.querystring.operation.int.lessThan</element>
+      <element>plone.app.querystring.operation.int.greaterThan</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Order in folder</value>
+  </record>
+  <record name="plone.app.querystring.field.getObjPositionInParent.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Find items related to the selected items</value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.reference.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Related To</value>
+  </record>
+  <record name="plone.app.querystring.field.getRawRelatedItems.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Find items that are the default view for their containing folder.</value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.boolean.isTrue</element>
+      <element>plone.app.querystring.operation.boolean.isFalse</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Default Page</value>
+  </record>
+  <record name="plone.app.querystring.field.isDefaultPage.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Find items that can contain other objects</value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.boolean.isTrue</element>
+      <element>plone.app.querystring.operation.boolean.isFalse</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Folder-like</value>
+  </record>
+  <record name="plone.app.querystring.field.isFolderish.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.modified.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The time and date an item was last modified</value>
+  </record>
+  <record name="plone.app.querystring.field.modified.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.modified.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.modified.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.modified.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.modified.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Modification date</value>
+  </record>
+  <record name="plone.app.querystring.field.modified.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.path.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The location of an item </value>
+  </record>
+  <record name="plone.app.querystring.field.path.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.path.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.path.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.relativePath</element>
+      <element>plone.app.querystring.operation.string.path</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.path.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.path.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Location</value>
+  </record>
+  <record name="plone.app.querystring.field.path.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>An item's type (e.g. Event)</value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.selection.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Type</value>
+  </record>
+  <record name="plone.app.querystring.field.portal_type.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value>plone.app.vocabularies.ReallyUserFriendlyTypes</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>An item's workflow state (e.g.published)</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Metadata</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.selection.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Review state</value>
+  </record>
+  <record name="plone.app.querystring.field.review_state.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value>plone.app.vocabularies.WorkflowStates</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The item's title, transformed for sorting</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Text</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.string.contains</element>
+      <element>plone.app.querystring.operation.string.is</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Sortable Title</value>
+  </record>
+  <record name="plone.app.querystring.field.sortable_title.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.field.start.description" interface="plone.app.querystring.interfaces.IQueryField" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The start date and time of an event</value>
+  </record>
+  <record name="plone.app.querystring.field.start.enabled" interface="plone.app.querystring.interfaces.IQueryField" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <title>Enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.start.group" interface="plone.app.querystring.interfaces.IQueryField" field="group">
+    <field type="plone.registry.field.TextLine">
+      <title>Group</title>
+    </field>
+    <value>Dates</value>
+  </record>
+  <record name="plone.app.querystring.field.start.operations" interface="plone.app.querystring.interfaces.IQueryField" field="operations">
+    <field type="plone.registry.field.List">
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Operation ID</title>
+      </value_type>
+    </field>
+    <value>
+      <element>plone.app.querystring.operation.date.lessThan</element>
+      <element>plone.app.querystring.operation.date.largerThan</element>
+      <element>plone.app.querystring.operation.date.between</element>
+      <element>plone.app.querystring.operation.date.lessThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.largerThanRelativeDate</element>
+      <element>plone.app.querystring.operation.date.today</element>
+      <element>plone.app.querystring.operation.date.beforeToday</element>
+      <element>plone.app.querystring.operation.date.afterToday</element>
+    </value>
+  </record>
+  <record name="plone.app.querystring.field.start.sortable" interface="plone.app.querystring.interfaces.IQueryField" field="sortable">
+    <field type="plone.registry.field.Bool">
+      <title>Sortable</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.app.querystring.field.start.title" interface="plone.app.querystring.interfaces.IQueryField" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Event start date</value>
+  </record>
+  <record name="plone.app.querystring.field.start.vocabulary" interface="plone.app.querystring.interfaces.IQueryField" field="vocabulary">
+    <field type="plone.registry.field.TextLine">
+      <title>Vocabulary</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isFalse.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isFalse.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._isFalse</value>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isFalse.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>No</value>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isFalse.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isTrue.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isTrue.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._isTrue</value>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isTrue.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Yes</value>
+  </record>
+  <record name="plone.app.querystring.operation.boolean.isTrue.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.date.afterToday.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>After the current day</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.afterToday.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._afterToday</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.afterToday.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>After today</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.afterToday.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.date.beforeToday.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Before the current day</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.beforeToday.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._beforeToday</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.beforeToday.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Before today</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.beforeToday.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.date.between.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Please use YYYY/MM/DD.</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.between.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._between</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.between.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Between dates</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.between.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>DateRangeWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThan.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Please use YYYY/MM/DD.</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThan.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._largerThan</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThan.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>After date</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThan.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>DateWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThanRelativeDate.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Please enter the number in days.</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThanRelativeDate.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._moreThanRelativeDate</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThanRelativeDate.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Within last</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.largerThanRelativeDate.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>RelativeDateWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThan.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Please use YYYY/MM/DD.</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThan.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._lessThan</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThan.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Before date</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThan.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>DateWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThanRelativeDate.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Please enter the number in days.</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThanRelativeDate.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._lessThanRelativeDate</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThanRelativeDate.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Within next</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.lessThanRelativeDate.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>RelativeDateWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.today.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The current day</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.today.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._today</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.today.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Today</value>
+  </record>
+  <record name="plone.app.querystring.operation.date.today.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.int.is.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.int.is.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._equal</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.is.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Equals</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.is.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>StringWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.largerThan.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.int.largerThan.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._largerThan</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.largerThan.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Larger than</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.largerThan.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>StringWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.lessThan.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.int.lessThan.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._lessThan</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.lessThan.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Less than</value>
+  </record>
+  <record name="plone.app.querystring.operation.int.lessThan.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>StringWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.list.contains.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.list.contains.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._contains</value>
+  </record>
+  <record name="plone.app.querystring.operation.list.contains.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Contains</value>
+  </record>
+  <record name="plone.app.querystring.operation.list.contains.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>ReferenceWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithin.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithin.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._pathContains</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithin.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Is within</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithin.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>ReferenceWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithinRelative.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithinRelative.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._pathContainsRelative</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithinRelative.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Is within (relative)</value>
+  </record>
+  <record name="plone.app.querystring.operation.path.isWithinRelative.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>RelativePathWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.reference.is.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.reference.is.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._referenceIs</value>
+  </record>
+  <record name="plone.app.querystring.operation.reference.is.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Equals</value>
+  </record>
+  <record name="plone.app.querystring.operation.reference.is.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>ReferenceWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.selection.is.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Tip: you can use * to autocomplete.</value>
+  </record>
+  <record name="plone.app.querystring.operation.selection.is.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._equal</value>
+  </record>
+  <record name="plone.app.querystring.operation.selection.is.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Is</value>
+  </record>
+  <record name="plone.app.querystring.operation.selection.is.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>MultipleSelectionWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.contains.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.string.contains.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._contains</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.contains.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Contains</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.contains.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>StringWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.currentUser.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>The user viewing the querystring results</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.currentUser.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._currentUser</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.currentUser.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Current logged in user</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.currentUser.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value/>
+  </record>
+  <record name="plone.app.querystring.operation.string.is.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Tip: you can use * to autocomplete.</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.is.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._equal</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.is.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Is</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.is.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>StringWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.path.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Location in the site structure</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.path.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._path</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.path.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Absolute path</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.path.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>ReferenceWidget</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.relativePath.description" interface="plone.app.querystring.interfaces.IQueryOperation" field="description">
+    <field type="plone.registry.field.Text">
+      <title>Description</title>
+    </field>
+    <value>Use '../' to navigate to parent objects.</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.relativePath.operation" interface="plone.app.querystring.interfaces.IQueryOperation" field="operation">
+    <field type="plone.registry.field.TextLine">
+      <title>Operation</title>
+    </field>
+    <value>plone.app.querystring.queryparser._relativePath</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.relativePath.title" interface="plone.app.querystring.interfaces.IQueryOperation" field="title">
+    <field type="plone.registry.field.TextLine">
+      <title>Title</title>
+    </field>
+    <value>Relative path</value>
+  </record>
+  <record name="plone.app.querystring.operation.string.relativePath.widget" interface="plone.app.querystring.interfaces.IQueryOperation" field="widget">
+    <field type="plone.registry.field.TextLine">
+      <title>Widget</title>
+    </field>
+    <value>RelativePathWidget</value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="cachingProxies">
+    <field type="plone.registry.field.Tuple">
+      <description>Provide the URLs of each proxy to which PURGE requests shoudl be sent.</description>
+      <title>Caching proxies</title>
+      <value_type type="plone.registry.field.URI"/>
+    </field>
+    <value>
+      <element>http://192.168.2.4:6081</element>
+      <element>http://192.168.2.5:6081</element>
+    </value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="domains">
+    <field type="plone.registry.field.Tuple">
+      <default/>
+      <description>This option is only relevant if you are using virtual hosting and you have enabled the option to send PURGE requests with virtual hosting URLs above. If you your site is served on multiple domains e.g. http://example.org and http://www.example.org you may wish to purge both. If so, list all your domains here</description>
+      <missing_value/>
+      <required>False</required>
+      <title>Domains</title>
+      <value_type type="plone.registry.field.URI"/>
+    </field>
+    <value>
+      <element>http://www.eea.europa.eu:80</element>
+    </value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.enabled" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description>If disabled, no purging will take place</description>
+      <title>Enable purging</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.virtualHosting" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="virtualHosting">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>This option is only relevant if you are using virtual hosting with Zope's VirtualHostMonster. This relies on special tokens (VirtualHostBase and VirtualHostRoot) in the URL to instruct Zope about the types of URLs that the user sees. If virtual host URLs are in use and this option is set, PURGE requests will be sent to the caching proxy with the virtual hosting tokens in place. This makes sense if there is a web server in front of your caching proxy performing the rewrites necessary to translate a user-facing URL into a virtual hosting URL, so that the requests the caching proxy sees have the rewrite information in them. Conversely, if the rewrite is done in or behind the caching proxy, you want to disable this option, so that the PURGE requests use URLs that match those seen by the caching proxy as they come from the client.</description>
+      <title>Send PURGE requests with virtual hosting paths</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.caching.interfaces.ICacheSettings.enabled" interface="plone.caching.interfaces.ICacheSettings" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>If not set, no caching operations will be attempted</description>
+      <title>Globally enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.caching.interfaces.ICacheSettings.operationMapping" interface="plone.caching.interfaces.ICacheSettings" field="operationMapping">
+    <field type="plone.registry.field.Dict">
+      <description>Maps rule set names to operation names</description>
+      <key_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Rule set name</title>
+      </key_type>
+      <title>Rule set/operation mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+        <title>Caching operation name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="plone.resource">plone.app.caching.strongCaching</element>
+      <element key="eea.content.frontPage">plone.app.caching.moderateCaching</element>
+      <element key="plone.stableResource">plone.app.caching.strongCaching</element>
+      <element key="eea.content.staleResources">plone.app.caching.strongCaching</element>
+      <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
+      <element key="eea.content.ajax">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
+      <element key="eea.content.contentImages">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.folderView">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.file">plone.app.caching.moderateCaching</element>
+    </value>
+  </record>
+  <record name="plone.caching.operations.chain.operations">
+    <field type="plone.registry.field.List">
+      <description>A list of operations to call, in order</description>
+      <title>Operations</title>
+      <value_type type="plone.registry.field.DottedName">
+        <min_dots>0</min_dots>
+      </value_type>
+    </field>
+    <value/>
+  </record>
+</registry>
