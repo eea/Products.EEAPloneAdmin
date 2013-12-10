@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.3-dev - (unreleased)
+----------------------
+
 8.2 - (2013-12-10)
 ------------------
 * Bug fix: fixed ReST markup of HISTORY.txt
