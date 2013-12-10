@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.2-dev - (unreleased)
+----------------------
+
 8.1 - (2013-12-10)
 ------------------
 * Change: removed versions macro; now using viewlet
