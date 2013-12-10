@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.2-dev - (unreleased)
-----------------------
+8.2 - (2013-12-10)
+------------------
 * Bug fix: fixed ReST markup of HISTORY.txt
   [ghicaale refs #17716]
 
@@ -97,7 +97,6 @@ Changelog
 7.7 - (2013-10-07)
 ------------------
 * Upgrade step: Install a new cron job to cleanup pdfs. To do this, add in /var/spool/cron/root:
-
     ``0 */2 * * * /var/eea-buildout-plone4/etc/cron/cleanup_pdf_tmp.sh``
 
 7.6 - (2013-10-04)
@@ -1014,3 +1013,4 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
+
