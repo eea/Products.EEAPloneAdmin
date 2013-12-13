@@ -2,6 +2,8 @@
 """
 from plone.app.layout.navigation import root as nav_root
 from Products.CMFCore.utils import getToolByName
+from zope.component.hooks import getSite
+
 
 def getNavigationRootObject(context, portal):
     """ Patched getNavigationRootObject in order to return site root
@@ -10,6 +12,9 @@ def getNavigationRootObject(context, portal):
         return None
 
     ### patch #9518 return root + context language as navigationRootObject
+    # #16662 define portal as it might be an empty parameter when using a
+    # dexterity object
+    portal = portal or getSite()
     portal_url = '/'.join(portal.getPhysicalPath())
     if portal_url[-1] != '/':
         portal_url += '/'
