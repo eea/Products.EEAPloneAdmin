@@ -3,7 +3,9 @@ Changelog
 
 8.3-dev - (unreleased)
 ----------------------
-* Bug fix: define portal when attempting to get the navigationRoot using a 
+* Feature: don't override action for portal_vocabularies under localhost/devel
+  [ghicaale refs #17795]
+* Bug fix: define portal when attempting to get the navigationRoot using a
   dexterity content type
   [ichimdav refs #16662]
 * Bug fix: Fixed item.body call in search-rss.pt
