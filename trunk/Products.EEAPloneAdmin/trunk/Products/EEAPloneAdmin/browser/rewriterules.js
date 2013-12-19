@@ -337,7 +337,7 @@ jQuery.eearewriterules = function(context){
 
   // portal_vocabularies
   form = jQuery('form[action*="portal_vocabularies"]', context);
-  if(form.length){
+  if(form.length && window.location.hostname != 'localhost'){
     jQuery.each(form, function(){
       var selfform = jQuery(this);
       var action = selfform.attr('action');
