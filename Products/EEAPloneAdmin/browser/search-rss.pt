@@ -8,6 +8,29 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   tal:define="syn context/@@syndication-util;">
 
+<tal:notAllowed tal:condition="not:syn/context_allowed">
+
+    <channel rdf:about="" tal:attributes="rdf:about request/URL">
+        <title tal:content="context/pretty_title_or_id">The title</title>
+        <link tal:content="context/portal_url">http://url.to.portal</link>
+
+        <items>
+            <rdf:Seq>
+                    <rdf:li rdf:resource=""
+                            tal:attributes="rdf:resource context/absolute_url" />
+            </rdf:Seq>
+        </items>
+
+    </channel>
+
+    <item rdf:about="" tal:attributes="rdf:about context/absolute_url">
+        <title>No results are available</title>
+        <link tal:content="context/absolute_url">Identifier</link>
+        <description>Search RSS is not enabled for the given link</description>
+    </item>
+</tal:notAllowed>
+
+<tal:Allowed tal:condition="syn/context_allowed">
 <tal:synd tal:define="feed view/feed;
                       objects python: [i for i in feed.items];">
 <channel rdf:about="" tal:attributes="rdf:about request/URL">
@@ -26,6 +49,8 @@
   </items>
 
 </channel>
+
+
 
 <tal:block repeat="item python: objects">
   <item rdf:about="" tal:attributes="rdf:about item/link">
@@ -50,4 +75,6 @@
 </tal:block>
 
 </tal:synd>
+
+</tal:Allowed>
 </rdf:RDF>

@@ -3,6 +3,10 @@ Changelog
 
 8.3-dev - (unreleased)
 ----------------------
+* Feature: search_rss now returns an RSS link telling the user that the rss
+  is not enabled for the given context rather than crashing when calling it
+  on content that doesn't implement the syndication interface
+  [ichimdav refs #17812]
 * Feature: don't override action for portal_vocabularies under localhost/devel
   [ghicaale refs #17795]
 * Bug fix: define portal when attempting to get the navigationRoot using a
