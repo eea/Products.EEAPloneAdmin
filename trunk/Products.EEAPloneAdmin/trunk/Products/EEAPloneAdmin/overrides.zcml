@@ -70,11 +70,6 @@
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot" />
 
-    <!-- To avoid a lot of 404s for this URL, see #16912 -->
-    <adapter factory="Products.CMFPlone.browser.syndication.adapters.SearchFeed"
-             for="*"
-             provides="Products.CMFPlone.interfaces.syndication.ISearchFeed" />
-
     <!-- Fixed a Plone bug, see #17040 and https://github.com/plone/Products.CMFPlone/pull/72-->
     <browser:page for="*"
                   class="Products.CMFPlone.browser.syndication.views.SearchFeedView"

@@ -3,6 +3,9 @@ Changelog
 
 8.3-dev - (unreleased)
 ----------------------
+* Change: removed adapter that implements ISearchForm for context that is not
+  the root site
+  [ichimdav refs #17812]
 * Feature: search_rss now returns an RSS link telling the user that the rss
   is not enabled for the given context rather than crashing when calling it
   on content that doesn't implement the syndication interface
