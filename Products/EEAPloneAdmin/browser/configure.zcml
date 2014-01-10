@@ -17,7 +17,7 @@
     <browser:page
             for="*"
             name="find_broken_objects"
-            class=".admin.find_broken_objects"
+            class=".admin.FindBrokenObjects"
             permission="cmf.ManagePortal"
             >
     </browser:page>
