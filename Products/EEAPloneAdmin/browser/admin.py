@@ -8,8 +8,10 @@ from Products.Five import BrowserView
 import codecs
 import logging
 import os
+from pprint import pprint
 import re
 import subprocess
+from zExceptions import Unauthorized
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
@@ -249,3 +251,34 @@ class GoPDB(BrowserView):
         pdb.set_trace()
 
         return "Ok"
+
+class FindBrokenObjects(BrowserView):
+    """ View for finding objects that are deleted but still cataloged
+        use /find_broken_objects?type=Folder if you want to search for specific
+        portal types
+    """
+
+    def __call__(self):
+        catalog = self.context.portal_catalog
+
+        res = []
+
+        request = self.context.REQUEST
+        param = request.get('type')
+        query = {'Language': "all"}
+        if param:
+            query.update({"portal_type": param})
+        search = catalog.searchResults(**query)
+
+        for b in search:
+            try:
+                ob = b.getObject()
+            except Unauthorized:
+                logger.info("Item %s raised Unauthorized", b.getURL())
+            except KeyError:
+                res.append(b.getURL())
+
+        logger.warning("Broken Objects %s", pprint(res))
+        return "%d are broken \n %s", (len(res), res)
+
+
