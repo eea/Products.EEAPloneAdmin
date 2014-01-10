@@ -15,6 +15,14 @@
     </browser:page>
 
     <browser:page
+            for="*"
+            name="find_broken_objects"
+            class=".admin.find_broken_objects"
+            permission="cmf.ManagePortal"
+            >
+    </browser:page>
+
+    <browser:page
         for="*"
         name="regen_js"
         class=".admin.RegenerateJS"
