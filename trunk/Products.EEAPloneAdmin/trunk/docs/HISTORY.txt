@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.3-dev - (unreleased)
-----------------------
+8.3 - (2014-01-22)
+------------------
 * Feature: added browser view that searches for broken objects
   [ichimdav refs #17883]
 * Change: removed adapter that implements ISearchForm for context that is not
