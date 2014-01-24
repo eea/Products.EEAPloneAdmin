@@ -163,4 +163,8 @@
                   class=".migrate.CheckRemainingInterfaces"
                   permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+                  name="creatorAssignment"
+                  class=".migrate.CreatorAssignment"
+                  permission="cmf.ManagePortal" />
 </configure>
