@@ -13,6 +13,7 @@ from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
@@ -1484,3 +1485,66 @@ def remove_interface(context, iname):
     return "ENDED removal of %s from all %s, objects that provide it" % (iname,
                                                                          total)
 
+
+
+
+class CreatorAssignment(object):
+    """ Add as primary creator the user that made the last version
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("CreatorFix")
+        log.info("Starting Creators index fix")
+        catalog = getToolByName(self.context, 'portal_catalog')
+        path = {'query': "/".join(self.context.getPhysicalPath())}
+        count = 0
+        found = 0
+        res = catalog.unrestrictedSearchResults(Language="all", path=path)
+        request = self.context.REQUEST
+        for brain in res:
+            try:
+                obj = brain.getObject()
+            except Exception:
+                log.error("%s --> couldn't get Object",
+                          brain.getURL())
+                continue
+
+            history = ContentHistoryView(obj, request).fullHistory()
+            if not history:
+                log.error("%s --> couldn't find any HISTORY for Object",
+                          brain.getURL())
+                continue
+            first_state = history[-1]
+            creators = []
+            for entry in history:
+                if entry['action'] == 'New version' or entry == first_state:
+                    user = entry['actorid']
+                    if user not in creators:
+                        creators.append(user)
+            original_creators = obj.Creators()
+            for creator in original_creators:
+                if creator not in creators:
+                    creators.append(creator)
+            if obj.Creators() == tuple(creators):
+                continue
+            obj.setCreators(creators)
+            try:
+                log.info(obj.absolute_url(1))
+
+                obj.reindexObject(idxs=['Creator'])
+
+            except Exception:
+                log.error("%s --> couldn't be reindexed",
+                          obj.absolute_url(1))
+                continue
+            found += 1
+            count += 1
+            if count % 50 == 0:
+                transaction.commit()
+        log.info("Ending Creators index fix")
+        return "Done renaming %s objects" % found
