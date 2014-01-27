@@ -1077,56 +1077,56 @@ class FixVocabularyTerms(object):
         return 'Vocabulary term updated.'
 
 
+def startCapture(self, newLogLevel = None):
+    """ Start capturing log output to a string buffer.
+
+    http://opensourcehacker.com/2011/02/23/
+            temporarily-capturing-python-logging-output-to-a-string-buffer/
+
+    @param newLogLevel: Optionally change the global logging level, e.g.
+    logging.DEBUG
+    """
+    self.buffer = StringIO()
+
+    print >> self.buffer, "Log output"
+
+    rootLogger = logging.getLogger()
+
+    if newLogLevel:
+        self.oldLogLevel = rootLogger.getEffectiveLevel()
+        rootLogger.setLevel(newLogLevel)
+    else:
+        self.oldLogLevel = None
+
+    self.logHandler = logging.StreamHandler(self.buffer)
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s"
+                                  " - %(message)s")
+    self.logHandler.setFormatter(formatter)
+    rootLogger.addHandler(self.logHandler)
+
+def stopCapture(self):
+    """ Stop capturing log output.
+    @return: Collected log output as string
+    """
+
+    # Remove our handler
+    rootLogger = logging.getLogger()
+
+    # Restore logging level (if any)
+    if self.oldLogLevel:
+        rootLogger.setLevel(self.oldLogLevel)
+
+    rootLogger.removeHandler(self.logHandler)
+
+    self.logHandler.flush()
+    self.buffer.flush()
+
+    return self.buffer.getvalue()
 
 class MigrateGeotagsCountryGroups(BrowserView):
     """ Add Geotags Country Groups as individual countries
     """
 
-    def startCapture(self, newLogLevel = None):
-        """ Start capturing log output to a string buffer.
-
-        http://opensourcehacker.com/2011/02/23/
-                temporarily-capturing-python-logging-output-to-a-string-buffer/
-
-        @param newLogLevel: Optionally change the global logging level, e.g.
-        logging.DEBUG
-        """
-        self.buffer = StringIO()
-
-        print >> self.buffer, "Log output"
-
-        rootLogger = logging.getLogger()
-
-        if newLogLevel:
-            self.oldLogLevel = rootLogger.getEffectiveLevel()
-            rootLogger.setLevel(newLogLevel)
-        else:
-            self.oldLogLevel = None
-
-        self.logHandler = logging.StreamHandler(self.buffer)
-        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s"
-                                                            " - %(message)s")
-        self.logHandler.setFormatter(formatter)
-        rootLogger.addHandler(self.logHandler)
-
-    def stopCapture(self):
-        """ Stop capturing log output.
-        @return: Collected log output as string
-        """
-
-        # Remove our handler
-        rootLogger = logging.getLogger()
-
-        # Restore logging level (if any)
-        if self.oldLogLevel:
-            rootLogger.setLevel(self.oldLogLevel)
-
-        rootLogger.removeHandler(self.logHandler)
-
-        self.logHandler.flush()
-        self.buffer.flush()
-
-        return self.buffer.getvalue()
 
     def __call__(self):
         country_groups = ["EU15", "EU25", "EU27", "EEA32", "EFTA4",
@@ -1136,7 +1136,7 @@ class MigrateGeotagsCountryGroups(BrowserView):
                                 'eea.geotags.storage.interfaces.IGeoTagged')
         country_dict = countryGroups()
         count = 0
-        self.startCapture(logging.DEBUG)
+        startCapture(self, logging.DEBUG)
         logger.info("Starting Addition of individual Countries for Country"
                                                                     " Groups")
         for item in res:
@@ -1171,7 +1171,7 @@ class MigrateGeotagsCountryGroups(BrowserView):
         logger.info("%s number of items were migrated with individual countries"
                                                                 , count)
         logger.info("Ending step of individual Countries for Country Groups")
-        return self.stopCapture()
+        return stopCapture(self)
 
 
 class FixFigureCategoryType(BrowserView):
@@ -1499,52 +1499,93 @@ class CreatorAssignment(object):
         """ Call method
         """
         log = logging.getLogger("CreatorFix")
+        startCapture(self, logging.DEBUG)
         log.info("Starting Creators index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
-        path = {'query': "/".join(self.context.getPhysicalPath())}
         count = 0
-        found = 0
-        res = catalog.unrestrictedSearchResults(Language="all", path=path)
+        no_history = ["NO HISTORY"]
+        no_history_types = []
+        history_error = ["HISTORY ERRORS"]
+        reindex_error = ["REINDEX ERRORS"]
+        set_error = ["SETCREATION ERRORS"]
+        not_found = ["OBJ NOT FOUND"]
+        res_creators = ["RESULTING CREATORS"]
+
+        ptypes = ["Article", "Assessment", "AssessmentPart", "CFTRequestor",
+                "CallForInterest", "CallForTender", "CloudVideo", "Collection",
+                "CommonalityReport", "Data", "DataFile", "DataFileLink", 
+                "DataSourceLink", "DataTable", "DavizVisualization",
+                "DiversityReport", "Document", "EEAFigure", "EEAVacancy",
+                "EcoTip", "EpubFile", "Event", "ExternalDataSpec", 
+                "EyewitnessStory", "FactSheetDocument", "Fiche", "File", 
+                "FlashFile", "FlexibilityReport", "Folder", "GIS Application", 
+                "HelpCenter", "HelpCenterDefinition", 
+                "HelpCenterErrorReferenceFolder", "HelpCenterFAQ", 
+                "HelpCenterFAQFolder", "HelpCenterGlossary", "HelpCenterHowTo",
+                "HelpCenterHowToFolder", "HelpCenterInstructionalVideo",
+                "HelpCenterInstructionalVideoFolder", "HelpCenterLink",
+                "HelpCenterLinkFolder", "HelpCenterReferenceManualFolder",
+                "HelpCenterTutorialFolder", "Highlight", # "Image", 
+                "IndicatorFactSheet", "Infographic", "KeyMessage", "Link", 
+                "MethodologyReference", "News Item", "Newsletter", 
+                "Organisation", "PolicyDocumentReference", "PolicyQuecstion", 
+                "PressRelease", "Promotion", "QuickEvent", 
+                "RationaleReference", "RelatedIndicatorLink", "Report", 
+                "SOERCountry", "SOERKeyFact", "SOERMessage", "Sparql", 
+                "SparqlBookmarksFolder", "Specification", "Speech", "Topic"]
+        res = catalog.unrestrictedSearchResults(portal_type=ptypes)
         request = self.context.REQUEST
         for brain in res:
+            obj_url = brain.getURL(1)
             try:
                 obj = brain.getObject()
             except Exception:
-                log.error("%s --> couldn't get Object",
-                          brain.getURL())
+                not_found.append(obj_url)
                 continue
-
-            history = ContentHistoryView(obj, request).fullHistory()
+            history = None
+            try:
+                history = ContentHistoryView(obj, request).fullHistory()
+            except Exception, err:
+                history_error.append("%s --> %s" % (obj_url, err))
             if not history:
-                log.error("%s --> couldn't find any HISTORY for Object",
-                          brain.getURL())
+                no_history.append(obj_url)
+                if obj.portal_type not in no_history_types:
+                    no_history_types.append(obj.portal_type)
                 continue
             first_state = history[-1]
             creators = []
             for entry in history:
                 if entry['action'] == 'New version' or entry == first_state:
                     user = entry['actorid']
-                    if user not in creators:
+                    if user and user not in creators:
                         creators.append(user)
             original_creators = obj.Creators()
             for creator in original_creators:
-                if creator not in creators:
+                if creator and creator not in creators:
                     creators.append(creator)
             if obj.Creators() == tuple(creators):
                 continue
-            obj.setCreators(creators)
+            diff_creators = "%s --> %s --> %s" % (obj_url, original_creators,
+                                                  creators)
+            res_creators.append([{obj_url: diff_creators }])
             try:
-                log.info(obj.absolute_url(1))
-
+                obj.setCreators(creators)
+            except Exception, err:
+                set_error.append("%s --> %s" % (obj_url, err))
+            try:
                 obj.reindexObject(idxs=['Creator'])
-
-            except Exception:
-                log.error("%s --> couldn't be reindexed",
-                          obj.absolute_url(1))
+            except Exception, err:
+                reindex_error.append("%s --> %s" % (obj_url, err))
                 continue
-            found += 1
             count += 1
-            if count % 50 == 0:
+            if count % 100 == 0:
                 transaction.commit()
-        log.info("Ending Creators index fix")
-        return "Done renaming %s objects" % found
+        log.info('%s', no_history)
+        log.info('%s', no_history_types)
+        log.info('%s', history_error)
+        log.info('%s', reindex_error)
+        log.info('%s', set_error)
+        log.info('%s', not_found)
+        log.info("Ending Creators index fix for %d objects", count)
+        return stopCapture(self)
+

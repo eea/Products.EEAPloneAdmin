@@ -3,6 +3,9 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Feature: added migration script that changes the Creator for objects that
+  have been versioned
+  [ichimdav refs #18142]
 
 8.3 - (2014-01-22)
 ------------------
