@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  lang="en"
+  metal:use-macro="context/main_template/macros/master"
+  i18n:domain="eea">
+
+<tal:comment omit-tag="">
+*************************
+in EEAContentTypes 5.2
+*************************
+</tal:comment>
+
+<head>  
+<metal:css fill-slot="css_slot">
+<style type="text/css">
+.eea-promotion-preview {
+  margin-top:1em;
+}
+.eea-promotion-preview-img img {
+   border: 5px solid #ececec;
+   padding:0.5em;
+   }
+.eea-promotion-preview-img:hover img {
+   border: 5px solid #f6a800;
+}
+</style>
+</metal:css>
+</head>
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+
+      <div class="eea-promotion-preview">
+       <a class="eea-promotion-preview-img" href="" 
+          tal:attributes="href context/url;
+                          title context/title;">
+       <img tal:attributes="src python:context.absolute_url()+'/image_preview';
+                            alt context/title_or_id"  />
+       </a>
+      </div>
+
+      <p><a href="" tal:attributes="href context/url">Go to site</a></p>
+
+      </metal:content-core>
+    </metal:content-core>
+
+  </body>
+</html>
