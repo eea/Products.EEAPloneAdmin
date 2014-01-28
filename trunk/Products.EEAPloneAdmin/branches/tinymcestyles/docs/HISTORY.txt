@@ -3,6 +3,10 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Upgrade step: this step should run on www8 after working hours:
+  - run /www/@a@CreatorAssignment
+  - beware as it takes a long time since it wakes up 60000 objects
+  [ichimdav refs #18142]
 * Feature: added migration script that changes the Creator for objects that
   have been versioned
   [ichimdav refs #18142]
