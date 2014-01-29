@@ -82,6 +82,8 @@
    <element value="CMF Link"/>
    <element value="CacheTool"/>
    <element value="CallForInterest"/>
+   <element value="NegotiatedProcedure"/>
+   <element value="CallForProposal"/>
    <element value="CallForTender"/>
    <element value="CommonalityReport"/>
    <element value="Data"/>
@@ -165,6 +167,8 @@
    <element value="HelpCenterInstructionalVideoFolder"/>
    <element value="Folder"/>
    <element value="CallForInterest"/>
+   <element value="NegotiatedProcedure"/>
+   <element value="CallForProposal"/>
    <element value="VdexTerm"/>
    <element value="HelpCenterErrorReferenceFolder"/>
    <element value="Plone Site"/>
@@ -232,6 +236,8 @@
    <element value="HelpCenter"/>
    <element value="Folder"/>
    <element value="CallForInterest"/>
+   <element value="NegotiatedProcedure"/>
+   <element value="CallForProposal"/>
    <element value="VdexTerm"/>
    <element value="HelpCenterErrorReferenceFolder"/>
    <element value="Pack Composite"/>
