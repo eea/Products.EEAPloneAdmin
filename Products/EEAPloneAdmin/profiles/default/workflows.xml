@@ -30,6 +30,12 @@
         <type type_id="CallForInterest">
             <bound-workflow workflow_id="CallForTender"/>
         </type>
+        <type type_id="NegotiatedProcedure">
+            <bound-workflow workflow_id="CallForTender"/>
+        </type>
+        <type type_id="CallForProposal">
+            <bound-workflow workflow_id="CallForTender"/>
+        </type>
         <type type_id="CallForTender">
             <bound-workflow workflow_id="CallForTender"/>
         </type>

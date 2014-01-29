@@ -51,6 +51,8 @@
       <element key="FactSheetDocument">plone.content.itemView</element>
       <element key="News Item">plone.content.itemView</element>
       <element key="CallForInterest">plone.content.itemView</element>
+      <element key="NegotiatedProcedure">plone.content.itemView</element>
+      <element key="CallForProposal">plone.content.itemView</element>
       <element key="Assessment">plone.content.itemView</element>
       <element key="DavizVisualization">plone.content.itemView</element>
       <element key="FlashFile">plone.content.file</element>
@@ -124,6 +126,8 @@
       <element>Article</element>
       <element>AssessmentPart</element>
       <element>CallForInterest</element>
+      <element>NegotiatedProcedure</element>
+      <element>CallForProposal</element>
       <element>CallForTender</element>
       <element>Topic</element>
       <element>Data</element>
