@@ -1547,7 +1547,6 @@ class CreatorAssignment(object):
             except Exception, err:
                 history_error += "%s --> %s \n" % (obj_url, err)
             if not history:
-                no_history += obj_url + "\n"
                 continue
             first_state = history[-1]
             creators = []
@@ -1562,7 +1561,7 @@ class CreatorAssignment(object):
                     creators.append(creator)
             if obj.Creators() == tuple(creators):
                 continue
-            res_creators = "%s --> %s --> %s" % (obj_url, original_creators,
+            res_creators += "%s --> %s --> %s" % (obj_url, original_creators,
                                                   creators)
             try:
                 obj.setCreators(creators)
@@ -1580,6 +1579,7 @@ class CreatorAssignment(object):
                 transaction.commit()
 
         log.info("Ending Creators index fix for %d objects", count)
-        return (res_creators + no_history + history_error + reindex_error +
+        return (res_creators + 
+                history_error + reindex_error +
                 set_error + not_found)
 
