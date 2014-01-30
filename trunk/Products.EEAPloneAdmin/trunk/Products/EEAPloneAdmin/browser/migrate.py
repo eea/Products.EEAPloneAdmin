@@ -1499,17 +1499,15 @@ class CreatorAssignment(object):
         """ Call method
         """
         log = logging.getLogger("CreatorFix")
-        startCapture(self, logging.DEBUG)
         log.info("Starting Creators index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
         count = 0
-        no_history = ["NO HISTORY"]
-        no_history_types = []
-        history_error = ["HISTORY ERRORS"]
-        reindex_error = ["REINDEX ERRORS"]
-        set_error = ["SETCREATION ERRORS"]
-        not_found = ["OBJ NOT FOUND"]
-        res_creators = ["RESULTING CREATORS"]
+        no_history = "\n\n NO HISTORY \n"
+        history_error = "\n\n HISTORY ERRORS \n"
+        reindex_error = "\n\n REINDEX ERRORS \n"
+        set_error = "\n\n SETCREATION ERRORS \n"
+        not_found = "\n\n OBJ NOT FOUND \n"
+        res_creators = "\n\n RESULTING CREATORS \n"
 
         ptypes = ["Article", "Assessment", "AssessmentPart", "CFTRequestor",
                 "CallForInterest", "CallForTender", "CloudVideo", "Collection",
@@ -1534,23 +1532,21 @@ class CreatorAssignment(object):
                 "SOERCountry", "SOERKeyFact", "SOERMessage", "Sparql", 
                 "SparqlBookmarksFolder", "Specification", "Speech", "Topic"]
         res = catalog.unrestrictedSearchResults(portal_type=ptypes)
+        total = len(res)
         request = self.context.REQUEST
         for brain in res:
             obj_url = brain.getURL(1)
             try:
                 obj = brain.getObject()
             except Exception:
-                not_found.append(obj_url)
+                not_found += obj_url + "\n"
                 continue
             history = None
             try:
                 history = ContentHistoryView(obj, request).fullHistory()
             except Exception, err:
-                history_error.append("%s --> %s" % (obj_url, err))
+                history_error += "%s --> %s \n" % (obj_url, err)
             if not history:
-                no_history.append(obj_url)
-                if obj.portal_type not in no_history_types:
-                    no_history_types.append(obj.portal_type)
                 continue
             first_state = history[-1]
             creators = []
@@ -1565,27 +1561,25 @@ class CreatorAssignment(object):
                     creators.append(creator)
             if obj.Creators() == tuple(creators):
                 continue
-            diff_creators = "%s --> %s --> %s" % (obj_url, original_creators,
+            res_creators += "%s --> %s --> %s" % (obj_url, original_creators,
                                                   creators)
-            res_creators.append([{obj_url: diff_creators }])
             try:
                 obj.setCreators(creators)
             except Exception, err:
-                set_error.append("%s --> %s" % (obj_url, err))
+                set_error += "%s --> %s \n" % (obj_url, err)
             try:
                 obj.reindexObject(idxs=['Creator'])
             except Exception, err:
-                reindex_error.append("%s --> %s" % (obj_url, err))
+                reindex_error += "%s --> %s \n" % (obj_url, err)
                 continue
             count += 1
-            if count % 100 == 0:
+            if count % 1000 == 0:
+                log.info('INFO: Subtransaction committed to zodb (%s/%s)',
+                         count, total)
                 transaction.commit()
-        log.info('%s', no_history)
-        log.info('%s', no_history_types)
-        log.info('%s', history_error)
-        log.info('%s', reindex_error)
-        log.info('%s', set_error)
-        log.info('%s', not_found)
+
         log.info("Ending Creators index fix for %d objects", count)
-        return stopCapture(self)
+        return (res_creators + 
+                history_error + reindex_error +
+                set_error + not_found)
 

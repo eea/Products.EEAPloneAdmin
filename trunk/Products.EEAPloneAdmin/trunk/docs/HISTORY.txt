@@ -3,6 +3,12 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Change: patch tinyMCE get_styles in order to avoid style title hardcoding
+  [ichimdav refs #18180]
+* Upgrade step: this step should run on www8 after working hours:
+  - run /www/@a@CreatorAssignment
+  - beware as it takes a long time since it wakes up 60000 objects
+  [ichimdav refs #18142]
 * Feature: Added new content types "Negotiated procedure" and "Call for
   proposal" 
   [mironovi refs #17865]
