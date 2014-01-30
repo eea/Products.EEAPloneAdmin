@@ -11,7 +11,8 @@ from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 
-def patched_getListing(self, filter_portal_types, rooted, document_base_url, upload_type=None, image_types=None):
+def patched_getListing(self, filter_portal_types, rooted, document_base_url,
+                       upload_type=None, image_types=None):
     """Returns the actual listing"""
     catalog_results = []
     results = {}
@@ -26,7 +27,8 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url, upl
     if not IFolderish.providedBy(obj):
         obj = aq_parent(obj)
 
-    if INavigationRoot.providedBy(obj) or (rooted == "True" and document_base_url[:-1] == obj.absolute_url()):
+    if INavigationRoot.providedBy(obj) or (rooted == "True" and
+                                document_base_url[:-1] == obj.absolute_url()):
         results['parent_url'] = ''
     else:
         results['parent_url'] = aq_parent(obj).absolute_url()
@@ -152,10 +154,33 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
     return json.dumps(results)
 
 
-def patched_getConfiguration(self, *args, **kwargs):
-    configuration = self._old_getConfiguration(*args, **kwargs)
-    props = getToolByName(self, 'portal_properties')
-    plone_livesearch = props.site_properties.getProperty('enable_livesearch', False)
-    livesearch = props.site_properties.getProperty('enable_tinymce_livesearch', plone_livesearch)
-    configuration['livesearch'] = livesearch
-    return configuration
+def patched_getStyles(self, styles, labels):
+    """ See ITinyMCE interface
+    """
+    h = {"Tables": [], "Lists":[]}
+    styletype = ""
+    titles = []
+    for i in styles[4:]:
+        e = i.split('|')
+        while len(e) <= 2:
+            e.append("")
+        if not e[1]:
+            styletype = e[0]
+            titles.append(styletype)
+            h[styletype] = ['{ title: "' + styletype +
+                            '"' + ', tag: "", className: "-", type: "'
+                            + styletype + '"' + ' }']
+            continue
+        el = e[1].lower()
+        if el in ('table', 'tr', 'td', 'th'):
+             styletype = "Tables"
+        elif el in ('ol', 'li', 'dt', 'dd', 'dl'):
+             styletype = "Lists"
+        h[styletype].append('{ title: "' + e[0] + '", tag: "' + e[1] +
+                    '", className: "' + e[2] + '", type: "' + styletype + '" }')
+
+    a = []
+    # add styles in the order they were added
+    for title in titles:
+        a.extend(h[title])
+    return '[' + ','.join(a) + ']'
