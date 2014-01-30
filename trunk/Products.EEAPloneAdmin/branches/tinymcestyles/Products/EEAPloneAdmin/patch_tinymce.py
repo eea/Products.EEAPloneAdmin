@@ -157,14 +157,16 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
 def patched_getStyles(self, styles, labels):
     """ See ITinyMCE interface
     """
-    h = {"Tables": []}
+    h = {"Tables": [], "Lists":[]}
     styletype = ""
-    for i in styles:
+    titles = []
+    for i in styles[4:]:
         e = i.split('|')
         while len(e) <= 2:
             e.append("")
         if not e[1]:
             styletype = e[0]
+            titles.append(styletype)
             h[styletype] = ['{ title: "' + styletype +
                             '"' + ', tag: "", className: "-", type: "'
                             + styletype + '"' + ' }']
@@ -178,6 +180,7 @@ def patched_getStyles(self, styles, labels):
                     '", className: "' + e[2] + '", type: "' + styletype + '" }')
 
     a = []
-    for values in h.values():
-        a.extend(values)
+    # add styles in the order they were added
+    for title in titles:
+        a.extend(h[title])
     return '[' + ','.join(a) + ']'
