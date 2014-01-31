@@ -173,11 +173,12 @@ def patched_getStyles(self, styles, labels):
             continue
         el = e[1].lower()
         if el in ('table', 'tr', 'td', 'th'):
-             styletype = "Tables"
+            styletype = "Tables"
         elif el in ('ol', 'li', 'dt', 'dd', 'dl'):
-             styletype = "Lists"
+            styletype = "Lists"
         h[styletype].append('{ title: "' + e[0] + '", tag: "' + e[1] +
-                    '", className: "' + e[2] + '", type: "' + styletype + '" }')
+                            '", className: "' + e[2] + '", type: "' +
+                            styletype + '" }')
 
     a = []
     # add styles in the order they were added
