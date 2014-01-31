@@ -176,6 +176,8 @@ def patched_getStyles(self, styles, labels):
             styletype = "Tables"
         elif el in ('ol', 'li', 'dt', 'dd', 'dl'):
             styletype = "Lists"
+        if not styletype:
+            continue
         h[styletype].append('{ title: "' + e[0] + '", tag: "' + e[1] +
                             '", className: "' + e[2] + '", type: "' +
                             styletype + '" }')
