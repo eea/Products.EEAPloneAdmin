@@ -12,7 +12,7 @@ class RecreateImageScales(BrowserView):
         field = obj.getField('image')
 
         if field is not None:
-            logger.info('INFO: updating scales for %s' % obj.absolute_url())
+            logger.info('INFO: updating scales for %s', obj.absolute_url())
             field.removeScales(obj)
             field.createScales(obj)
             msg = 'Done'

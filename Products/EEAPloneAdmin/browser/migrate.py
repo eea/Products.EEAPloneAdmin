@@ -1502,7 +1502,6 @@ class CreatorAssignment(object):
         log.info("Starting Creators index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
         count = 0
-        no_history = "\n\n NO HISTORY \n"
         history_error = "\n\n HISTORY ERRORS \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         set_error = "\n\n SETCREATION ERRORS \n"
