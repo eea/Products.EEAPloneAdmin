@@ -175,7 +175,8 @@ def save_resources_on_disk(registry, request=None):
                 # logger.info("Wrote %s on disk.", fpath)
             except IOError:
                 logger.warning("Could not write %s on disk.", fpath)
-        logger.info(u"Finished saving %s resources on disk for registry %s", len(resources), registry)
+        logger.info(u"Finished saving %s resources on disk for registry %s",
+                    len(resources), registry)
 
     if script:
         res = subprocess.call([script, base])
@@ -272,7 +273,7 @@ class FindBrokenObjects(BrowserView):
 
         for b in search:
             try:
-                ob = b.getObject()
+                b.getObject()
             except Unauthorized:
                 logger.info("Item %s raised Unauthorized", b.getURL())
             except KeyError:

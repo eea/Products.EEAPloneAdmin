@@ -273,12 +273,14 @@ class PortalState(BasePortalState):
         in order to test add portal_state/showSecurityUser call to main_template
         """
         logger.info('called showSecurityUser')
-        logger.info('There are %d ammount of managers' % len(_managers))
+        logger.info('There are %d ammount of managers', len(_managers))
         keys = _managers.keys()
         for item in keys:
-            logger.info('For manager %d this user is active %s' %
-                   (item, _managers[item]._context.user.getUserName()))
-        logger.info('Active user for current thread %d is  %s' % ( 
-            thread.get_ident(),  _managers[thread.get_ident()]
-                                            ._context.user.getUserName()))
+            msg = 'For manager %d this user is active %s' % \
+                  (item, _managers[item]._context.user.getUserName())
+            logger.info(msg)
+        log_msg = 'Active user for current thread %d is  %s' % (
+            thread.get_ident(),
+            _managers[thread.get_ident()]._context.user.getUserName())
+        logger.info(log_msg)
         return True
