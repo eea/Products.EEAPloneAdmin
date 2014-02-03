@@ -3,6 +3,9 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Change: patched tinyMCE save adapter in order to record a history version
+  when using the save plugin
+  [ichimdav refs #18221]
 * Change: patch tinyMCE get_styles in order to avoid style title hardcoding
   [ichimdav refs #18180]
 * Upgrade step: this step should run on www8 after working hours:
