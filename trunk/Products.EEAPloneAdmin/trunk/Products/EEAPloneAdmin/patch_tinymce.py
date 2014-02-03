@@ -1,6 +1,7 @@
 """ Patch TinyMCE
 """
 from Products.CMFCore.utils import getToolByName
+from Products.CMFEditions.utilities import maybeSaveVersion
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.interfaces._content import IFolderish
 from Acquisition import aq_inner
@@ -187,3 +188,15 @@ def patched_getStyles(self, styles, labels):
     for title in titles:
         a.extend(h[title])
     return '[' + ','.join(a) + ']'
+
+
+
+def patched_save(self, text, fieldname):
+    """18221 call SaveVersion when using tinyMCE save plugin"""
+    self.context.getField(fieldname).set(self.context, text,
+                                         mimetype='text/html')
+    # patch
+    maybeSaveVersion(self.context, comment="TinyMCE save triggered",
+                     force=False)
+
+    return "saved"
