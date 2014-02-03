@@ -196,7 +196,7 @@ def patched_save(self, text, fieldname):
     self.context.getField(fieldname).set(self.context, text,
                                          mimetype='text/html')
     # patch
-    maybeSaveVersion(self.context, comment="TinyMCE save triggered",
+    maybeSaveVersion(self.context, comment="TinyMCE save triggered revision",
                      force=False)
 
     return "saved"
