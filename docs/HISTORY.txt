@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.4-dev - (unreleased)
-----------------------
+8.4 - (2014-02-03)
+------------------
 * Change: patched tinyMCE save adapter in order to record a history version
   when using the save plugin
   [ichimdav refs #18221]
