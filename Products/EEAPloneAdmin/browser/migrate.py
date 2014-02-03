@@ -1572,7 +1572,7 @@ class CreatorAssignment(object):
                 reindex_error += "%s --> %s \n" % (obj_url, err)
                 continue
             count += 1
-            if count % 1000 == 0:
+            if count % 100 == 0:
                 log.info('INFO: Subtransaction committed to zodb (%s/%s)',
                          count, total)
                 transaction.commit()
