@@ -11,12 +11,12 @@ Changelog
   [ichimdav refs #18221]
 * Change: patch tinyMCE get_styles in order to avoid style title hardcoding
   [ichimdav refs #18180]
-* Upgrade step: this step should run on www8 after working hours:
-  - run /www/@a@CreatorAssignment
+* [DONE] Upgrade step: this step should run on www8 after working hours:
+  - run /www/@@creatorAssignment
   - beware as it takes a long time since it wakes up 60000 objects
   [ichimdav refs #18142]
 * Feature: Added new content types "Negotiated procedure" and "Call for
-  proposal" 
+  proposal"
   [mironovi refs #17865]
 * Feature: added migration script that changes the Creator for objects that
   have been versioned
