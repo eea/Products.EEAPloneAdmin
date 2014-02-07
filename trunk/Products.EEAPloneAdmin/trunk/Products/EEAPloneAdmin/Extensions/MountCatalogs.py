@@ -26,7 +26,7 @@ def mount(self, out=None):
     items = [item for item in to_mount if 'catalog' in item['path']
                   and '** Something is in the way **' in item['status']]
 
-    msg = 'Mounting... %s catalogs', len(items)
+    msg = 'Mounting... %s catalogs' % len(items)
     logger.warn(msg)
     out.write(msg)
 
