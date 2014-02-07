@@ -3,6 +3,10 @@ Changelog
 
 8.5-dev - (unreleased)
 ----------------------
+* Feature: Added external method to help re-mounting catalogs to their new
+  location if they are configured outside Data.fs. Credits for this script
+  goes to Andrew Mleczko, RedTurtle
+  [voineali refs #17104]
 
 8.4 - (2014-02-03)
 ------------------
