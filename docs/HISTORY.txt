@@ -3,6 +3,8 @@ Changelog
 
 8.5-dev - (unreleased)
 ----------------------
+* Upgrade step: remove obsolete permissions from 'CallForTender' workflow
+  [olimpiurob refs #18443]
 * Change: tinyMCE text searches are now queried against the Title index instead
   of the SearchableText in order to get fewer but better matching results
   [ichimdav refs #16662]

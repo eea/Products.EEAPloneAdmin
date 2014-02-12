@@ -61,4 +61,11 @@
         handler="Products.EEAPloneAdmin.exportimport.setuphandlers.clear_registries" />
         -->
 
+    <genericsetup:registerProfile
+            name="upgrade85"
+            title="EEA Plone Admin upgrade profile for v8.5"
+            directory="profiles/upgrades/to_85"
+            description='EEA Plone Admin upgrade profile for v8.5'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
 </configure>
