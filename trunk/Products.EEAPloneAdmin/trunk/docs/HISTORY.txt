@@ -3,6 +3,9 @@ Changelog
 
 8.5-dev - (unreleased)
 ----------------------
+* Change: tinyMCE text searches are now queried against the Title index instead
+  of the SearchableText in order to get fewer but better matching results
+  [ichimdav refs #16662]
 * Feature: Added external method to help re-mounting catalogs to their new
   location if they are configured outside Data.fs. Credits for this script
   goes to Andrew Mleczko, RedTurtle

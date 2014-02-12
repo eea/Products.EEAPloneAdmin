@@ -116,7 +116,7 @@ def patched_getSearchResults(self, filter_portal_types, searchtext):
         'portal_type': filter_portal_types,
         'sort_on': 'sortable_title',
         'path': folder_path,
-        'SearchableText': searchtext,
+        'Title': searchtext,
         'Language': 'all',
     }
     if searchtext:
