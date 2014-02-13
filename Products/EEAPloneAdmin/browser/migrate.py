@@ -1508,8 +1508,8 @@ class CreatorAssignment(object):
         not_found = "\n\n OBJ NOT FOUND \n"
         res_creators = "\n\n RESULTING CREATORS \n"
 
-        ptypes = ["Article", "Assessment", "AssessmentPart", "CFTRequestor",
-                "CallForInterest", "CallForTender", "CloudVideo", "Collection",
+        ptypes = ["Article", "Assessment", "AssessmentPart", "CallForInterest",
+                "CallForTender", "CloudVideo", "Collection",
                 "CommonalityReport", "Data", "DataFile", "DataFileLink", 
                 "DataSourceLink", "DataTable", "DavizVisualization",
                 "DiversityReport", "Document", "EEAFigure", "EEAVacancy",

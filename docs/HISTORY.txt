@@ -3,6 +3,10 @@ Changelog
 
 8.5-dev - (unreleased)
 ----------------------
+* Change: Removed CFTRequestor references in the 8.5 upgrade step. Manual
+  upgrade needed in order to remove references from portal_properties
+  site_properties and navtree_properties
+  [olimpiurob refs #18443]
 * Upgrade step: remove obsolete permissions from 'CallForTender' workflow
   [olimpiurob refs #18443]
 * Change: tinyMCE text searches are now queried against the Title index instead
