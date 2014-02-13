@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.6-dev - (unreleased)
+----------------------
+
 8.5 - (2014-02-13)
 ------------------
 * Change: Removed CFTRequestor references in the 8.5 upgrade step. Manual
