@@ -21,9 +21,6 @@
         <type type_id="ATSimpleStringCriterion"/>
         <type type_id="ATSortCriterion"/>
         <type type_id="AliasVocabulary"/>
-        <type type_id="CFTRequestor">
-            <bound-workflow workflow_id="tender_requestor_workflow"/>
-        </type>
 
         <!--<type type_id="CacheTool"/>-->
 

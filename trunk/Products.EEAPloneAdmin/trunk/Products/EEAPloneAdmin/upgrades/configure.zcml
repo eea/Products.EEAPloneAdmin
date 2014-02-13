@@ -9,9 +9,8 @@
             profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeDepends
-                title="Remove obsolete permissions in CallForTender workflow"
+                title="Import all steps from Products.EEAPloneAdmin upgrade85 profile"
                 import_profile="Products.EEAPloneAdmin:upgrade85"
-                import_steps="workflow"
                 />
         
         <genericsetup:upgradeStep

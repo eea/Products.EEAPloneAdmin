@@ -78,7 +78,6 @@
    <element value="ATSimpleStringCriterion"/>
    <element value="ATSortCriterion"/>
    <element value="AssessmentPart"/>
-   <element value="CFTRequestor"/>
    <element value="CMF Link"/>
    <element value="CacheTool"/>
    <element value="CallForInterest"/>
@@ -283,7 +282,6 @@
    <element value="ATSimpleStringCriterion"/>
    <element value="ATSortCriterion"/>
    <element value="AliasVocabulary"/>
-   <element value="CFTRequestor"/>
    <element value="CMF Document"/>
    <element value="CMF Event"/>
    <element value="CMF Favorite"/>
