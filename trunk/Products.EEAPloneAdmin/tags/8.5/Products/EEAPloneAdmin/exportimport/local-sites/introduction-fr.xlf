@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff SYSTEM "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<!-- XLIFF Format Copyright © OASIS Open 2001-2003 -->
+<xliff version="1.0">
+<file
+original="/index_html"
+product-name="Localizer"
+product-version="1.1.x"
+datatype="plaintext"
+source-language="en"
+target-language="fr"
+date="2008-03-12T11:40:21Z"
+>
+<header>
+</header>
+<body>
+<trans-unit id="body">
+ <source>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;The EEA in 30 seconds&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+&lt;p&gt;&lt;b&gt;
+Mission
+&lt;/b&gt;&lt;br/&gt;
+The EEA's task is to provide timely, targeted, relevant and reliable environmental information. We serve those concerned with framing and implementing European and national environmental policy, and the general public. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Supporting the policy makers
+&lt;/b&gt;&lt;br/&gt;
+Our information helps the EU and Agency member countries make informed decisions about improving the environment, integrate environmental considerations into economic policies and move towards sustainability. We focus on supporting key users at vital points in the policy process at the European level.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Environmental information
+&lt;/b&gt;&lt;br/&gt;
+In our work we draw on existing organisations knowledge/information; we cooperate with them, coordinate the work at European level and seek to avoid duplication. We bring together the best available environmental data from individual countries. After a thorough compilation of data and its validation through our institutional network (EIONET), information is made accessible in various reporting formats to our users. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;
+Membership countries
+&lt;/b&gt;&lt;br/&gt;
+Although the EEA is a European Union body, membership is open to non-EU countries that share our objectives. The EEA now has 32 member countries: all 27 EU Member States, Iceland, Liechtenstein, Norway, Switzerland and Turkey.
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;Read more about the EEA&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;</source>
+ <target>&lt;table border="0" width="100%" cellspacing="0" cellpadding="4" class="TeaserBoxEEA30sec"&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" colspan="3" valign="top" class="TeaserBoxHeaderEEA30sec" align="center"&gt; 
+            &lt;p class="head0w"&gt;L'AEE en 30 secondes&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width="100%" valign="top" align="left"&gt;
+
+				&lt;p&gt;&lt;b&gt;Mission&lt;/b&gt;&lt;br/&gt; L'AEE a pour mission de fournir des informations opportunes, ciblées, pertinentes et fiables sur l'environnement aux personnes concernées par l'élaboration et la mise en œuvre de la politique environnementale nationale et européenne, ainsi qu'au grand public. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Soutien aux décideurs&lt;/b&gt;&lt;br/&gt; Nos informations permettent aux États membres de l'UE et de notre Agence de prendre des décisions en connaissance de cause en vue d'améliorer l'environnement, d'intégrer des considérations environnementales dans les politiques économiques et de s'orienter vers la durabilité. Nous veillons surtout à apporter notre soutien aux principaux utilisateurs dans les phases cruciales du processus politique au niveau européen.
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Informations environnementales&lt;/b&gt;&lt;br/&gt; Nos travaux s'appuient sur les informations/connaissances existantes auprès des organisations partenaires; nous coopérons avec elles, nous coordonnons les travaux au niveau européen et nous cherchons à éviter tout double emploi. Nous rassemblons les meilleures données disponibles au sujet de l'environnement dans chaque pays. Après avoir été soigneusement compilées et validées via notre réseau institutionnel (EIONET), les informations sont mises à la diposition de nos utilisateurs sous la forme de rapports publiés en différents formats. 
+				&lt;/p&gt;
+				
+				&lt;p&gt;&lt;b&gt;Pays membres&lt;/b&gt;&lt;br/&gt; Bien qu'étant un organe de l'Union européenne, l'AEE est ouverte aux pays non membres de l'UE qui partagent ses objectifs. 32 pays sont actuellement membres de l'AEE: les 27 États de l'UE, l'Islande, le Liechtenstein, la Norvège, la Suisse et la Turquie.
+				&lt;/p&gt;
+				&lt;p&gt;&lt;a href="about_us/" onFocus="blur()"&gt;En savoir plus sur l'AEE&lt;/a&gt;&lt;/p&gt;
+				&lt;br/&gt;
+
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        
+&lt;/table&gt;</target>
+</trans-unit>
+<trans-unit id="title">
+ <source>Introduction</source>
+ <target>Introduction</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
