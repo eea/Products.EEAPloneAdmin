@@ -3,6 +3,13 @@ Changelog
 
 8.6-dev - (unreleased)
 ----------------------
+* Change: creatorAssignment script now removes full names from creator
+  field if their user id is already present
+  [ichimdav refs #18142]
+* Upgrade step: this step should run on www8 after working hours:
+  - run /www/@@creatorAssignment
+  - beware as it takes a long time since it wakes up 60000 objects
+  [ichimdav refs #18142]
 
 8.5 - (2014-02-13)
 ------------------
