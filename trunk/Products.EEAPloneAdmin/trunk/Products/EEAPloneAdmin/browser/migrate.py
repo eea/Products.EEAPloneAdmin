@@ -13,7 +13,7 @@ from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
-from plone.app.layout.viewlets.content import ContentHistoryView
+#from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
@@ -1501,7 +1501,7 @@ class CreatorAssignment(object):
         log.info("Starting Creators index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
         count = 0
-        history_error = "\n\n HISTORY ERRORS \n"
+        #history_error = "\n\n HISTORY ERRORS \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         set_error = "\n\n SETCREATION ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
@@ -1533,35 +1533,41 @@ class CreatorAssignment(object):
         context = self.context
         hunter = getMultiAdapter((context, self.request), name='pas_search')
         total = len(res)
-        request = self.context.REQUEST
+        #request = self.context.REQUEST
         for brain in res:
             obj_url = brain.getURL(1)
-            try:
-                obj = brain.getObject()
-            except Exception:
-                not_found += obj_url + "\n"
-                continue
-            history = None
-            try:
-                history = ContentHistoryView(obj, request).fullHistory()
-            except Exception, err:
-                history_error += "%s --> %s \n" % (obj_url, err)
-            if not history:
-                continue
-            first_state = history[-1]
-            creators = []
-            for entry in history:
-                if entry['action'] == 'New version' or entry == first_state:
-                    user = entry['actorid']
-                    if user and user not in creators:
-                        creators.append(user)
-            original_creators = obj.Creators()
+            # try:
+            #     obj = brain.getObject()
+            # except Exception:
+            #     not_found += obj_url + "\n"
+            #     continue
+            # history = None
+            # try:
+            #     history = ContentHistoryView(obj, request).fullHistory()
+            # except Exception, err:
+            #     history_error += "%s --> %s \n" % (obj_url, err)
+            # if not history:
+            #     continue
+            # first_state = history[-1]
+            # creators = []
+            # for entry in history:
+            #     if entry['action'] == 'New version' or entry == first_state:
+            #         user = entry['actorid']
+            #         if user and user not in creators:
+            #             creators.append(user)
+            # original_creators = obj.Creators()
+            # for creator in original_creators:
+            #     if creator and creator not in creators:
+            #         creators.append(creator)
+            original_creators = brain.listCreators
+            creators = list(original_creators)
             for creator in original_creators:
-                if creator and creator not in creators:
-                    creators.append(creator)
-
-            for creator in creators:
                 if len(creator.split(' ')) > 1:
+                    try:
+                        obj = brain.getObject()
+                    except Exception:
+                        not_found += obj_url + "\n"
+                        continue
                     users = hunter.searchUsers(**{'fullname': creator})
                     if not users:
                         continue
@@ -1591,6 +1597,5 @@ class CreatorAssignment(object):
 
         log.info("Ending Creators index fix for %d objects", count)
 
-        return (res_creators + history_error + reindex_error +
-                set_error + not_found)
+        return (res_creators + reindex_error + set_error + not_found)
 
