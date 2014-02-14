@@ -28,7 +28,8 @@ from zope.interface import directlyProvides, directlyProvidedBy, \
                                              noLongerProvides
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
-from zope.component import queryUtility, queryAdapter, ComponentLookupError
+from zope.component import queryUtility, queryAdapter, ComponentLookupError, \
+    getMultiAdapter
 from zope.component.interface import nameToInterface
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
@@ -1486,8 +1487,6 @@ def remove_interface(context, iname):
                                                                          total)
 
 
-
-
 class CreatorAssignment(object):
     """ Add as primary creator the user that made the last version
     """
@@ -1525,12 +1524,14 @@ class CreatorAssignment(object):
                 "HelpCenterTutorialFolder", "Highlight", # "Image", 
                 "IndicatorFactSheet", "Infographic", "KeyMessage", "Link", 
                 "MethodologyReference", "News Item", "Newsletter", 
-                "Organisation", "PolicyDocumentReference", "PolicyQuecstion", 
+                "Organisation", "PolicyDocumentReference", "PolicyQuestion",
                 "PressRelease", "Promotion", "QuickEvent", 
-                "RationaleReference", "RelatedIndicatorLink", "Report", 
+                "RationaleReference", "RelatedIndicatorLink", "Report",
                 "SOERCountry", "SOERKeyFact", "SOERMessage", "Sparql", 
                 "SparqlBookmarksFolder", "Specification", "Speech", "Topic"]
         res = catalog.unrestrictedSearchResults(portal_type=ptypes)
+        context = self.context
+        hunter = getMultiAdapter((context, self.request), name='pas_search')
         total = len(res)
         request = self.context.REQUEST
         for brain in res:
@@ -1558,10 +1559,21 @@ class CreatorAssignment(object):
             for creator in original_creators:
                 if creator and creator not in creators:
                     creators.append(creator)
-            if obj.Creators() == tuple(creators):
+
+            for creator in creators:
+                if len(creator.split(' ')) > 1:
+                    users = hunter.searchUsers(**{'fullname': creator})
+                    if not users:
+                        continue
+                    for user in users:
+                        if user.get('userid') in creators:
+                            creators.remove(creator)
+
+            if original_creators == tuple(creators):
                 continue
-            res_creators += "%s --> %s --> %s" % (obj_url, original_creators,
-                                                  creators)
+            res_creators += "\n %s --> %s --> %s \n" % (obj_url,
+                                                        original_creators,
+                                                        creators)
             try:
                 obj.setCreators(creators)
             except Exception, err:
@@ -1578,7 +1590,7 @@ class CreatorAssignment(object):
                 transaction.commit()
 
         log.info("Ending Creators index fix for %d objects", count)
-        return (res_creators + 
-                history_error + reindex_error +
+
+        return (res_creators + history_error + reindex_error +
                 set_error + not_found)
 
