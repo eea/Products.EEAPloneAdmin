@@ -67,5 +67,12 @@
             directory="profiles/upgrades/to_85"
             description='EEA Plone Admin upgrade profile for v8.5'
             provides="Products.GenericSetup.interfaces.EXTENSION" />
+    
+    <genericsetup:registerProfile
+            name="upgrade86"
+            title="EEA Plone Admin upgrade profile for v8.6"
+            directory="profiles/upgrades/to_86"
+            description='EEA Plone Admin upgrade profile for v8.6'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
 
 </configure>
