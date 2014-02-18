@@ -3,6 +3,9 @@ Changelog
 
 8.6-dev - (unreleased)
 ----------------------
+* Change: Make "Add portal content" and "Copy or Move" permissions acquire
+  settings in an upgrade step
+  [olimpiurob refs #18516]
 * Change: creatorAssignment script now removes full names from creator
   field if their user id is already present
   [ichimdav refs #18142]
