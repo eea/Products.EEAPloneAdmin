@@ -8,47 +8,37 @@
 
     ===========================[ Blob patches ]==========================
 
-    <monkey:patch
-        description="Fix getSize method for blob fields"
-        class="plone.app.blob.field.BlobWrapper"
-        original="getSize"
-        replacement=".patch_blob.patched_getSize"
-        docstringWarning="true"
-        />
+    <monkey:patch description="Fix getSize method for blob fields"
+                  class="plone.app.blob.field.BlobWrapper"
+                  original="getSize"
+                  replacement=".patch_blob.patched_getSize"
+                  docstringWarning="true" />
 
     <!--original experimental.blobmissing configure.zcml file-->
-    <monkey:patch
-        description="Fix get_size method for blob fields"
-        class="plone.app.blob.field.BlobWrapper"
-        original="get_size"
-        replacement=".patch_blob.patched_field_get_size"
-		docstringWarning="true"
-        />
+    <monkey:patch description="Fix get_size method for blob fields"
+                  class="plone.app.blob.field.BlobWrapper"
+                  original="get_size"
+                  replacement=".patch_blob.patched_field_get_size"
+                  docstringWarning="true" />
 
-    <monkey:patch
-        description="Fix index_html method for blob fields"
-        class="plone.app.blob.field.BlobField"
-        original="index_html"
-        replacement=".patch_blob.patched_field_index_html"
-        docstringWarning="true"
-        preserveOriginal="true"
-        />
+    <monkey:patch description="Fix index_html method for blob fields"
+                  class="plone.app.blob.field.BlobField"
+                  original="index_html"
+                  replacement=".patch_blob.patched_field_index_html"
+                  docstringWarning="true"
+                  preserveOriginal="true" />
 
-    <monkey:patch
-        description="Fix get_size method for blob fields"
-        class="Products.ATContentTypes.content.base.ATCTMixin"
-        original="get_size"
-        replacement=".patch_blob.patched_class_get_size"
-        docstringWarning="true"
-        />
+    <monkey:patch description="Fix get_size method for blob fields"
+                  class="Products.ATContentTypes.content.base.ATCTMixin"
+                  original="get_size"
+                  replacement=".patch_blob.patched_class_get_size"
+                  docstringWarning="true" />
 
-    <monkey:patch
-        description="Fix getScale method for blob mixins"
-        class="plone.app.blob.mixins.ImageFieldMixin"
-        original="getScale"
-        replacement=".patch_blob.patched_getScale"
-        docstringWarning="true"
-        />
+    <monkey:patch description="Fix getScale method for blob mixins"
+                  class="plone.app.blob.mixins.ImageFieldMixin"
+                  original="getScale"
+                  replacement=".patch_blob.patched_getScale"
+                  docstringWarning="true" />
 
     ===========================[ GenericSetup patches ]==========================
 
@@ -156,6 +146,14 @@
                   original="enabled"
                   replacement=".patch_plone_app_discussion.conversation_enabled" />
 
+    ===========================[ Products.CMFCore patches ]==========================
+
+    <!-- Patch for Products.CMFCore ver 2.2.7 deleteLocalRoles function to make intermediate transaction commit while performing this long process -->
+    <monkey:patch description="Monkeypatch Products.CMFCore.deleteLocalRoles to make intermediate transaction commit"
+                  class="Products.CMFCore.MembershipTool.MembershipTool"
+                  original="deleteLocalRoles"
+                  replacement=".patch_cmfcore.patched_deleteLocalRoles"
+                  preserveOriginal="false" />
 
     ===========================[ Other patches ]==========================
 
