@@ -13,6 +13,9 @@ Changelog
   - run /www/@@creatorAssignment
   - beware as it takes a long time since it wakes up 60000 objects
   [ichimdav refs #18142]
+* Feature: patched Products.CMFCore deleted members not to endup in database
+  conflict due to the long process of deletion
+  [ghicaale refs #18138]
 
 8.5 - (2014-02-13)
 ------------------
