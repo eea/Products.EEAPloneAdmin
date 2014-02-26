@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<registry>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="eea">
     <records interface="plone.app.querystring.interfaces.IQueryOperation"
              prefix="plone.app.querystring.operation.string.showInactive">
         <value key="title" i18n:translate="">Show Inactive</value>
