@@ -12,11 +12,14 @@ import logging
 
 logger = logging.getLogger("Products.EEAPloneAdmin.patch_cmfcore")
 
+object_count = 0
+
 def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
-                             REQUEST=None, object_count=0):
+                             REQUEST=None):
         """ Delete local roles of specified members.
         """
-        object_count = object_count + 1
+        global object_count
+        object_count += 1
         if object_count % 10000 == 0:
             transaction.commit()
             logger.info('Deleting members:')
@@ -30,8 +33,7 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
 
         if recursive and hasattr( aq_base(obj), 'contentValues' ):
             for subobj in obj.contentValues():
-                self.deleteLocalRoles(subobj, member_ids, 0, 1, REQUEST,
-                                      object_count)
+                self.deleteLocalRoles(subobj, member_ids, 0, 1, REQUEST)
 
         if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
             # reindexObjectSecurity is always recursive
