@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<site>
+ <property name="title">EEA</property>
+ <property name="description">European Environment Agency</property>
+ <property name="selectable_views" type="lines">
+  <element value="folder_listing"/>
+  <element value="news_listing"/>
+ </property>
+ <property name="email_from_address"
+    type="string">webadmin@eea.europa.eu</property>
+ <property name="email_from_name" type="string">EEA web admin</property>
+ <property name="validate_email" type="boolean">False</property>
+ <property name="default_charset" type="string">utf-8</property>
+ <property name="enable_permalink" type="boolean">False</property>
+ <property name="left_slots" type="lines">
+  <element value="here/portlet_review/macros/portlet"/>
+  <element value="here/portlet_navigation/macros/portlet"/>
+ </property>
+ <property name="right_slots" type="lines"/>
+ <property name="layout" type="string">frontpage_view</property>
+ <property name="default_page" type="string">eea-cms</property>
+ <property name="enquiry_email"
+    type="string">ic.enquiries@eea.europa.eu</property>
+</site>
