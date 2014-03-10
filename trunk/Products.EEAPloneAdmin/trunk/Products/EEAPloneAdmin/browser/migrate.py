@@ -1622,6 +1622,8 @@ class FixEffectiveDateForPublishedObjects(object):
         reindex_error = "\n\n REINDEX ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
         history_error = "\n\n HISTORY ERRORS \n"
+        count = 0
+        total = len(brains)
         for brain in brains:
             created_date = brain.created
             if created_date < brain.effective:
@@ -1655,6 +1657,11 @@ class FixEffectiveDateForPublishedObjects(object):
                         reindex_error += "%s --> %s \n" % (obj_url, err)
                         continue
                     res_objs += "\n %s \n" % obj_url
+                    count += 1
+                    if count % 100 == 0:
+                        log.info('INFO: Transaction committed to zodb (%s/%s)',
+                                 count, total)
+                        transaction.commit()
                     break
 
         log.info("Ending Effective Date index fix")
