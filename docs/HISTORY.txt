@@ -51,7 +51,7 @@ Changelog
 * [DONE] Upgrade step: this step should run on www8 after working hours:
   - run /www/@@creatorAssignment
   - beware as it takes a long time since it wakes up 60000 objects
-  [ichimdav refs #18142]
+  - [ichimdav refs #18142]
 * Feature: Added new content types "Negotiated procedure" and "Call for
   proposal"
   [mironovi refs #17865]
