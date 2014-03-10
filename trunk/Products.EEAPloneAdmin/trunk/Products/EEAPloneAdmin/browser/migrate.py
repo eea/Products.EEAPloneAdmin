@@ -13,7 +13,7 @@ from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
-#from plone.app.layout.viewlets.content import ContentHistoryView
+from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
@@ -1599,3 +1599,63 @@ class CreatorAssignment(object):
 
         return (res_creators + reindex_error + set_error + not_found)
 
+
+class FixEffectiveDateForPublishedObjects(object):
+    """ Fix published objects with no effective date
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("EffectiveFix")
+        log.info("Starting Effective Date index fix")
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(review_state="published", Language="all",
+                         show_inactive=True)
+
+        request = self.context.REQUEST
+
+        res_objs = "\n\n RESULTING OBJS \n"
+        reindex_error = "\n\n REINDEX ERRORS \n"
+        not_found = "\n\n OBJ NOT FOUND \n"
+        history_error = "\n\n HISTORY ERRORS \n"
+        for brain in brains:
+            created_date = brain.created
+            if created_date < brain.effective:
+                continue
+            obj_url = brain.getURL(1)
+            try:
+                obj = brain.getObject()
+            except Exception:
+                not_found += obj_url + "\n"
+                continue
+            history = None
+            try:
+                history = ContentHistoryView(obj, request).fullHistory()
+            except Exception, err:
+                history_error += "%s --> %s \n" % (obj_url, err)
+            if not history:
+                continue
+            first_state = history[-1]
+            for entry in history:
+
+                if entry['transition_title'] == 'Publish' or entry == \
+                        first_state:
+                    date = entry['time']
+                    if created_date > date:
+                        obj.setEffectiveDate(created_date)
+                    else:
+                        obj.setEffectiveDate(date)
+                    try:
+                        obj.reindexObject(idxs=["EffectiveDate"])
+                    except Exception, err:
+                        reindex_error += "%s --> %s \n" % (obj_url, err)
+                        continue
+                    res_objs += "\n %s \n" % obj_url
+                    break
+
+        log.info("Ending Effective Date index fix")
+        return res_objs + reindex_error + history_error + not_found

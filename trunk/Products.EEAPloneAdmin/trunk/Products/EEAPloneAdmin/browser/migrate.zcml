@@ -167,4 +167,10 @@
                   name="creatorAssignment"
                   class=".migrate.CreatorAssignment"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fixEffectiveDate"
+                  class=".migrate.FixEffectiveDateForPublishedObjects"
+                  permission="cmf.ManagePortal" />
+
 </configure>

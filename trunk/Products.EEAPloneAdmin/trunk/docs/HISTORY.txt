@@ -3,6 +3,8 @@ Changelog
 
 8.6-dev - (unreleased)
 ----------------------
+* Feature: added migration script to fix effective date of published items
+  [ichimdav refs #18601]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for Products.EEAPloneAdmin
   [ichimdav refs #18466]
