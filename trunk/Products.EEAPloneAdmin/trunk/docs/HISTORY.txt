@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.6-dev - (unreleased)
-----------------------
+8.6 - (2014-03-10)
+------------------
 * Feature: added migration script to fix effective date of published items
   [ichimdav refs #18601]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
