@@ -22,7 +22,7 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
         object_count += 1
         if object_count % 10000 == 0:
             transaction.commit()
-            logger.info('Deleting members: %s' % member_ids)
+            logger.info('Deleting members: %s', member_ids)
 
         if _checkPermission(ChangeLocalRoles, obj):
             for member_id in member_ids:
