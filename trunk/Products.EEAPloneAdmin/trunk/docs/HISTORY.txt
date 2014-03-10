@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.7-dev - (unreleased)
+----------------------
+
 8.6 - (2014-03-10)
 ------------------
 * Feature: added migration script to fix effective date of published items
