@@ -1614,6 +1614,8 @@ class FixEffectiveDateForPublishedObjects(object):
         log.info("Starting Effective Date index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(review_state="published", Language="all",
+                         portal_type=["EEAFigure", "DavizVisualization",
+                                      "PolicyQuestion"],
                          show_inactive=True)
 
         request = self.context.REQUEST
@@ -1626,7 +1628,8 @@ class FixEffectiveDateForPublishedObjects(object):
         total = len(brains)
         for brain in brains:
             created_date = brain.created
-            if created_date < brain.effective:
+            effective_date = brain.effective
+            if created_date < effective_date:
                 continue
             obj_url = brain.getURL(1)
             try:
@@ -1647,8 +1650,10 @@ class FixEffectiveDateForPublishedObjects(object):
                 if entry['transition_title'] == 'Publish' or entry == \
                         first_state:
                     date = entry['time']
+                    creationIsAfterPublish = False
                     if created_date > date:
                         obj.setEffectiveDate(created_date)
+                        creationIsAfterPublish = True
                     else:
                         obj.setEffectiveDate(date)
                     try:
@@ -1656,7 +1661,15 @@ class FixEffectiveDateForPublishedObjects(object):
                     except Exception, err:
                         reindex_error += "%s --> %s \n" % (obj_url, err)
                         continue
-                    res_objs += "\n %s \n" % obj_url
+                    if creationIsAfterPublish:
+                        res_objs += "\n %s --> Effective Date before %s --> " \
+                                "after %s because Creation Date was after" \
+                                " the previous Effective Date \n" % (obj_url,
+                                                           effective_date,
+                                                           created_date)
+                    else:
+                        res_objs += "\n %s --> Effective Date before %s --> " \
+                                "after %s \n" % (obj_url, effective_date, date)
                     count += 1
                     if count % 100 == 0:
                         log.info('INFO: Transaction committed to zodb (%s/%s)',

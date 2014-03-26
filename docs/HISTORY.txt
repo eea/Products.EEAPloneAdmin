@@ -3,6 +3,9 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Change: migration script to fix effective date now only affect
+  published EEAFigure, DavizVisualization and PolicyQuestion objects
+  [ichimdav refs #18601]
 
 8.6 - (2014-03-10)
 ------------------
