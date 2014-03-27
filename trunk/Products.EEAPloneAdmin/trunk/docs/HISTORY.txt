@@ -6,8 +6,10 @@ Changelog
 * Change: migration script to fix effective date now only affect
   published EEAFigure, DavizVisualization and PolicyQuestion objects
   [ichimdav refs #18601]
-* Upgrade step: Within "Plone > portal_properties > eeastaff_properties"
+* Upgrade step: within "Plone > portal_properties > eeastaff_properties"
   change value for "eeastaff_fs" into: ../../../www-static-resources/eeastaff.xml
+  [ghicaale refs 18467]
+* Upgrade step: update /etc/cron.daily/syncstaff on Albatros.
   [ghicaale refs 18467]
 
 8.6 - (2014-03-10)
