@@ -11,6 +11,9 @@ Changelog
   [ghicaale refs 18467]
 * Upgrade step: update /etc/cron.daily/syncstaff on Albatros.
   [ghicaale refs 18467]
+* Pre-upgrade step: commit the external methods under EEAPloneAdmin, talk
+  with Antonio firs.
+  [marinis]
 
 8.6 - (2014-03-10)
 ------------------
