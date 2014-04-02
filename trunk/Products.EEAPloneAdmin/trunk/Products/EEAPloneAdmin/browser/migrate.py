@@ -1613,9 +1613,11 @@ class FixEffectiveDateForPublishedObjects(object):
         log = logging.getLogger("EffectiveFix")
         log.info("Starting Effective Date index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
+        import pdb; pdb.set_trace()
         brains = catalog(review_state="published", Language="all",
                          portal_type=["EEAFigure", "DavizVisualization",
                                       "PolicyQuestion"],
+                         path="/www/SITE/data-and-maps/indicators/energy-efficiency-and-energy-consumption-4/is-transport-sector-becoming-more-efficient",
                          show_inactive=True)
 
         request = self.context.REQUEST
@@ -1660,11 +1662,10 @@ class FixEffectiveDateForPublishedObjects(object):
                         reindex_error += "%s --> %s \n" % (obj_url, err)
                         continue
                     if creationIsAfterPublish:
-                        res_objs += "\n %s --> Effective Date before %s --> " \
-                                "after %s because Creation Date was after" \
-                                " the previous Effective Date \n" % (obj_url,
-                                                           effective_date,
-                                                           created_date)
+                        res_objs += "\n %s --> Effective Date before %s -->" \
+                                " after %s from Creation Date because" \
+                                " is after date from history  %s \n" % (obj_url,
+                                effective_date, created_date, date)
                     else:
                         res_objs += "\n %s --> Effective Date before %s --> " \
                                 "after %s \n" % (obj_url, effective_date, date)
