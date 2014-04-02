@@ -1613,11 +1613,9 @@ class FixEffectiveDateForPublishedObjects(object):
         log = logging.getLogger("EffectiveFix")
         log.info("Starting Effective Date index fix")
         catalog = getToolByName(self.context, 'portal_catalog')
-        import pdb; pdb.set_trace()
         brains = catalog(review_state="published", Language="all",
                          portal_type=["EEAFigure", "DavizVisualization",
                                       "PolicyQuestion"],
-                         path="/www/SITE/data-and-maps/indicators/energy-efficiency-and-energy-consumption-4/is-transport-sector-becoming-more-efficient",
                          show_inactive=True)
 
         request = self.context.REQUEST
