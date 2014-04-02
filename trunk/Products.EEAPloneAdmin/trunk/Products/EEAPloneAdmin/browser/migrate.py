@@ -1617,7 +1617,6 @@ class FixEffectiveDateForPublishedObjects(object):
                          portal_type=["EEAFigure", "DavizVisualization",
                                       "PolicyQuestion"],
                          show_inactive=True)
-
         request = self.context.REQUEST
 
         res_objs = "\n\n RESULTING OBJS \n"
@@ -1660,13 +1659,13 @@ class FixEffectiveDateForPublishedObjects(object):
                         reindex_error += "%s --> %s \n" % (obj_url, err)
                         continue
                     if creationIsAfterPublish:
-                        res_objs += "\n %s --> Effective Date before %s -->" \
-                                " after %s from Creation Date because" \
-                                " is after date from history  %s \n" % (obj_url,
-                                effective_date, created_date, date)
+                        res_objs += "\n %s -Effective Date before --> %s" \
+                                " after --> %s from Creation Date because" \
+                                " it is after date from history --> %s \n" % (
+                                obj_url, effective_date, created_date, date)
                     else:
-                        res_objs += "\n %s --> Effective Date before %s --> " \
-                                "after %s \n" % (obj_url, effective_date, date)
+                        res_objs += "\n %s - Effective Date before --> %s " \
+                            "after --> %s \n" % (obj_url, effective_date, date)
                     count += 1
                     if count % 100 == 0:
                         log.info('INFO: Transaction committed to zodb (%s/%s)',
