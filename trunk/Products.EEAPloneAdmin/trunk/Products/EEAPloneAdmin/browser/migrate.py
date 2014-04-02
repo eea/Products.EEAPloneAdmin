@@ -1621,6 +1621,7 @@ class FixEffectiveDateForPublishedObjects(object):
         request = self.context.REQUEST
 
         res_objs = "\n\n RESULTING OBJS \n"
+        skipped_objs = "\n\n SKIPPED OBJS \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
         history_error = "\n\n HISTORY ERRORS \n"
@@ -1629,9 +1630,10 @@ class FixEffectiveDateForPublishedObjects(object):
         for brain in brains:
             created_date = brain.created
             effective_date = brain.effective
-            if created_date < effective_date:
-                continue
             obj_url = brain.getURL(1)
+            if created_date < effective_date:
+                skipped_objs += "%s \n" % obj_url
+                continue
             try:
                 obj = brain.getObject()
             except Exception:
@@ -1678,4 +1680,6 @@ class FixEffectiveDateForPublishedObjects(object):
                     break
 
         log.info("Ending Effective Date index fix")
-        return res_objs + reindex_error + history_error + not_found
+        return skipped_objs + res_objs + reindex_error + history_error + \
+               not_found
+
