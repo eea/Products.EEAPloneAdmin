@@ -3,6 +3,9 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Upgrade step: this step should run on www8:
+  - run /www/@@fixEffectiveDate
+  [ichimdav refs #18601]
 * Change: migration script to fix effective date now only affect
   published EEAFigure, DavizVisualization and PolicyQuestion objects
   [ichimdav refs #18601]
