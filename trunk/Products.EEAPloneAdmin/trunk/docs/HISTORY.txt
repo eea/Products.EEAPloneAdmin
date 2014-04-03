@@ -3,6 +3,10 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Upgrade-step: In ZMI under /www/0maintenance add an ExternalMethod with the settings
+    - module: Products.EEAPloneAdmin.ping_sds_content
+    - function: ping_all
+  [pasoviul refs #18928]
 * Upgrade step: this step should run on www8:
   - run /www/@@fixEffectiveDate
   [ichimdav refs #18601]
