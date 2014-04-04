@@ -24,6 +24,7 @@ Changelog
 * Pre-upgrade step: delete from all backends the following files
     - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf
     - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf-amd64
+    - {buildout:directory}/.installed.cfg
     - [ghicaale refs #18550]
 
 8.6 - (2014-03-10)
