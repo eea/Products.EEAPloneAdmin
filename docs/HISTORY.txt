@@ -6,7 +6,7 @@ Changelog
 * Upgrade step: In ZMI under /www/0maintenance add an ExternalMethod with the settings
     - module: Products.EEAPloneAdmin.ping_sds_content
     - function: ping_all
-  [pasoviul refs #18928]
+    - [pasoviul refs #18928]
 * Upgrade step: this step should run on www8:
   - run /www/@@fixEffectiveDate
   [ichimdav refs #18601]
@@ -21,6 +21,10 @@ Changelog
 * Pre-upgrade step: commit the external methods under EEAPloneAdmin, talk
   with Antonio firs.
   [marinis]
+* Pre-upgrade step: delete from all backends the following files
+    - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf
+    - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf-amd64
+    - [ghicaale refs #18550]
 
 8.6 - (2014-03-10)
 ------------------
@@ -1110,4 +1114,3 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
-
