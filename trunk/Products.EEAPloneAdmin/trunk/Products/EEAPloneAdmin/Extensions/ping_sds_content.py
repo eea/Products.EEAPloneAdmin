@@ -1,11 +1,7 @@
 #Ping SDS to update content and their aliases
 
-from Products.CMFCore.utils import getToolByName
 from DateTime import DateTime
-from zope.component import getUtility
-from Products.CMFCore.interfaces import ISiteRoot
-from plone.app.redirector.interfaces import IRedirectionStorage
-from zope.component import adapts, queryMultiAdapter
+from zope.component import queryMultiAdapter
 
 def ping_all(self):
     """ find objects of a certain portal_type and their aliases and pings them
