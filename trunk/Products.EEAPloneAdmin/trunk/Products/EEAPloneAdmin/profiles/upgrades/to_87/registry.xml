@@ -2,30 +2,30 @@
   <record field="contentTypeURLMapping" interface="Products.EEAPloneAdmin.interfaces.IEEACacheSettings" name="Products.EEAPloneAdmin.interfaces.IEEACacheSettings.contentTypeURLMapping">
     <value>
       <element key="CallForTender">
-        <element>/www/SITE/about-us/tenders</element>
-        <element>/www/SITE/about-us/tenders/open-calls-for-tenders</element>
-        <element>/www/SITE/about-us/tenders/closed-calls-for-tenders</element>
-        <element>/www/SITE/about-us/tenders/negotiated-procedures</element>
-        <element>/www/SITE/about-us/tenders/negotiated-procedures/copy_of_negotiated-procedures</element>
-        <element>/www/SITE/about-us/tenders/calls-for-expression-of-interest-1</element>
-        <element>/www/SITE/about-us/tenders/closed-calls-for-expression-of-interest</element>
+        <element>/about-us/tenders</element>
+        <element>/about-us/tenders/open-calls-for-tenders</element>
+        <element>/about-us/tenders/closed-calls-for-tenders</element>
+        <element>/about-us/tenders/negotiated-procedures</element>
+        <element>/about-us/tenders/negotiated-procedures/copy_of_negotiated-procedures</element>
+        <element>/about-us/tenders/calls-for-expression-of-interest-1</element>
+        <element>/about-us/tenders/closed-calls-for-expression-of-interest</element>
       </element>
       <element key="CallForProposal">
-        <element>/www/SITE/about-us/tenders</element>
-        <element>/www/SITE/about-us/tenders/calls-for-proposals</element>
-        <element>/www/SITE/about-us/tenders/calls-for-proposals/openproposal.html</element>
-        <element>/www/SITE/about-us/tenders/calls-for-proposals/closedproposal.html</element>
-        <element>/www/SITE/about-us/tenders/calls-for-proposals/cfp-docs</element>
+        <element>/about-us/tenders</element>
+        <element>/about-us/tenders/calls-for-proposals</element>
+        <element>/about-us/tenders/calls-for-proposals/openproposal.html</element>
+        <element>/about-us/tenders/calls-for-proposals/closedproposal.html</element>
+        <element>/about-us/tenders/calls-for-proposals/cfp-docs</element>
       </element>
       <element key="CallForInterest">
-        <element>/www/SITE/about-us/tenders</element>
-        <element>/www/SITE/about-us/tenders/calls-for-expression-of-interest-1</element>
-        <element>/www/SITE/about-us/tenders/closed-calls-for-expression-of-interest</element>
+        <element>/about-us/tenders</element>
+        <element>/about-us/tenders/calls-for-expression-of-interest-1</element>
+        <element>/about-us/tenders/closed-calls-for-expression-of-interest</element>
       </element>
       <element key="NegotiatedProcedure">
-        <element>/www/SITE/about-us/tenders</element>
-        <element>/www/SITE/about-us/tenders/negotiated-procedures</element>
-        <element>/www/SITE/about-us/tenders/negotiated-procedures/copy_of_negotiated-procedures</element>
+        <element>/about-us/tenders</element>
+        <element>/about-us/tenders/negotiated-procedures</element>
+        <element>/about-us/tenders/negotiated-procedures/copy_of_negotiated-procedures</element>
       </element>
     </value>
   </record>
