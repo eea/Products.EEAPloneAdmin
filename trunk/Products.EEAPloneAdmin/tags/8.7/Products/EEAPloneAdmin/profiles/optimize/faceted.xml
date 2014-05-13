@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_faceted" meta_type="EEA Faceted Tool">
+ <portal_type name="Data">
+  <property name="title">Data</property>
+  <property name="search_type">Data</property>
+  <property
+     name="search_interface">eea.dataservice.interfaces.IDataset</property>
+ </portal_type>
+ <portal_type name="Map">
+  <property name="title">Map</property>
+  <property name="search_type">EEAFigure</property>
+  <property
+     name="search_interface">eea.dataservice.interfaces.IEEAFigureMap</property>
+ </portal_type>
+ <portal_type name="Graph">
+  <property name="title">Graph</property>
+  <property name="search_type">EEAFigure</property>
+  <property
+     name="search_interface">eea.dataservice.interfaces.IEEAFigureGraph</property>
+ </portal_type>
+ <portal_type name="Indicator">
+  <property name="title">Indicator</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">eea.indicators.content.interfaces.IIndicatorAssessment</property>
+ </portal_type>
+ <portal_type name="Publication">
+  <property name="title">Publication</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">eea.reports.interfaces.IReportContainerEnhanced</property>
+ </portal_type>
+ <portal_type name="Interactive map">
+  <property name="title">Interactive map</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">Products.EEAContentTypes.content.interfaces.IInteractiveMap</property>
+ </portal_type>
+ <portal_type name="Interactive data">
+  <property name="title">Interactive data</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">Products.EEAContentTypes.content.interfaces.IInteractiveData</property>
+ </portal_type>
+ <portal_type name="News">
+  <property name="title">News</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">Products.EEAContentTypes.content.interfaces.IExternalHighlight</property>
+ </portal_type>
+ <portal_type name="Article">
+  <property name="title">Article</property>
+  <property name="search_type"></property>
+  <property
+     name="search_interface">Products.EEAContentTypes.content.interfaces.IArticle</property>
+ </portal_type>
+ <portal_type name="Video">
+  <property name="title">Video File</property>
+  <property name="search_type">File</property>
+  <property
+     name="search_interface">p4a.video.interfaces.IVideoEnhanced</property>
+ </portal_type>
+</object>
