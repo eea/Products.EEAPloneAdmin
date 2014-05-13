@@ -3,11 +3,21 @@
 from zope.interface import implements
 from zope.component import adapts
 from zope.component import getUtility
+from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry
 from z3c.caching.interfaces import IPurgePaths
 from Products.CMFCore.interfaces import IDynamicType
 from plone.app.caching.interfaces import IPloneCacheSettings
 from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
+
+try:
+    from plone.cachepurging.interfaces import IPurger
+    from plone.cachepurging.interfaces import IPurgePathRewriter
+    from plone.cachepurging.interfaces import ICachePurgingSettings
+    PLONE_APP_CACHING_INSTALLED = True
+except ImportError:
+    PLONE_APP_CACHING_INSTALLED = False
+
 
 class EEAContentPurgePaths(object):
     """ Paths to purge for content items to include the templates defined
@@ -29,10 +39,8 @@ class EEAContentPurgePaths(object):
 
         self.registry = getUtility(IRegistry)
         self.ploneSettings = self.registry.forInterface(IPloneCacheSettings)
-        self.eeaSettings = self.registry.forInterface(IEEACacheSettings)
 
         contentTypeRulesetMapping = self.ploneSettings.contentTypeRulesetMapping
-        contentTypeURLMapping = getattr(self.eeaSettings, "contentTypeURLMapping", {})
         templateRulesetMapping = self.ploneSettings.templateRulesetMapping
 
         ruleset = contentTypeRulesetMapping.get(portal_type)
@@ -53,9 +61,6 @@ class EEAContentPurgePaths(object):
                                   'tagscloud_counter']
             templates.extend(faceted_templates)
 
-            for url in contentTypeURLMapping.get(portal_type, []):
-                yield url
-
         for template in set(templates):
             yield prefix + '/' + template
 
@@ -63,3 +68,31 @@ class EEAContentPurgePaths(object):
         """ Get absolute paths
         """
         return []
+
+
+def _purge_handler(obj, event):
+    registry = queryUtility(IRegistry)
+    if registry:
+        settings = registry.forInterface(ICachePurgingSettings, check=False)
+        eeaSettings = registry.forInterface(IEEACacheSettings)
+        contentTypeURLMapping = getattr(eeaSettings, "contentTypeURLMapping", {})
+
+        purger = getUtility(IPurger)
+        rewriter = IPurgePathRewriter(obj.REQUEST, None)
+        caching_proxies = settings.cachingProxies
+
+        to_purge = contentTypeURLMapping.get(obj.portal_type, [])
+
+        if caching_proxies:
+            for template_url in to_purge:
+                paths_to_purge = rewriter(template_url)
+                for path_to_purge in paths_to_purge:
+                    for caching_proxy in caching_proxies:
+                        full_path = '%s%s' % (caching_proxy, path_to_purge)
+                        print("TO PURGE:", full_path)
+                        purger.purgeAsync(full_path)
+
+def purge_handler(obj, event):
+    if PLONE_APP_CACHING_INSTALLED:
+        return _purge_handler(obj, event)
+

@@ -29,5 +29,13 @@
                  name="eea.content" />
     </configure>
 
+   <subscriber
+        for="Products.Archetypes.interfaces.IBaseObject zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".purge.purge_handler"
+        />
+   <subscriber
+        for="Products.Archetypes.interfaces.IBaseObject Products.CMFCore.interfaces.IActionSucceededEvent"
+        handler=".purge.purge_handler"
+        />
 
 </configure>
