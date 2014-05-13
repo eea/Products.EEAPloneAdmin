@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.7-dev - (unreleased)
-----------------------
+8.7 - (2014-05-13)
+------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for Products.EEAPloneAdmin
   [batradav refs #3219]
@@ -1120,3 +1120,4 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
+
