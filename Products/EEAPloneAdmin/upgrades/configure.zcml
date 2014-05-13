@@ -4,6 +4,18 @@
     i18n_domain="eea">
 
     <genericsetup:upgradeSteps
+            source="8.6"
+            destination="8.7"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin upgrade87 profile"
+                import_profile="Products.EEAPloneAdmin:upgrade87"
+                />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
             source="8.5"
             destination="8.6"
             profile="Products.EEAPloneAdmin:default">
@@ -12,7 +24,7 @@
                 title="Import all steps from Products.EEAPloneAdmin upgrade86 profile"
                 import_profile="Products.EEAPloneAdmin:upgrade86"
                 />
-        
+
         <genericsetup:upgradeStep
             title="Reindex security settings"
             handler=".evolve85.update_role_mappings"
@@ -29,7 +41,7 @@
                 title="Import all steps from Products.EEAPloneAdmin upgrade85 profile"
                 import_profile="Products.EEAPloneAdmin:upgrade85"
                 />
-        
+
         <genericsetup:upgradeStep
             title="Reindex security settings"
             handler=".evolve85.update_role_mappings"

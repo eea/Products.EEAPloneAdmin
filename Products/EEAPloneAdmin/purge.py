@@ -7,6 +7,7 @@ from plone.registry.interfaces import IRegistry
 from z3c.caching.interfaces import IPurgePaths
 from Products.CMFCore.interfaces import IDynamicType
 from plone.app.caching.interfaces import IPloneCacheSettings
+from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
 
 class EEAContentPurgePaths(object):
     """ Paths to purge for content items to include the templates defined
@@ -28,8 +29,10 @@ class EEAContentPurgePaths(object):
 
         self.registry = getUtility(IRegistry)
         self.ploneSettings = self.registry.forInterface(IPloneCacheSettings)
+        self.eeaSettings = self.registry.forInterface(IEEACacheSettings)
 
         contentTypeRulesetMapping = self.ploneSettings.contentTypeRulesetMapping
+        contentTypeURLMapping = getattr(self.eeaSettings, "contentTypeURLMapping", {})
         templateRulesetMapping = self.ploneSettings.templateRulesetMapping
 
         ruleset = contentTypeRulesetMapping.get(portal_type)
@@ -46,11 +49,14 @@ class EEAContentPurgePaths(object):
             templates.extend(image_scales)
 
             # Purge eea.facetednavigation specific
-            faceted_temaplates = ['faceted_counter', 'faceted_query',
+            faceted_templates = ['faceted_counter', 'faceted_query',
                                   'tagscloud_counter']
-            templates.extend(faceted_temaplates)
+            templates.extend(faceted_templates)
 
-        for template in templates:
+            for url in contentTypeURLMapping.get(portal_type, []):
+                yield url
+
+        for template in set(templates):
             yield prefix + '/' + template
 
     def getAbsolutePaths(self):

@@ -3,6 +3,11 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for Products.EEAPloneAdmin
+  [batradav refs #3219]
+* Change: improved cache purging to purge specific URLs based on a registry mapping
+  [batradav refs #19462]
 * Upgrade step: In ZMI under /www/0maintenance add an ExternalMethod with the settings
     - module: Products.EEAPloneAdmin.ping_sds_content
     - function: ping_all
