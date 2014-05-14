@@ -3,6 +3,10 @@ Changelog
 
 8.8-dev - (unreleased)
 ----------------------
+* Fix: safely get IEEACacheSettings from registry
+    - removed 'print'
+    - fixed pylint
+  [batradav refs #19462]
 
 8.7 - (2014-05-13)
 ------------------
