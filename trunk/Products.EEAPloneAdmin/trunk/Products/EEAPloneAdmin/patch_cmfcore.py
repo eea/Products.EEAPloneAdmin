@@ -3,6 +3,7 @@
     on a live portal
 """
 
+from difflib import unified_diff
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.permissions import ChangeLocalRoles
 from AccessControl.requestmethod import postonly
@@ -37,3 +38,33 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
         if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
             # reindexObjectSecurity is always recursive
             obj.reindexObjectSecurity()
+
+
+def _getFileContent(f):
+    try:
+        return f.data
+    except AttributeError:
+        return f._readFile(0)
+
+def patched_getDiff(self, item_one_path, item_two_path, reverse=0):
+    """ Return a diff between one and two.
+    """
+    if not reverse:
+        item_one = self.unrestrictedTraverse(item_one_path)
+        item_two = self.unrestrictedTraverse(item_two_path)
+    else:
+        item_one = self.unrestrictedTraverse(item_two_path)
+        item_two = self.unrestrictedTraverse(item_one_path)
+
+    item_one_contents = _getFileContent(item_one)
+    item_two_contents = _getFileContent(item_two)
+
+    res =  unified_diff( item_one_contents.splitlines()
+                       , item_two_contents.splitlines()
+                       , item_one_path
+                       , item_two_path
+                       , ''
+                       , ''
+                       , lineterm=""
+                       )
+    return res
