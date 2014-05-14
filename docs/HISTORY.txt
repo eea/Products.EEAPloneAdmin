@@ -3,6 +3,8 @@ Changelog
 
 8.9-dev - (unreleased)
 ----------------------
+* Fix: patching Products.CMFCore.SkinsTool.getDiff
+  [batradav refs #19330]
 
 8.8 - (2014-05-14)
 ------------------

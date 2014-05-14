@@ -155,6 +155,13 @@
                   replacement=".patch_cmfcore.patched_deleteLocalRoles"
                   preserveOriginal="false" />
 
+    <!-- Patch for Products.CMFCore ver 2.2.7 getDiff function to properly read files -->
+    <monkey:patch description="Monkeypatch Products.CMFCore.SkinsTool.getDiff to use the proper read method"
+                  class="Products.CMFCore.SkinsTool.SkinsTool"
+                  original="getDiff"
+                  replacement=".patch_cmfcore.patched_getDiff"
+                  preserveOriginal="false" />
+
     ===========================[ Other patches ]==========================
 
     <!-- #2316 implement HEAD for zope3 BrowserView -->
