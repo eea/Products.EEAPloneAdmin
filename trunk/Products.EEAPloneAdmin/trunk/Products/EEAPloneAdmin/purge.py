@@ -89,7 +89,6 @@ def _purge_handler(obj, event):
                 for path_to_purge in paths_to_purge:
                     for caching_proxy in caching_proxies:
                         full_path = '%s%s' % (caching_proxy, path_to_purge)
-                        print("TO PURGE:", full_path)
                         purger.purgeAsync(full_path)
 
 def purge_handler(obj, event):
