@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.8-dev - (unreleased)
-----------------------
+8.8 - (2014-05-14)
+------------------
 * Fix: safely get IEEACacheSettings from registry
     - removed 'print'
     - fixed pylint
