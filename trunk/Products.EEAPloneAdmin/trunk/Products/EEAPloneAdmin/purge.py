@@ -74,7 +74,7 @@ def _purge_handler(obj, event):
     registry = queryUtility(IRegistry)
     if registry:
         settings = registry.forInterface(ICachePurgingSettings, check=False)
-        eeaSettings = registry.forInterface(IEEACacheSettings)
+        eeaSettings = registry.forInterface(IEEACacheSettings, check=False)
         contentTypeURLMapping = getattr(eeaSettings, "contentTypeURLMapping", {})
 
         purger = getUtility(IPurger)
