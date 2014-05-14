@@ -78,6 +78,9 @@ def _purge_handler(obj, event):
         contentTypeURLMapping = getattr(eeaSettings,
                                         "contentTypeURLMapping", {})
 
+        if contentTypeURLMapping is None:
+            return
+
         purger = getUtility(IPurger)
         rewriter = IPurgePathRewriter(obj.REQUEST, None)
         caching_proxies = settings.cachingProxies
