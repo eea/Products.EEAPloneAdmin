@@ -24,5 +24,8 @@ class IEEACacheSettings(Interface):
             title=_(u"Content type/url mapping"),
             description=_(u"Maps content type names to purge paths"),
             key_type=schema.ASCIILine(title=_(u"Content type name")),
-            value_type=schema.List(title=_(u"URL Paths"), value_type=schema.ASCIILine(title=_(u"Path"))),
+            value_type=schema.List(
+                title=_(u"URL Paths"),
+                value_type=schema.ASCIILine(title=_(u"Path"))
+            ),
         )
