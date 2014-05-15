@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Fix: patching Products.CMFCore.SkinsTool.getDiff
   [batradav refs #19330]
+* Fix: patching Products.CMFCore.DynamicType.icon
+  [batradav refs #8460]
 
 8.8 - (2014-05-14)
 ------------------

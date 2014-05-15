@@ -162,6 +162,13 @@
                   replacement=".patch_cmfcore.patched_getDiff"
                   preserveOriginal="false" />
 
+    <!-- Patch for Products.CMFCore ver 2.2.7 icon function to strip "/" -->
+    <monkey:patch description="Monkeypatch Products.CMFCore.DynamicType.icon to strip '/'"
+                  class="Products.CMFCore.DynamicType.DynamicType"
+                  original="icon"
+                  replacement=".patch_cmfcore.patched_icon"
+                  preserveOriginal="true" />
+
     ===========================[ Other patches ]==========================
 
     <!-- #2316 implement HEAD for zope3 BrowserView -->
