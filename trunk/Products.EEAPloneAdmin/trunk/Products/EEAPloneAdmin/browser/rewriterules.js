@@ -180,7 +180,7 @@ jQuery.eearewriterules = function(context){
       var selfform = jQuery(this),
           action = selfform.attr('action');
 
-      if(action.indexOf('/www') === -1){
+      if(action.substring(action.length - 4) !== '/www'){
         action = action + '/www';
       }
 
@@ -199,7 +199,7 @@ jQuery.eearewriterules = function(context){
       var selfform = jQuery(this),
           action = selfform.attr('action');
 
-      if (action.indexOf('/www') === -1) {
+      if (action.substring(action.length - 4) !== '/www') {
         action = action + '/www';
       }
 
@@ -236,7 +236,7 @@ jQuery.eearewriterules = function(context){
     jQuery.each(form, function(){
       var selfform = jQuery(this),
           action = selfform.attr('action');
-      if(action.indexOf('/www') === -1){
+      if(action.substring(action.length - 4) !== '/www'){
         action = action + '/www';
       }
 

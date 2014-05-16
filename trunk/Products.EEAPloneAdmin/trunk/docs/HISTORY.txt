@@ -3,6 +3,9 @@ Changelog
 
 8.9-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed rewriterules for @@manage-group-portlets, @@manage-group-dashboard,
+  @@manage-content-type-portlets
+  [olimpiurob refs #19739]
 * Fix: patching Products.CMFCore.SkinsTool.getDiff
   [batradav refs #19330]
 * Fix: patching Products.CMFCore.DynamicType.icon
