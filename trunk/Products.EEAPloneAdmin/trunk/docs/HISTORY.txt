@@ -3,6 +3,10 @@ Changelog
 
 8.9-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed rewriterules logic error where oldValue is assigned the
+  newValue value. Do not rewrite @@manage-content-type-portlets form action when
+  editing the portlet settings.
+  [olimpiurob refs #19739]
 * Bug fix: Fixed rewriterules for @@manage-group-portlets, @@manage-group-dashboard,
   @@manage-content-type-portlets
   [olimpiurob refs #19739]
