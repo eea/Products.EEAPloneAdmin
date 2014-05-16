@@ -178,16 +178,17 @@ jQuery.eearewriterules = function(context){
   if(form.length){
     jQuery.each(form, function(){
       var selfform = jQuery(this),
-          action = selfform.attr('action');
+          action = selfform.attr('action'),
+          new_action = action;
 
       if(action.substring(action.length - 4) !== '/www'){
-        action = action + '/www';
+        new_action = action + '/www';
       }
 
       jQuery(selfform).eearewrite({
         attr: 'action',
         oldVal: action,
-        newVal: action
+        newVal: new_action
       });
     });
   }
@@ -197,16 +198,17 @@ jQuery.eearewriterules = function(context){
   if(form.length){
     jQuery.each(form, function(){
       var selfform = jQuery(this),
-          action = selfform.attr('action');
+          action = selfform.attr('action'),
+          new_action = action;
 
       if (action.substring(action.length - 4) !== '/www') {
-        action = action + '/www';
+        new_action = action + '/www';
       }
 
       jQuery(selfform).eearewrite({
         attr: 'action',
         oldVal: action,
-        newVal: action
+        newVal: new_action
       });
     });
   }
@@ -235,15 +237,18 @@ jQuery.eearewriterules = function(context){
   if(form.length){
     jQuery.each(form, function(){
       var selfform = jQuery(this),
-          action = selfform.attr('action');
-      if(action.substring(action.length - 4) !== '/www'){
-        action = action + '/www';
+          action = selfform.attr('action'),
+          new_action = action;
+      
+      if((action.indexOf('++contenttypeportlets++') === -1) &&
+        (action.substring(action.length - 4) !== '/www')){
+        new_action = action + '/www';
       }
 
       jQuery(selfform).eearewrite({
         attr: 'action',
         oldVal: action,
-        newVal: action
+        newVal: new_action
       });
     });
   }
