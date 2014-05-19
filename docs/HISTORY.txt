@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.0-dev - (unreleased)
+----------------------
+
 8.9 - (2014-05-19)
 ------------------
 * Bug fix: Fixed rewriterules logic error where oldValue is assigned the
