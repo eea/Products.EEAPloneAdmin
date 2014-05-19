@@ -1,0 +1,83 @@
+<html xmlns::tal="http://xml.zope.org/namespaces/tal"
+		xmlns:metal="http://xml.zope.org/namespaces/metal"
+		i18n:domain="eea">
+
+<body>
+	<metal:orgHead define-macro="head">
+		<dl class="org_head" id=""
+			 tal:attributes="id unit/orgname; style python:test(unit['orgname']=='EDO','display:none',)"
+			 tal:define="staff_number python:orgs_data['orgs_info'][unit['orgname']]">
+			<dt tal:content="unit/organisation_name"></dt>
+			<dd class="ordName" >(<tal:orgName content="unit/orgname" />)</dd>
+		<tal:manager condition="unit/manager">
+			<dd class="jobTitle" tal:content="unit/job_title">Job title</dd>
+			<dd class="managerName">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?searchterm=${unit/last_name} ${unit/first_name}#${unit/empid};
+										 title string:${unit/last_name} ${unit/first_name}"
+					tal:content="string:${unit/last_name}, ${unit/first_name}">last_name, first_name</a></dd>
+		</tal:manager>
+			<dd class="org_staff_number" style="padding:2px">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?orgid=${unit/orgname};
+										 title string:${unit/orgname} members"
+					tal:content="string:${staff_number} members">members number</a>
+			</dd>
+		</dl>
+	</metal:orgHead>
+
+	<metal:orgUnit define-macro="unit">
+		<dl class="" id=""
+			 tal:attributes="id unit/orgname; class string:org_subhead org_child${repeat/unit/index}"
+			 tal:define="staff_number python:orgs_data['orgs_info'][unit['orgname']]">
+			<dt tal:content="unit/organisation_name"></dt>
+			<dd class="ordName" >(<tal:orgName content="unit/orgname" />)</dd>
+		<tal:manager condition="unit/manager">
+			<dd class="jobTitle" tal:content="unit/job_title">Job title</dd>
+			<dd class="managerName">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?searchterm=${unit/last_name} ${unit/first_name}#${unit/empid};
+										 title string:${unit/last_name} ${unit/first_name}"
+					tal:content="string:${unit/last_name}, ${unit/first_name}">last_name, first_name</a></dd>
+		</tal:manager>
+			<dd class="org_staff_number" style="padding:2px">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?orgid=${unit/orgname};
+								    title string:${unit/orgname} members" tal:content="string:${staff_number} members" />
+			</dd>
+		</dl>
+	</metal:orgUnit>
+
+	<metal:orgDirector define-macro="director"
+					  tal:condition="director|nothing">
+		<dl class="director_head" id="ED" tal:define="staff_data orgs_data/orgs_info">
+			<dt style="font-size: 11px;" i18n:translate="">European Environment Agency (EEA)</dt>
+			<dd class="org_staff_total" style="padding-top: 2px; float: right;">
+				<span i18n:translate="">Total staff</span>:&nbsp;&nbsp;
+				<a title="Total staff" class="noPrint" href="staff-list"
+				   i18n:attributes="title"
+				   tal:content="string:${staff_data/total}">Total staff</a>
+			</dd>
+			<dd style="margin-top: 20px; font-size: 11px; font-weight: bold;" i18n:translate="">Executive Director</dd>
+			<dd style="font-size: 11px; font-weight: bold;" class="managerName">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?searchterm=${director/last_name} ${director/first_name}#${director/empid};
+										 title string:${director/last_name} ${director/first_name}"
+					tal:content="string:${director/last_name}, ${director/first_name}">last_name, first_name</a></dd>
+			<dd i18n:translate="" tal:condition="deputy_director|nothing">Deputy Director</dd>
+			<dd tal:condition="deputy_director|nothing">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?searchterm=${deputy_director/last_name} ${deputy_director/first_name}#${deputy_director/empid};
+										 title string:${deputy_director/last_name} ${deputy_director/first_name}"
+					tal:content="string:${deputy_director/last_name}, ${deputy_director/first_name}">last_name, first_name</a>
+			</dd>
+			<dd class="org_staff_number" style="padding:2px">
+				<span i18n:translate="">EDO: </span>
+				<a title="EDO members" class="noPrint" href="staff-list?orgid=EDO"
+				   i18n:attributes="title"
+				   tal:content="string:${staff_data/EDO} members" style="padding-right:4px">EDO members</a>
+			</dd>
+		</dl>
+	</metal:orgDirector>
+</body>
+</html>

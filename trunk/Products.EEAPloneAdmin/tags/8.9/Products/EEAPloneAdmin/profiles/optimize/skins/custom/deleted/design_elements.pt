@@ -1,0 +1,319 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="eea">
+
+<body>
+    <div metal:fill-slot="content-core">
+    <metal:main-macro define-macro="content-core">
+
+    <div metal:use-macro="here/portlet_toc/macros/portlet">
+        table of contents
+    </div>
+
+    <h1 class="autoscroll-to-here">Welcome to EEA Web design elements, your browser should have autoscrolled down to me</h1>
+    <div class="documentDescription">This page shows common html markup, css classes and javascripts we use across the EEA website. See example code and use Firefox Firebug plugin to inspect elements code.</div>
+
+    <h2>Quotations</h2>
+    <blockquote>
+    <p>Europe has made considerable progress over recent decades in cleaning the air that we breathe, but air pollution remains a serious problem and continues to damage our health and the environment.</p>
+    <p class="source">Stavros Dimas, Commissioner for Environment</p>
+    </blockquote>
+
+    <h2>Gallery view</h2>
+    <p>You need to enter an image scale after the image src otherwise the gallery will load the full-resolution images which could dramatically slow the page
+    </p>
+    <ul id="galleryView">
+        <li>
+            <span class="panel-overlay">Overlay text goes here</span>
+            <img src="monkey-with-makeup/image_large" />
+        </li>
+        <li><img src="mr-monkey/image_large" /></li>
+    </ul>
+    <pre>
+&lt;ul id=&quot;galleryView&quot;&gt;
+    &lt;li&gt;
+        &lt;span class=&quot;panel-overlay&quot;&gt;Overlay text goes here&lt;/span&gt;
+        &lt;img src=&quot;mr-monkey/image_large&quot; /&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;img src=&quot;monkey-with-makeup/image_large&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    </pre>
+
+    <h2>Jquerytools tabs</h2>
+        <ul class="eea-tabs">
+            <li>First tab</li>
+            <li>Second tab</li>
+            <li>Third tab</li>
+        </ul>
+        <div class="eea-tabs-panels">
+           
+            <div class="eea-tabs-panel">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+            </div>
+            
+            <div class="eea-tabs-panel">
+Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+            </div>
+            <div class="eea-tabs-panel">
+Suspendisse tristique sapien non ipsum rutrum quis blandit nulla laoreet. Aliquam erat volutpat. Proin elementum pretium diam varius consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eget tincidunt mauris. Sed auctor, mauris sit amet ornare condimentum, odio mauris pulvinar libero, in bibendum odio risus et metus. Vivamus sit amet viverra arcu. Nunc non sem et nulla ultricies ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum congue est, eget volutpat elit vestibulum eu. Ut id dui augue, vitae pretium elit. Fusce porta, quam sit amet fermentum ultricies, nisi nisl condimentum est, et dignissim urna tortor suscipit est. Ut libero felis, fringilla convallis tristique a, sollicitudin vel est. Nullam quis sagittis augue.
+            </div>
+        </div>
+    <pre>
+        &lt;ul class="eea-tabs"&gt;
+            &lt;li&gt;First Tab&lt;/li&gt;
+            &lt;li&gt;Second Tab&lt;/li&gt;
+            &lt;li&gt;Third Tab&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="eea-tabs-panels"&gt;
+           
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for first tab
+            &lt;/div&gt;
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for second tab
+            &lt;/div&gt;
+            
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for third tab
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    </pre>
+
+    <h2>Jquerytools tabs two rows title</h2>
+        <ul class="eea-tabs two-rows">
+            <li>First tab</li>
+            <li>Second tab with longer title</li>
+            <li>Third tab</li>
+        </ul>
+        <p>If you have tabs that have longer titles consider using the extra "two-rows" class for the tabs which makes the tabs larger in height and better styled to accomodate larger titles</p>
+        <div class="eea-tabs-panels">
+           
+            <div class="eea-tabs-panel">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+            </div>
+            
+            <div class="eea-tabs-panel">
+Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+            </div>
+            <div class="eea-tabs-panel">
+Suspendisse tristique sapien non ipsum rutrum quis blandit nulla laoreet. Aliquam erat volutpat. Proin elementum pretium diam varius consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eget tincidunt mauris. Sed auctor, mauris sit amet ornare condimentum, odio mauris pulvinar libero, in bibendum odio risus et metus. Vivamus sit amet viverra arcu. Nunc non sem et nulla ultricies ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum congue est, eget volutpat elit vestibulum eu. Ut id dui augue, vitae pretium elit. Fusce porta, quam sit amet fermentum ultricies, nisi nisl condimentum est, et dignissim urna tortor suscipit est. Ut libero felis, fringilla convallis tristique a, sollicitudin vel est. Nullam quis sagittis augue.
+            </div>
+        </div>
+    <pre>
+        &lt;ul class="eea-tabs two-rows"&gt;
+            &lt;li&gt;First tab&lt;/li&gt;
+            &lt;li&gt;Second tab with longer title&lt;/li&gt;
+            &lt;li&gt;Third tab&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="eea-tabs-panels"&gt;
+           
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for first tab
+            &lt;/div&gt;
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for second tab
+            &lt;/div&gt;
+            
+            &lt;div class="eea-tabs-panel"&gt;
+                Content for third tab
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <h2>Jquerytools accordion</h2>
+    <div class="eea-accordion-panels">
+        <div class="eea-accordion-panel">
+            <h2 class="notoc">First panel title</h2>
+            <div class="pane">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+            </div>
+        </div>
+        <div class="eea-accordion-panel">
+            <h2 class="notoc">Second panel title</h2>
+            <div class="pane">
+                Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+            </div>
+        </div>
+        <div class="eea-accordion-panel">
+            <h2 class="notoc">Third panel title</h2>
+            <div class="pane">
+                Suspendisse tristique sapien non ipsum rutrum quis blandit nulla laoreet. Aliquam erat volutpat. Proin elementum pretium diam varius consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eget tincidunt mauris. Sed auctor, mauris sit amet ornare condimentum, odio mauris pulvinar libero, in bibendum odio risus et metus. Vivamus sit amet viverra arcu. Nunc non sem et nulla ultricies ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum congue est, eget volutpat elit vestibulum eu. Ut id dui augue, vitae pretium elit. Fusce porta, quam sit amet fermentum ultricies, nisi nisl condimentum est, et dignissim urna tortor suscipit est. Ut libero felis, fringilla convallis tristique a, sollicitudin vel est. Nullam quis sagittis augue.
+            </div>
+        </div>
+    </div>
+<pre>
+    &lt;div class="eea-accordion-panels"&gt;
+        &lt;div class="eea-accordion-panel"&gt;
+            &lt;h2&gt;First panel title&lt;/h2&gt;
+            &lt;div class="pane"&gt;
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="eea-accordion-panel"&gt;
+            &lt;h2&gt;Second panel title&lt;/h2&gt;
+            &lt;div class="pane"&gt;
+                Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="eea-accordion-panel"&gt;
+            &lt;h2&gt;Third panel title&lt;/h2&gt;
+            &lt;div class="pane"&gt;
+                Suspendisse tristique sapien non ipsum rutrum quis blandit nulla laoreet. Aliquam erat volutpat. Proin elementum pretium diam varius consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eget tincidunt mauris. Sed auctor, mauris sit amet ornare condimentum, odio mauris pulvinar libero, in bibendum odio risus et metus. Vivamus sit amet viverra arcu. Nunc non sem et nulla ultricies ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum congue est, eget volutpat elit vestibulum eu. Ut id dui augue, vitae pretium elit. Fusce porta, quam sit amet fermentum ultricies, nisi nisl condimentum est, et dignissim urna tortor suscipit est. Ut libero felis, fringilla convallis tristique a, sollicitudin vel est. Nullam quis sagittis augue.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+
+    <h2>Fancybox pop-ups</h2>
+    <div style="display:none">
+        <div id="hidden-popup" style="width:250px;height:150px">
+            Hello World!
+        </div>
+    </div>
+    <h4>Arbitrary HTML</h4>
+    <p>You can have arbitrary HTML in the pop-ups:</p>
+    <p>
+    <a class="fancybox" href="#hidden-popup">
+        Click me!
+    </a>
+    <h4>Image pop-ups</h4>
+    <p>
+        If the a-tag hrefs to an image, it will be displayed in the popup.
+        Be careful though, if the URL does not end with an image extension,
+        fancybox will hang.
+    </p>
+    <a class="fancybox" href="http://farm3.static.flickr.com/2181/2168980899_1508c84aac.jpg">
+        <img src="http://farm3.static.flickr.com/2181/2168980899_1508c84aac_t.jpg" />
+    </a>
+
+    <h2>Video pop-ups</h2>
+    <a href="/multimedia/electric-car" class="video-fancybox">
+        <img src="/multimedia/electric-car/image_wide" />
+    </a>
+    <pre>
+&lt;a href=&quot;http://www.eea.europa.eu/multimedia/electric-car&quot; class=&quot;video-fancybox&quot;&gt
+    &lt;img src=&quot;http://www.eea.europa.eu/multimedia/electric-car/image_wide&quot; /&gt
+&lt;/a&gt
+    </pre>
+
+    <h2>Tooltips</h2>
+    <img src="fish" title="Tooltips can go right" class="eea-tooltip-left" />
+    <img src="fish" title="Tooltips can go up" class="eea-tooltip-top" />
+    <img src="fish" title="Tooltips can go down" class="eea-tooltip-bottom" />
+    <img src="fish" title="Tooltips can go left" class="eea-tooltip-right" />
+    <pre>
+&lt;img src=&quot;fish&quot; class=&quot;eea-tooltip-left&quot; title=&quot;Tooltips can go right&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-tooltip-top&quot; title=&quot;Tooltips can go up&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-tooltip-bottom&quot; title=&quot;Tooltips can go down&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-tooltip-right&quot; title=&quot;Tooltips can go left&quot; /&gt;
+    </pre>
+
+    <h2>Flexible tooltips</h2>
+    <img src="fish" class="eea-flexible-tooltip-left" title="The name given to the resource. Typically, a title will be a name by which the resource is formally known" />
+    <img src="fish" class="eea-flexible-tooltip-top" title="The nature or genre of the content of the resource. Type includes terms describing general categories, functions, genres, or aggregation levels for content" />
+    <img src="fish" class="eea-flexible-tooltip-bottom" title="Short description of the data resource" />
+    <img src="fish" class="eea-flexible-tooltip-right" title="Information about rights held in and over the resource. Typically a rights element will contain a rights management statement for the resource, or reference a service providing such information. Rights information often encompasses intellectual property rights (IPR), copyright and various property rights" />
+    <pre>
+&lt;img src=&quot;fish&quot; class=&quot;eea-flexible-tooltip-left&quot; title=&quot;The name given to the resource. Typically, a title will be a name by which the resource is formally known&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-flexible-tooltip-top&quot; title=&quot;The nature or genre of the content of the resource. Type includes terms describing general categories, functions, genres, or aggregation levels for content&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-flexible-tooltip-bottom&quot; title=&quot;Short description of the data resource&quot; /&gt;
+&lt;img src=&quot;fish&quot; class=&quot;eea-flexible-tooltip-right&quot; title=&quot;Information about rights held in and over the resource. Typically a rights element will contain a rights management statement for the resource, or reference a service providing such information. Rights information often encompasses intellectual property rights (IPR), copyright and various property rights&quot; /&gt;
+    </pre>
+
+    <h2>Sortable tables</h2>
+    <table class="listing">
+        <thead>
+            <tr><th>Product</th><th>Price</th></tr> 
+        </thead>
+        <tbody>
+            <tr><td>Ice cream</td><td>50</td></tr>
+            <tr><td>Pony</td><td>75</td></tr>
+            <tr><td>Car</td><td>9999999</td></tr>
+        </tbody>
+    </table>
+    <pre>
+&lt;table class=&quot;listing&quot;&gt
+    &lt;thead&gt
+        &lt;tr&gt;&lt;th&gt;Product&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;/tr&gt; 
+    &lt;/thead&gt
+    &lt;tbody&gt
+        &lt;tr&gt;&lt;td&gt;Ice cream&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Pony&lt;/td&gt;&lt;td&gt;75&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Car&lt;/td&gt;&lt;td&gt;9999999&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </pre>
+
+    <h2>Basic text styles</h2>
+    <h1>This is a h1</h1>
+    <h2>This is a h2</h2>
+    <h3>This is a h3</h3>
+    <h4>This is a h4</h4>
+    <p>This is a paragraph. <a href="#" class="moreLink">This is a moreLink</a></p>
+    
+    <h2>Image scales</h2>
+    <p>image_large<br/><img src="giraffe/image_large" /></p>
+    <p>image_preview<br/><img src="giraffe/image_preview" /></p>
+    <p>image_mini<br/><img src="giraffe/image_mini" /></p>
+    <p>image_thumb<br/><img src="giraffe/image_thumb" /></p>
+    <p>image_tile<br/><img src="giraffe/image_tile" /></p>
+    <p>image_icon<br/><img src="giraffe/image_icon" /></p>
+    <p>image_listing<br/><img src="giraffe/image_listing" /></p>
+    <p>image_thumb (videos get play button and black borders applied correctly)<br/><img src="/multimedia/rain-on-snow-environmental-atlas-of-europe-2014-sweden/image_thumb" /></p>
+    <p>image_wide (only available for videos)<br/><img src="/multimedia/rain-on-snow-environmental-atlas-of-europe-2014-sweden/image_wide" /></p>
+
+    <h2>Portal messages</h2>
+    <div class="portalMessage">
+        <p>Settings have been applied<p/>
+    </div>
+    <div class="portalMessage informationMessage">
+        <p>Your screensaver has been upgraded, please consider to restart your computer ... Have a good day</p>
+    </div>
+    <div class="portalMessage warningMessage">
+        <p>Warning! Core meltdown at EEA HQ, code super-duper-red</p>
+    </div>
+
+
+    <h2>Auto-Link-Icons</h2>
+    <p>Link types are automatically detected on client side by a javascript which will add the necessary class icon before the link. Here you see some examples:</p>
+    <h3>Icons based on protocols</h3>
+    <p>
+        <a href="http://www.externalsite.eu">external link</a>,
+        <a href="https://www.externalsite.eu">secure link</a>, 
+        <a href="ftp://externalsite.eu">FTP link</a>,
+        <a href="callto://externalsite.eu">callto link</a>, 
+        <a href="mailto:any@any.eu">mailto link</a>
+        <br />
+        <strong>Test links</strong>: <a href="https://www.eea.europa.eu">new EEA domain link</a>, <a href="https://www.eea.europa.eu/document.pdf">PDF on new EEA domain link</a>, <a href="https://reports.eea.europa.eu/document.ppt">Presentation on old EEA domain</a>
+    </p>
+    <h3>Some popular file extensions</h3>
+    <p>
+        <a href="/document.pdf">PDF document</a>,
+        <a href="/doc.doc">Word document</a>, 
+        <a href="/pres.zip">Zip archive</a>,
+        <a href="/doc.xls">Excel link</a>, 
+        <a href="/download.asp?fileid=456&filetype=.pdf">Fake PDF file extension</a> (just add file extension in the URL as query at the end!), 
+    </p>
+    <p>There are more icons detected, see <a href="all_icons">list of all icons available</a></p>
+
+    </metal:main-macro>
+    </div>
+
+    <h2>Scope / Local search</h2>
+    <div class="localSearch lightBGC">
+        <h4>Search on data set and application</h4>
+        <form method="get" action="available.asp" id="form2" name="form2">
+            <input type="hidden" name="type" value="search" />
+            <div class="field">
+                <label>Title</label>
+                <div class="formHelp">Enter one or more keywords for a search. Use of AND/OR is supported.</div>
+                <div></div>
+                <input type="text" name="search" value="" size="30" maxlength="50" tabindex="1" />
+                <input type="submit" value="Search" class="searchButton" id="Submit2" name="Submit2" tabindex="2" />
+            </div> 
+        </form>
+    </div>
+</body>
+</html>

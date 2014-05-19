@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tools">
+    <object name="fatsyndication" remove="True" />
+    <object name="bda_feed" remove="True" />
+    <skin-path name="*">
+        <layer name="fatsyndication" remove="True" />
+        <layer name="bda_feed" remove="True" />
+    </skin-path>
+
+</object>
+
+
