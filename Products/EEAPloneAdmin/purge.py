@@ -18,6 +18,9 @@ try:
 except ImportError:
     PLONE_APP_CACHING_INSTALLED = False
 
+import logging
+logger = logging.getLogger("Products.EEAPloneAdmin")
+
 
 class EEAContentPurgePaths(object):
     """ Paths to purge for content items to include the templates defined
@@ -81,8 +84,14 @@ def _purge_handler(obj, event):
         if contentTypeURLMapping is None:
             return
 
+        request = getattr(obj, 'REQUEST', None)
+        if not request:
+            logging.info('Purge failed: no request found for %s' %
+                         obj.absolute_url())
+            return
+
         purger = getUtility(IPurger)
-        rewriter = IPurgePathRewriter(obj.REQUEST, None)
+        rewriter = IPurgePathRewriter(request, None)
         caching_proxies = settings.cachingProxies
 
         to_purge = contentTypeURLMapping.get(obj.portal_type, [])
