@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<object name="IndicatorFactSheet"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Indicator Fact Sheet</property>
+ <property name="description"
+    i18n:translate="">Indicator Fact Sheet</property>
+ <property
+    name="icon_expr">string:${portal_url}/IndicatorFactSheet.gif</property>
+ <property name="content_meta_type">IndicatorFactSheet</property>
+ <property name="product">eea.indicators</property>
+ <property name="factory">addIndicatorFactSheet</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">base_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="FactSheetDocument"/>
+  <element value="KeyMessage"/>
+  <element value="EEAFigure"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">indicatorfactsheet_view</property>
+ <property name="view_methods">
+  <element value="base_view"/>
+  <element value="indicatorfactsheet_view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="@@edit_aggregated"/>
+ <alias from="properties" to="base_metadata"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/view"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/@@edit_aggregated" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Advanced edit" action_id="advanced" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/base_edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>
