@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.0-dev - (unreleased)
-----------------------
+9.0 - (2014-05-26)
+------------------
 * Bug fix: fixed the PURGE handler when no REQUEST is available
   [ghicaale refs #19830]
 
