@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.1-dev - (unreleased)
-----------------------
+9.1 - (2014-05-30)
+------------------
 * Bug fix: fixed enable, disable & deletes content rule actions when used
   under Apache.
   [ghicaale refs #18904]
