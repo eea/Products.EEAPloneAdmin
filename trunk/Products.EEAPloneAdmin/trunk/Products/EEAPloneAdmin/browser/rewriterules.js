@@ -3,7 +3,6 @@
   an ATFolder called SITE
 */
 
-
 /**
   EEA Rewrite Rule as a jQuery plugin
 */
@@ -132,8 +131,6 @@ jQuery.eearewriterules = function(context){
     });
   }
 
-
-
   // @@usergroup-usermembership?b_start:int=0&userid=
   form = jQuery('form[action*="@@usergroup-usermembership"]', context);
   if(form.length){
@@ -239,7 +236,7 @@ jQuery.eearewriterules = function(context){
       var selfform = jQuery(this),
           action = selfform.attr('action'),
           new_action = action;
-      
+
       if((action.indexOf('++contenttypeportlets++') === -1) &&
         (action.substring(action.length - 4) !== '/www')){
         new_action = action + '/www';
