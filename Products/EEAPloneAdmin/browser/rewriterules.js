@@ -277,31 +277,31 @@ jQuery.eearewriterules = function(context){
 
   if(rule_enable.length){
     jQuery.each(rule_enable, function(){
-        var selfenable = jQuery(rule_enable);
-        jQuery(rule_enable).eearewrite({
+        var selfenable = jQuery(this);
+        jQuery(this).eearewrite({
           attr: 'data-url',
           oldVal: selfenable.attr('data-url'),
-          newVal: selfenable.attr('data-url').replace('@@contentrule-enable', '/www/@@contentrule-enable')
+          newVal: selfenable.attr('data-url').replace('@@contentrule-enable', 'www/@@contentrule-enable')
         });
     });
   }
   if(rule_disable.length){
     jQuery.each(rule_disable, function(){
-        var selfdisable = jQuery(rule_disable);
-        jQuery(rule_disable).eearewrite({
+        var selfdisable = jQuery(this);
+        jQuery(this).eearewrite({
           attr: 'data-url',
           oldVal: selfdisable.attr('data-url'),
-          newVal: selfdisable.attr('data-url').replace('@@contentrule-disable', '/www/@@contentrule-disable')
+          newVal: selfdisable.attr('data-url').replace('@@contentrule-disable', 'www/@@contentrule-disable')
         });
     });
   }
   if(rule_delete.length){
     jQuery.each(rule_delete, function(){
-        var selfdelete = jQuery(rule_delete);
-        jQuery(rule_delete).eearewrite({
+        var selfdelete = jQuery(this);
+        jQuery(this).eearewrite({
           attr: 'data-url',
           oldVal: selfdelete.attr('data-url'),
-          newVal: selfdelete.attr('data-url').replace('@@contentrule-delete', '/www/@@contentrule-delete')
+          newVal: selfdelete.attr('data-url').replace('@@contentrule-delete', 'www/@@contentrule-delete')
         });
     });
   }
