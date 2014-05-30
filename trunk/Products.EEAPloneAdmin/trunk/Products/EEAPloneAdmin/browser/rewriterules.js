@@ -279,7 +279,7 @@ jQuery.eearewriterules = function(context){
     jQuery.each(rule_enable, function(){
         var selfenable = jQuery(rule_enable);
         jQuery(rule_enable).eearewrite({
-          attr: 'action',
+          attr: 'data-url',
           oldVal: selfenable.attr('data-url'),
           newVal: selfenable.attr('data-url').replace('@@contentrule-enable', '/www/@@contentrule-enable')
         });
@@ -289,7 +289,7 @@ jQuery.eearewriterules = function(context){
     jQuery.each(rule_disable, function(){
         var selfdisable = jQuery(rule_disable);
         jQuery(rule_disable).eearewrite({
-          attr: 'action',
+          attr: 'data-url',
           oldVal: selfdisable.attr('data-url'),
           newVal: selfdisable.attr('data-url').replace('@@contentrule-disable', '/www/@@contentrule-disable')
         });
@@ -299,7 +299,7 @@ jQuery.eearewriterules = function(context){
     jQuery.each(rule_delete, function(){
         var selfdelete = jQuery(rule_delete);
         jQuery(rule_delete).eearewrite({
-          attr: 'action',
+          attr: 'data-url',
           oldVal: selfdelete.attr('data-url'),
           newVal: selfdelete.attr('data-url').replace('@@contentrule-delete', '/www/@@contentrule-delete')
         });
