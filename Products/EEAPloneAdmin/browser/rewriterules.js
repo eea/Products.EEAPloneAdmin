@@ -270,6 +270,42 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@rules-controlpanel - enable, disable & deletes content rule
+  rule_enable = jQuery('input[name*="form.button.EnableRule"]', context);
+  rule_disable = jQuery('input[name*="form.button.DisableRule"]', context);
+  rule_delete = jQuery('input[name*="form.button.DeleteRule"]', context);
+
+  if(rule_enable.length){
+    jQuery.each(rule_enable, function(){
+        var selfenable = jQuery(rule_enable);
+        jQuery(rule_enable).eearewrite({
+          attr: 'action',
+          oldVal: selfenable.attr('data-url'),
+          newVal: selfenable.attr('data-url').replace('@@contentrule-enable', '/www/@@contentrule-enable')
+        });
+    });
+  }
+  if(rule_disable.length){
+    jQuery.each(rule_disable, function(){
+        var selfdisable = jQuery(rule_disable);
+        jQuery(rule_disable).eearewrite({
+          attr: 'action',
+          oldVal: selfdisable.attr('data-url'),
+          newVal: selfdisable.attr('data-url').replace('@@contentrule-disable', '/www/@@contentrule-disable')
+        });
+    });
+  }
+  if(rule_delete.length){
+    jQuery.each(rule_delete, function(){
+        var selfdelete = jQuery(rule_delete);
+        jQuery(rule_delete).eearewrite({
+          attr: 'action',
+          oldVal: selfdelete.attr('data-url'),
+          newVal: selfdelete.attr('data-url').replace('@@contentrule-delete', '/www/@@contentrule-delete')
+        });
+    });
+  }
+
   // @@rules-controlpanel - add action
   form = jQuery('form[action*="+action"]', context);
   if(form.length && context_url.indexOf("++rule++rule")){
