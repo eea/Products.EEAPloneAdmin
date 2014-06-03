@@ -66,3 +66,4 @@ def ping_all(self):
             transaction.commit()
             logger.info('Progress %s/%s' % (index, results_len))
 
+    logger.info('Done bulk ping.')
