@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Bug fix: fixed the bulk Ping CR external method
   [ghicaale refs #18928]
+* Feature: better logging and improved performace for bulk ping external method
+  [ghicaale refs #18928]
 
 9.1 - (2014-05-30)
 ------------------
