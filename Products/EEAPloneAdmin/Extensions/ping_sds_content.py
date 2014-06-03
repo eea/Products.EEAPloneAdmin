@@ -3,6 +3,7 @@
 import logging
 from DateTime import DateTime
 from zope.component import queryMultiAdapter
+import transaction
 
 logger = logging.getLogger('eea')
 
@@ -50,12 +51,18 @@ def ping_all(self):
         else:
             results.append(portalUrl + alias[4:])
 
-    logger.info(len(results))
+    results_len = len(results)
+    index = 0
+    logger.info(results_len)
     logger.info('------')
     for result in results:
+        index += 1
         logger.info('Ping CR for: %s' % result)
         try:
             ping_cr_view(result)
         except:
             logger.error('Error: not able to ping')
+        if not index%100:
+            transaction.commit()
+            logger.info('Progress %s/%s' % (index, results_len))
 
