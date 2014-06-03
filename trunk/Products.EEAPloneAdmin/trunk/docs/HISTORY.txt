@@ -3,6 +3,8 @@ Changelog
 
 9.2-dev - (unreleased)
 ----------------------
+* Bug fix: fixed the bulk Ping CR external method
+  [ghicaale refs #18928]
 
 9.1 - (2014-05-30)
 ------------------
