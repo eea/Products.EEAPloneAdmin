@@ -30,26 +30,30 @@ def ping_all(self):
                              'sort_order':'reverse'})
     aliases = []
     for pub in pubs:
+        pub_url = ''
         obj = pub.getObject()
         local_view = obj.restrictedTraverse("@@manage-aliases")
         aliases += [x['redirect'] for x in local_view.redirects()]
         # Make proper URLs for objects
         obj_url = obj.absolute_url()
         if portalUrl in obj_url:
-            results.append(obj_url)
+            pub_url = obj_url
         else:
             url_index = obj_url.find('/www/SITE/')
-            if url_index:
-                results.append(portalUrl + obj_url[url_index+9:])
+            if url_index != -1:
+                pub_url = portalUrl + obj_url[url_index+9:]
             else:
-                esults.append(portalUrl + obj_url[url_index+7:])
+                pub_url = portalUrl + obj_url[25:]
+        results.append(pub_url)
 
     # Make proper URLs for aliases
     for alias in aliases:
+        alias_url = ''
         if '/SITE/' in alias:
-            results.append(portalUrl + alias[9:])
+            alias_url = portalUrl + alias[9:]
         else:
-            results.append(portalUrl + alias[4:])
+            alias_url = portalUrl + alias[4:]
+        results.append(alias_url)
 
     results_len = len(results)
     index = 0
