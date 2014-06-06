@@ -5,7 +5,7 @@ from DateTime import DateTime
 from zope.component import queryMultiAdapter
 import transaction
 
-logger = logging.getLogger('eea')
+logger = logging.getLogger('eea.bulkping')
 
 def ping_all(self):
     """ find objects of a certain portal_type and their aliases and pings them
@@ -57,11 +57,11 @@ def ping_all(self):
     logger.info('------')
     for result in results:
         index += 1
-        logger.info('Ping CR for: %s' % result)
         try:
             ping_cr_view(result)
         except:
             logger.error('Error: not able to ping')
+            logger.info('Ping CR for: %s' % result)
         if not index%100:
             transaction.commit()
             logger.info('Progress %s/%s' % (index, results_len))
