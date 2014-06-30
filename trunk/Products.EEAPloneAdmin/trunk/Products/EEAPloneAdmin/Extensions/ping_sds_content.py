@@ -44,7 +44,7 @@ def ping_all(self):
                 pub_url = portalUrl + obj_url[url_index+9:]
             else:
                 pub_url = portalUrl + obj_url[25:]
-        results.append(pub_url)
+        results.append("%s/@@rdf" % pub_url)
 
     # Make proper URLs for aliases
     for alias in aliases:
@@ -53,7 +53,7 @@ def ping_all(self):
             alias_url = portalUrl + alias[9:]
         else:
             alias_url = portalUrl + alias[4:]
-        results.append(alias_url)
+        results.append("%s/@@rdf" % alias_url)
 
     results_len = len(results)
     index = 0
