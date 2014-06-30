@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<export-steps>
+ <export-step id="cachesettings" handler="Products.CacheSetup.exportimport.cachefu.exportSetup" title="CacheFu Settings Tool">
+  
+  Export CacheFu settings.
+ 
+ </export-step>
+ <export-step id="possible_relations" handler="eea.relations.exportimport.exportRelationsTool" title="Possible relations settings">
+  
+  Export possible relations settings
+
+ </export-step>
+</export-steps>
