@@ -1615,7 +1615,7 @@ class FixEffectiveDateForPublishedObjects(object):
         catalog = getToolByName(self.context, 'portal_catalog')
         no_effective_date = DateTime('1000/01/01 00:00:00 GMT+2')
         brains = catalog(review_state="published",
-                         Language="en",
+                         Language="all",
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
@@ -1630,6 +1630,7 @@ class FixEffectiveDateForPublishedObjects(object):
 
         log.info("Starting Effective Date index fix for %d objects", total)
         default_lang = ["en"]
+        obj_with_translation_dates_count = 0
         for brain in brains:
             created_date = brain.created
             effective_date = brain.effective
@@ -1653,6 +1654,7 @@ class FixEffectiveDateForPublishedObjects(object):
                         break
                 if not all_without_dates:
                     obj_with_translation_dates += "%s \n" % obj_url
+                    obj_with_translation_dates_count += 1
                     continue
             history = None
             try:
@@ -1698,8 +1700,13 @@ class FixEffectiveDateForPublishedObjects(object):
                                  count, total)
                         transaction.commit()
                     break
+        skipped_obj_count_message = "SKIPPED OBJECTS TOTAL: %d" % \
+                                    obj_with_translation_dates_count
+
+        count_message = "MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("Ending Effective Date index fix for %d objects", total)
-        return res_objs + obj_with_translation_dates + reindex_error + \
+        return count_message + res_objs + skipped_obj_count_message + \
+               obj_with_translation_dates + reindex_error + \
                history_error + not_found
 
