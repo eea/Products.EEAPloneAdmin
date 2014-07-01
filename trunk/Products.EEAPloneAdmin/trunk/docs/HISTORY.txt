@@ -3,6 +3,9 @@ Changelog
 
 9.4-dev - (unreleased)
 ----------------------
+* Change: migration script now sets the EffectiveDate for every published
+  object for which the translations also have no effective date
+  [ichimdav refs #18601]
 
 9.3 - (2014-06-30)
 ------------------
