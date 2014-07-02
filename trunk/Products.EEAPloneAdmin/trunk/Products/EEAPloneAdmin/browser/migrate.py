@@ -1623,9 +1623,9 @@ class FixEffectiveDateForPublishedObjects(object):
                          show_inactive=True)
         request = self.context.REQUEST
 
-        res_objs = "\n\n RESULTING OBJS \n"
+        res_objs = "\n\n AFFECTED OBJS \n"
         skipped_objs = "\n\n SKIPPED OBJS WITH TRANSLATIONS" \
-                                     " THAT HAVE EFFECTIVE DATE \n"
+                    " THAT HAVE EFFECTIVE DATE LOWER THAN THE CREATION DATE \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
         history_error = "\n\n HISTORY ERRORS \n"
