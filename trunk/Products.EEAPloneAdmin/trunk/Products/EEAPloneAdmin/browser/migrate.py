@@ -1613,25 +1613,30 @@ class FixEffectiveDateForPublishedObjects(object):
         """
         log = logging.getLogger("EffectiveFix")
         catalog = getToolByName(self.context, 'portal_catalog')
+
         no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
+
         brains = catalog(review_state="published",
                          Language="all",
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
+
         res_objs = "\n\n RESULTING OBJS \n"
         skipped_objs = "\n\n SKIPPED OBJS WITH TRANSLATIONS" \
                                      " THAT HAVE EFFECTIVE DATE \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
         history_error = "\n\n HISTORY ERRORS \n"
+
         total = len(brains)
         count = 0
+        skipped_objs_count = 0
 
         log.info("Starting Effective Date index fix for %d objects", total)
+
         default_lang = ["en"]
-        skipped_objs_count = 0
         for brain in brains:
             created_date = brain.created
             effective_date = brain.effective
@@ -1661,7 +1666,6 @@ class FixEffectiveDateForPublishedObjects(object):
                 for ef_date in effective_dates_list:
                     for cr_date in creation_dates_list:
                         if ef_date < cr_date:
-                            import pdb; pdb.set_trace()
                             canSetEffectiveDate = False
                 if not canSetEffectiveDate:
                     skipped_objs += "%s \n" % obj_url
@@ -1692,11 +1696,6 @@ class FixEffectiveDateForPublishedObjects(object):
                         reindex_error += "%s --> %s \n" % (obj_url, err)
                         continue
 
-                    res_objs += "\n %s -Effective Date before --> %s" \
-                                " after --> %s Creation Date" \
-                                "date from history --> %s \n" % (
-                                    obj_url, effective_date, created_date, date)
-                    count += 1
                     if creationIsAfterPublish:
                         res_objs += "\n %s -Effective Date before --> %s" \
                                 " after --> %s from Creation Date because" \
@@ -1705,6 +1704,7 @@ class FixEffectiveDateForPublishedObjects(object):
                     else:
                         res_objs += "\n %s - Effective Date before --> %s " \
                             "after --> %s \n" % (obj_url, effective_date, date)
+
                     count += 1
                     if count % 100 == 0:
                         log.info('INFO: Transaction committed to zodb (%s/%s)',
@@ -1716,7 +1716,7 @@ class FixEffectiveDateForPublishedObjects(object):
 
         count_message = "MODIFIED OBJECTS TOTAL: %d" % count
 
-        log.info("Ending Effective Date index fix for %d objects", total)
+        log.info("Ending Effective Date index fix for %d objects", count)
         return count_message + res_objs + skipped_obj_count_message + \
                skipped_objs + reindex_error + history_error + not_found
 
