@@ -1613,14 +1613,15 @@ class FixEffectiveDateForPublishedObjects(object):
         """
         log = logging.getLogger("EffectiveFix")
         catalog = getToolByName(self.context, 'portal_catalog')
-        no_effective_date = DateTime('1000/01/01 00:00:00 GMT+2')
+        no_effective_date = DateTime('1000/01/01 00:00:00')
+        no_effective_date_str = 'None'
         brains = catalog(review_state="published",
                          Language="all",
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
         res_objs = "\n\n RESULTING OBJS \n"
-        obj_with_translation_dates = "\n\n SKIPPED OBJS WITH TRANSLATIONS" \
+        skipped_objs = "\n\n SKIPPED OBJS WITH TRANSLATIONS" \
                                      " THAT HAVE EFFECTIVE DATE \n"
         reindex_error = "\n\n REINDEX ERRORS \n"
         not_found = "\n\n OBJ NOT FOUND \n"
@@ -1630,7 +1631,7 @@ class FixEffectiveDateForPublishedObjects(object):
 
         log.info("Starting Effective Date index fix for %d objects", total)
         default_lang = ["en"]
-        obj_with_translation_dates_count = 0
+        skipped_objs_count = 0
         for brain in brains:
             created_date = brain.created
             effective_date = brain.effective
@@ -1643,18 +1644,28 @@ class FixEffectiveDateForPublishedObjects(object):
 
             if obj.getTranslationLanguages() != default_lang:
                 # set effective date only for objects where even their
-                # translations have no date otherwise we might set
-                # a wrong effective date for them
+                # translations have no date and the effective date is bigger
+                # than the creation date of any of the translations otherwise
+                #  we might set a wrong effective date for them
                 translations = obj.getTranslations().values()
                 translations = [translation[0] for translation in translations]
-                all_without_dates = True
+                canSetEffectiveDate = True
+                effective_dates_list = []
+                creation_dates_list = []
                 for translation in translations:
-                    if translation.EffectiveDate() != 'None':
-                        all_without_dates = False
-                        break
-                if not all_without_dates:
-                    obj_with_translation_dates += "%s \n" % obj_url
-                    obj_with_translation_dates_count += 1
+                    date = translation.effective()
+                    string_date = translation.EffectiveDate()
+                    creation_dates_list.append(translation.creation_date)
+                    if string_date != no_effective_date_str:
+                        effective_dates_list.append(date)
+                for ef_date in effective_dates_list:
+                    for cr_date in creation_dates_list:
+                        if ef_date < cr_date:
+                            import pdb; pdb.set_trace()
+                            canSetEffectiveDate = False
+                if not canSetEffectiveDate:
+                    skipped_objs += "%s \n" % obj_url
+                    skipped_objs_count += 1
                     continue
             history = None
             try:
@@ -1701,12 +1712,11 @@ class FixEffectiveDateForPublishedObjects(object):
                         transaction.commit()
                     break
         skipped_obj_count_message = "SKIPPED OBJECTS TOTAL: %d" % \
-                                    obj_with_translation_dates_count
+                                    skipped_objs_count
 
         count_message = "MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("Ending Effective Date index fix for %d objects", total)
         return count_message + res_objs + skipped_obj_count_message + \
-               obj_with_translation_dates + reindex_error + \
-               history_error + not_found
+               skipped_objs + reindex_error + history_error + not_found
 
