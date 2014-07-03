@@ -1623,12 +1623,12 @@ class FixEffectiveDateForPublishedObjects(object):
                          show_inactive=True)
         request = self.context.REQUEST
 
-        res_objs = "\n\n AFFECTED OBJS \n"
-        skipped_objs = "\n\n SKIPPED OBJS WITH TRANSLATIONS" \
-                    " THAT HAVE EFFECTIVE DATE LOWER THAN THE CREATION DATE \n"
-        reindex_error = "\n\n REINDEX ERRORS \n"
-        not_found = "\n\n OBJ NOT FOUND \n"
-        history_error = "\n\n HISTORY ERRORS \n"
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
+                    " THAT HAVE EFFECTIVE DATE LOWER THAN THE CREATION DATE \n"]
+        reindex_error = ["\n\n REINDEX ERRORS \n"]
+        not_found = ["\n\n OBJ NOT FOUND \n"]
+        history_error = ["\n\n HISTORY ERRORS \n"]
 
         total = len(brains)
         count = 0
@@ -1644,7 +1644,7 @@ class FixEffectiveDateForPublishedObjects(object):
             try:
                 obj = brain.getObject()
             except Exception:
-                not_found += obj_url + "\n"
+                not_found.append("%s \n" % obj_url)
                 continue
 
             if obj.getTranslationLanguages() != default_lang:
@@ -1668,14 +1668,14 @@ class FixEffectiveDateForPublishedObjects(object):
                         if ef_date < cr_date:
                             canSetEffectiveDate = False
                 if not canSetEffectiveDate:
-                    skipped_objs += "%s \n" % obj_url
+                    skipped_objs.append("%s \n" % obj_url)
                     skipped_objs_count += 1
                     continue
             history = None
             try:
                 history = ContentHistoryView(obj, request).fullHistory()
             except Exception, err:
-                history_error += "%s --> %s \n" % (obj_url, err)
+                history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
                 continue
             first_state = history[-1]
@@ -1693,17 +1693,17 @@ class FixEffectiveDateForPublishedObjects(object):
                     try:
                         obj.reindexObject(idxs=["EffectiveDate"])
                     except Exception, err:
-                        reindex_error += "%s --> %s \n" % (obj_url, err)
+                        reindex_error.append("%s --> %s \n" % (obj_url, err))
                         continue
 
                     if creationIsAfterPublish:
-                        res_objs += "\n %s -Effective Date before --> %s" \
-                                " after --> %s from Creation Date because" \
+                        res_objs.append("\n %s -Effective Date before --> %s"
+                                " after --> %s from Creation Date because"
                                 " it is after date from history --> %s \n" % (
-                                obj_url, effective_date, created_date, date)
+                                obj_url, effective_date, created_date, date))
                     else:
-                        res_objs += "\n %s - Effective Date before --> %s " \
-                            "after --> %s \n" % (obj_url, effective_date, date)
+                        res_objs.append("\n %s - Effective Date before --> %s "
+                            "after --> %s \n" % (obj_url, effective_date, date))
 
                     count += 1
                     if count % 100 == 0:
@@ -1711,12 +1711,18 @@ class FixEffectiveDateForPublishedObjects(object):
                                  count, total)
                         transaction.commit()
                     break
-        skipped_obj_count_message = "SKIPPED OBJECTS TOTAL: %d" % \
-                                    skipped_objs_count
+        skipped_obj_count_message = "\n SKIPPED OBJECTS TOTAL: %d" % \
+                skipped_objs_count
 
-        count_message = "MODIFIED OBJECTS TOTAL: %d" % count
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("Ending Effective Date index fix for %d objects", count)
-        return count_message + res_objs + skipped_obj_count_message + \
-               skipped_objs + reindex_error + history_error + not_found
+        res_objs = " ".join(res_objs)
+        skipped_objs = " ".join(skipped_objs)
+        reindex_error = " ".join(reindex_error)
+        history_error = " ".join(history_error)
+        not_found = " ".join(not_found)
+        return "%s %s %s %s %s %s %s " % (count_message, res_objs,
+                skipped_obj_count_message, skipped_objs, reindex_error,
+                history_error, not_found )
 
