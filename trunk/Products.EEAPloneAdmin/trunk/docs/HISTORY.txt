@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.5-dev - (unreleased)
+----------------------
+
 9.4 - (2014-07-15)
 ------------------
 * Change: migration script now sets the EffectiveDate for every published
