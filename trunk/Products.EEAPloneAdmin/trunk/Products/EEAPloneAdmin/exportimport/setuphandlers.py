@@ -3,6 +3,11 @@
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.interface import alsoProvides
+from zope.interface import implements
+from Products.CMFPlone.interfaces import INonInstallable \
+    as IPloneFactoryNonInstallable
+from Products.CMFQuickInstallerTool.interfaces import INonInstallable \
+    as IQuickInstallerNonInstallable
 
 
 def setupVarious(context):
@@ -47,7 +52,7 @@ def setupImageTypes(context):
 
 
 def clear_registries(context):
-    """Clear resource registries
+    """ Clear resource registries
     """
 
     if context.readDataFile('eeaploneadmin-optimize.txt') is None:
@@ -61,3 +66,26 @@ def clear_registries(context):
         tool.cookedresources = ()
         tool.concatenatedresources = {}
         tool.resources = ()
+
+
+class HiddenProfiles(object):
+    implements(IQuickInstallerNonInstallable, IPloneFactoryNonInstallable)
+
+    def getNonInstallableProfiles(self):
+        """ Prevents profiles dependencies from showing up in the profile list
+            when creating a Plone site.
+        """
+        return [u'collective.deletepermission:default',
+                u'ftw.upgrade:default',
+                u'Products.LDAPUserFolder:cmfldap',
+                ]
+
+    def getNonInstallableProducts(self):
+        """ Prevents our dependencies from showing up in the quick
+            installer's list of installable products.
+        """
+        return [
+            'collective.deletepermission',
+            'ftw.upgrade',
+            'Products.LDAPUserFolder',
+            ]
