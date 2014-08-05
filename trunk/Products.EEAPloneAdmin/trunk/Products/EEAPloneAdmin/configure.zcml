@@ -46,5 +46,4 @@
     name="collective.deletepermission"
     provides="Products.CMFQuickInstallerTool.interfaces.INonInstallable" />
 
-
 </configure>
