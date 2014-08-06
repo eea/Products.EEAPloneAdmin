@@ -42,6 +42,15 @@
     </configure>
 
     <genericsetup:registerProfile
+        name="delete-permission"
+        title="EEA Plone Admin: delete permission"
+        directory="profiles/delete-permission"
+        description="Extension profile to setup new delete permission."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
         name="uninstall"
         title="EEA Plone Admin: Uninstall profile"
         directory="profiles/uninstall"

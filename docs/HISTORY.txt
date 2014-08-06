@@ -6,6 +6,8 @@ Changelog
 * Feature: added handlers to prevent our dependencies from showing up in the
   quick installer's list of installable products
   [ghicaale refs #17478]
+* Feature: WIP - added the profile to setup the new delete permission
+  [ghicaale refs #17478]
 
 9.4 - (2014-07-15)
 ------------------
