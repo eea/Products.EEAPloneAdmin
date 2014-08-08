@@ -6,7 +6,7 @@ Changelog
 * Feature: added handlers to prevent our dependencies from showing up in the
   quick installer's list of installable products
   [ghicaale refs #17478]
-* Feature: WIP - added the profile to setup the new delete permission
+* Feature: added the profile to setup the new delete permission
   [ghicaale refs #17478]
 * Feature: added upgrade steps for delete permission and timeout dialog.
   [ghicaale refs #17478]
