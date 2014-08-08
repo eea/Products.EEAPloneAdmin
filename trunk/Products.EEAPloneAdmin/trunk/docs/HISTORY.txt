@@ -8,6 +8,8 @@ Changelog
   [ghicaale refs #17478]
 * Feature: WIP - added the profile to setup the new delete permission
   [ghicaale refs #17478]
+* Feature: added upgrade steps for delete permission and timeout dialog.
+  [ghicaale refs #17478]
 
 9.4 - (2014-07-15)
 ------------------

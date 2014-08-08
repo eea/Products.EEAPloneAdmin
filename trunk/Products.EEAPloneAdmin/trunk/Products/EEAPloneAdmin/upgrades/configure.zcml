@@ -4,7 +4,7 @@
     i18n_domain="eea">
 
     <genericsetup:upgradeSteps
-            source="9.4"
+            source="8.7"
             destination="9.5"
             profile="Products.EEAPloneAdmin:default">
 
@@ -15,7 +15,7 @@
 
         <genericsetup:upgradeDepends
                 title="Import all steps from eea.jquery timeoutdialog profile"
-                import_profile="eea.jquery:timeoutdialog"
+                import_profile="eea.jquery:24-timeoutdialog"
                 />
 
     </genericsetup:upgradeSteps>
