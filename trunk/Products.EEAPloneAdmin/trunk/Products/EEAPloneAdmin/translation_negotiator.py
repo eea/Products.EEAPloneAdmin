@@ -73,7 +73,7 @@ def _patched_translate(self, msgid, mapping=None, context=None,
     # return unpatched translation if no context is present ( happened with
     # comments )
 
-    alwaysTranslate = mapping.get('alwaysTranslate', None) if mapping else None
+    alwaysTranslate = mapping.pop('alwaysTranslate', None) if mapping else None
     if not context or alwaysTranslate:
         return _unpatched_translate(self, msgid, mapping, context,
                                     target_language, default)
