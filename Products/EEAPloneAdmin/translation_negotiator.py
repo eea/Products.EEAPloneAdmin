@@ -34,8 +34,8 @@ def get_editor_language(request):
     if cached:
         return cached
 
-    isAnon = getattr(request, "_isAnon", None)
-    if isAnon:
+    alwaysTranslate = getattr(request, "alwaysTranslate", None)
+    if alwaysTranslate:
         return None
 
     context = find_context(request)
@@ -51,7 +51,7 @@ def get_editor_language(request):
                                                     name="plone_portal_state")
     if portal_state.anonymous():
         # Anon visitor, normal language ->
-        request._isAnon = True
+        request.alwaysTranslate = True
         return None
 
     language = 'en'
@@ -72,7 +72,9 @@ def _patched_translate(self, msgid, mapping=None, context=None,
     """
     # return unpatched translation if no context is present ( happened with
     # comments )
-    if not context:
+
+    alwaysTranslate = mapping.get('alwaysTranslate', None) if mapping else None
+    if not context or alwaysTranslate:
         return _unpatched_translate(self, msgid, mapping, context,
                                     target_language, default)
     try:

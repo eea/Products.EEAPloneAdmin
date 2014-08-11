@@ -3,6 +3,8 @@ Changelog
 
 9.5-dev - (unreleased)
 ----------------------
+* Bug fix: Added possibility to force i18n translations for authenticated users
+  [voineali refs #20608]
 * Feature: added handlers to prevent our dependencies from showing up in the
   quick installer's list of installable products
   [ghicaale refs #17478]
