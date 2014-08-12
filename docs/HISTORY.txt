@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.6-dev - (unreleased)
+----------------------
+
 9.5 - (2014-08-12)
 ------------------
 * Bug fix: Added possibility to force i18n translations for authenticated users
