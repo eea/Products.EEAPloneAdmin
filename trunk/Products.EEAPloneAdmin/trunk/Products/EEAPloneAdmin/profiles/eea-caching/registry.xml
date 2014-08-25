@@ -216,6 +216,8 @@
       <element key="download.csv">eea.content.staleResources</element>
       <element key="download.tsv">eea.content.staleResources</element>
       <element key="download.schema.xml">eea.content.staleResources</element>
+      <element key="download.pdf">eea.content.staleResources</element>
+      <element key="download.epub">eea.content.staleResources</element>
       <element key="image_view">plone.content.itemView</element>
       <element key="overview">plone.content.itemView</element>
       <element key="recently_modified">plone.content.itemView</element>

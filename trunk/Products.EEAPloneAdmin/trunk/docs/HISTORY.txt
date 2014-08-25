@@ -3,6 +3,11 @@ Changelog
 
 9.6-dev - (unreleased)
 ----------------------
+* Upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
+  add **download.pdf** and **download.epub** within **Stale resources**
+  [voineali refs #20678]
+* Change: Cache download.pdf and download.epub within varnish
+  [voineali refs #20678]
 
 9.5 - (2014-08-12)
 ------------------
