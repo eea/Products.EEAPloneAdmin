@@ -1726,3 +1726,40 @@ class FixEffectiveDateForPublishedObjects(object):
                 skipped_obj_count_message, skipped_objs, reindex_error,
                 history_error, not_found )
 
+
+class FixEEAFigureFilesPublishDate(object):
+    """ Fix EEAFigureFile objects with old effective date
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("EffectiveFixForEEAFigureFile")
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(portal_type="EEAFigureFile", show_inactive="True")
+        count = 0
+        total = len(brains)
+        log.info("START effective date index fix for %d objects", total)
+        urls = []
+        for brain in brains:
+            if brain.EffectiveDate != 'None':
+                obj = brain.getObject()
+                parent = obj.aq_parent
+                obj_date = obj.effective_date
+                parent_date = parent.effective_date
+                if obj_date < parent_date:
+                    count += 1
+                    obj.setEffectiveDate(parent_date)
+                    obj.reindexObject(idxs=["effective"])
+                    urls.append(obj.absolute_url(1))
+                    if count % 100 == 0:
+                        log.info('INFO: Transaction committed to zodb (%s/%s)',
+                                 count, total)
+                        transaction.commit()
+        log.info("Fixed %d EEAFigureFile effectiveDate", count)
+        log.info("END effective date index fix for %d objects", total)
+        res_objs_urls = "\n".join(urls)
+        return res_objs_urls
