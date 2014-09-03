@@ -3,6 +3,12 @@ Changelog
 
 9.7-dev - (unreleased)
 ----------------------
+* Upgrade step: this step should run on www8:
+  - run /www/@@fixEEAFigureFileEffectiveDate
+  [ichimdav refs #20827]
+* Feature: added migration script that sets the EffectiveDate of EEAFigureFiles
+  to that of the parent if it's EffectiveDate is earlier than that of the parent
+  [ichimdav refs #20827]
 
 9.6 - (2014-08-27)
 ------------------

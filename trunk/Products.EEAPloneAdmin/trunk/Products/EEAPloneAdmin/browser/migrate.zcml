@@ -173,4 +173,8 @@
                   class=".migrate.FixEffectiveDateForPublishedObjects"
                   permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+                  name="fixEEAFigureFileEffectiveDate"
+                  class=".migrate.FixEEAFigureFilesPublishDate"
+                  permission="cmf.ManagePortal" />
 </configure>
