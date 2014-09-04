@@ -7,17 +7,7 @@
     <include package=".browser" />
     <include package=".upgrades" />
 
-    <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
-                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-                handler=".event.handle_resourceregistry_change" />
 
-    <subscriber for="Products.Archetypes.interfaces.IBaseContent zope.lifecycleevent.interfaces.IObjectCopiedEvent"
-                handler=".event.handle_object_copied" />
-
-    <subscriber
-            for="Products.Archetypes.interfaces.IBaseContent
-             OFS.interfaces.IObjectClonedEvent"
-            handler=".event.handle_object_cloned" />
 
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
@@ -34,10 +24,28 @@
                  name="eea.content" />
     </configure>
 
-   <subscriber for="Products.Archetypes.interfaces.IBaseObject zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    <!--? subscribers -->
+    <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".event.handle_resourceregistry_change" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     zope.lifecycleevent.interfaces.IObjectCopiedEvent"
+                handler=".event.handle_object_copied" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     OFS.interfaces.IObjectClonedEvent"
+                handler=".event.handle_object_cloned" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+                handler=".event.handle_workflow_change" />
+   <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                handler=".purge.purge_handler" />
 
-   <subscriber for="Products.Archetypes.interfaces.IBaseObject Products.CMFCore.interfaces.IActionSucceededEvent"
+   <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                    Products.CMFCore.interfaces.IActionSucceededEvent"
                handler=".purge.purge_handler" />
 
   <!-- hide profiles for dependencies -->

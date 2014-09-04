@@ -19,6 +19,7 @@ def handle_resourceregistry_change(obj, event):
         if getattr(event, 'force', False):
             save_resources_on_disk(obj)
 
+
 def handle_object_copied(obj, event):
     """ Handle object copy/paste
     """
@@ -28,4 +29,21 @@ def handle_object_copied(obj, event):
 def handle_object_cloned(obj, event):
     """ Handle object pasted within the final destination
     """
-    obj.setEffectiveDate()
+    if obj.effective_date:
+        obj.setEffectiveDate()
+
+def handle_workflow_change(obj, event):
+    """ Handle object workflow change and remove effectiveDate
+        if the review_state is no longer published
+    """
+    # 20827 remove effective date from object if review_state is
+    # no longer published.
+    # This event is triggered also when there is an object clone
+    # after the object copied event and before the object is cloned
+
+    review_state = event.status['review_state']
+    if review_state != "published":
+        if obj.effective_date:
+            obj.setEffectiveDate()
+
+
