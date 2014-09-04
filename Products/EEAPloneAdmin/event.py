@@ -23,3 +23,9 @@ def handle_object_copied(obj, event):
     """ Handle object copy/paste
     """
     obj.creation_date = DateTime()
+
+
+def handle_object_cloned(obj, event):
+    """ Handle object pasted within the final destination
+    """
+    obj.setEffectiveDate()

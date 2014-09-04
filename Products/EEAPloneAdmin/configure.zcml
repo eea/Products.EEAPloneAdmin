@@ -14,6 +14,11 @@
     <subscriber for="Products.Archetypes.interfaces.IBaseContent zope.lifecycleevent.interfaces.IObjectCopiedEvent"
                 handler=".event.handle_object_copied" />
 
+    <subscriber
+            for="Products.Archetypes.interfaces.IBaseContent
+             OFS.interfaces.IObjectClonedEvent"
+            handler=".event.handle_object_cloned" />
+
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
