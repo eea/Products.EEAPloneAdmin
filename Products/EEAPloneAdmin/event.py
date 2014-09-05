@@ -29,6 +29,9 @@ def handle_object_copied(obj, event):
 def handle_object_cloned(obj, event):
     """ Handle object pasted within the final destination
     """
+    if obj.portal_type == "CallForInterest" or \
+                    obj.portal_type == "CallForTender":
+        return
     if obj.effective_date:
         obj.setEffectiveDate('None')
 
@@ -40,6 +43,12 @@ def handle_workflow_change(obj, event):
     # no longer published.
     # This event is triggered also when there is an object clone
     # after the object copied event and before the object is cloned
+    # skip changes for CallForInterest since the open and close
+    # date properties of the object is populating the expiration
+    # and publishing date
+    if obj.portal_type == "CallForInterest" or \
+                    obj.portal_type == "CallForTender":
+        return
     review_state = event.status['review_state']
     if review_state != "published":
         if obj.effective_date:
