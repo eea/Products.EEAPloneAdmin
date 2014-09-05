@@ -32,7 +32,6 @@ def handle_object_cloned(obj, event):
     if obj.effective_date:
         obj.setEffectiveDate()
 
-
 def handle_workflow_change(obj, event):
     """ Handle object workflow change and remove effectiveDate
         if the review_state is no longer published
@@ -41,9 +40,7 @@ def handle_workflow_change(obj, event):
     # no longer published.
     # This event is triggered also when there is an object clone
     # after the object copied event and before the object is cloned
-    uid = obj.UID()
-    if not uid:
-        pass
+
     review_state = event.status['review_state']
     if review_state != "published":
         if obj.effective_date:
