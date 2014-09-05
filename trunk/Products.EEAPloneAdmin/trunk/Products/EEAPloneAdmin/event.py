@@ -30,7 +30,7 @@ def handle_object_cloned(obj, event):
     """ Handle object pasted within the final destination
     """
     if obj.effective_date:
-        obj.setEffectiveDate()
+        obj.setEffectiveDate('None')
 
 def handle_workflow_change(obj, event):
     """ Handle object workflow change and remove effectiveDate
