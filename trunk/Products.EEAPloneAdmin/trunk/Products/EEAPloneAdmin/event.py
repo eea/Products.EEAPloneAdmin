@@ -29,11 +29,12 @@ def handle_object_copied(obj, event):
 def handle_object_cloned(obj, event):
     """ Handle object pasted within the final destination
     """
-    if obj.portal_type == "CallForInterest" or \
-                    obj.portal_type == "CallForTender":
+    ptype = obj.portal_type
+    if ptype == "CallForInterest" or ptype == "CallForTender":
         return
     if obj.effective_date:
         obj.setEffectiveDate('None')
+
 
 def handle_workflow_change(obj, event):
     """ Handle object workflow change and remove effectiveDate
@@ -46,11 +47,20 @@ def handle_workflow_change(obj, event):
     # skip changes for CallForInterest since the open and close
     # date properties of the object is populating the expiration
     # and publishing date
-    if obj.portal_type == "CallForInterest" or \
-                    obj.portal_type == "CallForTender":
+    ptype = obj.portal_type
+    if ptype == "CallForInterest" or ptype == "CallForTender":
         return
     review_state = event.status['review_state']
-    if review_state != "published":
+    # set effectiveDate to that of the EEAFigure for all EEAFigureFiles
+    # when EEAFigure is published 20827
+    if review_state == "published":
+        parent_date = obj.effective_date
+        if ptype == "EEAFigure":
+            figbrains = obj.getFolderContents({'portal_type': 'EEAFigureFile'})
+            for brain in figbrains:
+                figure = brain.getObject()
+                figure.setEffectiveDate(parent_date)
+    else:
         if obj.effective_date:
             obj.setEffectiveDate('None')
 
