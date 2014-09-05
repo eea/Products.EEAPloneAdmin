@@ -79,32 +79,32 @@
     ===========================[ TinyMCE patches ]==========================
 
     <!-- Patch for Products.TinyMCE ver 1.3.4 to display Topic results when clicking on them in a tinymce listing -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.getListing to display Topic results when clicking on them in a tinymce listing"
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.getListing to display Topic results when clicking on them in a tinymce listing"
                   class="Products.TinyMCE.adapters.JSONFolderListing.JSONFolderListing"
                   original="getListing"
                   replacement=".patch_tinymce.patched_getListing"
-                  preserveOriginal="false" />
+                  preserveOriginal="false" /-->
 
     <!-- Patch for Products.TinyMCE ver 1.3.4 to search in Title instead of SearchableText -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.getSearchResults to search in Title instead of SearchableText"
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.getSearchResults to search in Title instead of SearchableText"
                   class="Products.TinyMCE.adapters.JSONSearch.JSONSearch"
                   original="getSearchResults"
                   replacement=".patch_tinymce.patched_getSearchResults"
-                  preserveOriginal="false" />
+                  preserveOriginal="false" /-->
 
     <!-- Patch for Products.TinyMCE ver 1.4.0 to return custom tiles instead of predefined sections  -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.getStyle"
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.getStyle"
                   class="Products.TinyMCE.utility.TinyMCE"
                   original="getStyles"
                   replacement=".patch_tinymce.patched_getStyles"
-                  preserveOriginal="false" />
+                  preserveOriginal="false" /-->
 
     <!-- Patch for Products.TinyMCE ver 1.4.0 to record a history version when using the TinyMCE save plugin  -->
-    <monkey:patch description="Monkeypatch Products.TinyMCE.getStyle"
+    <!--monkey:patch description="Monkeypatch Products.TinyMCE.getStyle"
                   class="Products.TinyMCE.adapters.Save.Save"
                   original="save"
                   replacement=".patch_tinymce.patched_save"
-                  preserveOriginal="false" />
+                  preserveOriginal="false" /-->
 
     ===========================[ plone.app.viewletmanager patches ]==========================
 
