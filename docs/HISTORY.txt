@@ -3,12 +3,12 @@ Changelog
 
 9.7-dev - (unreleased)
 ----------------------
-* Upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
-  remove **download.pdf** within **Stale resources**
-  [voineali refs #20845]
 * Upgrade step: this step should run on www8:
   - run /www/@@fixEEAFigureFileEffectiveDate
   [ichimdav refs #20827]
+* Pre-upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
+  remove **download.pdf** and **download.epub** within **Stale resources**
+  [voineali refs #20845]
 * Feature: added migration script that sets the EffectiveDate of EEAFigureFiles
   to that of the parent if it's EffectiveDate is earlier than that of the parent
   [ichimdav refs #20827]
