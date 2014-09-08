@@ -3,6 +3,9 @@ Changelog
 
 9.7-dev - (unreleased)
 ----------------------
+* Upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
+  remove **download.pdf** within **Stale resources**
+  [voineali refs #20845]
 * Upgrade step: this step should run on www8:
   - run /www/@@fixEEAFigureFileEffectiveDate
   [ichimdav refs #20827]
