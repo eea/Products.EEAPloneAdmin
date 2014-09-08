@@ -56,7 +56,10 @@ def handle_workflow_change(obj, event):
     if review_state == "published":
         parent_date = obj.effective_date
         if ptype == "EEAFigure":
-            figbrains = obj.getFolderContents({'portal_type': 'EEAFigureFile'})
+            query = {'portal_type': 'EEAFigureFile'}
+            cur_path = '/'.join(obj.getPhysicalPath())
+            query['path'] = {'query': cur_path, 'depth': 1}
+            figbrains = obj.portal_catalog(query)
             for brain in figbrains:
                 figure = brain.getObject()
                 figure.setEffectiveDate(parent_date)
