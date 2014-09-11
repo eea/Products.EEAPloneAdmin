@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<object name="GoReplacements"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">GoReplacements</property>
+ <property name="description" i18n:translate="">
+      </property>
+ <property name="icon_expr">string:${portal_url}/go_tool.png</property>
+ <property name="content_meta_type">GoReplacements</property>
+ <property name="product">GoReplace</property>
+ <property name="factory">addGoReplacements</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">base_view</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="GoReplacement"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">folder_contents</property>
+ <property name="view_methods">
+  <element value="folder_contents"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="atct_edit"/>
+ <alias from="index.html" to="(dynamic view)"/>
+ <alias from="properties" to="base_metadata"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${folder_url}/"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/edit"
+    visible="True">
+  <permission value="Change portal topics"/>
+ </action>
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz" icon_expr=""
+    link_target="" url_expr="string:${object_url}/reference_graph"
+    visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+ <action title="Folder Listing" action_id="folderlisting" category="folder"
+    condition_expr="object/isPrincipiaFolderish" icon_expr="" link_target=""
+    url_expr="string:${folder_url}/view" visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="show_items" action_id="show_items" category="object"
+    condition_expr="python:1" icon_expr="" link_target=""
+    url_expr="string:${object_url}/show_items" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Criteria" action_id="criteria" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${folder_url}/criterion_edit_form" visible="True">
+  <permission value="Change portal topics"/>
+ </action>
+ <action title="Subfolders" action_id="subtopics" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${folder_url}/atct_topic_subtopics" visible="True">
+  <permission value="Change portal topics"/>
+ </action>
+</object>

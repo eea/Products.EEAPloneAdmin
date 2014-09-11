@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel" meta_type="Plone Control Panel Tool">
+ <configlet title="Change Password" action_id="MemberPassword" appId="Plone"
+    category="Plone" condition_expr="python:member.canPasswordSet()"
+    icon_expr="string:$portal_url/lock_icon.png"
+    url_expr="string:${portal_url}/password_form" visible="True">
+  <permission>Set own password</permission>
+ </configlet>
+ <configlet title="Error Log" action_id="errorLog" appId="ErrorLog"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/error_log_icon.png"
+    url_expr="string:${portal_url}/prefs_error_log_form" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Zope Management Interface" action_id="ZMI" appId="ZMI"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/zope_icon.png"
+    url_expr="string:${portal_url}/manage_main" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Translations exports/imports XLIFF" action_id="PortalXLIFF"
+    appId="XLIFFMarshall" category="Products" condition_expr="" icon_expr=""
+    url_expr="string:${portal_url}/portal_xliff" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Markup" action_id="MarkupSettings" appId="MarkupSettings"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/edit.png"
+    url_expr="string:${portal_url}/@@markup-controlpanel" visible="True">
+  <permission>Plone Site Setup: Markup</permission>
+ </configlet>
+ <configlet title="Calendar" action_id="CalendarSettings" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/event_icon.png"
+    url_expr="string:${portal_url}/@@calendar-controlpanel" visible="True">
+  <permission>Plone Site Setup: Calendar</permission>
+ </configlet>
+ <configlet title="Search" action_id="SearchSettings" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/search_icon.png"
+    url_expr="string:${portal_url}/@@search-controlpanel" visible="True">
+  <permission>Plone Site Setup: Search</permission>
+ </configlet>
+ <configlet title="Mail" action_id="MailHost" appId="MailHost"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/mail_icon.png"
+    url_expr="string:${portal_url}/@@mail-controlpanel" visible="True">
+  <permission>Plone Site Setup: Mail</permission>
+ </configlet>
+ <configlet title="Maintenance" action_id="Maintenance" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/maintenance_icon.png"
+    url_expr="string:${portal_url}/@@maintenance-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Themes" action_id="PortalSkin" appId="PortalSkin"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/skins_icon.png"
+    url_expr="string:${portal_url}/@@skins-controlpanel" visible="True">
+  <permission>Plone Site Setup: Themes</permission>
+ </configlet>
+ <configlet title="Site" action_id="PloneReconfig" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/logoIcon.png"
+    url_expr="string:${portal_url}/@@site-controlpanel" visible="True">
+  <permission>Plone Site Setup: Site</permission>
+ </configlet>
+ <configlet title="HTML Filtering" action_id="HtmlFilter" appId="HtmlFilter"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/htmlfilter_icon.png"
+    url_expr="string:${portal_url}/@@filter-controlpanel" visible="True">
+  <permission>Plone Site Setup: Filtering</permission>
+ </configlet>
+ <configlet title="Security" action_id="SecuritySettings"
+    appId="SecuritySettings" category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/lock_icon.png"
+    url_expr="string:${portal_url}/@@security-controlpanel" visible="True">
+  <permission>Plone Site Setup: Security</permission>
+ </configlet>
+ <configlet title="Content Rules" action_id="ContentRules" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/contentrules_icon.png"
+    url_expr="string:${portal_url}/@@rules-controlpanel" visible="True">
+  <permission>Content rules: Manage rules</permission>
+ </configlet>
+ <configlet title="Types" action_id="TypesSettings" appId="TypesSettings"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/document_icon.png"
+    url_expr="string:${portal_url}/@@types-controlpanel" visible="True">
+  <permission>Plone Site Setup: Types</permission>
+ </configlet>
+ <configlet title="Language" action_id="PloneLanguageTool"
+    appId="PloneLanguageTool" category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/flag-plone.png"
+    url_expr="string:${portal_url}/@@language-controlpanel" visible="True">
+  <permission>Plone Site Setup: Language</permission>
+ </configlet>
+ <configlet title="Workflow Policies" action_id="placefulworkflow"
+    appId="CMFPlacefulWorkflow" category="Products" condition_expr=""
+    icon_expr="string:$portal_url/placefulworkflow_icon.png"
+    url_expr="string:$portal_url/prefs_workflow_localpolicies_form"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Editing" action_id="EditingSettings" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/cut_icon.png"
+    url_expr="string:${portal_url}/@@editing-controlpanel" visible="True">
+  <permission>Plone Site Setup: Editing</permission>
+ </configlet>
+ <configlet title="Add-ons" action_id="QuickInstaller" appId="QuickInstaller"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/product_icon.png"
+    url_expr="string:${portal_url}/prefs_install_products_form"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Users and Groups" action_id="UsersGroups"
+    appId="UsersGroups" category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/group.png"
+    url_expr="string:${portal_url}/@@usergroup-userprefs" visible="True">
+  <permission>Plone Site Setup: Users and Groups</permission>
+ </configlet>
+ <configlet title="Users and Groups" action_id="UsersGroups2"
+    appId="UsersGroups" category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/group.png"
+    url_expr="string:${portal_url}/@@usergroup-groupprefs" visible="False">
+  <permission>Plone Site Setup: Users and Groups</permission>
+ </configlet>
+ <configlet title="Personal Preferences" action_id="MemberPrefs" appId="Plone"
+    category="Plone" condition_expr="" icon_expr="string:$portal_url/user.png"
+    url_expr="string:${portal_url}/@@personal-preferences" visible="True">
+  <permission>Set own properties</permission>
+ </configlet>
+ <configlet title="Navigation" action_id="NavigationSettings" appId="Plone"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/navigation_icon.png"
+    url_expr="string:${portal_url}/@@navigation-controlpanel" visible="True">
+  <permission>Plone Site Setup: Navigation</permission>
+ </configlet>
+ <configlet title="Collections" action_id="portal_atct" appId="ATContentTypes"
+    category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/topic_icon.png"
+    url_expr="string:${portal_url}/portal_atct/atct_manageTopicIndex"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Caching" action_id="plone.app.caching"
+    appId="plone.app.caching" category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/++resource++plone.app.caching.gif"
+    url_expr="string:${portal_url}/@@caching-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Alchemy Tags" action_id="eea.alchemy" appId="eea.alchemy"
+    category="Products" condition_expr=""
+    icon_expr="string:$portal_url/++resource++eea.alchemy.png"
+    url_expr="string:${portal_url}/@@alchemy-tags.html" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="EEA Faceted Navigation Tool" action_id="eea.faceted.tool"
+    appId="eea.faceted.tool" category="Products" condition_expr=""
+    icon_expr="" url_expr="string:${portal_url}/portal_faceted/@@view"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Google connections manager" action_id="eea.google.tool"
+    appId="eea.google.tool" category="Products" condition_expr=""
+    icon_expr="string:$portal_url/++resource++google.tool.gif"
+    url_expr="string:${portal_url}/portal_google" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Possible relations" action_id="eea.relations"
+    appId="eea.relations" category="Products"
+    condition_expr="python:getattr(portal, 'portal_relations', None)"
+    icon_expr="string:$portal_url/eearelations.png"
+    url_expr="string:$portal_url/portal_relations/" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Navigation manager" action_id="NavigationManager"
+    appId="NavigationManager" category="Products" condition_expr=""
+    icon_expr="" url_expr="string:${portal_url}/portal_navigationmanager/"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Vocabulary Library" action_id="portal_vocabularies"
+    appId="VocabularyLibraryID" category="Products" condition_expr=""
+    icon_expr="" url_expr="string:${portal_url}/portal_vocabularies/"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Promotion Settings" action_id="PromotionManager"
+    appId="eea.promotion" category="Products" condition_expr="" icon_expr=""
+    url_expr="string:${portal_url}/@@promotion_admin_view" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Reorder Resources" action_id="ReorderResources"
+    appId="ReorderResources" category="Plone" condition_expr="" icon_expr=""
+    url_expr="string:${portal_url}/@@reorder_css" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Image Handling" action_id="ImagingSettings"
+    appId="ImagingSettings" category="Products" condition_expr=""
+    icon_expr="string:$portal_url/portal_skins/plone_deprecated/image_icon.gif"
+    url_expr="string:${portal_url}/@@imaging-controlpanel" visible="True">
+  <permission>Plone Site Setup: Imaging</permission>
+ </configlet>
+ <configlet title="TinyMCE Visual Editor" action_id="tinymce" appId="TinyMCE"
+    category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/++resource++tinymce.images/tinymce_icon.gif"
+    url_expr="string:${portal_url}/portal_tinymce/@@tinymce-controlpanel"
+    visible="True">
+  <permission>Plone Site Setup: TinyMCE</permission>
+ </configlet>
+ <configlet title="Redirection and Aliases" action_id="RedirectionTool"
+    appId="RedirectionTool" category="Products" condition_expr="" icon_expr=""
+    url_expr="string:${portal_url}/@@aliases-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Manage viewlets" action_id="ManageViewlets" appId="None"
+    category="Plone" condition_expr="" icon_expr=""
+    url_expr="string:${portal_url}/@@manage-viewlets" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Quick Upload" action_id="QuickUpload"
+    appId="collective.quickupload" category="Products" condition_expr=""
+    icon_expr="string:${portal_url}/++resource++quickupload_static/upload.png"
+    url_expr="string:${portal_url}/@@quickupload-controlpanel" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Configuration Registry" action_id="plone.app.registry"
+    appId="plone.app.registry" category="Plone" condition_expr=""
+    icon_expr="string:$portal_url/++resource++plone.app.registry/icon.png"
+    url_expr="string:${portal_url}/portal_registry" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+ <configlet title="Discussion" action_id="discussion"
+    appId="plone.app.discussion" category="Plone" condition_expr=""
+    icon_expr="string:${portal_url}/discussionitem_icon.gif"
+    url_expr="string:${portal_url}/@@discussion-settings" visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
+</object>
