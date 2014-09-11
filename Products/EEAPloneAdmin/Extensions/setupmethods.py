@@ -820,3 +820,8 @@ The EEA webteam
             errors.append(email)
 
     return str(errors)
+
+def bulkReindexObjectsSecurity(self, brains, wf_id):
+    """ Bulk reindex security
+    """
+    return utils.bulkReindexObjectsSecurity(self, brains, wf_id)

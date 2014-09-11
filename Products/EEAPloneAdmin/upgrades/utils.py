@@ -1,10 +1,12 @@
-""" Util scripts for upgrades
+""" Util scripts for updates
 """
 import logging
 import transaction
 from zope.component import ComponentLookupError
 from zope.component.interface import nameToInterface
 from zope.interface import noLongerProvides
+from Products.CMFCore.utils import getToolByName
+
 HAS_Subtyper = True
 try:
     from p4a.subtyper.interfaces import ISubtyped
@@ -19,7 +21,8 @@ info_exception = logger.exception
 
 
 def bulkReindexObjects(context, brains, idxs=None):
-    """ Bulk reindex objects using multi-transactions """
+    """ Bulk reindex objects using multi-transactions
+    """
     total = len(brains)
     info('INFO: Start reindexing')
     info('INFO: reindexing %s brains', total)
@@ -64,6 +67,40 @@ def bulkReindexObjects(context, brains, idxs=None):
                 info(msg, index, total)
         except Exception, err:
             info('ERROR: error during reindexing of %s', brain.getURL(1))
-            if type(err) != POSKeyError:
-                import pdb; pdb.set_trace()
+            #if type(err) != POSKeyError:
+            #    import pdb; pdb.set_trace()
+
+    info('INFO: Done reindexing')
+
+
+def bulkReindexObjectsSecurity(context, brains, wf_id):
+    """ Bulk reindex objects security using multi-transactions
+    """
+    total = len(brains)
+    info('INFO: Start reindexing')
+    info('INFO: reindexing %s brains', total)
+
+    catalog = getToolByName(context, 'portal_catalog')
+    wf = getToolByName(context, 'portal_workflow')
+    wf_def = wf.getWorkflowById(wf_id)
+    count = 0
+
+    if wf_def:
+        for brain in brains:
+            obj = brain.getObject()
+            wf_def.updateRoleMappingsFor(obj)
+
+            obj.reindexObject(idxs=['allowedRolesAndUsers', 'review_state'])
+            logger.info('Updated role mapping for %s', brain.getURL())
+
+            count += 1
+            total = len(brains)
+
+            if count % 100 == 0:
+                logger.info('INFO: Subtransaction committed to zodb (%s/%s)',
+                            count, total)
+                transaction.commit()
+    else:
+         info('ERROR: %s workflow not found' % wf_id)
+
     info('INFO: Done reindexing')

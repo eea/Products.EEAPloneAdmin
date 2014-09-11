@@ -18,6 +18,8 @@ Changelog
 * Feature: added migration script that sets the EffectiveDate of EEAFigureFiles
   to that of the parent if it's EffectiveDate is earlier than that of the parent
   [ichimdav refs #20827]
+* Feature: added method to bulk reindex security
+  [ghicaale refs #21006]
 
 9.6 - (2014-08-27)
 ------------------
