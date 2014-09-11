@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.8-dev - (unreleased)
+----------------------
+
 9.7 - (2014-09-11)
 ------------------
 * Feature: added tests for the paste and the workflow change events
