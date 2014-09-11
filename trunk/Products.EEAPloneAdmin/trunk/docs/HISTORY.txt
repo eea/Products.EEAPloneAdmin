@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.7-dev - (unreleased)
-----------------------
+9.7 - (2014-09-11)
+------------------
 * Feature: added tests for the paste and the workflow change events
   [ichimdav refs #20827]
 * Upgrade step: on Blacksquirrel run the following commands
