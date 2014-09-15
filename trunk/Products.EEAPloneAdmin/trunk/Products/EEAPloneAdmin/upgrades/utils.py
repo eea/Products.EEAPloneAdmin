@@ -12,7 +12,6 @@ try:
     from p4a.subtyper.interfaces import ISubtyped
 except ImportError:
     HAS_Subtyper = False
-from ZODB.POSException import POSKeyError
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
@@ -65,8 +64,10 @@ def bulkReindexObjects(context, brains, idxs=None):
                 transaction.commit()
                 msg = 'INFO: Subtransaction committed to zodb (%s/%s)'
                 info(msg, index, total)
-        except Exception, err:
+        except Exception:
             info('ERROR: error during reindexing of %s', brain.getURL(1))
+        #except Exception, err:
+            #from ZODB.POSException import POSKeyError
             #if type(err) != POSKeyError:
             #    import pdb; pdb.set_trace()
 
@@ -80,7 +81,6 @@ def bulkReindexObjectsSecurity(context, brains, wf_id):
     info('INFO: Start reindexing')
     info('INFO: reindexing %s brains', total)
 
-    catalog = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
     wf_def = wf.getWorkflowById(wf_id)
     count = 0
