@@ -105,6 +105,7 @@ def _purge_handler(obj, event):
                         purger.purgeAsync(full_path)
 
 def purge_handler(obj, event):
+    """ Purge handler
+    """
     if PLONE_APP_CACHING_INSTALLED:
         return _purge_handler(obj, event)
-
