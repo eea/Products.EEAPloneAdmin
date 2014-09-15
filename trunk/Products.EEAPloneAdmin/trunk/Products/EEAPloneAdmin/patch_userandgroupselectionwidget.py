@@ -7,8 +7,8 @@ def _patched_search_users(self):
     to allow searching for fullname and email, not just username
     """
     st = self.searchabletext
-    # TODO: Search is done over all available groups, not only over groups
-    # which should be applied. also see getGroups.
+    # BBB: Search is done over all available groups, not only over groups
+    # which should be applied. Also see getGroups.
     if len(st) < 3:
         return []
     aclu = getToolByName(self.context, 'acl_users')
