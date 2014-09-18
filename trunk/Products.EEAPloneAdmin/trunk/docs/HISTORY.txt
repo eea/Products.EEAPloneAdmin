@@ -3,6 +3,9 @@ Changelog
 
 9.8-dev - (unreleased)
 ----------------------
+* Pre-upgrade step: on each backend and frontend add secret.cfg then follow
+  instructions from buidlout README.txt
+  [ghicaale refs #20963]
 
 9.7 - (2014-09-11)
 ------------------
