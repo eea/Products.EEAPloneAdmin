@@ -91,4 +91,11 @@
             description='EEA Plone Admin upgrade profile for v8.7'
             provides="Products.GenericSetup.interfaces.EXTENSION" />
 
+    <genericsetup:registerProfile
+            name="upgrade98"
+            title="EEA Plone Admin upgrade profile for v9.8"
+            directory="profiles/upgrades/to_98"
+            description='EEA Plone Admin upgrade profile for v9.8'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
 </configure>
