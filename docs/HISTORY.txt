@@ -9,6 +9,8 @@ Changelog
 * Pre-upgrade step: on each backend and frontend add secret.cfg then follow
   instructions from buidlout README.txt
   [ghicaale refs #20963]
+* Upgrade step: under www8 run /www/@@collective-catalogcleanup
+  [ghicaale refs #14117]
 
 9.7 - (2014-09-11)
 ------------------
