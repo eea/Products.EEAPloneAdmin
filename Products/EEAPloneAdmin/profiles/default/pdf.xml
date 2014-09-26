@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="portal_pdf" meta_type="PDFTool">
- <object name="classical" meta_type="PDFTheme" purge="True" />
  <object name="classic-report" meta_type="PDFTheme">
-  <property name="title">Classic Report</property>
-  <property name="cover">pdf.cover</property>
-  <property name="disclaimer">pdf.disclaimer</property>
-  <property name="body">pdf.body</property>
-  <property name="backcover"></property>
-  <property name="header">pdf.header</property>
-  <property name="footer">pdf.footer</property>
-  <property name="toc">pdf.toc</property>
-  <property name="toclinks">False</property>
-  <property name="javascript">True</property>
-  <property name="timeout">3600</property>
-  <property name="async">True</property>
-  <property name="offset">3</property>
-  <property name="maxdepth">1</property>
-  <property name="maxbreadth">100</property>
-  <property name="maxitems">1000</property>
   <property name="types" purge="True" />
   <property name="types">
    <element value="Article"/>
@@ -30,40 +13,6 @@
    <element value="Document"/>
    <element value="PressRelease"/>
   </property>
-  <property name="image"></property>
-  <object name="image.gif" meta_type="ATBlob"/>
- </object>
- <object name="modern" meta_type="PDFTheme">
-  <property name="title">SOER Fiche / Article Modern</property>
-  <property name="toc"></property>
-  <property name="toclinks">False</property>
-  <property name="javascript">True</property>
-  <property name="timeout">3600</property>
-  <property name="async">True</property>
-  <property name="offset">0</property>
-  <property name="maxdepth">1</property>
-  <property name="maxbreadth">100</property>
-  <property name="maxitems">1000</property>
-  <property name="types" purge="True" />
-  <property name="types">
-   <element value="Fiche"/>
-  </property>
-  <property name="image"></property>
-  <object name="fiche-pdf-cover.png" meta_type="ATBlob"/>
- </object>
- <object name="collection" meta_type="PDFTheme">
-  <property name="title">Modern report</property>
-  <property name="toc">pdf.toc</property>
-  <property name="toclinks">False</property>
-  <property name="javascript">True</property>
-  <property name="timeout">3600</property>
-  <property name="async">True</property>
-  <property name="offset">3</property>
-  <property name="maxdepth">1</property>
-  <property name="maxbreadth">100</property>
-  <property name="maxitems">1000</property>
-  <property name="image"></property>
-  <object name="image.gif" meta_type="ATBlob"/>
  </object>
  <object name="davizvisualization-classic-report" meta_type="PDFTheme">
   <property name="title">DavizVisualization / Classic Report</property>
