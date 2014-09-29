@@ -3,6 +3,8 @@ Changelog
 
 9.8-dev - (unreleased)
 ----------------------
+* Feature: added upgrade step which adds the TinyMCE readability plugin
+  [ichimdav refs #6288]
 * Change: updated pdf.xml in order to not override other existing settings that
   should not be overriden.
   [olimpiurob refs #20881]
