@@ -13,6 +13,10 @@
                 import_profile="Products.EEAPloneAdmin:upgrade98"
                 />
 
+        <genericsetup:upgradeStep
+                title="Add eea readability score TinyMCE plugin"
+                handler="Products.EEAPloneAdmin.upgrades.evolve98.add_plugins"
+                />
     </genericsetup:upgradeSteps>
 
     <genericsetup:upgradeSteps
