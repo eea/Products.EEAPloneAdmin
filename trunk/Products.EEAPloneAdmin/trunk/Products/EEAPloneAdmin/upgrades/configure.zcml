@@ -17,6 +17,12 @@
                 title="Add eea readability score TinyMCE plugin"
                 handler="Products.EEAPloneAdmin.upgrades.evolve98.add_plugins"
                 />
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from eea.tinymce readabilitychecker profile"
+                import_profile="eea.tinymce:readabilitychecker"
+                />
+
     </genericsetup:upgradeSteps>
 
     <genericsetup:upgradeSteps
