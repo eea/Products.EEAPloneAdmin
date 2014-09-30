@@ -20,7 +20,7 @@
 
         <genericsetup:upgradeDepends
                 title="Import all steps from eea.tinymce readabilitychecker profile"
-                import_profile="eea.tinymce:readabilitychecker"
+                import_profile="eea.tinymce:eeareadabilitychecker"
                 />
 
     </genericsetup:upgradeSteps>
