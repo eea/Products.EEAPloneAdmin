@@ -1,0 +1,34 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:cache="http://namespaces.zope.org/cache"
+  i18n_domain="eea">
+  <include package="z3c.caching" file="meta.zcml" />
+  <cache:ruleset ruleset="plone.resource"
+    for="Products.CMFCore.FSDTMLMethod.FSDTMLMethod" />
+
+  <cache:rulesetType
+    name="eea.content.frontPage"
+    title="Front page"
+    description="A public-facing view for front page"
+    />
+
+  <cache:rulesetType
+    name="eea.content.ajax"
+    title="AJAX"
+    description="These templates are loaded using AJAX calls (e.g. faceted_query, faceted_counter) and they are not cached in browser"
+    />
+
+  <cache:rulesetType
+    name="eea.content.staleResources"
+    title="Stale resources"
+    description="These are resources which can be cached for at least one month e.g. of these are sparql downloadable resources and files"
+    />
+
+  <cache:rulesetType
+    name="eea.content.contentImages"
+    title="Content images"
+    description="These resources are using the Image content-type or similar
+                and use a different caching strategy than Plone's 'Content files
+                and images' where we will only select File-type content types."
+    />
+
+</configure>
