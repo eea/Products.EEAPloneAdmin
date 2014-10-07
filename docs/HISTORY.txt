@@ -9,6 +9,9 @@ Changelog
 * Upgrade step: under /www/portal_types/QuickEvent/manage_propertiesForm
   change title to "Quick Event - deprecated"
   [ghicaale refs #21123]
+* Upgrade step: for each topic under /www/SITE/themes, the "Upcoming events"
+  folder (e.g. /www/SITE/themes/households/events) should be archived and retracted
+  [ghicaale refs #21123]
 
 9.8 - (2014-10-01)
 ------------------
