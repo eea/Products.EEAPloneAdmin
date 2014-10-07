@@ -3,6 +3,12 @@ Changelog
 
 9.9-dev - (unreleased)
 ----------------------
+* Upgrade step: under /www/portal_types for Folder, PubliclyAddableItemsFolder and TempFolder
+  remove "Quick Event" from the "Allowed content types" list
+  [ghicaale refs #21123]
+* Upgrade step: under /www/portal_types/QuickEvent/manage_propertiesForm
+  change title to "Quick Event - deprecated"
+  [ghicaale refs #21123]
 
 9.8 - (2014-10-01)
 ------------------
