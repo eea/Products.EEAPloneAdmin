@@ -11,7 +11,8 @@ Changelog
   [ghicaale refs #21123]
 * Upgrade step: for each topic under /www/SITE/themes, the "Upcoming events"
   folder (e.g. /www/SITE/themes/households/events) should be archived. Same
-  action for /www/SITE/events
+  action for /www/SITE/events. Reason should be "No more updates will be done" and
+  staff name should be "Sigfus Bjarnason".
   [ghicaale refs #21123]
 * Upgrade step: from /www/SITE/events/@@manage-portlets remove portlet_centermap_events,
   from /www/SITE/events/environmental-events-calendar/@@manage-portlets remove Calendar
