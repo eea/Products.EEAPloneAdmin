@@ -13,6 +13,9 @@ Changelog
   folder (e.g. /www/SITE/themes/households/events) should be archived. Same
   action for /www/SITE/events
   [ghicaale refs #21123]
+* Upgrade step: from /www/SITE/events/@@manage-portlets remove portlet_centermap_events,
+  from /www/SITE/events/environmental-events-calendar/@@manage-portlets remove Calendar
+  [ghicaale refs #21123]
 
 9.8 - (2014-10-01)
 ------------------
