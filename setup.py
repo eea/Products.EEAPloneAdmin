@@ -35,6 +35,7 @@ setup(name=name,
           'Products.NavigationManager',
           'valentine.linguaflow',
           'collective.quickupload',
+          'collective.deletepermission',
 
           # Used in testing
           'eea.themecentre',
