@@ -17,6 +17,8 @@ Changelog
 * Upgrade step: from /www/SITE/events/@@manage-portlets remove portlet_centermap_events,
   from /www/SITE/events/environmental-events-calendar/@@manage-portlets remove Calendar
   [ghicaale refs #21123]
+* Bug fix: Added missing dependency collective.deletepermission
+  [voineali refs #21234]
 
 9.8 - (2014-10-01)
 ------------------
