@@ -39,13 +39,14 @@
                      Products.DCWorkflow.interfaces.IAfterTransitionEvent"
                 handler=".event.handle_workflow_change" />
 
-   <subscriber for="Products.Archetypes.interfaces.IBaseObject
-                    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-               handler=".purge.purge_handler" />
+    <!-- Purge cache subscribers -->
+    <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".purge.purge_handler" />
 
-   <subscriber for="Products.Archetypes.interfaces.IBaseObject
-                    Products.CMFCore.interfaces.IActionSucceededEvent"
-               handler=".purge.purge_handler" />
+    <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                     Products.CMFCore.interfaces.IActionSucceededEvent"
+                handler=".purge.purge_handler" />
 
   <!-- Hide profiles for dependencies -->
   <utility
