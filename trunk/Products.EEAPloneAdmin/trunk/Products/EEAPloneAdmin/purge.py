@@ -61,7 +61,7 @@ class EEAContentPurgePaths(object):
 
             # Purge eea.facetednavigation specific
             faceted_templates = ['faceted_counter', 'faceted_query',
-                                  'tagscloud_counter']
+                                 'tagscloud_counter']
             templates.extend(faceted_templates)
 
         for template in set(templates):
@@ -108,4 +108,5 @@ def purge_handler(obj, event):
     """ Purge handler
     """
     if PLONE_APP_CACHING_INSTALLED:
-        return _purge_handler(obj, event)
+        _purge_handler(obj, event)
+        return
