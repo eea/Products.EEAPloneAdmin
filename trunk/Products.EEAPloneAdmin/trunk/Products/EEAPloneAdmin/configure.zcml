@@ -7,8 +7,6 @@
     <include package=".browser" />
     <include package=".upgrades" />
 
-
-
     <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
@@ -24,7 +22,7 @@
                  name="eea.content" />
     </configure>
 
-    <!--? subscribers -->
+    <!-- Subscribers -->
     <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
                      zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                 handler=".event.handle_resourceregistry_change" />
@@ -40,6 +38,7 @@
     <subscriber for="Products.Archetypes.interfaces.IBaseContent
                      Products.DCWorkflow.interfaces.IAfterTransitionEvent"
                 handler=".event.handle_workflow_change" />
+
    <subscriber for="Products.Archetypes.interfaces.IBaseObject
                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                handler=".purge.purge_handler" />
@@ -48,7 +47,7 @@
                     Products.CMFCore.interfaces.IActionSucceededEvent"
                handler=".purge.purge_handler" />
 
-  <!-- hide profiles for dependencies -->
+  <!-- Hide profiles for dependencies -->
   <utility
     factory=".exportimport.setuphandlers.HiddenProfiles"
     name="collective.deletepermission"
