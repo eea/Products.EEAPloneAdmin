@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.0-dev - (unreleased)
+-----------------------
+
 9.9 - (2014-10-15)
 ------------------
 * Upgrade step: under /www/portal_types for Folder, PubliclyAddableItemsFolder and TempFolder
