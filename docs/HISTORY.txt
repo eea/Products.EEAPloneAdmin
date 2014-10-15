@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.9-dev - (unreleased)
-----------------------
+9.9 - (2014-10-15)
+------------------
 * Upgrade step: under /www/portal_types for Folder, PubliclyAddableItemsFolder and TempFolder
   remove "Quick Event" from the "Allowed content types" list
   [ghicaale refs #21123]
