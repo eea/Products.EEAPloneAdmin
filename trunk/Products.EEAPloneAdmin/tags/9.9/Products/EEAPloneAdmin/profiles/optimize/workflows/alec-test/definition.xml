@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="alec-test" title="DC Workflow Definition" description="" state_variable="state" manager_bypass="False">
+ <state state_id="published" title="">
+ </state>
+</dc-workflow>
