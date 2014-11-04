@@ -3,10 +3,12 @@ Changelog
 
 10.0-dev - (unreleased)
 -----------------------
-* Upgrade step: (manual) After eea.tinymce is updated within 
+* Upgrade step: (manual) After eea.tinymce is updated within
   @@tinymceplugins-settings Antonio needs to Enabled the readability
   statistics for the contenttypes where it is needed
   [ichimdav refs #21327]
+* Upgrade step: run the Plone upgrade from control panel
+  [ghicaale refs #20945]
 
 9.9 - (2014-10-15)
 ------------------
