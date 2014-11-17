@@ -62,6 +62,9 @@ def sendWorkflowEmail(self, state_change, **kw):
     """
     obj = getattr(state_change, 'object', None)
     request = getattr(obj, 'REQUEST', None)
+    if request and request.get('_no_emails_', False):
+        return
+
     wfsupport = queryMultiAdapter((obj, request), name=u'eea-workflow-support')
     if wfsupport:
         wf = wfsupport(state_change, None)
