@@ -3,6 +3,8 @@ Changelog
 
 10.0-dev - (unreleased)
 -----------------------
+* Feature: Added possibility to suppress sending emails on workflow change
+  [voineali refs #21851]
 * Upgrade step: (manual) After eea.tinymce is updated within
   @@tinymceplugins-settings Antonio needs to Enabled the readability
   statistics for the contenttypes where it is needed
