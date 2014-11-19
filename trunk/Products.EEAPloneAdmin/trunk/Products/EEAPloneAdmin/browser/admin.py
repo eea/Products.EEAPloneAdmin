@@ -145,7 +145,7 @@ def save_resources_on_disk(registry, request=None):
 
         for name in resources:
             try:
-                content = registry.getResourceContent(name, 
+                content = registry.getResourceContent(name,
                                             context=registry, theme=skin)
             except TypeError:
                 continue    #old merged resource
@@ -221,10 +221,8 @@ class RegenerateKSS(SaveResourcesOnDisk):
         """
         return getToolByName(self.context, "portal_kss")
 
-
-
 class GoPDB(BrowserView):
-    """pdb view 
+    """pdb view
     """
 
     def __call__(self):
@@ -235,8 +233,8 @@ class GoPDB(BrowserView):
         #pyflakes complains that it's unused, so we disable it here
         #enable if you need it
 #       def classtree(cls, indent):
-#           """ method used in conjunction with instantree to display class 
-#               tree 
+#           """ method used in conjunction with instantree to display class
+#               tree
 #           """
 #           print '.'*indent, cls.__name__        # print class name here
 #           for supercls in cls.__bases__:        # recur to all superclasses
@@ -281,5 +279,3 @@ class FindBrokenObjects(BrowserView):
 
         logger.warning("Broken Objects %s", pprint(res))
         return "%d are broken \n %s", (len(res), res)
-
-
