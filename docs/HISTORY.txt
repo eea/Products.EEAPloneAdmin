@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.1-dev - (unreleased)
+-----------------------
+
 10.0 - (2014-11-20)
 -------------------
 * Feature: Added possibility to suppress sending emails on workflow change
