@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+   
+<body>
+
+<div metal:fill-slot="main">                                                    
+<metal:enquirySteps define-macro="steps">
+<h1>Ask a question</h1>
+
+<p><a title="Visit the EEA Forum" href="http://community.eea.europa.eu">Visit the EEA Forum</a> where you can ask questions, find FAQs, openly discuss and share your ideas.<br/><strong>The forum is open to all users.</strong></p>
+
+<p class="discreet">Are you looking for the EEA enquiry form? Due to technical issues, the EEA enquiry form has temporarily been removed. Instead, please post your question in the <a title="Visit the EEA Forum" href="http://community.eea.europa.eu">EEA Forum</a>, or send us an e-mail at eea.enquiries(at)eea.europa.eu</p>
+</metal:enquirySteps>
+
+<metal:enquiryFooter define-macro="footer">
+   <p class="discreet">If you have complaints about maladministration of the European Environment Agency, please contact the <a href="http://www.ombudsman.europa.eu/atyourservice/couldhehelpyou.faces" title="Contact European Ombudsman">European Ombudsman</a>.</p>
+</metal:enquiryFooter>
+</div>
+
+</body>
+</html>
