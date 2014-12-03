@@ -3,6 +3,9 @@ Changelog
 
 10.1-dev - (unreleased)
 -----------------------
+* Upgrade step: (manual) On file-system remove old location of generated
+  PDF files (ePub directory within static-resources)
+  [voineali refs #22080]
 
 10.0 - (2014-11-20)
 -------------------
