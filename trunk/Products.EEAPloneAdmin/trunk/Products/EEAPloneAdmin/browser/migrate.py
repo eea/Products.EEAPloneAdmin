@@ -1763,3 +1763,36 @@ class FixEEAFigureFilesPublishDate(object):
         log.info("END effective date index fix for %d objects", total)
         res_objs_urls = "\n".join(urls)
         return res_objs_urls
+
+
+class CheckBadDaviz(object):
+    """ Check Daviz with bad data
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger(__name__)
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(portal_type="Daviz", show_inactive="True")
+        count = 0
+        total = len(brains)
+        log.info("START effective date index fix for %d objects", total)
+        for brain in brains:
+            obj = brain.getObject()
+            from zope.annotation import IAnnotations
+            anno = IAnnotations(self.context)
+            prop = anno['eea.daviz.config.json'].get('properties')
+            if prop:
+                for key, value in prop:
+                    if isinstance(value, unicode):
+                        count += 1
+                        log.info('broken DavizVisualization at %s ', obj.absolute_url())
+                        break
+        return count
+
+
+
