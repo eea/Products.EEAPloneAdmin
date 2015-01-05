@@ -1778,8 +1778,8 @@ class MigrateDavizAnnotationData(object):
         log = logging.getLogger(__name__)
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(portal_type="DavizVisualization", show_inactive="True")
-        count = 0
-        log.info("START effective date index fix for Daviz objects")
+        log.info("START data annotation fix for Daviz objects")
+        msgs = []
         for brain in brains:
             obj = brain.getObject()
             from zope.annotation import IAnnotations
@@ -1797,11 +1797,13 @@ class MigrateDavizAnnotationData(object):
                                    'order': order, 'label': key.capitalize()}
                         prop[key] = new_val
                         daviz._p_changed = True
-                        count += 1
                         objurl = obj.absolute_url()
-                        log.info('broken DavizVisualization at %s changed data'
-                                 ' from %s to %s', objurl, key, new_val)
-        return count
+                        msg = 'Broken DavizVisualization at %s changed data' \
+                              ' from %s to %s \n' % (objurl, key, new_val)
+                        msgs.append(msg)
+                        log.info(msg)
+        log.info("END data annotation fix for Daviz objects")
+        return msgs
 
 
 

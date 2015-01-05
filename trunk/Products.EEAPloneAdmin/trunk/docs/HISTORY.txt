@@ -3,6 +3,11 @@ Changelog
 
 10.2-dev - (unreleased)
 -----------------------
+* Upgrade step: run /www/@@migrateDavizAnnotationData
+  [ichimdav refs #21987]
+* Feature: added migration script which fixes DavizVisualization where data
+  annotation wasn't normalized
+  [ichimdav refs #21987]
 
 10.1 - (2014-12-23)
 -------------------
