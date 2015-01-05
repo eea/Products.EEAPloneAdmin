@@ -179,7 +179,7 @@
                   permission="cmf.ManagePortal" />
 
     <browser:page for="*"
-                  name="checkBadDaviz"
+                  name="migrateDavizAnnotationData"
                   class=".migrate.CheckBadDaviz"
                   permission="cmf.ManagePortal" />
 </configure>
