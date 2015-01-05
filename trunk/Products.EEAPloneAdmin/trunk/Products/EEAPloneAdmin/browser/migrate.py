@@ -1765,8 +1765,8 @@ class FixEEAFigureFilesPublishDate(object):
         return res_objs_urls
 
 
-class CheckBadDaviz(object):
-    """ Check Daviz with bad data
+class MigrateDavizAnnotationData(object):
+    """ Migrate existing data to conform to current data spec
     """
     def __init__(self, context, request):
         self.context = context
@@ -1789,11 +1789,18 @@ class CheckBadDaviz(object):
                 continue
             prop = daviz.get('properties')
             if prop:
-                for value in prop.values():
+                order = 0
+                for key, value in prop.items():
                     if isinstance(value, unicode):
+                        order += 1
+                        new_val = {'valueType': value, 'columnType': value,
+                                   'order': order, 'label': key.capitalize()}
+                        prop[key] = new_val
+                        daviz._p_changed = True
                         count += 1
-                        log.info('broken DavizVisualization at %s ', obj.absolute_url())
-                        break
+                        objurl = obj.absolute_url()
+                        log.info('broken DavizVisualization at %s changed data'
+                                 ' from %s to %s', objurl, key, new_val)
         return count
 
 
