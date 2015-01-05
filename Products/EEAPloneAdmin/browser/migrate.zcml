@@ -177,4 +177,9 @@
                   name="fixEEAFigureFileEffectiveDate"
                   class=".migrate.FixEEAFigureFilesPublishDate"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="checkBadDaviz"
+                  class=".migrate.CheckBadDaviz"
+                  permission="cmf.ManagePortal" />
 </configure>

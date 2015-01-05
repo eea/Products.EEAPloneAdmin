@@ -1777,17 +1777,19 @@ class CheckBadDaviz(object):
         """
         log = logging.getLogger(__name__)
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(portal_type="Daviz", show_inactive="True")
+        brains = catalog(portal_type="DavizVisualization", show_inactive="True")
         count = 0
-        total = len(brains)
-        log.info("START effective date index fix for %d objects", total)
+        log.info("START effective date index fix for Daviz objects")
         for brain in brains:
             obj = brain.getObject()
             from zope.annotation import IAnnotations
-            anno = IAnnotations(self.context)
-            prop = anno['eea.daviz.config.json'].get('properties')
+            anno = IAnnotations(obj)
+            daviz = anno.get('eea.daviz.config.json')
+            if not daviz:
+                continue
+            prop = daviz.get('properties')
             if prop:
-                for key, value in prop:
+                for value in prop.values():
                     if isinstance(value, unicode):
                         count += 1
                         log.info('broken DavizVisualization at %s ', obj.absolute_url())
