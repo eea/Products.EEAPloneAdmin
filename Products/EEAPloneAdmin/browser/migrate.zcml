@@ -180,6 +180,6 @@
 
     <browser:page for="*"
                   name="migrateDavizAnnotationData"
-                  class=".migrate.CheckBadDaviz"
+                  class=".migrate.MigrateDavizAnnotationData"
                   permission="cmf.ManagePortal" />
 </configure>
