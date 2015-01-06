@@ -8,6 +8,8 @@ Changelog
 * Feature: added migration script which fixes DavizVisualization where data
   annotation wasn't normalized
   [ichimdav refs #21987]
+* Upgrade step: within Site Setup > Add-ons install eea.controlpanel package
+  [ghicaale refs #21853]
 
 10.1 - (2014-12-23)
 -------------------
