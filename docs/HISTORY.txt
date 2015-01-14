@@ -3,6 +3,11 @@ Changelog
 
 10.2-dev - (unreleased)
 -----------------------
+* Change: WorkflowManagement no longer performs any initializations if the
+  send_workflow_emails property is False. In this way there is no unneded
+  computations and ldap searches if there shouldn't be any workflow emails
+  sent
+  [ichimdav refs #21893]
 * Upgrade step: run /www/@@migrateDavizAnnotationData
   [ichimdav refs #21987]
 * Feature: added migration script which fixes DavizVisualization where data

@@ -49,6 +49,10 @@ class WorkflowManagement(object):
     """
     def __init__(self, state_change, role):
         self.obj = obj = state_change.object
+        if not getattr(self.obj, 'send_workflow_emails', True):
+            # workflow emails disabled in this aquisition tree
+            # therefore we don't need to perform any user checks
+            return
         self.mhost = obj.MailHost
         self.toEmail = self.toConfirmationEmail = self.fromEmail = ""
         props = getattr(
