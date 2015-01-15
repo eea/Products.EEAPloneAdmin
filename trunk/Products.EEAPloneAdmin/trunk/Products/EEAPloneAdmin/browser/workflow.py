@@ -49,6 +49,7 @@ class WorkflowManagement(object):
     """
     def __init__(self, state_change, role):
         self.obj = obj = state_change.object
+        self.subject = '[EEA CMS] - %s ' + state_change.new_state.title
         if not getattr(self.obj, 'send_workflow_emails', True):
             # workflow emails disabled in this aquisition tree
             # therefore we don't need to perform any user checks
@@ -83,7 +84,6 @@ class WorkflowManagement(object):
                         self.toConfirmationEmail.append(email)
 
             self.fromEmail = self._getUserEmail(portal)
-        self.subject = '[EEA CMS] - %s ' + state_change.new_state.title
         objUrl = obj.virtual_url_path()
         if objUrl.startswith('/SITE/'):
             objUrl = objUrl[6:]
