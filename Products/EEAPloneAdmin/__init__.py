@@ -8,7 +8,8 @@ config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 #   collective.monkeypatcher, but didn't succeed.
 
 # Patch for plone.app.caching ver 1.0 to add extra headers
-from Products.EEAPloneAdmin import patch_cache
+# Patch for plone.app.caching ver 1.1.8 to proper check method names
+from Products.EEAPloneAdmin import patch_plone_app_caching
 
 # Patch plone.app.discussion ver >= 2.0.10, not to fail on migrate
 # workflows when "Discussion Item" has no workflow assigned
@@ -25,7 +26,7 @@ from Products.EEAPloneAdmin import patch_plone_app_layout
 from Products.EEAPloneAdmin import patch_plone_session
 from Products.EEAPloneAdmin import translation_negotiator
 
-__all__ = [patch_cache.__name__,
+__all__ = [patch_plone_app_caching.__name__,
            patch_plone_app_discussion.__name__,
            patch_plone_app_layout.__name__,
            patch_statusmessages.__name__,
