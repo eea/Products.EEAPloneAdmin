@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.3-dev - (unreleased)
+-----------------------
+
 10.2 - (2015-01-22)
 -------------------
 * Change: WorkflowManagement no longer performs any initializations if the
