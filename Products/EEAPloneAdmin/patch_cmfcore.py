@@ -6,7 +6,6 @@
 from difflib import unified_diff
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.permissions import ChangeLocalRoles
-from AccessControl.requestmethod import postonly
 from Acquisition import aq_base
 import transaction
 import logging
