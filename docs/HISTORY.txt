@@ -1,8 +1,8 @@
 Changelog
 =========
 
-10.3-dev - (unreleased)
------------------------
+10.3 - (2015-02-16)
+-------------------
 * Upgrade step: cleanup annotation storage for EEA CPB analytics
   [ghicaale refs #22687]
 
