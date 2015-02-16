@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.4.dev0 - (unreleased)
+------------------------
+
 10.3 - (2015-02-16)
 -------------------
 * Upgrade step: cleanup annotation storage for EEA CPB analytics
