@@ -3,12 +3,15 @@ Changelog
 
 10.5.dev0 - (unreleased)
 ------------------------
+* Buf fix: patched Products.PluggableAuthService not to stuck when listing local
+  groups in ZMI
+  [ghicaale refs #24209]
 
 10.4 - (2015-03-17)
 -------------------
 * Change: Switched to curl in the jenkins build install script
   [olimpiurob refs #22402]
-* Change: Changed fetch url for jenkins build install script to the install 
+* Change: Changed fetch url for jenkins build install script to the install
   script from the main EEA CPB repository
   [olimpiurob refs #22402]
 
