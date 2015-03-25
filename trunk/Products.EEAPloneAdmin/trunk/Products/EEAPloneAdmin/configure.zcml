@@ -48,15 +48,13 @@
                      Products.CMFCore.interfaces.IActionSucceededEvent"
                 handler=".purge.purge_handler" />
 
-  <!-- Hide profiles for dependencies -->
-  <utility
-    factory=".exportimport.setuphandlers.HiddenProfiles"
-    name="collective.deletepermission"
-    provides="Products.CMFPlone.interfaces.INonInstallable" />
+    <!-- Hide profiles for dependencies -->
+    <utility factory=".exportimport.setuphandlers.HiddenProfiles"
+             name="collective.deletepermission"
+             provides="Products.CMFPlone.interfaces.INonInstallable" />
 
-  <utility
-    factory=".exportimport.setuphandlers.HiddenProfiles"
-    name="collective.deletepermission"
-    provides="Products.CMFQuickInstallerTool.interfaces.INonInstallable" />
+    <utility factory=".exportimport.setuphandlers.HiddenProfiles"
+             name="collective.deletepermission"
+             provides="Products.CMFQuickInstallerTool.interfaces.INonInstallable" />
 
 </configure>
