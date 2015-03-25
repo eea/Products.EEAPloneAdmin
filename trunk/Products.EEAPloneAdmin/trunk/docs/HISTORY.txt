@@ -3,6 +3,35 @@ Changelog
 
 10.5.dev0 - (unreleased)
 ------------------------
+* Upgrade step: steps to setup plone.app.ldap
+    - login as a Manager using a local account
+    - under /www/prefs_install_products_form install "LDAP support 1.3.2"
+    - under /www/@@usergroup-controlpanel check "Many groups?"
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-global set as follows
+    - "LDAP object classes" -> pilotPerson
+    - "Base DN for users" -> ou=Users,o=EIONET,l=Europe
+    - "Base DN for groups" -> ou=Roles,o=EIONET,l=Europe
+    - "User password encryption" -> SHA
+    - "Default user roles" -> Anonymous
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers add a LDAP server
+    - "Server" -> ldap2.eionet.europa.eu
+    - "Connection timeout" -> 5
+    - "Operation timeout" -> 10
+    - under /www/acl_users/manage_main check "EIONETLDAPNEW (EIONET LDAP New)" and delete it
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers select check the LDAP server and click "Enable"
+    - under /www/acl_users/ldap-plugin/manage_activateInterfacesForm check only the values listed bellow
+    - "Authentication"
+    - "Group_Enumeration"
+    - "Group_Introspection"
+    - "Groups"
+    - "Properties"
+    - "Role_Enumeration"
+    - "Roles"
+    - "User_Enumeration"
+    - under /www/acl_users/ldap-plugin/acl_users/manage_main set as follows
+    - "Group storage" -> "Groups stored on LDAP server"
+    - "User object classes" -> top,person
+    - [ghicaale refs #24209]
 * Bug fix: patched plone.app.users to fix "add new user" form when many roles are available
   [ghicaale refs #24209]
 * Bug fix: patched Products.PluggableAuthService not to stuck when listing local
