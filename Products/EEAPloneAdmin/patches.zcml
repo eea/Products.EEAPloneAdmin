@@ -260,4 +260,5 @@
                   original="manage_roles"
                   replacement=".patch_pluggableauthservice.patched_manage_roles"
                   preserveOriginal="false" />
+
 </configure>
