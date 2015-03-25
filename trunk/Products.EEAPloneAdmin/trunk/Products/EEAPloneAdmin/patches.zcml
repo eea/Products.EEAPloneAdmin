@@ -248,10 +248,16 @@
                  replacement=".patch_rdflib_namespacemanager._patched_absolutize"
                  preserveOriginal="true" />
 
-    <!-- Patch for Products.PluggableAuthService ver 1.10.0 to solve ZMI groups listing -->
+    <!-- Patch for Products.PluggableAuthService ver 1.10.0 to solve ZMI groups and roles listing -->
     <monkey:patch description="Monkeypatch Products.PluggableAuthService.plugins.ZODBGroupManager.ZODBGroupManager.manage_groups to solve ZMI groups listing"
                   class="Products.PluggableAuthService.plugins.ZODBGroupManager.ZODBGroupManager"
                   original="manage_groups"
                   replacement=".patch_pluggableauthservice.patched_manage_groups"
+                  preserveOriginal="false" />
+
+    <monkey:patch description="Monkeypatch Products.PluggableAuthService.plugins.ZODBGroupManager.ZODBGroupManager.manage_roles to solve ZMI roles listing"
+                  class="Products.PluggableAuthService.plugins.ZODBRoleManager.ZODBRoleManager"
+                  original="manage_roles"
+                  replacement=".patch_pluggableauthservice.patched_manage_roles"
                   preserveOriginal="false" />
 </configure>

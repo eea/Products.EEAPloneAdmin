@@ -4,7 +4,7 @@ Changelog
 10.5.dev0 - (unreleased)
 ------------------------
 * Buf fix: patched Products.PluggableAuthService not to stuck when listing local
-  groups in ZMI
+  groups and roles in ZMI
   [ghicaale refs #24209]
 
 10.4 - (2015-03-17)
