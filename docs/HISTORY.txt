@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.6.dev0 - (unreleased)
+------------------------
+
 10.5 - (2015-03-27)
 -------------------
 * Upgrade step: steps to setup plone.app.ldap
