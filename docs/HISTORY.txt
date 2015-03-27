@@ -34,6 +34,7 @@ Changelog
     - under /www/acl_users/ldap-plugin/acl_users/manage_main set as follows
     - "Group storage" -> "Groups stored on LDAP server"
     - "User object classes" -> top,person
+    - under /www/acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin set "ldap-plugin" to be first in the list of active plugins
     - [ghicaale refs #24209]
 * Bug fix: patched plone.app.users to fix "add new user" form when many roles are available
   [ghicaale refs #24209]
