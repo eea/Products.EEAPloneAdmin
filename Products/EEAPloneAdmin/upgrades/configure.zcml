@@ -3,6 +3,19 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 9.8 => 10.6 -->
+    <genericsetup:upgradeSteps
+      source="9.8"
+      destination="10.6"
+      profile="Products.EEAPloneAdmin:default">
+
+      <genericsetup:upgradeDepends
+        title="Import workflow for daviz_workflow from upgrade106 profile"
+        import_profile="Products.EEAPloneAdmin:upgrade106"
+      />
+
+    </genericsetup:upgradeSteps>
+
     <genericsetup:upgradeSteps
             source="9.5"
             destination="9.8"
