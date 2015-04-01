@@ -13,11 +13,11 @@ Changelog
     - under /www/prefs_install_products_form install "LDAP support 1.3.2"
     - under /www/@@usergroup-controlpanel check "Many groups?"
     - under /www/@@ldap-controlpanel/#fieldsetlegend-global set as follows
-    - "LDAP object classes" -> pilotPerson
+    - "LDAP object classes" -> top,person
     - "Base DN for users" -> ou=Users,o=EIONET,l=Europe
     - "Base DN for groups" -> ou=Roles,o=EIONET,l=Europe
     - "User password encryption" -> SHA
-    - "Default user roles" -> Anonymous
+    - "Default user roles" -> Authenticated
     - under /www/@@ldap-controlpanel/#fieldsetlegend-servers add a LDAP server
     - "Server" -> ldap2.eionet.europa.eu
     - "Connection timeout" -> 5
@@ -35,7 +35,6 @@ Changelog
     - "User_Enumeration"
     - under /www/acl_users/ldap-plugin/acl_users/manage_main set as follows
     - "Group storage" -> "Groups stored on LDAP server"
-    - "User object classes" -> top,person
     - under /www/acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin set "ldap-plugin" to be first in the list of active plugins
     - [ghicaale refs #24209]
 * Bug fix: patched plone.app.users to fix "add new user" form when many roles are available
