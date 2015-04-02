@@ -1,0 +1,60 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="Products.EEAPloneAdmin">
+
+    <include file="profiles.zcml" />
+    <include package=".browser" />
+    <include package=".upgrades" />
+
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.ATVocabularyManager.interfaces.IATVocabularyLibrary" />
+
+    <adapter factory=".exportimport.dummyexporter.DummyFilesystemExporter"
+             provides="Products.GenericSetup.interfaces.IFilesystemExporter"
+             for="Products.NavigationManager.NavigationManager.NavigationManager" />
+
+    <configure zcml:condition="installed plone.app.caching">
+        <include file="cache.zcml" />
+
+        <adapter factory=".purge.EEAContentPurgePaths"
+                 name="eea.content" />
+    </configure>
+
+    <!-- Subscribers -->
+    <subscriber for="Products.ResourceRegistries.tools.BaseRegistry.BaseRegistryTool
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".event.handle_resourceregistry_change" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     zope.lifecycleevent.interfaces.IObjectCopiedEvent"
+                handler=".event.handle_object_copied" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     OFS.interfaces.IObjectClonedEvent"
+                handler=".event.handle_object_cloned" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+                handler=".event.handle_workflow_change" />
+
+    <!-- Purge cache subscribers -->
+    <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                     zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+                handler=".purge.purge_handler" />
+
+    <subscriber for="Products.Archetypes.interfaces.IBaseObject
+                     Products.CMFCore.interfaces.IActionSucceededEvent"
+                handler=".purge.purge_handler" />
+
+    <!-- Hide profiles for dependencies -->
+    <utility factory=".exportimport.setuphandlers.HiddenProfiles"
+             name="collective.deletepermission"
+             provides="Products.CMFPlone.interfaces.INonInstallable" />
+
+    <utility factory=".exportimport.setuphandlers.HiddenProfiles"
+             name="collective.deletepermission"
+             provides="Products.CMFQuickInstallerTool.interfaces.INonInstallable" />
+
+</configure>
