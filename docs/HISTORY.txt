@@ -5,6 +5,8 @@ Changelog
 ------------------------
 * Feature: Added daviz_workflow with required data provenance for publishing
   [szabozo0 refs #24412]
+* Bug fix: fixed @@ldap-controlpanel submit form when used under Apache
+  [ghicaale refs #24490]
 
 10.5 - (2015-03-27)
 -------------------

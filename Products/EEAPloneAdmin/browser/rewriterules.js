@@ -387,6 +387,16 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@ldap-controlpanel
+  form = jQuery('form[action*="@@ldap-controlpanel"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@ldap-controlpanel',
+      newVal: 'www/@@ldap-controlpanel'
+    });
+  }
+
 };
 
 
