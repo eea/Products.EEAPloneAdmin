@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.7.dev0 - (unreleased)
+------------------------
+
 10.6 - (2015-04-02)
 -------------------
 * Feature: Added daviz_workflow with required data provenance for publishing
