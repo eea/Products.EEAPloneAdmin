@@ -3,6 +3,8 @@ Changelog
 
 10.7.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed @@ldap-controlpanel submit form for new LDAP servers when used under Apache
+  [ghicaale refs #24768]
 
 10.6 - (2015-04-02)
 -------------------
@@ -23,7 +25,7 @@ Changelog
     - "Base DN for groups" -> ou=Roles,o=EIONET,l=Europe
     - "User password encryption" -> SHA
     - "Default user roles" -> Authenticated
-    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers add a LDAP server
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers add all LDAP servers (ldap, ldap2 and ldap3), e.g.:
     - "Server" -> ldap2.eionet.europa.eu
     - "Connection timeout" -> 5
     - "Operation timeout" -> 10

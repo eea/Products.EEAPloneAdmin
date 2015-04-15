@@ -397,6 +397,24 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  form = jQuery('form[action*="LdapProperty"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '+ldapschema/plone.LdapProperty',
+      newVal: 'www/+ldapschema/plone.LdapProperty'
+    });
+  }
+
+  form = jQuery('form[action*="LdapServer"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '+ldapserver/plone.LdapServer',
+      newVal: 'www/+ldapserver/plone.LdapServer'
+    });
+  }
+
 };
 
 
