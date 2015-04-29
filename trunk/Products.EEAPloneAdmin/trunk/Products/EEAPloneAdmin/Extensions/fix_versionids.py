@@ -23,7 +23,7 @@ def fix_versionids(self):
                 transaction.commit()
                 print "savepoint at ", i
                 #logger.info("Savepoint at %s", i)
-        except:
+        except Exception:
             print "Exception on ", brain.getURL()
 
     #logger.info("Done fixing versionids")

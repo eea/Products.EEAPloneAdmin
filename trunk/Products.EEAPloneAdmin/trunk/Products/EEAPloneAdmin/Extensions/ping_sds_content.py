@@ -22,12 +22,15 @@ def ping_all(self):
     now = DateTime()
 
     cat = self.portal_catalog
-    pubs=cat.searchResults({ 'review_state': 'published',
-                             'effectiveRange' : now,
-                             'Language':'all',
-                             'portal_type':meta_type,
-                             'sort_on':'effective',
-                             'sort_order':'reverse'})
+    pubs = cat.searchResults({
+        'review_state': 'published',
+        'effectiveRange' : now,
+        'Language': 'all',
+        'portal_type': meta_type,
+        'sort_on': 'effective',
+        'sort_order': 'reverse'
+    })
+
     aliases = []
     for pub in pubs:
         pub_url = ''
@@ -63,11 +66,11 @@ def ping_all(self):
         index += 1
         try:
             ping_cr_view(result)
-        except:
+        except Exception:
             logger.error('Error: not able to ping')
-            logger.info('Ping CR for: %s' % result)
-        if not index%100:
+            logger.info('Ping CR for: %s', result)
+        if not index % 100:
             transaction.commit()
-            logger.info('Progress %s/%s' % (index, results_len))
+            logger.info('Progress %s/%s', index, results_len)
 
     logger.info('Done bulk ping.')
