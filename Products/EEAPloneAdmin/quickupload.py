@@ -1,3 +1,5 @@
+""" Quick Upload
+"""
 from zope.component import adapts
 from zope.interface import implements
 
@@ -9,6 +11,8 @@ from Products.Archetypes.utils import shasattr
 
 
 class ArchetypesFileSetter(object):
+    """ File Setter
+    """
     implements(IQuickUploadFileSetter)
     adapts(IBaseObject)
 
@@ -16,6 +20,8 @@ class ArchetypesFileSetter(object):
         self.context = context
 
     def set(self, data, filename, content_type):
+        """ Set
+        """
         error = ''
         obj = self.context
         primaryField = obj.getPrimaryField()
