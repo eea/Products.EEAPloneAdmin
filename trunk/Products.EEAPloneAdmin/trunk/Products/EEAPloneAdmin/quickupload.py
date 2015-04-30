@@ -44,10 +44,11 @@ class ArchetypesFileSetter(object):
                 #end of patch
             obj.reindexObject()
         else :
-            # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
+            # some products remove the 'primary' attribute
+            # on ATFile or ATImage (which is very bad)
             error = u'serverError'
-            logger.info("An error happens : impossible to get the primary field "
-                        "for file %s, rawdata can't be created",
+            logger.info("An error happens : impossible to get the primary field"
+                        " for file %s, rawdata can't be created",
                         obj.absolute_url())
 
         return error

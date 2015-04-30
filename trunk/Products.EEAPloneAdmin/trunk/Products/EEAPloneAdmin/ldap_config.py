@@ -19,6 +19,5 @@ eionet = { 'title'  : 'EIONET LDAP User Folder',
            'binduid_usage' : 0,
            'rdn_attr' : 'uid',
            'local_groups' : 0,
-           'use_ssl' : 0,
            'encryption' : 'SHA',
            'read_only' : 1 }
