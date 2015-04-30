@@ -5,6 +5,9 @@ from plone.app.caching.operations.utils import formatDateTime, getExpiration
 from Products.CMFDynamicViewFTI.interfaces import IBrowserDefault
 from Products.CMFCore.interfaces import IDynamicType
 
+# Do not remove this import as the tests will fail
+from plone.app.caching.utils import getObjectDefaultView
+
 
 def doNotCache(published, request, response):
     """ Added extra `` no-store``, ``no-cache``, ``post-check``,
