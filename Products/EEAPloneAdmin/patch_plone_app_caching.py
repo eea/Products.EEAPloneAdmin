@@ -2,7 +2,6 @@
 """
 import plone.app.caching.operations.utils
 from plone.app.caching.operations.utils import formatDateTime, getExpiration
-from plone.app.caching.utils import getObjectDefaultView
 from Products.CMFDynamicViewFTI.interfaces import IBrowserDefault
 from Products.CMFCore.interfaces import IDynamicType
 
@@ -70,7 +69,8 @@ def getObjectDefaultView(context):
 
     fti = context.getTypeInfo()
     try:
-        # XXX: This isn't quite right since it assumes the action starts with ${object_url}
+        # XXX: This isn't quite right since it assumes
+        # the action starts with ${object_url}
         action = fti.getActionInfo('object/view')['url'].split('/')[-1]
     except ValueError:
         # If the action doesn't exist, stop
@@ -80,7 +80,7 @@ def getObjectDefaultView(context):
     if action:
         action = fti.queryMethodID(action, default = action, context = context)
     else:
-        action = fti.queryMethodID('(Default)', default = action, context = context)
+        action = fti.queryMethodID('(Default)', default=action, context=context)
 
     return stripLeadingCharacters(action)
 

@@ -15,6 +15,8 @@ logger = logging.getLogger("Products.EEAPloneAdmin.patch_cmfcore")
 object_count = 0
 
 def patched_icon(self, *args, **kwargs):
+    """ Icon
+    """
     icon = self._old_icon(*args, **kwargs)
     return icon.strip("/")
 
@@ -44,6 +46,8 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
 
 
 def _getFileContent(f):
+    """ File content
+    """
     try:
         return f.data
     except AttributeError:

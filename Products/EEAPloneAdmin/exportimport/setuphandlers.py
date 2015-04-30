@@ -69,6 +69,8 @@ def clear_registries(context):
 
 
 class HiddenProfiles(object):
+    """ Hidden Profiles
+    """
     implements(IQuickInstallerNonInstallable, IPloneFactoryNonInstallable)
 
     def getNonInstallableProfiles(self):

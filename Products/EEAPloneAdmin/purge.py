@@ -74,6 +74,8 @@ class EEAContentPurgePaths(object):
 
 
 def _purge_handler(obj, event):
+    """ Purge
+    """
     registry = queryUtility(IRegistry)
     if registry:
         settings = registry.forInterface(ICachePurgingSettings, check=False)
@@ -86,7 +88,7 @@ def _purge_handler(obj, event):
 
         request = getattr(obj, 'REQUEST', None)
         if not request:
-            logging.info('Purge failed: no request found for %s' %
+            logging.info('Purge failed: no request found for %s',
                          obj.absolute_url())
             return
 
