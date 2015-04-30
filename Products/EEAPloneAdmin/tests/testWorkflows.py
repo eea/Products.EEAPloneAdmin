@@ -37,8 +37,9 @@ class TestWorkflowEvents(EEAPloneAdminTestCase):
         # Before state change modification dates
         objects = self.sandbox.objectValues()
         before = [doc.effective() for doc in objects]
-        _ = [self.workflow.doActionFor(doc, 'publish') for doc in objects]
-        _ = [self.workflow.doActionFor(doc, 'retract') for doc in objects]
+        for doc in objects:
+            self.workflow.doActionFor(doc, 'publish')
+            self.workflow.doActionFor(doc, 'retract')
         after = [doc.effective() for doc in objects]
         self.failIf(before != after, "Objs shouldn't have any effective date")
 
@@ -48,9 +49,11 @@ class TestWorkflowEvents(EEAPloneAdminTestCase):
         """
         # Before state change modification dates
         objects = self.sandbox.objectValues()
-        _ = [self.workflow.doActionFor(doc, 'publish') for doc in objects]
-        _ = [doc.object_copy() for doc in objects]
-        _ = [doc.object_paste() for doc in objects]
+        for doc in objects:
+            self.workflow.doActionFor(doc, 'publish')
+            doc.object_copy()
+            doc.object_paste()
+
         objects = self.sandbox.objectValues()
         results = [obj for obj in objects if "copy" in obj.id]
         copies_effective_date = [doc.effective_date for doc in results]

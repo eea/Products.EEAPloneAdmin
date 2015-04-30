@@ -6,7 +6,7 @@ from Products.CMFDynamicViewFTI.interfaces import IBrowserDefault
 from Products.CMFCore.interfaces import IDynamicType
 
 # Do not remove this import as the tests will fail
-from plone.app.caching.utils import getObjectDefaultView
+from plone.app.caching.utils import getObjectDefaultView as godv
 
 
 def doNotCache(published, request, response):
@@ -90,3 +90,7 @@ def getObjectDefaultView(context):
 plone.app.caching.operations.utils.doNotCache = doNotCache
 plone.app.caching.operations.utils.cacheInBrowser = cacheInBrowser
 plone.app.caching.utils.getObjectDefaultView = getObjectDefaultView
+
+__all__ = [
+    godv.__name__,
+]
