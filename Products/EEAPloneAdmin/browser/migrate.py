@@ -37,6 +37,7 @@ from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups
 
 from eea.geotags.interfaces import IJsonProvider
+from eea.workflow.interfaces import IObjectArchivator
 
 logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 
@@ -1807,3 +1808,30 @@ class MigrateDavizAnnotationData(object):
 
 
 
+
+class CheckTemplatesForArchiveMessage(object):
+    """ Check folder contents with each template if archive message is present
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        context = self.context
+        res = context.getFolderContents()
+        match = {}
+        for brain in res:
+            obj = brain.getObject()
+            ptype = obj.portal_type
+            match[ptype] = []
+            adapter = IObjectArchivator(obj)
+            adapter.archive(obj, **dict(initiator='ichimdav',
+                                        reason='content_is_outdated',
+                                        custom_message=''))
+            layouts = obj.getAvailableLayouts()
+            for layout_tuple in layouts:
+                tname = layout_tuple[0]
+                template = obj.restrictedTraverse(tname)()
+                if 'archive_status' not in template:
+                    match[ptype].append(tname)
+        return pprint(match)

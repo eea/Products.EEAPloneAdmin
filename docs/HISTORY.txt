@@ -3,6 +3,10 @@ Changelog
 
 10.8.dev0 - (unreleased)
 ------------------------
+* Feature: added checkTemplatesForArchiveMessage BrowserView which checks every
+  content type found within folder for the presence of the archive message for
+  every template that can be set as layout
+  [ichimdav refs #25013]
 
 10.7 - (2015-05-05)
 -------------------
