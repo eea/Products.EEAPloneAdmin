@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.8.dev0 - (unreleased)
+------------------------
+
 10.7 - (2015-05-05)
 -------------------
 * Bug fix: fixed @@ldap-controlpanel submit form for new LDAP servers when used under Apache
