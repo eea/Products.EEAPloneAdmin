@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<object name="uid_catalog" meta_type="ZCatalog">
+ <property name="title">Archetypes UID Catalog</property>
+ <index name="Language" meta_type="FieldIndex">
+  <indexed_attr value="Language"/>
+ </index>
+ <index name="Title" meta_type="FieldIndex">
+  <indexed_attr value="Title"/>
+ </index>
+ <index name="Type" meta_type="FieldIndex">
+  <indexed_attr value="Type"/>
+ </index>
+ <index name="UID" meta_type="FieldIndex">
+  <indexed_attr value="UID"/>
+ </index>
+ <index name="getTermKeyPath" meta_type="KeywordIndex">
+  <indexed_attr value="getTermKeyPath"/>
+ </index>
+ <index name="id" meta_type="FieldIndex">
+  <indexed_attr value="id"/>
+ </index>
+ <index name="portal_type" meta_type="FieldIndex">
+  <indexed_attr value="portal_type"/>
+ </index>
+ <column value="Title"/>
+ <column value="Type"/>
+ <column value="UID"/>
+ <column value="getTermKeyPath"/>
+ <column value="id"/>
+ <column value="portal_type"/>
+</object>
