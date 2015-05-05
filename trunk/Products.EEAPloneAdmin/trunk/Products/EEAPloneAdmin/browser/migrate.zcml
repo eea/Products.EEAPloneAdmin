@@ -182,4 +182,10 @@
                   name="migrateDavizAnnotationData"
                   class=".migrate.MigrateDavizAnnotationData"
                   permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+        name="checkTemplatesForArchiveMessage"
+        class=".migrate.CheckTemplatesForArchiveMessage"
+        permission="cmf.ManagePortal" />
+
 </configure>
