@@ -3,6 +3,11 @@ Changelog
 
 10.8.dev0 - (unreleased)
 ------------------------
+* Upgrade step: install TLSPU Cookie Policy 1.1.5.eea from www/prefs_install_products_form
+  [ichimdav refs #20319]
+* Manual upgrade step: from www/@@cookiepolicy:
+  - Configure cookie warning message either by demarant or message given by him
+  [ichimdav refs #20319]
 * Feature: added checkTemplatesForArchiveMessage BrowserView which checks every
   content type found within folder for the presence of the archive message for
   every template that can be set as layout
