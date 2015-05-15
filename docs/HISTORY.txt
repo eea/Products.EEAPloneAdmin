@@ -1,8 +1,8 @@
 Changelog
 =========
 
-10.8.dev0 - (unreleased)
-------------------------
+10.8 - (2015-05-15)
+-------------------
 * Upgrade step: install TLSPU Cookie Policy 1.1.5.eea from www/prefs_install_products_form
   [ichimdav refs #20319]
 * Manual upgrade step: from www/@@cookiepolicy:
