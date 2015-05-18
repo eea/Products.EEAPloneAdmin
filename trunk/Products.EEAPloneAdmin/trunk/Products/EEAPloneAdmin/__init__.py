@@ -22,9 +22,6 @@ from Products.EEAPloneAdmin import patch_statusmessages
 # Patch plone.app.layout ver 2.2.7, due to #9518
 from Products.EEAPloneAdmin import patch_plone_app_layout
 
-# patch plone.app.users ver 1.2, due to #24209
-from Products.EEAPloneAdmin import patch_plone_app_users
-
 # Patch plone.session ver 3.5.2, due to #13992
 # To be removed once plone.session ver > 3.5.3 (patch submitted to Plone core)
 from Products.EEAPloneAdmin import patch_plone_session
@@ -36,5 +33,4 @@ __all__ = [patch_plone_app_caching.__name__,
            patch_plone_app_layout.__name__,
            patch_statusmessages.__name__,
            patch_plone_session.__name__,
-           patch_plone_app_users.__name__,
            translation_negotiator.__name__]
