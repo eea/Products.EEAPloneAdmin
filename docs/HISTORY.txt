@@ -3,6 +3,9 @@ Changelog
 
 10.9.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove plone_app_users patch as the issue was fixed within
+  plone.app.users 1.2.2
+  [voineali refs #24289]
 
 10.8 - (2015-05-15)
 -------------------
