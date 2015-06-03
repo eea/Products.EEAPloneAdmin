@@ -1,0 +1,130 @@
+<tal:block tal:define="foo python:request.set('disable_plone.leftcolumn', 1);
+                       bar python:request.set('disable_plone.rightcolumn', 1);"/>
+<html xmlns::tal="http://xml.zope.org/namespaces/tal"
+        xmlns:metal="http://xml.zope.org/namespaces/metal"
+        metal:use-macro="here/main_template/macros/master"
+        i18n:domain="eea.translations">
+<head>
+
+<metal:organigramjs fill-slot="javascript_head_slot">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <tal:code replace="structure here/gchartcode"/>
+
+</metal:organigramjs>
+
+</head>
+
+<body>
+<metal:main fill-slot="main"
+            tal:define="view here/@@eeaorganisation;
+                        orgs_data here/@@eeaorglist">
+
+    <h1 i18n:translate="title_eeastaff_list"  class="documentFirstHeading">
+        EEA Organisational chart (NEW)
+    </h1>
+    <p>
+        <strong i18n:translate="">Last updated on:</strong>
+        <tal:block tal:define="last_upload here/@@eealastupdated"
+            tal:content="python:here.toLocalizedTime(last_upload)" />
+    </p>
+
+    <div class="portalMessage" tal:condition="not:context/portal_membership/isAnonymousUser">
+    <span>The source file XML contains the following organisations:</span>
+    &nbsp;
+    <tal:Orgs repeat="org orgs_data/orgs">
+        <span tal:content="org"/>&nbsp;
+    </tal:Orgs>
+    </div>
+
+
+      <div tal:condition="view/validData" tal:define="
+        orgs view/getOrgUnits;
+        width python:109 * len(orgs)"
+        tal:attributes="style string:width:${width}px"
+        id="organisation-chart-container">
+        <div class="director_container">
+         <tal:director define="director view/getDirector; deputy_director view/getDeputyDirector">
+                <div style="float:left"><metal:orgDirector use-macro="here/organigram_macros/macros/director" /></div>
+          </tal:director>
+         <tal:orgs repeat="org python:orgs[:1]">
+                <tal:orgUnits repeat="unit org">
+                    <tal:cond condition="unit"
+                              define="first_unit repeat/unit/start;
+                                      last_unit repeat/unit/end;
+                                      first_org repeat/org/start;
+                                      last_org repeat/org/end;
+                                      orgid unit/orgname;">
+
+                        <tal:block condition="python:(not first_unit) and orgid in ['EDO1','EDO2']">
+                            <span class="" tal:attributes="class string:edoorg_start${repeat/unit/index}"></span>
+                            <div class=""  tal:attributes="class string:edoorg_child org_child${repeat/unit/index}"><div></div></div>
+                            <div style="float:left">
+                               <div class="org_line" tal:condition="python:(not first_unit) and (not last_unit)"><div></div></div>
+                               <div class="org_line org_line_last" tal:condition="last_unit"><div></div></div>
+                               <metal:orgUnit use-macro="here/organigram_macros/macros/unit" />
+                            </div>
+                        </tal:block>
+                    </tal:cond>
+                </tal:orgUnits>
+         </tal:orgs>
+
+        </div>
+
+<div class="visualClear"><!-- --></div>
+
+
+<tal:orgs repeat="org python:orgs[1:]">
+            <div class="org_container">
+                <tal:orgUnits repeat="unit org">
+                    <tal:cond condition="unit"
+                              define="first_unit repeat/unit/start;
+                                      last_unit repeat/unit/end;
+                                      first_org repeat/org/start;
+                                      last_org repeat/org/end;
+                                      orgid unit/orgname;">
+
+	               <metal:orgUnit define-macro="unit">
+                             [{v:'<tal:orgName content="unit/orgname" />', f:'<tal:orgName content="unit/orgname" />'},<tal:block condition="first_unit">'EDO'</tal:block><tal:block condition="python:not first_unit">'<tal:orgName content="python:unit['orgname'][:3]" />'</tal:block>, '<tal:orgName content="unit/organisation_name" />'],
+		       <!-- 
+                       <dl class="" id=""
+			 tal:attributes="id unit/orgname; class string:org_subhead org_child${repeat/unit/index}"
+			 tal:define="staff_number python:orgs_data['orgs_info'][unit['orgname']]">
+			<dt tal:content="unit/organisation_name"></dt>
+			<dd class="ordName" >(<tal:orgName content="unit/orgname" />)</dd>
+		       <tal:manager condition="unit/manager">
+			<dd class="jobTitle" tal:content="unit/job_title">Job title</dd>
+			<dd class="managerName">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?searchterm=${unit/last_name} ${unit/first_name}#${unit/empid};
+										 title string:${unit/last_name} ${unit/first_name}"
+					tal:content="string:${unit/last_name}, ${unit/first_name}">last_name, first_name</a></dd>
+		        </tal:manager>
+			<dd class="org_staff_number" style="padding:2px">
+				<a href="" title="" class="noPrint"
+					tal:attributes="href string:staff-list?orgid=${unit/orgname};
+								    title string:${unit/orgname} members" tal:content="string:${staff_number} members" />
+			</dd>
+		        </dl>
+                       -->
+	               </metal:orgUnit>
+
+                    </tal:cond>
+                </tal:orgUnits>
+            </div>
+        </tal:orgs>
+
+
+
+<div class="" tal:content="orgs"></div>
+
+</div>
+
+<div class="visualClear"><!-- --></div>
+
+<h2>NEW CHART</h2>
+
+<div id="chart_div">ORGCHART HERE</div>
+
+</metal:main>
+</body>
+</html>
