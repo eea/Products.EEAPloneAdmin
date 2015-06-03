@@ -1,6 +1,11 @@
 Changelog
 =========
 
+11.0.dev0 - (unreleased)
+------------------------
+* Change: release new egg
+  [ghicaale refs #25722]
+
 10.9 - (2015-06-02)
 -------------------
 * Cleanup: Remove plone_app_users patch as the issue was fixed within
