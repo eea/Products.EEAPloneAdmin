@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.0.dev0 - (unreleased)
-------------------------
+11.0 - (2015-06-03)
+-------------------
 * Change: release new egg
   [ghicaale refs #25722]
 
