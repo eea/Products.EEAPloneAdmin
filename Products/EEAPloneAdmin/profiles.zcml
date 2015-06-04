@@ -106,7 +106,7 @@
             provides="Products.GenericSetup.interfaces.EXTENSION" />
 
     <genericsetup:registerProfile
-        name="upgrade106"
+        name="upgrade111"
         title="EEA Plone Admin upgrade profile for v11.1"
         directory="profiles/upgrades/to_111"
         description='EEA Plone Admin upgrade profile for v11.1'
