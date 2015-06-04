@@ -66,7 +66,7 @@
    <group-role>Contributor</group-role>
    <group-role>Editor</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="draft" title="First draft" >
   <description>This is the first state when a new item is created</description>
@@ -125,7 +125,7 @@
    <group-role>Contributor</group-role>
    <group-role>Editor</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="marked_for_deletion" title="Marked for deletion" >
   <description>This item has been marked for permanent deletion. It will be deleted at a later stage by an automatic cleanup process.</description>
@@ -138,7 +138,7 @@
    <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="Delete objects" acquired="True">
-
+   
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>ContentManager</permission-role>
@@ -165,7 +165,7 @@
   <group-map name="data-service-editors">
    <group-role>Reader</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="published" title="Published" >
   <exit-transition transition_id="hide" />
@@ -202,7 +202,7 @@
    <group-role>Contributor</group-role>
    <group-role>Editor</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="published_eionet" title="Restricted to Eionet only (login required)" >
   <description>This state will make the content available to visitor with Eionet/Circa login.</description>
@@ -211,7 +211,7 @@
   <exit-transition transition_id="retract" />
   <exit-transition transition_id="show" />
   <permission-map name="Access contents information" acquired="True">
-
+   
   </permission-map>
   <permission-map name="Delete objects" acquired="False">
    <permission-role>ContentManager</permission-role>
@@ -252,7 +252,7 @@
    <group-role>Contributor</group-role>
    <group-role>Editor</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="retracted" title="Retracted" >
   <description>Items in this state have been retracted from one of the publishing state due to discovered relevant errors in content.</description>
@@ -277,7 +277,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="True">
-
+   
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>ContentManager</permission-role>
@@ -297,7 +297,7 @@
   <group-map name="data-service-editors">
    <group-role>Reader</group-role>
   </group-map>
-
+  
  </state>
  <state state_id="visible" title="Public draft (visible only with direct link)" >
   <description>Item still visible with direct link, but hidden is searches and listings on the site. Usable for external light reviews with no login required.</description>
@@ -350,14 +350,14 @@
    <group-role>Contributor</group-role>
    <group-role>Editor</group-role>
   </group-map>
-
+  
  </state>
  <transition transition_id="enable" title="enable" new_state="draft" trigger="USER" before_script="" after_script="" >
   <action url="" category="workflow" icon="">enable</action>
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="fake_publish" title="Pre-publish check" new_state="" trigger="USER" before_script="fake_transition" after_script="" >
   <action url="" category="workflow" icon="">Publish</action>
@@ -367,7 +367,7 @@
    <guard-expression>python:not path('here/@@get_readiness').is_ready_for('published')</guard-expression
    >
   </guard>
-
+  
  </transition>
  <transition transition_id="hide" title="Hide item from search and listings (Unpublish)" new_state="visible" trigger="USER" before_script="" after_script="" >
   <description>Content still available via direct link, but hidden in listings and searches.</description>
@@ -375,9 +375,9 @@
   <guard >
    <guard-group>Administrators</guard-group>
   </guard>
-
+  
  </transition>
- <transition transition_id="markForDeletion" title="Mark for deletion" new_state="marked_for_deletion" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="markForDeletion" title="Mark for deletion" new_state="marked_for_deletion" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <description>This transition is used to mark item for deletion, like putting the items in a waste bin. Useful when users do not have deletion permissions. Items can then be deleted by a scheduled process with specific rights.</description>
   <action url="" category="workflow" icon="">Mark for deletion</action>
   <guard >
@@ -385,9 +385,9 @@
    <guard-role>ContentManager</guard-role>
    <guard-role>Reviewer</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Publish</action>
   <guard >
    <guard-role>Reviewer</guard-role>
@@ -395,9 +395,9 @@
    <guard-expression>python:path('here/@@get_readiness').is_ready_for('published') and ((not here.getField('file')) or (here.getField('file') and here.getField('file').get_size(here) &lt; 104857600))</guard-expression
    >
   </guard>
-
+  
  </transition>
- <transition transition_id="publishEionet" title="Restrict to Eionet members (login required)" new_state="published_eionet" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="publishEionet" title="Restrict to Eionet members (login required)" new_state="published_eionet" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <description>Makes item visible for users with Eionet/Circa login</description>
   <action url="" category="workflow" icon="">Restrict to Eionet members (login required)</action>
   <guard >
@@ -405,31 +405,31 @@
    <guard-role>Reviewer</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="quickPublish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" >
   <action url="" category="workflow" icon="">Publish</action>
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="reject" title="Back for revision" new_state="draft" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="reject" title="Back for revision" new_state="draft" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Back for revision</action>
   <guard >
    <guard-role>Manager</guard-role>
    <guard-role>Reviewer</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="retract" title="Retract" new_state="retracted" trigger="USER" before_script="" after_script="" >
   <action url="" category="workflow" icon="">Retract</action>
   <guard >
    <guard-group>Administrators</guard-group>
   </guard>
-
+  
  </transition>
- <transition transition_id="show" title="Make visible only via direct link, still hidden in listings/search" new_state="visible" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="show" title="Make visible only via direct link, still hidden in listings/search" new_state="visible" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <description>This will make the item visible with direct link, but not show up in listings.</description>
   <action url="" category="workflow" icon="">Make visible only via direct link, still hidden in listings/search</action>
   <guard >
@@ -437,9 +437,9 @@
    <guard-role>Reviewer</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="simpleSubmit" title="Submit for final publishing" new_state="" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="simpleSubmit" title="Submit for final publishing" new_state="" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <description>This workflow action will not change state. It will just notify for publishing.</description>
   <action url="" category="workflow" icon="">Submit for final publishing</action>
   <guard >
@@ -447,16 +447,16 @@
    <guard-expression>python: here.portal_type in  ['Data', 'EEAFigure','EEAFigureFile'] and here.Language() == 'en'</guard-expression
    >
   </guard>
-
+  
  </transition>
- <transition transition_id="submitContentReview" title="Submit for internal peer review" new_state="content_pending" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="submitContentReview" title="Submit for internal peer review" new_state="content_pending" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="%(content_url)s/content_submit_form" category="workflow" icon="">Submit for internal peer review</action>
   <guard >
    <guard-role>ContentManager</guard-role>
    <guard-expression>python: here.portal_type in  ['Data', 'EEAFigure'] and here.Language() == 'en'</guard-expression
    >
   </guard>
-
+  
  </transition>
  <worklist worklist_id="contentReview" title="" >
   <description>For content review</description>
@@ -468,7 +468,7 @@
  </worklist>
  <worklist worklist_id="newAndDraft" title="" >
   <description>Content pending in first draft</description>
-
+  
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
@@ -476,7 +476,7 @@
  </worklist>
  <worklist worklist_id="pendingWebQA" title="" >
   <description>pending for web QA (final web publishing)</description>
-
+  
   <guard >
    <guard-role>WebReviewer</guard-role>
   </guard>
@@ -485,7 +485,7 @@
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True" >
   <description>The last transition</description>
   <default>
-
+   
    <expression>transition/getId|nothing</expression>
   </default>
   <guard >
@@ -494,7 +494,7 @@
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True" >
   <description>The ID of the user who performed the last transition</description>
   <default>
-
+   
    <expression>user/getId</expression>
   </default>
   <guard >
@@ -503,7 +503,7 @@
  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True" >
   <description>Comments about the last transition</description>
   <default>
-
+   
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard >
@@ -512,7 +512,7 @@
  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False" >
   <description>Provides access to workflow history</description>
   <default>
-
+   
    <expression>state_change/getHistory</expression>
   </default>
   <guard >
@@ -523,7 +523,7 @@
  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True" >
   <description>Time of the last transition</description>
   <default>
-
+   
    <expression>state_change/getDateTime</expression>
   </default>
   <guard >
@@ -532,8 +532,8 @@
  <script script_id="fake_transition" type="External Method" filename="" module="eea.workflow.workflow_scripts" function="fake_transition" />
  <script script_id="publish" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="publish" />
  <script script_id="reject" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="reject" />
+ <script script_id="sendWorkflowEmail" type="External Method" filename="" module="eea.dataservice.frontpage_workflow_scripts" function="sendWorkflowEmail" />
  <script script_id="submitForContentReview" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForContentReview" />
  <script script_id="submitForProofReading" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForProofReading" />
  <script script_id="submitForWebQA" type="External Method" filename="" module="EEAContentTypes.frontpage_workflow_scripts" function="submitForWebQA" />
 </dc-workflow>
-

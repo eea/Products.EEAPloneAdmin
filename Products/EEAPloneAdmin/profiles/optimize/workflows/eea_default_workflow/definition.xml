@@ -32,8 +32,8 @@
    <permission-role>Reviewer</permission-role>
    <permission-role>WebReviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="draft" title="First draft" >
   <exit-transition transition_id="autoSubmitCopyEdit" />
@@ -69,11 +69,11 @@
    <permission-role>Reviewer</permission-role>
    <permission-role>WebReviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="marked_for_deletion" title="Marked for deletion" >
-
+  
   <permission-map name="Access contents information" acquired="False">
    <permission-role>ContentManager</permission-role>
    <permission-role>Editor</permission-role>
@@ -89,8 +89,8 @@
    <permission-role>Manager</permission-role>
    <permission-role>Reviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="new" title="Copy-editing" >
   <exit-transition transition_id="hide" />
@@ -125,8 +125,8 @@
    <permission-role>Reviewer</permission-role>
    <permission-role>WebReviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="private" title="Private" >
   <exit-transition transition_id="publishInternally" />
@@ -144,8 +144,8 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="proof_reading" title="Proof reading" >
   <exit-transition transition_id="submit" />
@@ -171,14 +171,14 @@
    <permission-role>Reader</permission-role>
    <permission-role>Reviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="published" title="Published" >
   <exit-transition transition_id="retract" />
   <exit-transition transition_id="showPublicDraft" />
   <permission-map name="Access contents information" acquired="True">
-
+   
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>ContentManager</permission-role>
@@ -188,10 +188,10 @@
    <permission-role>WebReviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="True">
-
+   
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="published_internally" title="Published internally" >
   <description>Content published internally is in final state but not visible from the public, login to CMS is required.</description>
@@ -220,8 +220,8 @@
    <permission-role>Reader</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="retracted" title="Retracted" >
   <exit-transition transition_id="enable" />
@@ -240,8 +240,8 @@
    <permission-role>Editor</permission-role>
    <permission-role>ContentManager</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="visible" title="Public draft" >
   <exit-transition transition_id="markForDeletion" />
@@ -264,8 +264,8 @@
    <permission-role>Authenticated</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <state state_id="webqa_pending" title="Web QA" >
   <exit-transition transition_id="publish" />
@@ -297,22 +297,22 @@
    <permission-role>Reviewer</permission-role>
    <permission-role>WebReviewer</permission-role>
   </permission-map>
-
-
+  
+  
  </state>
  <transition transition_id="autoSubmitCopyEdit" title="(Auto) Submit for copy editing" new_state="new" trigger="AUTOMATIC" before_script="" after_script="" >
   <action url="" category="workflow" icon="">Submit for copy editing</action>
   <guard >
    <guard-role>Editor</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="enable" title="enable" new_state="new" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="enable" title="enable" new_state="new" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">enable</action>
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="hide" title="Owner makes content private" new_state="private" trigger="USER" before_script="" after_script="" >
   <action url="%(content_url)s/content_hide_form" category="workflow" icon="">Make private</action>
@@ -320,22 +320,22 @@
    <guard-role>Owner</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="markForDeletion" title="Mark for deletion" new_state="marked_for_deletion" trigger="USER" before_script="" after_script="" >
   <action url="" category="workflow" icon="">Mark for deletion</action>
   <guard >
    <guard-group>WebReviewers</guard-group>
   </guard>
-
+  
  </transition>
- <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Publish</action>
   <guard >
    <guard-role>WebReviewer</guard-role>
    <guard-role>Reviewer</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="publishInternally" title="Publish internally" new_state="published_internally" trigger="USER" before_script="" after_script="" >
   <description>Publish content internally. Only accessible to authorised users. Normal Eionet user cannot access content.</description>
@@ -343,18 +343,18 @@
   <guard >
    <guard-role>CommonEditor</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="quickPublish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="quickPublish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Publish</action>
   <guard >
    <guard-role>Reviewer</guard-role>
    <guard-expression>here/@@transitionQuickPublish</guard-expression
    >
   </guard>
-
+  
  </transition>
- <transition transition_id="reject" title="Back for revision" new_state="draft" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="reject" title="Back for revision" new_state="draft" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Back for revision</action>
   <guard >
    <guard-role>Manager</guard-role>
@@ -362,21 +362,21 @@
    <guard-role>Reviewer</guard-role>
    <guard-role>Editor</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="retract" title="Retract" new_state="retracted" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="retract" title="Retract" new_state="retracted" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Retract</action>
   <guard >
    <guard-group>Administrators</guard-group>
   </guard>
-
+  
  </transition>
- <transition transition_id="show" title="Make draft public" new_state="visible" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="show" title="Make draft public" new_state="visible" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Make draft public</action>
   <guard >
    <guard-role>WebReviewer</guard-role>
   </guard>
-
+  
  </transition>
  <transition transition_id="showPublicDraft" title="Make visible only via direct link" new_state="visible" trigger="USER" before_script="" after_script="" >
   <description>Make the content visible as public draft with direct url, not in navigation and listings. Useful for external anonymous consultation (without having to login).</description>
@@ -384,9 +384,9 @@
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="submit" title="Submit for Web QA" new_state="webqa_pending" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="submit" title="Submit for Web QA" new_state="webqa_pending" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Submit for Web QA</action>
   <guard >
    <guard-role>Reviewer</guard-role>
@@ -396,25 +396,25 @@
    <guard-expression>here/@@transitionSubmit</guard-expression
    >
   </guard>
-
+  
  </transition>
- <transition transition_id="submitContentReview" title="Submit for content review" new_state="content_pending" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="submitContentReview" title="Submit for content review" new_state="content_pending" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="%(content_url)s/content_submit_form" category="workflow" icon="">Submit for content review</action>
   <guard >
    <guard-role>Editor</guard-role>
    <guard-expression>here/@@transitionSubmitContentReview</guard-expression
    >
   </guard>
-
+  
  </transition>
- <transition transition_id="submitCopyEdit" title="Submit for copy editing" new_state="new" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="submitCopyEdit" title="Submit for copy editing" new_state="new" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Submit for copy editing</action>
   <guard >
    <guard-role>ContentManager</guard-role>
   </guard>
-
+  
  </transition>
- <transition transition_id="submitProofReading" title="Submit for proof reading" new_state="proof_reading" trigger="USER" before_script="" after_script="" >
+ <transition transition_id="submitProofReading" title="Submit for proof reading" new_state="proof_reading" trigger="USER" before_script="" after_script="sendWorkflowEmail" >
   <action url="" category="workflow" icon="">Submit for proof reading</action>
   <guard >
    <guard-role>Manager</guard-role>
@@ -422,7 +422,7 @@
    <guard-expression>here/@@transitionSubmitProofReading</guard-expression
    >
   </guard>
-
+  
  </transition>
  <worklist worklist_id="contentReview" title="" >
   <description>For content review</description>
@@ -434,7 +434,7 @@
  </worklist>
  <worklist worklist_id="newAndDraft" title="" >
   <description>Content pending in first draft</description>
-
+  
   <guard >
    <guard-role>Manager</guard-role>
   </guard>
@@ -442,7 +442,7 @@
  </worklist>
  <worklist worklist_id="pendingWebQA" title="" >
   <description>pending for web QA (final web publishing)</description>
-
+  
   <guard >
    <guard-role>WebReviewer</guard-role>
   </guard>
@@ -451,7 +451,7 @@
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True" >
   <description>The last transition</description>
   <default>
-
+   
    <expression>transition/getId|nothing</expression>
   </default>
   <guard >
@@ -460,7 +460,7 @@
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True" >
   <description>The ID of the user who performed the last transition</description>
   <default>
-
+   
    <expression>user/getId</expression>
   </default>
   <guard >
@@ -469,7 +469,7 @@
  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True" >
   <description>Comments about the last transition</description>
   <default>
-
+   
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard >
@@ -478,7 +478,7 @@
  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False" >
   <description>Provides access to workflow history</description>
   <default>
-
+   
    <expression>state_change/getHistory</expression>
   </default>
   <guard >
@@ -489,7 +489,7 @@
  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True" >
   <description>Time of the last transition</description>
   <default>
-
+   
    <expression>state_change/getDateTime</expression>
   </default>
   <guard >
@@ -497,8 +497,8 @@
  </variable>
  <script script_id="publish" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="publish" />
  <script script_id="reject" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="reject" />
+ <script script_id="sendWorkflowEmail" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="sendWorkflowEmail" />
  <script script_id="submitForContentReview" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="submitForContentReview" />
  <script script_id="submitForProofReading" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="submitForProofReading" />
  <script script_id="submitForWebQA" type="External Method" filename="" module="EEAPloneAdmin.frontpage_workflow_scripts" function="submitForWebQA" />
 </dc-workflow>
-
