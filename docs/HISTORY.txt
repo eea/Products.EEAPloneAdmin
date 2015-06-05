@@ -3,6 +3,12 @@ Changelog
 
 11.1.dev0 - (unreleased)
 ------------------------
+* Change: removed frontpage_workflows sendEmail logic and replaced
+  it with content rules
+  [ichimdav refs #22596]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #22596]
 
 11.0 - (2015-06-03)
 -------------------

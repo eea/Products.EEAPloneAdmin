@@ -187,4 +187,16 @@
 
     </genericsetup:upgradeSteps>
 
+    <genericsetup:upgradeSteps
+        source="10.6"
+        destination="11.1"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import all steps from Products.EEAPloneAdmin 11.1 profile"
+            import_profile="Products.EEAPloneAdmin:upgrade111"
+            />
+
+    </genericsetup:upgradeSteps>
+
 </configure>
