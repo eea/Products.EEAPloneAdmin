@@ -178,7 +178,7 @@
  <transition transition_id="submit"
              title="Member requests publishing"
              new_state="pending" trigger="USER"
-             before_script="" after_script="submitContent">
+             before_script="" after_script="">
   <action url="%(content_url)s/content_submit_form"
           category="workflow">Submit</action>
   <guard>
@@ -248,8 +248,4 @@
   <guard>
   </guard>
  </variable>
- <script script_id="submitContent" type="External Method"
-         filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="submitForWebQA"/>
 </dc-workflow>
