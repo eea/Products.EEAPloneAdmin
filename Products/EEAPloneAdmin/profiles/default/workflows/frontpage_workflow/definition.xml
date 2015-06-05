@@ -143,7 +143,7 @@
  </transition>
  <transition transition_id="publish" title="Publish"
              new_state="published" trigger="USER"
-             before_script="" after_script="publish">
+             before_script="" after_script="">
   <action url="" category="workflow">Publish</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -171,7 +171,7 @@
  <transition transition_id="submit"
              title="Submit for web qa"
              new_state="webqa_pending" trigger="USER"
-             before_script="" after_script="submitForWebQA">
+             before_script="" after_script="">
   <action url="" category="workflow">Submit for web qa</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -182,7 +182,7 @@
              title="Submit for content review"
              new_state="content_pending" trigger="USER"
              before_script=""
-             after_script="submitForContentReview">
+             after_script="">
   <action url="%(content_url)s/content_submit_form"
           category="workflow">Submit for content review</action>
   <guard>
@@ -192,7 +192,7 @@
              title="Submit for proof reading"
              new_state="proof_reading" trigger="USER"
              before_script=""
-             after_script="submitForProofReading">
+             after_script="">
   <action url="" category="workflow">Submit for proof reading</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -267,24 +267,4 @@
   <guard>
   </guard>
  </variable>
- <script script_id="publish" type="External Method"
-         filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="publish"/>
- <script script_id="reject" type="External Method"
-         filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="reject"/>
- <script script_id="submitForContentReview"
-         type="External Method" filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="submitForContentReview"/>
- <script script_id="submitForProofReading"
-         type="External Method" filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="submitForProofReading"/>
- <script script_id="submitForWebQA" type="External Method"
-         filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="submitForWebQA"/>
 </dc-workflow>
