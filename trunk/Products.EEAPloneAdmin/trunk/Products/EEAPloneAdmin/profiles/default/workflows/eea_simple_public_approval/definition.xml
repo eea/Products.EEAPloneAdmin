@@ -138,8 +138,4 @@
          filename=""
          module="EEAPloneAdmin.eea_public_approval_workflow_scripts"
          function="publishContent"/>
- <script script_id="submitContent" type="External Method"
-         filename=""
-         module="EEAPloneAdmin.frontpage_workflow_scripts"
-         function="submitForWebQA"/>
 </dc-workflow>
