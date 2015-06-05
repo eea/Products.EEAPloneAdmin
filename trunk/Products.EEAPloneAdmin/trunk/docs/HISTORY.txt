@@ -3,6 +3,9 @@ Changelog
 
 11.1.dev0 - (unreleased)
 ------------------------
+* Manual upgrade step: content rule message recipients and body needs to be
+  configured by demarant for sending workflow emails
+  [ichimdav refs #22596]
 * Change: removed frontpage_workflows sendEmail logic and replaced
   it with content rules
   [ichimdav refs #22596]
