@@ -12,6 +12,8 @@ Changelog
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [ichimdav refs #22596]
+* Cleanup: remove Munin references
+  [ghicaale refs #24861]
 
 11.0 - (2015-06-03)
 -------------------
