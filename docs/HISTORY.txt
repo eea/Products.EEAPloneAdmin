@@ -17,6 +17,11 @@ Changelog
   [ichimdav refs #22596]
 * Cleanup: remove Munin references
   [ghicaale refs #24861]
+* Pre-upgrade step: add under under each backend to secret.cfg the credentials for RabbitMQ as bellow
+    - [buildout]
+    - rabbitmq-username = ba***
+    - rabbitmq-password = li***
+    - [ghicaale refs #21610]
 
 11.0 - (2015-06-03)
 -------------------
