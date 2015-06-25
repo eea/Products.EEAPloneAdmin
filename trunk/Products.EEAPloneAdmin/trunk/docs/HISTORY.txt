@@ -3,6 +3,8 @@ Changelog
 
 11.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Removed Products.PloneHelpCenter getAudiences catalog index and metadata
+  [voineali refs #26848]
 * Upgrade step: Upgrade crons. See README.txt and changes within revisions
   https://taskman.eionet.europa.eu/projects/zope/repository/diff/trunk/www.eea.europa.eu?utf8=%E2%9C%93&rev=38646&rev_to=38632
   [voineali refs #25015]
