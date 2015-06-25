@@ -3,6 +3,8 @@ Changelog
 
 11.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Removed Products.PloneHelpCenter getStartHere catalog index and metadata
+  [voineali refs #26848]
 * Cleanup: Removed Products.PloneHelpCenter getAudiences catalog index and metadata
   [voineali refs #26848]
 * Upgrade step: Upgrade crons. See README.txt and changes within revisions
