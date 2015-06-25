@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<atcttool>
+ <topic_indexes>
+  <index name="getAudiences" remove="True" />
+ </topic_indexes>
+</atcttool>

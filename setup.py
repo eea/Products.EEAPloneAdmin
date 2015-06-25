@@ -30,7 +30,7 @@ setup(name=name,
       install_requires=[
           'setuptools',
           'Products.LinguaPlone',
-          'Products.PloneHelpCenter',
+          'Products.PloneHelpCenter > 4.0',
           'eea.translations',
           'Products.NavigationManager',
           'valentine.linguaflow',
