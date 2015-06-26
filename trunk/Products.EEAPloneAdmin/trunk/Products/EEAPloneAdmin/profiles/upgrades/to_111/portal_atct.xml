@@ -3,5 +3,6 @@
  <topic_indexes>
   <index name="getAudiences" remove="True" />
   <index name="getStartHere" remove="True" />
+  <index name="getVersions" remove="True" />
  </topic_indexes>
 </atcttool>
