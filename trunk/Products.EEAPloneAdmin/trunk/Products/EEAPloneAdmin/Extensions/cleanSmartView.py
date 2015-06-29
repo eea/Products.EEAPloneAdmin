@@ -53,5 +53,5 @@ def clean_smart_view(self):
     for item in items:
         found = context.unrestrictedTraverse(item)
         found.setLayout('uberlisting_view')
-        info("%s" % item)
+        info("%s", item)
     info("Done")

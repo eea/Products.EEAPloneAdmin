@@ -5,12 +5,12 @@
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
 
-patched_manage_groups = PageTemplateFile( 'www/zgGroups'
+patched_manage_groups = PageTemplateFile('www/zgGroups'
                                         , globals()
                                         , __name__='manage_groups'
                                         )
 
-patched_manage_roles = PageTemplateFile( 'www/zrRoles'
+patched_manage_roles = PageTemplateFile('www/zrRoles'
                                        , globals()
                                        , __name__='manage_roles'
                                        )

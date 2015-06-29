@@ -36,8 +36,8 @@ def FindMissingBlobs(self):
     logger.info('Start testing')
     for ctype in content_types:
         logger.info('Testing %s', ctype)
-        tquery = { 'portal_type': [ctype],
-                   'Language': 'all', }
+        tquery = {'portal_type': [ctype],
+                  'Language': 'all', }
         tbrains = cat(**tquery)
 
         for tk in tbrains[:1]:

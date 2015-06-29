@@ -36,7 +36,7 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
                 obj.manage_delLocalRoles(userids=member_ids)
                 break
 
-    if recursive and hasattr( aq_base(obj), 'contentValues' ):
+    if recursive and hasattr(aq_base(obj), 'contentValues'):
         for subobj in obj.contentValues():
             self.deleteLocalRoles(subobj, member_ids, 0, 1, REQUEST)
 
@@ -66,7 +66,7 @@ def patched_getDiff(self, item_one_path, item_two_path, reverse=0):
     item_one_contents = _getFileContent(item_one)
     item_two_contents = _getFileContent(item_two)
 
-    res =  unified_diff( item_one_contents.splitlines()
+    res = unified_diff(item_one_contents.splitlines()
                        , item_two_contents.splitlines()
                        , item_one_path
                        , item_two_path

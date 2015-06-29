@@ -27,15 +27,15 @@ def manage_deleteExportSteps(self, ids, request=None):
     url = self.absolute_url()
     request.RESPONSE.redirect("%s/manage_stepRegistry" % url)
 
-def __patched_init__( self, tool, encoding=None ):
+def __patched_init__(self, tool, encoding=None):
 
-    BaseContext.__init__( self, tool, encoding )
+    BaseContext.__init__(self, tool, encoding)
 
     timestamp = time.gmtime()
-    archive_name = ( 'setup_tool-%4d%02d%02d%02d%02d%02d.tar.gz'
-                   % timestamp[:6] )
+    archive_name = ('setup_tool-%4d%02d%02d%02d%02d%02d.tar.gz'
+                   % timestamp[:6])
 
     self._archive_stream = StringIO()
     self._archive_filename = archive_name
-    self._archive = TarFile.open( archive_name, 'w:tar',
-                                  self._archive_stream )
+    self._archive = TarFile.open(archive_name, 'w:tar',
+                                 self._archive_stream)

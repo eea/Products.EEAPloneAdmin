@@ -66,8 +66,8 @@ class PloneAdmin(Plone):
     """
     implements(IPloneAdmin)
 
-    def toLocalizedTime(self, time, long_format = None,
-                        time_only = None, translate=True):
+    def toLocalizedTime(self, time, long_format=None,
+                        time_only=None, translate=True):
         """ Remove translation of localized time """
         if translate:
             return Plone.toLocalizedTime(self, time=time, time_only=time_only,
@@ -75,8 +75,8 @@ class PloneAdmin(Plone):
         props = getToolByName(self.context, 'portal_properties').site_properties
         time = DateTime(time)
         if long_format:
-            return time.strftime( props.localLongTimeFormat )
-        return  time.strftime( props.localTimeFormat )
+            return time.strftime(props.localLongTimeFormat)
+        return time.strftime(props.localTimeFormat)
 
     @memoize
     def isCmsMode(self):

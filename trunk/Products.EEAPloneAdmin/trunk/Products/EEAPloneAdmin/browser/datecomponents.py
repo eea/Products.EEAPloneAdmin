@@ -49,7 +49,7 @@ class DateComponents(BrowserView):
 
         # Get the date format from the locale
         context = aq_inner(self.context)
-        portal_state = getMultiAdapter((context, self.request), 
+        portal_state = getMultiAdapter((context, self.request),
                                         name=u'plone_portal_state')
 
         dates = portal_state.locale().dates
@@ -60,7 +60,7 @@ class DateComponents(BrowserView):
         #    use_ampm = True
         month_names = dates.getFormatter('date').calendar.months
 
-        # 'id' is what shows up.  December for month 12. 
+        # 'id' is what shows up.  December for month 12.
         # 'value' is the value for the form.
         # 'selected' is whether or not it is selected.
 
@@ -78,7 +78,7 @@ class DateComponents(BrowserView):
             if not date:
                 date = None
             else:
-                # Please see datecomponents.txt for an explanation of 
+                # Please see datecomponents.txt for an explanation of
                 # the next few lines. Also see #11423
                 dateParts = date.split(" ")
                 #PATCH: we fix #5236
@@ -140,14 +140,14 @@ class DateComponents(BrowserView):
         month = int(date.strftime('%m'))
 
         if default:
-            months.append({'id': '--', 'value': '00', 'selected': 1, 
+            months.append({'id': '--', 'value': '00', 'selected': 1,
                            'title': '--'})
         else:
-            months.append({'id': '--', 'value': '00', 'selected': None, 
+            months.append({'id': '--', 'value': '00', 'selected': None,
                            'title': '--'})
 
         for x in range(1, 13):
-            d = {'id': ENGLISH_MONTH_NAMES[x], 'value': '%02d' % x, 
+            d = {'id': ENGLISH_MONTH_NAMES[x], 'value': '%02d' % x,
                  'selected': None}
             if x == month and not default:
                 d['selected'] = 1
@@ -175,14 +175,14 @@ class DateComponents(BrowserView):
             hours_range = range(0, 24)
             hour_default = '00'
             hour = int(date.h_24())
-        
+
         if default:
             hours.append({'id': '--', 'value': hour_default, 'selected': 1})
         else:
             hours.append({'id': '--', 'value': hour_default, 'selected': None})
 
         for x in hours_range:
-            d = {'id': '%02d' % x, 'value': '%02d' % x, 'selected': None }
+            d = {'id': '%02d' % x, 'value': '%02d' % x, 'selected': None}
             if x == hour and not default:
                 d['selected'] = 1
             hours.append(d)
@@ -191,9 +191,9 @@ class DateComponents(BrowserView):
             minutes.append({'id': '--', 'value': '00', 'selected': 1})
         else:
             minutes.append({'id': '--', 'value': '00', 'selected': None})
-            
+
         minute = int(date.strftime('%M'))
-        
+
         if minute + minute_step >= 60:
             # edge case. see doctest for explanation
             minute = 60 - minute_step

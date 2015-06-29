@@ -21,7 +21,7 @@ import re
 import transaction
 excludeFromNav = ('legal', 'quicklinks', 'address.html')
 
-#pylint: disable-msg = C0111, C0301
+#pylint: disable = C0111, C0301, W1401
 # list of (path, portalType, translationText)
 # translationText is None when we use the title of the object
 translateFromSite = (('address.html', 'Document', None),
@@ -46,7 +46,7 @@ translateFromSite = (('address.html', 'Document', None),
 navigationRoot2NotPublish = ['eionet']
 
 
-navigationMenues2Translate = { 'products' : ['reportsoverview', 'education',
+navigationMenues2Translate = {'products' : ['reportsoverview', 'education',
                                              'reports', 'more'],
                               'pressroom' : ['pressoverview', 'latestreports',
                                              'highlights', 'pressreleases',
@@ -98,8 +98,8 @@ def getLanguages(context):
     logger.info("EEAPloneAdmin:local-sites: Enable 'Use language codes in "
                 "URL path for manual override' in portal_languages")
     siteLangView = plone.unrestrictedTraverse('@@translatedSitesLanguages')
-    languages = [ (lang, _unused) for lang, _unused in siteLangView()
-                  if lang != 'en' ]
+    languages = [(lang, _unused) for lang, _unused in siteLangView()
+                  if lang != 'en']
     return languages
 
 def translate(msgid, target_language, output=False):
@@ -114,9 +114,9 @@ def translate(msgid, target_language, output=False):
                 translation = str(msgid)
                 untranslatedMessages.get(target_language)[msgid] = translation
         translation = untranslatedMessages.get(target_language).get(msgid)
-    if type(translation) == type(''):
+    if isinstance(translation, str):
         return translation
-    if type(translation) == type(u''):
+    if isinstance(translation, unicode):
         return translation.encode('utf8')
     # what do we have here?
     return str(translation)
@@ -663,15 +663,15 @@ def fixPromotion(context):
                         'Initial publish by method localsite.fixPromotion'))
 
 
-toTranslatefromG = { 'Animations' : 'Animations',
-                     'Images' : 'Images',
-                     'Interactive Maps' : 'Interactive Maps',
-                     'Interviews' : 'Interviews',
-                     'Presentations' : 'Presentations',
-                     'Videos' : 'Videos',
-                     'Other' : 'Other',
-                     'Menu' : 'Menu',
-                     }
+toTranslatefromG = {'Animations' : 'Animations',
+                    'Images' : 'Images',
+                    'Interactive Maps' : 'Interactive Maps',
+                    'Interviews' : 'Interviews',
+                    'Presentations' : 'Presentations',
+                    'Videos' : 'Videos',
+                    'Other' : 'Other',
+                    'Menu' : 'Menu',
+                   }
 
 def getTranslationsFromGoogle(context):
     if context.readDataFile('eeaploneadmin_localsites.txt') is None:

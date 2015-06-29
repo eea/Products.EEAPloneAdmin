@@ -53,7 +53,7 @@ def patched_getListing(self, filter_portal_types, rooted, document_base_url,
 
     # start patch -> get all portal types and get information from brains
     # plone4 added ability to click topics and get the query results
-    if type(obj.queryCatalog) != ImplicitAcquisitionWrapper:
+    if not isinstance(obj.queryCatalog, ImplicitAcquisitionWrapper):
         brains = obj.queryCatalog()
     else:
         path = '/'.join(obj.getPhysicalPath())

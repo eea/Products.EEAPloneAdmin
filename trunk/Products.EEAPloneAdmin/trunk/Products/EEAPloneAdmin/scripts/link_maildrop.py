@@ -1,4 +1,4 @@
-"""script to symlink maildrop 
+"""script to symlink maildrop
 """
 
 import os.path

@@ -29,7 +29,7 @@ class ArchetypesFileSetter(object):
             mutator = primaryField.getMutator(obj)
             # mimetype arg works with blob files
             mutator(data, content_type=content_type, mimetype=content_type)
-            if not obj.getFilename() :
+            if not obj.getFilename():
                 obj.setFilename(filename)
                 #patch:
                 #check if setFilename worked,
@@ -43,7 +43,7 @@ class ArchetypesFileSetter(object):
                                 blob.setFilename(filename)
                 #end of patch
             obj.reindexObject()
-        else :
+        else:
             # some products remove the 'primary' attribute
             # on ATFile or ATImage (which is very bad)
             error = u'serverError'

@@ -19,7 +19,7 @@ def sendToIC(self, state_change, **kw):
     """
     enq = state_change.object
     portal = enq.portal_url.getPortalObject()
-    question = enq.Description().replace('\r','')
+    question = enq.Description().replace('\r', '')
     subject = "=?%s?q?%s?=" % ('utf-8', quopri.encodestring(enq.Title()))
 
     content = enquiryTemplate % (enq.getEmail(),
@@ -30,5 +30,5 @@ def sendToIC(self, state_change, **kw):
                                  enq.getOccupation(),
                                  enq.getPurpuse())
     host = portal.MailHost
-    host.send( content )
+    host.send(content)
     print content

@@ -5,7 +5,7 @@
 """
 
 # W0703:105,11:_patched_translate: Catching too general exception Exception
-# pylint: disable-msg=W0703
+# pylint: disable=W0703
 
 import logging
 

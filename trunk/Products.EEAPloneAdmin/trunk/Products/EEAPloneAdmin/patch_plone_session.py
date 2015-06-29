@@ -26,17 +26,17 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
     # IAuthenticationPlugin implementation
     def authenticateCredentials(self, credentials):
-        if not credentials.get("source", None)=="plone.session":
+        if not credentials.get("source", None) == "plone.session":
             return None
 
-        ticket=credentials["cookie"]
+        ticket = credentials["cookie"]
         ticket_data = self._validateTicket(ticket)
         if ticket_data is None:
             self.refresh(self.REQUEST)
             return None
         (digest, userid, tokens, user_data, timestamp) = ticket_data
-        pas=self._getPAS()
-        info=pas._verifyUser(pas.plugins, user_id=userid)
+        pas = self._getPAS()
+        info = pas._verifyUser(pas.plugins, user_id=userid)
         if info is None:
             self.refresh(self.REQUEST)
             return None

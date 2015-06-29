@@ -24,7 +24,7 @@ except ImportError:
 if has_tidy:
     mx_tidy = tidy
 else:
-    mx_tidy = lambda x, **y:x
+    mx_tidy = lambda x, **y: x
 
 OBJNAME = re.compile('(.*)-([A-Za-z]{2})([.][A-Za-z]{3})*$')
 
@@ -53,7 +53,7 @@ class LinguaPlone(BrowserView):
                 obj.setLanguage('')
                 obj.setCanonical()
                 obj.setLanguage('en')
-                canonicals[ cid ] = obj
+                canonicals[cid] = obj
 
         for obj in context.contentValues():
             oid = obj.getId()
@@ -64,9 +64,9 @@ class LinguaPlone(BrowserView):
                 obj.setLanguage('')
                 obj.setLanguage(lang)
                 obj.addTranslationReference(canonical)
-        return [ { 'canonical' : k,
-                   'translations' : v.getTranslationLanguages() }
-                                    for k,v in canonicals.items() ]
+        return [{'canonical' : k,
+                 'translations' : v.getTranslationLanguages()}
+                                for k, v in canonicals.items()]
 
 class TidyContent(BrowserView):
     """ Tidy content
@@ -75,7 +75,7 @@ class TidyContent(BrowserView):
         """ Tidy all
         """
         fixed = {'ok' : [],
-                 'err' : [] }
+                 'err' : []}
         context = self.context
         for obj in context.contentValues():
             if hasattr(obj, 'getRawText') and hasattr(obj, 'setText'):
@@ -112,18 +112,18 @@ def save_resources_on_disk(registry, request=None):
         u"Starting to save resources on disk for registry %s", registry)
 
     portal_url_tool = getToolByName(registry, 'portal_url')
-    portal_url      = portal_url_tool()
+    portal_url = portal_url_tool()
     #portal          = portal_url_tool.getPortalObject()
-    skins           = getToolByName(registry,
+    skins = getToolByName(registry,
                                     'portal_skins').getSkinSelections()
-    conf            = getConfiguration()
+    conf = getConfiguration()
 
     if not hasattr(conf, 'environment'):
         return  #this happens during unit tests, we skip this procedure
 
-    base            = conf.environment.get('saved_resources')
-    script          = conf.environment.get('sync_resources')
-    default_url     = conf.environment.get('portal_url', portal_url)
+    base = conf.environment.get('saved_resources')
+    script = conf.environment.get('sync_resources')
+    default_url = conf.environment.get('portal_url', portal_url)
 
 
     for skin in skins:

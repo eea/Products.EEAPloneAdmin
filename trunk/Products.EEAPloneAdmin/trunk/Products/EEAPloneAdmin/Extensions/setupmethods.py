@@ -50,14 +50,14 @@ def updateMimeTypes(self, brains=None, extension=None, newmime=None,
                         trans_count += 1
                         if newmime:
                             accessor.content_type = newmime
-                            info('INFO: updating mime type for %s %s' % (
+                            info('INFO: updating mime type for %s %s',
                                                                   myfile.id,
-                                                                  filename))
+                                                                  filename)
                             fileo.unindexObject()
                             fileo.reindexObject()
     if trans_count % batchnr == 0:
-        info('INFO: processing %s of %s objects' % (str(trans_count),
-                                                    str(totobs)))
+        info('INFO: processing %s of %s objects', str(trans_count),
+                                                  str(totobs))
         transaction.commit()
 
     info('INFO: completed mime types update')
@@ -78,7 +78,7 @@ def bulkDelete(self, brains=None, batchnr=20, delete_versions=False):
     for brain in brains:
         trans_count += 1
         if debug:
-            info('INFO: deleting %s' % brain)
+            info('INFO: deleting %s', brain)
         else:
             ob = brain.getObject()
             parent = ob.aq_parent
@@ -88,19 +88,19 @@ def bulkDelete(self, brains=None, batchnr=20, delete_versions=False):
             if ((ver_nr < 2 or delete_versions) and
                  brain.review_state not in ['published', 'visible']):
                 # only one version then delete, never delete published content
-                info('INFO: deleting %s' % (ob.absolute_url()))
+                info('INFO: deleting %s', ob.absolute_url())
                 parent.manage_delObjects([ob.id])
                 deleted_count += 1
             else:
-                info('INFO: Skip deleting: review state = %s  versions = %s' \
-                    % (brain.review_state, str(ver_nr)))
+                info('INFO: Skip deleting: review state = %s  versions = %s',
+                     brain.review_state, str(ver_nr))
         if trans_count % batchnr == 0:
-            info('INFO: processing %s of %s objects' % (str(trans_count),
-                                                        str(totobs)))
+            info('INFO: processing %s of %s objects', str(trans_count),
+                                                      str(totobs))
             transaction.commit()
 
-    info('INFO: Done bulk delete of %s of total %s requested' % (
-                               str(deleted_count), str(totobs)))
+    info('INFO: Done bulk delete of %s of total %s requested',
+                               str(deleted_count), str(totobs))
 
 def bulkDeleteSpam(self):
     """ Cleanup spam
@@ -129,11 +129,11 @@ def bulkDeleteSpam(self):
     for ob_id in spam:
         trans_count += 1
         if debug:
-            info('INFO: deleting %s' % ob_id)
+            info('INFO: deleting %s', ob_id)
         else:
             qevents_container.manage_delObjects([ob_id])
         if trans_count % 20 == 0:
-            info('INFO: %s deleted spam' % str(trans_count))
+            info('INFO: %s deleted spam', str(trans_count))
             transaction.commit()
 
     info('INFO: Done bulk delete spam')
@@ -158,7 +158,7 @@ def bulkChangeState(self):
     for ob in targets:
         if debug:
         #Debug mode
-            info('Target: %s' % ob.absolute_url())
+            info('Target: %s', ob.absolute_url())
         else:
         #Change state logic
             try:
@@ -185,12 +185,12 @@ def bulkChangeState(self):
                     wftool.doActionFor(ob, 'publish',
                             comment='SOER2010 launch. Set by migration script.')
                 else:
-                    info('ERROR: state not covered, %s' % ob.absolute_url())
-                    info('ERROR: old state: %s' % old_state)
+                    info('ERROR: state not covered, %s', ob.absolute_url())
+                    info('ERROR: old state: %s', old_state)
 
                 cat.reindexObject(ob)
             except WorkflowException, err:
-                info('ERROR: state not changed for %s' % ob.absolute_url())
+                info('ERROR: state not changed for %s', ob.absolute_url())
                 info_exception('Exception: %s ', err)
 
         if done % 2 == 0:
@@ -455,7 +455,7 @@ def unmarkCreationFlagForBrains(self, brains=None):
     i = 0
     for b in brains:
         i += 1
-        info('INFO: processing %s of %s' % (str(i), str(tot)))
+        info('INFO: processing %s of %s', str(i), str(tot))
         try:
             o = b.getObject()
             if o.checkCreationFlag():
@@ -468,7 +468,7 @@ def unmarkCreationFlagForBrains(self, brains=None):
                     o.getId(), o.absolute_url())
                 info(msg)
         except WorkflowException, err:
-            info('ERROR: unmarking flag for %s' % o.absolute_url())
+            info('ERROR: unmarking flag for %s', o.absolute_url())
             info_exception('Exception: %s ', err)
 
     info('INFO: DONE unmark creation flag')
@@ -479,7 +479,7 @@ def interactiveMapsPromotions(self):
     cat = getToolByName(context, 'portal_catalog')
     #wf = getToolByName(context, 'portal_workflow')
 
-    pubs = cat.searchResults({ 'portal_type' : 'Promotion'})
+    pubs = cat.searchResults({'portal_type' : 'Promotion'})
 
     printed = "Promotions:"
 
@@ -498,7 +498,7 @@ def sendModifiedForObjects(self):
     """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs = cat.searchResults({ 'id' : 'dm' })
+    pubs = cat.searchResults({'id' : 'dm'})
     printed = ""
     for pub in pubs:
         pubo = pub.getObject()
@@ -516,7 +516,7 @@ def hideMapsDataFolders(self):
     context = self
     cat = getToolByName(context, 'portal_catalog')
     wf = getToolByName(context, 'portal_workflow')
-    pubs = cat.searchResults({ 'id' : 'maps-and-graphs' ,
+    pubs = cat.searchResults({'id' : 'maps-and-graphs',
                              'path': '/www/SITE/themes/'})
     printed = "STARTED"
     for pub in pubs:
@@ -536,7 +536,7 @@ def setNavContext(self):
     """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs = cat.searchResults({ 'id' : 'datasets' , 'path': '/www/SITE/themes/'})
+    pubs = cat.searchResults({'id' : 'datasets', 'path': '/www/SITE/themes/'})
     printed = "STARTED"
     for pub in pubs:
         pubo = pub.getObject()
@@ -554,7 +554,7 @@ def setNavContextForLiveMaps(self):
     """
     context = self
     cat = getToolByName(context, 'portal_catalog')
-    pubs = cat.searchResults({ 'navSection' : 'quicklinks' })
+    pubs = cat.searchResults({'navSection' : 'quicklinks'})
     printed = "STARTED\n"
     for pub in pubs:
         pubo = pub.getObject()
@@ -637,9 +637,9 @@ def translate(msgid, target_language, output=False):
             untranslatedMessages.setdefault(target_language, {})
             untranslatedMessages[target_language].setDefault(msgid, str(msgid))
         translation = untranslatedMessages.get(target_language).get(msgid)
-    if type(translation) == type(''):
+    if isinstance(translation, str):
         return translation
-    if type(translation) == type(u''):
+    if isinstance(translation, unicode):
         return translation.encode('utf8')
     # what do we have here?
     return str(translation)
@@ -748,10 +748,10 @@ def setActiveSubscribers(self):
         s.format = subscriber.format
         s.bounces = []
         s._p_changed = True
-        info("INFO: set %s to %s (using %s)" % (
-            s.id, s.active, subscriber.active))
+        info("INFO: set %s to %s (using %s)",
+            s.id, s.active, subscriber.active)
 
-        if (s.email in all_emails):
+        if s.email in all_emails:
             duplicate_email_ids.append(s.id)
         else:
             all_emails.append(s.email)
@@ -814,9 +814,9 @@ The EEA webteam
             #[("", email)], mailMsg, subject = subject)
             mailhost.send(messageText=body, mto=email,
                           mfrom="no-reply@eea.europa.eu", subject=subject)
-            info("INFO: sent email to %s, %s of %s" % (email, i, count))
+            info("INFO: sent email to %s, %s of %s", email, i, count)
         except Exception, e:
-            info("Got exception %s for %s" % (e, email))
+            info("Got exception %s for %s", e, email)
             errors.append(email)
 
     return str(errors)

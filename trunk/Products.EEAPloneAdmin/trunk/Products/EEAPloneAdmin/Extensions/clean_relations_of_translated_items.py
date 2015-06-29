@@ -29,11 +29,11 @@ def clean_relations(self):
     for lang in languages:
         num_objects = 0
         num_relation = 0
-        info ("language: %s" % lang)
+        info("language: %s", lang)
         message += "language: %s\n" % lang
 
         # Get all translated content
-        translations = catalog.unrestrictedSearchResults(Language = lang)
+        translations = catalog.unrestrictedSearchResults(Language=lang)
 
         # Take all relations of translations and delete them
         for translation in translations:
@@ -55,9 +55,9 @@ def clean_relations(self):
                 if (relation in rels_canon) or (relation.getTranslation("en")
                                                 in rels_canon):
                     continue
-                else :
+                else:
                     info("Warning, relation doesn't match canonical object: "
-                         "%s for %s" % (obj.absolute_url(), str(relation)))
+                         "%s for %s", obj.absolute_url(), str(relation))
                     message += ("Warning, relation doesn't match canonical "
                                 "object: " + str(obj.absolute_url()) + "\n")
                     message += "for " + str(relation) + "\n"
@@ -78,20 +78,20 @@ def clean_relations(self):
 
             # Commiting transaction
             if total_objects % transaction_threshold == 0:
-                info("Commit: %s objects" % transaction_threshold)
+                info("Commit: %s objects", transaction_threshold)
                 transaction.savepoint()
 
-        info("objects %s" % num_objects)
-        info("relations %s" % num_relation)
+        info("objects %s", num_objects)
+        info("relations %s", num_relation)
         message += "objects %s\nrelations %s\n" % (num_objects, num_relation)
 
     # Commiting transaction for last items
-    info("Commit: %s objects" % (total_objects % transaction_threshold))
+    info("Commit: %s objects", total_objects % transaction_threshold)
     transaction.savepoint()
 
     # End information log
-    info("Objects updated: %s" % total_objects)
-    info("Relations removed: %s" % total_relations)
+    info("Objects updated: %s", total_objects)
+    info("Relations removed: %s", total_relations)
     message += "Total Objects: %s / Total Relations: %s" % (total_objects,
                                                             total_relations)
     info("COMPLETE")
