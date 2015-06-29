@@ -31,7 +31,7 @@ def show(self):
     """
 
     empty = find(self)
-    return "\n".join([ "Folder that are empty inside EEAFigures"] +
+    return "\n".join(["Folder that are empty inside EEAFigures"] +
                         [o.absolute_url() for o in empty[0]] +
                      ['Folders that are filled inside eeafigures'] +
                         [o.absolute_url() for o in empty[1]]

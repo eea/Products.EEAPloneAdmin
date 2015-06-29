@@ -59,7 +59,7 @@ def clear_registries(context):
         return
 
     site = context.getSite()
-    jstool  = getToolByName(site, 'portal_javascripts')
+    jstool = getToolByName(site, 'portal_javascripts')
     csstool = getToolByName(site, 'portal_css')
 
     for tool in (jstool, csstool):

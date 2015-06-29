@@ -9,7 +9,7 @@ from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from Products.CMFPlone.interfaces.syndication import (
     ISiteSyndicationSettings, IFeedSettings)
 from Products.ZCTextIndex.interfaces import IZCTextIndex
-import utils
+from Products.EEAPloneAdmin.upgrades import utils
 import transaction
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")

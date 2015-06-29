@@ -44,15 +44,15 @@ logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
 
 # Some new theme ids are not same as old
-themeIdMap = { 'coasts_seas' : 'coast_sea',
-               'fisheries' : 'fishery',
-               'human_health' : 'human',
-               'natural_resources' : 'natural',
-               'env_information' : 'information',
-               'env_management' : 'management',
-               'env_reporting' : 'reporting',
-               'env_scenarios' : 'scenarios',
-               'various' : 'other_issues' }
+themeIdMap = {'coasts_seas' : 'coast_sea',
+              'fisheries' : 'fishery',
+              'human_health' : 'human',
+              'natural_resources' : 'natural',
+              'env_information' : 'information',
+              'env_management' : 'management',
+              'env_reporting' : 'reporting',
+              'env_scenarios' : 'scenarios',
+              'various' : 'other_issues'}
 
 
 class FixExcludeFromNav(object):
@@ -96,8 +96,8 @@ class MigrateWrongThemeIds(object):
                 except Exception:
                     continue
                 if currentThemes == str(currentThemes):
-                    currentThemes = [currentThemes, ]
-                newThemes = [ themeIdMap.get(r, r) for r in currentThemes ]
+                    currentThemes = [currentThemes,]
+                newThemes = [themeIdMap.get(r, r) for r in currentThemes]
                 obj.setThemes(newThemes)
                 print '%s: %s -> %s' % (obj, currentThemes, newThemes)
 
@@ -150,9 +150,9 @@ class MigrateTheme(object):
         imageUrl = themeUrl + '/theme_image'
         imageData = urllib.urlopen(imageUrl).read().strip()
         image = self.context.invokeFactory('Image',
-                                           id = 'theme_image',
-                                           title = '%s - Theme image' %
-                                                       self.context.Title())
+                                           id='theme_image',
+                                           title='%s - Theme image' %
+                                                    self.context.Title())
         obj = self.context[image]
         obj.setImage(imageData)
         obj.reindexObject()
@@ -163,7 +163,7 @@ class MigrateTheme(object):
         relatedUrl = url % ('themeRelated', themeId)
         related = urllib.urlopen(relatedUrl).read().strip()
         related = related[1:-1].replace('\'', '')
-        related = [ theme.strip() for theme in related.split(',') ]
+        related = [theme.strip() for theme in related.split(',')]
         theme = IThemeRelation(self.context)
         themeCentres = self.context.portal_catalog.searchResults(
             object_provides='eea.themecentre.interfaces.IThemeCentre')
@@ -173,11 +173,11 @@ class MigrateTheme(object):
         themeCentres = tcs
 
         # map old theme id to new
-        related = [ themeIdMap.get(r, r) for r in related ]
+        related = [themeIdMap.get(r, r) for r in related]
 
         # ZZZ need to find UID for the related theme centres
-        related = [ themeCentres.get(rel) for rel in related ]
-        related = [ rl for rl in related if rl is not None ]
+        related = [themeCentres.get(rel) for rel in related]
+        related = [rl for rl in related if rl is not None]
         theme.related = related
 
     def _intro(self, themeId):
@@ -273,7 +273,7 @@ class InitialThemeCentres(object):
             context.manage_addProperty('right_slots', slots, type='lines')
 
         if not hasattr(aq_base(context), 'left_slots'):
-            slots = ['here/portlet_themes/macros/portlet', ]
+            slots = ['here/portlet_themes/macros/portlet',]
             context.manage_addProperty('left_slots', slots, type='lines',)#,
 
         #if hasattr(aq_base(context), 'navigationmanager_menuid'):
@@ -315,8 +315,8 @@ class UpdateSmartFoldersAndTitles(object):
         catalog = getToolByName(self.context, 'portal_catalog')
 
         # change criteria on event topic
-        query = { 'portal_type': 'Topic',
-                  'id': 'events_topic' }
+        query = {'portal_type': 'Topic',
+                 'id': 'events_topic'}
         brains = catalog.searchResults(query)
         for brain in brains:
             topic = brain.getObject()
@@ -342,16 +342,16 @@ class UpdateSmartFoldersAndTitles(object):
             topic.setCustomViewFields(['start', 'end', 'location'])
 
         # add custom field on all highligh topic
-        query = { 'portal_type': 'Topic',
-                  'id': 'highlights_topic' }
+        query = {'portal_type': 'Topic',
+                 'id': 'highlights_topic'}
         brains = catalog.searchResults(query)
         for brain in brains:
             topic = brain.getObject()
             topic.setCustomViewFields(['EffectiveDate'])
 
         # remove custom field on all link topics
-        query = { 'portal_type': 'Topic',
-                  'id': 'links_topic' }
+        query = {'portal_type': 'Topic',
+                 'id': 'links_topic'}
         brains = catalog.searchResults(query)
         for brain in brains:
             topic = brain.getObject()
@@ -381,8 +381,8 @@ class UpdateSmartFoldersAndTitles(object):
                     createFaqSmartFolder(faqs_folder, theme_id)
 
         # themecentre portlet smart folders should not rename themselves
-        query = { 'portal_type': 'Topic',
-                  'path': '/'.join(self.context.getPhysicalPath()) }
+        query = {'portal_type': 'Topic',
+                 'path': '/'.join(self.context.getPhysicalPath())}
         brains = catalog.searchResults(query)
         for brain in brains:
             topic = brain.getObject()
@@ -411,7 +411,7 @@ class PromotionThemes(object):
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        query = { 'portal_type': 'Promotion' }
+        query = {'portal_type': 'Promotion'}
         brains = catalog.searchResults(query)
         not_migrated = ''
         for brain in brains:
@@ -473,10 +473,10 @@ class GenericThemeToDefault(object):
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        query1 = { 'getThemes': 'G' }
-        query2 = { 'getThemes': 'D' }
-        query3 = { 'getThemes': 'g' }
-        query4 = { 'getThemes': 'd' }
+        query1 = {'getThemes': 'G'}
+        query2 = {'getThemes': 'D'}
+        query3 = {'getThemes': 'g'}
+        query4 = {'getThemes': 'd'}
         queries = [query1, query2, query3, query4]
         output = ''
         for query in queries:
@@ -909,7 +909,7 @@ class ImportEcoTipsTranslationsFromCSV(object):
         if language == 'all':
             language = []
         if isinstance(language, str):
-            language = [language, ]
+            language = [language,]
         self.languages = language or self.context.getTranslations().keys()
         if 'en' in self.languages:
             self.languages.remove('en')
@@ -942,17 +942,17 @@ class FixImages(BrowserView):
 
     def __call__(self):
         query = {'portal_type':{
-                'query':[
+                 'query':[
                     'Image',
                     'Highlight',
                     'Article',
                     'Promotion',
                     'Speech',
                     'PressRelease',
-                    'Blob' ,
+                    'Blob',
                     'HelpCenterInstructionalVideo'
-                    ],
-                'operator':'or'
+                   ],
+                 'operator':'or'
             }}
 
         brains = self.context.portal_catalog(query)
@@ -1063,7 +1063,7 @@ class FixVocabularyTerms(object):
 
     def __call__(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        res = catalog.searchResults(portal_type =
+        res = catalog.searchResults(portal_type=
                                     ['SimpleVocabularyTerm',
                                      'TreeVocabularyTerm'])
         for brain in res:
@@ -1080,7 +1080,7 @@ class FixVocabularyTerms(object):
         return 'Vocabulary term updated.'
 
 
-def startCapture(self, newLogLevel = None):
+def startCapture(self, newLogLevel=None):
     """ Start capturing log output to a string buffer.
 
     http://opensourcehacker.com/2011/02/23/
@@ -1135,7 +1135,7 @@ class MigrateGeotagsCountryGroups(BrowserView):
         country_groups = ["EU15", "EU25", "EU27", "EEA32", "EFTA4",
                                                     "Pan-Europa"]
         catalog = getToolByName(self.context, 'portal_catalog')
-        res = catalog.searchResults(object_provides =
+        res = catalog.searchResults(object_provides=
                                 'eea.geotags.storage.interfaces.IGeoTagged')
         country_dict = countryGroups()
         count = 0
@@ -1511,25 +1511,25 @@ class CreatorAssignment(object):
 
         ptypes = ["Article", "Assessment", "AssessmentPart", "CallForInterest",
                 "CallForTender", "CloudVideo", "Collection",
-                "CommonalityReport", "Data", "DataFile", "DataFileLink", 
+                "CommonalityReport", "Data", "DataFile", "DataFileLink",
                 "DataSourceLink", "DataTable", "DavizVisualization",
                 "DiversityReport", "Document", "EEAFigure", "EEAVacancy",
-                "EcoTip", "EpubFile", "Event", "ExternalDataSpec", 
-                "EyewitnessStory", "FactSheetDocument", "Fiche", "File", 
-                "FlashFile", "FlexibilityReport", "Folder", "GIS Application", 
-                "HelpCenter", "HelpCenterDefinition", 
-                "HelpCenterErrorReferenceFolder", "HelpCenterFAQ", 
+                "EcoTip", "EpubFile", "Event", "ExternalDataSpec",
+                "EyewitnessStory", "FactSheetDocument", "Fiche", "File",
+                "FlashFile", "FlexibilityReport", "Folder", "GIS Application",
+                "HelpCenter", "HelpCenterDefinition",
+                "HelpCenterErrorReferenceFolder", "HelpCenterFAQ",
                 "HelpCenterFAQFolder", "HelpCenterGlossary", "HelpCenterHowTo",
                 "HelpCenterHowToFolder", "HelpCenterInstructionalVideo",
                 "HelpCenterInstructionalVideoFolder", "HelpCenterLink",
                 "HelpCenterLinkFolder", "HelpCenterReferenceManualFolder",
-                "HelpCenterTutorialFolder", "Highlight", # "Image", 
-                "IndicatorFactSheet", "Infographic", "KeyMessage", "Link", 
-                "MethodologyReference", "News Item", "Newsletter", 
+                "HelpCenterTutorialFolder", "Highlight", # "Image",
+                "IndicatorFactSheet", "Infographic", "KeyMessage", "Link",
+                "MethodologyReference", "News Item", "Newsletter",
                 "Organisation", "PolicyDocumentReference", "PolicyQuestion",
-                "PressRelease", "Promotion", "QuickEvent", 
+                "PressRelease", "Promotion", "QuickEvent",
                 "RationaleReference", "RelatedIndicatorLink", "Report",
-                "SOERCountry", "SOERKeyFact", "SOERMessage", "Sparql", 
+                "SOERCountry", "SOERKeyFact", "SOERMessage", "Sparql",
                 "SparqlBookmarksFolder", "Specification", "Speech", "Topic"]
         res = catalog.unrestrictedSearchResults(portal_type=ptypes)
         context = self.context
@@ -1599,7 +1599,7 @@ class CreatorAssignment(object):
 
         log.info("Ending Creators index fix for %d objects", count)
 
-        return (res_creators + reindex_error + set_error + not_found)
+        return res_creators + reindex_error + set_error + not_found
 
 
 class FixEffectiveDateForPublishedObjects(object):
@@ -1725,7 +1725,7 @@ class FixEffectiveDateForPublishedObjects(object):
         not_found = " ".join(not_found)
         return "%s %s %s %s %s %s %s " % (count_message, res_objs,
                 skipped_obj_count_message, skipped_objs, reindex_error,
-                history_error, not_found )
+                history_error, not_found)
 
 
 class FixEEAFigureFilesPublishDate(object):

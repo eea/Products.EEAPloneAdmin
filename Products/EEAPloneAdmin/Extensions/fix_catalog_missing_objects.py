@@ -10,14 +10,14 @@ from plone.app.discussion.interfaces import IConversation
 from zope.annotation.interfaces import IAttributeAnnotatable
 
 
-def is_ok(id):
-    """ Should the id be reported as missing?
+def is_ok(Id):
+    """ Should the Id be reported as missing?
     """
-    if id.endswith('Criterion'):
+    if Id.endswith('Criterion'):
         return False
-    if id.endswith('Criteria'):
+    if Id.endswith('Criteria'):
         return False
-    if 'enquiries' in id:
+    if 'enquiries' in Id:
         return False
     return True
 
@@ -49,7 +49,7 @@ def _children_archetypes(tree, debug=False):
 
 
 def discover_unindexed(self):
-    """ Traverse the ZODB and report which objects are not 
+    """ Traverse the ZODB and report which objects are not
     indexed in the catalog
     """
     catalog = self.portal_catalog

@@ -2067,7 +2067,7 @@ def countryDicts():
                                   u'title': u'Kazakhstan'},
                   u'type': u'Feature'}
 
-    countriesDict['Georgia'] =  {u'bbox': [],
+    countriesDict['Georgia'] = {u'bbox': [],
                             u'geometry': {u'coordinates': [41.999980999999998,
                                                            43.499904999999998],
                                                             u'type': u'Point'},
@@ -2130,7 +2130,7 @@ def countryDicts():
             ]
         },
         'type': "Feature",
-        'bbox': [ ],
+        'bbox': [],
         'properties': {
             'adminCode1': "00",
             'name': "1527747",
@@ -2155,7 +2155,7 @@ def countryDicts():
         ]
     },
         'type': "Feature",
-        'bbox': [ ],
+        'bbox': [],
         'properties': {
             'adminCode1': "00",
             'name': "1220409",
@@ -2180,7 +2180,7 @@ def countryDicts():
             ]
         },
         'type': "Feature",
-        'bbox': [ ],
+        'bbox': [],
         'properties': {
             'adminCode1': "00",
             'name': "1218197",
@@ -2205,7 +2205,7 @@ def countryDicts():
             ]
         },
         'type': "Feature",
-        'bbox': [ ],
+        'bbox': [],
         'properties': {
             'adminCode1': "00",
             'name': "1512440",

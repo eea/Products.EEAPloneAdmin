@@ -81,7 +81,7 @@ def getObjectDefaultView(context):
 
     # Try resolving method aliases because we need a real template_id here
     if action:
-        action = fti.queryMethodID(action, default = action, context = context)
+        action = fti.queryMethodID(action, default=action, context=context)
     else:
         action = fti.queryMethodID('(Default)', default=action, context=context)
 

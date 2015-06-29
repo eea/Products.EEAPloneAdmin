@@ -97,7 +97,7 @@ class WorkflowManagement(object):
         msg = obj.unrestrictedTraverse('workflow_action_message', None)
         if msg:
             self.msg = msg(obj, type=self.portalType,
-                           comment=comment, editUrl=editUrl )
+                           comment=comment, editUrl=editUrl)
         else:
             self.msg = u'Action message for %s' % editUrl
 
@@ -179,9 +179,9 @@ class WorkflowManagement(object):
             a_subject = 'Action: %s' % subject
             c_subject = 'Confirmation: %s' % subject
 
-            self.mhost.send(      m,
-                                  mto=self.toConfirmationEmail,
-                                  mfrom=self.fromEmail,
-                                  subject=c_subject,
-                                  msg_type="text/html",
-                                  )
+            self.mhost.send(m,
+                            mto=self.toConfirmationEmail,
+                            mfrom=self.fromEmail,
+                            subject=c_subject,
+                            msg_type="text/html",
+                            )

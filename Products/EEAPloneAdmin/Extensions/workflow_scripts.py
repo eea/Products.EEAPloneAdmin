@@ -34,7 +34,7 @@ def moveObject(self, state_change, **kw):
         portal = getToolByName(obj, 'portal_url')
         dstFldr = portal.getPortalObject().getPhysichalPath() + '/' + dstFldr
 
-    dstFldr = obj.unrestrictedTraverse( dstFldr )
+    dstFldr = obj.unrestrictedTraverse(dstFldr)
     srcFldr = obj.aq_parent
 
     # perform the move

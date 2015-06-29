@@ -44,7 +44,7 @@ def bulkReindexObjects(context, brains, idxs=None):
         inames.append("p4a.video.interfaces.IVideoContainerEnhanced")
         ifaces.append(ISubtyped)
 
-    if idxs and type(idxs) == list:
+    if idxs and isinstance(idxs, list):
         idxs.append('object_provides')
 
     for index, brain in enumerate(brains):
@@ -101,6 +101,6 @@ def bulkReindexObjectsSecurity(context, brains, wf_id):
                             count, total)
                 transaction.commit()
     else:
-         info('ERROR: %s workflow not found' % wf_id)
+        info('ERROR: %s workflow not found', wf_id)
 
     info('INFO: Done reindexing')

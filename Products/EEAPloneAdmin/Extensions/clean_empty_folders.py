@@ -61,11 +61,11 @@ def clean_folder(self):
 
                 # Commiting transaction
                 if empty_count % transaction_threshold == 0:
-                    info("Commit: delete %s folders" % transaction_threshold)
+                    info("Commit: delete %s folders", transaction_threshold)
                     transaction.savepoint()
 
     # End information log
-    info("COMPLETE, %s folders deleted" % total)
+    info("COMPLETE, %s folders deleted", total)
     print >> out, ("The following linkintegrity conflicts were encountered:")
     print >> out, ("The conflicting objects have been deleted, "
                    "but the referencing pages should be updated.")

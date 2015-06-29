@@ -21,7 +21,7 @@ def updateLocalPolicy(self):
 
     for brain in brains:
         fig_object = brain.getObject()
-        info('Adding local workflow policy for %s' % brain.getId)
+        info('Adding local workflow policy for %s', brain.getId)
         config = ppw.getWorkflowPolicyConfig(fig_object)
         if not config:
             fig_object.manage_addProduct['CMFPlacefulWorkflow'].\

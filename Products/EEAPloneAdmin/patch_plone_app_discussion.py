@@ -95,7 +95,7 @@ def migrate_discussions(self, filter_callback=None):
             self.total_comments_migrated += 1
 
             # migrate all talkbacks of the reply
-            talkback = getattr( reply, 'talkback', None )
+            talkback = getattr(reply, 'talkback', None)
             no_replies_left = migrate_replies(context,
                                               new_in_reply_to,
                                               talkback.getReplies(),
@@ -149,7 +149,7 @@ def migrate_discussions(self, filter_callback=None):
             obj = brain.getObject()
         except Exception, err:
             log("Exception while migrating: %s %s" %(brain.getPath(), str(err)))
-        talkback = getattr( obj, 'talkback', None )
+        talkback = getattr(obj, 'talkback', None)
         if talkback:
             replies = talkback.getReplies()
             if replies:

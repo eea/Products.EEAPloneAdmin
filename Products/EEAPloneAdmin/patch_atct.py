@@ -25,7 +25,7 @@ def vformat(s):
     """
     # return string with escaped commas, colons and semicolons
     # #5284 patch to convert tuple location to string
-    if type(s) == tuple:
+    if isinstance(s, tuple):
         s = ", ".join(s)
 
     return s.strip().replace(',', '\,').replace(':', '\:').replace(';', '\;')
@@ -38,7 +38,7 @@ def foldLine(s):
     # http://www.zope.org/Members/Feneric/MakeICS/
     lineLen = 70
     # #5284 patch to convert tuple location to string
-    if type(s) == tuple:
+    if isinstance(s, tuple):
         s = ", ".join(s)
 
     workStr = s.strip().replace('\r\n', '\n').replace('\r', '\n').replace('\n',

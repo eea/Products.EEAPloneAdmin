@@ -27,7 +27,7 @@ def _decodeCookieValue(string):
                 results.append(message)
     except (binascii.Error, UnicodeEncodeError):
         # Start patch
-        logger.exception('Unexpected value in statusmessages cookie: %s' %
+        logger.exception('Unexpected value in statusmessages cookie: %s',
                          string)
         # End patch
         return []

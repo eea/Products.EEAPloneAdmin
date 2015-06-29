@@ -3,3 +3,5 @@
 *.pyo
 *.mo
 dist
+pylint.log
+pylint.flakes
