@@ -1,6 +1,9 @@
 Changelog
 =========
 
+11.2.dev0 - (unreleased)
+------------------------
+
 11.1 - (2015-07-06)
 -------------------
 * Cleanup: Removed Products.PloneHelpCenter getVersions catalog index and metadata
