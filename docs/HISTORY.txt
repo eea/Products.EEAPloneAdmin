@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.1.dev0 - (unreleased)
-------------------------
+11.1 - (2015-07-06)
+-------------------
 * Cleanup: Removed Products.PloneHelpCenter getVersions catalog index and metadata
   [voineali refs #26848]
 * Cleanup: Removed Products.PloneHelpCenter getStartHere catalog index and metadata
