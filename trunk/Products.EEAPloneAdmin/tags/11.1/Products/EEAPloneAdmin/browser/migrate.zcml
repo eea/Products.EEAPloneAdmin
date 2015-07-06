@@ -1,0 +1,191 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page for="*"
+                  name="fixTranslations"
+                  class=".admin.LinguaPlone"
+                  permission="cmf.ManagePortal"
+                  template="./www/fixTranslations.pt" />
+
+    <browser:page for="*"
+                  name="fixTidyText"
+                  class=".admin.TidyContent"
+                  permission="cmf.ManagePortal"
+                  template="./www/tidy.pt" />
+
+    <browser:page for="*"
+                  name="migrate"
+                  class=".migrate.MigrateTheme"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="initiateThemes"
+                  class=".migrate.InitialThemeCentres"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="correctThemeIds"
+                  class=".migrate.MigrateWrongThemeIds"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="migrateThemeTaggable"
+                  class=".migrate.ThemeTaggable"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="fixExcludeFromNav"
+                  class=".migrate.FixExcludeFromNav"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="FixFigureCategoryType"
+                  class=".migrate.FixFigureCategoryType"
+                  permission="zope.Public" />
+
+    <browser:page for="*"
+                  name="migrateTopic"
+                  class=".migrate.UpdateSmartFoldersAndTitles"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migrateFeedInterface"
+                  class=".migrate.FeedMarkerInterface"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migratePromotionThemes"
+                  class=".migrate.PromotionThemes"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migrateThemeLayoutAndDefaultPage"
+                  class=".migrate.ThemeLayoutAndDefaultPage"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migrateGenericTheme"
+                  class=".migrate.GenericThemeToDefault"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migrateThemeCentreFoldersProperties"
+                  class=".migrate.ChangeDefaultPageToProperty"
+                  permission="cmf.ModifyPortalContent" />
+
+    <browser:page for="*"
+                  name="migrateEnsureAllObjectsHaveTags"
+                  class=".migrate.EnsureAllObjectsHaveTags"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="AddIVideoToVideos"
+                  class=".migrate.AddIVideoToVideos"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="SetIVideoToAllVideosTopic"
+                  class=".migrate.SetIVideoToAllVideosTopic"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="addFolderAsLocallyAllowedTypeInLinks"
+                  class=".migrate.AddFolderAsLocallyAllowedTypeInLinks"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="addPressReleaseToHighlightsTopic"
+                  class=".migrate.AddPressReleaseToHighlightsTopic"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="changeMultimediaLayout"
+                  class=".migrate.ChangeMultimediaLayout"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="makeThemeMultimediaLayoutAProperty"
+                  class=".migrate.MakeThemeMultimediaLayoutAProperty"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="importEcoTipsTranslations"
+                  class=".migrate.ImportEcoTipsTranslationsFromCSV"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateCallFors"
+                  class=".migrate.MigrateDatesInCallForTendersAndInterests"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fix-images"
+                  class=".migrate.FixImages"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fix-portalregistry"
+                  class=".migrate.MigratePortalRegistry"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fix-portalrelationsItems"
+                  class=".migrate.FixPortalRelationItems"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fix-vocabularyterms"
+                  class=".migrate.FixVocabularyTerms"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateGeotagsCountryGroups"
+                  class=".migrate.MigrateGeotagsCountryGroups"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateGeographicalCoverageToGeotags"
+                  class=".migrate.MigrateGeographicalCoverageToGeotags"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="renameMisnamedLocations"
+                  class=".migrate.RenameMisnamedLocations"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="removeInactivePromotions"
+                  class=".migrate.RemoveInactivePromotions"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="checkRemainingInterfaces"
+                  class=".migrate.CheckRemainingInterfaces"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="creatorAssignment"
+                  class=".migrate.CreatorAssignment"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fixEffectiveDate"
+                  class=".migrate.FixEffectiveDateForPublishedObjects"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="fixEEAFigureFileEffectiveDate"
+                  class=".migrate.FixEEAFigureFilesPublishDate"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+                  name="migrateDavizAnnotationData"
+                  class=".migrate.MigrateDavizAnnotationData"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+        name="checkTemplatesForArchiveMessage"
+        class=".migrate.CheckTemplatesForArchiveMessage"
+        permission="cmf.ManagePortal" />
+
+</configure>
