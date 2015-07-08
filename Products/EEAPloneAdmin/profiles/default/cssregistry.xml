@@ -201,7 +201,7 @@
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on"
-    expression="python:object.meta_type in ['Specification', 'Assessment', 'IndicatorFactSheet']"
+    expression="python:getattr(object, 'portal_type', None) in ['Specification', 'Assessment', 'IndicatorFactSheet']"
     id="indicators.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="Daviz View CSS" applyPrefix="False" authenticated="False"
     cacheable="True" compression="none" conditionalcomment="" cookable="True"

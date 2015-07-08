@@ -354,7 +354,7 @@
     id="promotions.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="False" enabled="True"
-    expression="python: (not portal.portal_membership.isAnonymousUser()) and (object.meta_type in ['Assessment', 'Specification'])"
+    expression="python: (not portal.portal_membership.isAnonymousUser()) and (getattr(object, 'portal_type', None) in ['Assessment', 'Specification'])"
     id="publish_dialog.js" inline="True"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="False" expression=""
