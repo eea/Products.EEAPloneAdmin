@@ -3,6 +3,9 @@ Changelog
 
 11.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: Use safe condition within portal_css/portal_js in order
+  not to break layout (e.g. @@dexterity-types)
+  [voineali refs #26848]
 
 11.1 - (2015-07-06)
 -------------------
