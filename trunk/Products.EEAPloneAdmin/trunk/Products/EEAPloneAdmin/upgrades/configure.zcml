@@ -3,6 +3,29 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 11.1 => 11.2 -->
+    <genericsetup:upgradeSteps
+        source="11.1"
+        destination="11.2"
+        profile="Products.EEAPloneAdmin:default">
+
+      <genericsetup:upgradeDepends
+            title="Install plone.app.dexterity"
+            import_profile="plone.app.dexterity:default"
+            />
+
+        <genericsetup:upgradeDepends
+            title="Import all steps from Products.EEAPloneAdmin 11.2 profile"
+            import_profile="Products.EEAPloneAdmin:upgrade112"
+            />
+
+        <genericsetup:upgradeStep
+            title="Migrate HelpCenter content-types to Dexterity"
+            handler=".evolve112.migrate_to_dexterity"
+            />
+
+    </genericsetup:upgradeSteps>
+
     <!-- 10.6 => 11.1 -->
     <genericsetup:upgradeSteps
         source="10.6"
