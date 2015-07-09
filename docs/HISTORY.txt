@@ -3,6 +3,15 @@ Changelog
 
 11.2.dev0 - (unreleased)
 ------------------------
+
+* WIP: #26848
+
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [voineali refs #26848]
+* Cleanup: Removed PloneHelpCenter references from database and migrate existing
+  content to Simple Dexterity content-types
+  [voineali refs #26848]
 * Bug fix: Use safe condition within portal_css/portal_js in order
   not to break layout (e.g. @@dexterity-types)
   [voineali refs #26848]
