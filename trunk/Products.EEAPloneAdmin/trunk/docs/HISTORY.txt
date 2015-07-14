@@ -9,6 +9,10 @@ Changelog
 * Cleanup: Removed PloneHelpCenter references from database and migrate existing
   content to Simple Dexterity content-types
   [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter isOutdated catalog index and metadata
+  [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter getSections catalog index and metadata
+  [voineali refs #26848]
 * Bug fix: Use safe condition within portal_css/portal_js in order
   not to break layout (e.g. @@dexterity-types)
   [voineali refs #26848]
