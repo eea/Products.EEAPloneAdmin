@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+ <index name="getSections" meta_type="KeywordIndex" remove="True" />
+ <index name="isOutdated" meta_type="FieldIndex" remove="True" />
+ <column value="getSections" remove="True"/>
+ <column value="isOutdated" remove="True"/>
+</object>
