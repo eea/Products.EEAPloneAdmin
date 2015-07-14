@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="helpcenter_definition" meta_type="Dexterity FTI"
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Help Center Definition</property>
+ <property name="title" i18n:translate="">HelpCenter Definition</property>
  <property name="description"
     i18n:translate="">Dexterity - A Definition defines a special term, and will be listed in the glossary.</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
