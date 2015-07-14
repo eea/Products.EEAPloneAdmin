@@ -35,7 +35,7 @@
    <bound-workflow workflow_id="plone_workflow"/>
   </type>
   <type type_id="helpcenter_faq">
-   <bound-workflow workflow_id="plone_workflow"/>
+   <bound-workflow workflow_id="eea_default_workflow"/>
   </type>
 
  </bindings>
