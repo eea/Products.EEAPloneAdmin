@@ -16,10 +16,15 @@
  <object name="HelpCenterTutorialPage" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
  <object name="HelpCenterKnowledgeBase" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
  <object name="HelpCenterLeafPage" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
+
  <!-- Migrate to Dexterity -->
  <object name="HelpCenterDefinition" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
  <object name="HelpCenterGlossary" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
+  <object name="HelpCenterInstructionalVideo" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
+ <object name="HelpCenterInstructionalVideoFolder" meta_type="Factory-based Type Information with dynamic views" remove="True"/>
+
  <!-- Dexterity -->
  <object name="helpcenter_definition" meta_type="Dexterity FTI"/>
- <object name="helpcenter_glossary" meta_type="Dexterity FTI"/>
+ <object name="helpcenter_faq" meta_type="Dexterity FTI"/>
+
 </object>

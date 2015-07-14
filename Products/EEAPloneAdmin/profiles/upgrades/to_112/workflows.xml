@@ -34,8 +34,8 @@
   <type type_id="helpcenter_definition">
    <bound-workflow workflow_id="plone_workflow"/>
   </type>
-  <type type_id="helpcenter_glossary">
-   <bound-workflow workflow_id="folder_workflow"/>
+  <type type_id="helpcenter_faq">
+   <bound-workflow workflow_id="plone_workflow"/>
   </type>
 
  </bindings>
