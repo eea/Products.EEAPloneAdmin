@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+ <index name="getAudiences" meta_type="KeywordIndex" remove="True" />
+ <index name="getVersions" meta_type="KeywordIndex" remove="True" />
+ <index name="getStartHere" meta_type="FieldIndex" remove="True" />
+ <column value="getAudiences" remove="True"/>
+ <column value="getStartHere" remove="True"/>
+ <column value="getVersions" remove="True"/>
+</object>
