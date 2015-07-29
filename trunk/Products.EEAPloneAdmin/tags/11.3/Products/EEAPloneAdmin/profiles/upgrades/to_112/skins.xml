@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="plone_help_center" remove="True" />
+ <object name="plone_help_center_images" remove="True" />
+ <skin-path name="*">
+  <layer name="plone_help_center_images" remove="True"/>
+  <layer name="plone_help_center" remove="True"/>
+ </skin-path>
+</object>
