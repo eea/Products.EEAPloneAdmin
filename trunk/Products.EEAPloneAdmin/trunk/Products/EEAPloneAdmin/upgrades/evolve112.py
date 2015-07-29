@@ -199,3 +199,23 @@ def migrate_to_dexterity(context):
 
     logger.info('Migrating HelpCenter => Folder')
     migrate_helpcenter(portal)
+
+def cleanup_broken_brains(context):
+    """ uncatalog broken brains objects
+    """
+    ctool = getToolByName(context, 'portal_catalog')
+    brains = ctool(portal_type=[
+        'HelpCenterDefinition',
+        'HelpCenterGlossary',
+        'HelpCenterFAQ',
+        'HelpCenterFAQFolder',
+        'HelpCenterInstructionalVideo',
+        'HelpCenterInstructionalVideoFolder',
+        'HelpCenter'
+    ])
+
+    for brain in brains:
+        path = brain.getURL()
+        if 'rdfstype' in path:
+            logger.info('Cleanup %s', path)
+            ctool.uncatalog_object(brain.getPath())
