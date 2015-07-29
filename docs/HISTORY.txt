@@ -3,6 +3,8 @@ Changelog
 
 11.3.dev0 - (unreleased)
 ------------------------
+* Bug fix: Fix upgrade step from version 11.2
+  [voineali refs #27245]
 
 11.2 - (2015-07-28)
 -------------------

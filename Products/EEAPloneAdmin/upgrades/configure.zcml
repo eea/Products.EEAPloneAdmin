@@ -9,20 +9,25 @@
         destination="11.2"
         profile="Products.EEAPloneAdmin:default">
 
+     <genericsetup:upgradeStep
+           title="Cleanup HelpCenter broken brains"
+           handler=".evolve112.cleanup_broken_brains"
+           />
+
       <genericsetup:upgradeDepends
             title="Install plone.app.dexterity"
             import_profile="plone.app.dexterity:default"
             />
 
-        <genericsetup:upgradeDepends
-            title="Import all steps from Products.EEAPloneAdmin 11.2 profile"
-            import_profile="Products.EEAPloneAdmin:upgrade112"
-            />
+      <genericsetup:upgradeDepends
+          title="Import all steps from Products.EEAPloneAdmin 11.2 profile"
+          import_profile="Products.EEAPloneAdmin:upgrade112"
+          />
 
-        <genericsetup:upgradeStep
-            title="Migrate HelpCenter content-types to Dexterity"
-            handler=".evolve112.migrate_to_dexterity"
-            />
+      <genericsetup:upgradeStep
+          title="Migrate HelpCenter content-types to Dexterity"
+          handler=".evolve112.migrate_to_dexterity"
+          />
 
     </genericsetup:upgradeSteps>
 
