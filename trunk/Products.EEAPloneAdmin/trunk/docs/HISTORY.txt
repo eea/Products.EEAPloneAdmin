@@ -3,6 +3,8 @@ Changelog
 
 11.4.dev0 - (unreleased)
 ------------------------
+* Pre-upgrade step: on each backend install libmemcached >= 0.40
+  [razvanchitu refs #27571]
 
 11.3 - (2015-07-29)
 -------------------
