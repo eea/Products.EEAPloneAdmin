@@ -3,6 +3,18 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 11.2 => 11.4 -->
+    <genericsetup:upgradeSteps
+        source="11.2"
+        destination="11.4"
+        profile="Products.EEAPloneAdmin:default">
+
+     <genericsetup:upgradeStep
+           title="Remove old async"
+           handler=".evolve114.remove_old_async"
+           />
+
+    </genericsetup:upgradeSteps>
     <!-- 11.1 => 11.2 -->
     <genericsetup:upgradeSteps
         source="11.1"

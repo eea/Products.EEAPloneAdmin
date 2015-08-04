@@ -5,6 +5,9 @@ Changelog
 ------------------------
 * Pre-upgrade step: on each backend install libmemcached >= 0.40
   [razvanchitu refs #27571]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [razvanchitu refs #27760]
 
 11.3 - (2015-07-29)
 -------------------
