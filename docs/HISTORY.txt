@@ -3,10 +3,15 @@ Changelog
 
 11.4.dev0 - (unreleased)
 ------------------------
-* Pre-upgrade step: on each backend install libmemcached >= 0.40
-  [razvanchitu refs #27571]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
+  [razvanchitu refs #27760]
+* Pre-upgrade step: on each backend install libmemcached >= 0.40
+  [razvanchitu refs #27571]
+* Feature: Added link to zc.async queue within Site Setup > Control Panel
+  [voineali refs #27760]
+* Cleanup: Added upgrade step to removed zc.async old queue from Data.fs as
+  now it has a dedicated .fs file (zasync.fs)
   [razvanchitu refs #27760]
 
 11.3 - (2015-07-29)

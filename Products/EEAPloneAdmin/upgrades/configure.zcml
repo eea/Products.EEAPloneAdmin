@@ -9,6 +9,11 @@
         destination="11.4"
         profile="Products.EEAPloneAdmin:default">
 
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.EEAPloneAdmin 11.4 profile"
+      import_profile="Products.EEAPloneAdmin:upgrade114"
+      />
+
      <genericsetup:upgradeStep
            title="Remove old async"
            handler=".evolve114.remove_old_async"
