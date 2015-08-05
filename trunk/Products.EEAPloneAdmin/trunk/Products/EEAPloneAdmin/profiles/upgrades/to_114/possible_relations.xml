@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_relations">
+ <object name="external-data-reference-data-visualization"
+    meta_type="EEAPossibleRelation">
+  <property name="from">external-data-reference</property>
+  <property name="to">data-visualization</property>
+  <property
+     name="title">External Data Reference -&gt; Data Visualization</property>
+  <property name="forward_label">Visualisations produced</property>
+  <property name="backward_label">Based on external data</property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+</object>
