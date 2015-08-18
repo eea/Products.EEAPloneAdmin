@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<object name="portal_workflow">
+ <object name="helpcenter_workflow" meta_type="Workflow" remove="True"/>
+ <object name="helpcenterfolder_workflow" meta_type="Workflow" remove="True"/>
+ <object name="helpcentersubitem_workflow" meta_type="Workflow" remove="True"/>
+ <bindings>
+
+  <!-- Cleanup not used ctypes -->
+  <type type_id="HelpCenterErrorReference" remove="True" />
+  <type type_id="HelpCenterErrorReferenceFolder" remove="True" />
+  <type type_id="HelpCenterHowTo" remove="True" />
+  <type type_id="HelpCenterHowToFolder" remove="True" />
+  <type type_id="HelpCenterLink" remove="True" />
+  <type type_id="HelpCenterLinkFolder" remove="True" />
+  <type type_id="HelpCenterReferenceManual" remove="True" />
+  <type type_id="HelpCenterReferenceManualFolder" remove="True" />
+  <type type_id="HelpCenterReferenceManualPage" remove="True" />
+  <type type_id="HelpCenterLeafPage" remove="True" />
+  <type type_id="HelpCenterReferenceManualSection" remove="True" />
+  <type type_id="HelpCenterTutorial" remove="True" />
+  <type type_id="HelpCenterTutorialFolder" remove="True" />
+  <type type_id="HelpCenterTutorialPage" remove="True" />
+
+  <!-- Cleanup migrated ctypes -->
+  <type type_id="HelpCenterDefinition" remove="True" />
+  <type type_id="HelpCenterGlossary" remove="True" />
+  <type type_id="HelpCenter" remove="True" />
+  <type type_id="HelpCenterFAQ" remove="True" />
+  <type type_id="HelpCenterFAQFolder" remove="True" />
+  <type type_id="HelpCenterInstructionalVideo" remove="True" />
+  <type type_id="HelpCenterInstructionalVideoFolder" remove="True" />
+
+  <!-- Dexterity content-types -->
+  <type type_id="helpcenter_definition">
+   <bound-workflow workflow_id="plone_workflow"/>
+  </type>
+  <type type_id="helpcenter_faq">
+   <bound-workflow workflow_id="eea_default_workflow"/>
+  </type>
+
+ </bindings>
+</object>

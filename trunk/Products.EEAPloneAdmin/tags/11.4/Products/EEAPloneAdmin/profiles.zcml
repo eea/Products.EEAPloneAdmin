@@ -1,0 +1,129 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="eea">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA Plone Admin"
+        directory="profiles/default"
+        description="Extension profile EEA Plone site"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="local-site"
+        title="EEA Plone Admin: local sites"
+        directory="profiles/local-site"
+        description="Extension profile to create and configure local sites."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="optimize"
+        title="EEA Plone Admin: CSS/JS reorder"
+        directory="profiles/optimize"
+        description="Optimize order of CSS/JS for EEA website"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <configure zcml:condition="installed plone.app.caching">
+        <genericsetup:registerProfile
+            name="eea-caching"
+            title="EEA Plone Admin: caching settings"
+            description="Settings useful for setups with a caching proxy such as Squid or Varnish"
+            directory="profiles/eea-caching"
+            provides="Products.GenericSetup.interfaces.EXTENSION"
+            for="plone.app.caching.interfaces.ICacheProfiles"
+            />
+    </configure>
+
+    <genericsetup:registerProfile
+        name="delete-permission"
+        title="EEA Plone Admin: delete permission"
+        directory="profiles/delete-permission"
+        description="Extension profile to setup new delete permission."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="EEA Plone Admin: Uninstall profile"
+        directory="profiles/uninstall"
+        description="Extension profile EEA Plone site"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+
+    <genericsetup:importStep
+        name="eea-various"
+        title="EEA site setup" description=""
+        handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious" />
+
+    <!-- <genericsetup:importStep
+        name="eea-clear-registries"
+        title="Clear resource registries" description=""
+        handler="Products.EEAPloneAdmin.exportimport.setuphandlers.clear_registries" />
+        -->
+
+    <genericsetup:registerProfile
+            name="upgrade85"
+            title="EEA Plone Admin upgrade profile for v8.5"
+            directory="profiles/upgrades/to_85"
+            description='EEA Plone Admin upgrade profile for v8.5'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+            name="upgrade86"
+            title="EEA Plone Admin upgrade profile for v8.6"
+            directory="profiles/upgrades/to_86"
+            description='EEA Plone Admin upgrade profile for v8.6'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+            name="upgrade87"
+            title="EEA Plone Admin upgrade profile for v8.7"
+            directory="profiles/upgrades/to_87"
+            description='EEA Plone Admin upgrade profile for v8.7'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+            name="upgrade98"
+            title="EEA Plone Admin upgrade profile for v9.8"
+            directory="profiles/upgrades/to_98"
+            description='EEA Plone Admin upgrade profile for v9.8'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+            name="upgrade106"
+            title="EEA Plone Admin upgrade profile for v10.6"
+            directory="profiles/upgrades/to_106"
+            description='EEA Plone Admin upgrade profile for v10.6'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+        name="upgrade111"
+        title="EEA Plone Admin upgrade profile for v11.1"
+        directory="profiles/upgrades/to_111"
+        description='EEA Plone Admin upgrade profile for v11.1'
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+        name="upgrade112"
+        title="EEA Plone Admin upgrade profile for v11.2"
+        directory="profiles/upgrades/to_112"
+        description='EEA Plone Admin upgrade profile for v11.2'
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <genericsetup:registerProfile
+      name="upgrade114"
+      title="EEA Plone Admin upgrade profile for v11.4"
+      directory="profiles/upgrades/to_114"
+      description='EEA Plone Admin upgrade profile for v11.4'
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+</configure>
