@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.4.dev0 - (unreleased)
-------------------------
+11.4 - (2015-08-18)
+-------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [razvanchitu refs #27760]
