@@ -3,6 +3,8 @@ Changelog
 
 11.5.dev0 - (unreleased)
 ------------------------
+* Bug fix: edit patch_rdflib_namespacemanager to get cwd by abspath
+  [lucas refs #28301]
 
 11.4 - (2015-08-18)
 -------------------
