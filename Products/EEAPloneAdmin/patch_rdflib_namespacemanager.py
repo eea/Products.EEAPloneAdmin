@@ -16,7 +16,9 @@ def _patched_absolutize(self, uri, defrag=1):
     """ return absolute path
     """
     try:
-        cwd = os.getcwd()
+        cwd = '/'.join(
+            os.path.abspath(os.path.dirname(__file__)).split('/')[:-4]
+        )
     except OSError:
         # log, wait a little and try again
         logger.exception("First attempt to get cwd failed")
