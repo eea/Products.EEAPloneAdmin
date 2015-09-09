@@ -63,13 +63,14 @@ def patched_field_index_html(self, instance, REQUEST=None,
             return blob
         raise POSKeyError()
     except POSKeyError:
-        logger.error("BLOBWARNING: Error when doing index_html "
-           "for field %r for %r with request %r", self, instance, REQUEST)
+        logger.warning("BLOBWARNING: When doing index_html "
+           "for field %r for %r with request %r return an empty file", self,
+            instance, REQUEST)
         if not RESPONSE:
             RESPONSE = instance.REQUEST.RESPONSE
         putils = getToolByName(instance, 'plone_utils')
-        putils.addPortalMessage('Missing BLOB file for %r' %
-                            instance.absolute_url_path(), type='error')
+        putils.addPortalMessage('Discovered an empty BLOB file for %r' %
+                            instance.absolute_url_path(), type='warning')
         RESPONSE.redirect(instance.absolute_url()+'/view')
 
 def patched_getScale(self, instance, scale=None, **kwargs):
