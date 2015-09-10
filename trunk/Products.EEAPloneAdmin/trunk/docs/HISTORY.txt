@@ -6,7 +6,7 @@ Changelog
 * Bug fix: edit patch_rdflib_namespacemanager to get cwd by abspath
   [lucas refs #28301]
 * Bug fix: log level changed for patched_field_index_html
-  [lucas refs #28304]
+  [lucas refs #28285]
 
 11.4 - (2015-08-18)
 -------------------
