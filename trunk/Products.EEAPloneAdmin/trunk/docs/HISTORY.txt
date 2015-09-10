@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.5.dev0 - (unreleased)
-------------------------
+11.5 - (2015-09-10)
+-------------------
 * Bug fix: edit patch_rdflib_namespacemanager to get cwd by abspath
   [lucas refs #28301]
 * Bug fix: log level changed for patched_field_index_html
