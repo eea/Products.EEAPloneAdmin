@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="one-state" meta_type="WorkflowPolicy">
+ <property name="title">One state</property>
+ <bindings>
+  <default>
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </default>
+  <type default_chain="true" type_id="Document"/>
+  <type default_chain="true" type_id="Event"/>
+  <type type_id="File"/>
+  <type default_chain="true" type_id="Folder"/>
+  <type type_id="Image"/>
+  <type default_chain="true" type_id="Link"/>
+  <type default_chain="true" type_id="News Item"/>
+  <type default_chain="true" type_id="Topic"/>
+ </bindings>
+</object>
