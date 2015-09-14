@@ -126,4 +126,11 @@
       description='EEA Plone Admin upgrade profile for v11.4'
       provides="Products.GenericSetup.interfaces.EXTENSION" />
 
+    <genericsetup:registerProfile
+        name="upgrade116"
+        title="EEA Plone Admin upgrade profile for v11.6"
+        directory="profiles/upgrades/to_116"
+        description='EEA Plone Admin upgrade profile for v11.6'
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+
 </configure>
