@@ -3,6 +3,8 @@ Changelog
 
 11.6.dev0 - (unreleased)
 ------------------------
+* Cleanup: Removed PloneHelpCenter references
+  voineali refs #27692]
 
 11.5 - (2015-09-10)
 -------------------
