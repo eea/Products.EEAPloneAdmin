@@ -1,353 +1,444 @@
 <?xml version="1.0"?>
-<object name="portal_css" meta_type="Stylesheets Registry">
- <stylesheet title="jQuery CSS" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="++resource++jquery.css"
-    media="all" rel="stylesheet" rendering="import"/>
- <stylesheet title="jQuery plugin: Tokeninput Mac" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.tokeninput.mac.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="jQuery plugin: Tokeninput Facebook" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.tokeninput.facebook.css" media="all"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="jQuery plugin: Tokeninput" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.tokeninput.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="jQuery plugin: Select to UI Slider" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.select2uislider.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="jQuery plugin: jqZoom" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.jqzoom.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="jQuery plugin: GalleryView" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.galleryview.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="jQuery plugin: Fancybox" applyPrefix="False"
-    authenticated="False" bundle="default" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on" expression=""
-    id="++resource++jquery.fancybox.css" media="all" rel="stylesheet"
-    rendering="import"/>
+<object name="portal_css" meta_type="Stylesheets Registry" purge="true">
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++plone.app.jquerytools.dateinput.css" media="screen"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="EEA Geotags" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eea.geotags.css"
-    media="all" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="authoring.css" media="all"
+    cookable="True" enabled="on" expression="" id="reset.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="base.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="reset.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="public.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="collective.js.jqueryui.custom.min.css" media="screen" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eea-public.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eea-globaltabs.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="base.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="columns.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="portlets.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="frontpage.css" media="all"
-    rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="public.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="footer.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="columns.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="controlpanel.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression="" id="portlets.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="footer.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea-portlets.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="portlets.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="forms.css" media="screen"
+    rel="stylesheet" rendering="link" insert-after="eea-portlets.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="bootstrap.css" media=""
+    rel="stylesheet" rendering="link" insert-after="forms.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="jqueryui" cacheable="True" compression="none"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="collective.js.jqueryui.custom.min.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="bootstrap.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea-base.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="collective.js.jqueryui.custom.min.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea-public.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="eea-base.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="visual.css" media="all"
+    rel="stylesheet" rendering="link" insert-after="eea-public.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea-globaltabs.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="visual.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="frontpage.css" media="all"
+    rel="stylesheet" rendering="link" insert-after="eea-globaltabs.css"/>
+ <stylesheet title="jQuery plugin: jqZoom" applyPrefix="False"
+    authenticated="False" bundle="default" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="False" expression=""
+    id="++resource++jquery.jqzoom.css" media="all" rel="stylesheet"
+    rendering="import" insert-after="frontpage.css"  />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++jquery.galleryview.css" media="all" rel="stylesheet"
+    insert-after="++resource++jquery.jqzoom.css" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++jquery.fancybox.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.galleryview.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="False" expression=""
+    id="++resource++plone.app.jquerytools.dateinput.css" media="screen"
+    insert-after="++resource++jquery.fancybox.css" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression=""
     id="++resource++tinymce.stylesheets/tinymce.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="++resource++plone.app.jquerytools.dateinput.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="print.css" media="print"
-    rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression=""
+    id="++resource++tcp_stylesheets/cookiepolicy.css" media="screen"
+    insert-after="++resource++tinymce.stylesheets/tinymce.css" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="eeadesign2006.css"
-    media="all" rel="stylesheet" rendering="link"/>
+    media="all" rel="stylesheet" rendering="link" insert-after="++resource++tcp_stylesheets/cookiepolicy.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="visual.css" media="all"
-    rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression="" id="eea-icons.css" media=""
+    rel="stylesheet" rendering="link" insert-after="eeadesign2006.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eea-navigation.css"
-    media="all" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression="" id="eea-icons-animation.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="eea-icons.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="themecentre.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="False" expression="" id="eea-navigation.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="eea-icons-animation.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="mobile.css"
+    cookable="True" enabled="False" expression="" id="mobile.css"
     media="handheld, screen and (max-device-width: 480px)" rel="stylesheet"
-    rendering="link"/>
+    rendering="link" insert-after="eea-navigation.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="dataservice_style.css"
-    media="all" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eeareferencebrowser.css"
-    media="all" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="faceted_view.css"
-    media="all" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="eea_soer.css" media="all"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="readiness.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="navtree.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="invisibles.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="forms.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++plone.app.discussion.stylesheets/discussion.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="ploneKss.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="False" compression="safe"
-    conditionalcomment="" cookable="True" enabled="False" expression=""
+    cookable="True" enabled="False" expression=""
     id="++resource++plone.app.jquerytools.overlays.css" media="screen"
-    rel="stylesheet" rendering="import"/>
+    rel="stylesheet" rendering="link" insert-after="mobile.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="helpcenter.css" media="all"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="helpcenter_print.css"
-    media="print" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++videostyles/video.css" media="all" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++vPIP/vPIPBox.css" media="all" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="orderablereference.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="False" expression="" id="orderablereference.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="++resource++plone.app.jquerytools.overlays.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression=""
     id="++resource++eea.translations-logo.css" media="screen" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++eea.dataservice.view.css" media="all" rel="stylesheet"
-    rendering="link"/>
+    rendering="link" insert-after="orderablereference.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="promo_gallery.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="full" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="solgemaportletsmanager.css"
-    media="all" rel="stylesheet" rendering="link"/>
+    media="screen" rel="stylesheet" rendering="link" insert-after="++resource++eea.translations-logo.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="++resource++usertrack.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++eea.uberlisting.css/uberlisting_view.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++eea.forms.edit.css" media="screen" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="++resource++eea.sparql.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="False" expression=""
+    id="++resource++usertrack.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="promo_gallery.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression=""
     id="++resource++eea.socialmedia.stylesheets/EEASocialMedia.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    media="screen" rel="stylesheet" rendering="link" insert-after="++resource++usertrack.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++jquery.jqgrid.css" media="screen" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++jquery.slickgrid.css" media="screen" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++collective.xmpp.core.css/styles.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="organisations.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++eea.reports.css" media="all" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++bda.contentproxy.contentproxy.css" media=""
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="astana.css" media="all"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="daviz-view.css" media="all"
-    rel="stylesheet" rendering="link"/>
+    rel="stylesheet" rendering="link" insert-after="++resource++eea.socialmedia.stylesheets/EEASocialMedia.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="indicators.css" media="all"
-    rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression="" id="presentational_styles.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="astana.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++google.analytics.css" media="all" rel="stylesheet"
-    rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
+    cookable="True" enabled="on" expression="" id="print.css" media="print"
+    rel="stylesheet" rendering="link" insert-after="presentational_styles.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="full" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="solgemaportletsmanager.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="print.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++gritter/jquery.gritter.css" media="screen"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
+    cookable="True" enabled="on" expression="" id="authoring.css" media="all"
+    rel="stylesheet" rendering="link" insert-after="solgemaportletsmanager.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression=""
-    id="++resource++collective.xmpp.chat.resources/converse.css"
-    media="screen" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on"
-    expression="python:'configure_faceted.html' in request.URL0"
-    id="faceted_edit.css" media="all" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on"
-    expression="python: 'multimedia_view' in context.getLayout()"
-    id="eea.multimedia.css" media="all" rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    bundle="default" cacheable="True" compression="none" conditionalcomment=""
-    cookable="True" enabled="on"
-    expression="python:'daviz-edit.html' in request.URL0" id="daviz-edit.css"
-    media="all" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on" expression="" id="eea-authoring.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="authoring.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="True"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="member.css" media="screen"
-    rel="stylesheet" rendering="import"/>
+    rel="stylesheet" rendering="link" insert-after="eea-authoring.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++plone.app.discussion.stylesheets/discussion.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="member.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="True"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression="" id="livesearch.css"
-    media="screen" rel="stylesheet" rendering="import"/>
+    media="screen" rel="stylesheet" rendering="link" insert-after="++resource++plone.app.discussion.stylesheets/discussion.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="True"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="ploneAdmin.css" media=""
-    rel="stylesheet" rendering="import"/>
+    cookable="True" enabled="on" expression="" id="controlpanel.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="livesearch.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea.controlpanel.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="controlpanel.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++eea.alchemy.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="eea.controlpanel.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++google.analytics.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.alchemy.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++eea.googlecharts.iframe_resize.css" media="screen"
+    rel="stylesheet" rendering="link" insert-after="++resource++google.analytics.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++eea.progressbar.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.googlecharts.iframe_resize.css"/>
  <stylesheet title="" applyPrefix="True" authenticated="True" bundle="default"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression=""
     id="++resource++quickupload_static/uploadify.css" media=""
-    rel="stylesheet" rendering="import"/>
+    rel="stylesheet" rendering="link" insert-after="++resource++eea.progressbar.css"/>
  <stylesheet title="" applyPrefix="True" authenticated="True" bundle="default"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression=""
     id="++resource++quickupload_static/fileuploader.css" media=""
-    rel="stylesheet" rendering="import"/>
+    rel="stylesheet" rendering="link" insert-after="++resource++quickupload_static/uploadify.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="readiness.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="++resource++quickupload_static/fileuploader.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="ploneAdmin.css" media=""
+    rel="stylesheet" rendering="link" insert-after="readiness.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0"
+    id="eeareferencebrowser.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="ploneAdmin.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0"
+    id="++resource++jquery.tokeninput.facebook.css" media="all"
+    rel="stylesheet" rendering="link" insert-after="eeareferencebrowser.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0"
+    id="++resource++eea.forms.edit.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.tokeninput.facebook.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0"
+    id="eea.geotags.css" media="all" rel="stylesheet" rendering="link" insert-after="++resource++eea.forms.edit.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0"
+    id="++resource++select2/select2.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="eea.geotags.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:portal.portal_membership.checkPermission('eea.annotator: View', object) and (here.restrictedTraverse('@@plone_context_state').is_view_template() or 'edit' in request.URL0.split('/')[-1])"
+    id="++resource++jquery.annotator.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++select2/select2.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:portal.portal_membership.checkPermission('eea.annotator: View', object) and (here.restrictedTraverse('@@plone_context_state').is_view_template() or 'edit' in request.URL0.split('/')[-1])"
+    id="++resource++eea.annotator.view.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.annotator.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:portal.portal_membership.checkPermission('eea.annotator: View', object) and 'edit' in request.URL0"
+    id="++resource++eea.annotator.edit.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.annotator.view.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="object/canDownloadEPUB"
+    id="++resource++eea.epub.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.annotator.edit.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="object/@@pdf.support/can_download"
+    id="++resource++eea.pdf.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.epub.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: '/data-and-maps' in request.URL0"
+    id="dataservice_style.css" media="all" rel="stylesheet" rendering="link" insert-after="++resource++eea.pdf.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: '/data-and-maps' in request.URL0"
+    id="++resource++eea.dataservice.view.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="dataservice_style.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'daviz-view.html' in request.URL0" id="daviz-view.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="++resource++eea.dataservice.view.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'daviz-edit.html' in request.URL0" id="daviz-edit.css"
+    media="all" rel="stylesheet" rendering="link" insert-after="daviz-view.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'daviz-edit.html' in request.URL0"
+    id="++resource++jquery.colorpicker.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="daviz-edit.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'daviz-edit.html' in request.URL0"
+    id="++resource++jquery.slickgrid.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.colorpicker.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'daviz-tutorial' in request.URL0"
+    id="++resource++eea.daviz.tutorials.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.slickgrid.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:getattr(object, 'portal_type', None) in ['Sparql', 'SparqlBookmarksFolder']"
+    id="++resource++eea.sparql.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="++resource++eea.daviz.tutorials.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:getattr(object, 'portal_type', None) in ['Specification', 'Assessment', 'IndicatorFactSheet']"
+    id="indicators.css" media="all" rel="stylesheet" rendering="link" insert-after="++resource++eea.sparql.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: object.restrictedTraverse('@@plone_interface_info').provides('eea.facetednavigation.subtypes.interfaces.IFacetedNavigable')"
+    id="faceted_view.css" media="all" rel="stylesheet" rendering="link" insert-after="indicators.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: object.restrictedTraverse('@@plone_interface_info').provides('eea.facetednavigation.subtypes.interfaces.IFacetedNavigable')"
+    id="++resource++jquery.select2uislider.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="faceted_view.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'configure_faceted.html' in request.URL0"
+    id="faceted_edit.css" media="all" rel="stylesheet" rendering="link" insert-after="++resource++jquery.select2uislider.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:getattr(object, 'portal_type', None) in ['Report']"
+    id="++resource++eea.reports.css" media="all" rel="stylesheet"
+    rendering="link" insert-after="faceted_edit.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'portal_relations' in request.URL0"
+    id="++resource++eea.relations.css/tool.css" media="screen"
+    rel="stylesheet" rendering="link" insert-after="++resource++eea.reports.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
     expression="python:portal.restrictedTraverse('@@plone_portal_state').is_rtl()"
-    id="RTL.css" media="screen" rel="stylesheet" rendering="link"/>
+    id="RTL.css" media="screen" rel="stylesheet" rendering="link" insert-after="++resource++eea.relations.css/tool.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="on" expression="" id="ploneCustom.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    cookable="True" enabled="on"
+    expression="python:request.URL.startswith(object.portal_url()+'/SITE/about-us/who/organisational-chart')"
+    id="organisations.css" media="all" rel="stylesheet" rendering="link" insert-after="RTL.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: '/themes' in request.URL0" id="themecentre.css"
+    media="screen" rel="stylesheet" rendering="link" insert-after="organisations.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: (not here.restrictedTraverse('@@plone_portal_state').anonymous()) and 'edit' in request.URL0.split('/')[-1] and (not getattr(object, 'portal_type', None) in ['Specification', 'Assessment', 'IndicatorFactSheet'])"
+    id="++resource++jquery.timeoutdialog.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="themecentre.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    id="++resource++eea.soercontent.print.css" media="print" rel="stylesheet"
+    rendering="link" insert-after="++resource++jquery.timeoutdialog.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    id="eea_soer.css" media="all" rel="stylesheet" rendering="link" insert-after="++resource++eea.soercontent.print.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    id="eea_soercontent.css" media="all" rel="stylesheet" rendering="link" insert-after="eea_soer.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    id="eea_soercontent_screen.css" media="screen" rel="stylesheet"
+    rendering="link" insert-after="eea_soercontent.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python: object.restrictedTraverse('@@plone_interface_info').provides('eea.uberlisting.browser.app.interfaces.IUberlistingView')"
+    id="++resource++eea.uberlisting.css/uberlisting_view.css" media="screen"
+    rel="stylesheet" rendering="link" insert-after="eea_soercontent_screen.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'pdf.' in request['URL0'] or '.pdf' in request['URL0'] or 'epub.' in request['URL0'] or '.epub' in request['URL0']"
+    id="pdf.print.css" media="print" rel="stylesheet" rendering="link" insert-after="++resource++eea.uberlisting.css/uberlisting_view.css" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="ploneCustom.css" media=""
+    rel="stylesheet" rendering="link" insert-after="pdf.print.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="bootstrap_fixes.css"
+    media="" rel="stylesheet" rendering="link" insert-after="ploneCustom.css"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="eea-responsive.css"
+    media="" rel="stylesheet" rendering="link" insert-after="bootstrap_fixes.css"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe"
     conditionalcomment="lt IE 9" cookable="True" enabled="on" expression=""
-    id="IEFixes.css" media="screen" rel="stylesheet" rendering="link"/>
+    id="IEFixes.css" media="screen" rel="stylesheet" rendering="link" insert-after="eea-responsive.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe"
     conditionalcomment="IE 7" cookable="True" enabled="on" expression=""
-    id="IE7Fixes.css" media="screen" rel="stylesheet" rendering="link"/>
+    id="IE7Fixes.css" media="screen" rel="stylesheet" rendering="link" insert-after="IEFixes.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe"
     conditionalcomment="IE 8" cookable="True" enabled="on" expression=""
-    id="IE8Fixes.css" media="screen" rel="stylesheet" rendering="link"/>
+    id="IE8Fixes.css" media="screen" rel="stylesheet" rendering="link" insert-after="IE7Fixes.css" />
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe"
     conditionalcomment="IE 9" cookable="True" enabled="on" expression=""
-    id="IE9Fixes.css" media="screen" rel="stylesheet" rendering="link"/>
+    id="IE9Fixes.css" media="screen" rel="stylesheet" rendering="link" insert-after="IE8Fixes.css" />
 </object>
