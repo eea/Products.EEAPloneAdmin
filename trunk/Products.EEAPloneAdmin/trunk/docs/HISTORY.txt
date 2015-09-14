@@ -3,6 +3,10 @@ Changelog
 
 11.6.dev0 - (unreleased)
 ------------------------
+* Change: updated cssregistry and jsregistry of the optimize profile
+  with the latest conditions and ordering done in ticket to optimize
+  the output
+  [ichimdav refs #27220]
 * Cleanup: Removed PloneHelpCenter references
   [voineali refs #27692]
 
