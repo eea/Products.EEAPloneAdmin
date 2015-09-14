@@ -126,7 +126,6 @@ def get_list_of_blobs(self):
 #                'FactSheetDocument',
 #                'File',
 #                'FlashFile',
-#                'HelpCenterInstructionalVideo',
 #                'Highlight',
 #                'Image',
 #                'PressRelease',

@@ -41,8 +41,6 @@ def find(self):
      'EcoTip',
      'Event',
      'FlexibilityReport',
-     'HelpCenterFAQ',
-     'HelpCenterHowTo',
      'Highlight',
      'News Item',
      'PressRelease',

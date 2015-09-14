@@ -5,7 +5,6 @@ GLOBALS = globals()
 DEPENDENCIES = [
                 'LinguaPlone',
                 'ATVocabularyManager',
-                'PloneHelpCenter',
                 'XLIFFMarshall'
                 'NavigationManager',
                 'EEAEnquiry',
