@@ -191,6 +191,9 @@
     expression="" id="eea_relations.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="eea-mediacentre.js" inline="False"/>
+ <javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="print_warning.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
@@ -396,11 +399,11 @@
     id="++resource++eea.annotator.view.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression=" python: '/data-and-maps' in request.URL0"
+    expression="python: '/data-and-maps' in request.URL0 or getattr(object, 'portal_type', None) in ['Data', 'EEAFigure']"
     id="++resource++eea.dataservice.survey.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression=" python: '/data-and-maps' in request.URL0"
+    expression="python: '/data-and-maps' in request.URL0 or getattr(object, 'portal_type', None) in ['Data', 'EEAFigure']"
     id="dataset_view.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
@@ -452,16 +455,12 @@
     id="++resource++jquery.timeoutdialog.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: 'media/audiovisuals' in request.URL0"
+    expression="python: object.restrictedTraverse('@@plone_interface_info').provides('eea.mediacentre.interfaces.IVideo')"
     id="++resource++jquery.reflect.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: 'media/audiovisuals' in request.URL0"
+    expression="python: object.restrictedTraverse('@@plone_interface_info').provides('eea.mediacentre.interfaces.IVideo')"
     id="++resource++jquery.flashembed.js" inline="False"/>
- <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: 'media/audiovisuals' in request.URL0"
-    id="eea-mediacentre.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="False"
     compression="safe" conditionalcomment="" cookable="False" enabled="True"
     expression="python:'pdf.' in request['URL0'] or '.pdf' in request['URL0']"
