@@ -3,7 +3,15 @@ Changelog
 
 11.6.dev0 - (unreleased)
 ------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #27220]
 * Change: updated cssregistry and jsregistry of the optimize profile
+  with the output for production in case there is a need for a quick
+  revert of portal resources order which will change from the optimize
+  profile
+  [ichimdav refs #27220]
+* Change: added cssregistry and jsregistry to_116 profile
   with the latest conditions and ordering done in ticket to optimize
   the output
   [ichimdav refs #27220]
