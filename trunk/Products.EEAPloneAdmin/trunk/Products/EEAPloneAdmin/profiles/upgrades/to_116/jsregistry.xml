@@ -407,19 +407,19 @@
     id="dataset_view.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'DavizVisualization']"
+    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'EEAFigure', 'DavizVisualization']"
     id="++resource++quickupload_static/swfobject.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'DavizVisualization']"
+    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'EEAFigure', 'DavizVisualization']"
     id="++resource++quickupload_static/jquery.uploadify.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'DavizVisualization']"
+    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'EEAFigure', 'DavizVisualization']"
     id="++resource++quickupload_static/fileuploader.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'DavizVisualization']"
+    expression="python: (not portal.portal_membership.isAnonymousUser()) and getattr(object, 'portal_type', None) in ['DataTable', 'EEAFigure', 'DavizVisualization']"
     id="++resource++quickupload_static/helpers.js" inline="False"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
