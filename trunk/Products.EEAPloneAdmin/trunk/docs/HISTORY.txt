@@ -6,6 +6,9 @@ Changelog
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [ichimdav refs #27220]
+* Upgrade step: Under Graylog updated existing stream for the Zope error
+  logs and add a new one for the Zope access logs.
+  [ghicaale refs #28975]
 * Change: updated cssregistry and jsregistry of the optimize profile
   with the output for production in case there is a need for a quick
   revert of portal resources order which will change from the optimize
