@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+     i18n:domain="eea">
+<tal:kml tal:define="place_marks context/@@g_earth">
+<tal:comment tal:replace="nothing"> #5386; fixed view from giving xml error to be deleted after Products.EEAContentTypes 5.2</tal:comment>
+
+    <tal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'application/vnd.google-earth.kml+xml;;charset='+context.plone_utils.getSiteEncoding())" />
+    <tal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Disposition', 'attachment;;filename='+context.id+'.kml')" />
+    
+    <Document>
+    	<name i18n:translate="">Environmental events around the world</name>
+    	<open>1</open>
+    	
+    	<tal:marks tal:repeat="mark place_marks">
+        	<Placemark>
+                <name tal:content="mark/placemark_title">name</name>
+        	    <description>
+                    <div tal:content="mark/placemark_description">description</div>
+        		    <a tal:attributes="href mark/placemark_url" 
+        		       title="More info"
+        		       i18n:attributes="title" 
+        		       i18n:translate="">Read more info</a>
+        	    </description>
+                <address tal:content="mark/placemark_location">address</address>
+        	    <visibility>1</visibility>
+        	    <styleUrl>#eea_ballon_style</styleUrl>
+                <Snippet maxLines="2" tal:content="mark/placemark_description">Snippet</Snippet>
+        	    <Point>
+                    <coordinates tal:content="string:${mark/placemark_longitude},${mark/placemark_latitude},0.0">coords</coordinates>
+        	    </Point>
+        	</Placemark>
+    	</tal:marks>
+
+    </Document>
+</tal:kml>
+</kml>

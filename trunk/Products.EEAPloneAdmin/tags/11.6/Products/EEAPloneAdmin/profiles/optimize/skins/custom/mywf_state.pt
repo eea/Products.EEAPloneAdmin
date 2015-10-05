@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title tal:content="template/title">The title</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  </head>
+  <body tal:define="portal_state context/@@plone_portal_state;
+                        context_state context/@@plone_context_state;
+                        plone_view context/@@plone;
+                        language portal_state/language;
+                        view nocall:view | nocall: plone_view;
+                        dummy python: plone_view.mark_view(view);
+                        portal_url portal_state/portal_url;
+                        checkPermission nocall: context/portal_membership/checkPermission;
+                        site_properties context/portal_properties/site_properties;
+                        ajax_load request/ajax_load | nothing;
+                        ajax_include_head request/ajax_include_head | nothing;
+                        dummy python:request.RESPONSE.setHeader('X-UA-Compatible', 'IE=edge,chrome=1');
+                        template_id template/getId;
+                        normalizeString nocall:plone_view/normalizeString;
+                        toLocalizedTime nocall:plone_view/toLocalizedTime;
+                        portal_properties context/portal_properties;
+                        site_properties portal_properties/site_properties;
+                        here_url context_state/object_url;
+                        portal portal_state/portal;
+                        isAnon portal_state/anonymous;
+                        member portal_state/member;
+                        actions python:not isAnon and context.portal_actions.listFilteredActionsFor(context);
+                        mtool context/portal_membership;
+                        wtool context/portal_workflow;
+                        wf_state python: context_state.workflow_state();
+                        default_language portal_state/default_language;
+                        is_editable context_state/is_editable;
+                        isContextDefaultPage context_state/is_default_page;
+                        object_title context_state/object_title;
+                        putils context/plone_utils;
+                        ztu modules/ZTUtils;
+                        acl_users nocall: context/acl_users;
+                        ifacetool context/portal_interface;
+                        syntool context/portal_syndication;
+                        ">
+    
+    <h2><span tal:replace="here/title_or_id">content title or id</span>
+        <span tal:condition="template/title"
+              tal:replace="template/title">optional template title</span></h2>
+
+    This is Page Template <em tal:content="template/id">template id</em>.
+    With context state <em tal:content="wf_state">state</em>.
+  </body>
+</html>

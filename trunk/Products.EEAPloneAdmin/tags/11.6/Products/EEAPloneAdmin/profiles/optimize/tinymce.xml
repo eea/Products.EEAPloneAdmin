@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<object>
+ <resourcetypes>
+  <linkable>
+   <element value="Article"/>
+   <element value="Assessment"/>
+   <element value="AssessmentPart"/>
+   <element value="Blob"/>
+   <element value="CallForInterest"/>
+   <element value="CallForTender"/>
+   <element value="CommonalityReport"/>
+   <element value="Data"/>
+   <element value="DataFile"/>
+   <element value="DataSourceLink"/>
+   <element value="DataTable"/>
+   <element value="Discussion Item"/>
+   <element value="DiversityReport"/>
+   <element value="Document"/>
+   <element value="EEAFigure"/>
+   <element value="EEAFigureFile"/>
+   <element value="EEAPossibleRelation"/>
+   <element value="EEARelationsContentType"/>
+   <element value="EEAVacancy"/>
+   <element value="EcoTip"/>
+   <element value="EpubFile"/>
+   <element value="Event"/>
+   <element value="ExternalDataSpec"/>
+   <element value="EyewitnessStory"/>
+   <element value="FactSheetDocument"/>
+   <element value="File"/>
+   <element value="FlashFile"/>
+   <element value="FlexibilityReport"/>
+   <element value="Folder"/>
+   <element value="GIS Application"/>
+   <element value="HelpCenter"/>
+   <element value="HelpCenterDefinition"/>
+   <element value="HelpCenterErrorReferenceFolder"/>
+   <element value="HelpCenterFAQ"/>
+   <element value="HelpCenterFAQFolder"/>
+   <element value="HelpCenterGlossary"/>
+   <element value="HelpCenterHowTo"/>
+   <element value="HelpCenterHowToFolder"/>
+   <element value="HelpCenterInstructionalVideo"/>
+   <element value="HelpCenterInstructionalVideoFolder"/>
+   <element value="HelpCenterLink"/>
+   <element value="HelpCenterLinkFolder"/>
+   <element value="HelpCenterReferenceManualFolder"/>
+   <element value="HelpCenterTutorialFolder"/>
+   <element value="Highlight"/>
+   <element value="Image"/>
+   <element value="ImageFS"/>
+   <element value="IndicatorFactSheet"/>
+   <element value="KeyMessage"/>
+   <element value="Link"/>
+   <element value="MethodologyReference"/>
+   <element value="NavigationItem"/>
+   <element value="NavigationManager"/>
+   <element value="Newsletter"/>
+   <element value="NewsletterBTree"/>
+   <element value="NewsletterTheme"/>
+   <element value="Organisation"/>
+   <element value="Plone Site"/>
+   <element value="PolicyDocumentReference"/>
+   <element value="PolicyQuestion"/>
+   <element value="PressRelease"/>
+   <element value="Promotion"/>
+   <element value="PubliclyAddableItemsFolder"/>
+   <element value="QuickEvent"/>
+   <element value="RationaleReference"/>
+   <element value="RelatedIndicatorLink"/>
+   <element value="Report"/>
+   <element value="SOERCountry"/>
+   <element value="SOERKeyFact"/>
+   <element value="SOERMessage"/>
+   <element value="SimpleVocabulary"/>
+   <element value="SimpleVocabularyTerm"/>
+   <element value="Specification"/>
+   <element value="Speech"/>
+   <element value="TempFolder"/>
+   <element value="Topic"/>
+   <element value="TreeVocabulary"/>
+   <element value="TreeVocabularyTerm"/>
+   <element value="VocabularyLibrary"/>
+   <element value="WorkItem"/>
+  </linkable>
+  <customplugins>
+   <element value="ploneimage"/>
+   <element value="plonelink"/>
+  </customplugins>
+  <containsanchors>
+   <element value="Event"/>
+   <element value="News Item"/>
+   <element value="Document"/>
+   <element value="ATRelativePathCriterion"/>
+  </containsanchors>
+  <allow_captioned_images value="False"/>
+  <containsobjects>
+   <element value="Folder"/>
+   <element value="Large Plone Folder"/>
+   <element value="Plone Site"/>
+  </containsobjects>
+  <entity_encoding value="raw"/>
+  <imageobjects>
+   <element value="Image"/>
+   <element value="ImageFS"/>
+  </imageobjects>
+  <link_using_uids value="True"/>
+  <rooted value="False"/>
+ </resourcetypes>
+ <layout>
+  <styles>
+   <element value="Heading|h2"/>
+   <element value="Subheading|h3"/>
+   <element value="Literal|pre"/>
+   <element value="Discreet|span|discreet"/>
+   <element value="Pull-quote|blockquote|pullquote"/>
+   <element value="Call-out|p|callout"/>
+   <element value="Highlight|span|visualHighlight"/>
+   <element value="Disc|ul|listTypeDisc"/>
+   <element value="Square|ul|listTypeSquare"/>
+   <element value="Circle|ul|listTypeCircle"/>
+   <element value="Numbers|ol|listTypeDecimal"/>
+   <element value="Lower Alpha|ol|listTypeLowerAlpha"/>
+   <element value="Upper Alpha|ol|listTypeUpperAlpha"/>
+   <element value="Lower Roman|ol|listTypeLowerRoman"/>
+   <element value="Upper Roman|ol|listTypeUpperRoman"/>
+   <element value="Definition term|dt"/>
+   <element value="Definition description|dd"/>
+   <element value="Odd row|tr|odd"/>
+   <element value="Even row|tr|even"/>
+   <element value="Heading cell|th|"/>
+   <element value="Page break (print only)|div|pageBreak"/>
+   <element value="Clear floats|div|visualClear"/>
+  </styles>
+  <tablestyles>
+   <element value="Subdued grid|plain"/>
+   <element value="Invisible grid|invisible"/>
+   <element value="Fancy listing|listing"/>
+   <element value="Fancy grid listing|grid listing"/>
+   <element value="Fancy vertical listing|vertical listing"/>
+  </tablestyles>
+  <content_css value=""/>
+  <editor_height value="400"/>
+  <editor_width value="630"/>
+  <contextmenu value="True"/>
+  <resizing value="True"/>
+  <directionality value="ltr"/>
+  <autoresize value="False"/>
+ </layout>
+ <toolbar>
+  <toolbar_anchor value="True"/>
+  <toolbar_hr value="False"/>
+  <toolbar_insertdate value="False"/>
+  <toolbar_cut value="False"/>
+  <toolbar_definitionlist value="True"/>
+  <customtoolbarbuttons value=""/>
+  <toolbar_paste value="True"/>
+  <toolbar_justifycenter value="True"/>
+  <toolbar_inserttime value="False"/>
+  <toolbar_tablecontrols value="True"/>
+  <toolbar_justifyleft value="True"/>
+  <toolbar_redo value="True"/>
+  <toolbar_unlink value="True"/>
+  <toolbar_visualchars value="False"/>
+  <toolbar_media value="False"/>
+  <toolbar_nonbreaking value="False"/>
+  <toolbar_image value="True"/>
+  <toolbar_advhr value="False"/>
+  <toolbar_removeformat value="False"/>
+  <toolbar_undo value="True"/>
+  <toolbar_save value="True"/>
+  <toolbar_sub value="True"/>
+  <toolbar_numlist value="True"/>
+  <toolbar_underline value="False"/>
+  <toolbar_sup value="True"/>
+  <toolbar_preview value="False"/>
+  <toolbar_forecolor value="False"/>
+  <toolbar_code value="True"/>
+  <toolbar_style value="True"/>
+  <toolbar_link value="True"/>
+  <toolbar_emotions value="False"/>
+  <toolbar_justifyright value="True"/>
+  <toolbar_replace value="False"/>
+  <toolbar_outdent value="True"/>
+  <toolbar_strikethrough value="False"/>
+  <toolbar_pasteword value="True"/>
+  <toolbar_width value="440"/>
+  <toolbar_print value="False"/>
+  <toolbar_spellchecker value="True"/>
+  <toolbar_justifyfull value="True"/>
+  <toolbar_charmap value="True"/>
+  <toolbar_bullist value="True"/>
+  <toolbar_copy value="False"/>
+  <toolbar_pastetext value="True"/>
+  <toolbar_visualaid value="False"/>
+  <toolbar_indent value="True"/>
+  <toolbar_search value="False"/>
+  <toolbar_fullscreen value="True"/>
+  <toolbar_italic value="True"/>
+  <toolbar_attribs value="False"/>
+  <toolbar_pagebreak value="False"/>
+  <toolbar_bold value="True"/>
+  <toolbar_backcolor value="False"/>
+  <toolbar_external value="False"/>
+  <toolbar_cleanup value="False"/>
+ </toolbar>
+</object>

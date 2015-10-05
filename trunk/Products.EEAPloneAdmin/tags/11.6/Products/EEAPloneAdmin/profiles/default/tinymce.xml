@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<object>
+    <layout>
+        <styles purge="False">
+
+            <!-- Custom Dropdown styles -->
+            <element value="Portal Message|div|portalMessage"/>
+            <element value="Information Message|div|portalMessage informationMessage"/>
+            <element value="Warning Message|div|portalMessage warningMessage"/>
+            <element value="Thumbs Up Message|div|portalMessage thumbsUpMessage"/>
+            <element value="Attention Message|div|portalMessage attentionMessage"/>
+            <element value="Yes Message|div|portalMessage yesMessage"/>
+            <element value="No Message|div|portalMessage noMessage"/>
+            <element value="Note Message|div|portalMessage noteMessage"/>
+            <element value="Rosette Message|div|portalMessage rosetteMessage"/>
+            <element value="Idea Message|div|portalMessage ideaMessage"/>
+            <element value="Smiley Message|div|portalMessage smileyMessage"/>
+            <element value="Key Facts|ul|keyFact"/>
+            <element value="Key Fact|div|keyFact"/>
+            <!-- End Custom Dropdown styles -->
+
+        </styles>
+    </layout>
+</object>
