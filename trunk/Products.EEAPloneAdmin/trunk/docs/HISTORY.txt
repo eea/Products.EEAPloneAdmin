@@ -3,6 +3,10 @@ Changelog
 
 11.7.dev0 - (unreleased)
 ------------------------
+* Bug fix: modified condition for edit page scripts to check for
+  ACTUAL_URL instead of URL0 since translated items give different
+  results for URL0
+  [ichimdav refs #29356]
 
 11.6 - (2015-10-05)
 -------------------
