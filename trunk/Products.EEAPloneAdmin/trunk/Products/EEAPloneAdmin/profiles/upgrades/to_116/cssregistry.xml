@@ -362,23 +362,23 @@
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    expression="python:request.URL.startswith(object.portal_url()+'/soer') or request.URL.startswith(object.portal_url()+'/SITE/soer')"
     id="++resource++eea.soercontent.print.css" media="print" rel="stylesheet"
     rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    expression="python:request.URL.startswith(object.portal_url()+'/soer') or request.URL.startswith(object.portal_url()+'/SITE/soer')"
     id="eea_soer.css" media="all" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    expression="python:request.URL.startswith(object.portal_url()+'/soer') or request.URL.startswith(object.portal_url()+'/SITE/soer')"
     id="eea_soercontent.css" media="all" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:request.URL.startswith(object.portal_url()+'/SITE/soer')"
+    expression="python:request.URL.startswith(object.portal_url()+'/soer') or request.URL.startswith(object.portal_url()+'/SITE/soer')"
     id="eea_soercontent_screen.css" media="screen" rel="stylesheet"
     rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
