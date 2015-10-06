@@ -3,6 +3,8 @@ Changelog
 
 11.7.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed condition of organisations.css
+  [ichimdav refs #29382]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [ichimdav refs #29372]

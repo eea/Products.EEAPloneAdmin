@@ -346,7 +346,7 @@
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:request.URL.startswith(object.portal_url()+'/SITE/about-us/who/organisational-chart')"
+    expression="python:request.URL.startswith(object.portal_url()+'/about-us/who/organisational-chart') or python:request.URL.startswith(object.portal_url()+'/SITE/about-us/who/organisational-chart'"
     id="organisations.css" media="all" rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
