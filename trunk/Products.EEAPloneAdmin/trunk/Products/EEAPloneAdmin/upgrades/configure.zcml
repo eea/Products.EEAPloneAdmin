@@ -3,7 +3,20 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
-      <!-- 11.4 => 11.6 -->
+    <!-- 11.6 => 11.7 -->
+    <genericsetup:upgradeSteps
+        source="11.6"
+        destination="11.7"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+        title="Import all steps from Products.EEAPloneAdmin 11.7 profile"
+        import_profile="Products.EEAPloneAdmin:upgrade117"
+    />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.4 => 11.6 -->
     <genericsetup:upgradeSteps
         source="11.4"
         destination="11.6"

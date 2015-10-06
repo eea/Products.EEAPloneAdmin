@@ -3,6 +3,9 @@ Changelog
 
 11.7.dev0 - (unreleased)
 ------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #29372]
 * Bug fix: modified condition for soer css to load both for production
   and development environments
   [ichimdav refs #29372]
