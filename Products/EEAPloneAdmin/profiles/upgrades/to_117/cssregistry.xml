@@ -296,13 +296,13 @@
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:'daviz-edit.html' in request.URL0"
+    expression="python:getattr(object, 'portal_type', None) in ['DavizVisualization']"
     id="++resource++jquery.slickgrid.css" media="screen" rel="stylesheet"
     rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     bundle="default" cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on"
-    expression="python:'daviz-tutorial' in request.URL0"
+    expression="python:getattr(object, 'portal_type', None) in ['DavizVisualization']"
     id="++resource++eea.daviz.tutorials.css" media="screen" rel="stylesheet"
     rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
