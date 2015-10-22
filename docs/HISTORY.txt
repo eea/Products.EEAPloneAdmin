@@ -1,6 +1,9 @@
 Changelog
 =========
 
+11.8.dev0 - (unreleased)
+------------------------
+
 11.7 - (2015-10-22)
 -------------------
 * Bug fix: fixed condition of organisations.css
