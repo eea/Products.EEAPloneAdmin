@@ -261,4 +261,11 @@
                   replacement=".patch_pluggableauthservice.patched_manage_roles"
                   preserveOriginal="false" />
 
+    <!-- #14598 Patch OFS.CopySupport.CopyContainer manage_pasteObjects to handle a structure that contains also information about the desired new id/ids of the copied objects -->
+    <monkey:patch description="Monkeypatch OFS.CopySupport.CopyContainer.manage_pasteObjects to be able to specify the desired new id on a copy/paste operation"
+                  class="OFS.CopySupport.CopyContainer"
+                  original="manage_pasteObjects"
+                  replacement=".patch_zope.manage_pasteObjects"
+                  preserveOriginal="false" />
+
 </configure>

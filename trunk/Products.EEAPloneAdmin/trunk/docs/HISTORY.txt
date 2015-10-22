@@ -3,6 +3,10 @@ Changelog
 
 11.8.dev0 - (unreleased)
 ------------------------
+* Feature: Performance improvement when creating new version
+  by patching manage_pasteObjects to accept also in cb_copy_data
+  the desired new id
+  [chiridra refs #14598]
 
 11.7 - (2015-10-22)
 -------------------
