@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.7.dev0 - (unreleased)
-------------------------
+11.7 - (2015-10-22)
+-------------------
 * Bug fix: fixed condition of organisations.css
   [ichimdav refs #29382]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
