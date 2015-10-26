@@ -3,6 +3,8 @@ Changelog
 
 11.8.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed condition of ++resource++eea.sparql.css
+  [danielm refs #29992]
 
 11.7 - (2015-10-22)
 -------------------
