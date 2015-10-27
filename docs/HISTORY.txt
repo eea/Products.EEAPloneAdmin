@@ -3,6 +3,9 @@ Changelog
 
 11.8.dev0 - (unreleased)
 ------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #30079]
 * Bug fix: fixed condition of ++resource++eea.sparql.css
   [danielm refs #29992]
 
