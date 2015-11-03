@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <metal:content-core define-macro="content-core" 
+                          tal:define="text python:here.CookedBody(stx_level=2);
+                                      len_text python:len(text.strip());
+                                      object_title context/@@plone_context_state/object_title;">
+
+        <metal:teaserFigureRelated define-macro="teaserFigureRelated"
+        tal:define="hasQuote python: len(here.getQuotationText());
+                    figure here/getImage;
+                    figure python:test(figure and figure != ' ', here.getScale('mini'), None);">
+          <tal:descriptionOrTeaser define="teaserDescription here/getTeaser">
+            <div class="documentDescription"
+              tal:condition="python:not here.Description()">
+              <tal:description tal:content="teaserDescription" >
+                News summary</tal:description>
+            </div>
+            <div tal:omit-tag=""
+              tal:define="figure_title here/getImageCaption;
+              figure_note python:test(not here.Description() or here.Description() == here.getTeaser(),
+              here.getImageNote(), here.getTeaser());
+              figure_scale string:xlarge;
+              figure_source_copyright here/getImageCopyright;
+              figure_link here/getImageLink">
+
+              <tal:figure tal:condition="figure">
+                <metal:thefigure use-macro="here/media_macros/macros/figure-plus-wide" />
+              </tal:figure>
+
+            </div>
+            <blockquote class="quote-left" tal:condition="hasQuote" >
+              <p tal:content="here/getQuotationText" />
+              <p class="source" tal:content="here/getQuotationSource" />
+            </blockquote>
+          </tal:descriptionOrTeaser>
+        </metal:teaserFigureRelated>
+        <metal:field use-macro="python:context.widget('text', mode='view')">
+          Body text
+        </metal:field>
+        <p tal:condition="here/getUrl|nothing"><a href="" title="Read more"
+            tal:attributes="href here/getUrl" class="moreLink">Read more</a></p>
+
+        <!-- Geotags view hidden for now for more styling -->
+        <!-- metal:field use-macro="python:context.widget('location', mode='view')">
+          Location field
+        </metal:field -->
+
+      </metal:content-core>
+    </metal:content-core>
+  </body>
+</html>

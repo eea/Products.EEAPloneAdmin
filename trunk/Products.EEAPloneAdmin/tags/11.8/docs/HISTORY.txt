@@ -1,0 +1,1479 @@
+Changelog
+=========
+
+11.8 - (2015-11-03)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #30079]
+* Bug fix: fixed condition of ++resource++eea.sparql.css
+  [danielm refs #29992]
+
+11.7 - (2015-10-22)
+-------------------
+* Bug fix: fixed condition of organisations.css
+  [ichimdav refs #29382]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #29372]
+* Bug fix: modified condition for soer css to load both for production
+  and development environments
+  [ichimdav refs #29372]
+* Bug fix: modified condition for edit page scripts to check for
+  ACTUAL_URL instead of URL0 since translated items give different
+  results for URL0
+  [ichimdav refs #29356]
+
+11.6 - (2015-10-05)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #27220]
+* Upgrade step: Under Graylog updated existing stream for the Zope error
+  logs and add a new one for the Zope access logs.
+  [ghicaale refs #28975]
+* Change: updated cssregistry and jsregistry of the optimize profile
+  with the output for production in case there is a need for a quick
+  revert of portal resources order which will change from the optimize
+  profile
+  [ichimdav refs #27220]
+* Change: added cssregistry and jsregistry to_116 profile
+  with the latest conditions and ordering done in ticket to optimize
+  the output
+  [ichimdav refs #27220]
+* Cleanup: Removed PloneHelpCenter references
+  [voineali refs #27692]
+
+11.5 - (2015-09-10)
+-------------------
+* Bug fix: edit patch_rdflib_namespacemanager to get cwd by abspath
+  [lucas refs #28301]
+* Bug fix: log level changed for patched_field_index_html
+  [lucas refs #28285]
+
+11.4 - (2015-08-18)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [razvanchitu refs #27760]
+* Pre-upgrade step: on each backend install libmemcached >= 0.40
+  [razvanchitu refs #27571]
+* Feature: Added link to zc.async queue within Site Setup > Control Panel
+  [voineali refs #27760]
+* Cleanup: Added upgrade step to removed zc.async old queue from Data.fs as
+  now it has a dedicated .fs file (zasync.fs)
+  [razvanchitu refs #27760]
+
+11.3 - (2015-07-29)
+-------------------
+* Bug fix: Fix upgrade step from version 11.2
+  [voineali refs #27245]
+
+11.2 - (2015-07-28)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [voineali refs #26848]
+* Cleanup: Removed PloneHelpCenter references from database and migrate existing
+  content to Simple Dexterity content-types
+  [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter isOutdated catalog index and metadata
+  [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter getSections catalog index and metadata
+  [voineali refs #26848]
+* Bug fix: Use safe condition within portal_css/portal_js in order
+  not to break layout (e.g. @@dexterity-types)
+  [voineali refs #26848]
+
+11.1 - (2015-07-06)
+-------------------
+* Cleanup: Removed Products.PloneHelpCenter getVersions catalog index and metadata
+  [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter getStartHere catalog index and metadata
+  [voineali refs #26848]
+* Cleanup: Removed Products.PloneHelpCenter getAudiences catalog index and metadata
+  [voineali refs #26848]
+* Upgrade step: Upgrade crons. See README.txt and changes within revisions
+  https://taskman.eionet.europa.eu/projects/zope/repository/diff/trunk/www.eea.europa.eu?utf8=%E2%9C%93&rev=38646&rev_to=38632
+  [voineali refs #25015]
+* Manual upgrade step: content rule message recipients and body needs to be
+  configured by demarant for sending workflow emails
+  [ichimdav refs #22596]
+* Change: removed frontpage_workflows sendEmail logic and replaced
+  it with content rules
+  [ichimdav refs #22596]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #22596]
+* Cleanup: remove Munin references
+  [ghicaale refs #24861]
+* Pre-upgrade step: add under under each backend to secret.cfg the credentials for RabbitMQ as bellow
+    - [buildout]
+    - rabbitmq-username = ba***
+    - rabbitmq-password = li***
+    - [ghicaale refs #21610]
+
+11.0 - (2015-06-03)
+-------------------
+* Change: release new egg
+  [ghicaale refs #25722]
+
+10.9 - (2015-06-02)
+-------------------
+* Cleanup: Remove plone_app_users patch as the issue was fixed within
+  plone.app.users 1.2.2
+  [voineali refs #24289]
+
+10.8 - (2015-05-15)
+-------------------
+* Upgrade step: install TLSPU Cookie Policy 1.1.5.eea from www/prefs_install_products_form
+  [ichimdav refs #20319]
+* Manual upgrade step: from www/@@cookiepolicy:
+  - Configure cookie warning message either by demarant or message given by him
+  [ichimdav refs #20319]
+* Feature: added checkTemplatesForArchiveMessage BrowserView which checks every
+  content type found within folder for the presence of the archive message for
+  every template that can be set as layout
+  [ichimdav refs #25013]
+
+10.7 - (2015-05-05)
+-------------------
+* Bug fix: fixed @@ldap-controlpanel submit form for new LDAP servers when used under Apache
+  [ghicaale refs #24768]
+
+10.6 - (2015-04-02)
+-------------------
+* Feature: Added daviz_workflow with required data provenance for publishing
+  [szabozo0 refs #24412]
+* Bug fix: fixed @@ldap-controlpanel submit form when used under Apache
+  [ghicaale refs #24490]
+
+10.5 - (2015-03-27)
+-------------------
+* Upgrade step: steps to setup plone.app.ldap
+    - login as a Manager using a local account
+    - under /www/prefs_install_products_form install "LDAP support 1.3.2"
+    - under /www/@@usergroup-controlpanel check "Many groups?"
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-global set as follows
+    - "LDAP object classes" -> top,person
+    - "Base DN for users" -> ou=Users,o=EIONET,l=Europe
+    - "Base DN for groups" -> ou=Roles,o=EIONET,l=Europe
+    - "User password encryption" -> SHA
+    - "Default user roles" -> Authenticated
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers add all LDAP servers (ldap, ldap2 and ldap3), e.g.:
+    - "Server" -> ldap2.eionet.europa.eu
+    - "Connection timeout" -> 5
+    - "Operation timeout" -> 10
+    - under /www/acl_users/manage_main check "EIONETLDAPNEW (EIONET LDAP New)" and delete it
+    - under /www/@@ldap-controlpanel/#fieldsetlegend-servers select check the LDAP server and click "Enable"
+    - under /www/acl_users/ldap-plugin/manage_activateInterfacesForm check only the values listed bellow
+    - "Authentication"
+    - "Group_Enumeration"
+    - "Group_Introspection"
+    - "Groups"
+    - "Properties"
+    - "Role_Enumeration"
+    - "Roles"
+    - "User_Enumeration"
+    - under /www/acl_users/ldap-plugin/acl_users/manage_main set as follows
+    - "Group storage" -> "Groups stored on LDAP server"
+    - under /www/acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin set "ldap-plugin" to be first in the list of active plugins
+    - [ghicaale refs #24209]
+* Bug fix: patched plone.app.users to fix "add new user" form when many roles are available
+  [ghicaale refs #24209]
+* Bug fix: patched Products.PluggableAuthService not to stuck when listing local
+  groups and roles in ZMI
+  [ghicaale refs #24209]
+
+10.4 - (2015-03-17)
+-------------------
+* Change: Switched to curl in the jenkins build install script
+  [olimpiurob refs #22402]
+* Change: Changed fetch url for jenkins build install script to the install
+  script from the main EEA CPB repository
+  [olimpiurob refs #22402]
+
+10.3 - (2015-02-16)
+-------------------
+* Upgrade step: cleanup annotation storage for EEA CPB analytics
+  [ghicaale refs #22687]
+
+10.2 - (2015-01-22)
+-------------------
+* Change: WorkflowManagement no longer performs any initializations if the
+  send_workflow_emails property is False. In this way there is no unneded
+  computations and ldap searches if there shouldn't be any workflow emails
+  sent
+  [ichimdav refs #21893]
+* Upgrade step: run /www/@@migrateDavizAnnotationData
+  [ichimdav refs #21987]
+* Feature: added migration script which fixes DavizVisualization where data
+  annotation wasn't normalized
+  [ichimdav refs #21987]
+* Upgrade step: within Site Setup > Add-ons install eea.controlpanel package
+  [ghicaale refs #21853]
+* Bug fix: patched plone.app.caching to proper check method names
+  [ghicaale refs #22499]
+
+10.1 - (2014-12-23)
+-------------------
+* Upgrade step: (manual) On file-system remove old location of generated
+  PDF files (ePub directory within static-resources)
+  [voineali refs #22080]
+
+10.0 - (2014-11-20)
+-------------------
+* Feature: Added possibility to suppress sending emails on workflow change
+  [voineali refs #21851]
+* Upgrade step: (manual) After eea.tinymce is updated within
+  @@tinymceplugins-settings Antonio needs to Enabled the readability
+  statistics for the contenttypes where it is needed
+  [ichimdav refs #21327]
+* Upgrade step: run the Plone upgrade from control panel
+  [ghicaale refs #20945]
+
+9.9 - (2014-10-15)
+------------------
+* Upgrade step: under /www/portal_types for Folder, PubliclyAddableItemsFolder and TempFolder
+  remove "Quick Event" from the "Allowed content types" list
+  [ghicaale refs #21123]
+* Upgrade step: under /www/portal_types/QuickEvent/manage_propertiesForm
+  change title to "Quick Event - deprecated"
+  [ghicaale refs #21123]
+* Upgrade step: for each topic under /www/SITE/themes, the "Upcoming events"
+  folder (e.g. /www/SITE/themes/households/events) should be archived. Same
+  action for /www/SITE/events. Reason should be "No more updates will be done" and
+  staff name should be "Sigfus Bjarnason".
+  [ghicaale refs #21123]
+* Upgrade step: from /www/SITE/events/@@manage-portlets remove portlet_centermap_events,
+  from /www/SITE/events/environmental-events-calendar/@@manage-portlets remove Calendar
+  [ghicaale refs #21123]
+* Bug fix: Added missing dependency collective.deletepermission
+  [voineali refs #21234]
+
+9.8 - (2014-10-01)
+------------------
+* Feature: added upgrade step which adds the TinyMCE readability plugin
+  [ichimdav refs #6288]
+* Change: updated pdf.xml in order to not override other existing settings that
+  should not be overriden.
+  [olimpiurob refs #20881]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [olimpiurob refs #20881]
+* Pre-upgrade step: on each backend and frontend add secret.cfg then follow
+  instructions from buidlout README.txt
+  [ghicaale refs #20963]
+* Upgrade step: under www8 run /www/@@collective-catalogcleanup
+  [ghicaale refs #14117]
+
+9.7 - (2014-09-11)
+------------------
+* Feature: added tests for the paste and the workflow change events
+  [ichimdav refs #20827]
+* Upgrade step: on Blacksquirrel run the following commands
+    - cp /var/eea-buildout-plone4/etc/cron/eea-blacksquirrel-cron /etc/cron.d
+    - service crond restart
+    - [ghicaale refs #20848]
+* Upgrade step: this step should run on www8:
+    - run /www/@@fixEEAFigureFileEffectiveDate
+    - [ichimdav refs #20827]
+* Pre-upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
+  remove **download.pdf** and **download.epub** within **Stale resources**
+  [voineali refs #20845]
+* Feature: added migration script that sets the EffectiveDate of EEAFigureFiles
+  to that of the parent if it's EffectiveDate is earlier than that of the parent
+  [ichimdav refs #20827]
+* Feature: added method to bulk reindex security
+  [ghicaale refs #21006]
+
+9.6 - (2014-08-27)
+------------------
+* Upgrade step: (manual) Within **Plone > Site setup > Caching > Caching operations**
+  add **download.pdf** and **download.epub** within **Stale resources**
+  [voineali refs #20678]
+* Change: Cache download.pdf and download.epub within varnish
+  [voineali refs #20678]
+
+9.5 - (2014-08-12)
+------------------
+* Bug fix: Added possibility to force i18n translations for authenticated users
+  [voineali refs #20608]
+* Feature: added handlers to prevent our dependencies from showing up in the
+  quick installer's list of installable products
+  [ghicaale refs #17478]
+* Feature: added the profile to setup the new delete permission
+  [ghicaale refs #17478]
+* Feature: added upgrade steps for delete permission and timeout dialog.
+  [ghicaale refs #17478]
+
+9.4 - (2014-07-15)
+------------------
+* Change: migration script now sets the EffectiveDate for every published
+  object for which the translations also have no effective date
+  [ichimdav refs #18601]
+
+9.3 - (2014-06-30)
+------------------
+* Bug fix: fixed the URL to be bulk harvested by SDS
+  [ghicaale refs #18928]
+
+9.2 - (2014-06-06)
+------------------
+* Bug fix: fixed the bulk Ping CR external method
+  [ghicaale refs #18928]
+* Feature: better logging and improved performace for bulk ping external method
+  [ghicaale refs #18928]
+
+9.1 - (2014-05-30)
+------------------
+* Bug fix: fixed enable, disable & deletes content rule actions when used
+  under Apache.
+  [ghicaale refs #18904]
+
+9.0 - (2014-05-26)
+------------------
+* Bug fix: fixed the PURGE handler when no REQUEST is available
+  [ghicaale refs #19830]
+
+8.9 - (2014-05-19)
+------------------
+* Bug fix: Fixed rewriterules logic error where oldValue is assigned the
+  newValue value. Do not rewrite @@manage-content-type-portlets form action when
+  editing the portlet settings.
+  [olimpiurob refs #19739]
+* Bug fix: Fixed rewriterules for @@manage-group-portlets, @@manage-group-dashboard,
+  @@manage-content-type-portlets
+  [olimpiurob refs #19739]
+* Fix: patching Products.CMFCore.SkinsTool.getDiff
+  [batradav refs #19330]
+* Fix: patching Products.CMFCore.DynamicType.icon
+  [batradav refs #8460]
+
+8.8 - (2014-05-14)
+------------------
+* Fix: safely get IEEACacheSettings from registry
+    - removed 'print'
+    - fixed pylint
+  [batradav refs #19462]
+
+8.7 - (2014-05-13)
+------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for Products.EEAPloneAdmin
+  [batradav refs #3219]
+* Change: improved cache purging to purge specific URLs based on a registry mapping
+  [batradav refs #19462]
+* Upgrade step: In ZMI under /www/0maintenance add an ExternalMethod with the settings
+    - module: Products.EEAPloneAdmin.ping_sds_content
+    - function: ping_all
+    - [pasoviul refs #18928]
+* Upgrade step: this step should run on www8:
+  - run /www/@@fixEffectiveDate
+  [ichimdav refs #18601]
+* Change: migration script to fix effective date now only affect
+  published EEAFigure, DavizVisualization and PolicyQuestion objects
+  [ichimdav refs #18601]
+* Upgrade step: within "Plone > portal_properties > eeastaff_properties"
+  change value for "eeastaff_fs" into: ../../../www-static-resources/eeastaff.xml
+  [ghicaale refs 18467]
+* Upgrade step: update /etc/cron.daily/syncstaff on Albatros.
+  [ghicaale refs 18467]
+* Pre-upgrade step: commit the external methods under EEAPloneAdmin, talk
+  with Antonio firs.
+  [marinis]
+* Pre-upgrade step: delete from all backends the following files
+    - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf
+    - {buildout:directory}/parts/wkhtmltopdf/wkhtmltopdf-amd64
+    - {buildout:directory}/.installed.cfg
+    - [ghicaale refs #18550]
+
+8.6 - (2014-03-10)
+------------------
+* Feature: added migration script to fix effective date of published items
+  [ichimdav refs #18601]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for Products.EEAPloneAdmin
+  [ichimdav refs #18466]
+* Change: Make "Add portal content" and "Copy or Move" permissions acquire
+  settings in an upgrade step
+  [olimpiurob refs #18516]
+* Change: creatorAssignment script now removes full names from creator
+  field if their user id is already present
+  [ichimdav refs #18142]
+* Upgrade step: this step should run on www8 after working hours:
+  - run /www/@@creatorAssignment
+  - beware as it takes a long time since it wakes up 60000 objects
+  [ichimdav refs #18142]
+* Feature: patched Products.CMFCore deleted members not to endup in database
+  conflict due to the long process of deletion
+  [ghicaale refs #18138]
+
+8.5 - (2014-02-13)
+------------------
+* Change: Removed CFTRequestor references in the 8.5 upgrade step. Manual
+  upgrade needed in order to remove references from portal_properties
+  site_properties and navtree_properties
+  [olimpiurob refs #18443]
+* Upgrade step: remove obsolete permissions from 'CallForTender' workflow
+  [olimpiurob refs #18443]
+* Change: tinyMCE text searches are now queried against the Title index instead
+  of the SearchableText in order to get fewer but better matching results
+  [ichimdav refs #16662]
+* Feature: Added external method to help re-mounting catalogs to their new
+  location if they are configured outside Data.fs. Credits for this script
+  goes to Andrew Mleczko, RedTurtle
+  [voineali refs #17104]
+
+8.4 - (2014-02-03)
+------------------
+* Change: patched tinyMCE save adapter in order to record a history version
+  when using the save plugin
+  [ichimdav refs #18221]
+* Change: patch tinyMCE get_styles in order to avoid style title hardcoding
+  [ichimdav refs #18180]
+* [DONE] Upgrade step: this step should run on www8 after working hours:
+  - run /www/@@creatorAssignment
+  - beware as it takes a long time since it wakes up 60000 objects
+  - [ichimdav refs #18142]
+* Feature: Added new content types "Negotiated procedure" and "Call for
+  proposal"
+  [mironovi refs #17865]
+* Feature: added migration script that changes the Creator for objects that
+  have been versioned
+  [ichimdav refs #18142]
+
+8.3 - (2014-01-22)
+------------------
+* Feature: added browser view that searches for broken objects
+  [ichimdav refs #17883]
+* Change: removed adapter that implements ISearchForm for context that is not
+  the root site
+  [ichimdav refs #17812]
+* Feature: search_rss now returns an RSS link telling the user that the rss
+  is not enabled for the given context rather than crashing when calling it
+  on content that doesn't implement the syndication interface
+  [ichimdav refs #17812]
+* Feature: don't override action for portal_vocabularies under localhost/devel
+  [ghicaale refs #17795]
+* Bug fix: define portal when attempting to get the navigationRoot using a
+  dexterity content type
+  [ichimdav refs #16662]
+* Bug fix: Fixed item.body call in search-rss.pt
+  [szabozo0 refs #17734]
+* Upgrade step: install "EEA Icons" add-on
+  [ghicaale refs #17709]
+
+8.2 - (2013-12-10)
+------------------
+* Bug fix: fixed ReST markup of HISTORY.txt
+  [ghicaale refs #17716]
+
+8.1 - (2013-12-10)
+------------------
+* Change: removed versions macro; now using viewlet
+  [simiamih refs #17321]
+* Pre-upgrade step: uninstall ejabberd from production and from Unicorn
+  [ghicaale refs #17513]
+* Upgrade step: uninstall eea.locationwidget from /www/prefs_install_products_form
+  [ghicaale refs #9155]
+* Upgrade step: from /www/portal_properties/geographical_properties delete the following properties
+    - geo_services
+    - map_service_to_use
+    - geocoding_service_priority
+    - yahoo_key
+    - mapquest_key
+    - PointZoom_single
+    - MapLoc_single
+    - MapZoom_single
+    - MapLoc_multi
+    - MapZoom_multi
+    - [ghicaale refs #9155]
+* Upgrade step: from /www/portal_skins/manage_propertiesForm delete 'LocationWidget' layer
+  [ghicaale refs #9155]
+* Upgrade step: from /www/portal_actions/document_actions delete 'gearth' action
+  [ghicaale refs #9155]
+* Upgrade step: uninstall collective.xmpp.chat and collective.xmpp.core
+  from /www/prefs_install_products_form
+  [ghicaale refs #17513]
+* Upgrade step: under /www/portal_setup/manage_importSteps select profile
+  "EEA Plone Admin: Uninstall profile", check "Manage the configuration registry"
+  and click "Import selected steps"
+  [ghicaale refs #17513]
+* Upgrade step: delete /www/portal_view_customizations/zope.interface.interface-eea.js_belowbodytag
+  [ghicaale refs #17513]
+* Upgrade step: must be the last manual step to be performed
+    - revert http://taskman.eionet.europa.eu/projects/zope/repository/revisions/35141
+    - remove eea.locationwidget from all EEA buildout CFG files
+    - commit changes
+    - re-run buildout
+    - restart instances
+    - [ghicaale refs #9155 #17513]
+* Change: cleanup IXMPPSettings from portal_registry
+  [ghicaale refs #17513]
+* Change: removed the dependecy to eea.locationwidget
+  [ghicaale refs #9155]
+
+8.0 - (2013-11-20)
+------------------
+* Bug fix: fixed import step
+  [simiamih refs #14808]
+* Feature: new cache ruleset for Content files
+  [simiamih refs #14808]
+* Feature: added patch for inspecting occasional exception
+  [simiamih refs #17240]
+* Bug fix: added a script to catalog objects that are not indexed
+  [tiberich]
+* [DONE] Pre-upgrade step: stop sendmail daemon on all backends and start it on
+  one of the frontends. After the production upgrade is done check if email
+  sending is working fine. Claenup symlink of zopesendmail_ctl
+  on all backends /etc/init.d
+  [ghicaale refs #17239]
+* [DONE] Upgrade step: run buildout on frontends
+  [ghicaale refs #17239]
+* Upgrade step: run /www/@@plone-upgrade
+  [ghicaale refs #17281]
+
+7.9 - (2013-10-22)
+------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav refs #17005]
+* Bug fix: Refactor collective.quickupload patches to take advantage of the latest
+  upstream version
+  [tiberich #16997]
+* Bug fix: Fixed item.body call in search-rss.pt so now works even
+  when item.body is an AcquisitionWrapper.
+  [ghicaale refs #17040]
+* Feature: commented out forcing ampm widget because 'a' descriptor is present
+  in locale of date representation
+  [simiamih refs #16783]
+* Upgrade step: delete collective.traceview from /src on all backends as it is
+  taken from the egg now.
+  [ghicaale refs #17238]
+
+7.8 - (2013-10-08)
+------------------
+* Change: disabled the tinymce upgrade step because of ticket 17005
+  [ichimdav refs #17005]
+
+7.7 - (2013-10-07)
+------------------
+* Upgrade step: Install a new cron job to cleanup pdfs. To do this, add in /var/spool/cron/root:
+    ``0 */2 * * * /var/eea-buildout-plone4/etc/cron/cleanup_pdf_tmp.sh``
+
+7.6 - (2013-10-04)
+------------------
+* Change: removed p4a_fileimage patch from EEAPloneAdmin
+  [ichimdav refs #15651]
+* Change: removed hachoir_core patches since we no longer use hachoir packages
+  [ichimdav refs #15651]
+* Change: updated zope imports with the versions that require minimum Plone 4.1
+  for Products.EEAPloneAdmin
+  [ichimdav refs #15651]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav #9476]
+* Bug fix: added a script that traverses ZODB and reports objects which are not
+  indexed in the main catalog
+  [tiberich #16803]
+* Pre-upgrade step: shared-blob is now on and blobstorage path was changed. Prio
+  to production upgrade double check with Adrian if the new storage is available.
+  Steps to be done are, run buildout on frontends, run buildout on backends, stop
+  all ZEO clients, stop ZEO, resync blobs, start ZEO and start ZEO clients.
+  [ghicaale refs #16729]
+* Bug fix: no more 404 when calling search_rss outside PloneSite context
+  [ghicaale refs #16912]
+
+7.5 - (2013-09-23)
+------------------
+* Bug fix: fixed form action for links that already contained www within
+  rewriterules.js
+  [ichimdav refs #16720]
+* Bug fix: corrected import of TinyMCE step from Products.EEAPloneAdmin 7.3
+  [ichimdav  refs #9476]
+* Change: added Key Facts class to TinyMCE style selection in order to markup
+  key facts
+  [ichimdav refs #9476]
+
+7.4 - (2013-09-10)
+------------------
+* Bug fix: patching Products.LinguaPlone to clear archetypes.schemaextender
+  before copying languageIndependent values to translation
+  [batradav #14436]
+
+7.3 - (2013-09-06)
+------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav #9476]
+* Feature: added keyFact style to TinyMCE dropdown styles selection
+  [ichimdav #9476]
+* Change: moved TinyMCE layout styles from eea.design to EEAPloneAdmin
+  [ichimdav]
+* Bug fix: added intermediate transaction commits not to endup in database
+  conflict error while performing large operatation on upgrades.
+  [ghicaale refs #14323]
+* Change: moved Solgema.PortletsManager customisations to forked package
+  [batradav refs #15623]
+
+7.2 - (2013-08-19)
+------------------
+* Change: updated actions.xml profile with Plone 4.3 changes
+  [ichimdav refs #14323]
+* Change: no longer log every resource when saving resources to disk, instead
+  just display the total number of resources saved
+  [ichimdav refs #14323]
+* Feature: added ability to disable saving of resources on disk by adding a
+  boolean property named *disableResourceDiskSaving* inside site_properties
+  useful when performing site upgrades and you want to avoid having the
+  resources saved every time an upgrade step cooks the resources
+  [ichimdav refs #14323]
+* Change: readded code that searches through all languages within TinyMCE
+  for TinyMCE that ships with Plone 4.3
+  [ichimdav refs #14323]
+* Pre-upgrade step:
+    - Add an External Method and run it:
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixUnicodeKeywords
+    - Add an External Method and run it (3 times until there is only one document left):
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixKeywords
+    - Add an External Method and run it:
+       - module = Products.EEAPloneAdmin.fixKeywords
+       - method = fixRussianKeywords
+    - Inside the buildout folder, execute:
+       - svn up
+       - ./tools/cleanup_buildout.sh
+       - ./install.sh
+       - ./bin/buildout -c backend.cfg
+    - This should be run as the first thing in the upgrade, on each squirrel machine
+    - [ghicaale refs #15607]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click the upgrade
+  button for Products.EEAPloneAdmin
+  [ichimdav #15234]
+* Feature: added script to cleanup broken p4a.* objects
+  [ichimdav #15234]
+* Change: updated migration script for removal of p4a.* interfaces
+  [ichimdav #15234]
+* Feature: Plone 4.3 compatibility
+    - updated TinyMCE patches to work with Products.TinyMCE 1.3.4
+    - added migration upgrade scripts
+    - removed kss patches (KSS no longer used)
+    - [batradav refs #14323]
+
+7.1 - (2013-07-31)
+------------------
+* Pre-upgrade step: update collective.traceview from sources, just git pull
+  [ghicaale]
+* Feature: added migration scripts in order to remove the leftover interfaces
+  from p4a.* which were assigned from zcml
+  [ichimdav #15234]
+* Bug fix: fixed migration script which removes ISubtyper from translations
+  [ichimdav #15234]
+* Feature: added a browser page checkRemainingInterfaces which when passed
+  a search term will return all interfaces that match the search term from
+  all of the objects
+  [ichimdav #15234]
+
+7.0 - (2013-07-25)
+------------------
+* Upgrade step:$
+  - Uninstall p4a.plonevideo, p4a.plonevideoembed and p4a.video$
+  [ichimdav #15234]$
+* Feature: added migration script to remove ISubtyped from translations$
+* Change: Removed p4a.* logic-$
+  [ichimdav #15234]$
+
+6.9 - (2013-07-10)
+------------------
+* Upgrade step: This step should be done AFTER the upgrade step of eea.geotags:
+    - with www8 run www/@@renameMisnamedLocations
+    - [ichimdav #14667]
+* Upgrade step: Within ZMI > www/manage_components remove p4a.subtyper adapter
+  [voineali #15234]
+* Cleanup: Removed p4a.subtyper dependency
+  [voineali #15234]
+
+6.8 - (2013-07-08)
+------------------
+* Upgrade step: ask ichimdav to re-enable the chat on production
+  [ichimdav #14518]
+
+6.7 - (2013-07-04)
+------------------
+* Bug fix: always search from the root of the site and within all languages
+  when using TinyMCE search dialog
+  [ichimdav #14922]
+* Upgrade step: upgrade collective.traceview from sources (I submited some fixes)
+  [ghicaale]
+* Change: fixed the method to report the full path from the blobstorage of Plone file/image objects
+  so now we get the blob filename too
+  [ghicaale refs #14690]
+
+6.6 - (2013-06-17)
+------------------
+* Upgrade step: at www/++rule++rule-4/@@manage-elements
+    - For the *Notify IMS support team when indicators change workflow state*
+    - Edit the *send email* rule and replace {review_state} with
+      {review_state_title}
+    - [ichimdav #14599]
+* Change: added full system path of blob files stored in Plone objects when running get_list_of_blobs external method
+  [ghicaale refs #14690]
+* Bug fix: no longer rely on a domain to override the cookie domain,
+  and completely exclude the domain from being included in the cookie.
+  This allows easier control on remote tunnel logins
+  Note: use DISABLE_PLONE_COOKIE_DOMAIN=true env variable instead of
+  PLONE_COOKIE_DOMAIN
+  [tiberich #14731]
+
+6.5 - (2013-05-20)
+------------------
+* Bug fix: improve the way we calculate PLONE_COOKIE_DOMAIN
+  [tiberich]
+
+6.4 - (2013-05-20)
+------------------
+* Upgrade step:
+    - On www8 through tunnel run /www/@@renameCzechiaLocation
+      to fit location name from Czechia to Czech Republic
+    - [ichimdav refs #14363]
+* Cleanup: Remove "eea.related_multimedia" viewlet
+  [voineali refs #9552]
+* Feature: Patched zope.i18n.translationDomain to always return english as
+  target domain for authenticated users
+  [ichimdav #14087]
+* Bug fix: cleanup code
+  [ghicaale]
+* Feature: added script to get facetednavs using Subject
+  [ghicaale refs #14383]
+* Upgrade step:
+    - In ZMI under /www/0maintenance add an externl method with bellow settings
+    - module: Products.EEAPloneAdmin.find_search_areas_using_subjects
+    - function: find_faceted_navigation
+    - [ghicaale refs #14383]
+
+6.3 - (2013-04-17)
+------------------
+* Bug fix: fixed HISTORY.txt RST markup
+  [ghicaale refs #14321]
+* Bug fix: don't allow executing publish transition for indicators_workflow
+  if the self-qa publish dialog has not been used
+  [tiberich #14220]
+* Upgrade step: In a tunnel instance, go to /wwww/portal_workflow/indicators_workflow/scripts/manage_main
+  and add an external method:
+  Id: self-qa
+  Module name: Products.EEAPloneAdmin.workflow_scripts
+  Function name: self-qa
+  Go to /www/portal_workflow/indicators_workflow/transitions/publish/manage_properties
+  and assign the self-qa script to the Script (before) dropdown.
+* Upgrade step: Go to aq_parent / ZMI, follow the link at the top to do the
+  Plone migration to latest plone 4.2.5
+  [voineali refs #14222]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for Products.EEAPloneAdmin. This updates
+  caching policy for AJAX templates (faceted_query, faceted_counter, etc)
+  [voineali refs #14152]
+* Pre-upgrade step: Within "Plone > Site setup > Add-ons" uninstall
+  "EEA Plone 4 migration" if not already uninstalled.
+  [voineali refs #8689]
+* Bug fix: Added caching policy for templates called via AJAX in order not to
+  cache them in browser
+  [voineali refs #14152]
+* Bug fix: expire cookie after timeout and when its invalid
+  [ghicaale refs #13992]
+
+6.2 - (2013-03-27)
+------------------
+* Upgrade step:
+    - On www8 through tunnel run /www/@@migrateGeographicalCoverageToGeotags
+      to migrate geographicalCoverage to geotags for Data and EEAFigure.
+    - This will take at least 5 minutes since there are 3800+ items touched
+      in the migration
+    - Save output for future reference since it's logging some country names
+      which will not be converted
+    - [ichimdav refs #14182]
+* Feature: added script to show current user returned by security for the given
+  context
+  [ichimdav #14182]
+* Bug fix: updated propertiestool.xml in optimize profile for the template service
+  [szabozo0 refs #14189]
+* Cleanup: clean spaces and fixed docstrings
+  [ghicaale refs #13992]
+* Bug fix: expire cookie after timeout and when its invalid
+  [ghicaale refs #13992]
+* Bug fix: added patch that allows override from system environment for cookie_domain
+  [tiberich refs #14118]
+
+6.1 - (2013-03-15)
+------------------
+* Bug fix: specifically install ATVocabularyManager in tests setup
+  [tiberich]
+* Bug fix: remove cdn related code that we won't need
+  [tiberich #7655]
+* Optimized CSS resources to reduce the number of requested generated
+  [ghicaale refs #14067]
+* Optimized KSS resources to reduce the number of requested generated
+  [ghicaale refs #14067]
+* Removed all title attributes from CSS resources under portal_css to avoid
+  being interpreted as atlernative stylesheets
+  [ghicaale refs #14067]
+* Pre-upgrade step:
+    - this step should be done as first manual upgrade step by ghicaale
+    - go under /portal_setup/manage_importSteps
+    - select "EEA Plone Admin: CSS/JS reorder" profile
+    - select "Stylesheet registry"
+    - make sure "Include dependencies?" is deselected
+    - press "Import selected steps"
+    - remove title property from all CSS that have render type equal to link
+    - repeat the steps above for "KSS setup / mimetype"
+    - [ghicaale refs #14067]
+
+6.0 - (2013-02-25)
+------------------
+* Bug fix: added script to fix attribute _at_creation_flag wrongly set to True of
+  vocabulary terms to avoid id renaming on title change
+  [ghicaale refs #13885]
+* Upgrade step:
+    - go to /www/@@fix-vocabularytermse to fix creation flag on vocabulary terms
+    - [ghicaale refs #13885]
+* Bug fix: Correct all absolute links in the portaltab menu, change absolute
+  url with relative ones.
+  [prospchr fixes #10143]
+* Upgrade step:
+    - Backup
+    - Go to ZMI/0maintenance
+    - Create an external method for ex: check_portal_navigation_items
+    - Module name: Products.EEAPloneAdmin.check_portal_navigation_items
+    - Function name: check_navigation
+    - run it!
+
+5.9 - (2013-02-18)
+------------------
+* Bug fix: skip skins other then EEADesign2006 and EEADesignCMS when saving
+  resources on disk
+  [tiberich #13871]
+* Bug fix: Removed patched for Archetypes Query Widget, as it's been fixed
+  upstream
+  [tiberich #10255]
+* Upgrade step:
+    - Go to aq_parent/ ZMI, follow the link at the top to do the Plone
+      migration to latest plone 4.2.4
+      [tiberich #10255]
+* Upgrade step:
+    - Go under site setup -> Add-ons: /www/prefs_install_products_form
+        - Install collective.xmpp.chat
+    - Go udner site setup -> XMPP Integration: /www/@@xmpp-settings
+        - Setup Jabber server
+    - Go under portal_css in ZMI and move above ploneCustom.css the two XMPP css resources
+    - [ghicaale refs #13782]
+
+5.8 - (2013-02-04)
+------------------
+* Bug fix: Correct erros in code.
+* Bug Fix: Fixed the script to remove the relations belonging to translated
+  object. Tested and working
+  [prospchr refs #9569]
+
+5.7 - (2013-01-28)
+------------------
+* Upgrade step:
+    - go to /www/@@FixFigureCategoryType to fix Figure Categories
+    - [ichimdav #10234]
+
+5.6 - (2013-01-17)
+------------------
+* Bug fix: added patch for Products.UserAndGroupSelectionWidget search
+  method to allow searching for fullname and email
+  [tiberich refs #9972]
+
+5.5 - (2013-01-15)
+------------------
+* Pre-upgrade step:
+    - Inside the buildout, execute:
+        - ./tools/cleanup_buildout.sh
+        - ./bin/buildout -c backend.cfg
+    - This should be run as the first thing in the upgrade, on each squirrel machine
+    - [tiberich refs #9598]
+* Upgrade step:
+    - go to /www/migrateGeotagsCountryGroups to set individual countries
+      for the geotags contry groups
+    - copy the output in a txt file for future reference
+    - [ichimdav #9998]
+
+5.4 - (2012-11-22)
+------------------
+* Bug fix: return context root as navigationRoot if the language of the context
+  isn't found in the root of the portal, or the language of the context isn't
+  the same as the root of the context, this is a bugfix for logic from
+  ticket 9518
+  [ichimdav #10071]
+* Bug fix: patch getNavigationRootObject to return object with the same logic
+  as the patched getNavigationRoot
+  [ichimdav #9518]
+* Change: removed patched_getBreadcrumbs and patched_getConfiguration from
+  patch_tinymce.py since we patch getNavigationRoot and getNavigationRootObject
+  [ichimdav #5533 #9518]
+* Upgrade step:
+    - go to /www/@@fix-portalrelationsItems to fix creation flag for portal relations items
+    - [ichimdav #9547]
+* Upgrade step:
+    - Adrian must notified about the replace of serviceWWWW with
+      www7 and www8 so he can update production HA.
+    - [ghicaale refs #5292]
+* Upgrade step:
+    - go to /www/@@plone-upgrade and migrate Plone to the 4.2.1 version
+* Bug fix: add aliases-controlpanel case to the rewriterules.js file
+  [tiberich refs #5557]
+* Cleanup: removed code that was already been merged to Plone core
+  [ghicaale refs #5553]
+* Bug fix: patched archetypes.querywidget to sort the multiselect values which
+  is used by Collections to display tags
+  [ichimdav #5533]
+* Bug fix: patched contentsMethod from plone.app.content in order for new
+  Collections to return results when viewing folder_contents
+  [ichimdav #5533]
+* Upgrade step:
+    - Site Setup -> Add-ons -> Install "User login history"
+    - Under Plone root add "User login history" portlet
+    - [ghicaale refs #5542]
+* Upgrade step:
+    - Site Setup -> Add-ons -> Install "User tracker"
+    - Under Plone root add "Active Users" portlet
+    - [ghicaale refs #5542]
+* Feature: added override zcml for collective.portlet.usertrack to
+  store user statistics via memcache
+  [ghicaale refs #5540]
+* Bug fix: patched plone.app.layout navigation to return results from site root
+  instead of navigation root
+  [ichimdav #5533]
+* Upgrade step: Within Site Setup > Caching settings > Caching operations Tab > Stale resources:
+    - remove daviz-view.json and daviz-relateditems.json;
+    - add daviz.json if not existing.
+* Upgrade step: after doing the @@AddIVideoToVideos upgrade step go to:
+    - multimedia/all-videos/configure_faceted.html - uncheck
+      the "p4a.video.interfaces.IVideoEnhanced" and check the
+      "eea.mediacentre.interfaces.IVideo"
+    - multimedia/all/configure_faceted.html - uncheck
+      the "p4a.video.interfaces.IVideoEnhanced" and check the
+      "eea.mediacentre.interfaces.IVideo" and
+      "Products.EEAContentTypes.content.interfaces.IFlashAnimation"
+    - www/@@SetIVideoToAllVideosTopic - to change criteria for all-videos Topic
+    - www/portal_relations/video/edit - set the selected interface to
+      "eea.mediacentre.interfaces.IVideo"
+    - [ichimdav #5480]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for jQuery UI 1.8.16.10.dev
+  [ichimdav]
+* Upgrade step:
+    - Go to /www/@@AddIVideoToVideos, record the output in ticket #5480
+    - [ichimdav #5480]
+* Bug fix: added a page that will fix records in portal_registry
+  to enable them to be exportable by GenericSetup
+  [tiberich #5520]
+* Upgrade step:
+    - In ZMI > portal_types > Folder, Document and Topic:
+        - At 'Available view methods' replace smart_view with uberlisting_view
+    - [ichimdav #5463]
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.cleanSmartView
+        - function name:clean_smart_view
+    - Execute it
+    - [ichimdav #5463]
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.clean_empty_folders
+        - function name:clean_folders
+    - Execute it, record the output in #5141. The broken content should be
+      manually cleaned by editors
+    - [tiberich #5141]
+* Upgrade step:
+    - Go to /www/@@fix-portalregistry, record the output in ticket #5520
+    - [tiberich refs #5520]
+
+5.3 - (2012-09-03)
+------------------
+* Change: changed smarthost from mail.eea.europa.eu to ironports.eea.europa.eu
+  [ghicaale refs #5516]
+* Upgrade step:
+    - Added upgrade step to setup on all existing EEAFigureFile objects the local workflow policy for images
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.update_eeafigurefile_workflowpolicy
+        - function name: updateLocalPolicy
+    - Execute it
+    - [ghicaale refs #5499]
+
+5.2 - (2012-08-28)
+------------------
+* Feature: cleaned up references to ImageFS
+  [ghicaale refs #4190]
+* Upgrade step:
+    - Update both frontend servers (svn up)
+    - Run buildout
+    - ZEO must be restarted to send its logs to Graylog2, this is a delicate operation
+      and Dascalu must be ask to do it
+    - [ghicaale refs #5411]
+* Bug fix: temporary patched decode cookie from Products.statusmessages
+  in order to catch the source of badly formatted cookies
+  [ghicaale refs #5460]
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.themecentre_scripts
+        - function name: fix_themecentre_intro_pages
+    - Execute it
+    - [ichimdav refs #5412]
+* Upgrade step: uncomment the rule with ticket 5346 from vh-wwwplone.conf
+  [ichimdav #5346]
+* Bug fix: fixed wrong indentation in setupmethods.py and moved the
+  migrateRelations to own file.
+  [demarant]
+* Bug fix: added external method force_sent_status
+  [szabozo0 refs #5399]
+* Upgrade step:
+    - Create an external method with:
+        - module name: Products.EEAPloneAdmin.force_sent_status
+        - function name: force_sent_status
+    - Execute it
+    - [szabozo0 refs #5399]
+* Feature: add HEAD method for zope3 browser views
+  [ichimdav #2316]
+* Cleanup: removed back ported HTML5 functionality from Plone 4.2
+  [ghicaale refs #5346]
+* Bug fix: removed patch for Products.MaildropHost
+  [tiberich #5382]
+* Bug fix: remove entry point to symlink maildrop
+  [tiberich refs #5382]
+* Bug fix: remove patch for TinyMce's getContentType, no longer needed
+  in latest version of Products.TinyMCE
+  [tiberich #5346]
+* Bug fix: refactor saving resources on disk, due to changes in
+  Products.ResourceRegistries
+  [tiberich #5346]
+* Bug fix: patch validateSingleEmailAddress from CMFPlone to properly reject
+  emails which are not of proper format
+  [ichimdav #5353]
+* Upgrade Step: on a serviceWWW instance, go to the root of the Zope.
+  You will be prompted to upgrade the Plone instance. You can "dry run" first
+  and then, if no issues are reported, you can run the real Plone migration
+  [tiberich #5346]
+* Upgrade Step: install collective.z3cform.datetimewidget from Add/Remove
+  products
+* Upgrade Step: install plone.app.collection from Add/Remove products;
+  Go to /www/portal_types/Topic/manage_propertiesForm and change the title
+  to "Collection - old"
+  [tiberich #5397]
+* Upgrade Step: go to /portal_properties/site_properties/manage_workspace
+  and in the "available_editors" text box add "TinyMCE" and delete "Kupu"
+  [tiberich #5414]
+* Bug fix: avoid triggering save on disk twice when resources are saved in a
+  portal resource registry
+  [tiberich #5286]
+* Feature: added migration of ImageFS objects to Image
+  [tiberich #4190]
+* Upgrade step:
+    - this step takes a couple of hours, must be run on a serviceWWW instance
+    - go to /@@migrate_imagefs and click on the migration button
+    - [tiberich refs #4190]
+* Upgrade step:
+    - under /www/portal_types/EEAFigureFile add 'Image' under 'Allowed content types'
+    - under /www/portal_workflow we should decide what to do with 'eea_imagefs_workflow', delete?
+    - [ghicaale refs #4190]
+
+5.1 - (2012-07-13)
+------------------
+* Bug fix: cleanup warnings for jenkings [tiberich]
+* Feature: added basic external method migrateRelations to be used
+  for migration of relations from one ob to another simply via python scripts.
+  [demarant refs #3213]
+* Bug fix: added external methods to fix the problematic unfinished
+  folders from EEAFigures
+  [tiberich refs #5312]
+* Feature: added a manager-only @@gopdb view to enable dropping to pdb console
+  [tiberich]
+* Upgrade step: delete folders in eeafigures:
+    - Create an external method with module name
+       - Products.EEAPloneAdmin.find_empty_figure_folders
+       - function name: fix_2
+    - Execute it, save the output for future reference.
+    - [tiberich refs #5312]
+* Upgrade step: in portal_types, remove Folder as allowed addable content for
+  EEAFigure
+  [tiberich refs #5312]
+
+5.0 - (2012-06-20)
+------------------
+* Feature: Improved unmarkcreationflag method.
+  [demarant refs #5312]
+* Bug fix: removed definition of is_empty
+  [tiberich refs #5289]
+
+4.25 - (2012-06-18)
+-------------------
+* Bug fix: patched ATContentTypes calendarsuport to accept location field
+  as a tuple
+  [ichimdav fixes #5284]
+
+4.24 - (2012-06-14)
+-------------------
+* Bug fix: fixed bug introduced in previous egg
+  [ichimdav #5229]
+
+4.23 - (2012-06-14)
+-------------------
+* Bug fix: show results with tinymce when using translations
+  [ichimdav #5229]
+
+4.22 - (2012-06-12)
+-------------------
+* Bug fix: added script to migrate provider_url on ExternalDataSpecs
+  [tiberich fixes #5232]
+* Upgrade step:
+    - Create an external method with module name:
+       Products.EEAPloneAdmin.fix_externaldataspecs
+    - function name:
+       fix_externaldataspecs
+    - Execute it, save the output for future reference.
+    - [tiberich #5232]
+* Bug fix: added override for datecomponents from plone.app.form
+  [tiberich #5236]
+* Upgrade step:
+    - Within ZMI > portal_setup > Upgrades Tab run upgrades for
+      Products.CMFPlone (4.1.2 -> 4.1.5)
+      [voineali #5116]
+    - Within ZMI > portal_setup > Import Tab > Import All Steps from
+      'Plone Discussions'
+    - Migrate comments: http://localhost:<port>/www/@@comment-migration
+    - Enable comments and notification mails on
+      http://localhost:8080/www/@@discussion-settings
+    - Within ZMI > portal_setup > Import Tab import 'Manage the configuration
+      registry' from 'EEA Plone Admin: caching settings'
+    - [voineali #5121]
+* Bug fix: fixed markup of HISTORY.txt file
+  [ciobabog refs #5231]
+* Feature: Upgraded commenting system
+  [szabozo0 #5189]
+* Change: Add 'eea.content.staleResources' cache rule in order to cache some sparql
+  resources in varnish for one month
+  [voineali, demarant fixes #5121]
+* Bug fix: Make it possible to add new Plone Sites within EEA Data.fs or on a
+  fresh new one
+  [voineali refs #5145]
+* Change: removed jsdisable condition from js resources
+  [szabozo0 #5095]
+
+4.21 - (2012-04-26)
+-------------------
+* Bug fix: now all objects that are copied have their creation
+  date set to now()
+  [tiberich #4402]
+* Feature: use fake_transition in eea_data_workflow
+  [tiberich #5065]
+* Bug fix: Added plone.app.caching rules for DavizVisualization,
+  Sparql and SparqlBookmarkFolder
+  [voineali #5074]
+* Upgrade step: Remove 'sparql-download' from:
+  Site Setup > Caching > Caching operations > Templates
+  [voineali #5074]
+
+4.20 - (2012-03-30)
+-------------------
+* Bug fix: patched plone.app.discussion ver 2.0.10, not to fail on migrate workflows
+  when "Discussion Item" has no workflow assigned
+  [ghicaale #5041]
+* Bug fix: fixed "content rules" redirects under control panel
+  [ghicaale]
+* Bug fix: flush collective.indexing process queue in searchResults monkey patch
+  [tiberich #5033]
+* Bug fix: patched plone.app.kss not silently fails and to display a
+  progress info on state change
+  [ghicaale #5017]
+* Bug fix: patched plone.app.redirector to also redirect direct file download
+  links (e.g. at_download/fileField) when the containing object defines an alias
+  [ghicaale]
+
+4.19 - (2012-03-06)
+-------------------
+* Change: remove code that checks for IEEAPloneSite when saving disk resources
+  [tiberich]
+
+4.18 - (2012-03-05)
+-------------------
+* Upgrade step: dascalu + tiberich: install eea.munin on ape, link
+  its plugins into the ape munin
+  [tiberich #4955]
+* Upgrade step: dascalu + tiberich: on each squirrel, install the
+  plugins in munin-scripts in munin
+  [tiberich #4955]
+* Bug fix: Updated collective.quickupload patch according with the latest
+  changes
+  [voineali #4965]
+* Bug Fix: updated all xlsx and docx to new mime type.
+  [demarant #4957]
+* Feature: added external method for deleted old never published objects
+  [demarant]
+* Change: added override for munin browser views to make them public
+  [tiberich #4955]
+* Feature: only do saving of resources on disk in the context of EEA Plone site
+  [tiberich]
+
+4.17 - (2012-02-14)
+-------------------
+* Bug fix: fixed a problem with broken HTML generated after saving with TinyMCE
+  [ghicaale #4945]
+* Upgrade step: under @@manage-viewlets resave position of viewlets in order
+  to be saved for EEADesign2006 skin too
+  [ghicaale #4939]
+* Bug fix: patch for plone.app.viewletmanager to save viewlets order for both skins
+  [ghicaale #4939]
+* Bug fix: added cache headers to multimedia_popup_view.pt
+  [ghicaale #4930]
+* Bug fix: fix clear registry import setup step
+  [tiberich #4933]
+* Bug fix: plone4 compatibility, use zope.lifecycleevent in setupmethods used for maintenance
+  [demarant]
+* Bug fix: patch cookResources for ResourceRegistries tools to always trigger save resources
+  [tiberich #4933]
+* Code cleanup
+  [tiberich]
+
+4.16 - (2012-02-06)
+-------------------
+* Bug fix: made kukit.js only for authenticated since it gives error on gis apps
+  [demarant #4895]
+* Feature: added script to rewrite css/js registry files to enable optimization reordering
+  [tiberich #4737]
+* Bug fix: added ordering instructions in css/js registry files
+  [tiberich #4737]
+* Upgrade step:
+    - export js/css profiles in portal_setup
+    - import step EEA Plone Admin: CSS/JS reorder > Clear resource registries (this removes all resources in js/css registries)
+    - import step EEA Plone Admin: CSS/JS reorder > Javascript registry + Stylesheets registry
+    - go to portal_javascripts, portal_css, portal_kss, click save
+
+4.15 - (2012-01-17)
+-------------------
+* Upgrade step: import javascript and css from "EEAPloneAdmin: CSS/JS reorder" profile
+  [tiberich #4737]
+* Bug fix: updated the optimization JS profile file to minimize number of
+  generated files
+  [tiberich #4737]
+
+4.14 - (2012-01-04)
+-------------------
+* Bug fix: Updated eea rewrite rules JS in order to rewrite some URL as some
+  views works only if they are applied to Plone Site
+  [voineali #4590]
+
+4.13 - (2012-01-03)
+-------------------
+* Feature: added script to create a link to maildrop script
+  [tiberich #4804]
+* Bug fix: Added eea rewrite rules JS in order to rewrite some URL as some
+  views works only if they are applied to Plone Site
+  [voineali #4590]
+* Bug fix: Replaced aq_parent with www
+  [voineali #4590]
+* Bug fix: Cache faceted and Topic only one hour instead of 24
+  [voineali #4824]
+
+4.12 - (2011-12-15)
+-------------------
+* Bug fix: added patch to avoid logic bug in plone.outputfilters
+  image captioning code
+  [tiberich #4832]
+* Bug fix: Cache frontpage only one hour instead of 24
+  [voineali #4824]
+* Bug fix: Fixed toLocalizedTime to show long_format
+  [voineali #4798]
+* Bug fix: fix limited search behavior of tinymce in regards
+  to internal linking and breadcrumbs trails for image and internal link plugins
+  [ichimdav #4825]
+
+4.11 - (2011-12-02)
+-------------------
+* Feature: added logging for missing blobs
+  [tiberich #4702]
+* Bug fix: added script to check for missing blobs
+  [ghicaale #4806]
+* Bug fix: improve logging for migration script for missing filenames in blobs
+  [tiberich #4746]
+
+4.10 - (2011-11-25)
+-------------------
+* Bug fix: Set filename for image fields where missing
+  [szabozo0 #4746]
+
+4.9 - (2011-11-25)
+------------------
+* Bug fix: Fixed previous broken egg.
+
+4.8 - (2011-11-25)
+------------------
+* Bug fix: added patch for EEA mailhost
+  [ghicaale #4770]
+
+4.7 - (2011-11-25)
+------------------
+* Feature: Added EEA mailhost configuration
+  [ghicaale #4770]
+
+4.6 - (2011-11-22)
+------------------
+* Added patch for Products.TinyMCE bug in utility
+  [tiberich #4733]
+
+4.5 - (2011-11-21)
+------------------
+* no changes
+
+4.4 - (2011-11-21)
+------------------
+* Cleanup: pylint warnigns
+  [voineali]
+
+4.3 - (2011-11-19)
+------------------
+* Added patch to avoid failure in missing blobs
+  [tiberich]
+
+4.2 - (2011-11-19)
+------------------
+* Change: Made Themes tab hidden as it already in Categorization tab
+  [voineali #4694]
+* Added get_oid External method to help debug blobs
+  [tiberich]
+
+4.1 - (2011-11-18)
+------------------
+* Rerelease broken egg
+
+4.0 - (2011-11-18)
+------------------
+* Bug fix: Enabled resize.js
+  [szabozo0 #4667]
+* Bug fix: ignore KeyErrors when getting content for resources (avoids problems caused by
+  missing base_properties in default Plone skin)
+  [tiberich #4603]
+* Bug fix: set the name of the uploaded file when quickupload is used
+  [szabozo #4643]
+* Feature: added registration of dashboard traversal to allow proper functioning of dashboard
+  [tiberich #4624]
+* Feature: use a buildout environmental variable to fix portal links in generated resources
+  [tiberich #4603]
+* Change: enabled multiple skins when saving resources
+  [tiberich #4603]
+* Bug fix: added a patch for the import step of resource registries that
+  will save resources when GS profile is loaded
+  [tiberich #4603]
+* Feature: call a script after saving resources, it will sync the files
+  in a central location
+  [tiberich #4603]
+* Feature: added external method unmarkCreationFlagForBrains
+  for unmarking creation flag on a give catalog search result.
+  [demarant]
+* Bug fix: added fix for #4606 for p4a.fileimage
+  [tiberich #4606]
+* Bug fix: Added monkeypatch for fixing export all steps
+  [szabozo0 #4583]
+* Bug fix: added override to use nice template layout for formlib based forms
+  [tiberich #4589]
+* Change: Removed overrides for control panel pages, we solved it with url rewrites
+  [szabozo0 #4510]
+* Bug fix: started fixing views/templates called on /www context
+  [szabozo0 #4510]
+* Patch: added patch_tinymce.js to fix tinymce loading; added tinymce_themes skin path for same purposes
+  [tiberich #4510]
+* Feature: Added extra headers to prevent cache in browser
+  [ghicaale #4506]
+* Feature: Added EEA custom PURGE policy
+  [ghicaale #4394]
+* Change: Cleanup, removed eea_patch_kukit.js
+  [szabozo0 #4441]
+* Bug fix: Fixed promotion_gallery.js error when not in development mode, added kss drag and drop to @@manage-portlets
+  [szabozo0 #4441]
+* Feature: Added profile for caching settings
+  [ghicaale #4394]
+* Feature: Added patch_html5 in support of HTML5 integration
+  [ghicaale #4444]
+* Bug fix: Enabled table_sorter.js for not authenticated users
+  [szabozo0 #4446]
+* Change: synchronized with resources on testing server
+  [szabozo0 #4440]
+* Change: refactored the @@plone view to conform to Plone 4
+  [tiberich #4306]
+* Change: added workflow scripts from EEAContentTypes and EEAEnquiry
+  [tiberich #4306]
+* Change: using collective.monkeypatcher for patches
+  [tiberich #4306]
+* Change: removed workflow setup scripts, they're now GS files
+  [tiberich #4306]
+* Change: disabled the test for the localsites profile, we won't do that anymore
+  [tiberich #4306]
+* Feature: Added upgrade steps
+  [voineali #4392]
+* Feature: Plone 4 compatibility
+  [tiberich #4306]
+
+0.7 - (2011-04-01)
+------------------
+* Cleanup: Removed PloneRSSPortlet
+  [voineali #4169]
+* Cleanup: of pyflakes compiler errors
+  [ichimdav #4141]
+* Cleanup: of pylint violations
+  [ichimdav #4140]
+* Bug fix: Added translation domain to ZCML files
+  [voineali #4139]
+* Cleanup: Removed portal_migration scripts as portal_migration is deprecated.
+  Please check that there are no un-applied migration scripts before
+  upgrading to this version
+  [voineali #4139]
+
+0.6 - (2011-03-02)
+------------------
+* Change: removed PloneRDFCalendar & RDFEvent, not needed for Plone 4
+  [ichimdav #2931]
+
+0.5 - (2011-02-23)
+------------------
+* Change: added migration script for CMFLinkChecker cleanup
+  [batradav #3219]
+* Bug fix: fix bug due to API changes
+  [tiberich #4085]
+
+0.4 - (2011-02-17)
+------------------
+* Bug fix: properly retrieve content from FSDTMLMethods
+  [tiberich #4085]
+
+0.3 - (2011-02-17)
+------------------
+* Change: removed thickbox js and css profile registration
+  [ichimdav #3773]
+* Bug fix: fix a bug due to incomplete exception handling
+  [tiberich #4085]
+* Change: improved save to disk functionality to take skins into consideration
+  [tiberich #4085]
+* Bug fix: fixed pottential bug in code in admin module
+  [tiberich]
+
+0.2 - (2011-02-14)
+------------------
+* Feature: eggified product
+  [ichimdav #4063]
+
+0.1 - (Product)
+---------------
+* Feature: save to disk resources when changes are triggered in portal resource registries
+  [tiberich #4085]
+* Feature: added resolveuid.js to js optimization profile
+  [tiberich #3988]
+* Feature: Added profile to optimize order of JS and CSS registries
+  [voineali #3411]
+* Bug fix: Monkey patch BaseRegistryTool in order to generate better unique
+  ids for JS/CSS resources
+  [voineali #3962]
+* Generated skeleton product from DIYPloneStyle.
+  [generator]
+
