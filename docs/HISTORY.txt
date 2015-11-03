@@ -1,8 +1,8 @@
 Changelog
 =========
 
-11.8.dev0 - (unreleased)
-------------------------
+11.8 - (2015-11-03)
+-------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [ichimdav refs #30079]
