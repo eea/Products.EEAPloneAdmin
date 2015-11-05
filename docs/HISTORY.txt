@@ -3,6 +3,8 @@ Changelog
 
 11.9.dev0 - (unreleased)
 ------------------------
+* Upgrade step: update cron file for blacksquirrel (database packing)
+  [danielm refs #28064]
 
 11.8 - (2015-11-03)
 -------------------
