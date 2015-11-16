@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="atvm-vocabularies" version="20080722-01" handler="Products.ATVocabularyManager.importexport.importVocabularies" title="Vocabularies (ATVM)">
+  <dependency step="toolset"/>
+  
+		
+		Import vocabularies
+	
+ </import-step>
+ <import-step id="atvocabularymanager-various" version="20080722-01" handler="Products.ATVocabularyManager.setuphandlers.importVarious" title="ATVocabularyManager various">
+  <dependency/>
+  
+		
+		Additional import steps
+	
+ </import-step>
+ <import-step id="catalogmigrate" version="2010-02-08" handler="Products.PloneGazette.setuphandlers.migrateInternalV3" title="PloneGazette migrate to content types internal version 3">
+  
+		Migrate the content types to internal version v3.
+	
+ </import-step>
+ <import-step id="eea-fixLangIndependentFields" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.fixLangIndependentFields" title="EEAPloneAdmin: Fix language independent fields on Press/Highlight/Promotion">
+  
+ 
+ </import-step>
+ <import-step id="eea-fixPromotion" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.fixPromotion" title="EEAPloneAdmin: fix local promotions">
+  
+ 
+ </import-step>
+ <import-step id="eea-getTranslationsFromGoogle" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.getTranslationsFromGoogle" title="EEAPloneAdmin: get translations from google">
+  
+ 
+ </import-step>
+ <import-step id="eea-importTranslations" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.importTranslations" title="EEAPloneAdmin: import translations">
+  
+ 
+ </import-step>
+ <import-step id="eea-localrdfrepositories" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.setupLocalRDFRepositories" title="EEAPloneAdmin: setup local rdf repositories">
+  
+ 
+ </import-step>
+ <import-step id="eea-localsite" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.setupLocalSites" title="EEAPloneAdmin: setup local sites step">
+  <dependency step="cssregistry"/>
+  <dependency step="propertiestool"/>
+  <dependency step="actions"/>
+  
+   
+   
+   
+ 
+ </import-step>
+ <import-step id="eea-migration" version="20070626-01" handler="Products.EEAPloneAdmin.exportimport.setuphandlers.setupVarious" title="EEA migration">
+  
+ 
+ </import-step>
+ <import-step id="eea-setupNavigationManager" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.setupNavigationManager" title="EEAPloneAdmin: setup local  navigation menues">
+  
+ 
+ </import-step>
+ <import-step id="eea-setupRetagAllTranslations" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.setupRetagAllTranslations" title="EEAPloneAdmin: setup local retag all translations">
+  
+ 
+ </import-step>
+ <import-step id="eea-setupTranslateSiteStructure" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.setupTranslateSiteStructure" title="EEAPloneAdmin: setup local site structure">
+  
+ 
+ </import-step>
+ <import-step id="eea-themecentreFix" version="20080310-01" handler="Products.EEAPloneAdmin.exportimport.localsite.themecentreFix" title="EEAPloneAdmin: themecentre fix, set default page and layout">
+  
+ 
+ </import-step>
+ <import-step id="eea.vocab_setup_atvocabularies" version="20090806-01" handler="eea.vocab.setuphandlers.setupATVocabularies" title="eea.vocab: Setup AT Vocabularies">
+  
+    Install AT Vocabularies
+ 
+ </import-step>
+ <import-step id="googlw" version="20081015-01" handler="Products.PloneGazette.setuphandlers.importGoogle" title="PloneGazette google analytics">
+  
+		Import Google Analytics properties of PloneGazette
+	
+ </import-step>
+ <import-step id="languagetool" version="20070615-01" handler="Products.PloneLanguageTool.exportimport.importLanguageTool" title="Plone Language Tool">
+  <dependency step="toolset"/>
+  
+  
+  Import language settings.
+ 
+ </import-step>
+ <import-step id="portal-transforms-various" version="20070309-01" handler="Products.PortalTransforms.setuphandlers.setupPortalTransforms" title="PortalTransforms setup">
+  <dependency step="componentregistry"/>
+  
+  
+
+
+    PortalTransforms installation step.
+
+ 
+ </import-step>
+ <import-step id="redirectiontool_various" version="20070928-01" handler="Products.RedirectionTool.setuphandlers.importVarious" title="RedirectionTool manual setup steps">
+  <dependency step="actions"/>
+  <dependency step="toolset"/>
+  
+   RedirectionTool manual (non-GS) setup work
+     
+     
+ 
+ </import-step>
+ <import-step id="setup_at_vocabularies" version="20090929-01" handler="eea.soer.setuphandlers.setupATVocabularies" title="eea.soer: Setup AT Vocabularies">
+  <dependency step="catalog"/>
+  
+  
+    Install AT Vocabularies
+ 
+ </import-step>
+ <import-step id="soerVarious" version="20100713-01" handler="eea.soer.setuphandlers.setupVarious" title="eea.soer: Setup various">
+  
+     eea.soer Setup various
+ 
+ </import-step>
+ <import-step id="spmsetup" version="20090820-01" handler="Solgema.PortletsManager.setuphandlers.setupSolgemaPortletsManager" title="Solgema Portlets Managerconfiguration">
+  
+ 
+ </import-step>
+ <import-step id="valentine.linguaflow.various" version="20071024-01" handler="valentine.linguaflow.setuphandlers.setupVarious" title="Valentine Linguaflow: miscellaneous import steps">
+  <dependency step="workflows"/>
+  
+    
+    Various import steps that are not handled by GS import/export
+    handlers.
+  
+ </import-step>
+ <import-step id="various" version="20071201-01" handler="Products.PloneGazette.setuphandlers.importVarious" title="PloneGazette various">
+  
+		Import various steps of PloneGazette
+	
+ </import-step>
+</import-steps>

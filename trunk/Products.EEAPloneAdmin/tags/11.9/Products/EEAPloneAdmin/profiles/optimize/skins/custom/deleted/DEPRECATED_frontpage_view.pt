@@ -1,0 +1,129 @@
+<tal:block tal:define="foo python:request.set('disable_plone.leftcolumn', 1);
+            bar python:request.set('disable_plone.rightcolumn', 1);"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      i18n:domain="eea"
+      metal:use-macro="context/main_template/macros/master">
+    <head>
+
+    </head>
+    <body>
+
+    <div metal:fill-slot="main">
+
+        <h1 class="hiddenStructure" tal:content="context/Title">EEA Home page</h1>
+        <tal:main-macro metal:define-macro="main">
+            <div id="highlights-block" tal:define="global frontpage_view context/@@frontpage_highlights;">
+                <div id="main-content">
+                    <div class="visualClear"><!-- &nbsp; --></div>
+                    <div id="articles-area" class="column-area">
+
+                        <!-- featured and spotlight areas -->
+                        
+                        <tal:featured_article metal:define-macro="featured_article"
+                             tal:define="featured_class context/@@frontpage_highlights;
+                                         highlights featured_class/getHighArticles;
+                                         archive_href string:articles;">
+                                         <div metal:use-macro="here/frontpage_macros/macros/featured-item">
+                                             <span metal:fill-slot="archive" i18n:translate="">Archive</span>
+                                             <span metal:fill-slot="box_title" i18n:translate="">Featured article</span>
+                                         </div>
+                        </tal:featured_article>
+
+                        <tal:spotlight 
+                             tal:define="featured_class frontpage_view;
+                                         highlights featured_class/getSpotlight;">
+                                         <div metal:use-macro="here/frontpage_macros/macros/featured-item">
+                                             <span metal:fill-slot="box_title" i18n:translate="">Topic in the spotlight</span>
+                                         </div>
+                        </tal:spotlight>
+                         <!--end featured and spotlight areas -->
+
+                        <!-- shortcuts divs -->
+                        <div id="forum">
+                            <a id="forum-link" href="" tal:attributes="href string:$portal_url/help/infocentre/enquiries"></a>
+                            <!--a id="forum-link" href="http://community.eea.europa.eu"></a-->
+                        </div>
+
+                        <div id="mobile">
+                            <a id="mobile-link" href="/mobile" tal:attributes="href string:$portal_url/mobile"></a>
+                        </div>
+                        
+                        <div id="social-links">
+                        <h2 class="column-title" i18n:translate="follow-us">Follow us</h2>
+                           <div metal:use-macro="here/portlet_social_links/macros/portlet">
+                               Social links
+                           </div>
+                        </div>
+                        <!-- end shortcuts divs -->
+                    </div>
+                        
+                    <div id="highlights-area" class="column-area">
+                    <!-- promotions_gallery_slideshow-->
+                    <metal:promotions 
+                        tal:define="frontpage python: True; 
+                                    promo_view frontpage_view;
+                                    show_description python:False;">
+                            <div metal:use-macro="here/portlet_promo_gallery/macros/portlet">
+                                promoted item
+                            </div>
+                    </metal:promotions>   
+                    <!-- end promotions_gallery_slideshow -->
+
+                        <!-- select_topics -->
+                        <div id="news-header">
+                            <h2 i18n:translate="whatnews_gallery_title"> What's new</h2>
+                            <select tal:define="items python:here.portal_vocabularies.getVocabularyByName('themes').getVocabularyLines()" id="topic-selector"
+                               metal:define-macro="whatsnew-select-topic">
+                                <option value="">Filter by topic</option>
+                                <option value="">All topics</option>
+                                <tal:items tal:repeat="item items">
+                                    <option  
+                                            tal:define="value python: item[0];"
+                                            tal:attributes="value value;"
+                                            tal:content="python: item[1]" />
+                                </tal:items>
+                            </select>
+                        </div>
+                        <!-- end select_topics -->
+
+                        <!-- tabs -->
+                        <div metal:define-macro="whatsnew-gallery" tal:define="datapage datapage|string:frontpage;" tal:attributes="id string:whatsnew-gallery; data-page string:${datapage};">
+                            <ul id="tabs"
+                                tal:define="tabnames  python: ['News', 'Articles', 'Publications', 'Multimedia', 'Data and maps', 'All products'];">
+                                <li tal:repeat="tab tabnames">
+                                    <a href="#"  tal:content="tab" class="block" tal:attributes="id python: 'tab-datamaps' if tab == 'Data and maps' else 'tab-' + tab.replace(' ', '').lower()">Tabs</a>
+                                </li>
+                            </ul>
+                            <!-- end_tabs -->
+
+                            <div metal:use-macro="here/frontpage_macros/macros/news">
+                                News highlights
+                            </div>
+                            <div metal:use-macro="here/frontpage_macros/macros/articles">
+                                Articles Highlights
+                            </div>
+                            <div metal:use-macro="here/frontpage_macros/macros/publications">
+                                Publications Highlights
+                            </div>
+                            <div metal:use-macro="here/frontpage_macros/macros/multimedia">
+                                Multimedia Highlights
+                            </div>
+                            <div metal:use-macro="here/frontpage_macros/macros/datamaps">
+                                Data and maps Highlights
+                            </div>
+                             <div metal:use-macro="here/frontpage_macros/macros/allproducts">
+                                All products Highlights
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="visualClear"><!-- &nbsp; --></div>
+                </div>
+            </div>
+
+        </tal:main-macro>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,619 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="eea">
+<tal:comment>
+#5408 in eea.dataservice 5.3
+</tal:comment>
+<metal:javascript fill-slot="javascript_head_slot">
+  <script tal:attributes="src string:$portal_url/++resource++jquery.cookie.js"
+    type="text/javascript"></script>
+  <script tal:attributes="src string:$portal_url/++resource++eea.dataservice.survey.js"
+    type="text/javascript"></script>
+  <script type="text/javascript"
+    tal:content="string:jQuery(document).ready(DataService.Load);"></script>
+</metal:javascript>
+
+<body>
+
+<div metal:fill-slot="content-core" tal:define="
+  lastVersion context/@@getLatestVersionLink;
+  datasetVersionId context/id;
+  versions nocall:here/@@getVersions;
+  isVersionEnhanced here/@@isVersionEnhanced;
+">
+
+    <script type="text/javascript">
+<!--
+// Show/Hide table definition
+jQuery(document).ready(function() {
+  setTableDefShow();
+});
+
+function setTableDefShow() {
+  jQuery('.table-definition-show').click(function () { showDefinition(this) });
+};
+
+function showDefinition(context) {
+  if (jQuery(context).html() == '[+]') {
+    jQuery(context).parent().next().css("display","block");
+    jQuery(context).html('[x]');
+  }
+  else {
+    jQuery(context).parent().next().css("display","none");
+    jQuery(context).html('[+]');
+  }
+}
+//-->
+    </script>
+
+    <!-- Tables -->
+    <tal:tables define="tablesData context/@@getTablesByCategory;
+                        categories python:tablesData[0];
+                        data python:tablesData[1]"
+                repeat="categ categories">
+        <tal:table condition="python:data.has_key(categ)">
+        <h3 tal:define="categView nocall:context/@@getCategoryName; categ_name python:categView(categ);"
+            tal:content="categ_name" />
+        <tal:block repeat="table python:data[categ]">
+            <h5 class="datatable-title" tal:content="table/title" />
+            <p tal:condition="table/Description"
+               tal:content="table/Description" />
+
+            <tal:block define="field python:table.getField('tableDefinition');
+                               value python:field.getAccessor(table)()"
+                      condition="value">
+                <p>
+                  <span class="table-definition-show" >[+]</span>
+                  <span i18n:translate="">Show table definition</span>
+                  <tal:records condition="table/records">
+                    (<span class="table-records" i18n:translate="">records:</span>
+                    &nbsp;
+                    <span class="table-records" tal:content="table/records" />)
+                  </tal:records>
+                </p>
+                <div class="table-definition-body" tal:content="structure value" />
+            </tal:block>
+
+            <ul tal:define="datafiles table/@@getDataFiles;
+                            datafilelinks table/@@getDataFileLinks;
+                            survey here/@@survey_support|nothing;
+                            survey survey/enabled|nothing;">
+                <tal:block repeat="file datafiles">
+                    <li tal:define="
+                        field python:file.getFile();
+                        icon field/getBestIcon | nothing;
+                        filename field/filename | nothing;
+                        size field/get_size;
+                        filePath string:/data-and-maps/data/ga-downloads/$lastVersion/${datasetVersionId}/${filename};">
+
+                        <strong>
+                            <img tal:condition="icon" src=""
+                                 tal:attributes="src string:${context/portal_url}/$icon"/>
+                            <span tal:content="filename" />
+                        </strong>
+
+                        <span tal:content="python:'(' + file.lookupMime(field.getContentType()) + ')'" />
+                        <br />
+                        <span style="padding-left: 2em;"
+                            tal:define="displaySize nocall:context/displaySize"
+                            tal:content="python:displaySize(size)"
+                            tal:condition="size">0Kb</span>
+                        <a tal:attributes="
+                            class python:survey and 'feedback-survey google-analytics' or 'google-analytics';
+                            id file/UID;
+                            href string:${file/absolute_url}/at_download/file;">
+                            <span i18n:translate="">Download file</span>
+                            <span style="display: none"
+                              class="google-analytics-path"
+                              tal:content="filePath" />
+                        </a>
+                        <a tal:attributes="href string:${file/absolute_url}/"
+                            tal:condition="exists: file/@@daviz-view.html"
+                            i18n:translate="">View and interact online</a>
+                    </li>
+                </tal:block>
+
+                <tal:block repeat="file datafilelinks">
+                    <li tal:define="filePath string:/data-and-maps/data/ga-downloads/$lastVersion/${datasetVersionId}/${file/id};">
+                    <strong><span i18n:translate="" 
+                                  tal:content="file/Title">Data link</span>
+                    </strong><br />
+                    <a tal:attributes="href string:${file/remoteUrl};
+                       class python:survey and 'feedback-survey google-analytics' or 'google-analytics';
+                            id file/UID;"
+                      i18n:translate="">Download file</a>
+                      <span style="display: none"
+                              class="google-analytics-path"
+                              tal:content="filePath" />
+                    </li>
+                </tal:block>
+
+                <li tal:repeat="file python:table.getFolderContents(contentFilter={'portal_type':'Sparql'})">
+                    <span style="padding:1em 1em 1em 2em; position: relative; 
+                       background: transparent url(/++resource++eea.sparql.images/rdf-icon.gif) no-repeat left center;">
+                     <strong><a tal:attributes="href string:${file/getURL}"
+                      tal:content="file/Title">Sparql</a> (<span i18n:translate="">Linked Open Data</span>)
+                    </strong></span>
+                   <span style="padding-left: 2em;padding-top:1em;">
+                   <a tal:attributes="href string:${file/getURL}/download.table"
+                      i18n:translate="">HTML table</a>
+                   <a tal:attributes="href string:${file/getURL}/download.csv"
+                      i18n:translate="">CSV</a>
+                   <a tal:attributes="href string:${file/getURL}/download.json"
+                      i18n:translate="">JSON</a>
+                   <a tal:attributes="href string:${file/getURL}/download.schema.xml"
+                      i18n:translate="">XML with schema</a><br /><br />
+                   <a tal:attributes="href string:${file/getURL}"
+                      i18n:translate="">See all formats + SPARQL query details</a>
+                   </span>
+                </li>
+
+            </ul>
+
+        </tal:block>
+        </tal:table>
+    </tal:tables>
+
+    <!-- Tooltip macro -->
+    <metal:tooltip define-macro="tooltip"
+                   tal:define="tooltip tooltip|field/widget/description|nothing"
+                   tal:condition="tooltip">
+        <img class="eea-flexible-tooltip-right"
+             src="information.png"
+             title=""
+             tal:attributes="src string:${portal_url}/information.png;
+                             title tooltip" />
+    </metal:tooltip>
+
+    <!-- Additional information -->
+    <tal:block metal:define-macro="more-info"
+               define="field python:context.getField('moreInfo');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <h3 i18n:translate="">Additional information</h3>
+        <div class="additionalInfo" tal:content="structure value">Additional information</div>
+    </tal:block>
+
+    <metal:related-products define-macro="related-products">
+    <!-- Relation: related (plone) products -->
+    <tal:block define="related_products context/@@getRelatedProducts">
+        <!-- Relations to figures -->
+        <tal:block metal:define-macro="related-figures"
+                   define="value python:related_products['figures']"
+                   condition="value">
+            <h3 i18n:translate="">Produced maps and graphs</h3>
+            <div tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                             b_start python:request.get('b_start', 0);
+                             folderContents python:Batch(value, 12, int(b_start), orphan=1)">
+                <metal:figures use-macro="here/atct_album_view/macros/listing" />
+            </div>
+        </tal:block>
+
+        <!-- Relations to reports -->
+        <tal:block metal:define-macro="related-publications"
+                   define="value python:related_products['reports']"
+                   condition="value">
+            <h3 i18n:translate="">Used in the following publications</h3>
+            <ul>
+                <li tal:repeat="ob value">
+                    <a tal:attributes="href ob/absolute_url;
+                                       title ob/Title"
+                       tal:content="ob/Title" />
+                </li>
+            </ul>
+        </tal:block>
+
+         <!-- Related data used to produce the analysis -->
+        <tal:block metal:define-macro="related-datasets"
+                   define="value python:related_products['datasets']"
+                   condition="value">
+            <h3 i18n:translate="">Original data used to produce the analysis</h3>
+            <ul>
+                <li tal:repeat="ob value">
+                    <span tal:replace="structure ob/@@related_title" />
+                </li>
+            </ul>
+        </tal:block>
+
+        <!-- Relations to data viewers -->
+        <tal:block metal:define-macro="related-data-viewers"
+                   define="value python:related_products['data_viewers']"
+                   condition="value">
+            <h3 i18n:translate="">Interactive data viewer</h3>
+
+            <tal:dataViewers repeat="viewer value">
+            <div class="visualClear">
+                <span tal:attributes="class item_type_class"
+                    tal:define="item_type           viewer/portal_type;
+                                item_type_class     python:'visualIcon contenttype-' + normalizeString(item_type);
+                                item_description    viewer/Description;
+                                item_wf_state       viewer/review_state|python: wtool.getInfoFor(viewer, 'review_state', '');
+                                item_wf_state_class python:'state-' + normalizeString(item_wf_state);">
+                    <span class="figure-left">
+                     <span class="figure">
+                       <a tal:attributes="href python: str(viewer.url);
+                                          title string: $item_type: $item_description;">
+                          <tal:block content="structure viewer/@@imgview" />
+                        </a>
+                     </span>
+                    </span>
+
+                    <a href="#" tal:attributes="href python: str(viewer.url);
+                                                title string: $item_type: $item_description;
+                                                class string:$item_wf_state_class visualIconPadding;">
+                        <span tal:replace="viewer/Title">
+                          Item Title
+                        </span>
+                    </a>
+                </span>
+            </div>
+            </tal:dataViewers>
+            <div class="visualClear">&nbsp;</div>
+        </tal:block>
+
+        <!-- Relations to other -->
+        <tal:block metal:define-macro="related-others"
+                   define="value python:related_products['other']"
+                   condition="value">
+            <h3 i18n:translate="">See also</h3>
+            <ul>
+                <li tal:repeat="ob value">
+                    <span tal:replace="structure ob/@@related_title" />
+                </li>
+            </ul>
+        </tal:block>
+    </tal:block>
+    </metal:related-products>
+
+    <metal:related-rod define-macro="related-rod">
+    <!-- Reporting obligation(s) (ROD) -->
+    <tal:block define="value context/getReportingObligations;
+                       view nocall:context/@@getObligations"
+               condition="value"
+               on-error="nothing">
+        <h3 i18n:translate="">Reporting obligations (ROD)</h3>
+        <ul tal:define="data python:view()">
+            <li tal:repeat="ob_nr value">
+                <a tal:define="ob_url string:http://rod.eionet.europa.eu/obligations/$ob_nr;
+                               ob_title python:data.get(int(ob_nr), ob_url)"
+                   tal:attributes="href ob_url;
+                                   title ob_title"
+                   tal:content="ob_title" />
+            </li>
+        </ul>
+    </tal:block>
+    </metal:related-rod>
+
+    <metal:related-externals define-macro="related-externals">
+    <!-- Related website(s)/service(s) -->
+    <tal:block define="value context/getExternalRelations"
+               condition="value">
+        <h3 i18n:translate="">Related websites</h3>
+        <ul>
+           <tal:block repeat="url value">
+            <li tal:condition="python:url.find('http:',0,5)>-1" >
+                <a tal:attributes="href url; title url"
+                   tal:content="url" />
+            </li>
+           </tal:block>
+        </ul>
+    </tal:block>
+    </metal:related-externals>
+
+    <div class="metadata-container">
+    <dl>
+
+    <!-- Relation: parent data sets and derived data sets -->
+    <tal:block metal:define-macro="parent-child-data"
+               define="parents context/@@getDerivedFrom;
+                       derived context/@@getBasedOn"
+               condition="python:parents or derived">
+        <dt i18n:translate="">Relation:</dt>
+        <tal:block condition="parents">
+            <dd tal:repeat="par parents">
+                <span i18n:translate="">Parent data set:</span>&nbsp;
+                <a tal:attributes="href par/absolute_url;
+                                   title par/title_or_id"
+                   tal:content="par/title_or_id" />
+            </dd>
+        </tal:block>
+        <tal:block condition="derived">
+            <dd tal:repeat="der derived">
+                <span i18n:translate="">Derived data set:</span>&nbsp;
+                <a tal:attributes="href der/absolute_url;
+                                   title der/title_or_id"
+                   tal:content="der/title_or_id" />
+            </dd>
+        </tal:block>
+    </tal:block>
+
+    <!-- Temporal coverage -->
+    <tal:block metal:define-macro="temp-coverage"
+               define="field python:context.getField('temporalCoverage');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Temporal coverage:</span>
+        </dt>
+        <dd tal:content="context/@@formatTempCoverage" />
+    </tal:block>
+
+    <!-- Last upload -->
+    <tal:block metal:define-macro="last-upload"
+               define="field python:context.getField('lastUpload');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Last upload:</span>
+        </dt>
+        <dd tal:content="python:toLocalizedTime(value, long_format=0, translate=False)">Last upload</dd>
+    </tal:block>
+
+    <!-- Geographical coverage -->
+    <tal:block metal:define-macro="geo-coverage"
+               define="field python:context.getField('geographicCoverage');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Geographical coverage:</span>
+        </dt>
+
+        <dd>
+            <img tal:define="map nocall:context/@@getGeographicalCoverageMap; map python:map(cc=value);"
+                 tal:attributes="src map" />
+            <tal:block define="view nocall:context/@@getCountriesDisplay">
+                <p tal:content="python:view(list(value))" />
+            </tal:block>
+            <div class="visualClear">&nbsp;</div>
+        </dd>
+    </tal:block>
+
+    <!-- Geographic accuracy -->
+    <tal:block metal:define-macro="geo-accuracy"
+               define="field python:context.getField('geoAccuracy');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt style="clear: left">
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Geographic accuracy:</span>
+        </dt>
+        <dd tal:content="structure value">Geographic accuracy</dd>
+    </tal:block>
+
+
+    <!-- Tags -->
+    <tal:block define="facetId string:c9">
+        <tal:block metal:define-macro="tags"
+                   define="field python:context.getField('subject');
+                           value python:field.getAccessor(context)();
+                           facetId facetId"
+                   condition="value">
+            <dt style="clear: left">
+                <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+                <span i18n:translate="">Tags:</span>
+            </dt>
+            <dd>
+                <tal:tags repeat="tag value">
+                    <a tal:attributes="title tag;
+                                       href string:$portal_url/data-and-maps/tags#c5=all&amp;c0=5&amp;b_start=0&amp;${facetId}=${tag};"
+                       tal:content="tag" />
+                    <tal:block condition="not:repeat/tag/end"> | </tal:block>
+                </tal:tags>
+            </dd>
+        </tal:block>
+    </tal:block>
+
+    <!-- Scale of the data set -->
+    <tal:block metal:define-macro="scale-of-data"
+               define="field python:context.getField('scale');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt style="clear: left">
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Scale of the data set:</span>
+        </dt>
+        <dd><span>1:</span><tal:scale content="structure value" /></dd>
+    </tal:block>
+
+    <!-- Rights -->
+    <tal:block metal:define-macro="rights"
+               define="field python:context.getField('rights');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Rights:</span>
+        </dt>
+        <dd tal:content="structure python:value.replace('\n', ' &lt;br /&gt; ')" />
+    </tal:block>
+
+    <!-- Disclaimer -->
+    <tal:block metal:define-macro="disclaimer"
+               define="field python:context.getField('disclaimer');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Disclaimer:</span>
+        </dt>
+        <dd tal:content="structure value">Disclaimer</dd>
+    </tal:block>
+
+    <!-- Methodology -->
+    <tal:block metal:define-macro="methodology"
+               define="field python:context.getField('methodology');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Methodology:</span>
+        </dt>
+        <dd tal:content="structure value">Methodology</dd>
+    </tal:block>
+
+    <!-- Unit -->
+    <tal:block metal:define-macro="units"
+               define="field python:context.getField('units');
+                       value python:field.getAccessor(context)()"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Units:</span>
+        </dt>
+        <dd tal:content="structure value">Units</dd>
+    </tal:block>
+
+
+    <!-- Reference system -->
+    <tal:block metal:define-macro="reference-system"
+               define="field python:context.getField('referenceSystem');
+                       vocab python:field.Vocabulary(context);
+                       values python:field.getAccessor(context)();
+                       value python:context.displayValue(vocab, values)"
+               condition="value">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Coordinate reference system:</span>
+        </dt>
+        <dd tal:content="structure value">Coordinate reference system</dd>
+    </tal:block>
+
+    <!-- Source -->
+    <tal:block metal:define-macro="source"
+               define="field python:context.getField('dataSource');
+                       vocab python:field.Vocabulary(context);
+                       values python:field.getAccessor(context)();
+                       value python:context.displayValue(vocab, values);
+                       products context/@@visible_related_products;
+                       related python:[o for o in products
+                                         if  o.portal_type in ('ExternalDataSpec', 'Data')];
+                        ">
+
+
+        <dt tal:condition="python:value or related" 
+            tal:define="tooltip string:Data sources used to produce this resource.">
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Data sources</span>
+        </dt>
+        
+        <dd tal:content="structure value" 
+            tal:condition="python: value and not related">source</dd>
+
+        <dd tal:condition="related">
+            <ul>
+                <li tal:repeat="item related">
+                    <a tal:replace="structure item/@@related_title">Data Item</a>
+                </li>
+            </ul>
+        </dd>
+    </tal:block>
+
+    <!-- Owner -->
+    <tal:block metal:define-macro="owners"
+               define="field python:context.getField('dataOwner');
+                       urls python:field.getAccessor(context)()"
+               condition="urls">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Owners:</span>
+        </dt>
+        <tal:block repeat="url urls">
+            <tal:block define="value python:context.getOrganisationName(url)"
+                       condition="value">
+                <dd>
+                    <a href="#" title=""
+                       tal:attributes="href value/getURL; title value/Title"
+                       tal:content="value/Title" />
+                </dd>
+            </tal:block>
+        </tal:block>
+    </tal:block>
+
+    <!-- Processor -->
+    <tal:block metal:define-macro="processors"
+               define="field python:context.getField('processor');
+                       urls python:field.getAccessor(context)()"
+               condition="urls">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">Processors:</span>
+        </dt>
+        <tal:block repeat="url urls">
+            <tal:block define="value python:context.getOrganisationName(url)"
+                       condition="value">
+                <dd>
+                    <a href="#" title=""
+                       tal:attributes="href value/getURL; title value/Title"
+                       tal:content="value/Title" />
+                </dd>
+            </tal:block>
+        </tal:block>
+    </tal:block>
+  </dl>
+
+    <metal:basicmeta use-macro="context/versions_macros/macros/permalinks" />
+
+    <div tal:replace="nothing">
+    <!--<metal:basicmeta define-macro="basicmeta">-->
+        <!--[> GID (persistent link)  <]-->
+        <!--<dt i18n:translate="">Permalink to this version</dt>-->
+        <!--<dd tal:define="uid context/UID">-->
+            <!--<a tal:attributes="href string:${context/aq_parent/absolute_url}/ds_resolveuid/${uid};-->
+                               <!--title uid"-->
+               <!--tal:content="uid" />-->
+        <!--</dd>-->
+       <!--[> permalink to latest version <]-->
+       <!--<dt i18n:translate="">Permalink to latest version</dt>-->
+       <!--<dd>-->
+        <!--<a tal:attributes="href string:${context/aq_parent/absolute_url}/ds_resolveuid/${lastVersion};-->
+                           <!--title lastVersion"-->
+           <!--tal:content="lastVersion" />-->
+        <!--</dd>-->
+    <!--</metal:basicmeta>-->
+    </div>
+
+    <dl>
+    <!-- EEA management plan code -->
+    <tal:block metal:define-macro="eea-mp-code"
+               tal:condition="not: context/@@plone_portal_state/anonymous"
+               define="field python:context.getField('eeaManagementPlan');
+                       value python:field.getAccessor(context)()">
+        <dt>
+            <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+            <span i18n:translate="">EEA management plan code:</span>
+        </dt>
+        <dd tal:condition="python:value != ('', '')">
+            <span i18n:translate="">year:</span>&nbsp;<tal:block content="python:value[0]" />,
+            <span i18n:translate="">code:</span>&nbsp;<tal:block content="python:value[1]" />
+        </dd>
+        <dd tal:condition="python:value == ('', '')">
+           unplanned as usual :D
+        </dd>
+    </tal:block>
+
+    <!-- Contact persons for EEA -->
+    <metal:contacts define-macro="eea-contact-reference"
+                    tal:condition="not: context/@@plone_portal_state/anonymous">
+        <tal:block define="field python:context.getField('contact');
+                           value python:field.getAccessor(context)()"
+                   condition="value">
+           <dt>
+                <metal:basic use-macro="here/dataset_view/macros/tooltip" />
+                <span i18n:translate="">Contact references at EEA:</span>
+           </dt>
+           <dd tal:content="structure python:value.replace('\r\n', '&lt;br /&gt;')">Contact persons for EEA</dd>
+        </tal:block>
+    </metal:contacts>
+
+    </dl>
+    </div>
+
+    <div class="visualClear">&nbsp;</div>
+
+</div>
+</body>
+</html>
