@@ -41,7 +41,17 @@ setup(name=name,
           'eea.mediacentre',
           'eea.reports',
       ],
-      #entry_points= {'console_scripts': [
-        #"link_to_maildrop = Products.EEAPloneAdmin.scripts.link_maildrop:link",
-        #]},
+      extras_require={
+          'yum': [
+              'python-ldap'
+              ],
+          'apt': [
+              'python-ldap'
+          ]
+      },
+      entry_points="""
+      # -*- entry_points -*-
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
       )
