@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<atcttool>
+ <topic_indexes>
+  <index name="getSections" remove="True" />
+  <index name="isOutdated" remove="True" />
+ </topic_indexes>
+</atcttool>
