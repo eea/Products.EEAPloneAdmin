@@ -3,6 +3,9 @@ Changelog
 
 12.1.dev0 - (unreleased)
 ------------------------
+* Upgrade step: update cron file for blacksquirrel (check for stopped sparql
+  methods and notify the development team by e-mail)
+  [danielm refs #31031]
 
 12.0 - (2015-12-09)
 -------------------
