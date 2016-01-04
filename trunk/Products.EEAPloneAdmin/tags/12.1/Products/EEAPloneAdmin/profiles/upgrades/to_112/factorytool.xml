@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<object name="portal_factory">
+ <factorytypes>
+  <type portal_type="HelpCenterReferenceManualFolder" remove="True"/>
+  <type portal_type="HelpCenterInstructionalVideoFolder" remove="True"/>
+  <type portal_type="HelpCenterErrorReference" remove="True"/>
+  <type portal_type="HelpCenterTutorialPage" remove="True"/>
+  <type portal_type="HelpCenterFAQFolder" remove="True"/>
+  <type portal_type="HelpCenterLink" remove="True"/>
+  <type portal_type="HelpCenterHowTo" remove="True"/>
+  <type portal_type="HelpCenterErrorReferenceFolder" remove="True"/>
+  <type portal_type="HelpCenterFAQ" remove="True"/>
+  <type portal_type="HelpCenterDefinition" remove="True"/>
+  <type portal_type="HelpCenterReferenceManual" remove="True"/>
+  <type portal_type="HelpCenterTutorialFolder" remove="True"/>
+  <type portal_type="HelpCenterGlossary" remove="True"/>
+  <type portal_type="HelpCenterHowToFolder" remove="True"/>
+  <type portal_type="HelpCenterTutorial" remove="True"/>
+  <type portal_type="HelpCenterReferenceManualSection" remove="True"/>
+  <type portal_type="HelpCenterReferenceManualPage" remove="True"/>
+  <type portal_type="HelpCenterInstructionalVideo" remove="True"/>
+  <type portal_type="HelpCenterLinkFolder" remove="True"/>
+ </factorytypes>
+</object>
