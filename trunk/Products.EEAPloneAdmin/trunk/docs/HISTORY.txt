@@ -3,6 +3,11 @@ Changelog
 
 12.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: enable RSS2 feed also for non canonical objects
+  [ichimdav refs #67796]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #67796]
 * Upgrade step: update cron file for blacksquirrel (check for stopped sparql
   methods daily, not weekly)
   [danielm refs #31723]
