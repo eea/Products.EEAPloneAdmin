@@ -40,7 +40,7 @@ def enable_rss2(context):
         folder_types.add(_type.getId())
     folder_types = folder_types
     index = 0
-    for brain in catalog(portal_type=tuple(folder_types)):
+    for brain in catalog(portal_type=tuple(folder_types), Language='all'):
         obj = brain.getObject()
         try:
             settings = IFeedSettings(obj)
@@ -48,6 +48,8 @@ def enable_rss2(context):
             continue
         if settings.enabled:
             current_feeds = list(settings.feed_types)
+            if u'RSS2' in current_feeds:
+                continue
             new_feeds = [u'RSS2']
             current_feeds.extend(new_feeds)
             settings.feed_types = tuple(set(current_feeds))
