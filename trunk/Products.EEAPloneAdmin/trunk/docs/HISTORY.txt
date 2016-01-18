@@ -3,6 +3,9 @@ Changelog
 
 12.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: ping_sds_content.py Don't fail if some objects are
+  not in the Catalog anymore, print in log and continue.
+  [demarant refs #29409] 
 * Bug fix: enable RSS2 feed also for non canonical objects
   [ichimdav refs #67796]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
