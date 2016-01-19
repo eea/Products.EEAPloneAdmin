@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="eea">
+
+<body>
+<tal:comment>
+#5408 in eea.dataservice 5.3
+</tal:comment>
+<div metal:fill-slot="content-core">
+
+    <!-- Category -->
+    <tal:block define="field python:context.getField('category');
+                       value python:field.getAccessor(context)()"
+              condition="value">
+        <dt i18n:translate="">Category</dt>
+        <dd tal:define="categView nocall:context/@@getCategoryName; categ_name python:categView(value);"
+            tal:content="categ_name" />
+    </tal:block>
+
+    <!-- Records -->
+    <tal:block define="field python:context.getField('records');
+                       value python:field.getAccessor(context)()"
+              condition="value">
+        <dt i18n:translate="">Records</dt>
+        <dd tal:content="value" />
+    </tal:block>
+
+    <!-- Table definition -->
+    <tal:block define="field python:context.getField('tableDefinition');
+                       value python:field.getAccessor(context)()"
+              condition="value">
+        <dt i18n:translate="">Table definition</dt>
+        <dd tal:content="structure value" />
+    </tal:block>
+
+    <fieldset>
+        <legend i18n:translate="">Files</legend>
+        <div style="padding: 1em;" tal:repeat="file python:context.getFolderContents(contentFilter={'portal_type':'DataFile'})">
+            <tal:block define="field python:file.getField('file');
+                               accessor python:field.getAccessor(file)();
+                               icon accessor/getBestIcon | nothing;
+                               filename accessor/filename | nothing;
+                               size accessor/get_size | python:accessor and len(accessor) or 0;"  
+                               tal:on-error="nothing">
+
+                <strong>
+                    <img tal:condition="icon" src=""
+                         tal:attributes="src string:${context/portal_url}/$icon"/>
+                    <span tal:content="filename" />
+                </strong>
+                (<span tal:content="python:file.lookupMime(field.getContentType(file))">ContentType</span>)
+                <div style="padding-left: 2em;">
+                <span tal:content="python:'%sKb' % (size / 1024)">0Kb</span>
+                <a tal:attributes="href string:${file/absolute_url}/at_download/file"
+                   i18n:translate="">Download file</a>
+                <a tal:attributes="href string:${file/absolute_url}/"
+                   tal:condition="exists: file/@@daviz-view.html"
+                   i18n:translate="">View and interact online</a>
+                </div>
+            </tal:block>
+        </div>
+        <div style="padding: 1em;" 
+                     tal:repeat="file python:context.getFolderContents(contentFilter={'portal_type':'ATLink'})">
+                 <strong><a tal:attributes="href string:${file/remoteUrl}"
+                   i18n:translate="">Data link</a>
+                 </strong>
+        </div>
+        <div tal:repeat="file python:context.getFolderContents(contentFilter={'portal_type':'Sparql'})">
+                 <span style="padding:1em 1em 1em 2em; position: relative; 
+                    background: transparent url(/++resource++eea.sparql.images/rdf-icon.gif) no-repeat left center;
+                    ">
+                  <strong>
+                   <a tal:attributes="href string:${file/getURL}"
+                      i18n:translate="" 
+                      tal:content="file/Title">Sparql</a>&nbsp;
+                     (<span i18n:translate="">Linked Open Data</span>) 
+                 </strong></span>
+                <div style="padding-left: 2em;padding-top:1em;">
+                <a tal:attributes="href string:${file/getURL}/download.table"
+                   i18n:translate="">HTML table</a>
+                <a tal:attributes="href string:${file/getURL}/download.csv"
+                   i18n:translate="">CSV</a>
+                <a tal:attributes="href string:${file/getURL}/download.json"
+                   i18n:translate="">JSON</a>
+                <a tal:attributes="href string:${file/getURL}/download.schema.xml"
+                   i18n:translate="">XML with schema</a><br /><br />
+                <a tal:attributes="href string:${file/getURL}"
+                   i18n:translate="">See all formats + SPARQL query details</a>
+                </div>
+        </div>
+
+    </fieldset>
+
+    <!-- Dataset ID -->
+    <!-- tal:block define="field python:context.getField('dataset_id');
+                       value python:field.getAccessor(context)()"
+              condition="value">
+        <dt i18n:translate="">Dataset ID</dt>
+        <dd tal:content="value" />
+    </tal:block -->
+
+</div>
+
+</body>
+</html>

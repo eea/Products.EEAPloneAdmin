@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="Document"
+   meta_type="Factory-based Type Information with dynamic views"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="view_methods">
+  <element value="document_view"/>
+  <element value="document_mediatop_view"/>
+ </property>
+</object>
