@@ -1728,6 +1728,121 @@ class FixEffectiveDateForPublishedObjects(object):
                 history_error, not_found)
 
 
+class ReportEffectiveDateForPublishedObjects(object):
+    """ Report published objects with no effective date
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("EffectiveReport")
+        catalog = getToolByName(self.context, 'portal_catalog')
+
+        no_effective_date = DateTime('1000/01/01 00:00:00')
+        no_effective_date_str = 'None'
+
+        brains = catalog(review_state="published",
+                         Language="all",
+                         effective=no_effective_date,
+                         show_inactive=True)
+        request = self.context.REQUEST
+
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
+                    " THAT HAVE EFFECTIVE DATE LOWER THAN THE CREATION DATE \n"]
+        reindex_error = ["\n\n REINDEX ERRORS \n"]
+        not_found = ["\n\n OBJ NOT FOUND \n"]
+        history_error = ["\n\n HISTORY ERRORS \n"]
+
+        total = len(brains)
+        count = 0
+        skipped_objs_count = 0
+
+        log.info("Starting Effective Date index report for %d objects", total)
+
+        default_lang = ["en"]
+        for brain in brains:
+            log.info("Current brain %s", brain.getURL())
+            created_date = brain.created
+            effective_date = brain.effective
+            obj_url = brain.getURL(1)
+            try:
+                obj = brain.getObject()
+            except Exception:
+                not_found.append("%s \n" % obj_url)
+                continue
+
+            if obj.getTranslationLanguages() != default_lang:
+                # set effective date only for objects where even their
+                # translations have no date and the effective date is bigger
+                # than the creation date of any of the translations otherwise
+                #  we might set a wrong effective date for them
+                translations = obj.getTranslations().values()
+                translations = [translation[0] for translation in translations]
+                canSetEffectiveDate = True
+                effective_dates_list = []
+                creation_dates_list = []
+                for translation in translations:
+                    date = translation.effective()
+                    string_date = translation.EffectiveDate()
+                    creation_dates_list.append(translation.creation_date)
+                    if string_date != no_effective_date_str:
+                        effective_dates_list.append(date)
+                for ef_date in effective_dates_list:
+                    for cr_date in creation_dates_list:
+                        if ef_date < cr_date:
+                            canSetEffectiveDate = False
+                if not canSetEffectiveDate:
+                    skipped_objs.append("%s \n" % obj_url)
+                    skipped_objs_count += 1
+                    continue
+            history = None
+            try:
+                history = ContentHistoryView(obj, request).fullHistory()
+            except Exception, err:
+                history_error.append("%s --> %s \n" % (obj_url, err))
+            if not history:
+                continue
+            first_state = history[-1]
+            for entry in history:
+
+                if entry['transition_title'] == 'Publish' or entry == \
+                        first_state:
+                    date = entry['time']
+                    creationIsAfterPublish = False
+                    if created_date > date:
+                        creationIsAfterPublish = True
+
+                    if creationIsAfterPublish:
+                        res_objs.append("\n %s -Effective Date before --> %s"
+                                " after --> %s from Creation Date because"
+                                " it is after date from history --> %s \n" % (
+                                obj_url, effective_date, created_date, date))
+                    else:
+                        res_objs.append("\n %s - Effective Date before --> %s "
+                            "after --> %s \n" % (obj_url, effective_date, date))
+
+                    count += 1
+                    break
+        skipped_obj_count_message = "\n SKIPPED OBJECTS TOTAL: %d" % \
+                skipped_objs_count
+
+        count_message = "\n REPORTED OBJECTS TOTAL: %d" % count
+
+        log.info("Ending Effective Date index report for %d objects", count)
+        res_objs = " ".join(res_objs)
+        skipped_objs = " ".join(skipped_objs)
+        reindex_error = " ".join(reindex_error)
+        history_error = " ".join(history_error)
+        not_found = " ".join(not_found)
+        return "%s %s %s %s %s %s %s " % (count_message, res_objs,
+                skipped_obj_count_message, skipped_objs, reindex_error,
+                history_error, not_found)
+
+
 class FixEEAFigureFilesPublishDate(object):
     """ Fix EEAFigureFile objects with old effective date
     """

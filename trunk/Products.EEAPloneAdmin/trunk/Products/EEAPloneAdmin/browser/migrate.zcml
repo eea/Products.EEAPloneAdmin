@@ -169,6 +169,11 @@
                   permission="cmf.ManagePortal" />
 
     <browser:page for="*"
+                  name="reportEffectiveDate"
+                  class=".migrate.ReportEffectiveDateForPublishedObjects"
+                  permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
                   name="fixEffectiveDate"
                   class=".migrate.FixEffectiveDateForPublishedObjects"
                   permission="cmf.ManagePortal" />
