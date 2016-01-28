@@ -1817,13 +1817,15 @@ class ReportEffectiveDateForPublishedObjects(object):
                         creationIsAfterPublish = True
 
                     if creationIsAfterPublish:
-                        res_objs.append("\n %s -Effective Date before --> %s"
-                                " after --> %s from Creation Date because"
+                        res_objs.append("\n %s - %s -Effective Date before -->"
+                                " %s after --> %s from Creation Date because"
                                 " it is after date from history --> %s \n" % (
-                                obj_url, effective_date, created_date, date))
+                                obj.portal_type, obj_url, effective_date,
+                                created_date, date))
                     else:
-                        res_objs.append("\n %s - Effective Date before --> %s "
-                            "after --> %s \n" % (obj_url, effective_date, date))
+                        res_objs.append("\n %s - %s - Effective Date before -->"
+                            " %s after --> %s \n" % (obj.portal_type, obj_url,
+                            effective_date, date))
 
                     count += 1
                     break
