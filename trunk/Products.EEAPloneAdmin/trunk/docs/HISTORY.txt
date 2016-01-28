@@ -10,6 +10,9 @@ Changelog
   report about objects missing EffectiveDate
   (derived from FixEffectiveDateForPublishedObjects).
   [chiridra refs #31644]
+* Upgrade step: this step should run on www8:
+  - run /www/@@fixEffectiveDate
+  [chiridra refs #31644]
 
 12.2 - (2016-01-19)
 -------------------
