@@ -1704,9 +1704,11 @@ class FixEffectiveDateForPublishedObjects(object):
                     creationIsAfterPublish = False
                     if created_date > date:
                         obj.setEffectiveDate(created_date)
+                        log.info("EFFECTIVE DATE set: %s" % created_date)
                         creationIsAfterPublish = True
                     else:
                         obj.setEffectiveDate(date)
+                        log.info("EFFECTIVE DATE set: %s" % date)
                     try:
                         obj.reindexObject(idxs=["EffectiveDate"])
                     except Exception, err:
