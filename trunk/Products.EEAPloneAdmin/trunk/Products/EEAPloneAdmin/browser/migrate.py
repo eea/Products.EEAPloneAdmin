@@ -1613,16 +1613,19 @@ class FixEffectiveDateForPublishedObjects(object):
         """ Call method
         """
         log = logging.getLogger("EffectiveFix")
+        log.info("*** Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
 
         no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
 
+        log.info("*** Catalog search start")
         brains = catalog(review_state="published",
                          Language="all",
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
+        log.info("*** Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
         skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
@@ -1633,12 +1636,22 @@ class FixEffectiveDateForPublishedObjects(object):
 
         total = len(brains)
         count = 0
+        count_progress = 0
         skipped_objs_count = 0
+        ignore_brain = 1
 
         log.info("Starting Effective Date index fix for %d objects", total)
 
         default_lang = ["en"]
         for brain in brains:
+            count_progress += 1
+            if ignore_brain:
+                # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
+                if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
+                    ignore_brain = 0
+                log.info("%s/%s :: SKIPPING brain %s", (count_progress, total, brain.getURL()))
+                continue
+            log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
             created_date = brain.created
             effective_date = brain.effective
             obj_url = brain.getURL(1)
@@ -1739,16 +1752,19 @@ class ReportEffectiveDateForPublishedObjects(object):
         """ Call method
         """
         log = logging.getLogger("EffectiveReport")
+        log.info("*** Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
 
         no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
 
+        log.info("*** Catalog search start")
         brains = catalog(review_state="published",
                          Language="all",
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
+        log.info("*** Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
         skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
@@ -1759,13 +1775,22 @@ class ReportEffectiveDateForPublishedObjects(object):
 
         total = len(brains)
         count = 0
+        count_progress = 0
         skipped_objs_count = 0
+        ignore_brain = 1
 
         log.info("Starting Effective Date index report for %d objects", total)
 
         default_lang = ["en"]
         for brain in brains:
-            log.info("Current brain %s", brain.getURL())
+            count_progress += 1
+            if ignore_brain:
+                # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
+                if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
+                    ignore_brain = 0
+                log.info("%s/%s :: SKIPPING brain %s", (count_progress, total, brain.getURL()))
+                continue
+            log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
             created_date = brain.created
             effective_date = brain.effective
             obj_url = brain.getURL(1)
