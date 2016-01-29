@@ -1625,6 +1625,7 @@ class FixEffectiveDateForPublishedObjects(object):
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
+        batch = request.get('b', 10)
         log.info("*** Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
@@ -1635,6 +1636,7 @@ class FixEffectiveDateForPublishedObjects(object):
         history_error = ["\n\n HISTORY ERRORS \n"]
 
         log.info("TOTAL affected: %d objects", len(brains))
+        brains = brains[:batch]
         total = len(brains)
         count = 0
         count_progress = 0
