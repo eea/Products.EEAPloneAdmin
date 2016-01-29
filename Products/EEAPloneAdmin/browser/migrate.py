@@ -1703,11 +1703,13 @@ class FixEffectiveDateForPublishedObjects(object):
                     date = entry['time']
                     creationIsAfterPublish = False
                     if created_date > date:
-                        obj.setEffectiveDate(created_date)
+                        #obj.setEffectiveDate(created_date)
+                        obj.edit(effectiveDate=created_date)
                         log.info("EFFECTIVE DATE set: %s" % created_date)
                         creationIsAfterPublish = True
                     else:
-                        obj.setEffectiveDate(date)
+                        #obj.setEffectiveDate(date)
+                        obj.edit(effectiveDate=date)
                         log.info("EFFECTIVE DATE set: %s" % date)
                     try:
                         obj.reindexObject(idxs=["EffectiveDate"])
