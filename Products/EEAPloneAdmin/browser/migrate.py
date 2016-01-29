@@ -1634,6 +1634,7 @@ class FixEffectiveDateForPublishedObjects(object):
         not_found = ["\n\n OBJ NOT FOUND \n"]
         history_error = ["\n\n HISTORY ERRORS \n"]
 
+        log.info("TOTAL affected: %d objects", len(brains))
         total = len(brains)
         count = 0
         count_progress = 0
@@ -1693,7 +1694,9 @@ class FixEffectiveDateForPublishedObjects(object):
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
-                log.info("### SKIPPED no history")
+                log.info("### No history, set creation date")
+                obj.edit(effectiveDate=created_date)
+                log.info("EFFECTIVE DATE set: %s" % created_date)
                 continue
             first_state = history[-1]
             for entry in history:
