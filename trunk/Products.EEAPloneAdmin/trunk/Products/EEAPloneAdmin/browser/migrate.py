@@ -1638,7 +1638,7 @@ class FixEffectiveDateForPublishedObjects(object):
         count = 0
         count_progress = 0
         skipped_objs_count = 0
-        ignore_brain = 1
+        ignore_brain = 0
 
         log.info("Starting Effective Date index fix for %d objects", total)
 
@@ -1649,7 +1649,7 @@ class FixEffectiveDateForPublishedObjects(object):
                 # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
                 if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
                     ignore_brain = 0
-                log.info("%s/%s :: SKIPPING brain %s", (count_progress, total, brain.getURL()))
+                log.info("%s/%s :: SKIPPING brain %s" % (count_progress, total, brain.getURL()))
                 continue
             log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
             created_date = brain.created
@@ -1659,13 +1659,14 @@ class FixEffectiveDateForPublishedObjects(object):
                 obj = brain.getObject()
             except Exception:
                 not_found.append("%s \n" % obj_url)
+                log.info("### SKIPPED not found")
                 continue
 
             if obj.getTranslationLanguages() != default_lang:
                 # set effective date only for objects where even their
                 # translations have no date and the effective date is bigger
                 # than the creation date of any of the translations otherwise
-                #  we might set a wrong effective date for them
+                # we might set a wrong effective date for them
                 translations = obj.getTranslations().values()
                 translations = [translation[0] for translation in translations]
                 canSetEffectiveDate = True
@@ -1684,6 +1685,7 @@ class FixEffectiveDateForPublishedObjects(object):
                 if not canSetEffectiveDate:
                     skipped_objs.append("%s \n" % obj_url)
                     skipped_objs_count += 1
+                    log.info("### SKIPPED getTranslationLanguages")
                     continue
             history = None
             try:
@@ -1691,6 +1693,7 @@ class FixEffectiveDateForPublishedObjects(object):
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
+                log.info("### SKIPPED no history")
                 continue
             first_state = history[-1]
             for entry in history:
@@ -1708,6 +1711,7 @@ class FixEffectiveDateForPublishedObjects(object):
                         obj.reindexObject(idxs=["EffectiveDate"])
                     except Exception, err:
                         reindex_error.append("%s --> %s \n" % (obj_url, err))
+                        log.info("### ERROR on reindex")
                         continue
 
                     if creationIsAfterPublish:
@@ -1724,13 +1728,14 @@ class FixEffectiveDateForPublishedObjects(object):
                         log.info('INFO: Transaction committed to zodb (%s/%s)',
                                  count, total)
                         transaction.commit()
+                    log.info("### BREAK ###")
                     break
         skipped_obj_count_message = "\n SKIPPED OBJECTS TOTAL: %d" % \
                 skipped_objs_count
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
-        log.info("Ending Effective Date index fix for %d objects", count)
+        log.info("DONE Effective Date index fix for %d objects", count)
         res_objs = " ".join(res_objs)
         skipped_objs = " ".join(skipped_objs)
         reindex_error = " ".join(reindex_error)
@@ -1777,7 +1782,7 @@ class ReportEffectiveDateForPublishedObjects(object):
         count = 0
         count_progress = 0
         skipped_objs_count = 0
-        ignore_brain = 1
+        ignore_brain = 0
 
         log.info("Starting Effective Date index report for %d objects", total)
 
@@ -1788,7 +1793,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                 # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
                 if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
                     ignore_brain = 0
-                log.info("%s/%s :: SKIPPING brain %s", (count_progress, total, brain.getURL()))
+                log.info("%s/%s :: SKIPPING brain %s" % (count_progress, total, brain.getURL()))
                 continue
             log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
             created_date = brain.created
@@ -1798,6 +1803,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                 obj = brain.getObject()
             except Exception:
                 not_found.append("%s \n" % obj_url)
+                log.info("### SKIPPED not found")
                 continue
 
             if obj.getTranslationLanguages() != default_lang:
@@ -1823,6 +1829,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                 if not canSetEffectiveDate:
                     skipped_objs.append("%s \n" % obj_url)
                     skipped_objs_count += 1
+                    log.info("### SKIPPED getTranslationLanguages")
                     continue
             history = None
             try:
@@ -1830,6 +1837,7 @@ class ReportEffectiveDateForPublishedObjects(object):
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
+                log.info("### SKIPPED no history")
                 continue
             first_state = history[-1]
             for entry in history:
@@ -1853,13 +1861,14 @@ class ReportEffectiveDateForPublishedObjects(object):
                             effective_date, date))
 
                     count += 1
+                    log.info("### BREAK ###")
                     break
         skipped_obj_count_message = "\n SKIPPED OBJECTS TOTAL: %d" % \
                 skipped_objs_count
 
         count_message = "\n REPORTED OBJECTS TOTAL: %d" % count
 
-        log.info("Ending Effective Date index report for %d objects", count)
+        log.info("DONE Effective Date index report for %d objects", count)
         res_objs = " ".join(res_objs)
         skipped_objs = " ".join(skipped_objs)
         reindex_error = " ".join(reindex_error)
