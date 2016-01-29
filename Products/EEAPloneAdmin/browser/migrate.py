@@ -1636,7 +1636,7 @@ class FixEffectiveDateForPublishedObjects(object):
         history_error = ["\n\n HISTORY ERRORS \n"]
 
         log.info("TOTAL affected: %d objects", len(brains))
-        brains = brains[:batch]
+        brains = brains[:int(batch)]
         total = len(brains)
         count = 0
         count_progress = 0
