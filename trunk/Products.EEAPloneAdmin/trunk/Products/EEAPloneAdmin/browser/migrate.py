@@ -1699,6 +1699,9 @@ class FixEffectiveDateForPublishedObjects(object):
                 log.info("### No history, set creation date")
                 obj.edit(effectiveDate=created_date)
                 log.info("EFFECTIVE DATE set: %s" % created_date)
+                res_objs.append("\n %s - Effective Date before --> %s "
+                          "after --> %s \n" % (obj_url, effective_date, created_date))
+                count += 1
                 continue
             first_state = history[-1]
             for entry in history:
