@@ -1649,12 +1649,13 @@ class FixEffectiveDateForPublishedObjects(object):
         for brain in brains:
             count_progress += 1
             if ignore_brain:
-                # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
-                if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
+                if brain.getURL() == 'MY_URL_TO_BE_SKIPPED':
                     ignore_brain = 0
-                log.info("%s/%s :: SKIPPING brain %s" % (count_progress, total, brain.getURL()))
+                log.info("%s/%s :: SKIPPING brain %s", count_progress,
+                                                       total, brain.getURL())
                 continue
-            log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
+            log.info("%s/%s :: Current brain %s", count_progress, total,
+                                                  brain.getURL())
             created_date = brain.created
             effective_date = brain.effective
             obj_url = brain.getURL(1)
@@ -1698,9 +1699,10 @@ class FixEffectiveDateForPublishedObjects(object):
             if not history:
                 log.info("### No history, set creation date")
                 obj.edit(effectiveDate=created_date)
-                log.info("EFFECTIVE DATE set: %s" % created_date)
+                log.info("EFFECTIVE DATE set: %s", created_date)
                 res_objs.append("\n %s - Effective Date before --> %s "
-                          "after --> %s \n" % (obj_url, effective_date, created_date))
+                          "after --> %s \n" % (obj_url, effective_date,
+                                                        created_date))
                 count += 1
                 continue
             first_state = history[-1]
@@ -1713,12 +1715,12 @@ class FixEffectiveDateForPublishedObjects(object):
                     if created_date > date:
                         #obj.setEffectiveDate(created_date)
                         obj.edit(effectiveDate=created_date)
-                        log.info("EFFECTIVE DATE set: %s" % created_date)
+                        log.info("EFFECTIVE DATE set: %s", created_date)
                         creationIsAfterPublish = True
                     else:
                         #obj.setEffectiveDate(date)
                         obj.edit(effectiveDate=date)
-                        log.info("EFFECTIVE DATE set: %s" % date)
+                        log.info("EFFECTIVE DATE set: %s", date)
                     try:
                         obj.reindexObject(idxs=["EffectiveDate"])
                     except Exception, err:
@@ -1802,12 +1804,13 @@ class ReportEffectiveDateForPublishedObjects(object):
         for brain in brains:
             count_progress += 1
             if ignore_brain:
-                # http://rocksquirrel:8002/www/SITE/data-and-maps/daviz/eionet/data/local-sparql-queries/most-populated-places
-                if brain.getURL() == 'http://rocksquirrel:8002/www/SITE/data-and-maps/data/external/trends-of-common-birds-in':
+                if brain.getURL() == 'MY_URL_TO_BE_SKIPPED':
                     ignore_brain = 0
-                log.info("%s/%s :: SKIPPING brain %s" % (count_progress, total, brain.getURL()))
+                log.info("%s/%s :: SKIPPING brain %s", count_progress,
+                                                       total, brain.getURL())
                 continue
-            log.info("%s/%s :: Current brain %s" % (count_progress, total, brain.getURL()))
+            log.info("%s/%s :: Current brain %s", count_progress,
+                                                  total, brain.getURL())
             created_date = brain.created
             effective_date = brain.effective
             obj_url = brain.getURL(1)
