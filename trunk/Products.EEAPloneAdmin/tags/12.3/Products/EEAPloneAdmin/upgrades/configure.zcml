@@ -1,0 +1,301 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="eea">
+
+    <!-- 11.8 => 12.2 -->
+    <genericsetup:upgradeSteps
+        source="11.8"
+        destination="12.2"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Enable RSS2 feed using Plone 4.3 syndication"
+            handler=".evolve72.enable_rss2"
+        />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.7 => 11.8 -->
+    <genericsetup:upgradeSteps
+        source="11.7"
+        destination="11.8"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+        title="Import all steps from Products.EEAPloneAdmin 11.8 profile"
+        import_profile="Products.EEAPloneAdmin:upgrade118"
+    />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.6 => 11.7 -->
+    <genericsetup:upgradeSteps
+        source="11.6"
+        destination="11.7"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+        title="Import all steps from Products.EEAPloneAdmin 11.7 profile"
+        import_profile="Products.EEAPloneAdmin:upgrade117"
+    />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.4 => 11.6 -->
+    <genericsetup:upgradeSteps
+        source="11.4"
+        destination="11.6"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.EEAPloneAdmin 11.6 profile"
+      import_profile="Products.EEAPloneAdmin:upgrade116"
+      />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.2 => 11.4 -->
+    <genericsetup:upgradeSteps
+        source="11.2"
+        destination="11.4"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.EEAPloneAdmin 11.4 profile"
+      import_profile="Products.EEAPloneAdmin:upgrade114"
+      />
+
+     <genericsetup:upgradeStep
+           title="Remove old async"
+           handler=".evolve114.remove_old_async"
+           />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 11.1 => 11.2 -->
+    <genericsetup:upgradeSteps
+        source="11.1"
+        destination="11.2"
+        profile="Products.EEAPloneAdmin:default">
+
+     <genericsetup:upgradeStep
+           title="Cleanup HelpCenter broken brains"
+           handler=".evolve112.cleanup_broken_brains"
+           />
+
+      <genericsetup:upgradeDepends
+            title="Install plone.app.dexterity"
+            import_profile="plone.app.dexterity:default"
+            />
+
+      <genericsetup:upgradeDepends
+          title="Import all steps from Products.EEAPloneAdmin 11.2 profile"
+          import_profile="Products.EEAPloneAdmin:upgrade112"
+          />
+
+      <genericsetup:upgradeStep
+          title="Migrate HelpCenter content-types to Dexterity"
+          handler=".evolve112.migrate_to_dexterity"
+          />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 10.6 => 11.1 -->
+    <genericsetup:upgradeSteps
+        source="10.6"
+        destination="11.1"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import all steps from Products.EEAPloneAdmin 11.1 profile"
+            import_profile="Products.EEAPloneAdmin:upgrade111"
+            />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- 9.8 => 10.6 -->
+    <genericsetup:upgradeSteps
+      source="9.8"
+      destination="10.6"
+      profile="Products.EEAPloneAdmin:default">
+
+      <genericsetup:upgradeDepends
+        title="Import workflow for daviz_workflow from upgrade106 profile"
+        import_profile="Products.EEAPloneAdmin:upgrade106"
+      />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+            source="9.5"
+            destination="9.8"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin upgrade98 profile"
+                import_profile="Products.EEAPloneAdmin:upgrade98"
+                />
+
+        <genericsetup:upgradeStep
+                title="Add eea readability score TinyMCE plugin"
+                handler="Products.EEAPloneAdmin.upgrades.evolve98.add_plugins"
+                />
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from eea.tinymce readabilitychecker profile"
+                import_profile="eea.tinymce:eeareadabilitychecker"
+                />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+            source="8.7"
+            destination="9.5"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin delete-permission profile"
+                import_profile="Products.EEAPloneAdmin:delete-permission"
+                />
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from eea.jquery timeoutdialog profile"
+                import_profile="eea.jquery:24-timeoutdialog"
+                />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+            source="8.6"
+            destination="8.7"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin upgrade87 profile"
+                import_profile="Products.EEAPloneAdmin:upgrade87"
+                />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+            source="8.5"
+            destination="8.6"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin upgrade86 profile"
+                import_profile="Products.EEAPloneAdmin:upgrade86"
+                />
+
+        <genericsetup:upgradeStep
+            title="Reindex security settings"
+            handler=".evolve85.update_role_mappings"
+            />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+            source="*"
+            destination="8.5"
+            profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+                title="Import all steps from Products.EEAPloneAdmin upgrade85 profile"
+                import_profile="Products.EEAPloneAdmin:upgrade85"
+                />
+
+        <genericsetup:upgradeStep
+            title="Reindex security settings"
+            handler=".evolve85.update_role_mappings"
+            />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="*"
+        destination="8.0"
+        profile="Products.EEAPloneAdmin:optimize">
+
+        <genericsetup:upgradeDepends
+            title="Import step with changes: registry"
+            import_profile="Products.EEAPloneAdmin:optimize"
+            import_steps="plone.app.registry"
+            />
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="*"
+        destination="7.7"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import all steps from Products.EEAPloneAdmin uninstall profile"
+            import_profile="Products.EEAPloneAdmin:uninstall"
+            />
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="*"
+        destination="7.9"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import tinymce.xml actions steps from Products.EEAPloneAdmin profile"
+            import_steps="tinymce_settings"
+            />
+    </genericsetup:upgradeSteps>
+
+
+    <genericsetup:upgradeSteps
+        source="*"
+        destination="7.2"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import actions steps from Products.EEAPloneAdmin profile"
+            import_steps="actions"
+            />
+
+        <genericsetup:upgradeStep
+            title="Enable RSS2 feed using Plone 4.3 syndication"
+            handler=".evolve72.enable_rss2"
+            />
+
+        <genericsetup:upgradeStep
+            title="Reindex ZCTextIndex indexes"
+            handler=".evolve72.reindexZCTextIndex"
+            />
+
+        <genericsetup:upgradeStep
+            title="Cleanup broken p4a.* objects"
+            handler="Products.EEAPloneAdmin.upgrades.evolve72.cleanupBrokenP4AObjects"
+            />
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="4.0"
+        destination="6.2"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Update caching policy for AJAX templates"
+            import_profile="Products.EEAPloneAdmin:eea-caching"
+            import_steps="plone.app.registry"
+            />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="*"
+        destination="4.0"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeDepends
+            title="Import all steps from Products.EEAPloneAdmin profile"
+            import_profile="Products.EEAPloneAdmin:default"
+            />
+
+    </genericsetup:upgradeSteps>
+
+</configure>
