@@ -1,6 +1,9 @@
 Changelog
 =========
 
+12.4.dev0 - (unreleased)
+------------------------
+
 12.3 - (2016-02-03)
 -------------------
 * Upgrade step: invalidate all PDFs from the filesystem
