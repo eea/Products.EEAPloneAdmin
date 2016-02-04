@@ -44,14 +44,18 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
         # reindexObjectSecurity is always recursive
         obj.reindexObjectSecurity()
 
-
 def _getFileContent(f):
     """ File content
     """
-    try:
-        return f.data
-    except AttributeError:
-        return f._readFile(0)
+     try:
+        return f.read()
+     except AttributeError:
+        try:
+            return f.data
+        except AttributeError:
+            return f._readFile(0)
+    else:
+        return ''
 
 def patched_getDiff(self, item_one_path, item_two_path, reverse=0):
     """ Return a diff between one and two.
@@ -65,6 +69,7 @@ def patched_getDiff(self, item_one_path, item_two_path, reverse=0):
 
     item_one_contents = _getFileContent(item_one)
     item_two_contents = _getFileContent(item_two)
+    # item_one.read().splitlines()
 
     res = unified_diff(item_one_contents.splitlines()
                        , item_two_contents.splitlines()
