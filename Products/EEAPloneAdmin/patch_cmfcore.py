@@ -47,9 +47,9 @@ def patched_deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
 def _getFileContent(f):
     """ File content
     """
-     try:
+    try:
         return f.read()
-     except AttributeError:
+    except AttributeError:
         try:
             return f.data
         except AttributeError:
