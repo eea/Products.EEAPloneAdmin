@@ -2001,3 +2001,60 @@ class CheckTemplatesForArchiveMessage(object):
                 if 'archive_status' not in template:
                     match[ptype].append(tname)
         return pprint(match)
+
+
+class SetSparqlRefreshFrequencyToWeekly(object):
+    """ Change Sparql Refresh frequency to weekly
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("Sparql refresh frequency")
+        log.info("*** Starting Sparql refresh frequency report")
+        catalog = getToolByName(self.context, 'portal_catalog')
+
+        log.info("*** Catalog search start")
+        brains = catalog(review_state="published",
+                         Language="all",
+                         portal_type="Sparql",
+                         show_inactive=True)
+        log.info("*** Catalog search ended")
+
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+
+        log.info("TOTAL affected: %d objects", len(brains))
+        total = len(brains)
+        count = 0
+        count_progress = 0
+
+        log.info("Starting Sparql refresh for %d objects", total)
+        not_found = []
+        for brain in brains:
+            count_progress += 1
+            brain_url = brain.getURL()
+            log.info("%s/%s :: Current brain %s", count_progress, total,
+                     brain_url)
+            try:
+                obj = brain.getObject()
+            except Exception:
+                not_found.append("%s \n" % brain_url)
+                log.info("### SKIPPED not found")
+                continue
+            # no need to change Once or Weekly sparql objects
+            if obj.refresh_rate in ['Once', 'Weekly']:
+                continue
+            obj.setRefres_rate('Weekly')
+            count += 1
+            if count % 50 == 0:
+                transaction.savepoint(optimistic=True)
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE Sparql refresh fix for %d objects", count)
+        res_objs = " ".join(res_objs)
+        not_found = " ".join(not_found)
+        return "%s %s %s " % (count_message, res_objs, not_found)

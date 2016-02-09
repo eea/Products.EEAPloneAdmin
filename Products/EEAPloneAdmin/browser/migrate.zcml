@@ -193,4 +193,10 @@
         class=".migrate.CheckTemplatesForArchiveMessage"
         permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+        name="setSparqlRefreshFrequencyToWeekly"
+        class=".migrate.SetSparqlRefreshFrequencyToWeekly"
+        permission="cmf.ManagePortal" />
+
+
 </configure>
