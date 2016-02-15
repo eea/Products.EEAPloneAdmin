@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<rolemap>
+    <permissions>
+        <permission name="Delete portal content" acquire="False">
+            <role name="Manager" />
+            <role name="Owner" />
+            <role name="Site Administrator" />
+        </permission>
+    </permissions>
+</rolemap>
