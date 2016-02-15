@@ -1,6 +1,9 @@
 Changelog
 =========
 
+12.5.dev0 - (unreleased)
+------------------------
+
 12.4 - (2016-02-15)
 -------------------
 * Feature: added setSparqlRefreshFrequencyToWeekly browser view in order
