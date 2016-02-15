@@ -1,8 +1,8 @@
 Changelog
 =========
 
-12.4.dev0 - (unreleased)
-------------------------
+12.4 - (2016-02-15)
+-------------------
 * Feature: added setSparqlRefreshFrequencyToWeekly browser view in order
   to set all Sparql to Weekly expect for those set to Once
   [ichimdav refs #17334]
