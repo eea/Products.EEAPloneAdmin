@@ -2047,7 +2047,7 @@ class SetSparqlRefreshFrequencyToWeekly(object):
             # no need to change Once or Weekly sparql objects
             if obj.refresh_rate in ['Once', 'Weekly']:
                 continue
-            obj.setRefres_rate('Weekly')
+            obj.setRefresh_rate('Weekly')
             count += 1
             if count % 50 == 0:
                 transaction.savepoint(optimistic=True)
