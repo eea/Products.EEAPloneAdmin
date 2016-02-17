@@ -3,6 +3,9 @@ Changelog
 
 12.5.dev0 - (unreleased)
 ------------------------
+* Feature: added "audit-local-roles" browser view to show local roles under
+  current context
+  [danielm refs #67960]
 
 12.4 - (2016-02-15)
 -------------------

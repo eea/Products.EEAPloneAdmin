@@ -87,4 +87,11 @@
       for="*"
       permission="cmf.ModifyPortalContent" />
 
+    <browser:page
+        name="audit-local-roles"
+        for="zope.interface.Interface"
+        class=".audit_local_roles.AuditLocalRoles"
+        permission="cmf.ManagePortal"
+        />
+
 </configure>
