@@ -3,6 +3,23 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 12.2 => 12.5 -->
+    <genericsetup:upgradeSteps
+        source="12.2"
+        destination="12.5"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Remove RSS2 for EEA option from portal_registry ISyndicationSettings"
+            handler=".evolve125.remove_rss2_for_eea"
+        />
+
+        <genericsetup:upgradeStep
+            title="Modify RSS2 condition"
+            handler=".evolve125.modify_rss2_condition"
+        />
+    </genericsetup:upgradeSteps>
+
     <!-- 11.8 => 12.2 -->
     <genericsetup:upgradeSteps
         source="11.8"

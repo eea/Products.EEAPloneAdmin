@@ -3,6 +3,13 @@ Changelog
 
 12.5.dev0 - (unreleased)
 ------------------------
+* Change: override rss.xml to use the eea logic from RSS2 in order
+  to get rid of the RSS2 for EEA option which isn't added by default
+  when syndication is auto enabled
+  [ichimdav refs #68153]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [ichimdav refs #68153]
 * Feature: added "audit-local-roles" browser view to show local roles under
   current context
   [danielm refs #67960]
