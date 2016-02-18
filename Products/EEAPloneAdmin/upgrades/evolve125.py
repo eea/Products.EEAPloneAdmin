@@ -26,5 +26,4 @@ def modify_rss2_condition(context):
     document_actions = portal_actions.document_actions
     rss2 = document_actions.rss2
     rss2.url_expr = "string:$object_url/rss.xml"
-    rss2.available_expr = "object/@@syndication-util/context_enabled"
     transaction.commit()
