@@ -13,6 +13,8 @@ Changelog
 * Feature: added "audit-local-roles" browser view to show local roles under
   current context
   [danielm refs #67960]
+* Bug: quick fix to "FixEffectiveDateForPublishedObjects"
+  [lucas refs #68699]
 
 12.4 - (2016-02-15)
 -------------------

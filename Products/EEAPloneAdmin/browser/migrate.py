@@ -1608,7 +1608,7 @@ class FixEffectiveDateForPublishedObjects(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-
+    
     def __call__(self):
         """ Call method
         """
@@ -1625,7 +1625,7 @@ class FixEffectiveDateForPublishedObjects(object):
                          effective=no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
-        batch = request.get('b', 10)
+        batch = request.get('b', None)
         log.info("*** Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
@@ -1634,9 +1634,12 @@ class FixEffectiveDateForPublishedObjects(object):
         reindex_error = ["\n\n REINDEX ERRORS \n"]
         not_found = ["\n\n OBJ NOT FOUND \n"]
         history_error = ["\n\n HISTORY ERRORS \n"]
-
-        log.info("TOTAL affected: %d objects", len(brains))
-        brains = brains[:int(batch)]
+    
+        log.error("Found %s affected objects", len(brains))
+        
+        if batch is not None and batch.isdigit(): 
+            brains = brains[:int(batch)]
+        
         total = len(brains)
         count = 0
         count_progress = 0
@@ -1644,7 +1647,7 @@ class FixEffectiveDateForPublishedObjects(object):
         ignore_brain = 0
 
         log.info("Starting Effective Date index fix for %d objects", total)
-
+    
         default_lang = ["en"]
         for brain in brains:
             count_progress += 1
@@ -1703,6 +1706,9 @@ class FixEffectiveDateForPublishedObjects(object):
                 res_objs.append("\n %s - Effective Date before --> %s "
                           "after --> %s \n" % (obj_url, effective_date,
                                                         created_date))
+                if obj.effective() == no_effective_date:
+                    obj.setEffectiveDate(created_date)
+                obj.reindexObject(idxs=["EffectiveDate"])
                 count += 1
                 continue
             first_state = history[-1]
@@ -1715,11 +1721,15 @@ class FixEffectiveDateForPublishedObjects(object):
                     if created_date > date:
                         #obj.setEffectiveDate(created_date)
                         obj.edit(effectiveDate=created_date)
+                        if obj.effective() == no_effective_date:
+                            obj.setEffectiveDate(created_date)
                         log.info("EFFECTIVE DATE set: %s", created_date)
                         creationIsAfterPublish = True
                     else:
                         #obj.setEffectiveDate(date)
                         obj.edit(effectiveDate=date)
+                        if obj.effective() == no_effective_date:
+                            obj.setEffectiveDate(date)
                         log.info("EFFECTIVE DATE set: %s", date)
                     try:
                         obj.reindexObject(idxs=["EffectiveDate"])
