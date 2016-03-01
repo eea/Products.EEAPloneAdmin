@@ -1634,12 +1634,12 @@ class FixEffectiveDateForPublishedObjects(object):
         reindex_error = ["\n\n REINDEX ERRORS \n"]
         not_found = ["\n\n OBJ NOT FOUND \n"]
         history_error = ["\n\n HISTORY ERRORS \n"]
-    
-        log.error("Found %s affected objects", len(brains))
-        
+
+        log.error("Objects with affected EffectiveDate found: %s", len(brains))
+
         if batch is not None and batch.isdigit(): 
             brains = brains[:int(batch)]
-        
+
         total = len(brains)
         count = 0
         count_progress = 0
@@ -1647,7 +1647,7 @@ class FixEffectiveDateForPublishedObjects(object):
         ignore_brain = 0
 
         log.info("Starting Effective Date index fix for %d objects", total)
-    
+
         default_lang = ["en"]
         for brain in brains:
             count_progress += 1
