@@ -6,5 +6,12 @@
         visible="True">
         <permission>Manage portal</permission>
     </configlet>
+    <configlet title="EEA Audit local roles" action_id="AuditLocalRoles"
+        appId="AuditLocalRoles" category="Products" condition_expr=""
+        url_expr="string:${portal_url}/@@audit-local-roles"
+        icon_expr="string:$portal_url/maintenance_icon.png"
+        visible="True">
+        <permission>Manage portal</permission>
+    </configlet>
 </object>
 

@@ -92,6 +92,7 @@
         for="zope.interface.Interface"
         class=".audit_local_roles.AuditLocalRoles"
         permission="cmf.ManagePortal"
+        template="audit_local_roles.pt"
         />
 
 </configure>
