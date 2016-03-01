@@ -9,6 +9,7 @@ from logging import getLogger
 import csv
 
 class AuditLocalRoles(BrowserView):
+    """Local roles assigned under context"""
 
     def __init__(self, context, request):
         super(AuditLocalRoles, self).__init__(context, request)
@@ -110,7 +111,7 @@ class AuditLocalRoles(BrowserView):
         ctypes = pt.listContentTypes()
 
         types = [t for t in ctypes if t not in ctypes_ns]
-        
+
         return types
 
     def setCTypesForSelection(self, selected=()):
@@ -330,7 +331,7 @@ class AuditLocalRoles(BrowserView):
                     if found == 0:
                         result.append([a_login, list(a_roles), a_type, a_id])
 
-                for pos in range(len(result)-1,-1,-1):
+                for pos in range(len(result)-1, -1, -1):
                     result[pos][1] = tuple(result[pos][1])
                     result[pos] = tuple(result[pos])
 
