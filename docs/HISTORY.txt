@@ -1,6 +1,9 @@
 Changelog
 =========
 
+12.6.dev0 - (unreleased)
+------------------------
+
 12.5 - (2016-03-01)
 -------------------
 * Feature: Add a Control Panel entry to audit/review local roles assigned under
