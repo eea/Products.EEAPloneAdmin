@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object>
+ <difftypes>
+  <type portal_type="HelpCenterHowTo" remove="True" />
+  <type portal_type="HelpCenterTutorialPage" remove="True" />
+  <type portal_type="HelpCenterManualPage" remove="True" />
+  <type portal_type="HelpCenterFAQ" remove="True" />
+  <type portal_type="HelpCenterDefinition" remove="True" />
+  <type portal_type="HelpCenterHErrorReference" remove="True" />
+ </difftypes>
+</object>
