@@ -1636,7 +1636,9 @@ class FixEffectiveDateForPublishedObjects(object):
         history_error = ["\n\n HISTORY ERRORS \n"]
         
         if brains:
-            log.error("Objects with affected EffectiveDate found: %s", len(brains))
+            log.error(
+                "Objects with affected EffectiveDate found: %s", len(brains)
+        )
 
         if batch is not None and batch.isdigit(): 
             brains = brains[:int(batch)]
