@@ -3,230 +3,432 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_parent, aq_base
-import logging
+from plone import api
+from DateTime import DateTime
+from logging import getLogger
+import csv
 
 class AuditLocalRoles(BrowserView):
-    def __call__(self):
-        self.cat = getToolByName(self.context, 'portal_catalog')
-        self.logger = logging.getLogger("[AuditLocalRoles]")
+
+    def __init__(self, context, request):
+        super(AuditLocalRoles, self).__init__(context, request)
+
+        self.ALL_CTYPES_TXT = 'ALL TYPES'
+        self.DISPLAY_TXT = 'Display report in browser'
+        self.FILE_DOWNLOAD_TXT = 'Generate TSV file for download'
+        self.FILE_PREFIX = 'audit_local_roles_'
+
+        self.rolemaps = {}
+
         self.messages = []
-        return self.getRoles()
+        self.ctypes = []
+        self.outypes = []
 
-    def localRolesMap(self, context):
-        """ Effective local roles
-        """
+        self.brains = []
+        self.db_effectiveroles = {}
 
-        rolemap = {}
+    def __call__(self):
 
-        inherited_roles = self._inherited_roles(context)
+        req_submit = self.request.get('submit', None)
+        req_ctypes = self.request.get('ctypes', None)
+        req_outype = self.request.get('outype', None)
 
-        for login, roles, type, id in inherited_roles:
-            if roles == ('Owner',):
-                continue
-            else:
-                rolemap[id] = {
-                    'details': [login, type],
-                    'local_roles': [r for r in roles if r != 'Owner']
-                }
-
-        assigned_roles = context.acl_users._getLocalRolesForDisplay(context)
-
-        for login, roles, type, id in assigned_roles:
-            if roles == ('Owner',):
-                continue
-            elif rolemap.has_key(id):
-                add = [r for r in roles if r != 'Owner']
-                rolemap[id]['local_roles'] = list(
-                    set(rolemap[id]['local_roles']).union(set(add))
-                )
-            else:
-                rolemap[id] = {
-                    'details': [login, type],
-                    'local_roles': [r for r in roles if r != 'Owner']
-                }
-
-        return rolemap
-
-    def _inherited(self, context):
-        """Return True if local roles are inherited here. """
-
-        if getattr(aq_base(context), '__ac_local_roles_block__', None):
-            return False
-        return True
-
-    def _inherited_roles(self, context):
-        """Returns a tuple with the acquired local roles."""
-
-        if not self._inherited(context):
-            return ()
-
-        portal = getToolByName(context, 'portal_url').getPortalObject()
-
-        result = []
         cont = True
 
-        if portal != context:
-            parent = aq_parent(context)
-            while cont:
-                if not getattr(parent, 'acl_users', False):
-                    break
-                userroles = parent.acl_users._getLocalRolesForDisplay(parent)
-                for user, roles, role_type, name in userroles:
-                    # Find user in result
-                    found = 0
-                    for user2, roles2, type2, name2 in result:
-                        if user2 == user:
-                            # Check which roles must be added to roles2
-                            for role in roles:
-                                if role not in roles2:
-                                    roles2.append(role)
-                            found = 1
-                            break
-                    if found == 0:
-                        # Add it to result and make sure roles is a list so
-                        # we may append and not overwrite the loop variable
-                        result.append([user, list(roles), role_type, name])
-                if parent == portal:
-                    cont = False
-                elif not self._inherited(parent):
-                    # Role acquired check here
-                    cont = False
+        if not req_submit:
+            cont = False
+            self.setCTypesForSelection()
+            self.setOutputForSelection()
+        else:
+            if not req_ctypes:
+                cont = False
+                self.setCTypesForSelection()
+                self.messages.append((
+                    "err", "Please select content type(s)."
+                ))
+            else:
+                if isinstance(req_ctypes, str):
+                    req_ctypes = (req_ctypes,)
                 else:
-                    parent = aq_parent(parent)
+                    req_ctypes = tuple(req_ctypes)
 
-        # Tuplize all inner roles
-        for pos in range(len(result)-1, -1, -1):
-            result[pos][1] = tuple(result[pos][1])
-            result[pos] = tuple(result[pos])
+                self.setCTypesForSelection(req_ctypes)
 
-        return tuple(result)
+            if not req_outype:
+                cont = False
+                self.setOutputForSelection()
+                self.messages.append((
+                    "err", "Please select the type of output."
+                ))
+            else:
+                self.setOutputForSelection(req_outype)
 
-    def getRoles(self):
+        if not cont:
+            return self.index()
+
+        self.p_cat = getToolByName(self.context, 'portal_catalog')
+        self.acl_u = getToolByName(self.context, 'acl_users')
+        self.logger = getLogger("[AuditLocalRoles]")
+
+        self.portal = api.portal.get()
+        self.url_prefix = \
+            self.portal.absolute_url()[:-len(self.portal.absolute_url(1))-1]
+
+        self.setBrains()
+
+        if not self.brains:
+            self.messages.append((
+                "warn",
+                "No objects of selected type(s) were found " +
+                "under current context."
+            ))
+            return self.index()
+        else:
+            self.messages.append((
+                "info",
+                str(len(self.brains)) +
+                " object(s) of selected type(s)" +
+                " were found under current context."
+            ))
+
+        self.localzone = DateTime().timezone()
+
+        self.computeRoleMaps()
+
+        if req_outype == self.FILE_DOWNLOAD_TXT:
+            self.setHeadersForFileDownloadTsv()
+
+        return self.index()
+
+    def getPortalSearchedTypes(self):
+        """Returns a list with all the 'user searchable' content types"""
+
+        sp = getToolByName(self.context, 'portal_properties').site_properties
+        ctypes_ns = sp.getProperty('types_not_searched', ())
+
+        pt = getToolByName(self.context, 'portal_types')
+        ctypes = pt.listContentTypes()
+
+        types = [t for t in ctypes if t not in ctypes_ns]
+        
+        return types
+
+    def setCTypesForSelection(self, selected=()):
+        """Sets up the 'ctypes' property as a list of all the content types
+        available to the user for form selection, together with a flag which
+        marks the user's selected content types. Default value is not present.
+        """
+
+        self.ctypes = [(self.ALL_CTYPES_TXT, self.ALL_CTYPES_TXT in selected)]
+
+        types = self.getPortalSearchedTypes()
+
+        self.ctypes += \
+            [(t, t in selected and not self.ctypes[0][1]) for t in types]
+
+    def getCTypesForSelection(self):
+        """Getter fo 'ctypes' property. Called via view's template."""
+
+        return self.ctypes
+
+    def setOutputForSelection(self, selected=None):
+        """Sets up the 'outypes' property as a list of the view's output types
+        available to the user for form selection, together with a flag which
+        marks the user's selected output type. Default value is present.
+        """
+
+        if not selected:
+            selected = self.DISPLAY_TXT
+
+        self.outypes = [
+            (self.DISPLAY_TXT, self.DISPLAY_TXT == selected),
+            (self.FILE_DOWNLOAD_TXT, self.FILE_DOWNLOAD_TXT == selected)
+        ]
+
+    def getOutputForSelection(self, selected=None):
+        """Getter fo 'outype' property. Called via view's template."""
+
+        return self.outypes
+
+    def getMessages(self):
+        """Getter fo 'messages' property. Called via view's template."""
+
+        return self.messages
+
+    def getUrlPrefix(self):
+        """Getter fo 'url_prefix' property. Called via view's template."""
+
+        return self.url_prefix
+
+    def setBrains(self):
+        """Sets up the 'brains' property, based on user's selection of
+        content types
+        """
+
+        portal_types = []
+
+        for ctype, selected in self.ctypes:
+            if selected:
+                if ctype == self.ALL_CTYPES_TXT:
+                    portal_types = [t for t in self.getPortalSearchedTypes()]
+                    break
+                else:
+                    portal_types.append(ctype)
+
         context_path = '/'.join(self.context.getPhysicalPath())
 
-        brains = self.cat.queryCatalog({
+        self.brains = self.p_cat.queryCatalog({
             'path': context_path,
-            'portal_type': "Folder",
+            'portal_type': portal_types,
             'Language': 'all',
             'show_inactive': True,
             'sort_on': "path"
         })
 
-        no_brains = len(brains)
-        self.messages.append("* no. of 'Folder' objects under context: " + str(no_brains))
+    def computeRoleMaps(self):
+        """Looks for local roles within current context and stores relevant
+        info in the 'rolemaps' dictionary
+        """
 
-        rolemaps = {}
-
-        cnt = 0
-        for brain in brains:
-            cnt += 1
-
-            self.logger.info("processing object %s/%s: %s",
-                             str(cnt), str(no_brains), brain.getPath())
-            ob = brain.getObject()
-
+        err_cnt = 0
+        for brain in self.brains:
             rolemap = {}
 
             try:
-                rolemap = self.localRolesMap(ob)
+                roles = self.getEffectiveRoles(brain.getPath())
+
+                for _login, _roles, _type, _id in roles:
+                    if _roles == ('Owner',):
+                        continue
+                    else:
+                        if _type in rolemap.keys():
+                            rolemap[_type].append(
+                                (_id, tuple(r for r in _roles if r != 'Owner'))
+                            )
+                        else:
+                            rolemap[_type] = [
+                                (_id, tuple(r for r in _roles if r != 'Owner'))
+                            ]
+
             except Exception, e:
-                self.messages.append("* failed processing object '" +
-                                     brain.getPath() + "' (" + str(e) + ")")
-                self.logger.error("* failed processing object '%s' (%s)",
+                self.logger.error("Failed processing object '%s' (%s)",
                                   brain.getPath(), e)
+                err_cnt += 1
                 continue
 
             if rolemap:
-                for id in rolemap:
-                    if id in rolemaps.keys():
-                        rolemaps[id]['local_roles'].append((
-                            brain.getPath(),
-                            ob.absolute_url(),
-                            rolemap[id]['local_roles']
-                        ))
-                    else:
-                        rolemaps[id] = {
-                            'id_details': rolemap[id]['details'],
-                            'local_roles': [
-                                (
+                if brain.CreationDate != 'None':
+                    br_created = brain.created.toZone(self.localzone).ISO()
+                else:
+                    br_created = None
+
+                if brain.EffectiveDate != 'None':
+                    br_effective = brain.effective.toZone(self.localzone).ISO()
+                else:
+                    br_effective = None
+
+                if brain.ExpirationDate != 'None':
+                    br_expires = brain.expires.toZone(self.localzone).ISO()
+                else:
+                    br_expires = None
+
+                for _type in rolemap:
+                    for _id, _roles in rolemap[_type]:
+                        if _type in self.rolemaps.keys():
+                            if _id in self.rolemaps[_type].keys():
+                                self.rolemaps[_type][_id][1].append((
+                                    _roles,
                                     brain.getPath(),
-                                    ob.absolute_url(),
-                                    rolemap[id]['local_roles']
+                                    brain.review_state,
+                                    brain.portal_type,
+                                    br_created,
+                                    br_effective,
+                                    br_expires
+                                ))
+                            else:
+                                self.rolemaps[_type][_id] = (
+                                    self.isUserInactive(_id, _type),
+                                    [
+                                        (
+                                            _roles,
+                                            brain.getPath(),
+                                            brain.review_state,
+                                            brain.portal_type,
+                                            br_created,
+                                            br_effective,
+                                            br_expires
+                                        )
+                                    ]
                                 )
-                            ]
-                        }
+                        else:
+                            self.rolemaps[_type] = {
+                                _id: (
+                                    self.isUserInactive(_id, _type),
+                                    [
+                                        (
+                                            _roles,
+                                            brain.getPath(),
+                                            brain.review_state,
+                                            brain.portal_type,
+                                            br_created,
+                                            br_effective,
+                                            br_expires
+                                        )
+                                    ]
+                                )
+                            }
 
-        ids = set(rolemaps.keys())
-        user_ids = set()
-        group_ids = set()
-        oth_ids = set()
+        self.db_effectiveroles = {}
 
-        for id in ids:
-            princ_type = rolemaps[id]['id_details'][1]
-            if princ_type == 'user':
-                user_ids.add(id)
-            elif princ_type == 'group':
-                group_ids.add(id)
-            else:
-                oth_ids.add(id)
+        if err_cnt:
+            self.messages.append((
+                "err",
+                "Failed processing " +
+                    str(err_cnt) + " objects. Review logs for details."
+            ))
 
-        html = ''
+    def getEffectiveRoles(self, context_path):
+        """Returns a tuple with the effective local roles at the given
+        context path
+        """
 
-        html += '<html>'
-        html += '<head>'
-        html += '<style>'
-        html += 'p {margin: 0;}'
-        html += 'table, th, td {text-align:left;' + \
-                'border: 1px solid black; border-collapse: collapse;}'
-        html += 'h2, h3 {display: inline-block; margin-bottom: 0;}'
-        html += 'ul {margin: 0 auto;}'
-        html += 'a#up {color: grey; text-decoration: none;}'
-        html += 'span#uid {color: red;}'
-        html += '</style></head>'
-        html += '</head>'
-        html += '<body>'        
+        if context_path in self.db_effectiveroles.keys():
+            result = self.db_effectiveroles[context_path]
+            return result
 
-        html += '<h1>Effective local roles of Plone principals under current context</h1>'
+        context = api.content.get(path=context_path)
 
-        for msg in self.messages:
-            html += '<p>' + msg + '</p>'
+        a_roles = context.acl_users._getLocalRolesForDisplay(context)
+        result = a_roles
 
-        html += '<h2 id="toc">Quick links:</h2><br />'
-        if user_ids:
-            html += '<h3>User IDs:</h3>'
-            html += '<ul>'
-            for id in sorted(user_ids):
-                html += '<li><a href="#' + id + '">' + id + '</a></li>'
-            html += '</ul>'
-        if group_ids:
-            html += '<h3>Group IDs:</h3>'
-            html += '<ul>'
-            for id in sorted(group_ids):
-                html += '<li><a href="#' + id + '">' + id + '</a></li>'
-            html += '</ul>'
-        if oth_ids:
-            html += '<h3>Other IDs:</h3>'
-            html += '<ul>'
-            for id in sorted(oth_ids):
-                html += '<li><a href="#' + id + '">' + id + '</a></li>'
-            html += '</ul>'
+        if not getattr(aq_base(context), '__ac_local_roles_block__', None) \
+                and self.portal != context:
 
-        html += '<br />'
+            parent = aq_parent(context)
+            parent_path = '/'.join(parent.getPhysicalPath())
 
-        for id in rolemaps:
-            princ_type = rolemaps[id]['id_details'][1]
+            if getattr(parent, 'acl_users', False):
+                i_roles = self.getEffectiveRoles(parent_path)
 
-            html += '<h3 id="' + id + '">' + princ_type.capitalize() + \
-                    ' ID: <span id="uid">' + id + '</span></h3>' + \
-                    '<a id="up" href="#toc"> [up]</a>'
-            html += '<table>'
-            html += '<tr><th>Path</th><th>Local role(s)</th></tr>'
-            for rowdata in rolemaps[id]['local_roles']:
-                html += '<tr><td><a href="' + rowdata[1] + '">' + rowdata[0] + \
-                        '</a></td><td>' + ', '.join(rowdata[2]) + '</td></tr>'
-            html += '</table>'
+                if not a_roles:
+                    return i_roles
 
-        html += '</body>'
-        html += '</html>'
+                result = []
 
-        return html
+                for i_login, i_roles, i_type, i_id in i_roles:
+                    result.append([i_login, list(i_roles), i_type, i_id])
+
+                for a_login, a_roles, a_type, a_id in a_roles:
+                    found = 0
+                    for _login, _roles, _type, _id in result:
+                        if _id == a_id:
+                            for a_role in a_roles:
+                                if a_role not in _roles:
+                                    _roles.append(a_role)
+                            found = 1
+                            break
+                    if found == 0:
+                        result.append([a_login, list(a_roles), a_type, a_id])
+
+                for pos in range(len(result)-1,-1,-1):
+                    result[pos][1] = tuple(result[pos][1])
+                    result[pos] = tuple(result[pos])
+
+                result = tuple(result)
+
+        self.db_effectiveroles[context_path] = result
+
+        return result
+
+    def isUserInactive(self, _id, _id_type):
+        """Local roles information can point to users which do not exist
+        anymore. Returns True if such a case is identified, otherwise False.
+        """
+
+        if _id_type == 'user' and not self.acl_u.getUserById(_id):
+            return True
+        return False
+
+    def getPrincipalsForDisplay(self):
+        """Based on the 'rolemaps' dictionary, returns a 'sorted' list
+        containing details about users/groups which have local roles assigned
+        Called via view's template.
+        """
+
+        result = []
+
+        for _type in sorted(self.rolemaps.keys(), key=str.lower, reverse=True):
+            s = []
+            for _id in sorted(self.rolemaps[_type].keys(), key=str.lower):
+                _inactive = self.rolemaps[_type][_id][0]
+                s.append((_id, _inactive))
+            result.append((_type, s))
+
+        return result
+
+    def getRoleMapForDisplay(self, _type, _id):
+        """Based on the 'rolemaps' dictionary, for given user/group id,
+        returns details about local roles and the associated content objects
+        Called via view's template.
+        """
+
+        return self.rolemaps[_type][_id][1]
+
+    def getRoleMapsForFileDownloadTsv(self, field_names=True):
+        """Based on the 'rolemaps' dictionary, "prepares" the row-level data
+        that will go into a TSV-formatted file; yields/returns row data
+        in the form of tuple, not string
+        """
+
+        if field_names:
+            yield (
+                'AccessID',
+                'isUserID',
+                'userActive',
+                'LocalRoles',
+                'ObjectPath',
+                'ObjectState',
+                'ObjectType',
+                'ObjectCreationDate',
+                'ObjectEffectiveDate',
+                'ObjectExpiryDate'
+            )
+
+        for _type in self.rolemaps:
+            for _id in self.rolemaps[_type]:
+                _inactive = self.rolemaps[_type][_id][0]
+                for rowdata in self.rolemaps[_type][_id][1]:
+                    yield (
+                          _id,
+                          'True' if _type == 'user' else 'False',
+                          str(not _inactive),
+                          ', '.join(rowdata[0]),
+                          rowdata[1],
+                          rowdata[2],
+                          rowdata[3],
+                          rowdata[4] or '',
+                          rowdata[5] or '',
+                          rowdata[6] or ''
+                    )
+
+    def setHeadersForFileDownloadTsv(self):
+        """Base on the data generated by getRoleMapsForFileDownloadTsv(),
+        sets up the response's header for TSV file download, if the user
+        selected the output type as specified in the FILE_DOWNLOAD_TXT constant
+        """
+
+        contents = self.getRoleMapsForFileDownloadTsv()
+
+        tstamp = DateTime().toZone(self.localzone).strftime('%Y%m%d_%I%M%S')
+
+        self.request.response.setHeader(
+            'Content-Type',
+            'application/tsv'
+        )
+        self.request.response.setHeader(
+            'Content-Disposition',
+            'attachment; filename="' + self.FILE_PREFIX + tstamp + '.tsv"'
+        )
+
+        writer = csv.writer(self.request.response, delimiter='\t')
+        writer.writerows(contents)

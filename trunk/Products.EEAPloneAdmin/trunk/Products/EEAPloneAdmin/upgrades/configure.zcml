@@ -3,6 +3,19 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 12.5 => 12.6 -->
+    <genericsetup:upgradeSteps
+        source="12.5"
+        destination="12.6"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+        title="Import changes: add entry in Control Panel to audit local roles"
+        import_profile="Products.EEAPloneAdmin:default"
+        import_steps="controlpanel"
+        />
+    </genericsetup:upgradeSteps>
+
     <!-- 12.2 => 12.5 -->
     <genericsetup:upgradeSteps
         source="12.2"
