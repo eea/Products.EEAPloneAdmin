@@ -13,7 +13,13 @@ Changelog
 * Feature: added "audit-local-roles" browser view to show local roles under
   current context
   [danielm refs #67960]
-* Bug: quick fix to "FixEffectiveDateForPublishedObjects"
+* Bug fix: quick fix to "FixEffectiveDateForPublishedObjects"
+  [lucas refs #68699]
+* Pre-upgrade step: update eea-blacksquirrel-cron on Blacksquirrel
+  [lucas refs #68699]
+* Upgrade step: add an email alert under EEA Log Central for the
+  following log entry:
+  - Objects with affected EffectiveDate found: %s
   [lucas refs #68699]
 
 12.4 - (2016-02-15)
