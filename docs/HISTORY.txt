@@ -1,8 +1,8 @@
 Changelog
 =========
 
-12.6.dev0 - (unreleased)
-------------------------
+12.6 - (2016-03-02)
+-------------------
 * Bug fix: fixed contron panel submit actions under Apache
   [ghicaale refs #69341]
 
