@@ -1,0 +1,204 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xml:lang="en" lang="en"
+      metal:use-macro="context/prefs_main_template/macros/master"
+      i18n:domain="plone">
+    <head>
+        <metal:block metal:fill-slot="style_slot" >
+            <style type="text/css">
+                #audit-lr form legend {
+                  font-size: 125%;
+                  font-weight: bold;
+                  color: #006699;
+                  margin-bottom: 0.5em;
+                }
+                #audit-lr form ul {
+                  list-style-type: none;
+                  list-style-image: none;
+                  margin: 0 0.5em 0.5em 0.5em;
+                }
+                #audit-lr form ul li {
+                  display: inline;
+                }
+                #audit-lr form #ctypes ul li {
+                  float: left;
+                  width: 20%;
+                }
+                #audit-lr form #output ul li {
+                  margin-right: 0.5em;
+                }
+                #audit-lr form input[type="submit"] {
+                  float: right;
+                }
+                #audit-lr #qlinks>h2 {
+                  margin-bottom: 0;
+                }
+                #audit-lr #qlinks>div {
+                  float: left;
+                  padding-right: 5em;
+                  max-width: 30%;
+                }
+                #audit-lr #qlinks ul {
+                  margin: 0;
+                }
+                #audit-lr #qlinks .inactive, #audit-lr #data .inactive {
+                  color: red;
+                }
+                #audit-lr #data table {
+                  display: table;
+                  width: 100%;
+                }
+                #audit-lr #data caption {
+                  font-size: 12px;
+                  color: #006699;
+                }
+                #audit-lr #data .uid {
+                  color: #346f83;
+                  font-weight: bold;
+                }
+                #audit-lr #data th, #audit-lr #data td {
+                  padding-left: 0.5em;
+                  padding-right: 0.5em;
+                }
+                #audit-lr #data a.up {
+                  color: grey;
+                  text-decoration: none;
+                  float: right;
+                }
+            </style>
+        </metal:block>
+    </head>
+    <body>
+        <div id="audit-lr" metal:fill-slot="prefs_configlet_main">
+            <h1 class="documentFirstHeading">Local roles assigned on content under current context</h1>
+            <p class="discreet">Details about effective local roles (assigned and inherited) under the current context.</p>
+
+            <div class="portalMessage attentionMessage">
+                Retrieving local roles data may take a long time. 
+                To avoid a timeout, it is recommended to use a service instance to bypass Apache.
+            </div>
+
+            <form id="search-form" method="POST" enctype="multipart/form-data"
+                tal:attributes="action string:${here/absolute_url}/@@audit-local-roles">
+
+                <fieldset id="ctypes">
+                    <legend>Select type of content:</legend>
+                    <ul>
+                        <li tal:repeat="ctype view/getCTypesForSelection">
+                            <input type="checkbox" name="ctypes"
+                                tal:attributes="value python:ctype[0]; checked python:ctype[1]"
+                                tal:content="python:ctype[0]">
+                            </input>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <fieldset id="output">
+                    <legend>Select type of output:</legend>
+                    <ul>
+                        <li tal:repeat="outype view/getOutputForSelection">
+                          <input type="radio" name="outype"
+                              tal:attributes="value python:outype[0]; checked python:outype[1]"
+                              tal:content="python:outype[0]">
+                          </input>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <input type="submit" name="submit" value="Submit"/>
+                <div class="visualClear"></div>
+            </form>
+
+            <tal:block tal:repeat="msg view/getMessages">
+                <div class="portalMessage informationMessage"
+                    tal:condition="python:msg[0]=='info'" tal:content="python:msg[1]">
+                </div>
+                <div class="portalMessage warningMessage"
+                    tal:condition="python:msg[0]=='warn'" tal:content="python:msg[1]">
+                </div>
+                <div class="portalMessage errorMessage"
+                    tal:condition="python:msg[0]=='err'" tal:content="python:msg[1]">
+                </div>
+            </tal:block>
+
+            <tal:block tal:condition="view/getPrincipalsForDisplay"
+                 tal:define="req_url python:request['URL0'];
+                             types_cnt python:len(view.getPrincipalsForDisplay())">
+                <div id="qlinks">
+                    <h2 id="toc">Report links:</h2>
+                    <div tal:repeat="ptype view/getPrincipalsForDisplay"
+                         tal:attributes="style python:'width: %s%%' % str(100/types_cnt)">
+                        <h3 tal:content="python:ptype[0].capitalize()+' IDs'"></h3>
+                        <ul>
+                            <li tal:repeat="pdata python:ptype[1]">
+                                <a tal:attributes="href python:req_url+'#'+pdata[0]">
+                                    <tal:block tal:content="python:pdata[0]"></tal:block>
+                                    <span tal:condition="python:pdata[1]"> [<span class="inactive">not found</span>]</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="visualClear"></div>
+
+                <div id="data" tal:define="url_prefix view/getUrlPrefix">
+                    <h2>Report data:</h2>
+                    <div tal:repeat="ptype view/getPrincipalsForDisplay">
+                        <div tal:repeat="pdata python:ptype[1]">
+                            <table class="listing" tal:define="_type python:ptype[0];
+                                                               _id python:pdata[0];
+                                                               _inactive python:pdata[1]">
+                                <caption tal:attributes="id _id">
+                                    <tal:block tal:content="python:_type.capitalize()+' ID: '"></tal:block>
+                                    <span tal:content="_id" class="uid"></span>
+                                    <span tal:condition="_inactive"> [<span class="inactive">not found</span>]</span>
+                                    <a tal:attributes="href python:req_url+'#toc'; class string:up"> [up]</a>
+                                </caption>
+
+                                <thead>
+                                    <tr>
+                                        <th>Path</th>
+                                        <th>Roles</th>
+                                        <th>State</th>
+                                        <th>Type</th>
+                                        <th>Created</th>
+                                        <th>Effective</th>
+                                        <th>Expires</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr tal:repeat="rowdata python:view.getRoleMapForDisplay(_type,_id)">
+                                        <td>
+                                            <a tal:attributes="href python:url_prefix+rowdata[1]"
+                                               tal:content="python:rowdata[1]">
+                                            </a>
+                                        </td>
+                                        <td tal:content="python:', '.join(rowdata[0])"></td>
+                                        <td tal:content="python:rowdata[2]"></td>
+                                        <td tal:content="python:rowdata[3]"></td>
+                                        <td>
+                                            <tal:block condition="python:rowdata[4]"
+                                                       content="python:rowdata[4][:10]" />
+                                        </td>
+                                        <td>
+                                            <tal:block condition="python:rowdata[5]"
+                                                       content="python:rowdata[5][:10]" />
+                                        </td>
+                                        <td>
+                                            <tal:block condition="python:rowdata[6]"
+                                                       content="python:rowdata[6][:10]" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </tal:block>
+        </div>
+    </body>
+</html>
