@@ -415,6 +415,30 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@sparql-schedule-controlpanel
+  form = jQuery('form[action*="@@sparql-schedule-controlpanel"]', context);
+  if(form.length && window.location.hostname != 'localhost'){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@sparql-schedule-controlpanel', 'www/@@sparql-schedule-controlpanel')
+      });
+    });
+  }
+
+  // @@audit-local-roles
+  form = jQuery('form[action*="@@audit-local-roles"]', context);
+  if(form.length){
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@audit-local-roles',
+      newVal: 'www/@@audit-local-roles'
+    });
+  }
+
 };
 
 
