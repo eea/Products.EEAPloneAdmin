@@ -84,6 +84,12 @@ def patched_resolve_image(self, src):
     if image is None:
         return None, None, src, description
     #PATCH: end of code change
-    src = image.absolute_url() + appendix
+
+    #PATCH:start of code change
+    # 70194 image scales have unicode names and path should be normal
+    # strings otherwise we will get errors when editors use relative
+    # path for images
+    src = str(image.absolute_url()) + appendix
+    #PATCH: end of code change
     description = aq_acquire(fullimage, 'Description')()
     return image, fullimage, src, description

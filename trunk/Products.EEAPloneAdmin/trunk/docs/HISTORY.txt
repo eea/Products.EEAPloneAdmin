@@ -3,6 +3,10 @@ Changelog
 
 12.7.dev0 - (unreleased)
 ------------------------
+* Bug fix: patch patch_plone_outputfilters.patched_resolve_image in order
+  to have non unicode absolute_urls
+  [ichimdav refs #70194]
+
 
 12.6 - (2016-03-02)
 -------------------
