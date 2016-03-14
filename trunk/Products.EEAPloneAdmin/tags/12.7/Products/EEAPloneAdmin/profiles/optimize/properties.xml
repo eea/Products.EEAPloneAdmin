@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<site>
+ <property name="title">European Environment Agency (EEA)</property>
+ <property
+    name="description">The European Environment Agency (EEA) is an agency of the European Union. Our task is to provide sound, independent information on the environment. We are a major information source for those involved in developing, adopting, implementing and evaluating environmental policy, and also the general public. Currently, the EEA has 32 member countries.</property>
+ <property name="selectable_views" type="lines">
+  <element value="folder_listing"/>
+  <element value="news_listing"/>
+ </property>
+ <property name="email_from_address"
+    type="string">webadmin@eea.europa.eu</property>
+ <property name="email_from_name" type="string">EEA web admin</property>
+ <property name="validate_email" type="boolean">False</property>
+ <property name="default_charset" type="string">utf-8</property>
+ <property name="enable_permalink" type="boolean">False</property>
+ <property name="left_slots" type="lines"/>
+ <property name="right_slots" type="lines"/>
+ <property name="layout" type="string">frontpage_view</property>
+ <property name="default_page" type="string">eea-cms</property>
+ <property name="enquiry_email"
+    type="string">ic.enquiries@eea.europa.eu</property>
+ <property name="send_workflow_emails" type="boolean">True</property>
+ <property name="manually_added_portlets" type="lines">
+  <element value="publications_topic"/>
+  <element value="articles_topic"/>
+  <element value="emep-eea-air-pollutant-emission-inventory-guidebook"/>
+  <element value="emep"/>
+ </property>
+ <property name="email_charset" type="string">utf-8</property>
+</site>

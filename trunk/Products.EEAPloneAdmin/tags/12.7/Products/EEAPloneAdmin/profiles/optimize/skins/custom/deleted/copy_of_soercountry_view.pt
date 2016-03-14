@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+  <body>
+
+    <div metal:fill-slot="content-core">
+
+      <metal:main-macro define-macro="content-core">
+        <div class="visualClear"></div>
+        <metal:top-macro define-macro="topinfo"
+          tal:define="view context/@@soerCountryView;
+          intro view/countryIntroduction;
+          channel view/channel;">
+          <h2 tal:content="intro/title|nothing"
+            tal:condition="intro">
+            Title or id
+          </h2>
+
+          <div class="soerHeader">
+            <dl id="channel-portlet" class="portlet" metal:define-macro="channel"
+              tal:define="channel channel|nothing"
+              tal:condition="channel">
+              <dt class="portletHeader">
+                <a href="" title="" class="websource-box fancybox discreet"
+                  tal:attributes="href string:#channelSource;
+                  title string:Channel source">more info</a>
+                <div class="hiddenStructure">
+                  <div id="channelSource" class="websource-info" >
+                    <img src=""
+                      tal:attributes="src python:channel['localLogo'] and 'logo/image_preview' or  channel['organisationLogoURL'];
+                      alt channel/organisationName|nothing" />
+                    <br />
+                    <dl>
+                      <dt>Organisation name</dt>
+                      <dd tal:content="channel/organisationName">Organisation name</dd>
+                      <dt>Reportin country</dt>
+                      <dd tal:content="context/getSoerCountryName|context/Title">Norway</dd>
+                      <dt>Organisation website</dt>
+                      <dd><a href="" title=""
+                          tal:attributes="href channel/organisationURL">Organisation website</a></dd>
+                      <dt>Contact link</dt>
+                      <dd><a href="" title=""
+                          tal:attributes="href channel/organisationContactURL">Contact link</a></dd>
+                      <dt>Last updated</dt>
+                      <dd tal:content="python:plone_view.toLocalizedTime(channel['updated'])">2010-05-07</dd>
+                      <dt>Content license</dt>
+                      <dd><a href="" title=""
+                          tal:attributes="href channel/license">CC By 2.5</a></dd>
+                    </dl>
+                  </div>
+                </div>
+                Content provider</dt>
+              <dd class="portletItem">
+                <a href="" title="" class="fancybox"
+                  tal:attributes="href string:#channelSource;
+                  title string:Channel source">
+                  <img src=""
+                    tal:attributes="src python:channel['localLogo'] and 'logo/image_preview' or  channel['organisationLogoURL'];
+                    alt channel/organisationName" /></a></dd>
+            </dl>
+            <!-- DISABLED location portlet until service works again.
+            <dl id="location-portlet" class="portlet" tal:condition="nocall:intro">
+              <dt class="portletHeader">
+                <a href="" title="" class="websource-box fancybox"
+                  tal:attributes="href string:#locationSource;
+                  title string:Reporting country"
+                  i18n:attributes="title">Source</a>
+                <div class="hiddenStructure">
+                  <div id="locationSource" class="websource-info">
+                    <dl>
+                      <dt>Reporting country</dt>
+                      <dd tal:content="context/Title">Norway</dd>
+                      <dd class="portletItem">
+                        <img src="" title=""
+                          tal:attributes="src view/getMapUrl" /></dd>
+                    </dl>
+                  </div>
+                </div>
+                <tal i18n:translate="Reporting country">Reporting country</tal></dt>
+              <dd class="portletItem">
+                <img src="" title="" width="200"
+                  tal:attributes="src view/getMapUrl" /></dd>
+            </dl>
+            END disabled location portlet-->
+          </div>
+
+          <div tal:condition="nocall:intro" tal:omit-tag="">
+            <p tal:replace="structure intro/text">
+              Proin orci lacus, vestibulum porta interdum ac, rutrum a leo.
+              Morbi adipiscing tortor nec erat rhoncus feugiat. Pellentesque
+              quis neque et nunc ultricies rutrum. Etiam lacus leo, luctus ut
+              egestas id, suscipit vitae mauris. Integer fringilla diam ac
+              turpis semper fringilla id id dui. Proin eget suscipit est. Donec
+              imperdiet eros ac sem tristique sodales.
+              Quisque pharetra mattis erat sed bibendum. Nam quam tellus,
+              interdum eu mollis a, porttitor sit amet ipsum.
+            </p>
+            <p>
+              <a href="soertopic_view?topic=country introduction" class="moreLink">
+                Country profile: read more</a>
+            </p>
+          </div>
+
+          <div class="visualClear"><!-- --></div>
+
+          <h3>Browse by topic</h3>
+          <ul class="topicmenu">
+            <li><a href="soertopic_view?topic=air pollution" title="Reports about Air pollution">Air pollution</a></li>
+            <li><a href="soertopic_view?topic=climate change" title="Reports about climate change mitigation">Climate change mitigation</a></li>
+            <li><a href="soertopic_view?topic=biodiversity" title="Reports about Nature protection and biodiversity">Nature protection and biodiversity</a></li>
+            <li><a href="soertopic_view?topic=land" title="Reports about Land use">Land use</a></li>
+            <li><a href="soertopic_view?topic=freshwater" title="Reports about Freshwater">Freshwater</a></li>
+            <li><a href="soertopic_view?topic=waste" title="Reports about Waste">Waste</a></li>
+            <li tal:define="flex python:context.getFolderContents(contentFilter={'portal_type':'FlexibilityReport'});
+                            flex python:flex[0].getObject() if flex else None;"
+                tal:condition="nocall:flex|nothing"><a href="../find#c11=FlexibilityReport&geo1=" title="National and regional story" class="internallink"
+                tal:attributes="href python:'../find#c11=FlexibilityReport&' + view.getRegionsUrl('geo1')">National and regional stories</a></li>
+          </ul>
+          <div class="visualClear"></div>
+          <h3>Search</h3>
+          <ul class="topicmenu">
+            <li><a href="../find#geo1=" title="Search all reports" class="internallink"
+                tal:attributes="href python:'../find#' + view.getRegionsUrl('geo1')">Search all reports from <tal:country content="context/Title" /></a></li>
+          </ul>
+        </metal:top-macro>
+        <div class="visualClear"></div>
+
+        <div class="content-column-one">
+        </div>
+
+        <div class="content-column-two">
+        </div>
+      </metal:main-macro>
+    </div>
+
+  </body>
+</html>
