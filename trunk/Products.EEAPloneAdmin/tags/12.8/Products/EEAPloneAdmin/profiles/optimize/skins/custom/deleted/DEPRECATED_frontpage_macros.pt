@@ -1,0 +1,209 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="eea" tal:omit-tag="">
+
+<div metal:define-macro="news"
+     id="news-highlights"
+     class="highlights"
+     tal:define="frontpage_view context/@@frontpage_highlights;
+                 folderContents frontpage_view/getNews;
+                 plone_view nocall:plone_view|context/@@plone;
+                 hide_listing python: False;
+                 hide_album python: True;
+                 more_href string:highlights;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-condition" />
+</div>
+
+<h2 tal:define="statusMessage python:request.get('statusMessage'); 
+                   domain python:request.get('domain')" 
+       tal:attributes="i18n:domain domain; 
+                       i18n:translate string:">someText</h2>
+<metal:featured metal:define-macro="featured-item"
+     tal:define="featured_class featured_class|context/@@frontpage_highlights;
+                 nr_items nr_items|python:1; 
+                 highlights highlights|featured_class/getHighArticles;
+                 plone_view nocall:plone_view|context/@@plone;
+                 descr_max_length descr_max_length|python:200;
+                 archive_href archive_href|nothing;"
+                 tal:condition="highlights"
+                 i18n:domain="eea">
+
+    <tal:translate tal:condition="archive_href">
+    <a tal:attributes="href archive_href; class string: archives">
+        <span metal:define-slot="archive">Archive or title for more items</span></a>
+    </tal:translate>
+     <metal:items tal:repeat="highlight python:highlights[:nr_items]">
+        <tal:item tal:define="
+                              url highlight/getURL|highlight/getUrl;
+                              title highlight/Title|highlight/getNewsTitle;
+                              description highlight/Description|highlight/getTeaser;
+                              is_video python:highlight.portal_type == 'File';">
+            <div class="featured roundedCorners">
+                    <h2 class="column-title" i18n:domain="eea" i18n:translate="">
+                                                        <span  
+                                                        tal:omit-tag="" metal:define-slot="box_title">Box Name (Title that shows up)</span>
+                    </h2>
+                <div class="featured-highlights">
+                    <div class="figure-left">
+                        <tal:cond tal:condition="is_video">
+                        <a href="#" class="noPrint"
+                                    tal:attributes="href url; class string:video-fancybox;">
+                            <img alt="" tal:attributes="src string:${url}/image_preview; title title; alt title" />
+                        </a>
+                        </tal:cond>
+                        <tal:notcond tal:condition="not:is_video">
+                            <img alt="" tal:attributes="src string:${url}/image_preview; title title; alt title" />
+                        </tal:notcond>
+                    </div>
+                
+                <tal:cond tal:condition="is_video">
+                    <h3 class="highlight">
+                        <a href="#" class="noPrint"
+                            tal:attributes="href url; class string:video-fancybox;"
+                           tal:content="title">
+                               Highlight Title</a></h3>
+                    <p tal:content="python:plone_view.cropText(description,descr_max_length)">description</p>
+                    <p><a href="#" class="moreLink"
+                            tal:attributes="href string:${url}/view" i18n:translate="read_more">Read more</a></p>
+                </tal:cond>
+
+                <tal:nocond tal:condition="not:is_video">
+                    <h3 class="highlight">
+                        <a href="#" class="noPrint"
+                            tal:attributes="href url;"
+                           tal:content="title">
+                               Highlight Title</a></h3>
+                    <p tal:content="python:plone_view.cropText(description,descr_max_length)">description</p>
+                    <p><a href="#" class="moreLink"
+                            tal:attributes="href url;" i18n:translate="read_more">Read more</a></p>
+                </tal:nocond>
+                </div>
+         </tal:item>
+  </metal:items>
+</metal:featured>
+
+<div metal:define-macro="publications"
+     id="publications-highlights"
+     class="highlights"
+     tal:define="hide_listing python: False;
+                 hide_album python: True;
+                 more_href string:publications;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-empty" />
+</div>
+
+<div metal:define-macro="articles"
+     class="highlights"
+     id="articles-highlights"
+     tal:define="hide_listing python: False;
+                 hide_album python: True;
+                 more_href string:articles;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-empty" />
+</div>
+
+<div metal:define-macro="multimedia"
+     class="highlights"
+     id="multimedia-highlights"
+     tal:define="hide_album python: False;
+                 hide_listing python: True;
+                 more_href string:multimedia;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-empty" />
+</div>
+
+<div metal:define-macro="allproducts"
+     class="highlights"
+     id="allproducts-highlights"
+     tal:define="hide_album python: False;
+                 hide_listing python: True;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-empty" />
+</div>
+
+
+<div metal:define-macro="datamaps"
+     class="highlights"
+     id="datamaps-highlights" 
+     tal:define="hide_album python: False;
+                 hide_listing python: True;
+                 more_href string:data-and-maps;">
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-empty" />
+</div>
+
+<div metal:define-macro="more-link" class="portletFooter"
+    tal:define="more_href more_href|string:/;
+                more_title more_title|string:All items">
+                <p><a title="archive" class="standardButton" 
+                      tal:attributes="href more_href;" i18n:translate=""><span i18n:name="portlet_footer_read_more" 
+                                                        tal:content="more_title"
+                                                        tal:omit-tag="">All items</span>
+                    </a>
+                </p>
+</div>
+
+<metal:gallery-items define-macro="gallery-items"
+                     tal:define="visible_album python: 'hiddenStructure' if hide_album else '';
+                                 visible_listing python: 'hiddenStructure' if hide_listing else '';">
+        <div class="gallery-ajax visualClear">
+            <div tal:attributes="class string: gallery-listing ${visible_listing}">
+                <div metal:use-macro="here/folder_summary_view/macros/listing"></div>
+            </div>
+            <tal:enabled tal:define="enabled python: True">
+                <div tal:attributes="class string: gallery-album ${visible_album}">
+                    <div metal:use-macro="here/atct_album_view/macros/listing-nobatch"></div>
+                </div>
+            </tal:enabled>
+        </div>
+</metal:gallery-items>
+
+<metal:ajax-items define-macro="ajax-items">
+            <div class="gallery-listing">
+                <div metal:use-macro="here/folder_summary_view/macros/listing"></div>
+            </div>
+            <div class="gallery-album">
+                <tal:enabled tal:define="enabled python: True">
+                    <div metal:use-macro="here/atct_album_view/macros/listing-nobatch"></div>
+                </tal:enabled>
+            </div>
+</metal:ajax-items>
+
+<metal:gallery-layout-selection metal:define-macro="gallery-layout-selection">
+     <p class="filter-topic"></p>
+     <ul class="gallery-layout-selection"
+         tal:define="active_list python:' active-list' if not hide_listing else '';
+                     active_album python:' active-album' if not hide_album else '';">
+            <li><a href="#" tal:attributes="class string:list-layout${active_list}"></a></li>
+            <li><a href="#" tal:attributes="class string:album-layout${active_album}"></a></li>
+        </ul>
+        <div metal:use-macro="here/frontpage_macros/macros/gallery-items" />
+        <div metal:use-macro="here/frontpage_macros/macros/more-link" />
+</metal:gallery-layout-selection>
+
+<metal:condition metal:define-macro="gallery-condition">
+    <tal:cond tal:condition="folderContents"
+        tal:define="ajax ajax|nothing;
+        limit_display limit_display|nothing;
+        foldermacro python:context.frontpage_macros.macros['ajax-items'] if ajax else context.frontpage_macros.macros['gallery-layout-selection'];">
+        <div metal:use-macro="foldermacro" />
+    </tal:cond>
+    <tal:nocond tal:condition="not:folderContents">
+    <div style="display:none">plone: XXX this is a workaround, somehow the first div from this folder gets it's content removed</div>
+        <div class='portalMessage informationMessage'><p i18n:translate="no-topics">No results are available for this topic</p></div>
+    </tal:nocond>
+</metal:condition>
+
+<metal:empty metal:define-macro="gallery-empty" tal:define="more_title string:All items;">
+     <p class="filter-topic"></p>
+     <ul class="gallery-layout-selection"
+         tal:define="active_list python:' active-list' if not hide_listing else '';
+                     active_album python:' active-album' if not hide_album else '';">
+            <li><a href="#" tal:attributes="class string:list-layout${active_list}"></a></li>
+            <li><a href="#" tal:attributes="class string:album-layout${active_album}"></a></li>
+        </ul>
+    <div class="gallery-ajax visualClear">
+        <div class="gallery-listing">
+        </div>
+        <div class="gallery-album">
+        </div>
+    </div>
+    <div metal:use-macro="here/frontpage_macros/macros/more-link" />
+</metal:empty>
+
+</html>

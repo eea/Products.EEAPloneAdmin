@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel" meta_type="Plone Control Panel Tool">
+    <configlet title="Reorder Resources" action_id="ReorderResources"
+        appId="ReorderResources" category="Plone" condition_expr=""
+        url_expr="string:${portal_url}/@@reorder_css"
+        visible="True">
+        <permission>Manage portal</permission>
+    </configlet>
+    <configlet title="EEA Audit local roles" action_id="AuditLocalRoles"
+        appId="AuditLocalRoles" category="Products" condition_expr=""
+        url_expr="string:${portal_url}/@@audit-local-roles"
+        icon_expr="string:$portal_url/maintenance_icon.png"
+        visible="True">
+        <permission>Manage portal</permission>
+    </configlet>
+</object>
+
