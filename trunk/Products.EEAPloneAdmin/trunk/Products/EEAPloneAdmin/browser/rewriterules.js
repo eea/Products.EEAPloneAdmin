@@ -430,7 +430,7 @@ jQuery.eearewriterules = function(context){
   }
 
   // @@audit-local-roles
-  form = jQuery('form[action*="@@audit-local-roles"]', context);
+  form = jQuery('form[action*="www.eea.europa.eu/@@audit-local-roles"]', context);
   if(form.length){
     jQuery(form).eearewrite({
       attr: 'action',

@@ -3,6 +3,8 @@ Changelog
 
 12.8.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed control panel submit action under Apache
+  [danielm refs #69940]
 
 12.7 - (2016-03-14)
 -------------------
