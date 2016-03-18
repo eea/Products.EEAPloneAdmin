@@ -3,6 +3,8 @@ Changelog
 
 12.9.dev0 - (unreleased)
 ------------------------
+* Pre-upgrade step: on each backend install openldap/openldap-devel >= 2.4.33
+  [danielm refs #69379]
 
 12.8 - (2016-03-14)
 -------------------
