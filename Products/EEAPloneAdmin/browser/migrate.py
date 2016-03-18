@@ -4,6 +4,7 @@ from Acquisition import aq_base
 from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from Products.CMFCore.permissions import AccessContentsInformation, View
 from pprint import pprint
 from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
@@ -2068,6 +2069,62 @@ class SetSparqlRefreshFrequencyToWeekly(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE Sparql refresh fix for %d objects", count)
+        res_objs = " ".join(res_objs)
+        not_found = " ".join(not_found)
+        return "%s %s %s " % (count_message, res_objs, not_found)
+
+
+class RemovePermissionsForNewState(object):
+    """ Remove permissions for new state
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("New state permisssion removal")
+        log.info("*** New state permisssion removal")
+        catalog = getToolByName(self.context, 'portal_catalog')
+
+        log.info("*** Catalog search start")
+        brains = catalog(review_state="new",
+                         Language="all",
+                         show_inactive=True)
+        log.info("*** Catalog search ended")
+
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+
+        log.info("TOTAL affected: %d objects", len(brains))
+        total = len(brains)
+        count = 0
+        count_progress = 0
+
+        log.info("Starting new state refresh for %d objects", total)
+        not_found = []
+        for brain in brains:
+            count_progress += 1
+            brain_url = brain.getURL()
+            log.info("%s/%s :: Current brain %s", count_progress, total,
+                     brain_url)
+            try:
+                obj = brain.getObject()
+                obj.manage_permission(AccessContentsInformation, acquire=0)
+                obj.manage_permission(View, acquire=0)
+                obj.reindexObject()
+            except Exception:
+                not_found.append("%s \n" % brain_url)
+                log.info("### SKIPPED not found")
+                continue
+
+            count += 1
+            if count % 50 == 0:
+                transaction.savepoint(optimistic=True)
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE new state refresh fix for %d objects", count)
         res_objs = " ".join(res_objs)
         not_found = " ".join(not_found)
         return "%s %s %s " % (count_message, res_objs, not_found)
