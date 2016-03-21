@@ -2120,7 +2120,8 @@ class RemovePermissionsForNewState(object):
                 obj.manage_permission(AccessContentsInformation,
                                    access_roles,   acquire=0)
                 obj.manage_permission(View, view_roles, acquire=0)
-                obj.reindexObject()
+                obj.reindexObjectSecurity()
+                res_objs.append(obj.absolute_url(1))
             except Exception:
                 not_found.append("%s \n" % brain_url)
                 log.info("### SKIPPED not found")
