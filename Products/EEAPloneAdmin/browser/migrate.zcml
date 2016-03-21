@@ -198,5 +198,9 @@
         class=".migrate.SetSparqlRefreshFrequencyToWeekly"
         permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+        name="removePermissionsForNewState"
+        class=".migrate.RemovePermissionsForNewState"
+        permission="cmf.ManagePortal" />
 
 </configure>

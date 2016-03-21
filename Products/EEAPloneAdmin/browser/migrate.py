@@ -2110,8 +2110,16 @@ class RemovePermissionsForNewState(object):
                      brain_url)
             try:
                 obj = brain.getObject()
-                obj.manage_permission(AccessContentsInformation, acquire=0)
-                obj.manage_permission(View, acquire=0)
+                view_permissions = obj.rolesOfPermission("View")
+                view_roles = [i['name'] for i in view_permissions if
+                              i['selected'] == 'SELECTED']
+                access_permissions = obj.rolesOfPermission(
+                    "Access contents information")
+                access_roles = [i['name'] for i in access_permissions if
+                              i['selected'] == 'SELECTED']
+                obj.manage_permission(AccessContentsInformation,
+                                   access_roles,   acquire=0)
+                obj.manage_permission(View, view_roles, acquire=0)
                 obj.reindexObject()
             except Exception:
                 not_found.append("%s \n" % brain_url)
