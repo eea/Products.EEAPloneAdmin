@@ -5,6 +5,9 @@ Changelog
 ------------------------
 * Upgrade step: run with www8 /www/@@removeAcquireFlagForNewWorkflowState
   [ichimdav refs #70307]
+* Feature: added removeAcquireFlagForNewWorkflowState script in order to remove
+  acquire flag for new state
+  [ichimdav refs #70307]
 * Pre-upgrade step: on each backend install openldap/openldap-devel >= 2.4.33
   [danielm refs #69379]
 
