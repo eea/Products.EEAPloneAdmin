@@ -2074,8 +2074,8 @@ class SetSparqlRefreshFrequencyToWeekly(object):
         return "%s %s %s " % (count_message, res_objs, not_found)
 
 
-class RemovePermissionsForNewState(object):
-    """ Remove permissions for new state
+class RemoveAcquireFlagForNewWorkflowState(object):
+    """ Remove acquire flag for new workflow state
     """
     def __init__(self, context, request):
         self.context = context
@@ -2095,6 +2095,7 @@ class RemovePermissionsForNewState(object):
         log.info("*** Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
+        skipped_objs = ["\n\n SKIPPED OBJS \n"]
 
         log.info("TOTAL affected: %d objects", len(brains))
         total = len(brains)
@@ -2110,6 +2111,12 @@ class RemovePermissionsForNewState(object):
                      brain_url)
             try:
                 obj = brain.getObject()
+                obj_id = obj.id
+                if '.pdf' in brain_url or '.epub' in brain_url:
+                    parent = obj.aq_parent
+                    if parent.id == obj_id.split('.')[0]:
+                        skipped_objs.append(brain_url)
+
                 view_permissions = obj.rolesOfPermission("View")
                 view_roles = [i['name'] for i in view_permissions if
                               i['selected'] == 'SELECTED']
@@ -2121,7 +2128,7 @@ class RemovePermissionsForNewState(object):
                                    access_roles,   acquire=0)
                 obj.manage_permission(View, view_roles, acquire=0)
                 obj.reindexObjectSecurity()
-                res_objs.append(obj.absolute_url(1))
+                res_objs.append(obj.absolute_url())
             except Exception:
                 not_found.append("%s \n" % brain_url)
                 log.info("### SKIPPED not found")
@@ -2134,6 +2141,7 @@ class RemovePermissionsForNewState(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE new state refresh fix for %d objects", count)
-        res_objs = " ".join(res_objs)
-        not_found = " ".join(not_found)
-        return "%s %s %s " % (count_message, res_objs, not_found)
+        res_objs = "\n".join(res_objs)
+        not_found = "\n".join(not_found)
+        skipped_objs = "\n".join(skipped_objs)
+        return "%s %s %s %s" % (count_message, res_objs, not_found, skipped_objs)

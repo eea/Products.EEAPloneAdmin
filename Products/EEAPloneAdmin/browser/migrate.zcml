@@ -199,8 +199,8 @@
         permission="cmf.ManagePortal" />
 
     <browser:page for="*"
-        name="removePermissionsForNewState"
-        class=".migrate.RemovePermissionsForNewState"
+        name="removeAcquireFlagForNewWorkflowState"
+        class=".migrate.RemoveAcquireFlagForNewWorkflowState"
         permission="cmf.ManagePortal" />
 
 </configure>
