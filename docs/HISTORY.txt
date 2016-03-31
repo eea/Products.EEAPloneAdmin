@@ -67,7 +67,7 @@ Changelog
 -------------------
 * Upgrade step: invalidate all PDFs from the filesystem
   [danielm refs #67840]
-* Bug: Translations affect publishing date of articles
+* Bug fix: Translations affect publishing date of articles
   Added ReportEffectiveDateForPublishedObjects script that generates a full
   report about objects missing EffectiveDate
   (derived from FixEffectiveDateForPublishedObjects).
