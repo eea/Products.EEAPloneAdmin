@@ -1,8 +1,8 @@
 Changelog
 =========
 
-12.9.dev0 - (unreleased)
-------------------------
+12.9 - (2016-03-31)
+-------------------
 * Upgrade step: run with www8 /www/@@removeAcquireFlagForNewWorkflowState
   [ichimdav refs #70307]
 * Feature: added removeAcquireFlagForNewWorkflowState script in order to remove
