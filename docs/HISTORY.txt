@@ -3,6 +3,8 @@ Changelog
 
 13.0.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed script to fix and detect missing EffectiveDate
+  [alecghica refs #68990]
 
 12.9 - (2016-03-31)
 -------------------

@@ -1609,25 +1609,31 @@ class FixEffectiveDateForPublishedObjects(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-    
+
     def __call__(self):
         """ Call method
         """
-        log = logging.getLogger("EffectiveFix")
-        log.info("*** Starting Effective Date index report")
+        log = logging.getLogger("EffectiveData fix:")
+        log.info("Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
+
+        search_date = DateTime('1001/01/01 00:00:00')
+        search_no_effective_date = {
+            'query': search_date,
+            'range': 'max'
+        }
 
         no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
 
-        log.info("*** Catalog search start")
+        log.info("Catalog search start")
         brains = catalog(review_state="published",
                          Language="all",
-                         effective=no_effective_date,
+                         effective=search_no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
         batch = request.get('b', None)
-        log.info("*** Catalog search ended")
+        log.info("Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
         skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
@@ -1670,7 +1676,7 @@ class FixEffectiveDateForPublishedObjects(object):
                 obj = brain.getObject()
             except Exception:
                 not_found.append("%s \n" % obj_url)
-                log.info("### SKIPPED not found")
+                log.info("SKIPPED not found")
                 continue
 
             if obj.getTranslationLanguages() != default_lang:
@@ -1696,7 +1702,7 @@ class FixEffectiveDateForPublishedObjects(object):
                 if not canSetEffectiveDate:
                     skipped_objs.append("%s \n" % obj_url)
                     skipped_objs_count += 1
-                    log.info("### SKIPPED getTranslationLanguages")
+                    log.info("SKIPPED getTranslationLanguages")
                     continue
             history = None
             try:
@@ -1704,7 +1710,7 @@ class FixEffectiveDateForPublishedObjects(object):
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
-                log.info("### No history, set creation date")
+                log.info("No history, set creation date")
                 obj.edit(effectiveDate=created_date)
                 log.info("EFFECTIVE DATE set: %s", created_date)
                 res_objs.append("\n %s - Effective Date before --> %s "
@@ -1739,7 +1745,7 @@ class FixEffectiveDateForPublishedObjects(object):
                         obj.reindexObject(idxs=["EffectiveDate"])
                     except Exception, err:
                         reindex_error.append("%s --> %s \n" % (obj_url, err))
-                        log.info("### ERROR on reindex")
+                        log.info("ERROR on reindex")
                         continue
 
                     if creationIsAfterPublish:
@@ -1753,7 +1759,7 @@ class FixEffectiveDateForPublishedObjects(object):
 
                     count += 1
                     if count % 100 == 0:
-                        log.info('INFO: Transaction committed to zodb (%s/%s)',
+                        log.info('Transaction committed to zodb (%s/%s)',
                                  count, total)
                         transaction.commit()
                     log.info("### BREAK ###")
@@ -1784,20 +1790,25 @@ class ReportEffectiveDateForPublishedObjects(object):
     def __call__(self):
         """ Call method
         """
-        log = logging.getLogger("EffectiveReport")
+        log = logging.getLogger("EffectiveData report:")
         log.info("*** Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
 
+        search_date = DateTime('1001/01/01 00:00:00')
+        search_no_effective_date = {
+            'query': search_date,
+            'range': 'max'
+        }
         no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
 
-        log.info("*** Catalog search start")
+        log.info("Catalog search start")
         brains = catalog(review_state="published",
                          Language="all",
-                         effective=no_effective_date,
+                         effective=search_no_effective_date,
                          show_inactive=True)
         request = self.context.REQUEST
-        log.info("*** Catalog search ended")
+        log.info("Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
         skipped_objs = ["\n\n SKIPPED OBJS WITH TRANSLATIONS" \
@@ -1832,7 +1843,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                 obj = brain.getObject()
             except Exception:
                 not_found.append("%s \n" % obj_url)
-                log.info("### SKIPPED not found")
+                log.info("SKIPPED not found")
                 continue
 
             if obj.getTranslationLanguages() != default_lang:
@@ -1858,7 +1869,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                 if not canSetEffectiveDate:
                     skipped_objs.append("%s \n" % obj_url)
                     skipped_objs_count += 1
-                    log.info("### SKIPPED getTranslationLanguages")
+                    log.info("SKIPPED getTranslationLanguages")
                     continue
             history = None
             try:
@@ -1866,7 +1877,7 @@ class ReportEffectiveDateForPublishedObjects(object):
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
-                log.info("### SKIPPED no history")
+                log.info("SKIPPED no history")
                 continue
             first_state = history[-1]
             for entry in history:
