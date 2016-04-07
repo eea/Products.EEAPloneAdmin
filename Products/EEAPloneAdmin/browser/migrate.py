@@ -1758,9 +1758,9 @@ class FixEffectiveDateForPublishedObjects(object):
                             "after --> %s \n" % (obj_url, effective_date, date))
                     log.info("### BREAK")
                     break
-            if count_progress % 10 == 0:
+            if count_progress % 5 == 0:
                 log.info('Transaction committed to zodb (%s/%s)',
-                         count, total)
+                         count_progress, total)
                 transaction.commit()
         skipped_obj_count_message = "\n SKIPPED OBJECTS TOTAL: %d" % \
                 skipped_objs_count
