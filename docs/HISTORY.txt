@@ -11,6 +11,10 @@ Changelog
     - [chiridra refs #70431]
 * Bug fix: fixed typo in log message
   [alecghica refs #70987]
+* Upgrade step: update Garylog stream rule
+    - http://logs.apps.eea.europa.eu/streams/56d6f68de4b078ab5e1df60c/rules
+    - change from "EffectiveData status:" into "EffectiveDate status:"
+    - [alecghica refs #70987]
 
 13.0 - (2016-04-12)
 -------------------
