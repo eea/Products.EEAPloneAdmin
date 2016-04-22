@@ -3,6 +3,11 @@ Changelog
 
 13.1.dev0 - (unreleased)
 ------------------------
+* Upgrade step: re-import control panel profile from "EEA Plone Admin upgrade profile for v11.2"
+  [alecghica refs #70987]
+* AttributeError: @@g_earth
+  removed any trace of google_earth from all actions.xml
+  [chiridra refs #70431]
 
 13.0 - (2016-04-12)
 -------------------

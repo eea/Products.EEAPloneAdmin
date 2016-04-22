@@ -46,9 +46,7 @@
     <object name="gearth" meta_type="CMF Action" i18n:domain="plone">
       <property name="title" i18n:translate="">Google Earth view</property>
       <property name="description" i18n:translate=""></property>
-      <property name="url_expr">string:$object_url/google_earth</property>
       <property name="link_target"></property>
-      <property name="icon_expr">string:$portal_url/google_earth.gif</property>
       <property name="available_expr">here/@@isGeoContainer</property>
       <property name="permissions">
         <element value="View"/>

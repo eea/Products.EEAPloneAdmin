@@ -8,7 +8,6 @@
  <object name="deleted" meta_type="Folder"/>
  <object name="enquiry_edit" meta_type="Page Template"/>
  <object name="enquiry_macros" meta_type="Page Template"/>
- <object name="google_earth" meta_type="Page Template"/>
  <object name="logged_out" meta_type="Controller Page Template"/>
  <object name="mywf_state" meta_type="Page Template"/>
  <object name="organigram.html" meta_type="Page Template"/>

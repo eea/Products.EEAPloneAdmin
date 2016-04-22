@@ -2,7 +2,7 @@
 <object name="portal_controlpanel">
 
  <configlet
-  title="Async queue"
+  title="Monitor: async queue"
   action_id="plone.app.async.queue"
   appId="plone.app.async"
   category="Products"
