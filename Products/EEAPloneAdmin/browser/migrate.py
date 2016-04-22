@@ -1613,7 +1613,7 @@ class FixEffectiveDateForPublishedObjects(object):
     def __call__(self):
         """ Call method
         """
-        log = logging.getLogger("EffectiveData fix:")
+        log = logging.getLogger("EffectiveDate fix:")
         log.info("Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
 
@@ -1788,7 +1788,7 @@ class ReportEffectiveDateForPublishedObjects(object):
     def __call__(self):
         """ Call method
         """
-        log = logging.getLogger("EffectiveData report:")
+        log = logging.getLogger("EffectiveDate report:")
         log.info("*** Starting Effective Date index report")
         catalog = getToolByName(self.context, 'portal_catalog')
 

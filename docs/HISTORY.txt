@@ -5,9 +5,12 @@ Changelog
 ------------------------
 * Upgrade step: re-import control panel profile from "EEA Plone Admin upgrade profile for v11.2"
   [alecghica refs #70987]
-* AttributeError: @@g_earth
-  removed any trace of google_earth from all actions.xml
-  [chiridra refs #70431]
+* Bug fix: related to AttributeError: @@g_earth
+    - fixed AttributeError: @@g_earth
+    - removed any trace of google_earth from all actions.xml
+    - [chiridra refs #70431]
+* Bug fix: fixed typo in log message
+  [alecghica refs #70987]
 
 13.0 - (2016-04-12)
 -------------------
