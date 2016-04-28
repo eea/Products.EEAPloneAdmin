@@ -15,6 +15,11 @@ Changelog
     - http://logs.apps.eea.europa.eu/streams/56d6f68de4b078ab5e1df60c/rules
     - change from "EffectiveData status:" into "EffectiveDate status:"
     - [alecghica refs #70987]
+* Upgrade step: upgrade zc.buildout and setuptools
+    - run ./tools/cleanup_buildout.sh
+    - run ./deploy.sh
+    - run ./buildout -c backend.cfg
+    - [alecghica refs #68082]
 
 13.0 - (2016-04-12)
 -------------------
