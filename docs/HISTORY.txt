@@ -1,8 +1,8 @@
 Changelog
 =========
 
-13.2.dev0 - (unreleased)
-------------------------
+13.2 - (2016-05-04)
+-------------------
 * Change: new egg
   [alecghica refs #71470]
 
