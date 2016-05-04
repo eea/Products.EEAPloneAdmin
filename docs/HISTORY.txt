@@ -1,6 +1,11 @@
 Changelog
 =========
 
+13.2.dev0 - (unreleased)
+------------------------
+* Change: new egg
+  [alecghica refs #71470]
+
 13.1 - (2016-05-04)
 -------------------
 * Upgrade step: re-import control panel profile from "EEA Plone Admin upgrade profile for v11.2"
