@@ -22,6 +22,9 @@ def find_context(request):
     published = request.get('PUBLISHED', None)
     context = getattr(published, '__parent__', None)
     if context is None:
+        # tests lack parents attribute a lot of times
+        if not request.get('PARENTS'):
+            return None
         context = request.PARENTS[0]
     return context
 

@@ -30,6 +30,9 @@ def handle_object_cloned(obj, event):
     """ Handle object pasted within the final destination
     """
     ptype = obj.portal_type
+    # skip changes for CallForInterest since the open and close
+    # date properties of the object is populating the expiration
+    # and publishing date
     if ptype == "CallForInterest" or ptype == "CallForTender":
         return
     if obj.effective_date:
