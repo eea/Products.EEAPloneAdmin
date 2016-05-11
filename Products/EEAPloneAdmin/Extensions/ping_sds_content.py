@@ -1,11 +1,12 @@
-#Ping SDS to update content and their aliases
-
+""" Ping SDS to update content and their aliases
+"""
 import logging
+import transaction
 from DateTime import DateTime
 from zope.component import queryMultiAdapter
-import transaction
 
 logger = logging.getLogger('eea.bulkping')
+
 
 def ping_all(self):
     """ find objects of a certain portal_type and their aliases and pings them

@@ -1,21 +1,24 @@
 """ Controllers
 """
+import logging
+import thread
 from Acquisition import aq_parent, aq_inner
+
+from zope.interface import implements, Interface
+
+from AccessControl.SecurityManagement import _managers
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.ploneview import Plone
-from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from Products.EEAPloneAdmin.browser.interfaces import IPloneAdmin, IObjectTitle
+from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from plone.app.layout.globals.context import ContextState as BaseContextState
 from plone.app.layout.globals.portal import PortalState as BasePortalState
 from plone.memoize.view import memoize
 from zope.component import adapts, getMultiAdapter, queryMultiAdapter
-from zope.interface import implements, Interface
 
-from AccessControl.SecurityManagement import _managers
-import logging
 logger = logging.getLogger('ploneadmin')
-import thread
+
 
 class ObjectTitle(object):
     """ Object title

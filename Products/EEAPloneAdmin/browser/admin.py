@@ -1,25 +1,27 @@
 """ Admin
 """
+import logging
+import subprocess
+from pprint import pprint
+
+import codecs
+import os
+import re
+
 from App.config import getConfiguration
 from Products.ATContentTypes.config import MX_TIDY_OPTIONS
 from Products.ATContentTypes.lib.validators import unwrapValueFromHTML
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-import codecs
-import logging
-import os
-from pprint import pprint
-import re
-import subprocess
 from zExceptions import Unauthorized
-
-logger = logging.getLogger('Products.EEAPloneAdmin')
-
 try:
     from mx.Tidy import tidy
     has_tidy = True
 except ImportError:
     has_tidy = False
+
+logger = logging.getLogger('Products.EEAPloneAdmin')
+
 
 if has_tidy:
     mx_tidy = tidy
@@ -102,10 +104,10 @@ def localize(content, default_url, portal_url):
 def save_resources_on_disk(registry, request=None):
     """ Reads merged resources from registry and saves them on disk
     """
-    if request == None:
+    if request is None:
         request = getattr(registry, "REQUEST", None)
 
-    if request == None:
+    if request is None:
         return
 
     logger.info(

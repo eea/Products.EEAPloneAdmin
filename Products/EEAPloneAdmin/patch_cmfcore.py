@@ -3,12 +3,12 @@
     on a live portal
 """
 
+import transaction
+import logging
 from difflib import unified_diff
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Acquisition import aq_base
-import transaction
-import logging
 
 logger = logging.getLogger("Products.EEAPloneAdmin.patch_cmfcore")
 

@@ -1,5 +1,7 @@
 """ High priority content for translations
 """
+from Products.XLIFFMarshall.Extensions.export import exportPaths2SingleFile
+
 forTranslation = (
 '/www/SITE/signals/galleries', '/www/SITE/signals/galleries/climate-refugees',
 '/www/SITE/signals/galleries/climate-refugees/living-on-the-edge',
@@ -47,7 +49,6 @@ forTranslation = (
 '/www/SITE/signals/galleries/designing-the-future/amphibious-houses',
 '/www/SITE/signals/galleries/designing-the-future/the-levy', )
 
-from Products.XLIFFMarshall.Extensions.export import exportPaths2SingleFile
 
 def exportForTranslation(context, **kwargs):
     """ Export for translation

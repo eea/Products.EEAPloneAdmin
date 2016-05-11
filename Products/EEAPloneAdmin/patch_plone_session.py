@@ -2,14 +2,15 @@
     to allow cookie_domain override from os environment
 """
 
-from App.config import getConfiguration
-from email.Utils import formatdate
-from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 import binascii
-import os
-import plone.session.plugins.session as plsession
 import time
 
+import os
+from email.Utils import formatdate
+
+import plone.session.plugins.session as plsession
+from App.config import getConfiguration
+from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 
 COOKIENAME = "DISABLE_PLONE_COOKIE_DOMAIN"
 
@@ -26,6 +27,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
 
     # IAuthenticationPlugin implementation
     def authenticateCredentials(self, credentials):
+        """ AuthenticateCredentials patch """
         if not credentials.get("source", None) == "plone.session":
             return None
 
@@ -34,7 +36,7 @@ class PatchedSessionPlugin(BasedSessionPlugin):
         if ticket_data is None:
             self.refresh(self.REQUEST)
             return None
-        (digest, userid, tokens, user_data, timestamp) = ticket_data
+        (_digest, userid, _tokens, _user_data, _timestamp) = ticket_data
         pas = self._getPAS()
         info = pas._verifyUser(pas.plugins, user_id=userid)
         if info is None:

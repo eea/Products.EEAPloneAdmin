@@ -1,11 +1,12 @@
 """ Workflow scripts
 """
 
-from Products.Five.browser import BrowserView
+from email.message import Message
+
 from Products.CMFCore.utils import getToolByName
 from Products.EEAPloneAdmin.interfaces import IWorkflowEmails
+from Products.Five.browser import BrowserView
 from zope.component import queryAdapter
-from email.message import Message
 
 message = u"""
 
@@ -55,7 +56,7 @@ class WorkflowManagement(object):
             # therefore we don't need to perform any user checks
             return
         self.mhost = obj.MailHost
-        self.toEmail = self.toConfirmationEmail = self.fromEmail = ""
+        self.toEmail = self.toConfirmationEmail = self.fromEmail = []
         props = getattr(
             getToolByName(obj, 'portal_properties'), 'workflow_properties',
             None)

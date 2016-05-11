@@ -335,9 +335,7 @@ class AuditLocalRoles(BrowserView):
                     result[pos][1] = tuple(result[pos][1])
                     result[pos] = tuple(result[pos])
 
-                result = tuple(result)
-
-        self.db_effectiveroles[context_path] = result
+        self.db_effectiveroles[context_path] = tuple(result)
 
         return result
 

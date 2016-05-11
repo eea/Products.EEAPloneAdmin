@@ -2,13 +2,15 @@
 """ Test workflow events
 """
 
+import logging
+from unittest import TestSuite, makeSuite
+
 from Products.EEAPloneAdmin.tests.PloneAdminTestCase import (
     EEAPloneAdminTestCase,
 )
-from unittest import TestSuite, makeSuite
-import logging
 
 logger = logging.getLogger("Products.EEAPloneAdmin.tests.testWorkflows")
+
 
 class TestWorkflowEvents(EEAPloneAdminTestCase):
     """ Tests the workflow events triggers

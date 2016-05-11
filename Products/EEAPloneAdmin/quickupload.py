@@ -1,13 +1,12 @@
 """ Quick Upload
 """
-from zope.component import adapts
 from zope.interface import implements
 
 from Products.Archetypes.interfaces import IBaseObject
-
-from collective.quickupload.interfaces import IQuickUploadFileSetter
-from collective.quickupload import logger
 from Products.Archetypes.utils import shasattr
+from collective.quickupload import logger
+from collective.quickupload.interfaces import IQuickUploadFileSetter
+from zope.component import adapts
 
 
 class ArchetypesFileSetter(object):
@@ -46,7 +45,7 @@ class ArchetypesFileSetter(object):
         else:
             # some products remove the 'primary' attribute
             # on ATFile or ATImage (which is very bad)
-            error = u'serverError'
+            error = 'serverError'
             logger.info("An error happens : impossible to get the primary field"
                         " for file %s, rawdata can't be created",
                         obj.absolute_url())

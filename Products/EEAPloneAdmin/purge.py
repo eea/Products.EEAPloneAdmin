@@ -1,14 +1,16 @@
 """ Custom PURGE policy
 """
+import logging
 from zope.interface import implements
+
+from Products.CMFCore.interfaces import IDynamicType
+from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
+from plone.app.caching.interfaces import IPloneCacheSettings
+from plone.registry.interfaces import IRegistry
+from z3c.caching.interfaces import IPurgePaths
 from zope.component import adapts
 from zope.component import getUtility
 from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
-from z3c.caching.interfaces import IPurgePaths
-from Products.CMFCore.interfaces import IDynamicType
-from plone.app.caching.interfaces import IPloneCacheSettings
-from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
 
 try:
     from plone.cachepurging.interfaces import IPurger
@@ -18,7 +20,6 @@ try:
 except ImportError:
     PLONE_APP_CACHING_INSTALLED = False
 
-import logging
 logger = logging.getLogger("Products.EEAPloneAdmin")
 
 

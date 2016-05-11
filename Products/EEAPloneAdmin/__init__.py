@@ -2,7 +2,6 @@
 """
 from Products.LinguaPlone import config
 
-config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 
 # We tried to implement these as monkeypatches with
 #   collective.monkeypatcher, but didn't succeed.
@@ -27,6 +26,7 @@ from Products.EEAPloneAdmin import patch_plone_app_layout
 from Products.EEAPloneAdmin import patch_plone_session
 from Products.EEAPloneAdmin import translation_negotiator
 
+config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 
 __all__ = [patch_plone_app_caching.__name__,
            patch_plone_app_discussion.__name__,

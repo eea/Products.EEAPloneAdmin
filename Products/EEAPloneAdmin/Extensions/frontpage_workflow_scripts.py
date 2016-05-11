@@ -1,11 +1,12 @@
 """ Workflow scripts
 """
-from zope.component import queryMultiAdapter
 from Products.EEAPloneAdmin.config import DEBUG
-
+from zope.component import queryMultiAdapter
+# pylint: disable=C0411
 if DEBUG:
-    import socket
-    socket.setdefaulttimeout(100)
+    from socket import setdefaulttimeout
+    setdefaulttimeout(100)
+
 
 def submitForProofReading(self, state_change, **kw):
     """ Submit for proof reading

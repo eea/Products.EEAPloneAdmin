@@ -1,5 +1,9 @@
 """ Localsite
 """
+import codecs
+import os
+import re
+import transaction
 from Acquisition import aq_parent, aq_inner, aq_base
 from Globals import package_home, DevelopmentMode
 from Products.CMFCore.utils import getToolByName
@@ -15,10 +19,6 @@ from eea.themecentre.interfaces import (
 from eea.translations import _
 from zope.i18n import translate as realTranslate
 from zope.interface import directlyProvides, directlyProvidedBy, alsoProvides
-import codecs
-import os
-import re
-import transaction
 excludeFromNav = ('legal', 'quicklinks', 'address.html')
 
 #pylint: disable = C0111, C0301, W1401

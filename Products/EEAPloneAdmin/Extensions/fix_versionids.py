@@ -1,10 +1,15 @@
-from eea.versions.versions import assign_new_version_id
+""" Fix versionIds
+"""
 import transaction
 import logging
+from eea.versions.versions import assign_new_version_id
 
 logger = logging.getLogger("EEAPloneAdmin.versionfix")
 
+
 def fix_versionids(self):
+    """ fix_versionids
+    """
     catalog = self.portal_catalog
     brains = catalog.searchResults(missing=True, Language="all")
 

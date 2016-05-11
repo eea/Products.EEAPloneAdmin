@@ -1,11 +1,12 @@
 """ Monkey patches for ATCT
 """
-from Products.CMFCore.utils import getToolByName
 from OFS.Folder import Folder
 from Products.ATContentTypes.content.folder import ATFolder, ATBTreeFolder
+from Products.CMFCore.utils import getToolByName
 
 ATFolder.manage_options = Folder.manage_options
 ATBTreeFolder.manage_options = Folder.manage_options
+
 
 def listSubtopics(self):
     """ Return a list of our subtopics.
@@ -20,6 +21,9 @@ def listSubtopics(self):
     tops = [t[1] for t in tops]
     return tops
 
+
+# pylint: disable=W1401
+# we actually need to replace commas with escaped output without regex
 def vformat(s):
     """ Patch ATContentTypes calendarsuport vformat to accept location as tuple
     """

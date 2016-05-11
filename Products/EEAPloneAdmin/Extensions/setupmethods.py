@@ -1,22 +1,23 @@
 """ Setup
 """
+import logging
 import sys
 import time
+
+from zope.interface import alsoProvides
+
 import transaction
-from zope.i18n import translate as realTranslate
+from DateTime import DateTime
+from Products.CMFCore.WorkflowCore import WorkflowException
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationRoot
-from zope.interface import alsoProvides
-from zope.event import notify
-from zope.lifecycleevent import ObjectModifiedEvent
-from Products.NavigationManager.interfaces import INavigationSectionPosition
-from zope.component import getMultiAdapter
-from eea.faceted.inheritance.interfaces import IHeritorAccessor
-from Products.CMFCore.WorkflowCore import WorkflowException
-from DateTime import DateTime
-import logging
-
 from Products.EEAPloneAdmin.upgrades import utils
+from Products.NavigationManager.interfaces import INavigationSectionPosition
+from eea.faceted.inheritance.interfaces import IHeritorAccessor
+from zope.component import getMultiAdapter
+from zope.event import notify
+from zope.i18n import translate as realTranslate
+from zope.lifecycleevent import ObjectModifiedEvent
 
 logger = logging.getLogger('EEAPloneAdmin.setupmethods')
 info = logger.info

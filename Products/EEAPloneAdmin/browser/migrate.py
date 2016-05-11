@@ -1052,7 +1052,7 @@ class FixPortalRelationItems(object):
         relations = getToolByName(self.context, 'portal_relations')
         items = relations.objectItems()
         for i in items:
-            if i[1]._at_creation_flag == True:
+            if i[1]._at_creation_flag is True:
                 i[1]._at_creation_flag = False
         return 'success'
 
@@ -1070,7 +1070,7 @@ class FixVocabularyTerms(object):
         for brain in res:
             obj = brain.getObject()
             try:
-                if obj._at_creation_flag == True:
+                if obj._at_creation_flag is True:
                     obj._at_creation_flag = False
                     obj._p_changed = True
                     logger.info("Creation flag updated: %s",
@@ -1768,14 +1768,16 @@ class FixEffectiveDateForPublishedObjects(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE Effective Date index fix for %d objects", count)
-        res_objs = " ".join(res_objs)
-        skipped_objs = " ".join(skipped_objs)
-        reindex_error = " ".join(reindex_error)
-        history_error = " ".join(history_error)
-        not_found = " ".join(not_found)
-        return "%s %s %s %s %s %s %s " % (count_message, res_objs,
-                skipped_obj_count_message, skipped_objs, reindex_error,
-                history_error, not_found)
+        res_objs_msg = " ".join(res_objs)
+        skipped_objs_msg = " ".join(skipped_objs)
+        reindex_error_msg = " ".join(reindex_error)
+        history_error_msg = " ".join(history_error)
+        not_found_msg = " ".join(not_found)
+        return "%s %s %s %s %s %s %s " % (count_message, res_objs_msg,
+                                          skipped_obj_count_message,
+                                          skipped_objs_msg,
+                                          reindex_error_msg,
+                                          history_error_msg, not_found_msg)
 
 
 class ReportEffectiveDateForPublishedObjects(object):
@@ -1797,7 +1799,6 @@ class ReportEffectiveDateForPublishedObjects(object):
             'query': search_date,
             'range': 'max'
         }
-        no_effective_date = DateTime('1000/01/01 00:00:00')
         no_effective_date_str = 'None'
 
         log.info("Catalog search start")
@@ -1907,14 +1908,16 @@ class ReportEffectiveDateForPublishedObjects(object):
         count_message = "\n REPORTED OBJECTS TOTAL: %d" % count
 
         log.info("DONE Effective Date index report for %d objects", count)
-        res_objs = " ".join(res_objs)
-        skipped_objs = " ".join(skipped_objs)
-        reindex_error = " ".join(reindex_error)
-        history_error = " ".join(history_error)
-        not_found = " ".join(not_found)
-        return "%s %s %s %s %s %s %s " % (count_message, res_objs,
-                skipped_obj_count_message, skipped_objs, reindex_error,
-                history_error, not_found)
+        res_objs_msg = " ".join(res_objs)
+        skipped_objs_msg = " ".join(skipped_objs)
+        reindex_error_msg = " ".join(reindex_error)
+        history_error_msg = " ".join(history_error)
+        not_found_msg = " ".join(not_found)
+        return "%s %s %s %s %s %s %s " % (count_message, res_objs_msg,
+                                          skipped_obj_count_message,
+                                          skipped_objs_msg,
+                                          reindex_error_msg,
+                                          history_error_msg, not_found_msg)
 
 
 class FixEEAFigureFilesPublishDate(object):
@@ -2078,9 +2081,9 @@ class SetSparqlRefreshFrequencyToWeekly(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE Sparql refresh fix for %d objects", count)
-        res_objs = " ".join(res_objs)
-        not_found = " ".join(not_found)
-        return "%s %s %s " % (count_message, res_objs, not_found)
+        res_objs_msg = " ".join(res_objs)
+        not_found_msg = " ".join(not_found)
+        return "%s %s %s " % (count_message, res_objs_msg, not_found_msg)
 
 
 class RemoveAcquireFlagForNewWorkflowState(object):
@@ -2134,7 +2137,7 @@ class RemoveAcquireFlagForNewWorkflowState(object):
                 access_roles = [i['name'] for i in access_permissions if
                               i['selected'] == 'SELECTED']
                 obj.manage_permission(AccessContentsInformation,
-                                   access_roles,   acquire=0)
+                                      access_roles, acquire=0)
                 obj.manage_permission(View, view_roles, acquire=0)
                 obj.reindexObjectSecurity()
                 res_objs.append(obj.absolute_url())
@@ -2150,7 +2153,8 @@ class RemoveAcquireFlagForNewWorkflowState(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE new state refresh fix for %d objects", count)
-        res_objs = "\n".join(res_objs)
-        not_found = "\n".join(not_found)
-        skipped_objs = "\n".join(skipped_objs)
-        return "%s %s %s %s" % (count_message, res_objs, not_found, skipped_objs)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        skipped_objs_msg = "\n".join(skipped_objs)
+        return "%s %s %s %s" % (count_message, res_objs_msg, not_found_msg,
+                                skipped_objs_msg)

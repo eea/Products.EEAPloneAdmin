@@ -1,11 +1,11 @@
 """script to symlink maildrop
 """
 
-import os.path
 import subprocess
-import Products.MaildropHost.maildrop.maildrop as md
 import sys
 
+import Products.MaildropHost.maildrop.maildrop as md
+import os.path
 
 MAILDROP = 'maildrop'
 

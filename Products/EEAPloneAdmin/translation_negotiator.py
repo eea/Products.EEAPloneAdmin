@@ -3,15 +3,14 @@
     This code is derived from Silvuple
     https://github.com/miohtama/silvuple.git
 """
+import logging
+
+from Products.CMFCore.interfaces import IContentish, IFolderish
+from zope.component import getMultiAdapter
+from zope.i18n.translationdomain import TranslationDomain
 
 # W0703:105,11:_patched_translate: Catching too general exception Exception
 # pylint: disable=W0703
-
-import logging
-
-from zope.component import getMultiAdapter
-from Products.CMFCore.interfaces import IContentish, IFolderish
-
 
 logger = logging.getLogger("Products.EEAPloneAdmin.negotiation")
 
@@ -92,6 +91,5 @@ def _patched_translate(self, msgid, mapping=None, context=None,
     return _unpatched_translate(self, msgid, mapping, context, target_language,
                                                                         default)
 
-from zope.i18n.translationdomain import TranslationDomain
 _unpatched_translate = TranslationDomain.translate
 TranslationDomain.translate = _patched_translate

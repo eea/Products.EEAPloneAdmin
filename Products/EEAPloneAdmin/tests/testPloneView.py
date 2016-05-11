@@ -2,14 +2,16 @@
 """ Test PloneView
 """
 
+import logging
+from unittest import TestSuite, makeSuite
+
 from Products.EEAPloneAdmin.browser.ploneview import ContextState
 from Products.EEAPloneAdmin.tests.PloneAdminTestCase import (
     EEAPloneAdminTestCase,
 )
-from unittest import TestSuite, makeSuite
-import logging
 
 logger = logging.getLogger("Products.EEAPloneAdmin.tests.TestPloneView")
+
 
 class TestPloneView(EEAPloneAdminTestCase):
     """ Tests the global plone view for functions we have overriden
@@ -55,6 +57,7 @@ class TestPloneView(EEAPloneAdminTestCase):
         self.failUnless(
             view.browser_title().decode('utf8') == u'Svenska åäö - f1',
             view.browser_title())
+
 
 def test_suite():
     """ Test suite

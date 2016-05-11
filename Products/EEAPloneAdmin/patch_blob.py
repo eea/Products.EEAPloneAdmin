@@ -1,17 +1,20 @@
 """ Blob patch
 """
+import binascii
+import logging
+
+import os
+import os.path
+from os import fstat
+
 from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import POSKeyError
 from ZODB.utils import oid_repr
-from os import fstat
 from plone.app.blob.utils import getImageSize, openBlob
 from plone.app.imaging.interfaces import IImageScaleHandler
-import binascii
-import logging
-import os
-import os.path
 
 logger = logging.getLogger("Products.EEAPloneAdmin")
+
 
 def patched_field_get_size(self):
     """ Patch for get_size

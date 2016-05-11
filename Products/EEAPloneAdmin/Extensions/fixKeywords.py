@@ -1,5 +1,10 @@
 """ Evolve to version 7.1
 """
+import logging
+import transaction
+from zope.component.hooks import getSite
+from Products.CMFCore.utils import getToolByName
+
 allowed = set([
     'sea temperature', 'driving tips', 'forest creation', 'bioplant',
     'land development', 'heavy metal', 'trawling', 'orthophosphate',
@@ -552,11 +557,8 @@ allowed = set([
     'ee_f01', 'ee_f07', 'ee_f06', 'ee_f05', 'ee_f04', 'hnv',
     'green architecture', 'biotechnology', 'hazardous waste'])
 
-import logging
-import transaction
-from zope.component.hooks import getSite
-from Products.CMFCore.utils import getToolByName
 logger = logging.getLogger('Products.EEAPloneAdmin')
+
 
 def _fixUnicodeKeywords(brain, catalog):
     """ Fix unicode keywords
@@ -570,6 +572,7 @@ def _fixUnicodeKeywords(brain, catalog):
     else:
         doc.reindexObject(idxs=['Subject'])
         return doc
+
 
 def fixUnicodeKeywords(self):
     """ Fix unicode keywords
@@ -628,6 +631,7 @@ def _fixKeywords(brain, catalog):
         return doc
     return None
 
+
 def fixKeywords(self):
     """ Fix language independent keywords
     """
@@ -663,6 +667,7 @@ def fixKeywords(self):
     msg = "Fixing keywords for %s documents... DONE" % total
     logger.info(msg)
     return msg
+
 
 def fixRussianKeywords(self):
     """ Fix Russian keywords

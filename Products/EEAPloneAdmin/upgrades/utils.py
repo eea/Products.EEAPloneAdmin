@@ -2,14 +2,16 @@
 """
 import logging
 import transaction
+
+from zope.interface import noLongerProvides
+
+from Products.CMFCore.utils import getToolByName
 from zope.component import ComponentLookupError
 from zope.component.interface import nameToInterface
-from zope.interface import noLongerProvides
-from Products.CMFCore.utils import getToolByName
 
-HAS_Subtyper = True
 try:
     from p4a.subtyper.interfaces import ISubtyped
+    HAS_Subtyper = True
 except ImportError:
     HAS_Subtyper = False
 
