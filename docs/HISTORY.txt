@@ -1,8 +1,8 @@
 Changelog
 =========
 
-13.4.dev0 - (unreleased)
-------------------------
+13.4 - (2016-05-31)
+-------------------
 * Upgrade step: run /www/SITE/data-and-maps/data/@@replaceDataVersionId
   with www8 in order to restore versionId of Data
   [ichimdav refs #72521]
