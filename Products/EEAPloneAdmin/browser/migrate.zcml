@@ -203,4 +203,9 @@
         class=".migrate.RemoveAcquireFlagForNewWorkflowState"
         permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+        name="replaceDataVersionId"
+        class=".migrate.ReplaceDataVersionId"
+        permission="cmf.ManagePortal" />
+
 </configure>

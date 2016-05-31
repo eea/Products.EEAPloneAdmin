@@ -1,5 +1,11 @@
 """ Migrate
 """
+import csv
+import logging
+import os
+import urllib
+import transaction
+import json
 from Acquisition import aq_base
 from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -19,12 +25,6 @@ from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
-import csv
-import logging
-import os
-import urllib
-import transaction
-import json
 from cStringIO import StringIO
 from zope.interface import directlyProvides, directlyProvidedBy, \
                                              noLongerProvides
@@ -35,10 +35,16 @@ from zope.component import queryUtility, queryAdapter, ComponentLookupError, \
 from zope.component.interface import nameToInterface
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
-    countryDicts, countryGroups
+    countryDicts, countryGroups, data_versions
 
 from eea.geotags.interfaces import IJsonProvider
 from eea.workflow.interfaces import IObjectArchivator
+
+try:
+    from eea.versions.versions import IVersionControl
+    has_versions = True
+except ImportError:
+    has_versions = False
 
 logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
 
@@ -2158,3 +2164,51 @@ class RemoveAcquireFlagForNewWorkflowState(object):
         skipped_objs_msg = "\n".join(skipped_objs)
         return "%s %s %s %s" % (count_message, res_objs_msg, not_found_msg,
                                 skipped_objs_msg)
+
+
+class ReplaceDataVersionId(object):
+    """ 72521 restore previous versionId for given data files
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        if not has_versions:
+            return "Versions not found, exiting"
+        log = logging.getLogger("Data version migration")
+        log.info("*** Starting Data version migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        brains = data_versions()
+        log.info("TOTAL affected: %d objects", 450)
+        total = len(brains)
+        count = 0
+        count_progress = 0
+
+        log.info("Starting data version migration for %d objects", total)
+        not_found = []
+        for brain in brains:
+            count_progress += 1
+            obj = self.context.get(brain[0])
+            if not obj:
+                not_found.append(brain[0])
+                continue
+            IVersionControl(obj).setVersionId(brain[1])
+            obj.reindexObject(idxs=['getVersionId'])
+            obj_url = obj.absolute_url(1)
+            log.info('Migrated --> %s', obj_url)
+            res_objs.append(url)
+            count += 1
+            if count % 50 == 0:
+                transaction.savepoint(optimistic=True)
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE data version migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
+                                                            res_objs_msg,
+                                                            not_found_msg)
