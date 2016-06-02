@@ -15,6 +15,7 @@ from Products.EEAPloneAdmin.upgrades import utils
 from Products.NavigationManager.interfaces import INavigationSectionPosition
 from eea.faceted.inheritance.interfaces import IHeritorAccessor
 from zope.component import getMultiAdapter
+from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.event import notify
 from zope.i18n import translate as realTranslate
 from zope.lifecycleevent import ObjectModifiedEvent
@@ -827,21 +828,26 @@ def bulkReindexObjectsSecurity(self, brains, wf_id):
     """
     return utils.bulkReindexObjectsSecurity(self, brains, wf_id)
 
-def checkPublishingDate(self, brains):
+def checkPublishingDate(self, brains, excludeExpired):
     """ Return values of the creation and publishing date
     """
-    from plone.app.layout.viewlets.content import ContentHistoryView
-    result = '<table border="1"><tr><th>Obj URL</th><th>Creation date</th><th>Obj effective</th><th>Brain effective</th><th>History date</th>'
+    result = '<table border="1"><tr><th>#</th><th>Obj URL</th><th>Creation date</th><th>Obj effective</th><th>Brain effective</th><th>History date</th><th>WARNING</th></tr>'
     request = self.REQUEST
     count = 0
     total = len(brains)
 
     for brain in brains:
         count += 1
+        
+        # exclude expired content from the report
+        if (brain.ExpirationDate != 'None') and excludeExpired:
+            info('EXPIRED, excluded from the report: %s' % brain.getURL())
+            continue
+        
         obj = brain.getObject()
         info('%s/%s - checking dates for %s' % (count, total, brain.getURL()))
         history = None
-        history_publishing_date = '-'
+        history_publishing_date = None
 
         try:
             history = ContentHistoryView(obj, request).fullHistory()
@@ -853,9 +859,23 @@ def checkPublishingDate(self, brains):
                 history_publishing_date = entry['time']
                 continue
 
-        result += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (brain.getURL(),
+        date_warning = ''
+        if history_publishing_date:
+            if (obj.effective().Date() != brain.effective.Date()) or \
+               (obj.effective().Date() != history_publishing_date.Date()) or \
+               (brain.effective.Date() != history_publishing_date.Date()):
+                date_warning = 'True'
+        else:
+            if (obj.effective().Date() != brain.effective.Date()) or \
+               (obj.effective().Date() != brain.created.Date()) or \
+               (brain.effective.Date() != brain.created.Date()):
+                date_warning = 'True'
+
+        result += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (
+                     count, brain.getURL(),
                      brain.created, obj.effective(), 
-                     brain.effective, history_publishing_date)
+                     brain.effective, history_publishing_date,
+                     date_warning)
 
     result += "</table>"
     return result

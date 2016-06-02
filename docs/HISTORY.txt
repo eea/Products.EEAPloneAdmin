@@ -3,6 +3,8 @@ Changelog
 
 13.6.dev0 - (unreleased)
 ------------------------
+* Feature: added script to list info regarding publishing date
+  [alecghica refs #72877]
 
 13.5 - (2016-06-02)
 -------------------
