@@ -1,6 +1,9 @@
 Changelog
 =========
 
+13.7.dev0 - (unreleased)
+------------------------
+
 13.6 - (2016-06-02)
 -------------------
 * Feature: added script to list info regarding publishing date
