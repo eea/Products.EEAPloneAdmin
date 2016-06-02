@@ -1,14 +1,14 @@
 Changelog
 =========
 
-13.5.dev0 - (unreleased)
-------------------------
+13.5 - (2016-06-02)
+-------------------
 * Bug fix: The organisational chart has broken CSS, except for English:
   - fixed CSS load for all languages
   [chiridra refs #72515]
 * Feature: added script to list info regarding publishing date
   [alecghica refs #72877]
-  
+
 13.4 - (2016-05-31)
 -------------------
 * Upgrade step: run /www/SITE/data-and-maps/data/@@replaceDataVersionId
