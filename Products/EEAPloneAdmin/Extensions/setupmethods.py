@@ -828,7 +828,7 @@ def bulkReindexObjectsSecurity(self, brains, wf_id):
     """
     return utils.bulkReindexObjectsSecurity(self, brains, wf_id)
 
-def checkPublishingDate(self, brains, excludeExpired):
+def checkPublishingDate(self, brains, excludeExpired, updateEffectiveDate):
     """ Return values of the creation and publishing date
     """
     result = '<table border="1"><tr><th>#</th><th>Obj URL</th><th>Creation date</th><th>Obj effective</th><th>Brain effective</th><th>History date</th><th>WARNING</th></tr>'
@@ -871,11 +871,20 @@ def checkPublishingDate(self, brains, excludeExpired):
                (brain.effective.Date() != brain.created.Date()):
                 date_warning = 'True'
 
+        # update EffectiveDate value
+        if (date_warning == 'True') and updateEffectiveDate:
+            obj.edit(effectiveDate=history_publishing_date)
+            obj.reindexObject()
+            #obj.reindexObject(idxs=["EffectiveDate"])
+
         result += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (
                      count, brain.getURL(),
                      brain.created, obj.effective(), 
                      brain.effective, history_publishing_date,
                      date_warning)
+                     
+        if count % 5 == 0:
+            transaction.commit()
 
     result += "</table>"
     return result
