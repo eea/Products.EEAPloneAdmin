@@ -826,3 +826,36 @@ def bulkReindexObjectsSecurity(self, brains, wf_id):
     """ Bulk reindex security
     """
     return utils.bulkReindexObjectsSecurity(self, brains, wf_id)
+
+def checkPublishingDate(self, brains):
+    """ Return values of the creation and publishing date
+    """
+    from plone.app.layout.viewlets.content import ContentHistoryView
+    result = '<table border="1"><tr><th>Obj URL</th><th>Creation date</th><th>Obj effective</th><th>Brain effective</th><th>History date</th>'
+    request = self.REQUEST
+    count = 0
+    total = len(brains)
+
+    for brain in brains:
+        count += 1
+        obj = brain.getObject()
+        info('%s/%s - checking dates for %s' % (count, total, brain.getURL()))
+        history = None
+        history_publishing_date = '-'
+
+        try:
+            history = ContentHistoryView(obj, request).fullHistory()
+        except Exception, err:
+            info('ERROR: no history found for %s', brain.getURL())
+            info_exception('Exception: %s ', err)
+        for entry in history:
+            if entry['transition_title'] == 'Publish':
+                history_publishing_date = entry['time']
+                continue
+
+        result += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (brain.getURL(),
+                     brain.created, obj.effective(), 
+                     brain.effective, history_publishing_date)
+
+    result += "</table>"
+    return result
