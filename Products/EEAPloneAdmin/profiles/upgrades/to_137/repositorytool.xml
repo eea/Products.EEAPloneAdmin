@@ -39,5 +39,33 @@
    <policy name="at_edit_autoversion"/>
    <policy name="version_on_revert"/>
   </type>
+  <type name="Data">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="DataTable">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="DataFile">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="DavizVisualization">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="Specification">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="Assessment">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="AssessmentPart">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
  </policymap>
 </repositorytool>

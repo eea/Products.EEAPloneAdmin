@@ -25,5 +25,26 @@
   <type portal_type="GIS Application">
    <field name="any" difftype="Compound Diff for AT types"/>
   </type>
+  <type portal_type="Data">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="DataTable">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="DataFile">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="DavizVisualization">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="Specification">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="Assessment">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="AssessmentPart">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
  </difftypes>
 </object>
