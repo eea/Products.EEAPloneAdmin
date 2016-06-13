@@ -22,5 +22,8 @@
   <type portal_type="Publication">
    <field name="any" difftype="Compound Diff for AT types"/>
   </type>
+  <type portal_type="Gis Application">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
  </difftypes>
 </object>
