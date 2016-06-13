@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<object>
+ <difftypes>
+  <type portal_type="CloudVideo">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="EEAFigure">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="EEAFigureFile">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="Highlight">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="Infographic">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="PressRelease">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+  <type portal_type="Publication">
+   <field name="any" difftype="Compound Diff for AT types"/>
+  </type>
+ </difftypes>
+</object>

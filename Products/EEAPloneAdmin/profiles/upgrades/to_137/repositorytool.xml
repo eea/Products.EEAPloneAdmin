@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<repositorytool>
+ <policies>
+  <policy name="at_edit_autoversion"
+     title="Create version on edit (AT objects only)"
+     class="Products.CMFEditions.VersionPolicies.ATVersionOnEditPolicy"/>
+  <policy name="version_on_revert" title="Create version on version revert"/>
+ </policies>
+ <policymap>
+  <type name="CloudVideo">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="EEAFigure">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="EEAFigureFile">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="Highlight">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="Infographic">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="PressRelease">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="ATFolder">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+  <type name="GISMapApplication">
+   <policy name="at_edit_autoversion"/>
+   <policy name="version_on_revert"/>
+  </type>
+ </policymap>
+</repositorytool>

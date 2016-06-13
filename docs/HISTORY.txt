@@ -3,6 +3,10 @@ Changelog
 
 13.7.dev0 - (unreleased)
 ------------------------
+* Feature: added versioning to some contenttypes
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [lucas refs #73068]
 
 13.6 - (2016-06-02)
 -------------------
