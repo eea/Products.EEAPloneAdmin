@@ -3,6 +3,8 @@ Changelog
 
 13.8.dev0 - (unreleased)
 ------------------------
+* Bug fix: fix script for modification of publishing date
+  [ichim-david refs #73422]
 
 13.7 - (2016-06-16)
 -------------------

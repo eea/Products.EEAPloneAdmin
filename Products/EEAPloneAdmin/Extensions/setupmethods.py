@@ -857,7 +857,7 @@ def checkPublishingDate(self, brains, excludeExpired, updateEffectiveDate):
         for entry in history:
             if entry['transition_title'] == 'Publish':
                 history_publishing_date = entry['time']
-                continue
+                break
 
         date_warning = ''
         if history_publishing_date:
