@@ -3,6 +3,13 @@ Changelog
 
 13.8.dev0 - (unreleased)
 ------------------------
+* Upgrade step: run /www/SITE/@@replaceWrongCreationDate
+  with www8 in order to restore original creation date for
+  objects that need it
+  [ichimdav refs #73422]
+* Feature: added script to fix creation date being smaller
+  than that of the initial creation date
+  [ichim-david refs #73422]
 * Bug fix: fix script for modification of publishing date
   [ichim-david refs #73422]
 

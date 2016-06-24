@@ -35,7 +35,7 @@ from zope.component import queryUtility, queryAdapter, ComponentLookupError, \
 from zope.component.interface import nameToInterface
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
-    countryDicts, countryGroups, data_versions
+    countryDicts, countryGroups, data_versions, urls_for_73422
 
 from eea.geotags.interfaces import IJsonProvider
 from eea.workflow.interfaces import IObjectArchivator
@@ -2203,6 +2203,82 @@ class ReplaceDataVersionId(object):
             count += 1
             if count % 50 == 0:
                 transaction.savepoint(optimistic=True)
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE data version migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
+                                                            res_objs_msg,
+                                                            not_found_msg)
+
+
+class ReplaceWrongCreationDate(object):
+    """ 73422 restore previous creation date for given objects
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("Creation date migration")
+        log.info("*** Starting Creation date migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        brains = urls_for_73422()
+        total = 2570
+        log.info("TOTAL affected: %d objects", total)
+        count = 0
+        count_progress = 0
+
+        mt = getToolByName(self.context, 'portal_membership', None)
+        wf = getToolByName(self.context, "portal_workflow", None)
+        pr = getToolByName(self.context, 'portal_repository', None)
+        actor = mt.getAuthenticatedMember().id
+        log.info("Starting data version migration for %d objects", total)
+        not_found = []
+        type_workflow = {}
+        for brain in brains:
+            count_progress += 1
+            obj = self.context.restrictedTraverse(brain, None)
+            if not obj:
+                not_found.append(brain[0])
+                continue
+            obj_url = obj.absolute_url(1)
+
+            previous_creation_date = obj.created()
+
+            history = obj.workflow_history  # persistent mapping
+            review_state = wf.getInfoFor(obj, 'review_state', 'None')
+            ptype = obj.portal_type
+            if not type_workflow.get(ptype):
+                type_workflow[ptype] = wf.getWorkflowsFor(obj)[0].id
+            for name, wf_entries in history.items():
+                if type_workflow.get(ptype, '') == name:
+                    wf_entries = list(wf_entries)
+                    initial_value = wf_entries[0]
+                    initial_date = initial_value.get('time')
+                    if initial_date > previous_creation_date:
+                        comment = "Fixed creation date < initial creation date " \
+                                  "(issue 73422" \
+                                  "). Changed creation date from %s to --> %s." % (
+                                      previous_creation_date,
+                                      initial_date)
+                        obj.setCreationDate(initial_date)
+                        wf_entries.append({'action': 'Edited',
+                                           'review_state': review_state,
+                                           'comments': comment,
+                                           'actor': actor,
+                                           'time': DateTime()})
+                        history[name] = tuple(wf_entries)
+                        pr.save(obj=obj, comment=comment)
+                        log.info('Migrated --> %s', obj_url)
+                        res_objs.append(url)
+                        count += 1
+                        if count % 50 == 0:
+                            transaction.commit()
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
