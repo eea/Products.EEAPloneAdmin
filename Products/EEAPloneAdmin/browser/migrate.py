@@ -2261,9 +2261,9 @@ class ReplaceWrongCreationDate(object):
                     initial_value = wf_entries[0]
                     initial_date = initial_value.get('time')
                     if initial_date > previous_creation_date:
-                        comment = "Fixed creation date < initial creation date " \
-                                  "(issue 73422" \
-                                  "). Changed creation date from %s to --> %s." % (
+                        comment = "Fixed creation date < initial creation " \
+                                  "date (issue 73422). Changed creation date" \
+                                  " from %s to --> %s." % (
                                       previous_creation_date,
                                       initial_date)
                         obj.setCreationDate(initial_date)
@@ -2274,8 +2274,10 @@ class ReplaceWrongCreationDate(object):
                                            'time': DateTime()})
                         history[name] = tuple(wf_entries)
                         pr.save(obj=obj, comment=comment)
-                        log.info('Migrated --> %s', obj_url)
-                        res_objs.append(url)
+                        msg = '%s to %s for --> %s' % (
+                            previous_creation_date, initial_date, obj_url)
+                        log.info(msg)
+                        res_objs.append(msg)
                         count += 1
                         if count % 50 == 0:
                             transaction.commit()
