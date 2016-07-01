@@ -2228,7 +2228,7 @@ class ReplaceWrongCreationDate(object):
         log.info("*** Starting Creation date migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
         brains = urls_for_73422()
-        total = 2570
+        total = len(brains)
         log.info("TOTAL affected: %d objects", total)
         count = 0
         count_progress = 0
@@ -2244,7 +2244,7 @@ class ReplaceWrongCreationDate(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain[0])
+                not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
 
@@ -2258,29 +2258,31 @@ class ReplaceWrongCreationDate(object):
             for name, wf_entries in history.items():
                 if type_workflow.get(ptype, '') == name:
                     wf_entries = list(wf_entries)
-                    initial_value = wf_entries[0]
-                    initial_date = initial_value.get('time')
-                    if initial_date > previous_creation_date:
-                        comment = "Fixed creation date < initial creation " \
-                                  "date (issue 73422). Changed creation date" \
-                                  " from %s to --> %s." % (
-                                      previous_creation_date,
-                                      initial_date)
-                        obj.setCreationDate(initial_date)
-                        wf_entries.append({'action': 'Edited',
-                                           'review_state': review_state,
-                                           'comments': comment,
-                                           'actor': actor,
-                                           'time': DateTime()})
-                        history[name] = tuple(wf_entries)
-                        pr.save(obj=obj, comment=comment)
-                        msg = '%s to %s for --> %s' % (
-                            previous_creation_date, initial_date, obj_url)
-                        log.info(msg)
-                        res_objs.append(msg)
-                        count += 1
-                        if count % 50 == 0:
-                            transaction.commit()
+                    for e in reversed(wf_entries):
+                        cmt = e.get('comments')
+                        if '73422' in cmt:
+                            mdate = cmt.split('from ')[1].split(' to')[0]
+                            comment = "Restore creation date migration " \
+                                      " (issue 73422). Changed creation date" \
+                                      " from %s to --> %s." % (
+                                          previous_creation_date,
+                                          mdate)
+                            obj.setCreationDate(mdate)
+                            wf_entries.append({'action': 'Edited',
+                                               'review_state': review_state,
+                                               'comments': comment,
+                                               'actor': actor,
+                                               'time': DateTime()})
+                            history[name] = tuple(wf_entries)
+                            pr.save(obj=obj, comment=comment)
+                            obj.reindexObject(idxs=['created'])
+                            msg = '%d %s to %s for --> %s' % (count,
+                                  previous_creation_date, mdate, obj_url)
+                            log.info(msg)
+                            res_objs.append(msg)
+                            count += 1
+                            if count % 50 == 0:
+                                transaction.commit()
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
