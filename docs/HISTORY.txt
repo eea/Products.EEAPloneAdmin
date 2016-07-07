@@ -1,8 +1,8 @@
 Changelog
 =========
 
-13.8.dev0 - (unreleased)
-------------------------
+13.8 - (2016-07-07)
+-------------------
 * Change: modified script to fix creation date being smaller
   than that of the initial creation date to undo this change
   as there are usecases where creation date needed to be
