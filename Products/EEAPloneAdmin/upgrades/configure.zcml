@@ -3,6 +3,42 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 13.9 => 14.0 -->
+    <genericsetup:upgradeSteps
+        source="13.9"
+        destination="14.0"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Cleanup Zope Version Control: PloneHelpCenter"
+            handler=".evolve140.cleanup_zvc_figurefile"
+        />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="13.8"
+        destination="13.9"
+        profile="Products.EEAPloneAdmin:default">
+        <genericsetup:upgradeStep
+            title="Cleanup Version Control Storage: Removed object"
+            handler=".evolve140.cleanup_zvc_removed"
+        />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="13.7"
+        destination="13.8"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Cleanup Zope Version Control: PloneHelpCenter"
+            handler=".evolve140.cleanup_zvc_helpcenter"
+        />
+
+    </genericsetup:upgradeSteps>
+
     <!-- 12.6 => 13.7 -->
     <genericsetup:upgradeSteps
         source="12.6"

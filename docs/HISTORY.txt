@@ -1,8 +1,13 @@
 Changelog
 =========
 
-13.9.dev0 - (unreleased)
+14.0.dev0 - (unreleased)
 ------------------------
+
+* WIP
+
+  Cleanup: Added upgrade steps to cleanup Plone History for old PloneHelpCenter content-types
+  [voineali refs #74653]
 
 13.8 - (2016-07-07)
 -------------------
@@ -154,7 +159,7 @@ Changelog
 -------------------
 * Bug fix: ping_sds_content.py Don't fail if some objects are
   not in the Catalog anymore, print in log and continue.
-  [demarant refs #29409] 
+  [demarant refs #29409]
 * Bug fix: enable RSS2 feed also for non canonical objects
   [ichimdav refs #67796]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
