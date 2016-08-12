@@ -25,14 +25,20 @@ def cleanup_zvc_helpcenter(context):
     tool = getToolByName(context, 'portal_historiesstorage')
     shadow = tool._getShadowStorage()
     histIds = shadow._storage
+    length = len(histIds)
 
     count = 0
     total = 0
     to_delete = set()
 
-    for hid in histIds.keys():
+    logger.info('Cleanup ZVC Searching for HelpCenter ctypes within %s entries', length)
+    for idx, hid in enumerate(histIds.keys()):
         shadowStorage = tool._getShadowHistory(hid)
         size, _sizeState = shadowStorage.getSize()
+
+        if idx % 100 == 0:
+            logger.info('Cleanup ZVC Searching progress %s/%s', idx, length)
+
         try:
             ob = tool.retrieve(hid).object.object
         except Exception, err:
@@ -49,12 +55,14 @@ def cleanup_zvc_helpcenter(context):
         to_delete.add(hid)
         total += size
 
+    length = len(to_delete)
+    logger.info("Cleanup ZVC Removing history for %s HelpCenter objects", length)
     for idx, hid in enumerate(to_delete):
-        logger.info('Cleanup ZVC for %s at %s. ', ptype, hid)
+        logger.info('%s. Cleanup ZVC HelpCenter history_id: %s. ', idx, hid)
         _purge(storage, hid)
 
     size = total / 1048576 # MB
-    logger.info("Cleaned up %s HelpCenter history. Size: %s MB", count, size)
+    logger.info("Cleaned up %s HelpCenter history. Size: %s MB", length, size)
 
     raise NotImplementedError
 
