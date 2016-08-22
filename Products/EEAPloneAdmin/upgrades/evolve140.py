@@ -1,9 +1,9 @@
 """ Cleanup Zope Versions Control
 """
 import logging
+from eventlet.timeout import Timeout
 from Products.CMFCore.utils import getToolByName
 from Products.CMFEditions.ZVCStorageTool import Removed
-from Products.EEAPloneAdmin.upgrades.utils import timeout
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
 
@@ -18,11 +18,6 @@ def _purge(storage, hid):
             'comment': "Products.EEAPloneAdmin.upgrades:evolve140"}
         }, countPurged=False)
 
-@timeout
-def _getHistoryObject(tool, hid):
-    """ Get history by id
-    """
-    return tool.retrieve(hid).object.object
 
 def cleanup_zvc_helpcenter(context):
     """ Cleanup history for removed HelpCenter content-types
@@ -47,11 +42,12 @@ def cleanup_zvc_helpcenter(context):
             logger.info("Cleanup ZVC Searching for HelpCenter progress %s/%s",
                         idx, length)
 
-        try:
-            ob = _getHistoryObject(tool, hid)
-        except Exception, err:
-            logger.exception(err)
-            continue
+        with Timeout(10):
+            try:
+                ob = tool.retrieve(hid).object.object
+            except Exception, err:
+                logger.exception(err)
+                continue
 
         if isinstance(ob, Removed):
             continue
