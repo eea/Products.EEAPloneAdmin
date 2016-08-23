@@ -29,3 +29,8 @@ class IEEACacheSettings(Interface):
                 value_type=schema.ASCIILine(title=_(u"Path"))
             ),
         )
+
+
+class IZVCleanup(Interface):
+    """ Zope Version Control Cleanup utility
+    """
