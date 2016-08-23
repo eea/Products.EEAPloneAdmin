@@ -8,7 +8,7 @@ def cleanup_zvc_helpcenter(context):
     """ Cleanup history for removed HelpCenter content-types
     """
     zvc = getUtility(IZVCleanup)
-    zvc.cleanup_portal_type('HelpCenterFAQ')
+    zvc.cleanup_portal_type("HelpCenterFAQ")
 
 
 def cleanup_zvc_removed(context):
@@ -22,4 +22,10 @@ def cleanup_zvc_figurefile(context):
     """ Cleanup history for EEA Figure File
     """
     zvc = getUtility(IZVCleanup)
-    zvc.cleanup_portal_type('EEAFigureFile')
+    zvc.cleanup_portal_type("EEAFigureFile")
+
+def cleanup_zvc_sparql(context):
+    """ Cleanup cached_result for EEA Sparql
+    """
+    zvc = getUtility(IZVCleanup)
+    zvc.cleanup_attributes("Sparql", "cached_result")

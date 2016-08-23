@@ -3,15 +3,27 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
-    <!-- 13.9 => 14.0 -->
+    <!-- 13.7 => 14.0 -->
     <genericsetup:upgradeSteps
-        source="13.9"
+        source="13.91"
         destination="14.0"
         profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeStep
-            title="Cleanup Zope Version Control: PloneHelpCenter"
-            handler=".evolve140.cleanup_zvc_figurefile"
+            title="Cleanup Version Control Storage: Sparql 'cached_result' attr"
+            handler=".evolve140.cleanup_zvc_sparql"
+        />
+
+    </genericsetup:upgradeSteps>
+
+    <genericsetup:upgradeSteps
+        source="13.9"
+        destination="13.91"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Cleanup Version Control Storage: Removed object"
+            handler=".evolve140.cleanup_zvc_removed"
         />
 
     </genericsetup:upgradeSteps>
@@ -20,9 +32,10 @@
         source="13.8"
         destination="13.9"
         profile="Products.EEAPloneAdmin:default">
+
         <genericsetup:upgradeStep
-            title="Cleanup Version Control Storage: Removed object"
-            handler=".evolve140.cleanup_zvc_removed"
+            title="Cleanup Zope Version Control: EEAFigureFile"
+            handler=".evolve140.cleanup_zvc_figurefile"
         />
 
     </genericsetup:upgradeSteps>

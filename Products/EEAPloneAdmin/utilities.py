@@ -84,7 +84,9 @@ class ZVCleanup(object):
             count += 1
 
             if count % 100 == 0:
-                logger.info("ZVCleanup removed %s", count)
+                logger.warn("ZVCleanup removed %s", count)
+        logger.warn("ZVCleanup removed: Cleaned-up history for %s items",
+                    count)
 
     def cleanup_portal_type(self, portal_type):
         """ Purge history for given Portal Type
@@ -98,4 +100,55 @@ class ZVCleanup(object):
             count += 1
 
             if count % 100 == 0:
-                logger.info("ZVCleanup portal_type %s: %s", portal_type, count)
+                logger.warn("ZVCleanup portal_type %s: %s", portal_type, count)
+        logger.warn("ZVCleanup portal_type %s: Cleaned-up history for %s items",
+                    portal_type, count)
+
+    def cleanup_attributes(self, portal_type=None, *attributes):
+        """ Clear large object attributes within history
+        """
+        zvc_repo = self.storage._getZVCRepo()
+
+        count = 0
+        for hid, ptype in self.portal_types.items():
+            if portal_type and ptype != portal_type:
+                continue
+
+            zvc_hid, _vers = self.storage._getZVCAccessInfo(hid, None, True)
+            zvc_history = zvc_repo.getVersionHistory(zvc_hid)
+            versions = getattr(zvc_history, '_versions', {})
+
+            for vid in versions:
+                version = zvc_history.getVersionById(vid)
+                data = version._data
+
+                ob = data.getWrappedObject()
+                ob = getattr(ob, 'object', None)
+                if ob is None:
+                    continue
+
+                for attribute in attributes:
+                    val = getattr(ob, attribute, None)
+                    if not val:
+                        continue
+
+                    if isinstance(val, dict):
+                        val.clear()
+                        ob._p_changed = True
+                        continue
+
+                    if attribute == '__annotations__':
+                        val.clear()
+                        ob._p_changed = True
+                        continue
+
+                    delattr(ob, attribute)
+
+            count += 1
+            if count % 100 == 0:
+                logger.warn("ZVCleanup attributes %s for portal_type %s: %s",
+                            attributes, portal_type, count)
+
+        logger.warn("ZVCleanup attributes %s for portal_type %s: "
+                    "Cleaned-up history for %s items",
+                    attributes, portal_type, count)

@@ -3,10 +3,13 @@ Changelog
 
 14.0.dev0 - (unreleased)
 ------------------------
-
-* WIP
-
-  Cleanup: Added upgrade steps to cleanup Plone History for old PloneHelpCenter content-types
+* Cleanup: Added upgrade steps to cleanup ZVC History for Sparql objects (cached_result)
+  [voineali refs #74653]
+* Cleanup: Added upgrade steps to cleanup ZVC History for removed objects
+  [voineali refs #74653]
+* Cleanup: Added upgrade steps to cleanup ZVC History for EEAFigureFile content-types
+  [voineali refs #74653]
+* Cleanup: Added upgrade steps to cleanup ZVC History for old PloneHelpCenter content-types
   [voineali refs #74653]
 
 13.8 - (2016-07-07)
