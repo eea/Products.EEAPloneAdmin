@@ -1,6 +1,7 @@
 """ Utilities
 """
 import logging
+import transaction
 from eventlet.timeout import Timeout
 from zope.interface import implementer
 from zope.component.hooks import getSite
@@ -144,12 +145,12 @@ class ZVCleanup(object):
             zvc_hid, _vers = self.storage._getZVCAccessInfo(hid, None, True)
             zvc_history = zvc_repo.getVersionHistory(zvc_hid)
             versions = getattr(zvc_history, '_versions', {})
-
-            if count % 100 == 0:
-                logger.warn("ZVCleanup attributes %s for portal_type %s: %s",
-                            attributes, portal_type, count)
+            length = len(versions)
 
             count += 1
+            logger.warn("%s. ZVCleanup attributes: history_id %s, versions %s",
+                        count, hid, length)
+
             for vid in versions:
                 version = zvc_history.getVersionById(vid)
                 data = version._data
@@ -175,6 +176,8 @@ class ZVCleanup(object):
                         continue
 
                     delattr(ob, attribute)
+
+            transaction.commit()
 
         logger.warn("ZVCleanup attributes %s for portal_type %s: "
                     "Cleaned-up history for %s items",
