@@ -7,33 +7,35 @@ from zope.component import queryMultiAdapter
 
 logger = logging.getLogger('eea.bulkping')
 
+def ping_for_list(self, objects):
+    """ get a list of objects and ping SDS to update the information
+    """
+    results_len = len(objects)
+    index = 0
+    logger.info(results_len)
+    logger.info('------')
+    request = getattr(self, 'REQUEST', None)
+    ping_cr_view = queryMultiAdapter((self, request), name="ping_cr")
+    for result in objects:
+        index += 1
+        try:
+            ping_cr_view(result)
+        except Exception:
+            logger.error('Error: not able to ping')
+            logger.info('Ping CR for: %s', result)
+        if not index % 100:
+            transaction.commit()
+            logger.info('Progress %s/%s', index, results_len)
+    logger.info('Done bulk ping.')
 
-def ping_all(self):
-    """ find objects of a certain portal_type and their aliases and pings them
+def ping_for_brains(self, brains):
+    """ find aliases for given brains and pings the brains and aliases
         to update the information on the SDS
     """
-    results = []
     portalUrl = 'http://www.eea.europa.eu'
-    request = getattr(self, 'REQUEST', None)
-    meta_type = request.get('meta_type', None)
-    if not meta_type:
-        return
-
-    ping_cr_view = queryMultiAdapter((self, request), name="ping_cr")
-    now = DateTime()
-
-    cat = self.portal_catalog
-    pubs = cat.searchResults({
-        'review_state': 'published',
-        'effectiveRange' : now,
-        'Language': 'all',
-        'portal_type': meta_type,
-        'sort_on': 'effective',
-        'sort_order': 'reverse'
-    })
-
+    results = []
     aliases = []
-    for pub in pubs:
+    for pub in brains:
         pub_url = ''
         obj = pub.getObject()
         local_view = obj.restrictedTraverse("@@manage-aliases")
@@ -59,19 +61,27 @@ def ping_all(self):
             alias_url = portalUrl + alias[4:]
         results.append("%s/@@rdf" % alias_url)
 
-    results_len = len(results)
-    index = 0
-    logger.info(results_len)
-    logger.info('------')
-    for result in results:
-        index += 1
-        try:
-            ping_cr_view(result)
-        except Exception:
-            logger.error('Error: not able to ping')
-            logger.info('Ping CR for: %s', result)
-        if not index % 100:
-            transaction.commit()
-            logger.info('Progress %s/%s', index, results_len)
+    ping_for_list(self, brains)
 
-    logger.info('Done bulk ping.')
+def ping_all(self):
+    """ find objects of a certain portal_type and their aliases and pings them
+        to update the information on the SDS
+    """
+    request = getattr(self, 'REQUEST', None)
+    meta_type = request.get('meta_type', None)
+    if not meta_type:
+        return
+
+    now = DateTime()
+
+    cat = self.portal_catalog
+    pubs = cat.searchResults({
+        'review_state': 'published',
+        'effectiveRange' : now,
+        'Language': 'all',
+        'portal_type': meta_type,
+        'sort_on': 'effective',
+        'sort_order': 'reverse'
+    })
+
+    ping_for_brains(self, pubs)

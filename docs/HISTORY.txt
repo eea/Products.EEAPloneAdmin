@@ -3,6 +3,8 @@ Changelog
 
 14.0.dev0 - (unreleased)
 ------------------------
+* Change: Added extra methods in ping_sds_content.py
+  [szabozo0 refs #73857]
 * Cleanup: Added upgrade steps to cleanup ZVC History for Sparql objects (cached_result)
   [voineali refs #74653]
 * Cleanup: Added upgrade steps to cleanup ZVC History for removed objects
