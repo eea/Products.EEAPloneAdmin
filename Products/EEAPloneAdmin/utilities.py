@@ -74,23 +74,36 @@ class ZVCleanup(object):
         """
         site = getSite()
         handler = getToolByName(site, "portal_historyidhandler")
-        count = 0
-        for hid in self.portal_types:
+        logger.warn("ZVCleanup history for removed items STARTED!!!")
+
+        to_delete = set()
+        length = len(self.portal_types)
+        for count, hid in enumerate(self.portal_types):
             working = handler.unrestrictedQueryObject(hid)
             if working is not None:
                 continue
-
-            self._purge(hid)
-            count += 1
+            to_delete.add(hid)
 
             if count % 100 == 0:
-                logger.warn("ZVCleanup removed %s", count)
-        logger.warn("ZVCleanup removed: Cleaned-up history for %s items",
-                    count)
+                logger.warn(
+                    "ZVCleanup: Finding removed items %s/%s", count, length)
+
+        length = len(to_delete)
+        for count, hid in enumerate(to_delete):
+            self._purge(hid)
+            if count % 100 == 0:
+                logger.warn(
+                    "ZVCleanup history for removed items: %s/%s", count, length)
+
+        logger.warn(
+            "ZVCleanup: Cleaned-up history for %s removed items", length)
 
     def cleanup_portal_type(self, portal_type):
         """ Purge history for given Portal Type
         """
+        logger.warn(
+            "ZVCleanup history for portal_type %s STARTED!!!", portal_type)
+
         count = 0
         for hid, ptype in self.portal_types.items():
             if ptype != portal_type:
@@ -108,6 +121,10 @@ class ZVCleanup(object):
         """ Clear large object attributes within history
         """
         zvc_repo = self.storage._getZVCRepo()
+
+        logger.warn(
+            "ZVCleanup history attributes %s for portal_type %s STARTED!!!",
+            attributes, portal_type)
 
         count = 0
         for hid, ptype in self.portal_types.items():
