@@ -16,6 +16,7 @@ class ZVCleanup(object):
     """ Zope Version Control Cleanup utility
     """
     _portal_types = {}
+    _removed_items = set()
     _storage = None
 
     @property
@@ -58,6 +59,29 @@ class ZVCleanup(object):
 
         return self._portal_types
 
+    @property
+    def removed_items(self):
+        """ Get history ids for removed items
+        """
+        if self._removed_items:
+            return self._removed_items
+
+        site = getSite()
+        handler = getToolByName(site, "portal_historyidhandler")
+
+        length = len(self.portal_types)
+        for count, hid in enumerate(self.portal_types):
+            working = handler.unrestrictedQueryObject(hid)
+            if working is not None:
+                continue
+            self._removed_items.add(hid)
+
+            if count % 100 == 0:
+                logger.warn(
+                    "ZVCleanup: Finding removed items %s/%s", count, length)
+
+        return self._removed_items
+
     def _purge(self, hid):
         """Purge all versions """
         while True:
@@ -72,24 +96,10 @@ class ZVCleanup(object):
     def cleanup_removed(self):
         """ Purge history for removed items
         """
-        site = getSite()
-        handler = getToolByName(site, "portal_historyidhandler")
         logger.warn("ZVCleanup history for removed items STARTED!!!")
 
-        to_delete = set()
-        length = len(self.portal_types)
-        for count, hid in enumerate(self.portal_types):
-            working = handler.unrestrictedQueryObject(hid)
-            if working is not None:
-                continue
-            to_delete.add(hid)
-
-            if count % 100 == 0:
-                logger.warn(
-                    "ZVCleanup: Finding removed items %s/%s", count, length)
-
-        length = len(to_delete)
-        for count, hid in enumerate(to_delete):
+        length = len(self.removed_items)
+        for count, hid in enumerate(self.removed_items):
             self._purge(hid)
             if count % 100 == 0:
                 logger.warn(
@@ -135,6 +145,11 @@ class ZVCleanup(object):
             zvc_history = zvc_repo.getVersionHistory(zvc_hid)
             versions = getattr(zvc_history, '_versions', {})
 
+            if count % 100 == 0:
+                logger.warn("ZVCleanup attributes %s for portal_type %s: %s",
+                            attributes, portal_type, count)
+
+            count += 1
             for vid in versions:
                 version = zvc_history.getVersionById(vid)
                 data = version._data
@@ -160,11 +175,6 @@ class ZVCleanup(object):
                         continue
 
                     delattr(ob, attribute)
-
-            count += 1
-            if count % 100 == 0:
-                logger.warn("ZVCleanup attributes %s for portal_type %s: %s",
-                            attributes, portal_type, count)
 
         logger.warn("ZVCleanup attributes %s for portal_type %s: "
                     "Cleaned-up history for %s items",

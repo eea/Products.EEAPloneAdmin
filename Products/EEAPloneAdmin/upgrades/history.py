@@ -8738,4 +8738,6 @@ PORTAL_TYPES = {
     10252: "EEAFigure",
     10253: "Sparql",
     10254: "DavizVisualization",
+    10255: "Sparql",
+    10256: "DavizVisualization",
 }
