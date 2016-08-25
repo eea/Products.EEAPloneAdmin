@@ -241,6 +241,13 @@
                  replacement=".patch_linguaplone._patched_getFieldsToCopy"
                  preserveOriginal="true" />
 
+    <!-- Patch Products.LinguaPlone getDefaultPage to overcome security assessments during traversal -->
+    <monkey:patch description="#74776 patch getDefaultPage to overcome security assessments during traversal"
+                 class="Products.LinguaPlone.browser.defaultpage.DefaultPage"
+                 original="getDefaultPage"
+                 replacement=".patch_linguaplone._patched_getDefaultPage"
+                 preserveOriginal="true" />
+
     <!-- Temporary patch to inspect misterious OSError in rdflib when rendering EEA Organisational Graph page -->
     <monkey:patch description="#7240 patch absolutize from NamespaceManager in rdflib to learn more about an OSError"
                  class="rdflib.syntax.NamespaceManager.NamespaceManager"

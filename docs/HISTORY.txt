@@ -13,6 +13,9 @@ Changelog
   [voineali refs #74653]
 * Cleanup: Added upgrade steps to cleanup ZVC History for old PloneHelpCenter content-types
   [voineali refs #74653]
+* Bug fix: Patched Products.LinguaPlone getDefaultPage to overcome
+  security assessments during traversal
+  [chiridra refs #74776]
 
 13.8 - (2016-07-07)
 -------------------
