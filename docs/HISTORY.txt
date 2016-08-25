@@ -3,6 +3,13 @@ Changelog
 
 14.0.dev0 - (unreleased)
 ------------------------
+* Upgrade step:
+    - Add **Products.HelpCenter** to admin instance (**bin/www8** and **parts/www8/bin/interpreter**)
+    - Start admin instance in foreground (**bin/www8 fg**)
+    - Go to ZMI > www > portal_setup > manage_upgrades
+    - Select **Products.EEAPloneAdmin:default**
+    - Run available upgrade steps
+    - Stop www8 instance and revert changes
 * Change: Added extra methods in ping_sds_content.py
   [szabozo0 refs #73857]
 * Cleanup: Added upgrade steps to cleanup ZVC History for Sparql objects (cached_result)
@@ -544,10 +551,9 @@ Changelog
 
 8.8 - (2014-05-14)
 ------------------
-* Fix: safely get IEEACacheSettings from registry
+* Fix: safely get IEEACacheSettings from registry [batradav refs #19462]
     - removed 'print'
     - fixed pylint
-  [batradav refs #19462]
 
 8.7 - (2014-05-13)
 ------------------
