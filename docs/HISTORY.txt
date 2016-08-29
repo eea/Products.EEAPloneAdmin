@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.0.dev0 - (unreleased)
-------------------------
+14.0 - (2016-08-29)
+-------------------
 * Upgrade step:
     - Add **Products.HelpCenter** to admin instance (**bin/www8** and **parts/www8/bin/interpreter**)
     - Start admin instance in foreground (**bin/www8 fg**)
