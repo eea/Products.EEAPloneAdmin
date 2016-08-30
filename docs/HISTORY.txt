@@ -3,6 +3,8 @@ Changelog
 
 14.1.dev0 - (unreleased)
 ------------------------
+* Change: added rewrite rule for mini header control panel
+  [ichim-david refs #72862]
 
 14.0 - (2016-08-29)
 -------------------

@@ -86,6 +86,15 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  form = jQuery('a[href*="@@eea-miniheader-controlpanel"]', context);
+  if (form.length) {
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: '@@eea-miniheader-controlpanel',
+      newVal: 'www/@@eea-miniheader-controlpanel'
+    });
+  }
+
   form = jQuery('a[href*="@@member-registration"]', context);
   if(form.length){
     jQuery(form).eearewrite({
