@@ -24,8 +24,19 @@ def cleanup_zvc_figurefile(context):
     zvc = getUtility(IZVCleanup)
     zvc.cleanup_portal_type("EEAFigureFile")
 
+
 def cleanup_zvc_sparql(context):
     """ Cleanup cached_result for EEA Sparql
     """
     zvc = getUtility(IZVCleanup)
     zvc.cleanup_attributes("Sparql", "cached_result")
+
+
+def cleanup_zvc_image_fields(context):
+    """ Cleanup image field for pdftheme
+    """
+    zvc = getUtility(IZVCleanup)
+    ptypes = ["Fiche", "GIS Application"]
+    for ptype in ptypes:
+        zvc.cleanup_image_fields(ptype, "image")
+

@@ -3,6 +3,19 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+    <!-- 14.0 => 14.2 -->
+    <genericsetup:upgradeSteps
+        source="14.0"
+        destination="14.2"
+        profile="Products.EEAPloneAdmin:default">
+
+        <genericsetup:upgradeStep
+            title="Cleanup Version Control Storage: migrate image and scales to blob"
+            handler=".evolve140.cleanup_zvc_image_fields"
+        />
+
+    </genericsetup:upgradeSteps>
+
     <!-- 13.7 => 14.0 -->
     <genericsetup:upgradeSteps
         source="13.91"
