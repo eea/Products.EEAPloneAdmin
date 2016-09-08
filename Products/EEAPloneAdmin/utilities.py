@@ -8,6 +8,7 @@ from Products.CMFEditions.ZVCStorageTool import Removed
 from Products.EEAPloneAdmin.interfaces import IZVCleanup
 from Products.EEAPloneAdmin.upgrades.history import PORTAL_TYPES
 from Products.Archetypes.Field import Image as ZODBImage
+from ZODB.broken import BrokenModified
 from eventlet.timeout import Timeout
 from zope.component import queryMultiAdapter
 from zope.component.hooks import getSite
@@ -50,8 +51,10 @@ class ZVCleanup(object):
                 continue
 
             with Timeout(10):
-                ob = self.storage.retrieve(hid).object.object
-
+                try:
+                    ob = self.storage.retrieve(hid).object.object
+                except BrokenModified:
+                    continue
             if not ob:
                 logger.warn("Timeout raised for history id: %s", hid)
                 continue
