@@ -3,6 +3,8 @@ Changelog
 
 14.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: Fixed saved_resources when used within a docker container
+  [voineali refs #70800]
 
 14.1 - (2016-09-05)
 -------------------

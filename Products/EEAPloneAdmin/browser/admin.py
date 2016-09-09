@@ -123,7 +123,7 @@ def save_resources_on_disk(registry, request=None):
     if not hasattr(conf, 'environment'):
         return  #this happens during unit tests, we skip this procedure
 
-    base = conf.environment.get('saved_resources')
+    base = conf.environment.get('saved_resources', os.environ.get('saved_resources'))
     script = conf.environment.get('sync_resources')
     default_url = conf.environment.get('portal_url', portal_url)
 
