@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <metadata>
     <description>EEAPloneAdmin profile</description>
-    <version>14.0</version>
+    <version>14.2</version>
     <dependencies>
         <dependency>profile-valentine.linguaflow:default</dependency>
     </dependencies>

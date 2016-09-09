@@ -1,14 +1,20 @@
 """ Utilities
 """
 import logging
+
 import transaction
-from eventlet.timeout import Timeout
-from zope.interface import implementer
-from zope.component.hooks import getSite
 from Products.CMFCore.utils import getToolByName
 from Products.CMFEditions.ZVCStorageTool import Removed
-from Products.EEAPloneAdmin.upgrades.history import PORTAL_TYPES
 from Products.EEAPloneAdmin.interfaces import IZVCleanup
+from Products.EEAPloneAdmin.upgrades.history import PORTAL_TYPES
+from Products.Archetypes.Field import Image as ZODBImage
+from ZODB.broken import BrokenModified
+from eventlet.timeout import Timeout
+from zope.component import queryMultiAdapter
+from zope.component.hooks import getSite
+from zope.globalrequest import getRequest
+from zope.interface import implementer
+
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
 
@@ -45,8 +51,10 @@ class ZVCleanup(object):
                 continue
 
             with Timeout(10):
-                ob = self.storage.retrieve(hid).object.object
-
+                try:
+                    ob = self.storage.retrieve(hid).object.object
+                except BrokenModified:
+                    continue
             if not ob:
                 logger.warn("Timeout raised for history id: %s", hid)
                 continue
@@ -72,7 +80,10 @@ class ZVCleanup(object):
 
         length = len(self.portal_types)
         for count, hid in enumerate(self.portal_types):
-            working = handler.unrestrictedQueryObject(hid)
+            try:
+                working = handler.unrestrictedQueryObject(hid)
+            except AttributeError:
+                continue
             if working is not None:
                 continue
             self._removed_items.add(hid)
@@ -143,7 +154,10 @@ class ZVCleanup(object):
                 continue
 
             zvc_hid, _vers = self.storage._getZVCAccessInfo(hid, None, True)
-            zvc_history = zvc_repo.getVersionHistory(zvc_hid)
+            try:
+                zvc_history = zvc_repo.getVersionHistory(zvc_hid)
+            except KeyError:
+                continue
             versions = getattr(zvc_history, '_versions', {})
             length = len(versions)
 
@@ -182,3 +196,61 @@ class ZVCleanup(object):
         logger.warn("ZVCleanup attributes %s for portal_type %s: "
                     "Cleaned-up history for %s items",
                     attributes, portal_type, count)
+
+    def cleanup_image_fields(self, portal_type=None, *fields):
+        """ Clear large object fields within history
+        """
+        zvc_repo = self.storage._getZVCRepo()
+
+        logger.warn(
+            "ZVCleanup history field %s for portal_type %s STARTED!!!",
+            fields, portal_type)
+
+        count = 0
+        request = getRequest()
+        for hid, ptype in self.portal_types.items():
+            if portal_type and ptype != portal_type:
+                continue
+
+            zvc_hid, _vers = self.storage._getZVCAccessInfo(hid, None, True)
+            try:
+                zvc_history = zvc_repo.getVersionHistory(zvc_hid)
+            except KeyError:
+                continue
+            versions = getattr(zvc_history, '_versions', {})
+            length = len(versions)
+
+            count += 1
+            logger.warn("%s. ZVCleanup fields: history_id %s, versions %s",
+                        count, hid, length)
+
+            for vid in versions:
+                version = zvc_history.getVersionById(vid)
+                data = version._data
+
+                ob = data.getWrappedObject()
+                ob = getattr(ob, 'object', None)
+                if ob is None:
+                    continue
+
+                for field in fields:
+                    val = getattr(ob, field, None)
+                    if not val:
+                        continue
+                    if not isinstance(val, ZODBImage):
+                        continue
+                    logger.warn("ZVCleanup image fields for: %s - %s",
+                                ob.portal_type, ob.title)
+                    migrate = queryMultiAdapter((ob, request),
+                                                name=u'migrate2blobs')
+                    migrate.migrate(ob.getField(field))
+                    migrate.migrate_scales(ob.getField(field))
+                    logger.warn("%s. ZVCleanup image fields: history_id %s, "
+                                "versions %s", count, hid, vid)
+                    ob._p_changed = True
+
+            transaction.commit()
+
+        logger.warn("ZVCleanup fields %s for portal_type %s: "
+                    "Cleaned-up history for %s items",
+                    fields, portal_type, count)
