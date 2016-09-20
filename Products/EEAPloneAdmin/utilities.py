@@ -10,9 +10,7 @@ from Products.EEAPloneAdmin.upgrades.history import PORTAL_TYPES
 from Products.Archetypes.Field import Image as ZODBImage
 from ZODB.broken import BrokenModified
 from eventlet.timeout import Timeout
-from zope.component import queryMultiAdapter
 from zope.component.hooks import getSite
-from zope.globalrequest import getRequest
 from zope.interface import implementer
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
@@ -54,6 +52,7 @@ class ZVCleanup(object):
                 try:
                     ob = self.storage.retrieve(hid).object.object
                 except BrokenModified:
+                    logger.warn("BrokenModified raised for historyid: %s", hid)
                     continue
             if not ob:
                 logger.warn("Timeout raised for history id: %s", hid)
@@ -207,7 +206,6 @@ class ZVCleanup(object):
             fields, portal_type)
 
         count = 0
-        request = getRequest()
         for hid, ptype in self.portal_types.items():
             if portal_type and ptype != portal_type:
                 continue
@@ -227,8 +225,11 @@ class ZVCleanup(object):
             for vid in versions:
                 version = zvc_history.getVersionById(vid)
                 data = version._data
-
-                ob = data.getWrappedObject()
+                try:
+                    ob = data.getWrappedObject()
+                except AttributeError:
+                    logger.warn('attributeError for:%s - %s', hid, vid)
+                    continue
                 ob = getattr(ob, 'object', None)
                 if ob is None:
                     continue
@@ -238,16 +239,15 @@ class ZVCleanup(object):
                     if not val:
                         continue
                     if not isinstance(val, ZODBImage):
-                        continue
+                       continue
+                    ob.getField(field).removeScales(ob)
                     logger.warn("ZVCleanup image fields for: %s - %s",
                                 ob.portal_type, ob.title)
-                    migrate = queryMultiAdapter((ob, request),
-                                                name=u'migrate2blobs')
-                    migrate.migrate(ob.getField(field))
-                    migrate.migrate_scales(ob.getField(field))
                     logger.warn("%s. ZVCleanup image fields: history_id %s, "
                                 "versions %s", count, hid, vid)
+                    delattr(ob, field)
                     ob._p_changed = True
+                version.saveState(data)
 
             transaction.commit()
 
