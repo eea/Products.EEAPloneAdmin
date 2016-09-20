@@ -1,8 +1,11 @@
 Changelog
 =========
 
-14.2.dev0 - (unreleased)
+14.3.dev0 - (unreleased)
 ------------------------
+
+14.2 - (2016-09-13)
+-------------------
 * Bug fix: Fixed saved_resources when used within a docker container
   [voineali refs #70800]
 
