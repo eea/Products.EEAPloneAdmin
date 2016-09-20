@@ -9,8 +9,11 @@ from Products.EEAPloneAdmin.interfaces import IZVCleanup
 from Products.EEAPloneAdmin.upgrades.history import PORTAL_TYPES
 from Products.Archetypes.Field import Image as ZODBImage
 from ZODB.broken import BrokenModified
+from ZODB.POSException import POSKeyError
 from eventlet.timeout import Timeout
+from zope.component import queryMultiAdapter
 from zope.component.hooks import getSite
+from zope.globalrequest import getRequest
 from zope.interface import implementer
 
 logger = logging.getLogger('Products.EEAPloneAdmin')
@@ -51,7 +54,7 @@ class ZVCleanup(object):
             with Timeout(10):
                 try:
                     ob = self.storage.retrieve(hid).object.object
-                except BrokenModified:
+                except (BrokenModified, POSKeyError):
                     logger.warn("BrokenModified raised for historyid: %s", hid)
                     continue
             if not ob:
@@ -100,7 +103,7 @@ class ZVCleanup(object):
             if length <= 0:
                 break
 
-            self.storage.purge(hid, 0,  metadata={'sys_metadata': {
+            self.storage.purge(hid, 0, metadata={'sys_metadata': {
                 'comment': "Products.EEAPloneAdmin.upgrades:evolve140"}
             }, countPurged=False)
 
@@ -206,6 +209,7 @@ class ZVCleanup(object):
             fields, portal_type)
 
         count = 0
+        request = getRequest()
         for hid, ptype in self.portal_types.items():
             if portal_type and ptype != portal_type:
                 continue
@@ -228,7 +232,8 @@ class ZVCleanup(object):
                 try:
                     ob = data.getWrappedObject()
                 except AttributeError:
-                    logger.warn('attributeError for:%s - %s', hid, vid)
+                    logger.warn('attributeError for zvc_hid --> %s '
+                                'with version %s -->', zvc_hid, vid)
                     continue
                 ob = getattr(ob, 'object', None)
                 if ob is None:
@@ -239,13 +244,15 @@ class ZVCleanup(object):
                     if not val:
                         continue
                     if not isinstance(val, ZODBImage):
-                       continue
+                        continue
+                    migrate = queryMultiAdapter((ob, request),
+                                                name=u'migrate2blobs')
                     ob.getField(field).removeScales(ob)
-                    logger.warn("ZVCleanup image fields for: %s - %s",
-                                ob.portal_type, ob.title)
+                    migrate.migrate(ob.getField(field))
+                    migrate.migrate_scales(ob.getField(field))
                     logger.warn("%s. ZVCleanup image fields: history_id %s, "
-                                "versions %s", count, hid, vid)
-                    delattr(ob, field)
+                                "versions %s for %s - %s", count, hid, vid,
+                                ob.portal_type, ob.title)
                     ob._p_changed = True
                 version.saveState(data)
 

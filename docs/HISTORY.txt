@@ -3,6 +3,18 @@ Changelog
 
 14.3.dev0 - (unreleased)
 ------------------------
+* Upgrade step:
+    - Start admin instance in foreground (**bin/www8 fg**)
+    - run before next upgrade the blob migration for Fiche
+      at /www/@@migrate-eea2blobs
+    - [ichim-david refs #75045]
+* Upgrade step:
+    - Start admin instance in foreground (**bin/www8 fg**)
+    - Go to ZMI > www > portal_setup > manage_upgrades
+    - Select **Products.EEAPloneAdmin:default**
+    - Run available upgrade steps
+    - Stop www8 instance
+    - [ichim-david refs #75045]
 
 14.2 - (2016-09-13)
 -------------------
