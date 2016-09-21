@@ -239,6 +239,12 @@ class ZVCleanup(object):
                 if ob is None:
                     continue
 
+                comments = ob.__annotations__.get('plone.app.discussion'
+                                                  ':conversation')
+                if comments:
+                    logger.warn('COMMENTS PRESENT for: %s - %s - %s - %s',
+                                hid, vid, ob.portal_type, ob.title)
+
                 for field in fields:
                     val = getattr(ob, field, None)
                     if not val:
