@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.3.dev0 - (unreleased)
-------------------------
+14.3 - (2016-09-26)
+-------------------
 * Upgrade step:
     - Start admin instance in foreground (**bin/www8 fg**)
     - run before next upgrade the blob migration for Fiche
