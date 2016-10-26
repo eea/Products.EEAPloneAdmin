@@ -76,7 +76,7 @@
             <p class="discreet">Details about effective local roles (assigned and inherited) under the current context.</p>
 
             <div class="portalMessage attentionMessage">
-                Retrieving local roles data may take a long time. 
+                Retrieving local roles data may take a long time.
                 To avoid a timeout, it is recommended to use a service instance to bypass Apache.
             </div>
 
@@ -88,9 +88,7 @@
                     <ul>
                         <li tal:repeat="ctype view/getCTypesForSelection">
                             <input type="checkbox" name="ctypes"
-                                tal:attributes="value python:ctype[0]; checked python:ctype[1]"
-                                tal:content="python:ctype[0]">
-                            </input>
+                                tal:attributes="value python:ctype[0]; checked python:ctype[1]" />
                         </li>
                     </ul>
                 </fieldset>
@@ -100,9 +98,7 @@
                     <ul>
                         <li tal:repeat="outype view/getOutputForSelection">
                           <input type="radio" name="outype"
-                              tal:attributes="value python:outype[0]; checked python:outype[1]"
-                              tal:content="python:outype[0]">
-                          </input>
+                                 tal:attributes="value python:outype[0]; checked python:outype[1]" />
                         </li>
                     </ul>
                 </fieldset>
