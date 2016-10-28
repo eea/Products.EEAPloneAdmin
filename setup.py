@@ -11,7 +11,7 @@ version = open(join(*path)).read().strip()
 setup(name=name,
       version=version,
       description="EEA Plone Admin",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Programming Language :: Python",
