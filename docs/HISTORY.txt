@@ -3,6 +3,8 @@ Changelog
 
 14.4.dev0 - (unreleased)
 ------------------------
+* Change: fixed pylint warnings
+  [alecghica refs #79246]
 
 14.3 - (2016-09-26)
 -------------------

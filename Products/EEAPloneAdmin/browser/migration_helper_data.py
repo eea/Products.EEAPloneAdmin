@@ -2232,6 +2232,8 @@ def data_versions():
 
 
 def urls_for_73422():
+    """ URLs for #73422
+    """
     res = [
         '/www/SITE/about-us/governance/scientific-committee/list-of-scientific-committee-members-1',
         '/www/SITE/atlas/eea/the-swedish-forestry-model/video/the-swedish-forestry-model-1',
