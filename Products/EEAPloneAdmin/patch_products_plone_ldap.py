@@ -3,7 +3,7 @@
 from Products.PluggableAuthService.UserPropertySheet import UserPropertySheet
 import logging
 
-logger = logging.getLogger()
+logger = logging.getLogger("patch_products_plone_ldap")
 
 def __patched_init__(self, oid, user):
     self.id = oid
@@ -15,7 +15,7 @@ def __patched_init__(self, oid, user):
                 if x['public_name']]
 
     properties = self._getCache(user)
-    logger.info(properties)
+    #logger.info(properties)
     if not properties:
         properties = self.fetchLdapProperties(user)
         if properties:
