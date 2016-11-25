@@ -3,6 +3,9 @@ Changelog
 
 14.4.dev0 - (unreleased)
 ------------------------
+* Bug fix: patched products.ploneldap in order to avoid error
+  when user information came from a tuple instead of a dict
+  [ichim-david refs #75565]
 * Change: fixed pylint warnings
   [alecghica refs #79246]
 

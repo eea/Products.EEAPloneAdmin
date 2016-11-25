@@ -15,13 +15,12 @@ def __patched_init__(self, oid, user):
                 if x['public_name']]
 
     properties = self._getCache(user)
-    #logger.info(properties)
     if not properties:
         properties = self.fetchLdapProperties(user)
         if properties:
             self._setCache(user, properties)
     if isinstance(properties, tuple):
-        logger.debug(properties)
+        logger.warning(properties)
         properties = properties[0] if properties else {}
     UserPropertySheet.__init__(self, oid,
             schema=[(x[1], x[2]) for x in self._ldapschema], **properties)
