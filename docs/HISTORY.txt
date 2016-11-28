@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.4.dev0 - (unreleased)
-------------------------
+14.4 - (2016-11-28)
+-------------------
 * Bug fix: patched products.ploneldap in order to avoid error
   when user information came from a tuple instead of a dict
   [ichim-david refs #75565]
