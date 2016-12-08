@@ -22,5 +22,7 @@ def __patched_init__(self, id, user):
     if isinstance(properties, tuple):
         logger.warning(properties)
         properties = properties[0] if properties else {}
+    if isinstance(properties, dict):
+        id = properties.pop('id', id)
     UserPropertySheet.__init__(self, id,
             schema=[(x[1], x[2]) for x in self._ldapschema], **properties)
