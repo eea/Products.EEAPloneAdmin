@@ -3,6 +3,8 @@ Changelog
 
 14.6.dev0 - (unreleased)
 ------------------------
+* Bug fix: Added external helper methods to sync and cleanup catalogs
+  [voineali refs #79711]
 
 14.5 - (2016-12-08)
 -------------------
