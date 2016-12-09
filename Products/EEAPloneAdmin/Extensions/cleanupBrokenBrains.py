@@ -1,5 +1,9 @@
 import logging
 import transaction
+from BTrees.OIBTree import OIBTree
+from BTrees.IOBTree import IOBTree
+import BTrees.Length
+from pprint import pformat
 logger = logging.getLogger('EEAPloneAdmin')
 
 #
@@ -182,53 +186,62 @@ def reindexData(self):
             logger.warn("New data record for %s: %s", rid, newDataRecord)
             data[rid] = newDataRecord
     return "Fixed %s data records. Still broken: %s" % (count, broken)
+#
+# Re-sync catalog
+#
+def _cleanupDuplicates(self, duplicates, items):
+    for rid, path in duplicates.items():
+        logger.warn("Removing duplicate record from catalog %s: %s", rid, path)
+        erid = items[path]
+        self._catalog.data[erid] = ()
+        self._catalog.uncatalogObject(path)
+        self._catalog._length.change(1)
+        self._catalog.uids[path] = rid
+        self._catalog.paths[rid] = path
+        self._catalog.data[rid] = ()
+        self._catalog.uncatalogObject(path)
+        obj = self.www.unrestrictedTraverse(path, None)
+        if obj:
+            logger.warn("Re-indexing obj at %s", path)
+            self._catalog.catalogObject(obj, path)
 
+def reSyncCatalog(self):
+    if len(self._catalog.paths) == len(self._catalog.uids):
+        logger.warn("Catalog in-sync. Nothing to do.")
+        return "Catalog in-sync. Nothing to do."
 
-#
-# Uncomment following lines if you know what you're doing.
-# Never run it directly on production. I didn't run it at all :)
-#
+    items = {}
+    duplicates = {}
+    for rid, path in self._catalog.paths.iteritems():
+        if path not in items:
+            items[path] = rid
+            continue
 
-# from BTrees.OIBTree import OIBTree
-# from BTrees.IOBTree import IOBTree
-# import BTrees.Length
+        erid = items[path]
+        if rid != erid:
+            logger.warn('PATHS: Duplicate path %s but not rid %s. Existing rid: %s', path, rid, erid)
+            duplicates[rid] = path
 
-#def _rebuildUIDS(self):
-#    uids = OIBTree()
-#    self._length = BTrees.Length.Length()
-#    logger.warn("Rebuilding catalog uids: %s", self)
-#    count = 0
-#    for key, val in iterbatch(self._catalog.uids):
-#        uids[key] = val
-#        self._length.change(1)
-#        count += 1
-#
-#    self.uids = uids
-#    msg = "Rebuilded %s catalog uids" % count
-#    logger.warn(msg)
-#    return msg
-#
-#
-#def _rebuildPaths(self):
-#    paths = IOBTree()
-#    logger.warn("Rebuilding catalog paths: %s", self)
-#    count = 0
-#    for key, val in iterbatch(self._catalog.paths):
-#        paths[key] = val
-#        count += 1
-#
-#    self.paths = paths
-#    msg = "Rebuilded %s catalog paths" % count
-#    logger.warn(msg)
-#    return msg
-#
-#
-#def rebuild(self):
-#    logger.warn("Rebuilding catalog started: %s", self)
-#    msg = []
-#    msg.append(_rebuildPaths(self))
-#    transaction.savepoint()
-#    msg.append(_rebuildUIDS(self))
-#
-#    return "\n".join(msg)
-#
+    for path, rid in iterbatch(self._catalog.uids):
+        if path not in items:
+            items[path] = rid
+            continue
+
+        erid = items[path]
+        if rid != erid:
+            duplicates[rid] = path
+            logger.warn('UIDS: Duplicate path %s but not rid %s. Existing rid: %s', path, rid, erid)
+
+    self._catalog.uids = OIBTree()
+    self._catalog.paths = IOBTree()
+    self._catalog._length = BTrees.Length.Length()
+    for path, rid in items.items():
+        self._catalog._length.change(1)
+        self._catalog.uids[path] = rid
+        self._catalog.paths[rid] = path
+
+    msg = "Fixed %s paths. Duplicates %s" % (len(items), pformat(duplicates))
+    logger.warn(msg)
+    transaction.savepoint()
+    _cleanupDuplicates(self, duplicates, items)
+    return msg
