@@ -245,3 +245,102 @@ def reSyncCatalog(self):
     transaction.savepoint()
     _cleanupDuplicates(self, duplicates, items)
     return msg
+
+def brokenBrains(self):
+    if self.meta_type == "Plone Catalog Tool":
+        brains = self(Language='all')
+    else:
+        brains = self()
+
+    count = 0
+    total = len(brains)
+    broken = {}
+    logger.info("%s: Finding broken brains within %s total brains", self, total)
+    for idx, brain in enumerate(brains):
+        try:
+            obj = brain.getObject()
+        except Exception as err:
+            logger.exception(err)
+            obj = None
+
+        if not obj:
+            try:
+                rid = brain.getRID()
+                path = brain.getURL()
+            except Exception as err:
+                logger.exception(err)
+            else:
+                logger.info('Orphan brain\t%s\t%s', rid, path)
+                count += 1
+                broken[path] = rid
+
+        if idx % 1000 == 0:
+            logger.info("Progress %s/%s", idx, total)
+
+    logger.info('Found %s orphan brains', count)
+    return pformat(broken)
+
+def fixEmptyData(self):
+    data = self._catalog.data
+    empty = set()
+    for rid, val in self._catalog.data.iteritems():
+        if not val:
+            empty.add(rid)
+
+    logger.warn("Found %s empty data", len(empty))
+    count = 0
+    fixed = set()
+    for rid in empty:
+        path = self._catalog.paths.get(rid)
+        if not path:
+            logger.warn("No path found for rid %s", rid)
+            continue
+
+        erid = self._catalog.uids.get(path)
+        if not erid:
+            logger.warn("No rid found within uids for path %s", path)
+            continue
+
+        if erid != rid:
+            logger.warn("Rid %s not in sync: %s", rid, erid)
+            continue
+
+        obj = self.www.unrestrictedTraverse(path, None)
+        if not obj:
+            continue
+
+        logger.warn('Fixing data for %s', path)
+        self._catalog.catalogObject(obj, path)
+        fixed.add(path)
+        count += 1
+
+    logger.warn("Fixed %s metadata", count)
+    return "\n".join(fixed)
+
+def cleanPortalFactoryBrains(self):
+    if self.meta_type == "Plone Catalog Tool":
+        brains = self(Language='all')
+    else:
+        brains = self()
+
+    broken = set()
+    logger.warn("Cleanup portal_factory brains started on catalog %s", self)
+    count = 0
+    for brain in brains:
+        rid = brain.getRID()
+        try:
+            path = self._catalog.paths[rid]
+        except Exception as err:
+            logger.exception(err)
+            continue
+
+        if 'portal_factory' in path:
+            broken.add(path)
+
+    for path in broken:
+        logger.warn('%s', path)
+        self._catalog.uncatalogObject(path)
+        count += 1
+
+    logger.warn('Unindexed %s portal_factory brains', count)
+    return '\n'.join(broken)
