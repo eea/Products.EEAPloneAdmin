@@ -269,6 +269,7 @@
                   preserveOriginal="false" />
 
     <monkey:patch description="Monkeypatch Products.PloneLDAP-1.2.property.py"
+                  zcml:condition="installed Products.PloneLDAP"
                   class="Products.PloneLDAP.property.LDAPPropertySheet"
                   original="__init__"
                   replacement=".patch_products_plone_ldap.__patched_init__"

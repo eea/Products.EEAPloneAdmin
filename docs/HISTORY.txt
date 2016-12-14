@@ -3,6 +3,9 @@ Changelog
 
 14.6.dev0 - (unreleased)
 ------------------------
+* Change: added zcml condition for Products.PloneLDAP patch in order
+  to avoid jenkins build failures
+  [ichim-david]
 * Bug fix: Added external helper methods to sync and cleanup catalogs
   [voineali refs #79711]
 
