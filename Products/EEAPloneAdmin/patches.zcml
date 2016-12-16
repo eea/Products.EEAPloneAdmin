@@ -219,7 +219,11 @@
                      replacement=".patch_email_validation.validateSingleEmailAddress"
                      preserveOriginal="false" />
 
-
+    <monkey:patch description="Fix plone.app.search to use only alnum values from url"
+      class="plone.app.search.browser.Search"
+      original="results"
+      preserveOriginal="false"
+      replacement=".patch_plone_app_search.results" />
 
     <!-- Backport change of contentMethod from plone.app.content 2.1a1 to 2.0.X to be removed after we have plone.app.content 2.0.12 -->
     <monkey:patch description="#5533 patch contentsMethod from FolderContentsTable to display query results also for new style Collections"
