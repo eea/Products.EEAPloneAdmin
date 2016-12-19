@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.6.dev0 - (unreleased)
-------------------------
+14.6 - (2016-12-19)
+-------------------
 * Bug fix: patch plone.app.search results in order to avoid error
   when sort_on parameter has either wrong characters or not based
   on a predifined value list which you can select while using the search
