@@ -22,6 +22,8 @@ def results(self, query=None, batch=True, b_size=10, b_start=0):
     # in case it contains non alphabetic characters
     p = re.compile(r"[^A-Za-z0-9-_]+")
     query = self.filter_query(query)
+    if query is None:
+        res = []
     for k, v in query.items():
         if k == 'SearchableText':
             continue
