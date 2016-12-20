@@ -3,6 +3,10 @@ Changelog
 
 14.7.dev0 - (unreleased)
 ------------------------
+* Bug fix: fix patch of plone.app.search to affect only the results
+  of sort_on as this is the index that expect valid index values only
+  and would have crashed otherwise
+  [ichim-david refs #79760]
 
 14.6 - (2016-12-19)
 -------------------

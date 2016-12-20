@@ -25,19 +25,18 @@ def results(self, query=None, batch=True, b_size=10, b_start=0):
     if query is None:
         res = []
     for k, v in query.items():
-        if k == 'SearchableText':
+        if k != 'sort_on':
             continue
         if not isinstance(v, basestring):
             continue
         if p.search(v):
             query[k] = re.sub(p, "", v)
-        if k == 'sort_on':
-            # 79924
-            # you should only be allowed to search by date or sortable_title
-            # by removing the sort_on key if we have other values passed in
-            # we avoid a CatalogError
-            if v and v not in ['Date', 'sortable_title']:
-                del query[k]
+        # 79924
+        # you should only be allowed to search by date or sortable_title
+        # by removing the sort_on key if we have other values passed in
+        # we avoid a CatalogError
+        if v and v not in ['Date', 'sortable_title']:
+            del query[k]
 
     if query is None:
         res = []
