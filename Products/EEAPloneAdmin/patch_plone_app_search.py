@@ -23,7 +23,8 @@ def results(self, query=None, batch=True, b_size=10, b_start=0):
     p = re.compile(r"[^A-Za-z0-9-_]+")
     query = self.filter_query(query)
     if query is None:
-        res = []
+        query = {}
+
     for k, v in query.items():
         if k != 'sort_on':
             continue
@@ -38,7 +39,7 @@ def results(self, query=None, batch=True, b_size=10, b_start=0):
         if v and v not in ['Date', 'sortable_title']:
             del query[k]
 
-    if query is None:
+    if not query:
         res = []
     else:
         catalog = getToolByName(self.context, 'portal_catalog')
