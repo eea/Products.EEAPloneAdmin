@@ -1,6 +1,9 @@
 Changelog
 =========
 
+14.8.dev0 - (unreleased)
+------------------------
+
 14.7 - (2016-12-21)
 -------------------
 * Bug fix: fix patch of plone.app.search to affect only the results
