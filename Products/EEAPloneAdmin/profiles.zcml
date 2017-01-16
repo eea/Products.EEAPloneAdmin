@@ -155,4 +155,12 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:registerProfile
+        name="upgrade148"
+        title="EEA Plone Admin upgrade profile for 14.8"
+        description='EEA Plone Admin upgrade profile for v14.8'
+        directory="profiles/upgrades/to_148"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
 </configure>

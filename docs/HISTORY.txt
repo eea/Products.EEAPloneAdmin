@@ -3,6 +3,12 @@ Changelog
 
 14.8.dev0 - (unreleased)
 ------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [voineali refs #80206]
+* Upgrade step: Within "Plone > Site setup > Add-ons" install
+  EEA Async Manager
+  [voineali refs #80206]
 
 14.7 - (2016-12-21)
 -------------------
