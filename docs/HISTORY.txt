@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.8.dev0 - (unreleased)
-------------------------
+14.8 - (2017-01-17)
+-------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
   [voineali refs #80206]
