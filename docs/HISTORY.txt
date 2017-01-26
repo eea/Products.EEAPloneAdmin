@@ -3,6 +3,11 @@ Changelog
 
 14.9.dev0 - (unreleased)
 ------------------------
+* Change: added migration script for adding empty.flv for old
+  media files
+  [ichim-david refs #79816]
+* Upgrade step: run on www8 instance www/setEmptyFLVOnMediaFiles
+  [ichim-david refs #79816]
 
 14.8 - (2017-01-17)
 -------------------
