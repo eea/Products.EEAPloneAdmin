@@ -2309,8 +2309,7 @@ class SetEmptyFLVOnMediaFiles(object):
         catalog = getToolByName(self.context, 'portal_catalog')
 
         log.info("*** Catalog search start")
-        brains = catalog(review_state="published",
-                         Language="all",
+        brains = catalog(Language="all",
                          portal_type="File",
                          object_provides='eea.mediacentre.interfaces.IVideo',
                          show_inactive=True)
@@ -2325,6 +2324,7 @@ class SetEmptyFLVOnMediaFiles(object):
 
         log.info("Starting IMedia file fix for %d objects", total)
         not_found = []
+        path = os.path.join(os.path.dirname(__file__), "data", "empty.flv")
         for brain in brains:
             count_progress += 1
             brain_url = brain.getURL()
@@ -2336,17 +2336,16 @@ class SetEmptyFLVOnMediaFiles(object):
                 continue
             if obj.getFilename() != "empty.flv":
                 continue
-            path = os.path.join(os.path.dirname(__file__), "data", "empty.flv")
             afile = open(path, "r")
             obj.setFile(afile)
             afile.close()
+            obj.reindexObject()
             log.info("%s/%s :: Set empty.flv for %s", count_progress, total,
                      brain_url)
-            res_objs.append(brain_url)
-
+            res_objs.append("\n %s" % brain_url)
             count += 1
             if count % 50 == 0:
-                transaction.savepoint(optimistic=True)
+                transaction.commit()
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
