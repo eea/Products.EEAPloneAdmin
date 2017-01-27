@@ -2334,11 +2334,10 @@ class SetEmptyFLVOnMediaFiles(object):
                 not_found.append("%s \n" % brain_url)
                 log.info("### SKIPPED not found")
                 continue
-            # no need to change Once or Weekly sparql objects
-            if obj.getFile():
+            if obj.getFilename != "empty.flv":
                 continue
-            path = os.path.join(os.path.dirname(__file__), 'data', 'empty.flv')
-            afile = open(path, 'r')
+            path = os.path.join(os.path.dirname(__file__), "data", "empty.flv")
+            afile = open(path, "r")
             obj.setFile(afile)
             afile.close()
             log.info("%s/%s :: Set empty.flv for %s", count_progress, total,
