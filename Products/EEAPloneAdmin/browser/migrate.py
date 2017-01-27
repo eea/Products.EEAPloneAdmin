@@ -2334,7 +2334,7 @@ class SetEmptyFLVOnMediaFiles(object):
                 not_found.append("%s \n" % brain_url)
                 log.info("### SKIPPED not found")
                 continue
-            if obj.getFilename != "empty.flv":
+            if obj.getFilename() != "empty.flv":
                 continue
             path = os.path.join(os.path.dirname(__file__), "data", "empty.flv")
             afile = open(path, "r")
