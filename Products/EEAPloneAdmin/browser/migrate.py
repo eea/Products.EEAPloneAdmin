@@ -2342,6 +2342,7 @@ class SetEmptyFLVOnMediaFiles(object):
             afile.close()
             log.info("%s/%s :: Set empty.flv for %s", count_progress, total,
                      brain_url)
+            res_objs.append(brain_url)
 
             count += 1
             if count % 50 == 0:
