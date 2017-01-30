@@ -2292,3 +2292,64 @@ class ReplaceWrongCreationDate(object):
         return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
                                                             res_objs_msg,
                                                             not_found_msg)
+
+
+class SetEmptyFLVOnMediaFiles(object):
+    """ Set placeholder flv for IMedia files with missing files
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("IMedia without files")
+        log.info("*** Starting fix for IMedia without files")
+        catalog = getToolByName(self.context, 'portal_catalog')
+
+        log.info("*** Catalog search start")
+        brains = catalog(Language="all",
+                         portal_type="File",
+                         object_provides='eea.mediacentre.interfaces.IVideo',
+                         show_inactive=True)
+        log.info("*** Catalog search ended")
+
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+
+        log.info("TOTAL affected: %d objects", len(brains))
+        total = len(brains)
+        count = 0
+        count_progress = 0
+
+        log.info("Starting IMedia file fix for %d objects", total)
+        not_found = []
+        path = os.path.join(os.path.dirname(__file__), "data", "empty.flv")
+        for brain in brains:
+            count_progress += 1
+            brain_url = brain.getURL()
+            try:
+                obj = brain.getObject()
+            except Exception:
+                not_found.append("%s \n" % brain_url)
+                log.info("### SKIPPED not found")
+                continue
+            if obj.getFilename() != "empty.flv":
+                continue
+            afile = open(path, "r")
+            obj.setFile(afile)
+            afile.close()
+            obj.reindexObject()
+            log.info("%s/%s :: Set empty.flv for %s", count_progress, total,
+                     brain_url)
+            res_objs.append("\n %s" % brain_url)
+            count += 1
+            if count % 50 == 0:
+                transaction.commit()
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE media file fix for %d objects", count)
+        res_objs_msg = " ".join(res_objs)
+        not_found_msg = " ".join(not_found)
+        return "%s %s %s " % (count_message, res_objs_msg, not_found_msg)

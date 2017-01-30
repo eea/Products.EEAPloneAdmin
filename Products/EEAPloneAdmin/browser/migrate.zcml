@@ -213,4 +213,9 @@
         class=".migrate.ReplaceWrongCreationDate"
         permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+      name="setEmptyFLVOnMediaFiles"
+      class=".migrate.SetEmptyFLVOnMediaFiles"
+      permission="cmf.ManagePortal" />
+
 </configure>

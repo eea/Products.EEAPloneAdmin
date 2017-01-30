@@ -61,7 +61,7 @@ def ping_for_brains(self, brains):
             alias_url = portalUrl + alias[4:]
         results.append("%s/@@rdf" % alias_url)
 
-    ping_for_list(self, brains)
+    ping_for_list(self, results)
 
 def ping_all(self):
     """ find objects of a certain portal_type and their aliases and pings them
