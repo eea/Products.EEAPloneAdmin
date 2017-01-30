@@ -1,8 +1,8 @@
 Changelog
 =========
 
-14.9.dev0 - (unreleased)
-------------------------
+14.9 - (2017-01-30)
+-------------------
 * Bug fix: Patch SearchableText to cache long operations (e.g. PDF)
   [voineali refs #79726]
 * Bug fix: fixed ping_sds_content external method to send
