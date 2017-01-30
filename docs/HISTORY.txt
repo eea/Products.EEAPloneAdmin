@@ -1,6 +1,11 @@
 Changelog
 =========
 
+15.0.dev0 - (unreleased)
+------------------------
+* Change: release a new egg
+  [alecghica refs #80860]
+
 14.9 - (2017-01-30)
 -------------------
 * Bug fix: Patch SearchableText to cache long operations (e.g. PDF)
