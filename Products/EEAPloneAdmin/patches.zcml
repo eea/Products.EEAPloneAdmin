@@ -169,6 +169,14 @@
                   replacement=".patch_cmfcore.patched_icon"
                   preserveOriginal="true" />
 
+    ===========================[ Products.Archetypes patches ]==========================
+
+    <monkey:patch description="Patch for Products.Archetypes.BaseObject SearchableText  to cache long operations #79726"
+                  class="Products.Archetypes.BaseObject.BaseObject"
+                  original="SearchableText"
+                  replacement=".patch_archetypes.SearchableText"
+                  preserveOriginal="true" />
+
     ===========================[ Other patches ]==========================
 
     <!-- #2316 implement HEAD for zope3 BrowserView -->

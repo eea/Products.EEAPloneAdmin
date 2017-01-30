@@ -3,6 +3,8 @@ Changelog
 
 14.9.dev0 - (unreleased)
 ------------------------
+* Bug fix: Patch SearchableText to cache long operations (e.g. PDF)
+  [voineali refs #79726]
 
 14.8 - (2017-01-17)
 -------------------
