@@ -8,8 +8,7 @@ Changelog
 * Bug fix: fixed ping_sds_content external method to send
   proper url to semantic.
   [demarant refs #81095]
-* Change: added migration script for adding empty.flv for old
-  media files
+* Change: added migration script for adding empty.flv for old media files
   [ichim-david refs #79816]
 * Upgrade step: run on www8 instance www/setEmptyFLVOnMediaFiles
   [ichim-david refs #79816]
