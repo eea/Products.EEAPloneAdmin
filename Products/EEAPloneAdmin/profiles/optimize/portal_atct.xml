@@ -198,9 +198,6 @@
    <criteria>ATSelectionCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
-  <index name="getImageNote" description="" enabled="False" friendlyName="">
-   <criteria>ATSimpleStringCriterion</criteria>
-  </index>
   <index name="getImageSource" description="" enabled="False" friendlyName="">
    <criteria>ATBooleanCriterion</criteria>
    <criteria>ATDateRangeCriterion</criteria>
@@ -645,8 +642,6 @@
      description="The short name of an item (used in the url)" enabled="True"
      friendlyName="Short Name"/>
   <metadata name="getImageCopyright" description="" enabled="False"
-     friendlyName=""/>
-  <metadata name="getImageNote" description="" enabled="False"
      friendlyName=""/>
   <metadata name="getImageSource" description="" enabled="False"
      friendlyName=""/>

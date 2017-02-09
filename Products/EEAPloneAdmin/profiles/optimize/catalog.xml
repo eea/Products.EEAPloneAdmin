@@ -105,11 +105,6 @@
  <index name="getImageCopyright" meta_type="FieldIndex">
   <indexed_attr value="getImageCopyright"/>
  </index>
- <index name="getImageNote" meta_type="ZCTextIndex">
-  <indexed_attr value="getImageNote"/>
-  <extra name="index_type" value="Cosine Measure"/>
-  <extra name="lexicon_id" value="plaintext_lexicon"/>
- </index>
  <index name="getImageSource" meta_type="FieldIndex">
   <indexed_attr value="getImageSource"/>
  </index>
@@ -277,7 +272,6 @@
  <column value="getIcon"/>
  <column value="getId"/>
  <column value="getImageCopyright"/>
- <column value="getImageNote"/>
  <column value="getImageSource"/>
  <column value="getNewsTitle"/>
  <column value="getObjSize"/>
