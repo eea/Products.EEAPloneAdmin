@@ -3,6 +3,8 @@ Changelog
 
 15.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove `getImageSource` index from portal_catalog
+  [voineali refs #80119]
 * Cleanup: Remove `getImageNote` index from portal_catalog
   [voineali refs #80119]
 
