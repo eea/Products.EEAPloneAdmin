@@ -102,9 +102,6 @@
  <index name="getId" meta_type="FieldIndex">
   <indexed_attr value="getId"/>
  </index>
- <index name="getImageCopyright" meta_type="FieldIndex">
-  <indexed_attr value="getImageCopyright"/>
- </index>
  <index name="getNewsTitle" meta_type="FieldIndex">
   <indexed_attr value="getNewsTitle"/>
  </index>

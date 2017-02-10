@@ -185,19 +185,6 @@
    <criteria>ATListCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
-  <index name="getImageCopyright" description="" enabled="False"
-     friendlyName="">
-   <criteria>ATBooleanCriterion</criteria>
-   <criteria>ATDateRangeCriterion</criteria>
-   <criteria>ATSimpleIntCriterion</criteria>
-   <criteria>ATListCriterion</criteria>
-   <criteria>ATFriendlyDateCriteria</criteria>
-   <criteria>ATCurrentAuthorCriterion</criteria>
-   <criteria>ATPortalTypeCriterion</criteria>
-   <criteria>ATReferenceCriterion</criteria>
-   <criteria>ATSelectionCriterion</criteria>
-   <criteria>ATSimpleStringCriterion</criteria>
-  </index>
   <index name="getNewsTitle" description="" enabled="False" friendlyName="">
    <criteria>ATBooleanCriterion</criteria>
    <criteria>ATDateRangeCriterion</criteria>
