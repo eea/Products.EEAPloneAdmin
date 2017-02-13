@@ -111,9 +111,6 @@
  <index name="getProcessor" meta_type="KeywordIndex">
   <indexed_attr value="getProcessor"/>
  </index>
- <index name="getQuotationText" meta_type="KeywordIndex">
-  <indexed_attr value="getQuotationText"/>
- </index>
  <index name="getRawRelatedItems" meta_type="KeywordIndex">
   <indexed_attr value="getRawRelatedItems"/>
  </index>
@@ -257,7 +254,6 @@
  <column value="getImageCopyright"/>
  <column value="getObjSize"/>
  <column value="getOwnership"/>
- <column value="getQuotationText"/>
  <column value="getRemoteUrl"/>
  <column value="getSections"/>
  <column value="getShortId"/>

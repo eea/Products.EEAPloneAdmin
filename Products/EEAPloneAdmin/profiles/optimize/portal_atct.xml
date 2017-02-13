@@ -207,15 +207,6 @@
    <criteria>ATSelectionCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
-  <index name="getQuotationText" description="" enabled="False"
-     friendlyName="">
-   <criteria>ATSimpleIntCriterion</criteria>
-   <criteria>ATListCriterion</criteria>
-   <criteria>ATCurrentAuthorCriterion</criteria>
-   <criteria>ATReferenceCriterion</criteria>
-   <criteria>ATSelectionCriterion</criteria>
-   <criteria>ATSimpleStringCriterion</criteria>
-  </index>
   <index name="getRawRelatedItems"
      description="Find items related to the selected items" enabled="True"
      friendlyName="Related To">
@@ -597,8 +588,6 @@
   <metadata name="getObjSize" description="The size of an item" enabled="True"
      friendlyName="Size"/>
   <metadata name="getOwnership" description="" enabled="False"
-     friendlyName=""/>
-  <metadata name="getQuotationText" description="" enabled="False"
      friendlyName=""/>
   <metadata name="getRemoteUrl" description="The url of a Link item"
      enabled="False" friendlyName="Remote Url"/>
