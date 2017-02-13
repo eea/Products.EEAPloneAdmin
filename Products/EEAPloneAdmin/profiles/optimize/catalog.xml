@@ -102,9 +102,6 @@
  <index name="getId" meta_type="FieldIndex">
   <indexed_attr value="getId"/>
  </index>
- <index name="getNewsTitle" meta_type="FieldIndex">
-  <indexed_attr value="getNewsTitle"/>
- </index>
  <index name="getObjPositionInParent" meta_type="GopipIndex">
   <indexed_attr value="getObjPositionInParent"/>
  </index>
@@ -266,7 +263,6 @@
  <column value="getIcon"/>
  <column value="getId"/>
  <column value="getImageCopyright"/>
- <column value="getNewsTitle"/>
  <column value="getObjSize"/>
  <column value="getOwnership"/>
  <column value="getQuotationSource"/>
