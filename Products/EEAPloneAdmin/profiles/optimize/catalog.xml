@@ -281,7 +281,6 @@
  <column value="navSection"/>
  <column value="object_provides"/>
  <column value="portal_type"/>
- <column value="promotion_macro"/>
  <column value="publication_groups"/>
  <column value="published_readiness"/>
  <column value="review_state"/>

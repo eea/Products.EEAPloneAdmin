@@ -3,6 +3,8 @@ Changelog
 
 15.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove `promotion_macro` metadata from portal_catalog
+  [voineali refs #80119]
 * Cleanup: Remove `getQuotationText` index and metadata from portal_catalog
   [voineali refs #80119]
 * Cleanup: Remove `getQuotationSource` index and metadata from portal_catalog

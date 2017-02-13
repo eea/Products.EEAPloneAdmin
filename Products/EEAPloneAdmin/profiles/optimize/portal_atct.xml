@@ -649,8 +649,6 @@
      friendlyName="Interfaces provided"/>
   <metadata name="portal_type" description="" enabled="False"
      friendlyName="Item Type (internal)"/>
-  <metadata name="promotion_macro" description="" enabled="False"
-     friendlyName=""/>
   <metadata name="publication_groups" description="" enabled="False"
      friendlyName=""/>
   <metadata name="published_readiness" description="" enabled="False"
