@@ -624,8 +624,6 @@
      friendlyName="Size"/>
   <metadata name="getOwnership" description="" enabled="False"
      friendlyName=""/>
-  <metadata name="getProcessor" description="" enabled="True"
-     friendlyName="Data processor"/>
   <metadata name="getQuotationSource" description="" enabled="False"
      friendlyName=""/>
   <metadata name="getQuotationText" description="" enabled="False"

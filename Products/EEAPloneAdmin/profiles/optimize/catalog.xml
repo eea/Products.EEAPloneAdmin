@@ -269,7 +269,6 @@
  <column value="getNewsTitle"/>
  <column value="getObjSize"/>
  <column value="getOwnership"/>
- <column value="getProcessor"/>
  <column value="getQuotationSource"/>
  <column value="getQuotationText"/>
  <column value="getRemoteUrl"/>

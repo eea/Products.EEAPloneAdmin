@@ -3,6 +3,8 @@ Changelog
 
 15.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove `getProcessor` index from portal_catalog metadata
+  [voineali refs #80119]
 * Cleanup: Remove `getImageCopyright` index from portal_catalog
   [voineali refs #80119]
 * Cleanup: Remove `getImageSource` index and metadata from portal_catalog
