@@ -324,9 +324,6 @@
    <criteria>ATSimpleIntCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>
   </index>
-  <index name="getTeaser" description="" enabled="False" friendlyName="">
-   <criteria>ATSimpleStringCriterion</criteria>
-  </index>
   <index name="getTemporalCoverage" description="" enabled="True"
      friendlyName="Temporal coverage">
    <criteria>ATSimpleIntCriterion</criteria>
@@ -622,8 +619,6 @@
   <metadata name="getShortId" description="" enabled="False" friendlyName=""/>
   <metadata name="getStartHere" description="" enabled="False"
      friendlyName=""/>
-  <metadata name="getTeaser" description="Teaser for frontpage items"
-     enabled="True" friendlyName="Teaser"/>
   <metadata name="getTemporalCoverage" description="" enabled="True"
      friendlyName="Temporal Coverage"/>
   <metadata name="getThemes"

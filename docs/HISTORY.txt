@@ -3,9 +3,11 @@ Changelog
 
 15.1.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove `getTeaser` index and metadata from portal_catalog
+  [voineali refs #80119]
 * Cleanup: Remove `getNewsTitle` index and metadata from portal_catalog
   [voineali refs #80119]
-* Cleanup: Remove `getProcessor` index from portal_catalog metadata
+* Cleanup: Remove `getProcessor` metadata from portal_catalog metadata
   [voineali refs #80119]
 * Cleanup: Remove `getImageCopyright` index from portal_catalog
   [voineali refs #80119]

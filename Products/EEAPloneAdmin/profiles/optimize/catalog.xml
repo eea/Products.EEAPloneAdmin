@@ -144,11 +144,6 @@
  <index name="getStartHere" meta_type="FieldIndex">
   <indexed_attr value="getStartHere"/>
  </index>
- <index name="getTeaser" meta_type="ZCTextIndex">
-  <indexed_attr value="getTeaser"/>
-  <extra name="index_type" value="Cosine Measure"/>
-  <extra name="lexicon_id" value="plaintext_lexicon"/>
- </index>
  <index name="getTemporalCoverage" meta_type="KeywordIndex">
   <indexed_attr value="getTemporalCoverage"/>
  </index>
@@ -271,7 +266,6 @@
  <column value="getSections"/>
  <column value="getShortId"/>
  <column value="getStartHere"/>
- <column value="getTeaser"/>
  <column value="getTemporalCoverage"/>
  <column value="getThemes"/>
  <column value="getTranslationLanguages"/>
