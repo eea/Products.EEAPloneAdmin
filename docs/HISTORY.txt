@@ -3,6 +3,10 @@ Changelog
 
 15.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: Fix search-rss.pt to avoid errors like:
+  cannot concatenate 'str' and 'NoneType' objects
+  [avoinea refs #82326]
+
 
 15.1 - (2017-02-14)
 -------------------
