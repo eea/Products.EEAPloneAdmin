@@ -3,23 +3,10 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
-    <!-- 14.2 => 14.8 -->
+    <!-- => 14.8 -->
     <genericsetup:upgradeSteps
-        source="14.2"
+        source="14.4"
         destination="14.8"
-        profile="Products.EEAPloneAdmin:default">
-
-    <genericsetup:upgradeDepends
-      title="Import all steps from Products.EEAPloneAdmin 14.8 profile"
-      import_profile="Products.EEAPloneAdmin:upgrade148"
-      />
-
-    </genericsetup:upgradeSteps>
-
-    <!-- 14.0 => 14.2 -->
-    <genericsetup:upgradeSteps
-        source="14.0"
-        destination="14.2"
         profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeStep
@@ -28,6 +15,33 @@
         />
 
     </genericsetup:upgradeSteps>
+
+    <!-- => 14.4 -->
+    <genericsetup:upgradeSteps
+        source="14.2"
+        destination="14.4"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Cleanup portal_catalog: Remove unnecesary indexes and metadata"
+      import_profile="Products.EEAPloneAdmin:upgrade144"
+      />
+
+    </genericsetup:upgradeSteps>
+
+    <!-- => 14.2 -->
+    <genericsetup:upgradeSteps
+        source="14.0"
+        destination="14.2"
+        profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.EEAPloneAdmin 14.2 profile"
+      import_profile="Products.EEAPloneAdmin:upgrade142"
+      />
+
+    </genericsetup:upgradeSteps>
+
 
     <!-- 13.7 => 14.0 -->
     <genericsetup:upgradeSteps

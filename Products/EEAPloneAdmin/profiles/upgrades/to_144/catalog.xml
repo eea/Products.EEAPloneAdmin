@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+
+ <!-- Indexes -->
+ <index name="getImageNote" meta_type="ZCTextIndex" remove="True" />
+ <index name="getImageSource" meta_type="FieldIndex" remove="True" />
+ <index name="getImageCopyright" meta_type="FieldIndex" remove="True" />
+ <index name="getNewsTitle" meta_type="FieldIndex" remove="True" />
+ <index name="getTeaser" meta_type="FieldIndex" remove="True" />
+ <index name="getQuotationText" meta_type="FieldIndex" remove="True" />
+ <index name="getQuotationSource" meta_type="FieldIndex" remove="True" />
+
+ <!-- Metadata -->
+ <column value="getImageNote" remove="True"/>
+ <column value="getImageSource" remove="True"/>
+ <column value="getProcessor" remove="True"/>
+ <column value="getNewsTitle" remove="True"/>
+ <column value="getTeaser" remove="True"/>
+ <column value="getQuotationText" remove="True"/>
+ <column value="getQuotationSource" remove="True"/>
+ <column value="promotion_macro" remove="True"/>
+
+</object>
