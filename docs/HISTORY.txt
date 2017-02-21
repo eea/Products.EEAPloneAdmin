@@ -1,15 +1,14 @@
 Changelog
 =========
 
-15.2.dev0 - (unreleased)
-------------------------
+15.2 - (2017-02-21)
+-------------------
 * Upgrade step: Within "ZMI > portal_setup > Upgrade tabs" run
   pending upgrades for Products.EEAPloneAdmin:default
   [avoinea refs #80119]
 * Bug fix: Fix search-rss.pt to avoid errors like:
   cannot concatenate 'str' and 'NoneType' objects
   [avoinea refs #82326]
-
 
 15.1 - (2017-02-14)
 -------------------
