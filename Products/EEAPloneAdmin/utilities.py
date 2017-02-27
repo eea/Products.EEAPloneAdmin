@@ -57,6 +57,9 @@ class ZVCleanup(object):
                 except (BrokenModified, POSKeyError):
                     logger.warn("BrokenModified raised for historyid: %s", hid)
                     continue
+                except Exception as err:
+                    logger.exception(err)
+                    continue
             if not ob:
                 logger.warn("Timeout raised for history id: %s", hid)
                 continue
@@ -239,8 +242,8 @@ class ZVCleanup(object):
                 if ob is None:
                     continue
 
-                comments = ob.__annotations__.get('plone.app.discussion'
-                                                  ':conversation')
+                comments = ob.__annotations__.get(
+                        'plone.app.discussion:conversation')
                 if comments:
                     logger.warn('COMMENTS PRESENT for: %s - %s - %s - %s',
                                 hid, vid, ob.portal_type, ob.title)
