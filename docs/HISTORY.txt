@@ -1,8 +1,8 @@
 Changelog
 =========
 
-15.3.dev0 - (unreleased)
-------------------------
+15.3 - (2017-03-02)
+-------------------
 * Bug fix: Fix ZVCleanup upgrade step
   [avoinea]
 
