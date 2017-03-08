@@ -116,8 +116,7 @@ def save_resources_on_disk(registry, request=None):
     portal_url_tool = getToolByName(registry, 'portal_url')
     portal_url = portal_url_tool()
     #portal          = portal_url_tool.getPortalObject()
-    skins = getToolByName(registry,
-                                    'portal_skins').getSkinSelections()
+    skins = getToolByName(registry, 'portal_skins').getSkinSelections()
     conf = getConfiguration()
 
     if not hasattr(conf, 'environment'):

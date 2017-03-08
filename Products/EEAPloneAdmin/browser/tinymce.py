@@ -10,11 +10,10 @@ class TinyMCEPatch(BrowserView):
             'Content-Type', 'application/x-javascript;charset=utf-8')
 
         return """
-        window.tinyMCEPreInit = {
-         base:'%s',
-         suffix:'',
-         query:''
-        };
-
+window.tinyMCEPreInit = {
+ base:'%s',
+ suffix:'',
+ query:''
+};
         """ % self.context.portal_url()
 
