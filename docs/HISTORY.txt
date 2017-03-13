@@ -3,6 +3,11 @@ Changelog
 
 15.4.dev0 - (unreleased)
 ------------------------
+* Upgrade step: Within "ZMI > portal_setup > Upgrade tabs" run
+  pending upgrades for Products.EEAPloneAdmin:default
+  [avoinea refs #83219]
+* Bug fix: Added upgrade step to fix older versions Themes
+  [avoinea refs #83219]
 
 15.3 - (2017-03-02)
 -------------------

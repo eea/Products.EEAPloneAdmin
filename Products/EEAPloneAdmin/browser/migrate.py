@@ -9,7 +9,7 @@ import json
 from Acquisition import aq_base
 from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
-from Products.Five import BrowserView
+from Products.Five.browser import BrowserView
 from Products.CMFCore.permissions import AccessContentsInformation, View
 from pprint import pprint
 from eea.promotion.interfaces import IPromotion, IPromoted
@@ -46,7 +46,7 @@ try:
 except ImportError:
     has_versions = False
 
-logger = logging.getLogger("Products.EEAPloneAdmin.Migrations")
+logger = logging.getLogger("Products.EEAPloneAdmin")
 
 url = 'http://themes.eea.europa.eu/migrate/%s?theme=%s'
 
@@ -2353,3 +2353,67 @@ class SetEmptyFLVOnMediaFiles(object):
         res_objs_msg = " ".join(res_objs)
         not_found_msg = " ".join(not_found)
         return "%s %s %s " % (count_message, res_objs_msg, not_found_msg)
+
+
+class SynchronizeThemes(BrowserView):
+    """ Synchronize older versions themes with the latest one
+    """
+    def __call__(self, *args, **kwargs):
+        ctool = getToolByName(self.context, 'portal_catalog')
+        versions = ctool.Indexes.get('getVersionId').uniqueValues()
+        logs = []
+        for idx, version in enumerate(versions):
+            brains = ctool(getVersionId=version)
+            if len(brains) < 2:
+                continue
+
+            try:
+                brains = sorted(brains, reverse=1, key=lambda b: max(
+                    b.effective.asdatetime(), b.created.asdatetime()))
+            except Exception as err:
+                logger.warn("Can't fix version id: %s", version)
+                logger.exception(err)
+                continue
+
+            themes = None
+            state = None
+            if idx % 500 == 0:
+                logger.info("\n\nProcessed version ids %s\n\n", idx)
+
+            for brain in brains:
+                try:
+                    old_themes = brain.getThemes
+                    old_state = brain.review_state
+                except Exception as err:
+                    logger.exception(err)
+                    continue
+
+                # Skip some revisions
+                if old_state in ['marked_for_deletion']:
+                    continue
+
+                # Latest version
+                if not state:
+                    state = old_state
+
+                if not themes:
+                    themes = old_themes
+                    continue
+
+                if sorted(themes) != sorted(old_themes):
+                    msg = (
+                        "Updating older version:\n"
+                        "%s\t"
+                        "%s\t"
+                        "themes from\t"
+                        "%s\tto\t%s\t"
+                        "revision\t"
+                        "%s\tto\t%s\t" % (
+                        brain.portal_type,
+                        brain.getURL(1),
+                        old_themes, themes,
+                        old_state, state)
+                    )
+                    logs.append(msg)
+                    logger.warn(msg)
+        return "\n".join(logs)
