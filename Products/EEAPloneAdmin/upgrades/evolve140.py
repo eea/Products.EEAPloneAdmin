@@ -1,6 +1,6 @@
 """ Cleanup Zope Versions Control
 """
-from zope.component import getUtility, getMultiAdapter
+from zope.component import getUtility
 from Products.EEAPloneAdmin.interfaces import IZVCleanup
 
 def cleanup_zvc_helpcenter(context):
@@ -38,12 +38,3 @@ def cleanup_zvc_image_fields(context):
     ptypes = ["Fiche", "GIS Application"]
     for ptype in ptypes:
         zvc.cleanup_image_fields(ptype, "image")
-
-
-def sync_topics(context):
-    """ Sync topics accross versions
-    """
-    request = getattr(context, 'REQUEST', None)
-    migrate = getMultiAdapter((context, request),
-                              name='migrate-versions-themes')
-    migrate()

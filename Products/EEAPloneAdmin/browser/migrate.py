@@ -6,6 +6,16 @@ import os
 import urllib
 import transaction
 import json
+from zope.annotation import IAnnotations
+from zope.interface import alsoProvides
+from zope.interface import directlyProvides
+from zope.interface import directlyProvidedBy
+from zope.interface import noLongerProvides
+from zope.component import queryUtility
+from zope.component import queryAdapter
+from zope.component import ComponentLookupError
+from zope.component import getMultiAdapter
+from zope.component.interface import nameToInterface
 from Acquisition import aq_base
 from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -22,17 +32,11 @@ from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.content import ContentHistoryView
-from zope.interface import alsoProvides
 from eea.mediacentre.interfaces import IVideo as MIVideo
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from cStringIO import StringIO
-from zope.interface import directlyProvides, directlyProvidedBy, \
-                                             noLongerProvides
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
-from zope.component import queryUtility, queryAdapter, ComponentLookupError, \
-    getMultiAdapter
-from zope.component.interface import nameToInterface
 
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, urls_for_73422
@@ -1981,7 +1985,6 @@ class MigrateDavizAnnotationData(object):
         msgs = []
         for brain in brains:
             obj = brain.getObject()
-            from zope.annotation import IAnnotations
             anno = IAnnotations(obj)
             daviz = anno.get('eea.daviz.config.json')
             if not daviz:
@@ -2358,7 +2361,13 @@ class SetEmptyFLVOnMediaFiles(object):
 class SynchronizeThemes(BrowserView):
     """ Synchronize older versions themes with the latest one
     """
-    def __call__(self, *args, **kwargs):
+    def __init__(self, context, request):
+        super(SynchronizeThemes, self).__init__(context, request)
+        self.ignore_types = ['Report']
+        self.ignore_themes = ['technology']
+        self.ignore_states = ['marked_for_deletion']
+
+    def __call__(self, dry_run=True, **kwargs):
         ctool = getToolByName(self.context, 'portal_catalog')
         versions = ctool.Indexes.get('getVersionId').uniqueValues()
         logs = []
@@ -2384,12 +2393,18 @@ class SynchronizeThemes(BrowserView):
                 try:
                     old_themes = brain.getThemes
                     old_state = brain.review_state
+                    old_type = brain.portal_type
+                    old_url = brain.getURL()
                 except Exception as err:
                     logger.exception(err)
                     continue
 
                 # Skip some revisions
-                if old_state in ['marked_for_deletion']:
+                if old_state in self.ignore_states:
+                    continue
+
+                # Skip some types
+                if old_type in self.ignore_types:
                     continue
 
                 # Latest version
@@ -2409,8 +2424,7 @@ class SynchronizeThemes(BrowserView):
                         "%s\tto\t%s\t"
                         "revision\t"
                         "%s\tto\t%s\t" % (
-                        brain.portal_type,
-                        brain.getURL(1),
+                        old_type, old_url,
                         old_themes, themes,
                         old_state, state)
                     )

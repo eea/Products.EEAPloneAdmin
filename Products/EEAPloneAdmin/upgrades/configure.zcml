@@ -5,26 +5,13 @@
 
     <!-- => 14.8 -->
     <genericsetup:upgradeSteps
-        source="14.5"
+        source="14.4"
         destination="14.8"
         profile="Products.EEAPloneAdmin:default">
 
         <genericsetup:upgradeStep
             title="Cleanup Version Control Storage: migrate image and scales to blob"
             handler=".evolve140.cleanup_zvc_image_fields"
-        />
-
-    </genericsetup:upgradeSteps>
-
-    <!-- => 14.85 -->
-    <genericsetup:upgradeSteps
-        source="14.4"
-        destination="14.5"
-        profile="Products.EEAPloneAdmin:default">
-
-        <genericsetup:upgradeStep
-            title="Sync topics accross versions"
-            handler=".evolve140.sync_topics"
         />
 
     </genericsetup:upgradeSteps>
