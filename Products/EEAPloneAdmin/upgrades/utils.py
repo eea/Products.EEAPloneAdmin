@@ -18,6 +18,7 @@ except ImportError:
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
 
+
 def bulkReindexObjects(context, brains, idxs=None):
     """ Bulk reindex objects using multi-transactions
     """
@@ -45,6 +46,7 @@ def bulkReindexObjects(context, brains, idxs=None):
     if ifaces and idxs and isinstance(idxs, list):
         idxs.append('object_provides')
 
+    index = 0
     for index, brain in enumerate(brains):
         if index and index % 100 == 0:
             transaction.commit()
@@ -64,9 +66,9 @@ def bulkReindexObjects(context, brains, idxs=None):
                         logger.debug(nerr)
             obj.reindexObject(idxs=idxs)
         except Exception as err:
-            logger.warn('ERROR during reindexing of %s: %s',
-                    brain.getURL(1), err)
-    logger.info('Done reindexing')
+            logger.warn("Couldn't reindex: %s", brain.getURL(1))
+            logger.exception(err)
+    logger.info('Done reindexing %s items', index)
 
 
 def bulkReindexObjectsSecurity(context, brains, wf_id):
