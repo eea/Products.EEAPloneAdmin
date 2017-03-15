@@ -8,6 +8,8 @@ Changelog
   [avoinea refs #83219]
 * Bug fix: Added upgrade step to fix older versions Themes
   [avoinea refs #83219]
+* Feature: Review bulkReindexObjects utility
+  [avoinea refs #83219]
 
 15.3 - (2017-03-02)
 -------------------

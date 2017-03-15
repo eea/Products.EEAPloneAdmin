@@ -17,15 +17,13 @@ except ImportError:
 
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
-info = logger.info
-info_exception = logger.exception
 
 def bulkReindexObjects(context, brains, idxs=None):
     """ Bulk reindex objects using multi-transactions
     """
     total = len(brains)
-    info('INFO: Start reindexing')
-    info('INFO: reindexing %s brains', total)
+    logger.info('Start reindexing')
+    logger.info('reindexing %s brains', total)
     inames = [
             "p4a.video.interfaces.IAnyVideoCapable",
             "p4a.video.interfaces.IPossibleVideoContainer",
@@ -38,49 +36,45 @@ def bulkReindexObjects(context, brains, idxs=None):
     for iname in inames:
         try:
             ifaces.append(nameToInterface(context, iname))
-        except ComponentLookupError:
-            info_exception('Cant find interface from %s name', iname)
-    # add ISubtyped since for some reason it gives a ComponentLookupError
+        except ComponentLookupError as err:
+            logger.debug(err)
     if HAS_Subtyper:
         inames.append("p4a.video.interfaces.IVideoContainerEnhanced")
         ifaces.append(ISubtyped)
 
-    if idxs and isinstance(idxs, list):
+    if ifaces and idxs and isinstance(idxs, list):
         idxs.append('object_provides')
 
     for index, brain in enumerate(brains):
+        if index and index % 100 == 0:
+            transaction.commit()
+            logger.info("Subtransaction committed to zodb (%s/%s)",
+                    index, total)
         try:
             obj = brain.getObject()
-            if idxs:
-                for iface in ifaces:
-                    if iface.providedBy(obj):
-                        try:
-                            noLongerProvides(obj, iface)
-                        except ValueError:
-                            pass
-                obj.reindexObject(idxs=idxs)
-            else:
+            if not idxs:
                 obj.reindexObject()
-            if index % 100 == 0:
-                transaction.commit()
-                msg = 'INFO: Subtransaction committed to zodb (%s/%s)'
-                info(msg, index, total)
-        except Exception:
-            info('ERROR: error during reindexing of %s', brain.getURL(1))
-        #except Exception, err:
-            #from ZODB.POSException import POSKeyError
-            #if type(err) != POSKeyError:
-            #    import pdb; pdb.set_trace()
+                continue
 
-    info('INFO: Done reindexing')
+            for iface in ifaces:
+                if iface.providedBy(obj):
+                    try:
+                        noLongerProvides(obj, iface)
+                    except ValueError as nerr:
+                        logger.debug(nerr)
+            obj.reindexObject(idxs=idxs)
+        except Exception as err:
+            logger.warn('ERROR during reindexing of %s: %s',
+                    brain.getURL(1), err)
+    logger.info('Done reindexing')
 
 
 def bulkReindexObjectsSecurity(context, brains, wf_id):
     """ Bulk reindex objects security using multi-transactions
     """
     total = len(brains)
-    info('INFO: Start reindexing')
-    info('INFO: reindexing %s brains', total)
+    logger.info('Start reindexing')
+    logger.info('Reindexing %s brains', total)
 
     wf = getToolByName(context, 'portal_workflow')
     wf_def = wf.getWorkflowById(wf_id)
@@ -98,10 +92,10 @@ def bulkReindexObjectsSecurity(context, brains, wf_id):
             total = len(brains)
 
             if count % 100 == 0:
-                logger.info('INFO: Subtransaction committed to zodb (%s/%s)',
+                logger.info('Subtransaction committed to zodb (%s/%s)',
                             count, total)
                 transaction.commit()
     else:
-        info('ERROR: %s workflow not found', wf_id)
+        logger.warn('ERROR: %s workflow not found', wf_id)
 
-    info('INFO: Done reindexing')
+    logger.info('Done reindexing')
