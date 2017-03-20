@@ -2363,87 +2363,158 @@ class SynchronizeThemes(BrowserView):
     """
     def __init__(self, context, request):
         super(SynchronizeThemes, self).__init__(context, request)
-        self.ignore_types = ['Report']
-        self.ignore_themes = ['technology']
-        self.ignore_states = ['marked_for_deletion']
+        self.ignore_types = set(['Report'])
+        self.ignore_theme = set(['technology'])
+        self.ignore_states = set(['marked_for_deletion'])
+        self._dry_run = True
+        self._assessments = set()
+        self._external_data_specs = set()
+        self._logs = []
 
-    def __call__(self, dry_run=True, **kwargs):
-        dry_run = dry_run not in (0, False, "0", "False", "no")
+    @property
+    def assessments(self):
+        """ Assessments """
+        return self._assessments
 
+    @property
+    def external_data_specs(self):
+        """ ExternalDataSpecs """
+        return self._external_data_specs
+
+    @property
+    def logs(self):
+        """ Logs """
+        return self._logs
+
+    @property
+    def dry_run(self):
+        """ Dry run
+        """
+        return self._dry_run
+
+    @dry_run.setter
+    def dry_run(self, value):
+        """ Set dry_run
+        """
+        if value in (0, False, "0", "False", "no"):
+            self._dry_run = False
+        self._dry_run = True
+
+    def fixAssessments(self):
+        """ Fix Assessment ctypes
+        """
+        if not self.dry_run:
+            for doc in self.assessments:
+                doc.reindexObject(idxs=["getThemes"])
+
+    def fixExternalDataSpec(self):
+        """ Fix ExternalDataSpec ctypes
+        """
+        if not self.dry_run:
+            for doc in self.external_data_specs:
+                doc.reindexObject(idxs=["getThemes"])
+
+    def fixVersion(self, version):
+        """  Fix objects by version id
+        """
         ctool = getToolByName(self.context, 'portal_catalog')
-        versions = ctool.Indexes.get('getVersionId').uniqueValues()
-        logs = []
-        logger.info("Synchronizing older versions themes: dry_run=%s", dry_run)
-        for idx, version in enumerate(versions):
-            brains = ctool(getVersionId=version)
-            if len(brains) < 2:
-                continue
+        brains = ctool(getVersionId=version)
+        if len(brains) < 2:
+            return
 
+        try:
+            brains = sorted(brains, reverse=1, key=lambda b: max(
+                b.effective.asdatetime(), b.created.asdatetime()))
+        except Exception as err:
+            logger.warn("Can't fix version id: %s", version)
+            logger.exception(err)
+            return
+
+        themes = None
+        state = None
+        for brain in brains:
             try:
-                brains = sorted(brains, reverse=1, key=lambda b: max(
-                    b.effective.asdatetime(), b.created.asdatetime()))
+                old_themes = brain.getThemes
+                old_state = brain.review_state
+                old_type = brain.portal_type
+                old_url = brain.getURL()
             except Exception as err:
-                logger.warn("Can't fix version id: %s", version)
                 logger.exception(err)
                 continue
 
-            themes = None
-            state = None
-            if idx % 500 == 0:
-                logger.info("\n\nProcessed version ids %s\n\n", idx)
-                if not dry_run:
-                    transaction.commit()
+            # Skip some revisions
+            if old_state in self.ignore_states:
+                continue
 
-            for brain in brains:
-                try:
-                    old_themes = brain.getThemes
-                    old_state = brain.review_state
-                    old_type = brain.portal_type
-                    old_url = brain.getURL()
-                except Exception as err:
-                    logger.exception(err)
-                    continue
+            # Skip some types
+            if old_type in self.ignore_types:
+                continue
 
-                # Skip some revisions
-                if old_state in self.ignore_states:
-                    continue
+            # Skip some themes
+            if self.ignore_types.intersection(old_themes):
+                continue
 
-                # Skip some types
-                if old_type in self.ignore_types:
-                    continue
+            # Latest version state
+            if not state:
+                state = old_state
 
-                # Latest version
-                if not state:
-                    state = old_state
+            # Latest version themes
+            if not themes:
+                themes = old_themes
+                continue
 
-                if not themes:
-                    themes = old_themes
-                    continue
+            # Nothing changed
+            if sorted(themes) == sorted(old_themes):
+                continue
 
-                if sorted(themes) == sorted(old_themes):
-                    continue
-
-                msg = (
-                    "Updating older version:\n"
-                    "%s\t"
-                    "%s\t"
-                    "themes from\t"
-                    "%s\tto\t%s\t"
-                    "revision\t"
-                    "%s\tto\t%s\t" % (
+            msg = (
+                "Updating older version:\n"
+                "%s\t"
+                "%s\t"
+                "themes from\t"
+                "%s\tto\t%s\t"
+                "revision\t"
+                "%s\tto\t%s\t" % (
                     old_type, old_url,
                     old_themes, themes,
-                    old_state, state)
-                )
+                    old_state, state))
 
-                logs.append(msg)
-                logger.warn(msg)
-                if not dry_run:
-                    try:
-                        doc = brain.getObject()
-                        IThemeTagging(doc).tags = themes
-                        doc.reindexObject(idxs=["getThemes"])
-                    except Exception as err:
-                        logger.exception(err)
+            self._logs.append(msg)
+            logger.warn(msg)
 
-        return "\n".join(logs)
+            # Assessment
+            if old_type == 'Assessment':
+                self._assessments.add(brain.getObject())
+                continue
+
+            # ExternalDataSpec
+            if old_type == 'ExternalDataSpec':
+                self._external_data_specs.add(brain.getObject())
+                continue
+
+            if not self.dry_run:
+                try:
+                    doc = brain.getObject()
+                    IThemeTagging(doc).tags = themes
+                    doc.reindexObject(idxs=["getThemes"])
+                except Exception as err:
+                    logger.exception(err)
+
+    def __call__(self, **kwargs):
+        kwargs.update(self.request.form)
+        self.dry_run = kwargs.get('dry_run', True)
+
+        ctool = getToolByName(self.context, 'portal_catalog')
+        versions = ctool.Indexes.get('getVersionId').uniqueValues()
+
+        logger.info(
+            "Synchronizing older versions themes: dry_run=%s", self.dry_run)
+        for idx, version in enumerate(versions):
+            if idx % 500 == 0:
+                logger.info("\n\nProcessed version ids %s\n\n", idx)
+                if not self.dry_run:
+                    transaction.commit()
+            self.fixVersion(version)
+        self.fixAssessments()
+        self.fixExternalDataSpec()
+        return "\n".join(self.logs)

@@ -7,8 +7,6 @@ Changelog
    * Within "ZMI > portal_setup > Upgrade tabs" run pending upgrades for **eea.themecentre:default**
    * Within "ZMI > 0maintenance" run **reindexMergedThemes**
    * Within "ZMI > 0maintenance" run "syncVersionsThemes"
-   * Within "ZMI > 0maintenance" run "syncVersionsThemes" again.
-     The 2nd run will also sync content with custom IThemeTagging adapters (e.g.: Assessment, ExternalDataSpec)
 * Bug fix: Added upgrade step to fix older versions Themes
   [avoinea refs #83219]
 * Feature: Review bulkReindexObjects utility
