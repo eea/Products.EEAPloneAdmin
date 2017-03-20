@@ -2450,11 +2450,6 @@ class SynchronizeThemes(BrowserView):
             if old_type in self.ignore_types:
                 continue
 
-            # Skip some themes
-            if (isinstance(old_themes, (list, tuple)) and
-                    self.ignore_types.intersection(old_themes)):
-                continue
-
             # Latest version state
             if not state:
                 state = old_state
