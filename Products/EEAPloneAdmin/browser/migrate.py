@@ -2368,7 +2368,7 @@ class SynchronizeThemes(BrowserView):
         self.ignore_states = ['marked_for_deletion']
 
     def __call__(self, dry_run=True, **kwargs):
-        dry_run = dry_run in (0, False, "0", "False", "no")
+        dry_run = dry_run not in (0, False, "0", "False", "no")
 
         ctool = getToolByName(self.context, 'portal_catalog')
         versions = ctool.Indexes.get('getVersionId').uniqueValues()
