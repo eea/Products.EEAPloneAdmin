@@ -2389,7 +2389,7 @@ class SynchronizeThemes(BrowserView):
 
             themes = None
             state = None
-            if (idx + 1) % 500 == 0:
+            if idx % 500 == 0:
                 logger.info("\n\nProcessed version ids %s\n\n", idx)
                 if not dry_run:
                     transaction.commit()
@@ -2420,25 +2420,25 @@ class SynchronizeThemes(BrowserView):
                     themes = old_themes
                     continue
 
-                if sorted(themes) != sorted(old_themes):
-                    msg = (
-                        "Updating older version:\n"
-                        "%s\t"
-                        "%s\t"
-                        "themes from\t"
-                        "%s\tto\t%s\t"
-                        "revision\t"
-                        "%s\tto\t%s\t" % (
-                        old_type, old_url,
-                        old_themes, themes,
-                        old_state, state)
-                    )
+                if sorted(themes) == sorted(old_themes):
+                    continue
 
-                    logs.append(msg)
-                    logger.warn(msg)
-                    if dry_run:
-                        continue
+                msg = (
+                    "Updating older version:\n"
+                    "%s\t"
+                    "%s\t"
+                    "themes from\t"
+                    "%s\tto\t%s\t"
+                    "revision\t"
+                    "%s\tto\t%s\t" % (
+                    old_type, old_url,
+                    old_themes, themes,
+                    old_state, state)
+                )
 
+                logs.append(msg)
+                logger.warn(msg)
+                if not dry_run:
                     try:
                         doc = brain.getObject()
                         IThemeTagging(doc).tags = themes
