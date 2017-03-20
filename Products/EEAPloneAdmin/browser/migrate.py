@@ -2368,9 +2368,12 @@ class SynchronizeThemes(BrowserView):
         self.ignore_states = ['marked_for_deletion']
 
     def __call__(self, dry_run=True, **kwargs):
+        dry_run = dry_run in (0, False, "0", "False", "no")
+
         ctool = getToolByName(self.context, 'portal_catalog')
         versions = ctool.Indexes.get('getVersionId').uniqueValues()
         logs = []
+        logger.info("Synchronizing older versions themes: dry_run=%s", dry_run)
         for idx, version in enumerate(versions):
             brains = ctool(getVersionId=version)
             if len(brains) < 2:
@@ -2386,8 +2389,10 @@ class SynchronizeThemes(BrowserView):
 
             themes = None
             state = None
-            if idx % 500 == 0:
+            if (idx + 1) % 500 == 0:
                 logger.info("\n\nProcessed version ids %s\n\n", idx)
+                if not dry_run:
+                    transaction.commit()
 
             for brain in brains:
                 try:
@@ -2428,6 +2433,17 @@ class SynchronizeThemes(BrowserView):
                         old_themes, themes,
                         old_state, state)
                     )
+
                     logs.append(msg)
                     logger.warn(msg)
+                    if dry_run:
+                        continue
+
+                    try:
+                        doc = brain.getObject()
+                        IThemeTagging(doc).tags = themes
+                        doc.reindexObject(idxs=["getThemes"])
+                    except Exception as err:
+                        logger.exception(err)
+
         return "\n".join(logs)
