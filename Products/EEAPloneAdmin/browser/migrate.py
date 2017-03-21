@@ -2404,7 +2404,8 @@ class SynchronizeThemes(BrowserView):
         """
         if value in (0, False, "0", "False", "no"):
             self._dry_run = False
-        self._dry_run = True
+        else:
+            self._dry_run = True
 
     def fixAssessments(self):
         """ Fix Assessment ctypes
