@@ -2431,6 +2431,7 @@ class SynchronizeThemes(BrowserView):
             return
 
         count = 0
+        total = len(self.other)
         for doc, themes in self.other:
             try:
                 IThemeTagging(doc).tags = themes
@@ -2441,7 +2442,7 @@ class SynchronizeThemes(BrowserView):
 
             count += 1
             if count % 100 == 0:
-                logger.info("Subtransaction commit")
+                logger.info("Subtransaction commit: %s/%s", count, total)
                 transaction.savepoint(optimistic=True)
 
     def extract(self, version):
