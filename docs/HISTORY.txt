@@ -1,8 +1,8 @@
 Changelog
 =========
 
-15.4.dev0 - (unreleased)
-------------------------
+15.4 - (2017-03-21)
+-------------------
 * Upgrade step:
    * Within "ZMI > portal_setup > Upgrade tabs" run pending upgrades for **eea.themecentre:default**
    * Within "ZMI > 0maintenance" run **reindexMergedThemes**
