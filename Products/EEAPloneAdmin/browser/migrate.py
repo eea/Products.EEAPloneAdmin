@@ -2363,9 +2363,9 @@ class SynchronizeThemes(BrowserView):
     """
     def __init__(self, context, request):
         super(SynchronizeThemes, self).__init__(context, request)
-        self.ignore_types = set(['Report'])
-        self.ignore_theme = set(['technology'])
-        self.ignore_states = set(['marked_for_deletion'])
+        self.ignore_types = ['Report']
+        self.ignore_theme = ['technology']
+        self.ignore_states = ['marked_for_deletion']
         self._dry_run = True
         self._assessments = set()
         self._external_data_specs = set()
