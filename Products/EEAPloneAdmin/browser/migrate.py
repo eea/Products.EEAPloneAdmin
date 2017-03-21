@@ -2369,6 +2369,7 @@ class SynchronizeThemes(BrowserView):
         self._dry_run = True
         self._assessments = set()
         self._external_data_specs = set()
+        self._other = set()
         self._logs = []
 
     @property
@@ -2380,6 +2381,11 @@ class SynchronizeThemes(BrowserView):
     def external_data_specs(self):
         """ ExternalDataSpecs """
         return self._external_data_specs
+
+    @property
+    def other(self):
+        """ Other content-types """
+        return self._other
 
     @property
     def logs(self):
@@ -2414,8 +2420,25 @@ class SynchronizeThemes(BrowserView):
             for doc in self.external_data_specs:
                 doc.reindexObject(idxs=["getThemes"])
 
-    def fixVersion(self, version):
-        """  Fix objects by version id
+    def fixOther(self):
+        """ Fix other ctypes """
+        if not self.dry_run:
+            count = 0
+            for doc, themes in self.other:
+                try:
+                    IThemeTagging(doc).tags = themes
+                    doc.reindexObject(idxs=["getThemes"])
+                except Exception as err:
+                    logger.exception(err)
+                    continue
+
+                count += 1
+                if count % 100 == 0:
+                    logger.info("Subtransaction commit")
+                    transaction.savepoint(optimistic=True)
+
+    def extract(self, version):
+        """  Find objects by version id
         """
         ctool = getToolByName(self.context, 'portal_catalog')
         brains = ctool(getVersionId=version)
@@ -2488,13 +2511,13 @@ class SynchronizeThemes(BrowserView):
                 self._external_data_specs.add(brain.getObject())
                 continue
 
-            if not self.dry_run:
-                try:
-                    doc = brain.getObject()
-                    IThemeTagging(doc).tags = themes
-                    doc.reindexObject(idxs=["getThemes"])
-                except Exception as err:
-                    logger.exception(err)
+            try:
+                doc = brain.getObject()
+            except Exception as err:
+                logger.exception(err)
+                continue
+            else:
+                self._other.add((doc, themes))
 
     def __call__(self, **kwargs):
         kwargs.update(self.request.form)
@@ -2505,12 +2528,12 @@ class SynchronizeThemes(BrowserView):
 
         logger.info(
             "Synchronizing older versions themes: dry_run=%s", self.dry_run)
-        for idx, version in enumerate(versions):
-            if idx % 500 == 0:
-                logger.info("\n\nProcessed version ids %s\n\n", idx)
-                if not self.dry_run:
-                    transaction.commit()
-            self.fixVersion(version)
+
+        for version in versions:
+            self.extract(version)
+
+        self.fixOther()
         self.fixAssessments()
         self.fixExternalDataSpec()
+
         return "\n".join(self.logs)
