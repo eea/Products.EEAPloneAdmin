@@ -2369,7 +2369,7 @@ class SynchronizeThemes(BrowserView):
         self._dry_run = True
         self._assessments = set()
         self._external_data_specs = set()
-        self._other = set()
+        self._other = []
         self._logs = []
 
     @property
@@ -2518,7 +2518,7 @@ class SynchronizeThemes(BrowserView):
                 logger.exception(err)
                 continue
             else:
-                self._other.add((doc, themes))
+                self._other.append((doc, themes))
 
     def __call__(self, **kwargs):
         kwargs.update(self.request.form)
