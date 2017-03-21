@@ -2410,33 +2410,39 @@ class SynchronizeThemes(BrowserView):
     def fixAssessments(self):
         """ Fix Assessment ctypes
         """
-        if not self.dry_run:
-            for doc in self.assessments:
-                doc.reindexObject(idxs=["getThemes"])
+        if self.dry_run:
+            return
+
+        for doc in self.assessments:
+            doc.reindexObject(idxs=["getThemes"])
 
     def fixExternalDataSpec(self):
         """ Fix ExternalDataSpec ctypes
         """
-        if not self.dry_run:
-            for doc in self.external_data_specs:
-                doc.reindexObject(idxs=["getThemes"])
+        if self.dry_run:
+            return
+
+        for doc in self.external_data_specs:
+            doc.reindexObject(idxs=["getThemes"])
 
     def fixOther(self):
         """ Fix other ctypes """
-        if not self.dry_run:
-            count = 0
-            for doc, themes in self.other:
-                try:
-                    IThemeTagging(doc).tags = themes
-                    doc.reindexObject(idxs=["getThemes"])
-                except Exception as err:
-                    logger.exception(err)
-                    continue
+        if self.dry_run:
+            return
 
-                count += 1
-                if count % 100 == 0:
-                    logger.info("Subtransaction commit")
-                    transaction.savepoint(optimistic=True)
+        count = 0
+        for doc, themes in self.other:
+            try:
+                IThemeTagging(doc).tags = themes
+                doc.reindexObject(idxs=["getThemes"])
+            except Exception as err:
+                logger.exception(err)
+                continue
+
+            count += 1
+            if count % 100 == 0:
+                logger.info("Subtransaction commit")
+                transaction.savepoint(optimistic=True)
 
     def extract(self, version):
         """  Find objects by version id
