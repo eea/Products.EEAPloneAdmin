@@ -2536,11 +2536,19 @@ class SynchronizeThemes(BrowserView):
         logger.info(
             "Synchronizing older versions themes: dry_run=%s", self.dry_run)
 
-        for version in versions:
+        logger.info("Extracting objects with un-synced topics across versions")
+        for idx, version in enumerate(versions):
             self.extract(version)
+            if idx % 10000 == 0:
+                logger.info("Progress: %s", idx)
 
+        logger.info("Syncing topics on older versions")
         self.fixOther()
+
+        logger.info("Syncing topics for Assessment content-type")
         self.fixAssessments()
+
+        logger.info("Syncing topics for ExternalDataSpec content-type")
         self.fixExternalDataSpec()
 
         return "\n".join(self.logs)
