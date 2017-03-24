@@ -97,13 +97,19 @@ def cleanup_key(self, key):
         key = int(key)
 
     path = self._catalog.paths.get(key)
-    data = self._catalog.data.get(key)
-    uid = [(k, v) for k, v in self._catalog.uids.iteritems() if v == key]
+    if path:
+        return "Can't remove valid key {key} path {path}".format(
+            key=key, path=path)
 
-    if path or data or uid:
-        return ("Can't remove valid "
-                "key {key}, path: {path}, data: {data}, uid: {uid}".format(
-            key=key, path=path, data=data, uid=uid))
+    data = self._catalog.data.get(key)
+    if data:
+        return "Can't remove valid key {key} path {data}".format(
+            key=key, data=data)
+
+    uid = [(k, v) for k, v in self._catalog.uids.iteritems() if v == key]
+    if uid:
+        return "Can't remove valid key {key} path {uid}".format(
+            key=key, uid=uid)
 
     path = '/www/dummy-cleanup-brain'
     self._catalog.paths[key] = path
@@ -111,3 +117,4 @@ def cleanup_key(self, key):
     self._catalog.data[key] = ()
     self._catalog._length.change(1)
     self._catalog.uncatalogObject(path)
+    return "Removed key {key}".format(key=key)
