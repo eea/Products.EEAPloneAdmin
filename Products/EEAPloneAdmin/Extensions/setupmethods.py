@@ -19,6 +19,7 @@ from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.event import notify
 from zope.i18n import translate as realTranslate
 from zope.lifecycleevent import ObjectModifiedEvent
+from eea.workflow.archive import archive_obj_and_children
 
 logger = logging.getLogger('EEAPloneAdmin.setupmethods')
 info = logger.info
@@ -201,6 +202,47 @@ def bulkChangeState(self):
             info('Subtransaction committed to zodb.')
 
     info('Done changing state.')
+
+def bulkArchive(self, brains=None, paths=None, initiator=None, reason=None,
+                custom_message=None, archive_date=None, batchnr=20):
+    """ Archive many objects in batches (multi transactions).
+    """
+    info('INFO: starting bulk archive')
+    result = []
+    deleted_count = 0
+    
+    # Decide data source
+    if brains:
+        datasource = brains
+        totobs = len(brains)
+    elif paths:
+        datasource = paths
+        totobs = len(paths)
+    else:
+        datasource = []
+
+    # Archive loop
+    trans_count = 0
+    for k in datasource:
+        trans_count += 1
+        if brains:
+            obj = k.getObject()
+        elif paths:
+            obj = self.unrestrictedTraverse(k, None)
+        affected_objects = archive_obj_and_children(obj, initiator=initiator,
+                                reason=reason, custom_message=custom_message,
+                                archive_date=archive_date)
+        for k in affected_objects:
+            obj_url = k.absolute_url()
+            info('INFO: object archived | %s', obj_url)
+            result.append(obj_url)
+
+        if trans_count % batchnr == 0:
+            info('INFO: processing %s/%s objects', trans_count, totobs)
+            transaction.commit()
+
+    info('INFO: Done archive!')
+    return result
 
 def printCheckInterval(self):
     """ Get/set python check interval """
