@@ -11,6 +11,10 @@ Changelog
   [alecghica refs #83590]
 * Feature: added external method to bulk archive content
   [alecghica refs #83590]
+* Upgrade step:
+   * add under /0maintenance the scripts for bulk archive
+   * add under /0maintenance the scripts to find not archived older versions
+   * [alecghica refs #83590]
 
 15.4 - (2017-03-21)
 -------------------
