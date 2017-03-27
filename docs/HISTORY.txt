@@ -3,6 +3,8 @@ Changelog
 
 15.5.dev0 - (unreleased)
 ------------------------
+* Change: added Products.contentmigration in order to fix failing buildouts
+  [ichim-david refs #83507]
 * Change: Cleanup external methods to catalog debugging and sync
   [avoinea refs #82758]
 
