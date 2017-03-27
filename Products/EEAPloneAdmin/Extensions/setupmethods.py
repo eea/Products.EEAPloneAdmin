@@ -19,7 +19,7 @@ from plone.app.layout.viewlets.content import ContentHistoryView
 from zope.event import notify
 from zope.i18n import translate as realTranslate
 from zope.lifecycleevent import ObjectModifiedEvent
-from eea.workflow.archive import archive_obj_and_children
+from eea.workflow.archive import archive_obj_and_children, archive_translations
 
 logger = logging.getLogger('EEAPloneAdmin.setupmethods')
 info = logger.info
@@ -232,6 +232,11 @@ def bulkArchive(self, brains=None, paths=None, initiator=None, reason=None,
         affected_objects = archive_obj_and_children(obj, initiator=initiator,
                                 reason=reason, custom_message=custom_message,
                                 archive_date=archive_date)
+        affected_objects.extend(
+            archive_translations(obj, also_children=True, also_versions=True,
+                                 initiator=initiator, reason=reason, 
+                                 custom_message=custom_message,
+                                 archive_date=archive_date))
         for k in affected_objects:
             obj_url = k.absolute_url()
             info('INFO: object archived | %s', obj_url)
