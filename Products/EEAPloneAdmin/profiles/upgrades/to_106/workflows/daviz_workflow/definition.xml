@@ -74,7 +74,7 @@
   
  </state>
  <state state_id="draft" title="First draft" >
-  <description>This is the first state when a new data visualisation is created and it stays until it is ready for a first review. Than it is submitted to the next stage.</description>
+  <description>This is the first state when a new data visualisation is created and it stays until it is ready for a first review. Then it is submitted to the next stage.</description>
   <exit-transition transition_id="markForDeletion" />
   <exit-transition transition_id="readyForPublishing" />
   <exit-transition transition_id="reviewForEionet" />
