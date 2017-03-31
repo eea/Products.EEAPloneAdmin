@@ -2461,7 +2461,7 @@ class SynchronizeThemes(BrowserView):
                 continue
             if 'BKUP' in key:
                 continue
-            msg = 'Sync Themes with latest version from "{a} to %{b}"'.format(
+            msg = 'Sync Themes with latest version from "{a}" to "{b}"'.format(
                 a=', '.join(old_themes),
                 b=', '.join(themes)
             )
