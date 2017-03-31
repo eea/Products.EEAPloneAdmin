@@ -17,6 +17,7 @@ from zope.component import ComponentLookupError
 from zope.component import getMultiAdapter
 from zope.component.interface import nameToInterface
 from Acquisition import aq_base
+from AccessControl import getSecurityManager
 from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -2366,6 +2367,7 @@ class SynchronizeThemes(BrowserView):
         self.ignore_types = ['Report']
         self.ignore_theme = ['technology']
         self.ignore_states = ['marked_for_deletion']
+        self.latest_states = ['published']
         self._dry_run = True
         self._assessments = set()
         self._external_data_specs = set()
@@ -2432,18 +2434,45 @@ class SynchronizeThemes(BrowserView):
 
         count = 0
         total = len(self.other)
-        for doc, themes in self.other:
+        for doc, themes, old_themes in self.other:
             try:
                 IThemeTagging(doc).tags = themes
                 doc.reindexObject(idxs=["getThemes"])
             except Exception as err:
                 logger.exception(err)
                 continue
+            else:
+                self.updateHistory(doc, themes, old_themes)
 
             count += 1
             if count % 100 == 0:
                 logger.info("Subtransaction commit: %s/%s", count, total)
                 transaction.savepoint(optimistic=True)
+
+    def updateHistory(self, obj, themes, old_themes):
+        """ Update obj workflow history)
+        """
+        wf = getToolByName(self.context, 'portal_workflow')
+        history = obj.workflow_history
+        review_state = wf.getInfoFor(obj, 'review_state', 'None')
+        actor = getSecurityManager().getUser().getId()
+        for key in history:
+            if 'linguaflow' in key:
+                continue
+            if 'BKUP' in key:
+                continue
+            msg = 'Sync Themes with latest version from "{a} to %{b}"'.format(
+                a=', '.join(old_themes),
+                b=', '.join(themes)
+            )
+            history[key] += ({
+                'action': 'Synchronize (bulk)',
+                'actor': actor,
+                'comments': msg,
+                'review_state': review_state,
+                'time': DateTime()
+            },)
+
 
     def extract(self, version):
         """  Find objects by version id
@@ -2483,6 +2512,9 @@ class SynchronizeThemes(BrowserView):
 
             # Latest version state
             if not state:
+                # Consider only publish as latest versions
+                if old_state not in self.latest_states:
+                    continue
                 state = old_state
 
             # Latest version themes
@@ -2525,7 +2557,7 @@ class SynchronizeThemes(BrowserView):
                 logger.exception(err)
                 continue
             else:
-                self._other.append((doc, themes))
+                self._other.append((doc, themes, old_themes))
 
     def __call__(self, **kwargs):
         kwargs.update(self.request.form)
