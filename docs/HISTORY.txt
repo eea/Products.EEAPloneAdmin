@@ -1,6 +1,9 @@
 Changelog
 =========
 
+15.7.dev0 - (unreleased)
+------------------------
+
 15.6 - (2017-04-04)
 -------------------
 * Change: Fixed synchronize-versions-themes browserview to sync only
