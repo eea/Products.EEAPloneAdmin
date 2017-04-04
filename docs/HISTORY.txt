@@ -1,8 +1,8 @@
 Changelog
 =========
 
-15.6.dev0 - (unreleased)
-------------------------
+15.6 - (2017-04-04)
+-------------------
 * Change: Fixed synchronize-versions-themes browserview to sync only
   to published latest version
   [avoinea refs #83793]
