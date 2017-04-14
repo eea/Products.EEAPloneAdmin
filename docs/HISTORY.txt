@@ -1,8 +1,8 @@
 Changelog
 =========
 
-15.7.dev0 - (unreleased)
-------------------------
+15.7 - (2017-04-14)
+-------------------
 * Bug fix: Fix patch_products_plone_ldap
   [avoinea refs #83770]
 
