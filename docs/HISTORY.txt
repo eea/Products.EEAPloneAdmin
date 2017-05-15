@@ -3,6 +3,8 @@ Changelog
 
 15.9.dev0 - (unreleased)
 ------------------------
+* Change: avoid search_rss error when we get wrong values to b_start
+  [ichim-david refs #84967]
 
 15.8 - (2017-04-24)
 -------------------
