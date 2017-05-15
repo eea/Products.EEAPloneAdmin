@@ -1,7 +1,7 @@
 """ Products.PloneLDAP patches
 """
-from Products.PluggableAuthService.UserPropertySheet import UserPropertySheet
 import logging
+from Products.PluggableAuthService.UserPropertySheet import UserPropertySheet
 
 logger = logging.getLogger("patch_products_plone_ldap")
 

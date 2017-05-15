@@ -29,4 +29,3 @@ def SearchableText(self):
     logger.debug("SearchableText called for key %s and it took %s seconds",
                 key, time.time() - start)
     return data
-

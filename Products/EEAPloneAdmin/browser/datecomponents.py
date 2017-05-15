@@ -2,14 +2,13 @@
 plone.app.form. We only patch one line, to enable
 proper parsing of the date.
 """
-
+from time import localtime
 from Acquisition import aq_inner
 from DateTime.DateTime import DateTime
 from DateTime.DateTime import DateTimeError
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from plone.app.form.widgets.interfaces import IDateComponents
-from time import localtime
 from zope.component import getMultiAdapter
 from zope.interface import implements
 

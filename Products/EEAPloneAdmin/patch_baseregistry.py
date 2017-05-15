@@ -18,4 +18,3 @@ def patch_cookResources(self):
     event = ObjectModifiedEvent(self)
     event.force = True
     notify(event)
-

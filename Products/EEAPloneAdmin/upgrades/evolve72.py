@@ -3,13 +3,13 @@
 
 import logging
 from Products.CMFCore.utils import getToolByName
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from Products.CMFPlone.interfaces.syndication import (
     ISiteSyndicationSettings, IFeedSettings)
 from Products.ZCTextIndex.interfaces import IZCTextIndex
 from Products.EEAPloneAdmin.upgrades import utils
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 import transaction
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")
@@ -91,4 +91,3 @@ def cleanupBrokenP4AObjects(self):
     for obj in objs:
         catalog.uncatalog_object(obj)
     return "DONE with removal of %s" % objs
-

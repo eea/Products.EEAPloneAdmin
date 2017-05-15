@@ -3,9 +3,8 @@
 import logging
 import thread
 from Acquisition import aq_parent, aq_inner
-
 from zope.interface import implements, Interface
-
+from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 from AccessControl.SecurityManagement import _managers
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -15,7 +14,6 @@ from Products.NavigationManager.browser.navigation import  getApplicationRoot
 from plone.app.layout.globals.context import ContextState as BaseContextState
 from plone.app.layout.globals.portal import PortalState as BasePortalState
 from plone.memoize.view import memoize
-from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 
 logger = logging.getLogger('ploneadmin')
 

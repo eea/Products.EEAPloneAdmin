@@ -16,4 +16,3 @@ window.tinyMCEPreInit = {
  query:''
 };
         """ % self.context.portal_url()
-

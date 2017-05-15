@@ -1,15 +1,15 @@
 """ Patch TinyMCE
 """
+import json
 from Products.CMFCore.utils import getToolByName
 from Products.CMFEditions.utilities import maybeSaveVersion
-from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.interfaces._content import IFolderish
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from Acquisition import ImplicitAcquisitionWrapper
-import json
 from zope.component import getUtility
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 
 def patched_getListing(self, filter_portal_types, rooted, document_base_url,

@@ -1,14 +1,13 @@
 """ Setuphandlers
 """
 from Products.CMFCore.utils import getToolByName
-from plone.app.layout.navigation.interfaces import INavigationRoot
-from zope.interface import alsoProvides
-from zope.interface import implements
 from Products.CMFPlone.interfaces import INonInstallable \
     as IPloneFactoryNonInstallable
 from Products.CMFQuickInstallerTool.interfaces import INonInstallable \
     as IQuickInstallerNonInstallable
-
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from zope.interface import alsoProvides
+from zope.interface import implements
 
 def setupVarious(context):
     """ Only run this step if we are in EEAPloneAdmin profile

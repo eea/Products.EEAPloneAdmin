@@ -1,12 +1,12 @@
 """ Audit local roles
 """
+import csv
+from logging import getLogger
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_parent, aq_base
 from plone import api
 from DateTime import DateTime
-from logging import getLogger
-import csv
 
 class AuditLocalRoles(BrowserView):
     """Local roles assigned under context"""

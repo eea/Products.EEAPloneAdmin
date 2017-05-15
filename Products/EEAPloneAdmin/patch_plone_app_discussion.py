@@ -3,19 +3,19 @@
         - allow comments on folderish objects
 """
 from Products.CMFCore.utils import getToolByName
-from zope.component import queryUtility
-from plone.app.discussion.interfaces import IDiscussionSettings
-from plone.registry.interfaces import IRegistry
-from Acquisition import aq_base
-from Acquisition import aq_chain
-from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.interfaces import IFolderish
 from Products.CMFCore.interfaces._content import IDiscussionResponse
 from Products.CMFPlone.interfaces import INonStructuralFolder
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from zope.component import queryUtility
+from plone.app.discussion.interfaces import IDiscussionSettings
+from plone.registry.interfaces import IRegistry
 from plone.app.discussion.browser.migration import DT2dt
 from plone.app.discussion.comment import CommentFactory
 from plone.app.discussion.interfaces import IConversation, IReplies, IComment
+from Acquisition import aq_base
+from Acquisition import aq_chain
+from Acquisition import aq_inner, aq_parent
 import transaction
 
 def migrate_discussions(self, filter_callback=None):

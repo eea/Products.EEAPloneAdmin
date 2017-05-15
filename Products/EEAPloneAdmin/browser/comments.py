@@ -1,12 +1,12 @@
 """Override comments
 """
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from Acquisition import aq_inner
 
 from AccessControl import Unauthorized
 from AccessControl import getSecurityManager
 
-from datetime import datetime
 
 from zope.component import createObject, queryUtility
 

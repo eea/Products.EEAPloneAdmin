@@ -1,12 +1,11 @@
 """ Patching plone.app.search to strip keyword values
     of non alphanumeric characters
 """
+import re
 from Products.CMFCore.utils import getToolByName
 from Products.ZCTextIndex.ParseTree import ParseError
 from Products.CMFPlone.PloneBatch import Batch
 from plone.app.contentlisting.interfaces import IContentListing
-import re
-
 
 def results(self, query=None, batch=True, b_size=10, b_start=0):
     """ Get properly wrapped search results from the catalog.

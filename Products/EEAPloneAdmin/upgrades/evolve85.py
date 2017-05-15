@@ -1,7 +1,7 @@
 """ Upgrade steps for 8.5
 """
-from Products.CMFCore.utils import getToolByName
 import logging
+from Products.CMFCore.utils import getToolByName
 import transaction
 
 logger = logging.getLogger("Products.EEAPloneAdmin.upgrades")

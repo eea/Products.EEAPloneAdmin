@@ -1,13 +1,11 @@
 """ Patch for plone.app.caching
 """
+# Do not remove this import as the tests will fail
+from plone.app.caching.utils import getObjectDefaultView as godv
 import plone.app.caching.operations.utils
 from plone.app.caching.operations.utils import formatDateTime, getExpiration
 from Products.CMFDynamicViewFTI.interfaces import IBrowserDefault
 from Products.CMFCore.interfaces import IDynamicType
-
-# Do not remove this import as the tests will fail
-from plone.app.caching.utils import getObjectDefaultView as godv
-
 
 def doNotCache(published, request, response):
     """ Added extra `` no-store``, ``no-cache``, ``post-check``,

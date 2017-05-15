@@ -4,8 +4,10 @@ import csv
 import logging
 import os
 import urllib
-import transaction
 import json
+from cStringIO import StringIO
+from pprint import pprint
+import transaction
 from zope.annotation import IAnnotations
 from zope.interface import alsoProvides
 from zope.interface import directlyProvides
@@ -22,28 +24,24 @@ from DateTime.DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.CMFCore.permissions import AccessContentsInformation, View
-from pprint import pprint
+from Products.EEAContentTypes.content.interfaces import IFlashAnimation
+from Products.EEAPloneAdmin.browser.migration_helper_data import \
+    countryDicts, countryGroups, data_versions, urls_for_73422
 from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
 from eea.themecentre.interfaces import IThemeTagging, IThemeCentre
 from eea.themecentre.themecentre import createFaqSmartFolder, getThemeCentre
+from eea.mediacentre.interfaces import IVideo as MIVideo
+from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
+from eea.geotags.interfaces import IJsonProvider
+from eea.workflow.interfaces import IObjectArchivator
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.content import ContentHistoryView
-from eea.mediacentre.interfaces import IVideo as MIVideo
-from Products.EEAContentTypes.content.interfaces import IFlashAnimation
-from cStringIO import StringIO
-from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from plone.i18n.locales.interfaces import ICountryAvailability
-
-from Products.EEAPloneAdmin.browser.migration_helper_data import \
-    countryDicts, countryGroups, data_versions, urls_for_73422
-
-from eea.geotags.interfaces import IJsonProvider
-from eea.workflow.interfaces import IObjectArchivator
 
 try:
     from eea.versions.versions import IVersionControl

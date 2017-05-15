@@ -69,5 +69,3 @@ def handle_workflow_change(obj, event):
     else:
         if obj.effective_date:
             obj.setEffectiveDate('None')
-
-

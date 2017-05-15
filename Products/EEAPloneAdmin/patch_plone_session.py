@@ -8,9 +8,9 @@ import time
 import os
 from email.Utils import formatdate
 
+from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 import plone.session.plugins.session as plsession
 from App.config import getConfiguration
-from plone.session.plugins.session import SessionPlugin as BasedSessionPlugin
 
 COOKIENAME = "DISABLE_PLONE_COOKIE_DOMAIN"
 

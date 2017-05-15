@@ -1,11 +1,11 @@
 """ Patch due to #4832
 """
-from zope.component.hooks import getSite
 from urlparse import urlsplit
 from urllib import unquote
+from zope.component.hooks import getSite
+from zope.publisher.interfaces import NotFound as ztkNotFound
 from ZODB.POSException import ConflictError
 from Acquisition import aq_base, aq_acquire
-from zope.publisher.interfaces import NotFound as ztkNotFound
 from zExceptions import NotFound
 
 def patched_resolve_image(self, src):

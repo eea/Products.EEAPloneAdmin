@@ -2,10 +2,9 @@
     is a very long process which most usually endup in database conflict error
     on a live portal
 """
-
-import transaction
-import logging
 from difflib import unified_diff
+import logging
+import transaction
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Acquisition import aq_base

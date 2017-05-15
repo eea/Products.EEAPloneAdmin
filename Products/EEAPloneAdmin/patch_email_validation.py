@@ -1,7 +1,7 @@
 """ Monkeypatch to check if the result of the address check is not empty
 """
-from Products.CMFPlone.PloneTool import EMAIL_CUTOFF_RE
 from email.Utils import getaddresses
+from Products.CMFPlone.PloneTool import EMAIL_CUTOFF_RE
 
 def validateSingleEmailAddress(self, address):
     """ Validate a single email address, see also validateEmailAddresses.

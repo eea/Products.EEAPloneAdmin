@@ -5,9 +5,9 @@ from zExceptions import BadRequest
 from Products.contentmigration.basemigrator.migrator import CMFFolderMigrator
 from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
 from Products.contentmigration.basemigrator.walker import CatalogWalker
-from plone.app.textfield.value import RichTextValue
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
+from plone.app.textfield.value import RichTextValue
 logger = logging.getLogger('Products.EEAPloneAdmin')
 
 

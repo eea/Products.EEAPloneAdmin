@@ -1,12 +1,11 @@
 """ Quick Upload
 """
 from zope.interface import implements
-
+from zope.component import adapts
 from Products.Archetypes.interfaces import IBaseObject
 from Products.Archetypes.utils import shasattr
 from collective.quickupload import logger
 from collective.quickupload.interfaces import IQuickUploadFileSetter
-from zope.component import adapts
 
 
 class ArchetypesFileSetter(object):

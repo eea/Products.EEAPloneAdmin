@@ -4,10 +4,9 @@ import logging
 import transaction
 
 from zope.interface import noLongerProvides
-
-from Products.CMFCore.utils import getToolByName
 from zope.component import ComponentLookupError
 from zope.component.interface import nameToInterface
+from Products.CMFCore.utils import getToolByName
 
 try:
     from p4a.subtyper.interfaces import ISubtyped
