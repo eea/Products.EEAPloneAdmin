@@ -1,6 +1,9 @@
 Changelog
 =========
 
+16.0.dev0 - (unreleased)
+------------------------
+
 15.9 - (2017-05-15)
 -------------------
 * Change: avoid search_rss error when we get wrong values to b_start
