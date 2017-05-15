@@ -2,15 +2,14 @@
 """
 import logging
 from zope.interface import implements
-
+from zope.component import adapts
+from zope.component import getUtility
+from zope.component import queryUtility
 from Products.CMFCore.interfaces import IDynamicType
 from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
 from plone.app.caching.interfaces import IPloneCacheSettings
 from plone.registry.interfaces import IRegistry
 from z3c.caching.interfaces import IPurgePaths
-from zope.component import adapts
-from zope.component import getUtility
-from zope.component import queryUtility
 
 try:
     from plone.cachepurging.interfaces import IPurger
