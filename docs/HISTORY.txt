@@ -5,6 +5,8 @@ Changelog
 ------------------------
 * Change: fixed PyLint warnings and errors
   [eduard-fironda refs #84949]
+* Change: avoid search_rss error when we get wrong values to b_start
+  [alecghica]
 
 15.9 - (2017-05-15)
 -------------------

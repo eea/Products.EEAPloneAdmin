@@ -32,7 +32,7 @@
 
 <tal:Allowed tal:condition="syn/context_allowed">
 <tal:synd tal:define="feed view/feed;
-                      objects python: [i for i in feed.items];" tal:on-error="objects python:[]">
+                      objects python: [i for i in feed.items];" tal:on-error="nothing">
 <channel rdf:about="" tal:attributes="rdf:about request/URL">
   <title tal:content="context/pretty_title_or_id">The title</title>
   <link tal:content="context/portal_url">http://url.to.portal</link>
