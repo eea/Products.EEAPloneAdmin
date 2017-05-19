@@ -27,6 +27,12 @@ from Products.CMFCore.permissions import AccessContentsInformation, View
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, urls_for_73422
+from plone.app.blob.browser.migration import BlobMigrationView
+from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
+from plone.app.blob.migrations import migrate
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.app.layout.viewlets.content import ContentHistoryView
+from plone.i18n.locales.interfaces import ICountryAvailability
 from eea.promotion.interfaces import IPromotion, IPromoted
 from eea.themecentre.browser.themecentre import PromoteThemeCentre
 from eea.themecentre.interfaces import IThemeCentreSchema, IThemeRelation
@@ -36,12 +42,6 @@ from eea.mediacentre.interfaces import IVideo as MIVideo
 from eea.dataservice.interfaces import IEEAFigureMap, IEEAFigureGraph
 from eea.geotags.interfaces import IJsonProvider
 from eea.workflow.interfaces import IObjectArchivator
-from plone.app.blob.browser.migration import BlobMigrationView
-from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
-from plone.app.blob.migrations import migrate
-from plone.app.layout.navigation.interfaces import INavigationRoot
-from plone.app.layout.viewlets.content import ContentHistoryView
-from plone.i18n.locales.interfaces import ICountryAvailability
 
 try:
     from eea.versions.versions import IVersionControl
@@ -97,7 +97,7 @@ class MigrateWrongThemeIds(object):
         themeVocab = context.portal_vocabularies.themes
         themeIds = themeVocab.objectIds()
 
-        for theme in themeIdMap.keys():
+        for theme in themeIdMap:
             res = context.portal_catalog.searchResults(getThemes=theme)
             for r in res:
                 obj = r.getObject()
@@ -435,8 +435,7 @@ class PromotionThemes(object):
 
         if not_migrated:
             return 'Some objects were not migrated\n' + not_migrated
-        else:
-            return 'success'
+        return 'success'
 
 
 class ThemeLayoutAndDefaultPage(object):
@@ -501,8 +500,8 @@ class GenericThemeToDefault(object):
 
                     output = (output + 'NOTOK: ' + obj.id + ': ' +
                               'brain.getThemes[0]: ' + brain.getThemes[0] +
-                              ' themes.tags[0]: ' + (len(themes.tags) > 0 and
-                                                     themes.tags[0] or '') +
+                              ' themes.tags[0]: ' +
+                              (themes.tags[0] if themes.tags else '') +
                               ' URL: ' + obj.absolute_url() + '\r')
 
                     themes.tags = ['default']
@@ -716,9 +715,8 @@ class ChangeMultimediaLayout(object):
             multimedia.manage_changeProperties(layout='mediacentre_view')
             return "layout property of %s is changed to %s." % \
                     (multimedia.absolute_url(), 'mediacentre_view')
-        else:
-            return "default_page property of multimedia not found, " \
-                   "no migration done"
+        return "default_page property of multimedia not found, " \
+               "no migration done"
 
 
 class MakeThemeMultimediaLayoutAProperty(object):
@@ -1247,8 +1245,7 @@ class RemoveInactivePromotions(object):
                 obj.reindexObject(idxs=['object_provides'])
         if not_migrated:
             return 'Some objects were not migrated\n' + not_migrated
-        else:
-            return 'success'
+        return 'success'
 
 
 class MigrateGeographicalCoverageToGeotags(object):

@@ -50,7 +50,7 @@ def migrate_discussions(self, filter_callback=None):
         # Recursive function to migrate all direct replies
         # of a comment. Returns True if there are no replies to
         # this comment left, and therefore the comment can be removed.
-        if len(replies) == 0:
+        if not replies:
             return True
 
         for reply in replies:

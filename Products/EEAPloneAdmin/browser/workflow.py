@@ -79,8 +79,9 @@ class WorkflowManagement(object):
                                 self.portalType + '_confirmation', [])
 
             self.toConfirmationEmail = []
-            for role in confirmationRoles:
-                for email in getattr(props, self.portalType + '_' + role, []):
+            for conf_role in confirmationRoles:
+                for email in getattr(props, self.portalType + '_' + conf_role,
+                                     []):
                     if email not in self.toEmail:
                         self.toConfirmationEmail.append(email)
 
@@ -152,7 +153,7 @@ class WorkflowManagement(object):
         #    'X-Priority': '3',
         #    'Priority': 'normal'}
 
-        if len(self.toEmail) > 0:
+        if self.toEmail:
             m = Message()
             m.set_payload(self.msg, 'utf-8')
             m.set_type('text/html')
@@ -169,7 +170,7 @@ class WorkflowManagement(object):
                             msg_type='text/html',
                             )
 
-        if len(self.toConfirmationEmail) > 0:
+        if self.toConfirmationEmail:
             m = Message()
             m.set_payload(self.confirmationMsg, 'utf-8')
             m.set_type('text/html')

@@ -5,6 +5,7 @@ from archetypes.schemaextender import extender
 from Products.CMFCore.utils import getToolByName
 from Products.LinguaPlone.browser.defaultpage import DefaultPage
 
+
 def clearSchemaCache(context):
     """ Clear
     """
@@ -31,5 +32,4 @@ def _patched_getDefaultPage(self):
     current = languageTool.getPreferredLanguage()
     if page.hasTranslation(current):
         return page.getTranslation(current).getId()
-    else:
-        return default_page
+    return default_page

@@ -7,9 +7,9 @@ from zope.component import getUtility
 from zope.component import queryUtility
 from Products.CMFCore.interfaces import IDynamicType
 from Products.EEAPloneAdmin.interfaces import IEEACacheSettings
+from z3c.caching.interfaces import IPurgePaths
 from plone.app.caching.interfaces import IPloneCacheSettings
 from plone.registry.interfaces import IRegistry
-from z3c.caching.interfaces import IPurgePaths
 
 try:
     from plone.cachepurging.interfaces import IPurger
@@ -105,6 +105,7 @@ def _purge_handler(obj, event):
                     for caching_proxy in caching_proxies:
                         full_path = '%s%s' % (caching_proxy, path_to_purge)
                         purger.purgeAsync(full_path)
+
 
 def purge_handler(obj, event):
     """ Purge handler

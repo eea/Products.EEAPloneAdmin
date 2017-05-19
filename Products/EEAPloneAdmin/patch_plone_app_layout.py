@@ -32,8 +32,7 @@ def getNavigationRootObject(context, portal):
         lang = lang if lang != 'en' else 'SITE'
         if context_path_root != lang:
             return portal.get(context_path_root)
-        else:
-            return portal.get(lang)
+        return portal.get(lang)
     return portal
     ### end patch
 
@@ -107,8 +106,7 @@ def getNavigationRoot(context, relativeRoot=None):
             # folder
             if context_path_root != lang:
                 return portalPath + '/' + context_path_root
-            else:
-                return portalPath + '/' + lang
+            return portalPath + '/' + lang
         return portalPath + relativeRoot
     ### End patch
 

@@ -89,7 +89,7 @@ def getLanguages(context):
     # Use language codes in URL path for manual override
     lt = getToolByName(plone, 'portal_languages')
     defaultLang = lt.getDefaultLanguage()
-    supportedLangs = (DevelopmentMode and EEA_LANGUAGES or
+    supportedLangs = (EEA_LANGUAGES if DevelopmentMode else
                       lt.getSupportedLanguages())
     if DevelopmentMode:
         logger.info("EEAPloneAdmin:local-sites: we are in DEBUG we only "
@@ -568,7 +568,7 @@ def setupLocalSites(context):
     catalog = getToolByName(plone, 'portal_catalog')
     # catalog.manage_catalogReindex redirects so we do it here
     pgthreshold = catalog._getProgressThreshold()
-    handler = (pgthreshold > 0) and ZLogHandler(pgthreshold) or None
+    handler = ZLogHandler(pgthreshold) if pgthreshold > 0 else None
     catalog.refreshCatalog(clear=1, pghandler=handler)
 
     plone.manage_changeProperties(send_workflow_emails=sendWorkflowEmails)
