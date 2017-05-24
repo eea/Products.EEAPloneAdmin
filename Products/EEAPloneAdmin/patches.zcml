@@ -291,7 +291,7 @@
                   zcml:condition="installed Products.CompoundField"
                   class="Products.CompoundField.CompoundField.CompoundField"
                   original="set"
-                  replacement=".patch_products_compound_field.set"
+                  replacement=".patch_products_compound_field.patched_set"
                   preserveOriginal="false" />
 
 </configure>
