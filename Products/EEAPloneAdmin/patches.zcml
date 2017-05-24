@@ -286,4 +286,12 @@
                   original="__init__"
                   replacement=".patch_products_plone_ldap.__patched_init__"
                   preserveOriginal="false" />
+
+    <monkey:patch description="Monkeypatch Products.CompoundField-1.2.CompoundField.py"
+                  zcml:condition="installed Products.CompoundField"
+                  class="Products.CompoundField.CompoundField.CompoundField"
+                  original="set"
+                  replacement=".patch_products_compound_field.set"
+                  preserveOriginal="false" />
+
 </configure>

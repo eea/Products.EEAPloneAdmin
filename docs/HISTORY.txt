@@ -3,6 +3,10 @@ Changelog
 
 16.1.dev0 - (unreleased)
 ------------------------
+* Change: patch Products.CompoundField in order to allow setting
+  of empty values for datetime fields. Without it we can no longer
+  set an empty value for frequency of updates within eea.indicators
+  [ichim-david refs #84611]
 
 16.0 - (2017-05-22)
 -------------------
