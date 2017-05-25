@@ -9,6 +9,7 @@ ListTypes = (types.TupleType, types.ListType)
 def patched_set(self, instance, value, **kwargs):
     """ plone patch
     """
+    # pylint: skip-file
     if not value:
         return
 
