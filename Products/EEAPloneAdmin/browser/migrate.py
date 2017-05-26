@@ -26,7 +26,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.permissions import AccessContentsInformation, View
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
-    countryDicts, countryGroups, data_versions, urls_for_73422
+    countryDicts, countryGroups, data_versions, urls_for_73422, urls_for_83628
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -2291,6 +2291,92 @@ class ReplaceWrongCreationDate(object):
         return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
                                                             res_objs_msg,
                                                             not_found_msg)
+
+
+class SetExpirationDateForArchivedObjects(object):
+    """ 83628 set expiration date for archived objects
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("Expiration date migration")
+        log.info("*** Starting Expiration date migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        brains = urls_for_83628()
+        total = len(brains)
+        log.info("TOTAL affected: %d objects", total)
+        count = 0
+        count_progress = 0
+
+        mt = getToolByName(self.context, 'portal_membership', None)
+        wf = getToolByName(self.context, "portal_workflow", None)
+        pr = getToolByName(self.context, 'portal_repository', None)
+        actor = mt.getAuthenticatedMember().id
+        log.info("Starting data version migration for %d objects", total)
+        not_found = []
+        broken_objs = []
+        for brain in brains:
+            count_progress += 1
+            obj = self.context.restrictedTraverse(brain, None)
+            if not obj:
+                not_found.append(brain)
+                continue
+            obj_url = obj.absolute_url(1)
+
+            history = obj.workflow_history  # persistent mapping
+            review_state = wf.getInfoFor(obj, 'review_state', 'None')
+            ptype = obj.portal_type
+            expiration_set = False
+            try:
+                for name, wf_entries in history.items():
+                    wf_entries = list(wf_entries)
+                    for e in reversed(wf_entries):
+                        cmt = e.get('action')
+                        if  cmt and 'Archive' in cmt:
+                            mdate = e.get('time')
+                            comment = "Set expiration date for archived objects " \
+                                      " (issue 8362). Changed expiration date" \
+                                      " from None to --> %s." % (mdate)
+                            obj.setExpirationDate(mdate)
+                            wf_entries.append({'action': 'Edited',
+                                               'review_state': review_state,
+                                               'comments': comment,
+                                               'actor': actor,
+                                               'time': DateTime()})
+                            history[name] = tuple(wf_entries)
+                            pr.save(obj=obj, comment=comment)
+                            obj.reindexObject(idxs=['created'])
+                            msg = '%d changed None to %s for --> %s' % (count,
+                                  mdate, obj_url)
+                            log.info(msg)
+                            res_objs.append(msg)
+                            expiration_set = True
+                            count += 1
+                            if count % 50 == 0:
+                                transaction.commit()
+            except Exception:
+                broken_objs.append(brain)
+            if not expiration_set:
+                mdate = DateTime()
+                obj.setExpirationDate(mdate)
+                msg = '%d without Hstry changed None to %s for --> %s' % (count,
+                      mdate, obj_url)
+                log.info(msg)
+                res_objs.append(msg)
+                count += 1
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE data version migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        broken_objs_msg = "\n".join(broken_objs)
+        return "Count: %s \nResults: %s \nNotFound: %s  \nBroken: %s" % (
+                count_message, res_objs_msg, not_found_msg, broken_objs_msg)
 
 
 class SetEmptyFLVOnMediaFiles(object):

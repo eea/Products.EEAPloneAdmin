@@ -217,6 +217,11 @@
         name="replaceWrongCreationDate"
         class=".migrate.ReplaceWrongCreationDate"
         permission="cmf.ManagePortal" />
+        
+    <browser:page for="*"
+        name="setExpirationDateForArchivedObjects"
+        class=".migrate.SetExpirationDateForArchivedObjects"
+        permission="cmf.ManagePortal" />
 
     <browser:page for="*"
       name="setEmptyFLVOnMediaFiles"
