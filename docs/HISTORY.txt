@@ -3,6 +3,14 @@ Changelog
 
 16.1.dev0 - (unreleased)
 ------------------------
+* Feature: added @@setExpirationDateForArchivedObjects browserview
+  which will set an expiration date for archived objects.
+  Pass search_all_objs=True in case you want to search and fix
+  any objects that might have missing expiration date.
+  By default only a static list of objects will be fixed
+  [ichim-david refs #83628]
+* Upgrade step: run on www8 instance www/setExpirationDateForArchivedObjects
+  [ichim-david refs #83628]
 * Change: patch Products.CompoundField in order to allow setting
   of empty values for datetime fields. Without it we can no longer
   set an empty value for frequency of updates within eea.indicators

@@ -2306,7 +2306,12 @@ class SetExpirationDateForArchivedObjects(object):
         log = logging.getLogger("Expiration date migration")
         log.info("*** Starting Expiration date migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
-        brains = urls_for_83628()
+        search_for_objs = self.request.form.get('search_for_objs', False)
+        if search_for_objs:
+            brains = self.context.portal_catalog(
+                object_provides="eea.workflow.interfaces.IObjectArchived")
+        else:
+            brains = urls_for_83628()
         total = len(brains)
         log.info("TOTAL affected: %d objects", total)
         count = 0
@@ -2321,12 +2326,19 @@ class SetExpirationDateForArchivedObjects(object):
         broken_objs = []
         for brain in brains:
             count_progress += 1
-            obj = self.context.restrictedTraverse(brain, None)
+            if not search_for_objs:
+                obj = self.context.restrictedTraverse(brain, None)
+            else:
+                try:
+                    obj = brain.getObject()
+                except Exception:
+                    not_found.append(brain.getURL(1))
             if not obj:
                 not_found.append(brain)
                 continue
-            obj_url = obj.absolute_url(1)
-
+            obj_url = brain if not search_for_objs else obj.absolute_url(1)
+            if obj.getExpirationDate():
+                continue
             history = obj.workflow_history  # persistent mapping
             review_state = wf.getInfoFor(obj, 'review_state', 'None')
             ptype = obj.portal_type
@@ -2335,11 +2347,15 @@ class SetExpirationDateForArchivedObjects(object):
                 for name, wf_entries in history.items():
                     wf_entries = list(wf_entries)
                     for e in reversed(wf_entries):
-                        cmt = e.get('action')
-                        if  cmt and 'Archive' in cmt:
+                        cmt = e.get('comments')
+                        act = e.get('action')
+                        if 'issue 83628' in cmt:
+                            expiration_set = True
+                            continue
+                        if  act and 'Archive' in act:
                             mdate = e.get('time')
                             comment = "Set expiration date for archived objects " \
-                                      " (issue 8362). Changed expiration date" \
+                                      " (issue 83628). Changed expiration date" \
                                       " from None to --> %s." % (mdate)
                             obj.setExpirationDate(mdate)
                             wf_entries.append({'action': 'Edited',
