@@ -1,5 +1,6 @@
 """ Migrate
 """
+# pylint: disable=C0302,R1702,R0101
 import csv
 import logging
 import os
@@ -2341,7 +2342,6 @@ class SetExpirationDateForArchivedObjects(object):
                 continue
             history = obj.workflow_history  # persistent mapping
             review_state = wf.getInfoFor(obj, 'review_state', 'None')
-            ptype = obj.portal_type
             expiration_set = False
             try:
                 for name, wf_entries in history.items():
@@ -2354,9 +2354,10 @@ class SetExpirationDateForArchivedObjects(object):
                             continue
                         if  act and 'Archive' in act:
                             mdate = e.get('time')
-                            comment = "Set expiration date for archived objects " \
-                                      " (issue 83628). Changed expiration date" \
-                                      " from None to --> %s." % (mdate)
+                            comment = "Set expiration date for archived " \
+                                      "objects (issue 83628). Changed " \
+                                      "expiration date from None to --> %s." \
+                                      % (mdate)
                             obj.setExpirationDate(mdate)
                             wf_entries.append({'action': 'Edited',
                                                'review_state': review_state,
