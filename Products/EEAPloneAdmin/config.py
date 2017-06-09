@@ -7,7 +7,6 @@ DEPENDENCIES = [
                 'ATVocabularyManager',
                 'XLIFFMarshall'
                 'NavigationManager',
-                'EEAEnquiry',
 
                 #'EEAContentTypes',
 

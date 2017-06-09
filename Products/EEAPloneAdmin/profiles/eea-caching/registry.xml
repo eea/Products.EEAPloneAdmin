@@ -33,7 +33,6 @@
       <element key="EEAFigure">plone.content.itemView</element>
       <element key="HelpCenterHowTo">plone.content.itemView</element>
       <element key="SOERKeyFact">plone.content.itemView</element>
-      <element key="Enquiry">plone.content.itemView</element>
       <element key="DataFile">plone.content.file</element>
       <element key="Organisation">plone.content.itemView</element>
       <element key="HelpCenterTutorialPage">plone.content.itemView</element>
@@ -61,11 +60,9 @@
       <element key="NewsletterRichReference">plone.content.itemView</element>
       <element key="RationaleReference">plone.content.itemView</element>
       <element key="NewsletterTopic">plone.content.itemView</element>
-      <element key="EnquiryRequestorFolder">plone.content.itemView</element>
       <element key="ExternalDataSpec">plone.content.itemView</element>
       <element key="EcoTip">plone.content.itemView</element>
       <element key="Data">plone.content.itemView</element>
-      <element key="EnquiryFolder">plone.content.itemView</element>
       <element key="HelpCenterTutorialFolder">plone.content.itemView</element>
       <element key="Sparql">eea.content.staleResources</element>
       <element key="Specification">plone.content.itemView</element>
@@ -90,7 +87,6 @@
       <element key="Event">plone.content.itemView</element>
       <element key="Topic">eea.content.frontPage</element>
       <element key="EEAVacancy">plone.content.itemView</element>
-      <element key="EnquiryRequestor">plone.content.itemView</element>
       <element key="ImageFS">plone.content.file</element>
       <element key="File">plone.content.file</element>
       <element key="PressRelease">plone.content.itemView</element>
@@ -138,10 +134,6 @@
       <element>EEAFigure</element>
       <element>EEAFigureFile</element>
       <element>EcoTip</element>
-      <element>Enquiry</element>
-      <element>EnquiryFolder</element>
-      <element>EnquiryRequestor</element>
-      <element>EnquiryRequestorFolder</element>
       <element>EpubFile</element>
       <element>Event</element>
       <element>ExternalDataSpec</element>

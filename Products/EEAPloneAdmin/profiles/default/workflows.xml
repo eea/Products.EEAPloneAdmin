@@ -40,18 +40,6 @@
 
         <type type_id="Discussion Item"/>
 
-        <type type_id="Enquiry">
-            <bound-workflow workflow_id="Enquiry"/>
-        </type>
-        <type type_id="EnquiryFolder">
-            <bound-workflow workflow_id="EnquiryFolder"/>
-        </type>
-        <type type_id="EnquiryRequestor">
-            <bound-workflow workflow_id="EnquiryRequestor"/>
-        </type>
-        <type type_id="EnquiryRequestorFolder">
-            <bound-workflow workflow_id="EnquiryFolder"/>
-        </type>
         <type type_id="Folder">
             <bound-workflow workflow_id="folder_workflow"/>
         </type>
@@ -201,9 +189,6 @@
     </bindings>
 
     <object name="CallForTender" meta_type="Workflow"/>
-    <object name="Enquiry" meta_type="Workflow"/>
-    <object name="EnquiryFolder" meta_type="Workflow"/>
-    <object name="EnquiryRequestor" meta_type="Workflow"/>
     <object name="backup_of_eea_default_workflow" meta_type="Workflow"/>
     <object name="eea_default_workflow" meta_type="Workflow"/>
     <object name="eea_simple_approval" meta_type="Workflow"/>

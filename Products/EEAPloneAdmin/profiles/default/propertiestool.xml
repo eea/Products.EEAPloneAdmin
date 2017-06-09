@@ -95,8 +95,6 @@
    <element value="EEARelationsTool"/>
    <element value="EEAVacancy"/>
    <element value="EcoTip"/>
-   <element value="Enquiry"/>
-   <element value="EnquiryRequestor"/>
    <element value="Event"/>
    <element value="ExternalDataSpec"/>
    <element value="File"/>
@@ -173,8 +171,6 @@
    <element value="Plone Site"/>
    <element value="Pack Composite"/>
    <element value="HeaderSetFolder"/>
-   <element value="EnquiryRequestorFolder"/>
-   <element value="EnquiryFolder"/>
    <element value="HelpCenterReferenceManual"/>
    <element value="HelpCenterTutorialFolder"/>
    <element value="VdexVocabulary"/>
@@ -241,8 +237,6 @@
    <element value="HelpCenterErrorReferenceFolder"/>
    <element value="Pack Composite"/>
    <element value="HeaderSetFolder"/>
-   <element value="EnquiryRequestorFolder"/>
-   <element value="EnquiryFolder"/>
    <element value="HelpCenterReferenceManual"/>
    <element value="HelpCenterTutorialFolder"/>
    <element value="VdexVocabulary"/>
@@ -293,7 +287,6 @@
    <element value="CMF News Item"/>
    <element value="CMF Topic"/>
    <element value="Discussion Item"/>
-   <element value="Enquiry"/>
    <element value="Plone Site"/>
    <element value="Requestor"/>
    <element value="Subscriber"/>
@@ -338,7 +331,6 @@
    <element value="HelpCenterReferenceManualFolder" />
    <element value="HelpCenterTutorialFolder" />
    <element value="TempFolder" />
-   <element value="EnquiryFolder" />
   </property>
  </object>
  <object name="workflow_properties" meta_type="Plone Property Sheet">

@@ -3,6 +3,8 @@ Changelog
 
 16.2.dev0 - (unreleased)
 ------------------------
+* Change: Removed Products.EEAEnquiry related code
+[zoleesan refs #82473]
 
 16.1 - (2017-05-29)
 -------------------

@@ -3,8 +3,6 @@
              title="Eea simple public folder"
              state_variable="review_state"
              initial_state="open">
- <permission>Add Enquiry</permission>
- <permission>Add Enquiry requestor</permission>
  <permission>Add portal content</permission>
  <permission>Copy or Move</permission>
  <permission>Delete objects</permission>
@@ -12,11 +10,6 @@
  <permission>List folder contents</permission>
  <state state_id="closed" title="closed">
   <exit-transition transition_id="open"/>
-  <permission-map name="Add Enquiry" acquired="True">
-  </permission-map>
-  <permission-map name="Add Enquiry requestor"
-                  acquired="True">
-  </permission-map>
   <permission-map name="Add portal content" acquired="True">
   </permission-map>
   <permission-map name="Copy or Move" acquired="True">
