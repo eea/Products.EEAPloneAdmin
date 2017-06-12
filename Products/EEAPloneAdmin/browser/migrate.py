@@ -1629,10 +1629,10 @@ class FixEffectiveDateForPublishedObjects(object):
                                                        total, brain.getURL())
                 continue
             log.info("%s/%s :: Current brain %s", count_progress, total,
-                                                  brain.getURL())
+                                                  brain.getPath())
             created_date = brain.created
             effective_date = brain.effective
-            obj_url = brain.getURL(1)
+            obj_url = brain.getPath()
             try:
                 obj = brain.getObject()
             except Exception:
