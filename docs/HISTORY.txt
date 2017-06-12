@@ -11,6 +11,7 @@ Changelog
    * Remove Enquiry, EnquiryFolder, EnquiryRequestor from portal workflows
    * Remove enquiry related content types from Caching settings -> Caching proxies -> Content types to purge
    * Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder, Requestor from portal_types
+   * Check the full profile dump/backup and remove any references to Enquiry
    * [zoleesan refs #82473]
 
 16.1 - (2017-05-29)
