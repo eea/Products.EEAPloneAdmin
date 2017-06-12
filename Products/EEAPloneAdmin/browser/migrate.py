@@ -572,27 +572,6 @@ class EnsureAllObjectsHaveTags(object):
         return str(count) + " objects were tagged"
 
 
-# class AddRichTextDescriptionToVideos(object):
-#     """ Adds an empty string to the rich_description field on all
-#         IVideoEnhanced objects. As this is a new field it's None
-#         and the edit page fails with a traceback.
-#     """
-#     def __init__(self, context, request):
-#         self.context = context
-#         self.request = request
-#
-#     def __call__(self):
-#         catalog = getToolByName(self.context, 'portal_catalog')
-#         brains = catalog.searchResults(
-#             object_provides='p4a.video.interfaces.IVideoEnhanced')
-#         for brain in brains:
-#             vfile = brain.getObject()
-#             video = IVideo(vfile)
-#             video.rich_description = u''
-#             video.urls = ()
-#
-#         return str(len(brains)) + " videos where migrated."
-
 class AddIVideoToVideos(object):
     """ Adds mediacentre IVideo marker interface to IVideoEnhanced objects
     """
@@ -1543,32 +1522,8 @@ class CreatorAssignment(object):
         context = self.context
         hunter = getMultiAdapter((context, self.request), name='pas_search')
         total = len(res)
-        #request = self.context.REQUEST
         for brain in res:
             obj_url = brain.getURL(1)
-            # try:
-            #     obj = brain.getObject()
-            # except Exception:
-            #     not_found += obj_url + "\n"
-            #     continue
-            # history = None
-            # try:
-            #     history = ContentHistoryView(obj, request).fullHistory()
-            # except Exception, err:
-            #     history_error += "%s --> %s \n" % (obj_url, err)
-            # if not history:
-            #     continue
-            # first_state = history[-1]
-            # creators = []
-            # for entry in history:
-            #     if entry['action'] == 'New version' or entry == first_state:
-            #         user = entry['actorid']
-            #         if user and user not in creators:
-            #             creators.append(user)
-            # original_creators = obj.Creators()
-            # for creator in original_creators:
-            #     if creator and creator not in creators:
-            #         creators.append(creator)
             original_creators = brain.listCreators
             creators = list(original_creators)
             for creator in original_creators:
@@ -1638,8 +1593,7 @@ class FixEffectiveDateForPublishedObjects(object):
                          Language="all",
                          effective=search_no_effective_date,
                          show_inactive=True)
-        request = self.context.REQUEST
-        batch = request.get('b', None)
+        batch = self.request.get('b', None)
         log.info("Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
@@ -1713,7 +1667,7 @@ class FixEffectiveDateForPublishedObjects(object):
                     continue
             history = None
             try:
-                history = ContentHistoryView(obj, request).fullHistory()
+                history = ContentHistoryView(obj, self.request).fullHistory()
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:
@@ -1813,7 +1767,6 @@ class ReportEffectiveDateForPublishedObjects(object):
                          Language="all",
                          effective=search_no_effective_date,
                          show_inactive=True)
-        request = self.context.REQUEST
         log.info("Catalog search ended")
 
         res_objs = ["\n\n AFFECTED OBJS \n"]
@@ -1879,7 +1832,7 @@ class ReportEffectiveDateForPublishedObjects(object):
                     continue
             history = None
             try:
-                history = ContentHistoryView(obj, request).fullHistory()
+                history = ContentHistoryView(obj, self.request).fullHistory()
             except Exception, err:
                 history_error.append("%s --> %s \n" % (obj_url, err))
             if not history:

@@ -3,6 +3,8 @@ Changelog
 
 16.2.dev0 - (unreleased)
 ------------------------
+* Bug fix: Don't expect REQUEST on self.context
+  [avoinea refs #85379]
 * Change: Removed Products.EEAEnquiry related code
    * [zoleesan refs #82473]
 * Pre-Upgrade step:
