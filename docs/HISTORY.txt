@@ -4,13 +4,14 @@ Changelog
 16.2.dev0 - (unreleased)
 ------------------------
 * Change: Removed Products.EEAEnquiry related code
-[zoleesan refs #82473]
-* Upgrade step: Remove Enquiry, EnquiryFolder, EnquiryRequestor from portal workflows
-  Remove enquiry related content types from Caching settings -> Caching proxies ->
-  Content types to purge
-  Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder,
-  Requestor from portal_types
-[zoleesan refs #82473]
+   * [zoleesan refs #82473]
+* Pre-Upgrade step:
+   * Delete portal_enquiry_catalog
+   * Delete enquiries and export_reqs from /help/infocentre
+   * Remove Enquiry, EnquiryFolder, EnquiryRequestor from portal workflows
+   * Remove enquiry related content types from Caching settings -> Caching proxies -> Content types to purge
+   * Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder, Requestor from portal_types
+   * [zoleesan refs #82473]
 
 16.1 - (2017-05-29)
 -------------------
