@@ -2660,7 +2660,7 @@ class FixEU32CountryGroup(object):
 
         log.info("Starting EU32 migration for %d objects", total)
         not_found = []
-        cc = "%s (%s, Cyprus, Estonia, Poland, Denmark, " \
+        cc = "%s, Cyprus, Estonia, Poland, Denmark, " \
                 "Luxembourg, Ireland, Netherlands, Belgium, Latvia," \
                 " Malta, Germany, Czech Republic, Hungary, " \
                 "Bulgaria, Sweden, Greece, Portugal, Spain, Italy, " \
@@ -2674,10 +2674,13 @@ class FixEU32CountryGroup(object):
                 not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
-            location = obj.location
-            location.remove(cc % 'EU32')
+            location = list(obj.location)
+            eu32 = cc % 'EU32'
+            if eu32 in location:
+                location.remove(eu32)
             obj.setLocation(cc % 'EEA32')
             obj.reindexObject(idxs=['location'])
+            log.info('changed %s', obj_url)
             res_objs.append(obj_url)
             count += 1
             if count % 50 == 0:
