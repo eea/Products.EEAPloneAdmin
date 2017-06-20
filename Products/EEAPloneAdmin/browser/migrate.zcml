@@ -228,4 +228,8 @@
       class=".migrate.SetEmptyFLVOnMediaFiles"
       permission="cmf.ManagePortal" />
 
+    <browser:page for="*"
+      name="fixEU32CountryGroup"
+      class=".migrate.FixEU32CountryGroup"
+      permission="cmf.ManagePortal" />
 </configure>

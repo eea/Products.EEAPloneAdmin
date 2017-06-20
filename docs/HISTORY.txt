@@ -3,6 +3,8 @@ Changelog
 
 16.2.dev0 - (unreleased)
 ------------------------
+* Upgrade step: run on www8 instance www/fixEU32CountryGroup
+  [ichim-david refs #85617]
 * Upgrade step: Upgrade blacksquirrel crons.
   [avoinea refs #85379]
 * Bug fix: Don't expect REQUEST on self.context

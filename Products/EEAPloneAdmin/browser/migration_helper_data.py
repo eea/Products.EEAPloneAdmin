@@ -5040,3 +5040,72 @@ def urls_for_83628():
         '/www/SITE/data-and-maps/data/vans-6/monitoring-vans-co2-emissions_2012p'
         ]
     return res
+
+def urls_for_85616():
+    """ 
+    :return: dict of bad to good country names
+    :rtype dict
+    """
+    return {
+        "Czechia": "Czech Republic",
+        "Russia": "Russian Federation",
+        "Kosovo": "Kosovo (UNSCR 1244/99)",
+        "Kosova (Kosovo)": "Kosovo (UNSCR 1244/99)",
+        "Macedonia": "Former Yugoslav Republic of Macedonia, the",
+        "Macedonia (FYR)": "Former Yugoslav Republic of Macedonia, the",
+        "Macedonia (ARYM)": "Former Yugoslav Republic of Macedonia, the",
+        "The Former Yugoslav Republic of Macedonia":
+            "Former Yugoslav Republic of Macedonia, the",
+        "Bosnia-Herzegovina": "Bosnia and Herzegovina",
+        "Schweiz": "Switzerland",
+        "Bulgarien": "Bulgaria",
+        "The Netherlands": "Netherlands",
+    }
+
+def urls_for_85617():
+    """ urls with bad country group EU32 """
+    return [
+        '/www/SITE/data-and-maps/figures/road-transport-fuel-prices-including-2',
+        '/www/SITE/themes/human/theme_image',
+        '/www/SITE/data-and-maps/indicators/transport-final-energy-consumption-by-mode/assessment-2',
+        '/www/SITE/data-and-maps/figures/term01-transport-final-energy-consumption-by-mode-5/term01_2011_fuel_energy_consumption_v5_fig1',
+        '/www/SITE/data-and-maps/data/nationally-designated-areas-national-cdda-7',
+        '/www/SITE/data-and-maps/figures/trends-in-share-of-expenditure',
+        '/www/SITE/data-and-maps/indicators/eea-32-sulphur-dioxide-so2-emissions-1/assessment-1',
+        '/www/SITE/data-and-maps/figures/change-in-emissions-of-non-methane-volatile-organic-compounds-compared-with-the-2010-necd-and-gothenburg-protocol-targets-eea-member-countries-3',
+        '/www/SITE/data-and-maps/indicators/eea-32-sulphur-dioxide-so2-emissions-1/assessment-2',
+        '/www/SITE/data-and-maps/figures/change-in-emissions-of-non-methane-volatile-organic-compounds-compared-with-the-2010-necd-and-gothenburg-protocol-targets-eea-member-countries-2',
+        '/www/SITE/publications/environmental-tax-reform-in-europe',
+        '/www/SITE/publications/environmental-tax-reform-opportunities',
+        '/www/SITE/data-and-maps/data/data-viewers/land-accounts',
+        '/www/SITE/data-and-maps/figures/term18-length-of-land-transport-infrastructure-in-the-eea',
+        '/www/SITE/publications/earnings-jobs-and-innovation-the',
+        '/www/SITE/data-and-maps/indicators/emissions-of-acidifying-substances-version-2/assessment-3',
+        '/www/SITE/data-and-maps/figures/term-18-length-of-high-1/term18_2011_figure2_data_v1',
+        '/www/SITE/data-and-maps/indicators/emissions-of-ozone-precursors-version-2/assessment-2',
+        '/www/SITE/data-and-maps/data/nationally-designated-areas-national-cdda-5',
+        '/www/SITE/data-and-maps/figures/share-of-biofuels-in-transport-fuels-7',
+        '/www/SITE/data-and-maps/figures/ecological-footprint-of-eea-32',
+        '/www/SITE/data-and-maps/figures/term01-transport-final-energy-consumption-by-mode-6',
+        '/www/SITE/data-and-maps/indicators/eea-32-non-methane-volatile-1/assessment-2',
+        '/www/SITE/data-and-maps/figures/share-of-biofuels-in-transport-fuels-5',
+        '/www/SITE/data-and-maps/figures/term-18-length-of-high-1',
+        '/www/SITE/data-and-maps/figures/term-18-length-of-high-1/term18_2011_figure2_v1',
+        '/www/SITE/data-and-maps/indicators/emissions-of-ozone-precursors-version-2/assessment-1',
+        '/www/SITE/data-and-maps/figures/ghg-emission-intensity-of-european',
+        '/www/SITE/publications/towards-a-shared-environmental-information',
+        '/www/SITE/data-and-maps/indicators/eea-32-non-methane-volatile-1/assessment-1',
+        '/www/SITE/data-and-maps/figures/greenhouse-gas-emissions-in-eea',
+        '/www/SITE/data-and-maps/data/nationally-designated-areas-national-cdda-6',
+        '/www/SITE/soer/europe-and-the-world/megatrends/key-facts',
+        '/www/SITE/data-and-maps/figures/term01-transport-final-energy-consumption-by-mode-5/term01_2011_fuel_energy_consumption_v5_fig1-1',
+        '/www/SITE/data-and-maps/data/airbase-the-european-air-quality-database-6',
+        '/www/SITE/data-and-maps/figures/term01-transport-final-energy-consumption-by-mode-5',
+        '/www/SITE/data-and-maps/indicators/production-and-consumption-of-ozone/production-and-consumption-of-ozone-3',
+        '/www/SITE/data-and-maps/indicators/greenhouse-gas-emissions-as-reported/assessment',
+        '/www/SITE/data-and-maps/figures/eea-32-greenhouse-gas-emissions',
+        '/www/SITE/data-and-maps/indicators/emissions-of-acidifying-substances-version-2/assessment-1',
+        '/www/SITE/data-and-maps/figures/change-in-sulphur-dioxide-emissions-for-each-sector-between-1990-and-2007-eea-member-countries-3',
+        '/www/SITE/data-and-maps/figures/change-in-sulphur-dioxide-emissions-for-each-sector-between-1990-and-2007-eea-member-countries-2',
+        '/www/SITE/data-and-maps/figures/consumption-of-ozone-depleting-substances-in-eea-member-countries'
+    ]

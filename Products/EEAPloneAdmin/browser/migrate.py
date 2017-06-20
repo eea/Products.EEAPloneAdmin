@@ -27,7 +27,8 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.permissions import AccessContentsInformation, View
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
-    countryDicts, countryGroups, data_versions, urls_for_73422, urls_for_83628
+    countryDicts, countryGroups, data_versions, \
+    urls_for_73422, urls_for_83628, urls_for_85617
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -2636,3 +2637,57 @@ class SynchronizeThemes(BrowserView):
         self.fixExternalDataSpec()
 
         return "\n".join(self.logs)
+
+
+class FixEU32CountryGroup(object):
+    """ 85617 Fix Eu32 country groups to say EEA32
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("EU32 migration")
+        log.info("*** Starting EU32 migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        brains = urls_for_85617()
+        total = len(brains)
+        log.info("TOTAL affected: %d objects", total)
+        count = 0
+        count_progress = 0
+
+        log.info("Starting EU32 migration for %d objects", total)
+        not_found = []
+        cc = "%s (%s, Cyprus, Estonia, Poland, Denmark, " \
+                "Luxembourg, Ireland, Netherlands, Belgium, Latvia," \
+                " Malta, Germany, Czech Republic, Hungary, " \
+                "Bulgaria, Sweden, Greece, Portugal, Spain, Italy, " \
+                "Austria, Finland, Romania, United Kingdom, France," \
+                " Lithuania, Slovenia, Slovakia, Switzerland, " \
+                "Iceland, Liechtenstein, Norway, Turkey)"
+        for brain in brains:
+            count_progress += 1
+            obj = self.context.restrictedTraverse(brain, None)
+            if not obj:
+                not_found.append(brain)
+                continue
+            obj_url = obj.absolute_url(1)
+            location = obj.location
+            location.remove(cc % 'EU32')
+            obj.setLocation(cc % 'EEA32')
+            obj.reindexObject(idxs=['location'])
+            res_objs.append(obj_url)
+            count += 1
+            if count % 50 == 0:
+                transaction.commit()
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE EU32 migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
+                                                            res_objs_msg,
+                                                            not_found_msg)
