@@ -3,6 +3,8 @@ Changelog
 
 16.2.dev0 - (unreleased)
 ------------------------
+* Upgrade step: run on www8 instance www/fixBadCountryNamesForLocation
+  [ichim-david refs #85616]
 * Upgrade step: run on www8 instance www/fixEU32CountryGroup
   [ichim-david refs #85617]
 * Upgrade step: Upgrade blacksquirrel crons.
