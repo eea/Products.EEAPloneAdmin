@@ -29,6 +29,8 @@ from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, \
     urls_for_73422, urls_for_83628, urls_for_85617
+from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
+    mapping_for_85616, urls_for_85616
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -2689,6 +2691,58 @@ class FixEU32CountryGroup(object):
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
         log.info("DONE EU32 migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
+                                                            res_objs_msg,
+                                                            not_found_msg)
+
+
+class FixBadCountryNamesForLocation(object):
+    """ 85616 Fix bad country names for location field
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("85616 migration")
+        log.info("*** Starting 85616 migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        brains = urls_for_85616()
+        total = len(brains)
+        log.info("TOTAL affected: %d objects", total)
+        count = 0
+        count_progress = 0
+        values = mapping_for_85616()
+        keys = values.keys()
+        log.info("Starting 85616 migration for %d objects", total)
+        not_found = []
+        for brain in brains:
+            count_progress += 1
+            obj = self.context.restrictedTraverse(brain, None)
+            if not obj:
+                not_found.append(brain)
+                continue
+            obj_url = obj.absolute_url(1)
+            location = list(obj.location)
+            for key in keys:
+                if key in location:
+                    location.remove(key)
+                    location.append(values[key])
+            obj.setLocation(location)
+            obj.reindexObject(idxs=['location'])
+            log.info('changed %s', obj_url)
+            res_objs.append(obj_url)
+            count += 1
+            if count % 50 == 0:
+                transaction.commit()
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE 85616 migration %d objects", count)
         res_objs_msg = "\n".join(res_objs)
         not_found_msg = "\n".join(not_found)
         return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,

@@ -232,4 +232,10 @@
       name="fixEU32CountryGroup"
       class=".migrate.FixEU32CountryGroup"
       permission="cmf.ManagePortal" />
+
+    <browser:page for="*"
+      name="fixBadCountryNamesForLocation"
+      class=".migrate.FixBadCountryNamesForLocation"
+      permission="cmf.ManagePortal" />
+
 </configure>

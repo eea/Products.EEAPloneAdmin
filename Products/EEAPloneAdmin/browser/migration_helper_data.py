@@ -5041,26 +5041,6 @@ def urls_for_83628():
         ]
     return res
 
-def urls_for_85616():
-    """ 
-    :return: dict of bad to good country names
-    :rtype dict
-    """
-    return {
-        "Czechia": "Czech Republic",
-        "Russia": "Russian Federation",
-        "Kosovo": "Kosovo (UNSCR 1244/99)",
-        "Kosova (Kosovo)": "Kosovo (UNSCR 1244/99)",
-        "Macedonia": "Former Yugoslav Republic of Macedonia, the",
-        "Macedonia (FYR)": "Former Yugoslav Republic of Macedonia, the",
-        "Macedonia (ARYM)": "Former Yugoslav Republic of Macedonia, the",
-        "The Former Yugoslav Republic of Macedonia":
-            "Former Yugoslav Republic of Macedonia, the",
-        "Bosnia-Herzegovina": "Bosnia and Herzegovina",
-        "Schweiz": "Switzerland",
-        "Bulgarien": "Bulgaria",
-        "The Netherlands": "Netherlands",
-    }
 
 def urls_for_85617():
     """ urls with bad country group EU32 """
