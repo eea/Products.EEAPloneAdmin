@@ -2731,7 +2731,18 @@ class FixBadCountryNamesForLocation(object):
             for key in keys:
                 if key in location:
                     location.remove(key)
-                    location.append(values[key])
+                    new_name = values[key]
+                    location.append(new_name)
+                    geotags = location.__annotations__.get('eea.geotags.tags')
+                    features = geotags['features']
+                    for feat in features:
+                        props = feat['properties']
+                        description = props['description']
+                        if key in description:
+                            props['description'] = new_name
+                            props['title'] = new_name
+                            break
+
             obj.setLocation(location)
             obj.reindexObject(idxs=['location'])
             log.info('changed %s', obj_url)
@@ -2748,3 +2759,4 @@ class FixBadCountryNamesForLocation(object):
         return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
                                                             res_objs_msg,
                                                             not_found_msg)
+
