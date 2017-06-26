@@ -3,6 +3,8 @@ Changelog
 
 16.3.dev0 - (unreleased)
 ------------------------
+* Feature: from Plone control pannel -> add-ons, install collective.opengraph
+  [ichim-david refs #84787]
 
 16.2 - (2017-06-26)
 -------------------
