@@ -2759,4 +2759,3 @@ class FixBadCountryNamesForLocation(object):
         return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
                                                             res_objs_msg,
                                                             not_found_msg)
-

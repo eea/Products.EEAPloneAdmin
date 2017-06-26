@@ -4,7 +4,7 @@
 
 
 def urls_for_85616():
-    """ 
+    """
     :return: list of urls with bad country names
     :rtype list
     """
@@ -2377,7 +2377,7 @@ def urls_for_85616():
 
 
 def mapping_for_85616():
-    """ 
+    """
     :return: dict of bad to good country names
     :rtype dict
     """
@@ -2396,4 +2396,3 @@ def mapping_for_85616():
         "Bulgarien": "Bulgaria",
         "The Netherlands": "Netherlands",
     }
-
