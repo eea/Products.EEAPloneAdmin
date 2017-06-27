@@ -29,8 +29,10 @@ from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, \
     urls_for_73422, urls_for_83628, urls_for_85617
+# from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
+#     mapping_for_85616, urls_for_85616
 from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
-    mapping_for_85616, urls_for_85616
+    translated_values_urls_for_85616, translated_ascii_mapping_for_85616
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -2711,15 +2713,17 @@ class FixBadCountryNamesForLocation(object):
         log = logging.getLogger("85616 migration")
         log.info("*** Starting 85616 migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
-        brains = urls_for_85616()
+        brains = translated_values_urls_for_85616()
         total = len(brains)
         log.info("TOTAL affected: %d objects", total)
         count = 0
         count_progress = 0
-        values = mapping_for_85616()
+        values = translated_ascii_mapping_for_85616()
         keys = values.keys()
         log.info("Starting 85616 migration for %d objects", total)
         not_found = []
+        bad_values = []
+        no_geo_anno = []
         for brain in brains:
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
@@ -2728,23 +2732,40 @@ class FixBadCountryNamesForLocation(object):
                 continue
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
+            remove_location = False
             for key in keys:
                 if key in location:
                     location.remove(key)
                     new_name = values[key]
-                    location.append(new_name)
+                    if new_name in location:
+                        remove_location = True
+                    else:
+                        log.info("for %s change %s -> %s", obj_url, key,
+                                 new_name)
+                        location.append(new_name)
                     geotags = obj.__annotations__.get('eea.geotags.tags')
-                    features = geotags['features']
+                    if not geotags:
+                        no_geo_anno.append(obj_url)
+                        continue
+                    features = geotags.get('features')
                     for feat in features:
                         props = feat['properties']
                         description = props['description']
                         if key in description:
                             props['description'] = new_name
                             props['title'] = new_name
+                            if remove_location:
+                                log.info('REMOVING %s from %s', key, obj_url)
+                                features.remove(feat)
                             break
 
             obj.setLocation(location)
-            obj.reindexObject(idxs=['location'])
+            try:
+                obj.reindexObject(idxs=['location'])
+            except UnicodeDecodeError:
+                bad_values.append(obj_url)
+                continue
+
             log.info('changed %s', obj_url)
             res_objs.append(obj_url)
             count += 1
@@ -2756,6 +2777,11 @@ class FixBadCountryNamesForLocation(object):
         log.info("DONE 85616 migration %d objects", count)
         res_objs_msg = "\n".join(res_objs)
         not_found_msg = "\n".join(not_found)
-        return "Count: %s \nResults: %s \nNotFound: %s " % (count_message,
-                                                            res_objs_msg,
-                                                            not_found_msg)
+        bad_value_msg = "\n".join(bad_values)
+        no_geo_anno_msg = "\n".join(no_geo_anno)
+        m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nBadVals:\n%s\nNoAnno:%s"
+        return m % (
+            count_message, res_objs_msg, bad_value_msg, not_found_msg,
+            no_geo_anno_msg)
+
+

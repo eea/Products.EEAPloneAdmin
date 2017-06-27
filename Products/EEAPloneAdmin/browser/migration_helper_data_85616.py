@@ -2879,17 +2879,17 @@ def translated_values_urls_for_85616():
         '/assessment-1',
         'www/SITE/data-and-maps/indicators/water-requirement-1/assessment',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
-        '/%2B%2Bconversation%2B%2Bdefault/1479800023334517',
+        '/++conversation++default/1479800023334517',
         'www/SITE/cop15/road-to-copenhagen-conference',
         'www/SITE/themes/regions/pan-european-ru/meropriyatiya-provodim44be'
         '-eaos-vo-vremya/protsess-okruzhayushtaya-sreda-dlya-evrop44b',
         'www/SITE/data-and-maps/indicators/timing-of-the-cycle-of-1/assessment',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
-        '/key-observed-and-projected-climate/70912_Figure%202.2%20Key'
-        '%20observed%20and%20projected%20climate_v2_cs4.eps.75dpi.png',
+        '/key-observed-and-projected-climate/70912_Figure 2.2 Key'
+        ' observed and projected climate_v2_cs4.eps.75dpi.png',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
-        '/key-observed-and-projected-climate/70912_Figure%202.2%20Key'
-        '%20observed%20and%20projected%20climate_v2_cs4.eps.75dpi.gif',
+        '/key-observed-and-projected-climate/70912_Figure 2.2 Key'
+        ' observed and projected climate_v2_cs4.eps.75dpi.gif',
         'www/SITE/data-and-maps/indicators/timing-of-the-cycle-of-1'
         '/assessment/assessmentpart.2012-11-14.5418692105',
         'www/SITE/data-and-maps/indicators/lake-and-river-ice-cover-1'
@@ -2907,8 +2907,8 @@ def translated_values_urls_for_85616():
         'www/SITE/data-and-maps/indicators/crop-yield-variability-1'
         '/assessment-1/assessmentpart.2012-11-14.3122519791',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
-        '/key-observed-and-projected-climate/70912_Figure%202.2%20Key'
-        '%20observed%20and%20projected%20climate_v2_cs4.eps.75dpi.tif',
+        '/key-observed-and-projected-climate/70912_Figure 2.2 Key'
+        ' observed and projected climate_v2_cs4.eps.75dpi.tif',
         'www/SITE/themes/regions/pan-european-ru/meropriyatiya-provodim44be'
         '-eaos-vo-vremya/seminar-po-pov44bsheniyu-kompetentnosti-zhurnalistov',
         'www/SITE/themes/regions/pan-european-ru/meropriyatiya-provodim44be'
@@ -2924,12 +2924,98 @@ def translated_values_urls_for_85616():
         'www/SITE/events/koln-2007-information-day-on-european-ict-research'
         '-development',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
-        '/key-observed-and-projected-climate/70912_Figure%202.2%20Key'
-        '%20observed%20and%20projected%20climate_v2_cs4.eps.zoom.png',
+        '/key-observed-and-projected-climate/70912_Figure 2.2 Key'
+        ' observed and projected climate_v2_cs4.eps.zoom.png',
         'www/SITE/data-and-maps/indicators/crop-yield-variability-1/assessment',
         'www/SITE/themes/regions/pan-european-ru/meropriyatiya-provodim44be'
         '-eaos-vo-vremya/42dkologizatsiya-44dkonomiki-v44bdvizhenie-na'
         '-perv44by',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
+    ]
+
+
+def translated_non_ascii_values_urls_for_85616():
+    """
+    :return: 
+    :rtype: 
+    """
+    return [
+         'www/SITE/data-and-maps/indicators/surface-and-groundwater-abstraction-as/assessment',
+         'www/SITE/events/14th-european-forum-on-eco-innovation',
+         'www/SITE/events/29th-european-photovoltaic-solar-energy',
+         'www/SITE/data-and-maps/indicators/exceedances-of-air-quality-objectives/exceedances-of-air-quality-objectives-7',
+         'www/SITE/data-and-maps/daviz/percentage-of-population-exposed-to-3',
+         'www/SITE/data-and-maps/figures/main-drought-events-in-europe-200020132009',
+         'www/SITE/data-and-maps/indicators/water-requirement-1/assessment',
+         'www/SITE/data-and-maps/figures/number-of-people-million-exposed-1',
+         'www/SITE/data-and-maps/figures/city-limits-considered-in-the',
+         'www/SITE/data-and-maps/data-providers-and-partners/european-fund-and-asset-management',
+         'www/SITE/themes/air/activities/the-air-implementation-pilot-project',
+         'www/SITE/data-and-maps/figures/surface-and-groundwater-abstraction-as',
+         'www/SITE/data-and-maps/figures/the-alps-the-main-river-basin-districts-and-climatic-sub-regions',
+         'www/SITE/data-and-maps/figures/cumulative-number-and-surface-area',
+         'www/SITE/data-and-maps/figures/comparison-of-verified-emissions-and',
+         'www/SITE/data-and-maps/figures/water-pricing-and-household-water-2',
+         'www/SITE/data-and-maps/indicators/transport-final-energy-consumption-by-mode/assessment-2',
+         'www/SITE/highlights/201cclimate-change-act-and-adapt201d-at-green-week-2009',
+         'www/SITE/events/the-single-market-for-energy-1',
+         'www/SITE/data-and-maps/figures/hazardous-waste-transfers-from-industrial',
+         'www/SITE/data-and-maps/figures/trend-in-march-snow-mass',
+         'www/SITE/data-and-maps/indicators/snow-cover-1/assessment',
+         'www/SITE/data-and-maps/data-providers-and-partners/state-statistical-office-republic-of-macedonia',
+         'www/SITE/data-and-maps/figures/average-deadwood-volume-per-hectare',
+         'www/SITE/policy-documents/2003-strategies-of-the-ospar-commission',
+         'www/SITE/data-and-maps/figures/projected-changes-in-annual-snowfall-days',
+         'www/SITE/data-and-maps/daviz/coverage-of-natura-2000-n2k',
+         'www/SITE/data-and-maps/figures/rate-of-change-of-the',
+         'www/SITE/data-and-maps/figures/material-productivity-by-country',
+         'www/SITE/events/2013-annual-conference-jointly-organised',
+         'www/SITE/data-and-maps/figures/trends-in-spring-phenology-in-europe',
+         'www/SITE/policy-documents/environmental-health-action-plan-for',
+         'www/SITE/data-and-maps/data-providers-and-partners/climate-change-research-centre',
+         'www/SITE/data-and-maps/daviz/storm-surge-levels-and-return-4',
+         'www/SITE/highlights/europe-in-bloom-a-living',
+         'www/SITE/data-and-maps/figures/direct-and-indirect-global-pressures',
+         'www/SITE/data-and-maps/figures/distribution-of-west-nile-fever',
+         'www/SITE/data-and-maps/figures/benchmarking-in-the-cement-industry-2',
+         'www/SITE/highlights/land-recycling-helps-europe',
+         'www/SITE/data-and-maps/figures/case-studies-in-water-sensitive-regions-of-the-alps',
+         'www/SITE/data-and-maps/figures/biogeographical-regions-in-europe-1',
+         'www/SITE/events/28th-european-photovoltaic-solar-energy',
+         'www/SITE/data-and-maps/figures/differences-between-observed-and-fitted',
+         'www/SITE/policy-documents/com-2002-539-final',
+         'www/SITE/events/submitted/the-single-market-for-energy',
+         'www/SITE/articles/urban-frontrunners-2013-cities-and-the-fight-against-global-warming',
+         'www/SITE/data-and-maps/data/biogeographical-regions-europe-3',
+         'www/SITE/events/gbe-annual-conference-2012',
+         'www/SITE/data-and-maps/data-providers-and-partners/american-geophysical-union-agu',
+         'www/SITE/data-and-maps/figures/share-of-the-extent-of',
+         'www/SITE/data-and-maps/indicators/plant-phenology-1/assessment',
+         'www/SITE/articles/rising-sea-surface-temperature',
+         'www/SITE/data-and-maps/figures/no2-top-and-pm10-bottom-1',
+         'www/SITE/data-and-maps/figures/gap-between-average-200820132009-total-1',
+         'www/SITE/data-and-maps/figures/urban-flooding-2014-impervious-surfaces',
+         'www/SITE/data-and-maps/data-providers-and-partners/istituto-nazionale-di-geofisica-e-vulcanologia',
+         'www/SITE/data-and-maps/figures/trend-in-asbolute-sea-level/trend-in-asbolute-sea-level',
+         'www/SITE/data-and-maps/figures/percentage-of-cdda-coverage-per',
+         'www/SITE/data-and-maps/data/biogeographical-regions-europe-2',
+         'www/SITE/data-and-maps/figures/european-regions-clustered-according-to',
+         'www/SITE/data-and-maps/figures/average-of-the-annual-mean',
+         'www/SITE/data-and-maps/data/biogeographical-regions-europe-1',
+         'www/SITE/data-and-maps/figures/persons-employed-in-recycling-activities',
+         'www/SITE/data-and-maps/data/biogeographical-regions-europe',
+         'www/SITE/data-and-maps/figures/average-size-of-terrestrial-nationally',
+         'www/SITE/data-and-maps/data-providers-and-partners/ministerial-conference-on-the-protection',
+         'www/SITE/data-and-maps/figures/total-waste-generation-in-the-1',
+         'www/SITE/publications/more-from-less/germany-material-resource-efficiency',
+         'www/SITE/data-and-maps/figures/mean-growing-stock-density-by',
+         'www/SITE/events/submitted/discovering-new-energy-markets-serbian-day',
+         'www/SITE/data-and-maps/figures/gap-between-average-200820132009-total',
+         'www/SITE/data-and-maps/figures/perspective-on-eu-ets-cap',
+         'www/SITE/data-and-maps/figures/comparison-of-available-emissions-units',
+         'www/SITE/data-and-maps/daviz/storm-surge-levels-and-return-4/++conversation++default/1456392233258638',
+         'www/SITE/data-and-maps/indicators/energy-efficiency-and-energy-consumption-6/assessment',
+         'www/SITE/data-and-maps/figures/term-01-transport-final-energy-1',
+         'www/SITE/data-and-maps/data/external/west-nile-fever'
     ]
 
