@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ Migration data for ticket 85616
 """
 # pylint: disable=C0301, C0302
@@ -2524,14 +2525,80 @@ def translated_non_ascii_mapping_for_85616():
         u'K\xf6ln, Germany': u'Cologne, Germany',
         u'\u0437\u0430\u043b A2, Independence palace, Astana': u'Hall A2, Independence palace, Astana',
         u'\u0414\u0432\u043e\u0440\u0435\u0446 \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438, \u0410\u0441\u0442\u0430\u043d\u0430/ Independence Palace, Astana': u'Palace of Independence, Astana',
-        
+        u'Ash Sh\u0101riqah, United Arab Emirates': u'Emirate of Sharjah, United Arab Emirates',
+        u'Marea Mediteran\u0103': u'Mediterranean Sea',
+        u'Balkan, 21195 N\xe5dendal, Finlanda': u'Balkan, 21195 Naantali, Finland',
+        u'Kopenhagen, D\xe4nemark': u'Kopenhagen, Denmark',
+        u'Bratislavský, Slovakia' : u'Bratislava, Slovakia',
+        u'Albertirsai \xfat 10 (Expo t\xe9r 1.), 1101 Budapest, Hungary': u'Albertirsa Road 10 (Expo Square 1), 1101 Budapest, Hungary)',
+        u'W\xf6rlitzer Stra\xdfe, 06844 Dessau, Germany': u'W\xf6rlitzer Str., 06844 Dessau, Germany',
+        u'\xceles \xc9parses, French Southern Territories': u'Scattered islands, French Southern Territories',
+        u'August-Schmidt-Stra\xdfe, 44227 Dortmund, Tyskland':  u'August-Schmidt-Str, 44227 Dortmund, Germany',
+        u'Mah\u0101r\u0101shtra, India':   u'Maharashtra, India',
+        u'Vene\u021bia, Italia':   u'Venice, Italy',
+        u'Gr\xe6kenland': u'Greece',
+        u'Zakarpats\u2019ka Oblast\u2019, Ukraine': u'Zakarpattia Oblast, Ukraine',
+        u'Ministerio de Medio Ambiente, Medio Rural y Marino , P\xba Infanta Isabel 1,  Madrid': u'Ministry of the Environment, Rural and Marine Affairs, Paseo de la Infanta Isabel 1, Madrid',
+        u'Rom\xe2nia': u'Romania',
+        u'\u0431\u0443\u043b\u0435\u0432\u0430\u0440\u0434 \u0426\u0430\u0440\u0438\u0433\u0440\u0430\u0434\u0441\u043a\u043e \u0448\u043e\u0441\u0435 147, \u0421\u043e\u0444\u0438\u044f, \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f':
+               u'Boulevard "Tsarigradsko shose" 147, 1784 Sofia, Bulgaria',
+        u'Croa\u0163ia': u'Croatia',
+        u'Bucure\u015fti, Romania': u'Bucharest, Romania',
+        u'Rum\xe4nien': u'Romania',
+        u'Mun\u021bii Pirinei': u'Pyrenees mountains',
+        u'T\u016bnis, Tunisia': u'Tunis, Tunisia',
+        u'T\xfanez': u'Tunisia',
+        u'Rum\xe6nien': u'Romania',
+        u'Mar Mediterr\xe1neo': u'Mediterranean Sea',
+        u'G\xe9orgie': u'Georgia',
+        u'L\xedbano': u'Lebanon',
+        u'Ha N\u1ed9i, Vietnam': u'Hanoi, Vietnam',
+        u'Norv\xe8ge': u'Norway',
+        u'Slov\xe9nie': u'Slovenia',
+        u'\xd8strig': u'Austria',
+        u'Mont\xe9n\xe9gro': u'Montenegro',
+        u'Bi\xe9lorussie': u'Belarus',
+        u'Mac\xe9doine': u'Former Yugoslav Republic of Macedonia, the',
+        u'R\xe9publique tch\xe8que': u'Czech Republic',
+        u'\xd6sterreich': u'Austria',
+        u'D\xe4nemark': u'Denmark',
+        u'Vereinigtes K\xf6nigreich': u'United Kingdom',
+        u'Benelux (Belgi\xeb, Nederland, Luxemburg)': u'Benelux (Belgium, Netherlands, Luxemburg)',
+        u'F\xe9d\xe9ration de Bosnie-et-Herz\xe9govine, Bosnie-Herz\xe9govine': u'Federation of Bosnia and Herzegovina',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
 def translated_values_urls_for_85616():
     """
-    :return: 
-    :rtype: 
+    :return:
+    :rtype:
     """
     return [
         'http://localhost:7988/www/SITE/events/cep-r-clean-energy-passive',
