@@ -2541,7 +2541,7 @@ def translated_non_ascii_mapping_for_85616():
         u'Ministerio de Medio Ambiente, Medio Rural y Marino , P\xba Infanta Isabel 1,  Madrid': u'Ministry of the Environment, Rural and Marine Affairs, Paseo de la Infanta Isabel 1, Madrid',
         u'Rom\xe2nia': u'Romania',
         u'\u0431\u0443\u043b\u0435\u0432\u0430\u0440\u0434 \u0426\u0430\u0440\u0438\u0433\u0440\u0430\u0434\u0441\u043a\u043e \u0448\u043e\u0441\u0435 147, \u0421\u043e\u0444\u0438\u044f, \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f':
-               u'Boulevard "Tsarigradsko shose" 147, 1784 Sofia, Bulgaria',
+            u'Boulevard "Tsarigradsko shose" 147, 1784 Sofia, Bulgaria',
         u'Croa\u0163ia': u'Croatia',
         u'Bucure\u015fti, Romania': u'Bucharest, Romania',
         u'Rum\xe4nien': u'Romania',
@@ -2565,33 +2565,39 @@ def translated_non_ascii_mapping_for_85616():
         u'Vereinigtes K\xf6nigreich': u'United Kingdom',
         u'Benelux (Belgi\xeb, Nederland, Luxemburg)': u'Benelux (Belgium, Netherlands, Luxemburg)',
         u'F\xe9d\xe9ration de Bosnie-et-Herz\xe9govine, Bosnie-Herz\xe9govine': u'Federation of Bosnia and Herzegovina',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        u'Kongens Nytorv 8, 1050 K\xf8benhavn K, Denmark': u'Kongens Nytorv 8, 1050 Copenhagen, Denmark',
+        u'Kongens Nytorv 6, 1050 K\xf8benhavn K, Denmark': u'Kongens Nytorv 6, 1050 Copenhague, Denmark',
+        u'Kongens Nytorv 6, 1050 Kopenhagen, D\xe4nemark': u'Kongens Nytorv 6, 1050 Copenhague, Denmark',
+        u'Kongens Nytorv 6, 1051 Kopenhagen, D\xe4nemark': u'Kongens Nytorv 6, 1051 Copenhague, Denmark',
+        u'Kongens Nytorv 6, K\xf8benhavn':  u'Kongens Nytorv 6, Copenhague',
+        u'Ostrava-Poruba, \u010cesk\xe1 republika': u'Ostrava-Poruba, Czech Republic',
+        u'\xd8ster Farimagsgade 2 B - 1353 K\xf8benhavn K': u'\xd8ster Farimagsgade 2 B - 1353 Copenhague',
+        u'Carl von Ossietzky Universit\xe4t Oldenburg K.d.\xf6.R., '
+        u'Ammerl\xe4nder Heerstra\xdfe 114-118, 26129 Oldenburg, '
+        u'Deutschland': u'Carl von Ossietzky Universit\xe4t Oldenburg K.d.\xf6.R., Ammerl\xe4nder Heerstra\xdfe 114-118, 26129 Oldenburg, Germany',
+        u'Heidelberger Stra\xdfe 129, 64285 Darmstadt, Germany': u'Heidelberger Str. 129, 64285 Darmstadt, Germany',
+        u'Na \u0160abatce 2050/17, 143 06 Praha 412-Komo\u0159any': u'Na \u0160abatce 2050/17, 143 06 Prague 412-Komo\u0159any',
+        u"27 Route d'Eu, 80230 Pend\xe9, Frankreich": u"27 Route d'Eu, 80230 Pend\xe9, France",
+        u'Lyngbyvej 100, 2100 K\xf8benhavn, Danmark': u'Lyngbyvej 100, 2100 Copenhague, Denmark',
+        u'Folkborgsv\xe4gen 1, 603 80 Norrk\xf6ping, Sverige': u'Folkborgsv\xe4gen 1, 603 80 Norrk\xf6ping, Sweden',
+        u'Bundesumweltministerium, Alexanderstra\xdfe 3,10178 Berlin':  u'Federal Ministry of the Environment, Alexander str. 3,10178 Berlin',
+        u'Friedrichstra\xdfe 39, University of Freiburg, 79098 Freiburg im Breisgau, Tyskland': u'Friedrich str. 39, University of Freiburg, 79098 Freiburg im Breisgau, Germany',
+        u'Calle de Gonz\xe1lez Tablas, 9, 31004 Pamplona, Navarre, Spain':  u'Calle de Gonz\xe1lez Tablas, 9, 31004 Pamplona, Navarra, Spain',
+        u'Sk\xe5ne, Sweden':  u'Scania, Sweden',
+        u'Hlavn\xed Mesto Praha, Czechia':  u'Prague, Czech Republic',
+        u'Moravskoslezsk\xfd, Czech Republic':  u'Moravian-Silesian Region, Czech Republic',
+        u'In den Ministerg\xe4rten 5, 10117 Berlin, Deutschland':  u'In den Ministerg\xe4rten 5, 10117 Berlin, Germany',
+        u'Salonika, Gr\xe6kenland':  u'Thessaloniki, Greece',
+        u'Square\u2013Brussels Meeting Centre':  u'Square-Brussels Meeting Centre',
+        u"King's New Square, Kongens Nytorv, 1050 K\xf8benhavn K, Denmark":  u"King's New Square, Kongens Nytorv, 1050 Copenhague, Denmark",
+        u'Karn\u0101taka, India':  u'Karnataka, India',
+        u'Dubrova\u010dko-Neretvanska, Croatia':  u'Dubrovnik-Neretva, Croatia',
+        u'Chemin des An\xe9mones 11, 1219 Ch\xe2telaine, Schweiz':  u'Chemin des An\xe9mones 11, 1219 Ch\xe2telaine, Switzerland',
+        u'2, All\xe9e du 6 Ao\xfbt, Bat. B11, 4000 Li\xe8ge, BELGIUM':  u'2, All\xe9e du 6 Ao\xfbt, Bat. B11, 4000 Li\xe8ge, Belgium',
+        u'Bahnhofsallee 1E, 37081 G\xf6ttingen, Tyskland':  u'Bahnhofsallee 1E, 37081 G\xf6ttingen, Germany',
+        u'Moravskoslezsk\xfd, Czechia': u'Moravskoslezsky, Czech Republic',
+        u'Paseo de Mar\xeda Agust\xedn, Saragossa, Aragon, Spain': u'Paseo de Mar\xeda Agust\xedn, Zaragoza, Aragon, Spain',
+        u'Jes\xe9niova 2305/17, 83101 Nov\xe9 Mesto, Slovakia':  u'Jes\xe9niova 2305/17, 83101 Bratislava, Slovakia',
     }
 
 
@@ -2926,6 +2932,4 @@ def translated_values_urls_for_85616():
         '-perv44by',
         'www/SITE/data-and-maps/figures/key-observed-and-projected-climate'
     ]
-
-
 

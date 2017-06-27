@@ -2733,7 +2733,7 @@ class FixBadCountryNamesForLocation(object):
                     location.remove(key)
                     new_name = values[key]
                     location.append(new_name)
-                    geotags = location.__annotations__.get('eea.geotags.tags')
+                    geotags = obj.__annotations__.get('eea.geotags.tags')
                     features = geotags['features']
                     for feat in features:
                         props = feat['properties']
