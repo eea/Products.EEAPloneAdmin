@@ -29,10 +29,14 @@ from Products.EEAContentTypes.content.interfaces import IFlashAnimation
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, \
     urls_for_73422, urls_for_83628, urls_for_85617
-# from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
-#     mapping_for_85616, urls_for_85616
+from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
+    mapping_for_85616, urls_for_85616
 from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
     translated_values_urls_for_85616, translated_ascii_mapping_for_85616
+from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
+    translated_non_ascii_values_urls_for_85616
+from Products.EEAPloneAdmin.browser.migration_helper_data_85616 import \
+    translated_non_ascii_mapping_for_85616
 from plone.app.blob.browser.migration import BlobMigrationView
 from plone.app.blob.migrations import ATFileToBlobMigrator, getMigrationWalker
 from plone.app.blob.migrations import migrate
@@ -2713,12 +2717,22 @@ class FixBadCountryNamesForLocation(object):
         log = logging.getLogger("85616 migration")
         log.info("*** Starting 85616 migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
-        brains = translated_values_urls_for_85616()
+        form = self.request.form
+        method = form.get('objs', 'objs')
+        call_map = {
+            'objs': (urls_for_85616, mapping_for_85616),
+            'translated': (translated_values_urls_for_85616,
+                           translated_ascii_mapping_for_85616),
+            'nonascii': (translated_non_ascii_values_urls_for_85616,
+                         translated_non_ascii_mapping_for_85616)
+        }
+        action = call_map[method]
+        brains = action[0]()
         total = len(brains)
         log.info("TOTAL affected: %d objects", total)
         count = 0
         count_progress = 0
-        values = translated_ascii_mapping_for_85616()
+        values = action[1]()
         keys = values.keys()
         log.info("Starting 85616 migration for %d objects", total)
         not_found = []
