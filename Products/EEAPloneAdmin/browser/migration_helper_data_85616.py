@@ -2407,7 +2407,6 @@ def translated_ascii_mapping_for_85616():
          u'Tyskland': u'Germany',
          u'Canal de la Mancha': u'English Channel',
          u'Sciences Po, 75007 Paris, Frankreich': u'Sciences Po, 75007 Paris, France',
-         u'Moldawien': u'Moldova',
          u'Holland': u'Netherlands',
          u'Calle de Modesto Lafuente, 18, 28010 Madrid, Spanien': u'Calle de Modesto Lafuente, 18, 28010 Madrid, Spain',
          u'Litauen': u'Lithuania',
@@ -2432,14 +2431,12 @@ def translated_ascii_mapping_for_85616():
          u'Germania': u'Germany',
          u'Pays-Bas': u'Netherlands',
          u'Serbie': u'Serbia',
-         u'Aserbaidschan': u'Azerbaijan',
          u'Zypern': u'Cyprus',
          u'Barcelona, Provincia Barcelona, Spania': u'Barcelona, Provincia Barcelona, Spain',
          u'Lettonie': u'Latvia',
          u'Copenhague, Dinamarca': u'Copenhagen, Denmark',
          u'Libyen': u'Libya',
          u'Island': u'Iceland',
-         u'Mazedonien': u'Former Yugoslav Republic of Macedonia, the',
          u'Copenhaga, Danemarca': u'Copenhagen, Denmark',
          u'Argelia': u'Algeria',
          u'2000 Florida Ave NW, Washington D.C., Columbiadistriktet 20009, USA': u'2000 Florida Ave NW, Washington D.C., District of Columbia 20009, USA',
@@ -2506,16 +2503,13 @@ def translated_ascii_mapping_for_85616():
         u'Moldawien': u'Moldova',
         u'Aserbaidschan': u'Azerbaijan',
         u'Mazedonien': u'Former Yugoslav Republic of Macedonia, the',
-        u'Bosnien und Herzegowina': u'Bosnia and Herzegovina',
-        u'Russland': u'Russian Federation',
-        u'Tunesien': u'Tunisia'
     }
 
 
 def translated_non_ascii_mapping_for_85616():
     """
-    :return: dict of bad to good country names
-    :rtype dict
+        :return: dict of bad to good country names
+        :rtype dict
     """
     return {
         u'Kongens Nytorv 6, K\xf8benhavn': u'Kongens Nytorv 6, Copenhague',
@@ -2597,14 +2591,14 @@ def translated_non_ascii_mapping_for_85616():
         u'Bahnhofsallee 1E, 37081 G\xf6ttingen, Tyskland':  u'Bahnhofsallee 1E, 37081 G\xf6ttingen, Germany',
         u'Moravskoslezsk\xfd, Czechia': u'Moravskoslezsky, Czech Republic',
         u'Paseo de Mar\xeda Agust\xedn, Saragossa, Aragon, Spain': u'Paseo de Mar\xeda Agust\xedn, Zaragoza, Aragon, Spain',
-        u'Jes\xe9niova 2305/17, 83101 Nov\xe9 Mesto, Slovakia':  u'Jes\xe9niova 2305/17, 83101 Bratislava, Slovakia',
+        u'Jes\xe9niova 2305/17, 83101 Nov\xe9 Mesto, Slovakia':  u'Jes\xe9niova 2305/17, 83101 Bratislava, Slovakia'
     }
 
 
 def translated_values_urls_for_85616():
     """
-    :return:
-    :rtype:
+        :return:
+        :rtype:
     """
     return [
         'http://localhost:7988/www/SITE/events/cep-r-clean-energy-passive',
@@ -2936,8 +2930,8 @@ def translated_values_urls_for_85616():
 
 def translated_non_ascii_values_urls_for_85616():
     """
-    :return: 
-    :rtype: 
+        :return:
+        :rtype:
     """
     return [
          'www/SITE/data-and-maps/indicators/surface-and-groundwater-abstraction-as/assessment',
@@ -3018,4 +3012,3 @@ def translated_non_ascii_values_urls_for_85616():
          'www/SITE/data-and-maps/figures/term-01-transport-final-energy-1',
          'www/SITE/data-and-maps/data/external/west-nile-fever'
     ]
-

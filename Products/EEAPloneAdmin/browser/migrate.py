@@ -2783,5 +2783,3 @@ class FixBadCountryNamesForLocation(object):
         return m % (
             count_message, res_objs_msg, bad_value_msg, not_found_msg,
             no_geo_anno_msg)
-
-
