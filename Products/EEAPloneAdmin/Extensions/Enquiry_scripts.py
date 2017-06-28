@@ -1,6 +1,9 @@
 """ Workflow Scripts for: Enquiry
 """
 import quopri
+from plone import api
+import transaction
+import logging
 
 enquiryTemplate = """From: %s
 To: %s
@@ -32,3 +35,39 @@ def sendToIC(self, state_change, **kw):
     host = portal.MailHost
     host.send(content)
     print content
+
+def deleteEnquiryDatabase(self):
+    """ delete all enquiry and requestor objects
+    """
+    logger = logging.getLogger("EEAPloneAdmin.enquiry_scripts")
+    portal = api.portal.get()
+    enquiries = portal['SITE']['help']['infocentre']['enquiries']
+    requestors = portal['SITE']['help']['infocentre']['enquiries']['requestors']
+
+    enquiries_total = len(enquiries.keys())
+    logger.info("%s enquiries found.", enquiries_total)
+    requestors_total = len(requestors.keys())
+    logger.info("%s requestors found.", requestors_total)
+
+    # delete requestors
+    logger.info("Starting to delete requestors!")
+    count = 0
+    for k in requestors.keys():
+        requestors.manage_delObjects(ids=[k])
+        count += 1
+        if count % 100 == 0:
+            logger.info("Requestors deleted: %s / %s", count, requestors_total)
+            transaction.commit()
+
+    # delete enquiries
+    logger.info("Starting to delete enquiries!")
+    count = 0
+    for k in enquiries.keys():
+        enquiries.manage_delObjects(ids=[k])
+        count += 1
+        if count % 100 == 0:
+            logger.info("Enquiries deleted: %s / %s", count, enquiries_total)
+            transaction.commit()
+
+    logger.info("Cleanup finished.")
+    return "Cleanup finished."
