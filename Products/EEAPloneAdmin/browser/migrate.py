@@ -2783,7 +2783,7 @@ class FixBadCountryNamesForLocation(object):
                 obj.setLocation(location)
                 try:
                     obj.reindexObject(idxs=['location'])
-                except UnicodeDecodeError:
+                except Exception:
                     bad_values.append(obj_url)
                     continue
 
@@ -2792,6 +2792,8 @@ class FixBadCountryNamesForLocation(object):
                 count += 1
                 if count % 50 == 0:
                     transaction.commit()
+                    log.info('INFO: Subtransaction committed to zodb (%s/%s)',
+                             count, total)
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
