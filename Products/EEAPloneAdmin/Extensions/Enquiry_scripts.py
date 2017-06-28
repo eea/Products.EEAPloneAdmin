@@ -1,6 +1,9 @@
 """ Workflow Scripts for: Enquiry
 """
 import quopri
+from plone import api
+import transaction
+import logging
 
 enquiryTemplate = """From: %s
 To: %s
@@ -36,10 +39,6 @@ def sendToIC(self, state_change, **kw):
 def deleteEnquiryDatabase(self):
     """ delete all enquiry and requestor objects
     """
-    from plone import api
-    import transaction
-    import logging
-
     logger = logging.getLogger("EEAPloneAdmin.enquiry_scripts")
     portal = api.portal.get()
     enquiries = portal['SITE']['help']['infocentre']['enquiries']
