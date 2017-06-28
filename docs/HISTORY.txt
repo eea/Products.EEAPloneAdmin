@@ -3,6 +3,8 @@ Changelog
 
 16.4.dev0 - (unreleased)
 ------------------------
+* Feature: added script to delete all enquiries and requestors
+  [alecghica refs #82473]
 
 16.3 - (2017-06-26)
 -------------------
