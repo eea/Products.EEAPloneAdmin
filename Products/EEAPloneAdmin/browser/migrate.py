@@ -2747,8 +2747,10 @@ class FixBadCountryNamesForLocation(object):
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
             remove_location = False
+            found_bad_values = False
             for key in keys:
                 if key in location:
+                    found_bad_values = True
                     location.remove(key)
                     new_name = values[key]
                     if new_name in location:
@@ -2757,7 +2759,11 @@ class FixBadCountryNamesForLocation(object):
                         log.info("for %s change %s -> %s", obj_url, key,
                                  new_name)
                         location.append(new_name)
-                    geotags = obj.__annotations__.get('eea.geotags.tags')
+                    anno = getattr(obj, '__annotations__', None)
+                    if not anno:
+                        log.info("MISSING __annotations__ from %s", obj_url)
+                        continue
+                    geotags = anno.get('eea.geotags.tags')
                     if not geotags:
                         no_geo_anno.append(obj_url)
                         continue
@@ -2773,18 +2779,19 @@ class FixBadCountryNamesForLocation(object):
                                 features.remove(feat)
                             break
 
-            obj.setLocation(location)
-            try:
-                obj.reindexObject(idxs=['location'])
-            except UnicodeDecodeError:
-                bad_values.append(obj_url)
-                continue
+            if found_bad_values:
+                obj.setLocation(location)
+                try:
+                    obj.reindexObject(idxs=['location'])
+                except UnicodeDecodeError:
+                    bad_values.append(obj_url)
+                    continue
 
-            log.info('changed %s', obj_url)
-            res_objs.append(obj_url)
-            count += 1
-            if count % 50 == 0:
-                transaction.commit()
+                log.info('changed %s', obj_url)
+                res_objs.append(obj_url)
+                count += 1
+                if count % 50 == 0:
+                    transaction.commit()
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
 
@@ -2794,6 +2801,5 @@ class FixBadCountryNamesForLocation(object):
         bad_value_msg = "\n".join(bad_values)
         no_geo_anno_msg = "\n".join(no_geo_anno)
         m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nBadVals:\n%s\nNoAnno:%s"
-        return m % (
-            count_message, res_objs_msg, bad_value_msg, not_found_msg,
-            no_geo_anno_msg)
+        return m % (count_message, res_objs_msg, bad_value_msg,
+                    not_found_msg, no_geo_anno_msg)
