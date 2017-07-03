@@ -35,6 +35,7 @@ Changelog
    * Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder, Requestor from portal_types
    * Check the full profile dump/backup and remove any references to Enquiry
    * Delete all related entries from SDS
+   * Remove conditions added to PING content rules
    * [zoleesan refs #82473]
 
 16.1 - (2017-05-29)
