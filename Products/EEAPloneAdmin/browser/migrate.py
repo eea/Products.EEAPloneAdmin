@@ -2744,6 +2744,9 @@ class FixBadCountryNamesForLocation(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             comment = obj.portal_type == 'Discussion Item'
+            assessment = obj.portal_type == 'Assessment'
+            if assessment:
+                continue
             if not obj:
                 not_found.append(brain)
                 continue
