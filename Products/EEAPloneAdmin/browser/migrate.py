@@ -2739,15 +2739,29 @@ class FixBadCountryNamesForLocation(object):
         bad_values = []
         no_geo_anno = []
         for brain in brains:
+            remove_location = False
+            found_bad_values = False
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
+            comment = obj.portal_type == 'Discussion Item'
             if not obj:
                 not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
-            remove_location = False
-            found_bad_values = False
+            if not location:
+                continue
+            if comment:
+                found_bad_values = True
+                keys = []
+
+            anno = getattr(obj, '__annotations__', {})
+            geotags = anno.get('eea.geotags.tags')
+            if not geotags and not comment:
+                no_geo_anno.append(obj_url)
+                continue
+            changes = []
+            removed_locations = []
             for key in keys:
                 if key in location:
                     found_bad_values = True
@@ -2756,17 +2770,8 @@ class FixBadCountryNamesForLocation(object):
                     if new_name in location:
                         remove_location = True
                     else:
-                        log.info("for %s change %s -> %s", obj_url, key,
-                                 new_name)
+                        changes.append((key, new_name))
                         location.append(new_name)
-                    anno = getattr(obj, '__annotations__', None)
-                    if not anno:
-                        log.info("MISSING __annotations__ from %s", obj_url)
-                        continue
-                    geotags = anno.get('eea.geotags.tags')
-                    if not geotags:
-                        no_geo_anno.append(obj_url)
-                        continue
                     features = geotags.get('features')
                     for feat in features:
                         props = feat['properties']
@@ -2775,20 +2780,25 @@ class FixBadCountryNamesForLocation(object):
                             props['description'] = new_name
                             props['title'] = new_name
                             if remove_location:
-                                log.info('REMOVING %s from %s', key, obj_url)
                                 features.remove(feat)
+                                removed_locations.append(feat)
                             break
-
+            if changes:
+                log.info("for %s changed %s", obj_url, changes)
+            if removed_locations:
+                log.info('REMOVING from %s --> %s', obj_url, removed_locations)
             if found_bad_values:
                 obj.setLocation(location)
+                url = urllib.unquote(obj_url)
+                if comment and location:
+                    obj.setLocation([])
                 try:
                     obj.reindexObject(idxs=['location'])
                 except Exception:
-                    bad_values.append(obj_url)
+                    bad_values.append("%s -> %s" % (obj.portal_type, url))
                     continue
 
-                log.info('changed %s', obj_url)
-                res_objs.append(obj_url)
+                res_objs.append(url)
                 count += 1
                 if count % 50 == 0:
                     transaction.commit()
@@ -2802,6 +2812,6 @@ class FixBadCountryNamesForLocation(object):
         not_found_msg = "\n".join(not_found)
         bad_value_msg = "\n".join(bad_values)
         no_geo_anno_msg = "\n".join(no_geo_anno)
-        m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nBadVals:\n%s\nNoAnno:%s"
-        return m % (count_message, res_objs_msg, bad_value_msg,
-                    not_found_msg, no_geo_anno_msg)
+        m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nBadVals:\n%s\nNoAnno:\n%s"
+        return m % (count_message, res_objs_msg, not_found_msg, bad_value_msg,
+                    no_geo_anno_msg)
