@@ -3,6 +3,10 @@ Changelog
 
 16.4.dev0 - (unreleased)
 ------------------------
+* Upgrade step: run on www8 instance www/fixBadCountryNamesForLocation?objs=translated
+  [ichim-david refs #85616]
+* Upgrade step: run on www8 instance www/fixBadCountryNamesForLocation?objs=nonascii
+  [ichim-david refs #85616]
 * Feature: added script to delete all enquiries and requestors
   [alecghica refs #82473]
 
