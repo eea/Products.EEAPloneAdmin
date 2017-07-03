@@ -238,4 +238,10 @@
       class=".migrate.FixBadCountryNamesForLocation"
       permission="cmf.ManagePortal" />
 
+  <browser:page for="*"
+    name="addReadTimeAnnotation"
+    class=".migrate.AddReadTimeAnnotation"
+    permission="cmf.ManagePortal" />
+
+
 </configure>

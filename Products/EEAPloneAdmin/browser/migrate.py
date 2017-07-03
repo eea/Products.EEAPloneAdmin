@@ -9,6 +9,7 @@ import json
 from cStringIO import StringIO
 from pprint import pprint
 import transaction
+from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
 from zope.annotation import IAnnotations
 from zope.interface import alsoProvides
 from zope.interface import directlyProvides
@@ -2206,7 +2207,7 @@ class ReplaceWrongCreationDate(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain)
+                not_found.append(brain.getURL(1))
                 continue
             obj_url = obj.absolute_url(1)
 
@@ -2297,7 +2298,7 @@ class SetExpirationDateForArchivedObjects(object):
                 except Exception:
                     not_found.append(brain.getURL(1))
             if not obj:
-                not_found.append(brain)
+                not_found.append(brain.getURL(1))
                 continue
             obj_url = brain if not search_for_objs else obj.absolute_url(1)
             if obj.getExpirationDate():
@@ -2679,7 +2680,7 @@ class FixEU32CountryGroup(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain)
+                not_found.append(brain.getURL(1))
                 continue
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
@@ -2743,12 +2744,12 @@ class FixBadCountryNamesForLocation(object):
             found_bad_values = False
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
+            if not obj:
+                not_found.append(brain.getURL(1))
+                continue
             comment = obj.portal_type == 'Discussion Item'
             assessment = obj.portal_type == 'Assessment'
             if assessment:
-                continue
-            if not obj:
-                not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
@@ -2818,3 +2819,70 @@ class FixBadCountryNamesForLocation(object):
         m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nBadVals:\n%s\nNoAnno:\n%s"
         return m % (count_message, res_objs_msg, not_found_msg, bad_value_msg,
                     no_geo_anno_msg)
+
+
+class AddReadTimeAnnotation(object):
+    """ 85791 add readability statistics as annotation values
+    """
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        """ Call method
+        """
+        log = logging.getLogger("85791 migration")
+        log.info("*** Starting 85791 migration")
+        res_objs = ["\n\n AFFECTED OBJS \n"]
+        form = self.request.form
+        ptype = form.get('ptype', 'Fiche')
+        brains = self.context.portal_catalog(portal_type=ptype)
+        total = len(brains)
+        log.info("TOTAL affected: %d objects", total)
+        count = 0
+        count_progress = 0
+        log.info("Starting 85791 migration for %s with %d objs", ptype, total)
+        not_found = []
+        skipped_values = []
+        for brain in brains:
+            count_progress += 1
+            try:
+                obj = brain.getObject()
+            except Exception:
+                not_found.append(brain.getURL(1))
+                continue
+            obj_url = obj.absolute_url(1)
+
+            anno = getattr(obj, '__annotations__', {})
+            scores = anno.get('readability_scores')
+            if scores:
+                skipped_values.append(obj_url)
+                continue
+            stats = TextStatistics(obj.getText())
+            score = anno['readability_scores'] = {}
+            score['text'] = {
+                u'character_count': stats.text,
+                u'readability_level': stats.flesch_kincaid_grade_level(),
+                u'readability_value': stats.flesch_kincaid_reading_ease(),
+                u'sentence_count': stats.sentence_count(),
+                u'word_count': stats.word_count()
+            }
+
+            res_objs.append(obj_url)
+            log.info(obj_url)
+            count += 1
+            if count % 50 == 0:
+                transaction.commit()
+                log.info('INFO: Subtransaction committed to zodb (%s/%s)',
+                         count, total)
+
+        count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+
+        log.info("DONE 85791 migration %d objects", count)
+        res_objs_msg = "\n".join(res_objs)
+        not_found_msg = "\n".join(not_found)
+        skipped_value_msg = "\n".join(skipped_values)
+        m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nSkippedValues:\n%s"
+        return m % (count_message, res_objs_msg, not_found_msg,
+                    skipped_value_msg)

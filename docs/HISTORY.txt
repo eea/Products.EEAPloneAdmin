@@ -3,6 +3,14 @@ Changelog
 
 16.5.dev0 - (unreleased)
 ------------------------
+* Upgrade step: run on www8 instance www/addReadTimeAnnotation
+  [ichim-david refs #85791]
+* Feature: added migration script for adding reading
+  statistics within annotations
+  [ichim-david refs #85791]
+* Added python port of textStatistics to be used for
+  calculating the text statistics values
+  [ichim-david refs #85791]
 
 16.4 - (2017-07-03)
 -------------------
