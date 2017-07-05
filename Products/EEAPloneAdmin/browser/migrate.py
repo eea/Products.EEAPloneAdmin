@@ -2207,7 +2207,7 @@ class ReplaceWrongCreationDate(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain.getURL(1))
+                not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
 
@@ -2298,7 +2298,7 @@ class SetExpirationDateForArchivedObjects(object):
                 except Exception:
                     not_found.append(brain.getURL(1))
             if not obj:
-                not_found.append(brain.getURL(1))
+                not_found.append(brain)
                 continue
             obj_url = brain if not search_for_objs else obj.absolute_url(1)
             if obj.getExpirationDate():
@@ -2680,7 +2680,7 @@ class FixEU32CountryGroup(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain.getURL(1))
+                not_found.append(brain)
                 continue
             obj_url = obj.absolute_url(1)
             location = list(obj.location)
@@ -2745,7 +2745,7 @@ class FixBadCountryNamesForLocation(object):
             count_progress += 1
             obj = self.context.restrictedTraverse(brain, None)
             if not obj:
-                not_found.append(brain.getURL(1))
+                not_found.append(brain)
                 continue
             comment = obj.portal_type == 'Discussion Item'
             assessment = obj.portal_type == 'Assessment'
@@ -2763,7 +2763,9 @@ class FixBadCountryNamesForLocation(object):
             geotags = anno.get('eea.geotags.tags')
             if not geotags and not comment:
                 no_geo_anno.append(obj_url)
-                continue
+                location = []
+                found_bad_values = []
+                keys = []
             changes = []
             removed_locations = []
             for key in keys:
@@ -2836,6 +2838,8 @@ class AddReadTimeAnnotation(object):
         log.info("*** Starting 85791 migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
         form = self.request.form
+        self.request.form['ajax_load'] = True
+        self.request.form['content_core_only'] = True
         ptype = form.get('ptype', 'Fiche')
         brains = self.context.portal_catalog(portal_type=ptype)
         total = len(brains)
@@ -2859,7 +2863,7 @@ class AddReadTimeAnnotation(object):
             if scores:
                 skipped_values.append(obj_url)
                 continue
-            stats = TextStatistics(obj.getText())
+            stats = TextStatistics(obj())
             score = anno['readability_scores'] = {}
             score['text'] = {
                 u'character_count': stats.text,
