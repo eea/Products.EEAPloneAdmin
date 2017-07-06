@@ -1,15 +1,14 @@
 """ Migrate
 """
 # pylint: disable=C0302,R1702,R0101
+from cStringIO import StringIO
+from pprint import pprint
 import csv
 import logging
 import os
 import urllib
 import json
-from cStringIO import StringIO
-from pprint import pprint
 import transaction
-from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
 from zope.annotation import IAnnotations
 from zope.interface import alsoProvides
 from zope.interface import directlyProvides
@@ -27,6 +26,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.CMFCore.permissions import AccessContentsInformation, View
 from Products.EEAContentTypes.content.interfaces import IFlashAnimation
+from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
 from Products.EEAPloneAdmin.browser.migration_helper_data import \
     countryDicts, countryGroups, data_versions, \
     urls_for_73422, urls_for_83628, urls_for_85617
@@ -2795,16 +2795,16 @@ class FixBadCountryNamesForLocation(object):
                 log.info('REMOVING from %s --> %s', obj_url, removed_locations)
             if found_bad_values:
                 obj.setLocation(location)
-                url = urllib.unquote(obj_url)
+                u_url = urllib.unquote(obj_url)
                 if comment and location:
                     obj.setLocation([])
                 try:
                     obj.reindexObject(idxs=['location'])
                 except Exception:
-                    bad_values.append("%s -> %s" % (obj.portal_type, url))
+                    bad_values.append("%s -> %s" % (obj.portal_type, u_url))
                     continue
 
-                res_objs.append(url)
+                res_objs.append(u_url)
                 count += 1
                 if count % 50 == 0:
                     transaction.commit()

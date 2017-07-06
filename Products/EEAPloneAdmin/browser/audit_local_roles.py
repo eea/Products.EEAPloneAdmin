@@ -1,5 +1,6 @@
 """ Audit local roles
 """
+# pylint: disable=R1702
 import csv
 from logging import getLogger
 from Products.Five import BrowserView

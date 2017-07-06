@@ -6,6 +6,7 @@ TextStatistics for Python
 
 https://github.com/mikedawson/textstatistics-python
 '''
+# pylint: skip-file
 
 import re
 import math

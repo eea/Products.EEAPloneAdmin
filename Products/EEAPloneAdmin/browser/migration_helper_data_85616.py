@@ -5084,7 +5084,6 @@ def translated_non_ascii_mapping_for_85616():
         u'Kongens Nytorv 6, 1050 Kopenhagen, D\xe4nemark': u'Kongens Nytorv 6, 1050 Copenhague, Denmark',
         u'Kongens Nytorv 6, 1051 Kopenhagen, D\xe4nemark': u'Kongens Nytorv 6, 1051 Copenhague, Denmark',
         u'Kongens Nytorv 6, K\xf8benhavn':  u'Kongens Nytorv 6, Copenhague',
-        u'Kongens Nytorv 6, K\xf8benhavn': u'Kongens Nytorv 6, Copenhague',
         u'Kongens Nytorv 8, 1050 K\xf8benhavn K, Denmark': u'Kongens Nytorv 8, 1050 Copenhagen, Denmark',
         u'Kopenhagen, D\xe4nemark': u'Kopenhagen, Denmark',
         u'L\xedbano': u'Lebanon',
@@ -5117,7 +5116,6 @@ def translated_non_ascii_mapping_for_85616():
         u'Vereinigtes K\xf6nigreich': u'United Kingdom',
         u'W\xf6rlitzer Stra\xdfe, 06844 Dessau, Germany': u'W\xf6rlitzer Str., 06844 Dessau, Germany',
         u'Zakarpats\u2019ka Oblast\u2019, Ukraine': u'Zakarpattia Oblast, Ukraine',
-        u'\u0414\u0432\u043e\u0440\u0435\u0446 \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438, \u0410\u0441\u0442\u0430\u043d\u0430/ Independence Palace, Astana': u'Palace of Independence, Astana',
         u'\u0414\u0432\u043e\u0440\u0435\u0446 \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438, \u0410\u0441\u0442\u0430\u043d\u0430/ Independence Palace, Astana': u'Palace of Independence, Astana',
         u'\u0431\u0443\u043b\u0435\u0432\u0430\u0440\u0434 \u0426\u0430\u0440\u0438\u0433\u0440\u0430\u0434\u0441\u043a\u043e \u0448\u043e\u0441\u0435 147, \u0421\u043e\u0444\u0438\u044f, \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f':
             u'Boulevard "Tsarigradsko shose" 147, 1784 Sofia, Bulgaria',

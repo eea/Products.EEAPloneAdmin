@@ -1,5 +1,6 @@
 """ Quick Upload
 """
+# pylint: disable=R1702
 from zope.interface import implements
 from zope.component import adapts
 from Products.Archetypes.interfaces import IBaseObject
