@@ -1,6 +1,9 @@
 Changelog
 =========
 
+16.6.dev0 - (unreleased)
+------------------------
+
 16.5 - (2017-07-10)
 -------------------
 * Upgrade step: run on www8 instance www/addReadTimeAnnotation
