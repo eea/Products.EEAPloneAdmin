@@ -1,8 +1,8 @@
 Changelog
 =========
 
-16.5.dev0 - (unreleased)
-------------------------
+16.5 - (2017-07-10)
+-------------------
 * Upgrade step: run on www8 instance www/addReadTimeAnnotation
   [ichim-david refs #85791]
 * Feature: added migration script for adding reading
