@@ -11,6 +11,8 @@ Changelog
 * Added python port of textStatistics to be used for
   calculating the text statistics values
   [ichim-david refs #85791]
+* Change: updated/adjusted script to delete all enquiries and requestors
+  [alecghica refs #86470]
 
 16.4 - (2017-07-03)
 -------------------
