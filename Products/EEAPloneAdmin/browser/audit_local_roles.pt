@@ -145,11 +145,11 @@
                     <div tal:repeat="ptype view/getPrincipalsForDisplay">
                         <div tal:repeat="pdata python:ptype[1]">
                             <table class="listing" tal:define="_type python:ptype[0];
-                                                               _id python:pdata[0];
+                                                               pid python:pdata[0];
                                                                _inactive python:pdata[1]">
-                                <caption tal:attributes="id _id">
+                                <caption tal:attributes="id pid">
                                     <tal:block tal:content="python:_type.capitalize()+' ID: '"></tal:block>
-                                    <span tal:content="_id" class="uid"></span>
+                                    <span tal:content="pid" class="uid"></span>
                                     <span tal:condition="_inactive"> [<span class="inactive">not found</span>]</span>
                                     <a tal:attributes="href python:req_url+'#toc'; class string:up"> [up]</a>
                                 </caption>
@@ -167,7 +167,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr tal:repeat="rowdata python:view.getRoleMapForDisplay(_type,_id)">
+                                    <tr tal:repeat="rowdata python:view.getRoleMapForDisplay(_type,pid)">
                                         <td>
                                             <a tal:attributes="href python:url_prefix+rowdata[1]"
                                                tal:content="python:rowdata[1]">

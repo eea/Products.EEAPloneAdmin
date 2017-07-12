@@ -12,7 +12,7 @@
 
     <channel rdf:about="" tal:attributes="rdf:about request/URL">
         <title tal:content="context/pretty_title_or_id">The title</title>
-        <link tal:content="context/portal_url">http://url.to.portal</link>
+        <link tal:content="context/portal_url" />
 
         <items>
             <rdf:Seq>

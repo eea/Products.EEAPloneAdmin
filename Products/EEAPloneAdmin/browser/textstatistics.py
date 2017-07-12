@@ -162,7 +162,6 @@ class TextStatistics(object):
                              re.split("[^aeiouy]+", word))
 
         word_part_count = len(word_parts)
-        x = 5
 
         syllable_count = word_part_count + prefix_suffix_count
         for current_sub in sub_syllables:
