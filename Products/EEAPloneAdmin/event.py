@@ -3,6 +3,8 @@
 from Products.CMFCore.utils import getToolByName
 from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
 from DateTime import DateTime
+from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
+
 
 def handle_resourceregistry_change(obj, event):
     """ Handle resource registry modification
@@ -69,3 +71,29 @@ def handle_workflow_change(obj, event):
     else:
         if obj.effective_date:
             obj.setEffectiveDate('None')
+
+
+def handle_object_modified_for_reading_time(obj, event):
+    """ Set reading time statistics after modifying object
+    """
+    request = getattr(obj, 'REQUEST', [])
+    if not request:
+        return
+    url = obj.absolute_url(1)
+    request_url = request.URL0
+    if 'portal_factory' in request_url and url in request_url:
+        return
+    anno = getattr(obj, '__annotations__', {})
+    if not anno:
+        return
+    request['content_core_only'] = True
+    content_core = obj()
+    stats = TextStatistics(content_core)
+    score = anno.setdefault('readability_scores', {})
+    score['text'] = {
+        u'character_count': stats.text,
+        u'readability_level': stats.flesch_kincaid_grade_level(),
+        u'readability_value': stats.flesch_kincaid_reading_ease(),
+        u'sentence_count': stats.sentence_count(),
+        u'word_count': stats.word_count()
+    }

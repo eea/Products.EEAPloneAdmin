@@ -27,6 +27,14 @@
                      zope.lifecycleevent.interfaces.IObjectModifiedEvent"
                 handler=".event.handle_resourceregistry_change" />
 
+  <!--? 85791 update reading time after modifying object -->
+  <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                   zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".event.handle_object_modified_for_reading_time" />
+
+  <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                     zope.lifecycleevent.interfaces.IObjectCopiedEvent"
+    handler=".event.handle_object_copied" />
     <subscriber for="Products.Archetypes.interfaces.IBaseContent
                      zope.lifecycleevent.interfaces.IObjectCopiedEvent"
                 handler=".event.handle_object_copied" />
