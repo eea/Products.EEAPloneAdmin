@@ -6,6 +6,13 @@ from DateTime import DateTime
 from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
 
 
+try:
+    from eea.versions.utils import object_provides as obj_provides
+    has_versions = True
+except ImportError:
+    has_versions = False
+
+
 def handle_resourceregistry_change(obj, event):
     """ Handle resource registry modification
     """
@@ -87,6 +94,12 @@ def handle_object_modified_for_reading_time(obj, event):
     if not anno:
         return
     request['content_core_only'] = True
+    if not has_versions:
+        return
+    if obj_provides(obj,
+                    'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
+        if obj.portal_type not in ['Document', 'Folder', 'Collection', 'Event']:
+            return
     content_core = obj()
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})

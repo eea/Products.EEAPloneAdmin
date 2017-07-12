@@ -28,7 +28,11 @@
                 handler=".event.handle_resourceregistry_change" />
 
   <!--? 85791 update reading time after modifying object -->
-  <subscriber for="Products.Archetypes.interfaces.IBaseContent
+  <subscriber for="Products.EEAContentTypes.interfaces.IEEAContent
+                   zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".event.handle_object_modified_for_reading_time" />
+
+  <subscriber for="Products.EEAContentTypes.interfaces.IEEAPossibleContent
                    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".event.handle_object_modified_for_reading_time" />
 
