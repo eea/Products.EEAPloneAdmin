@@ -73,7 +73,6 @@ def deleteEnquiryDatabase(self):
     # delete requestors2
     logger.info("Starting to delete requestors2!")
     count = 0
-    count_to_commit = 20
     to_delete = [ x for x in requestors2.keys()]
     for k in to_delete:
         requestors2.manage_delObjects(ids=[k])
@@ -89,6 +88,7 @@ def deleteEnquiryDatabase(self):
     # delete enquiries
     logger.info("Starting to delete enquiries!")
     count = 0
+    count_to_commit = 20
     to_delete = [x for x in enquiries.keys()]
     for k in to_delete:
         enquiries.manage_delObjects(ids=[k])

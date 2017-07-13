@@ -44,14 +44,18 @@ Changelog
 * Change: Removed Products.EEAEnquiry related code
    * [zoleesan refs #82473]
 * Pre-Upgrade step:
-   * Delete portal_enquiry_catalog
-   * Delete enquiries and export_reqs from /help/infocentre
-   * Remove Enquiry, EnquiryFolder, EnquiryRequestor from portal workflows
-   * Remove enquiry related content types from Caching settings -> Caching proxies -> Content types to purge
-   * Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder, Requestor from portal_types
-   * Check the full profile dump/backup and remove any references to Enquiry
-   * Delete all related entries from SDS
-   * Remove conditions added to PING content rules
+   * [DONE] Remove enquiry related content types from Caching settings -> Caching proxies -> Content types to purge
+   * [DONE] Plone control panel -> Add-ons -> uninstall EEA Enquiry
+   * [DONE] Delete enquiries and export_reqs from /help/infocentre
+   * [DONE] Remove entries from portal_factory
+   * [DONE] Remove layers from portal_skins
+   * [DONE] Remove Enquiry, EnquiryFolder, EnquiryRequestor from portal workflows
+   * [DONE] Delete Enquiry, Enquiry folder, EnquiryRequestor, EnquiryRequestorFolder, Requestor from portal_types
+   * [DONE] Check the full profile dump/backup and remove any references to Enquiry
+   * [DONE] Delete all related entries from SDS
+   * [DONE] Remove conditions added to PING content rules
+   * [DONE] Remove Products.EEAEnquiry from www buildout, KGS and docker stack
+   * [DONE] Mark Products.EEAEnquiry repository as absolete
    * [zoleesan refs #82473]
 
 16.1 - (2017-05-29)
