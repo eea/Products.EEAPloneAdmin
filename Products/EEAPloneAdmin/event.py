@@ -98,13 +98,15 @@ def handle_object_modified_for_reading_time(obj, event):
         return
     if obj_provides(obj,
                     'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
-        if obj.portal_type not in ['Document', 'Folder', 'Collection', 'Event']:
-            return
+        if not obj_provides(obj,
+                            'Products.EEAContentTypes.interfaces.IEEAContent'):
+            if obj.portal_type not in ['Document', 'Folder', 'Collection', 'Event']:
+                return
     content_core = obj()
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})
     score['text'] = {
-        u'character_count': stats.text,
+        u'character_count': len(stats.text),
         u'readability_level': stats.flesch_kincaid_grade_level(),
         u'readability_value': stats.flesch_kincaid_reading_ease(),
         u'sentence_count': stats.sentence_count(),
