@@ -102,7 +102,7 @@ def handle_object_modified_for_reading_time(obj, event):
                     'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
         if not obj_provides(obj,
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
-            if obj.portal_type not in ['Document',  'Event']:
+            if obj.portal_type not in ['Document',  'Event', 'Assessment']:
                 return
     try:
         content_core = obj()
