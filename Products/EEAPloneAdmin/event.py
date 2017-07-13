@@ -1,10 +1,12 @@
 """ Event
 """
+import logging
 from Products.CMFCore.utils import getToolByName
 from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
 from DateTime import DateTime
 from Products.EEAPloneAdmin.browser.textstatistics import TextStatistics
 
+log = logging.getLogger()
 
 try:
     from eea.versions.utils import object_provides as obj_provides
@@ -100,9 +102,14 @@ def handle_object_modified_for_reading_time(obj, event):
                     'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
         if not obj_provides(obj,
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
-            if obj.portal_type not in ['Document', 'Folder', 'Collection', 'Event']:
+            if obj.portal_type not in ['Document',  'Event']:
                 return
-    content_core = obj()
+    try:
+        content_core = obj()
+    except AttributeError:
+        log.exception('cannot call template for readability on %s', url)
+        return
+
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})
     score['text'] = {
