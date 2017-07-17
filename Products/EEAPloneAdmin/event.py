@@ -14,6 +14,12 @@ try:
 except ImportError:
     has_versions = False
 
+try:
+    import lxml
+    has_lxml = True
+except ImportError:
+    has_lxml = False
+
 
 def handle_resourceregistry_change(obj, event):
     """ Handle resource registry modification
@@ -98,17 +104,20 @@ def handle_object_modified_for_reading_time(obj, event):
     request['content_core_only'] = True
     if not has_versions:
         return
+    ptype = obj.portal_type
     if obj_provides(obj,
                     'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
         if not obj_provides(obj,
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
-            if obj.portal_type not in ['Document',  'Event', 'Assessment']:
+            if ptype not in ['Document',  'Event', 'Assessment']:
                 return
     try:
         content_core = obj()
     except AttributeError:
         log.exception('cannot call template for readability on %s', url)
         return
+    if has_lxml:
+        content_core = lxml.html.fromstring(content_core).text_content()
 
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})
