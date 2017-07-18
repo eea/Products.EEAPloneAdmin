@@ -117,7 +117,11 @@ def handle_object_modified_for_reading_time(obj, event):
         log.exception('cannot call template for readability on %s', url)
         return
     if has_lxml:
-        content_core = lxml.html.fromstring(content_core).text_content()
+        lcore = lxml.html.fromstring(content_core)
+        scripts = lcore.cssselect('script')
+        for script in scripts:
+            script.drop_tree()
+        content_core = lcore.text_content()
 
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})
