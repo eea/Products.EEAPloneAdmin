@@ -92,10 +92,10 @@ def text_contents(obj):
     """ text content from object's template parsed by lxml """
     try:
         content_core = obj()
-    except AttributeError:
+    except Exception:
         log.exception('cannot call template for readability on %s',
                       obj.absolute_url(1))
-        return
+        return ""
     if has_lxml:
         lcore = lxml.html.fromstring(content_core)
         scripts = lcore.cssselect('script')
@@ -103,7 +103,7 @@ def text_contents(obj):
             script.drop_tree()
         content_core = lcore.text_content()
         return content_core
-    return
+    return ""
 
 
 def handle_object_modified_for_reading_time(obj, event):

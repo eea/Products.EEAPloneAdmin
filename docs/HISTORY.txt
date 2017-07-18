@@ -3,6 +3,22 @@ Changelog
 
 16.6.dev0 - (unreleased)
 ------------------------
+* Upgrade step run on www8 instance:
+
+  * www/addReadTimeAnnotation?ptype=Article
+  * www/addReadTimeAnnotation?ptype=Assessment
+  * www/addReadTimeAnnotation?ptype=Data
+  * www/addReadTimeAnnotation?ptype=DavizVisualization
+  * www/addReadTimeAnnotation?ptype=Document
+  * www/addReadTimeAnnotation?ptype=EEAFigure
+  * www/addReadTimeAnnotation?ptype=EEAVacancy
+  * www/addReadTimeAnnotation?ptype=Fiche
+  * www/addReadTimeAnnotation?ptype=Highlight
+  * www/addReadTimeAnnotation?ptype=PressRelease
+  * www/addReadTimeAnnotation?ptype=Report
+  * www/addReadTimeAnnotation?ptype=Specification
+
+  [ichim-david refs #85791]
 
 16.5 - (2017-07-10)
 -------------------

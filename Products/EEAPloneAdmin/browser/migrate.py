@@ -2837,7 +2837,8 @@ class AddReadTimeAnnotation(object):
         """
         log = logging.getLogger("85791 migration")
         log.info("*** Starting 85791 migration")
-        res_objs = ["\n\n AFFECTED OBJS \n"]
+        now = DateTime()
+        res_objs = []
         form = self.request.form
         self.request.form['ajax_load'] = True
         self.request.form['content_core_only'] = True
@@ -2849,7 +2850,8 @@ class AddReadTimeAnnotation(object):
         count_progress = 0
         log.info("Starting 85791 migration for %s with %d objs", ptype, total)
         not_found = []
-        skipped_values = []
+        skipped_vals = []
+        bad_vals = []
         for brain in brains:
             count_progress += 1
             try:
@@ -2862,12 +2864,16 @@ class AddReadTimeAnnotation(object):
             anno = getattr(obj, '__annotations__', {})
             scores = anno.get('readability_scores')
             if scores:
-                skipped_values.append(obj_url)
+                skipped_vals.append(obj_url)
                 continue
             stats = TextStatistics(text_contents(obj))
             score = anno['readability_scores'] = {}
+            char_count = len(stats.text)
+            if not char_count:
+                bad_vals.append(obj_url)
+                continue
             score['text'] = {
-                u'character_count': len(stats.text),
+                u'character_count': char_count,
                 u'readability_level': stats.flesch_kincaid_grade_level(),
                 u'readability_value': stats.flesch_kincaid_reading_ease(),
                 u'sentence_count': stats.sentence_count(),
@@ -2883,11 +2889,16 @@ class AddReadTimeAnnotation(object):
                          count, total)
 
         count_message = "\n MODIFIED OBJECTS TOTAL: %d" % count
+        end = DateTime()
+        utc = end.utcdatetime() - now.utcdatetime()
+        sec = int(utc.total_seconds())
+        log.info("DONE 85791 migration %d objs, took %ds to run", count, sec)
+        res_objs_msg = "\n".join(res_objs) if res_objs else " NONE"
+        not_found_msg = "\n".join(not_found) if not_found else " NONE"
+        bad_vals_msg = "\n".join(bad_vals) if bad_vals else " NONE"
+        skipped_val_msg = "\n".join(skipped_vals) if skipped_vals else " NONE"
+        m = "\nCount:%s\nRes:%s\nNotFound:%s\nSkippedValues:" \
+            "%s\nBadTemplates:%s\nTook:%s seconds to run\n"
 
-        log.info("DONE 85791 migration %d objects", count)
-        res_objs_msg = "\n".join(res_objs)
-        not_found_msg = "\n".join(not_found)
-        skipped_value_msg = "\n".join(skipped_values)
-        m = "Count:%s\nRes:\n%s\nNotFound:\n%s\nSkippedValues:\n%s"
         return m % (count_message, res_objs_msg, not_found_msg,
-                    skipped_value_msg)
+                    skipped_val_msg, bad_vals_msg, sec)
