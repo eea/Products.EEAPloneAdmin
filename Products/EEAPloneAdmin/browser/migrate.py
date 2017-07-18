@@ -9,6 +9,7 @@ import os
 import urllib
 import json
 import transaction
+from Products.EEAPloneAdmin.event import text_contents
 from zope.annotation import IAnnotations
 from zope.interface import alsoProvides
 from zope.interface import directlyProvides
@@ -2863,7 +2864,7 @@ class AddReadTimeAnnotation(object):
             if scores:
                 skipped_values.append(obj_url)
                 continue
-            stats = TextStatistics(obj())
+            stats = TextStatistics(text_contents(obj))
             score = anno['readability_scores'] = {}
             score['text'] = {
                 u'character_count': stats.text,

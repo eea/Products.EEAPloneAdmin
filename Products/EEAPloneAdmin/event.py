@@ -88,6 +88,24 @@ def handle_workflow_change(obj, event):
             obj.setEffectiveDate('None')
 
 
+def text_contents(obj):
+    """ text content from object's template parsed by lxml """
+    try:
+        content_core = obj()
+    except AttributeError:
+        log.exception('cannot call template for readability on %s',
+                      obj.absolute_url(1))
+        return
+    if has_lxml:
+        lcore = lxml.html.fromstring(content_core)
+        scripts = lcore.cssselect('script')
+        for script in scripts:
+            script.drop_tree()
+        content_core = lcore.text_content()
+        return content_core
+    return
+
+
 def handle_object_modified_for_reading_time(obj, event):
     """ Set reading time statistics after modifying object
     """
@@ -111,18 +129,9 @@ def handle_object_modified_for_reading_time(obj, event):
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
             if ptype not in ['Document',  'Event', 'Assessment']:
                 return
-    try:
-        content_core = obj()
-    except AttributeError:
-        log.exception('cannot call template for readability on %s', url)
+    content_core = text_contents(obj)
+    if not content_core:
         return
-    if has_lxml:
-        lcore = lxml.html.fromstring(content_core)
-        scripts = lcore.cssselect('script')
-        for script in scripts:
-            script.drop_tree()
-        content_core = lcore.text_content()
-
     stats = TextStatistics(content_core)
     score = anno.setdefault('readability_scores', {})
     score['text'] = {
