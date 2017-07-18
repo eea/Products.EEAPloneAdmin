@@ -2867,7 +2867,7 @@ class AddReadTimeAnnotation(object):
             stats = TextStatistics(text_contents(obj))
             score = anno['readability_scores'] = {}
             score['text'] = {
-                u'character_count': stats.text,
+                u'character_count': len(stats.text),
                 u'readability_level': stats.flesch_kincaid_grade_level(),
                 u'readability_value': stats.flesch_kincaid_reading_ease(),
                 u'sentence_count': stats.sentence_count(),
