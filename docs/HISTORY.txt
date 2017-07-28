@@ -19,6 +19,8 @@ Changelog
   * www/addReadTimeAnnotation?ptype=Specification
 
   [ichim-david refs #85791]
+* Bug fix W3C compliance modifications
+  [valipod refs #86295]
 
 16.5 - (2017-07-10)
 -------------------

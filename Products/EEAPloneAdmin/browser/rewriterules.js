@@ -448,6 +448,34 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+
+  //@@manage-portlets
+/*  links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
+  if(links.length){
+    jQuery.each(links, function(){
+      var selflink = jQuery(this),
+          href = selflink.attr('href'),
+          new_href = href;
+
+      if(href.startsWith('/www/SITE')){
+        alert('/www/SITE');
+        new_href = href.replace('/SITE', '');
+        alert(new_href);
+      }
+      if(!href.startsWith('/www')){
+        alert('Not /www');
+        new_href = '/www/' + href;
+        alert(new_href);
+      }
+
+      jQuery(selflink).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: new_href
+      });
+    });
+  } */
+
 };
 
 
