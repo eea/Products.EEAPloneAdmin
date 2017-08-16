@@ -1,10 +1,9 @@
 Changelog
 =========
 
-16.6.dev0 - (unreleased)
-------------------------
+16.6 - (2017-08-16)
+-------------------
 * Upgrade step run on www8 instance:
-
   * www/addReadTimeAnnotation?ptype=Article
   * www/addReadTimeAnnotation?ptype=Assessment
   * www/addReadTimeAnnotation?ptype=Data
@@ -17,7 +16,6 @@ Changelog
   * www/addReadTimeAnnotation?ptype=PressRelease
   * www/addReadTimeAnnotation?ptype=Report
   * www/addReadTimeAnnotation?ptype=Specification
-
   [ichim-david refs #85791]
 * Bug fix W3C compliance modifications
   [valipod refs #86295]
