@@ -1,6 +1,9 @@
 Changelog
 =========
 
+16.7.dev0 - (unreleased)
+------------------------
+
 16.6 - (2017-08-16)
 -------------------
 * Upgrade step run on www8 instance:
