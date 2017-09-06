@@ -3,6 +3,8 @@ Changelog
 
 16.7.dev0 - (unreleased)
 ------------------------
+* Change: updated country names from migration script
+  [alecghica refs #87533]
 
 16.6 - (2017-08-16)
 -------------------
