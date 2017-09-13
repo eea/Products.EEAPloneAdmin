@@ -3,6 +3,8 @@ Changelog
 
 16.8.dev0 - (unreleased)
 ------------------------
+* Bug fix: added patch for ImageField tag method
+  [iulianpetchesi refs #87374]
 
 16.7 - (2017-09-11)
 -------------------

@@ -8,6 +8,12 @@
 
     ===========================[ Blob patches ]==========================
 
+    <monkey:patch description="Fix tag method for ImageField"
+                  class="Products.Archetypes.Field.ImageField"
+                  original="tag"
+                  replacement=".patch_blob.patched_tag"
+                  docstringWarning="true" />
+
     <monkey:patch description="Fix getSize method for blob fields"
                   class="plone.app.blob.field.BlobWrapper"
                   original="getSize"

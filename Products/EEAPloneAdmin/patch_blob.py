@@ -6,6 +6,7 @@ import logging
 import os
 import os.path
 from os import fstat
+from cgi import escape
 
 from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import POSKeyError
@@ -119,3 +120,67 @@ def patched_getSize(self):
     size = getImageSize(blob)
     blob.close()
     return size
+
+
+def patched_tag(self, instance, scale=None, height=None, width=None, alt=None,
+            css_class=None, title=None, **kwargs):
+        """ Create a tag including scale
+        """
+        image = self.getScale(instance, scale=scale)
+        if image:
+            try:
+                size = self.getSize(instance, scale=scale)
+                if isinstance(size, int):
+                    raise POSKeyError
+                if len(size) < 2:
+                    raise POSKeyError
+
+                img_width, img_height = self.getSize(instance, scale=scale)
+            except POSKeyError:
+                RESPONSE = instance.REQUEST.RESPONSE
+                message_path = instance.absolute_url_path() + '/' \
+                    + instance.REQUEST.steps[-1]
+                putils = getToolByName(instance, 'plone_utils')
+                putils.addPortalMessage('Discovered an empty BLOB file for %r' %
+                                    message_path, type='warning')
+                img_height = 0
+                img_width = 0
+                RESPONSE.redirect(instance.absolute_url()+'/view')
+        else:
+            img_height = 0
+            img_width = 0
+
+        if height is None:
+            height = img_height
+        if width is None:
+            width = img_width
+
+        url = instance.absolute_url()
+        if scale:
+            url += '/' + self.getScaleName(scale)
+        else:
+            url += '/' + self.getName()
+
+        if alt is None:
+            alt = instance.Title()
+        if title is None:
+            title = instance.Title()
+
+        values = {'src': url,
+                  'alt': escape(alt, quote=True),
+                  'title': escape(title, quote=True),
+                  'height': height,
+                  'width': width,
+                  }
+
+        result = '<img src="%(src)s" alt="%(alt)s" title="%(title)s" '\
+                 'height="%(height)s" width="%(width)s"' % values
+
+        if css_class is not None:
+            result = '%s class="%s"' % (result, css_class)
+
+        for key, value in kwargs.items():
+            if value:
+                result = '%s %s="%s"' % (result, key, value)
+
+        return '%s />' % result
