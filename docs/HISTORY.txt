@@ -3,7 +3,10 @@ Changelog
 
 16.8.dev0 - (unreleased)
 ------------------------
-* Bug fix: added patch for ImageField tag method
+* Bug fix: added patch for ImageField tag method, it now checks the size of the
+  image and raises a POSKeyError if the size returned is not a valid one.
+  When it fails the user will be redirected to the '/view' method and a
+  portal message will appear informing the user that the blob is empty
   [iulianpetchesi refs #87374]
 
 16.7 - (2017-09-11)
