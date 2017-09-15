@@ -1,8 +1,8 @@
 Changelog
 =========
 
-16.8.dev0 - (unreleased)
-------------------------
+16.8 - (2017-09-15)
+-------------------
 * Bug fix: added patch for ImageField tag method, it now checks the size of the
   image and raises a POSKeyError if the size returned is not a valid one.
   When it fails the user will be redirected to the '/view' method and a
