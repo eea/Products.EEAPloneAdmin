@@ -1,6 +1,9 @@
 Changelog
 =========
 
+16.9.dev0 - (unreleased)
+------------------------
+
 16.8 - (2017-09-15)
 -------------------
 * Bug fix: added patch for ImageField tag method, it now checks the size of the
