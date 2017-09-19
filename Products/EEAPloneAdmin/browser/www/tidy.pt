@@ -3,7 +3,7 @@
 
 <body tal:define="objs view/tidyAll">
 
-<h2>Not fixed</h2>
+<h2 i18n:translate="">Not fixed</h2>
 <ul>
  <li tal:repeat="url objs/err">
     <a href="" target="fixContent"
@@ -12,7 +12,7 @@
  </li>
 </ul>
 
-<h2>Fixed</h2>
+<h2 i18n:translate="">Fixed</h2>
 <ul>
  <li tal:repeat="obj objs/ok">
     <tal:obj content="obj" />

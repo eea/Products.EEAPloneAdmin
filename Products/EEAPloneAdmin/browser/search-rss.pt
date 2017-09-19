@@ -24,9 +24,9 @@
     </channel>
 
     <item rdf:about="" tal:attributes="rdf:about context/absolute_url">
-        <title>No results are available</title>
+        <title i18n:translate="">No results are available</title>
         <link tal:content="context/absolute_url">Identifier</link>
-        <description>Search RSS is not enabled for the given link</description>
+        <description i18n:translate="">Search RSS is not enabled for the given link</description>
     </item>
 </tal:notAllowed>
 

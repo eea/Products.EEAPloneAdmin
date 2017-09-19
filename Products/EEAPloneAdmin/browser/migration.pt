@@ -9,7 +9,7 @@
 
     <h1 class="documentFirstHeading"
         i18n:translate="blob_migration_title">Blob Migration</h1>
-        
+
     <div id="content-core">
         <div tal:condition="exists: options/notinstalled"
              i18n:translate="blob_not_installed">
@@ -44,7 +44,7 @@
             <input class="destructive" type="submit" name="migrate" value=" Migrate"
                    tal:attributes="value string:Migrate ${options/available} item(s) " />
 
-            <input class="standalone" type="submit" name="cancel" value=" Cancel " />
+            <input class="standalone" type="submit" name="cancel" value=" Cancel " tal:attributes="value" />
 
           </form>
         </div>

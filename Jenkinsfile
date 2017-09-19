@@ -81,7 +81,7 @@ pipeline {
             node(label: 'docker-1.13') {
               script {
                 try {
-                  sh '''docker run -i --net=host --name=$BUILD_TAG-i18n -e GIT_SRC="https://github.com/eea/$GIT_NAME.git --branch=$BRANCH_NAME" eeacms/i18ndude'''
+                  sh '''docker run -i --net=host --name=$BUILD_TAG-i18n -e EXCLUDE="profiles/optimize zgGroups zrRoles" -e GIT_SRC="https://github.com/eea/$GIT_NAME.git --branch=$BRANCH_NAME" eeacms/i18ndude'''
                 } finally {
                   sh '''docker rm -v $BUILD_TAG-i18n'''
                 }
