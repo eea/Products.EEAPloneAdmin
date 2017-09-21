@@ -3,6 +3,8 @@ Changelog
 
 16.9.dev0 - (unreleased)
 ------------------------
+* Bug fix: comment old patch in rdflib, no longer compatible with rdflib 4.2.2
+  [tiberich]
 
 16.8 - (2017-09-15)
 -------------------

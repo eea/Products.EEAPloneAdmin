@@ -266,12 +266,15 @@
                  replacement=".patch_linguaplone._patched_getDefaultPage"
                  preserveOriginal="true" />
 
+     <!-- Commented this, it's no longer compatibile with rdflib 4.2.2 -->
+     <!-- Please enable if needed. This ticket is really old, -->
+     <!-- TODO: is this needed? -->
     <!-- Temporary patch to inspect misterious OSError in rdflib when rendering EEA Organisational Graph page -->
-    <monkey:patch description="#7240 patch absolutize from NamespaceManager in rdflib to learn more about an OSError"
-                 class="rdflib.syntax.NamespaceManager.NamespaceManager"
-                 original="absolutize"
-                 replacement=".patch_rdflib_namespacemanager._patched_absolutize"
-                 preserveOriginal="true" />
+    <!-- <monkey:patch description="#7240 patch absolutize from NamespaceManager in rdflib to learn more about an OSError" -->
+    <!--              class="rdflib.syntax.NamespaceManager.NamespaceManager" -->
+    <!--              original="absolutize" -->
+    <!--              replacement=".patch_rdflib_namespacemanager._patched_absolutize" -->
+    <!--              preserveOriginal="true" /> -->
 
     <!-- Patch for Products.PluggableAuthService ver 1.10.0 to solve ZMI groups and roles listing -->
     <monkey:patch description="Monkeypatch Products.PluggableAuthService.plugins.ZODBGroupManager.ZODBGroupManager.manage_groups to solve ZMI groups listing"
