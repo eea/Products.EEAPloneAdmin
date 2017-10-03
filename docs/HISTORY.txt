@@ -3,6 +3,9 @@ Changelog
 
 17.1.dev0 - (unreleased)
 ------------------------
+* Bug fix: fix issue where ping_all for SDS was not
+  including the expired content.
+  [demarant]
 
 17.0 - (2017-09-26)
 -------------------

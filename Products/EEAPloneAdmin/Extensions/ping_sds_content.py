@@ -77,7 +77,6 @@ def ping_all(self):
     cat = self.portal_catalog
     pubs = cat.searchResults({
         'review_state': 'published',
-        'effectiveRange' : now,
         'Language': 'all',
         'portal_type': meta_type,
         'sort_on': 'effective',
