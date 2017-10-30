@@ -277,6 +277,15 @@ jQuery.eearewriterules = function(context){
       oldVal: '+rule/plone.ContentRule',
       newVal: 'www/+rule/plone.ContentRule'
     });
+
+    links = jQuery('a', form);
+    if(links.length){
+      jQuery(links).eearewrite({
+        attr: 'href',
+        oldVal: '+rule/plone.ContentRule',
+        newVal: 'www/+rule/plone.ContentRule'
+      });
+    }
   }
 
   // @@rules-controlpanel - enable, disable & deletes content rule

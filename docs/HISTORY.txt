@@ -3,6 +3,9 @@ Changelog
 
 17.1.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed issue where the url for adding new content rules
+  was incorrect
+  [petchesi-iulian #88692]
 * Bug fix: fix issue where ping_all for SDS was not
   including the expired content.
   [demarant]
