@@ -1,6 +1,9 @@
 Changelog
 =========
 
+17.2.dev0 - (unreleased)
+------------------------
+
 17.1 - (2017-11-07)
 -------------------
 * Bug fix: fixed issue where the url for adding new content rules
