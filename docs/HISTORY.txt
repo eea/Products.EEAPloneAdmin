@@ -3,6 +3,8 @@ Changelog
 
 17.2.dev0 - (unreleased)
 ------------------------
+* Change: Replace eeacms/zptlint with eeacms/plone-test:4 zptlint
+  [avoinea refs #90415]
 
 17.1 - (2017-11-07)
 -------------------
