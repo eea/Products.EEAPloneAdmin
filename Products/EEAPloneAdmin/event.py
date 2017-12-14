@@ -1,6 +1,7 @@
 """ Event
 """
 import logging
+from lxml.etree import ParserError
 from Products.CMFCore.utils import getToolByName
 from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
 from DateTime import DateTime
@@ -97,7 +98,11 @@ def text_contents(obj):
                       obj.absolute_url(1))
         return ""
     if has_lxml:
-        lcore = lxml.html.fromstring(content_core)
+        try:
+            lcore = lxml.html.fromstring(content_core)
+        except ParserError, err:
+            log.info("%s %s" % (err, obj.absolute_url()) )
+            return ""
         scripts = lcore.cssselect('script')
         for script in scripts:
             script.drop_tree()

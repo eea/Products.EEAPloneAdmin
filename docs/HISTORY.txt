@@ -3,6 +3,9 @@ Changelog
 
 17.3.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed add/edit Dashboard content type when "More information"
+  field is empty
+  [alecghica refs #90798]
 
 17.2 - (2017-12-12)
 -------------------
