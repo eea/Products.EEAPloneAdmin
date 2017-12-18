@@ -1,6 +1,7 @@
 """ Event
 """
 import logging
+from lxml.etree import ParserError
 from Products.CMFCore.utils import getToolByName
 from Products.EEAPloneAdmin.browser.admin import save_resources_on_disk
 from DateTime import DateTime
@@ -97,7 +98,11 @@ def text_contents(obj):
                       obj.absolute_url(1))
         return ""
     if has_lxml:
-        lcore = lxml.html.fromstring(content_core)
+        try:
+            lcore = lxml.html.fromstring(content_core)
+        except ParserError, err:
+            log.info("%s %s" % (err, obj.absolute_url()))
+            return ""
         scripts = lcore.cssselect('script')
         for script in scripts:
             script.drop_tree()
@@ -127,7 +132,7 @@ def handle_object_modified_for_reading_time(obj, event):
                     'Products.EEAContentTypes.interfaces.IEEAPossibleContent'):
         if not obj_provides(obj,
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
-            if ptype not in ['Document',  'Event', 'Assessment']:
+            if ptype not in ['Document', 'Event', 'Assessment']:
                 return
     content_core = text_contents(obj)
     if not content_core:
