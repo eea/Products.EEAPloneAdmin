@@ -1,6 +1,15 @@
 Changelog
 =========
 
+17.4 - (2018-01-05)
+-------------------
+* Bug fix: fixed the non-english upgrade step
+  [irina-botez refs #90608]
+* Upgrade step: run on debug instance www/fixBadCountryNamesForLocation?objs=translated
+  [irina-botez refs #90608]
+* Upgrade step: run on debug instance www/fixBadCountryNamesForLocation?objs=nonascii
+  [irina-botez refs #90608]
+
 17.3 - (2017-12-18)
 -------------------
 * Bug fix: fixed add/edit Dashboard content type when "More information"
