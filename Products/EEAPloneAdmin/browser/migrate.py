@@ -19,6 +19,7 @@ from zope.component import queryUtility
 from zope.component import queryAdapter
 from zope.component import ComponentLookupError
 from zope.component import getMultiAdapter
+from zope.component import queryMultiAdapter
 from zope.component.interface import nameToInterface
 from Acquisition import aq_base
 from AccessControl import getSecurityManager
@@ -2713,9 +2714,31 @@ class FixBadCountryNamesForLocation(object):
         self.context = context
         self.request = request
 
+    def create_obj_uri(self, obj):
+        """ """
+        obj_url = obj.absolute_url(1)
+        portalUrl = 'http://www.eea.europa.eu'
+        if obj_url.find('www/SITE/') != -1:
+            pub_url = portalUrl + obj_url[8:]
+        else:
+            pub_url = portalUrl + obj_url[3:]
+        return pub_url
+
+    def set_location_field(self, obj, new_geotags, ping_cr_view):
+        """ """
+        loc_field = obj.getField('location')
+        loc_field.set(obj, json.dumps(new_geotags))
+        try:
+            obj.reindexObject(idxs=['geotags', 'location'])
+        except TypeError, err:
+            logger.info("Error reindex object: %s" % obj.absolute_url())
+            logger.error(err)
+        ping_cr_view(self.create_obj_uri(obj))
+
     def __call__(self):
         """ Call method
         """
+        ping_cr_view = queryMultiAdapter((self.context, self.request), name="ping_cr")
         log = logging.getLogger("85616 migration")
         log.info("*** Starting 85616 migration")
         res_objs = ["\n\n AFFECTED OBJS \n"]
@@ -2791,6 +2814,10 @@ class FixBadCountryNamesForLocation(object):
                                 removed_locations.append(feat)
                             break
             if changes:
+                geo_data = {}
+                geo_data['features'] = features
+                geo_data['type'] = geotags['type']
+                self.set_location_field(obj, geo_data, ping_cr_view)
                 log.info("for %s changed %s", obj_url, changes)
             if removed_locations:
                 log.info('REMOVING from %s --> %s', obj_url, removed_locations)

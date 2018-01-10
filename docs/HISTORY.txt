@@ -1,6 +1,11 @@
 Changelog
 =========
 
+17.5 - (2018-01-10)
+-------------------
+* Bug fix: fixed the persistency of the non-english upgrade step
+  [alecghica refs #90608]
+
 17.4 - (2018-01-05)
 -------------------
 * Bug fix: fixed the non-english upgrade step
