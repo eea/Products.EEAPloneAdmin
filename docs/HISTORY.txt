@@ -1,6 +1,11 @@
 Changelog
 =========
 
+17.6 - (2018-01-16)
+-------------------
+* Change: Speed up upgrade ZVCleanup upgrade step
+  [avoinea refs #87762]
+
 17.5 - (2018-01-10)
 -------------------
 * Bug fix: fixed the persistency of the non-english upgrade step
