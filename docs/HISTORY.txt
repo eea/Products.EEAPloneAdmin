@@ -3,6 +3,9 @@ Changelog
 
 17.6 - (2018-01-16)
 -------------------
+* Upgrade step: Close CMS and within  "ZMI > portal_setup > Upgrade tabs"
+  run pending upgrades for Products.EEAPloneAdmin:default
+  [avoinea refs #87762]
 * Change: Speed up upgrade ZVCleanup upgrade step
   [avoinea refs #87762]
 
