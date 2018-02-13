@@ -46,6 +46,7 @@ setup(name=name,
           'valentine.linguaflow',
           'collective.quickupload',
           'collective.deletepermission',
+          'ftw.globalstatusmessage',
 
           # Used in testing
           'eea.themecentre',
