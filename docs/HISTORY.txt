@@ -1,6 +1,14 @@
 Changelog
 =========
 
+17.7 - (2018-02-13)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [avoinea refs #92245]
+* Change: Add dependency on ftw.globalstatusmessage
+  [avoinea refs #92245]
+
 17.6 - (2018-01-16)
 -------------------
 * Upgrade step: Close CMS and within  "ZMI > portal_setup > Upgrade tabs"
