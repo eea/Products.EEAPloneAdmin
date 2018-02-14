@@ -1,0 +1,11 @@
+<registry>
+  <record name="ftw.globalstatusmessage.interfaces.IStatusMessageConfigForm.message_textfield" interface="ftw.globalstatusmessage.interfaces.IStatusMessageConfigForm" field="message_textfield">
+    <value>&lt;strong&gt;You don't need to stop working. However please make sure to save often. There is a very little chance that you hit a server while it is restarting.&#13;
+&lt;/strong&gt;&#13;
+&lt;br /&gt;See list of &lt;a href="https://taskman.eionet.europa.eu/projects/zope/issues?query_id=309"&gt;new features and fixes&lt;/a&gt; included in this update&#13;
+&lt;br /&gt;Kind regards / EEA Web Admin</value>
+  </record>
+  <record name="ftw.globalstatusmessage.interfaces.IStatusMessageConfigForm.title_textfield" interface="ftw.globalstatusmessage.interfaces.IStatusMessageConfigForm" field="title_textfield">
+    <value>Web Admin says: the system will be upgraded today</value>
+  </record>
+</registry>

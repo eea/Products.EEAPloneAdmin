@@ -14,8 +14,8 @@
       />
 
     <genericsetup:upgradeDepends
-      title="Re-order viewlets"
-      import_steps="viewlets"
+      title="Re-order viewlets. Default registry value for globalstatusmessage"
+      import_steps="viewlets plone.app.registry"
       />
 
   </genericsetup:upgradeSteps>
