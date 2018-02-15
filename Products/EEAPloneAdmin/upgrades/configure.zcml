@@ -3,6 +3,23 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eea">
 
+  <genericsetup:upgradeSteps
+    source="14.8"
+    destination="17.7"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeDepends
+      title="Install ftw.globalstatusmessage"
+      import_profile="ftw.globalstatusmessage:default"
+      />
+
+    <genericsetup:upgradeDepends
+      title="Re-order viewlets. Default registry value for globalstatusmessage"
+      import_steps="viewlets plone.app.registry"
+      />
+
+  </genericsetup:upgradeSteps>
+
     <!-- => 14.8 -->
     <genericsetup:upgradeSteps
         source="14.4"
