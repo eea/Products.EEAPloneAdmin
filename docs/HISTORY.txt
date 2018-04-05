@@ -1,7 +1,7 @@
 Changelog
 =========
 
-17.8.dev0 - (unreleased)
+17.8 - (2018-04-05)
 ------------------------
 * fix for weird case when the user inserts link to image download method
   in tinymce as external link [valipod refs #94537]
