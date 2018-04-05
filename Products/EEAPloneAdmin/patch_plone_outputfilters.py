@@ -1,5 +1,6 @@
 """ Patch due to #4832
 """
+from inspect import ismethod
 from urlparse import urlsplit
 from urllib import unquote
 from zope.component.hooks import getSite
@@ -86,6 +87,12 @@ def patched_resolve_image(self, src):
     #PATCH: end of code change
 
     #PATCH:start of code change
+    # #94537 if the user copies the url from the browser and inserts
+    # that in tinymce as 'external', image is at this point a method,
+    # so we need to get the real image
+    if ismethod(image):
+        image = image.__self__
+
     # 70194 image scales have unicode names and path should be normal
     # strings otherwise we will get errors when editors use relative
     # path for images
