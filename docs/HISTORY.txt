@@ -1,6 +1,9 @@
 Changelog
 =========
 
+17.9-dev0 - (unreleased)
+---------------------
+
 17.8 - (2018-04-05)
 ------------------------
 * fix for weird case when the user inserts link to image download method
@@ -2018,4 +2021,3 @@ Changelog
   [voineali #3962]
 * Generated skeleton product from DIYPloneStyle.
   [generator]
-
