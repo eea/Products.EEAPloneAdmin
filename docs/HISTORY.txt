@@ -3,10 +3,12 @@ Changelog
 
 17.9-dev0 - (unreleased)
 ---------------------
+* Upgrade step: under /www/@@caching-controlpanel uncheck "Enable GZip compression"
+  [alecghica refs #88414]
 
 17.8 - (2018-04-05)
 ------------------------
-* fix for weird case when the user inserts link to image download method
+* Bug fix: fix for weird case when the user inserts link to image download method
   in tinymce as external link [valipod refs #94537]
 
 17.7 - (2018-02-13)
