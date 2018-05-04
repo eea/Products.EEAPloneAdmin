@@ -3,6 +3,8 @@ Changelog
 
 17.9-dev0 - (unreleased)
 ---------------------
+* Bug fix: Reset REQUEST 'content_core_only' marker in order to avoid unskinned pages
+  [avoinea refs #94724]
 * Upgrade step: under /www/@@caching-controlpanel uncheck "Enable GZip compression"
   [alecghica refs #88414]
 
