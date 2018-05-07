@@ -1,6 +1,9 @@
 Changelog
 =========
 
+18.0-dev0 - (unreleased)
+---------------------
+
 17.9 - (2018-05-04)
 ---------------------
 * Bug fix: Reset REQUEST 'content_core_only' marker in order to avoid unskinned pages
