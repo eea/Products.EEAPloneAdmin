@@ -124,7 +124,6 @@ def handle_object_modified_for_reading_time(obj, event):
     anno = getattr(obj, '__annotations__', {})
     if not anno:
         return
-    request['content_core_only'] = True
     if not has_versions:
         return
     ptype = obj.portal_type
@@ -134,7 +133,9 @@ def handle_object_modified_for_reading_time(obj, event):
                             'Products.EEAContentTypes.interfaces.IEEAContent'):
             if ptype not in ['Document', 'Event', 'Assessment']:
                 return
+    request['content_core_only'] = True
     content_core = text_contents(obj)
+    request['content_core_only'] = False
     if not content_core:
         return
     stats = TextStatistics(content_core)

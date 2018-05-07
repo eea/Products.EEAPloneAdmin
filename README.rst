@@ -1,8 +1,12 @@
 ===============
 EEA Plone Admin
 ===============
-.. image:: http://ci.eionet.europa.eu/job/eea/job/Products.EEAPloneAdmin/job/master/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea/job/Products.EEAPloneAdmin/job/master/display/redirect
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/Products.EEAPloneAdmin/develop
+  :target: https://ci.eionet.europa.eu/job/eea/job/Products.EEAPloneAdmin/job/develop/display/redirect
+  :alt: Develop
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/Products.EEAPloneAdmin/master
+  :target: https://ci.eionet.europa.eu/job/eea/job/Products.EEAPloneAdmin/job/master/display/redirect
+  :alt: Master
 
 EEA Plone Admin is a product that adds a customization policy to a Plone 4 portal.
 The policy contains methods for Plone configuration.
