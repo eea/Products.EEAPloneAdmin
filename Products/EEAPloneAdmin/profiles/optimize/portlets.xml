@@ -269,11 +269,6 @@
   <property name="macro">portlet</property>
   <property name="template">portlet_ecotip</property>
  </assignment>
- <assignment name="portlet_cache" category="context" key="/"
-    manager="plone.rightcolumn" type="portlets.Classic" visible="True">
-  <property name="macro">portlet</property>
-  <property name="template">portlet_cache</property>
- </assignment>
  <assignment name="portlet_translationfeedback" category="context" key="/"
     manager="plone.rightcolumn" type="portlets.Classic" visible="True">
   <property name="macro">portlet</property>

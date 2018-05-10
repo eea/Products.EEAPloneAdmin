@@ -742,8 +742,10 @@
   </property>
   <property name="external_urls" type="lines">
    <element value="http://community.eea.europa.eu/invalidateCache"/>
-   <element
-      value="http://glossary.eea.europa.eu/templates_client/invalidate_cache"/>
+   <element value="http://eunis.eea.europa.eu/refreshtemplate"/>
+   <element value="http://semantic.eea.europa.eu/refreshtemplate"/>
+   <element value="http://search.apps.eea.europa.eu/invalidate_templates"/>
+   <element value="http://pam.apps.eea.europa.eu/invalidate_templates"/>
   </property>
  </object>
  <object name="workflow_properties" meta_type="Plone Property Sheet">
