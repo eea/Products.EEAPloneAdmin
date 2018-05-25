@@ -2,7 +2,12 @@ Changelog
 =========
 
 18.0 - (2018-05-24)
-------------------------
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [avoinea refs #95561]
+* Cleanup: Remove traceview from viewlet storage
+  [avoinea refs #95561]
 * Change: removed old invalidate cache method
   [alecghica refs #95020]
 
