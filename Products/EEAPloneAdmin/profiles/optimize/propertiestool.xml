@@ -5,21 +5,6 @@
   <property name="key"
      type="string">1111122baa0b58161cc1b893f13a701a59d646fc</property>
  </object>
- <object name="eea_internal_ips" meta_type="Plone Property Sheet">
-  <property name="title">EEA Internal IPs</property>
-  <property name="allowed_ips" type="lines">
-   <element value="10.92"/>
-   <element value="10.30"/>
-   <element value="192.168.60"/>
-   <element value="192.168.61"/>
-   <element value="192.168.62"/>
-   <element value="192.168.63"/>
-   <element value="192.168.64"/>
-   <element value="192.168.65"/>
-   <element value="217.74.209"/>
-   <element value="127.0.0.1"/>
-  </property>
- </object>
  <object name="eeastaff_properties" meta_type="Plone Property Sheet">
   <property name="title">Staff and organisation properties</property>
   <property name="organisations" type="lines">
@@ -742,8 +727,10 @@
   </property>
   <property name="external_urls" type="lines">
    <element value="http://community.eea.europa.eu/invalidateCache"/>
-   <element
-      value="http://glossary.eea.europa.eu/templates_client/invalidate_cache"/>
+   <element value="http://eunis.eea.europa.eu/refreshtemplate"/>
+   <element value="http://semantic.eea.europa.eu/refreshtemplate"/>
+   <element value="http://search.apps.eea.europa.eu/invalidate_templates"/>
+   <element value="http://pam.apps.eea.europa.eu/invalidate_templates"/>
   </property>
  </object>
  <object name="workflow_properties" meta_type="Plone Property Sheet">

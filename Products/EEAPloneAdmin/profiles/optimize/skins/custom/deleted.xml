@@ -9,7 +9,6 @@
  <object name="DEPRECATED_frontpage_view" meta_type="Page Template"/>
  <object name="DEPRECATED_gallery_view_eea_signals_47"
     meta_type="Page Template"/>
- <object name="DEPRECATED_portlet_cache" meta_type="Page Template"/>
  <object name="DEPRECATED_portlet_versions" meta_type="Page Template"/>
  <object name="DEPRECATED_rssAllowed" meta_type="Script (Python)"/>
  <object name="DEPRECATED_soercountry_view" meta_type="Page Template"/>
