@@ -1,7 +1,7 @@
 Changelog
 =========
 
-18.1-dev0 - (unreleased)
+18.1 - (2018-06-04)
 ---------------------
 * Cleanup: removed plone.app.caching unnecessary patch
   [alecghica refs #95891]
