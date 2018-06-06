@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.1 - (2018-06-04)
+---------------------
+* Cleanup: removed plone.app.caching unnecessary patch
+  [alecghica refs #95891]
+
 18.0 - (2018-05-24)
 -------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
