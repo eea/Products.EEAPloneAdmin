@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.2 - (2018-06-15)
+---------------------
+* Upgrade step: within "Plone > Site setup > Add-ons" uninstall eea.socialmedia
+  [alecghica refs #95341]
+
 18.1 - (2018-06-04)
 ---------------------
 * Cleanup: removed plone.app.caching unnecessary patch
