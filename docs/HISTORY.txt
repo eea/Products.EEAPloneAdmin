@@ -1,6 +1,9 @@
 Changelog
 =========
 
+18.3-dev0 - (unreleased)
+---------------------
+
 18.2 - (2018-06-15)
 ---------------------
 * Upgrade step: within "Plone > Site setup > Add-ons" uninstall eea.socialmedia
