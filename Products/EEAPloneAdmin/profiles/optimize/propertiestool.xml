@@ -582,11 +582,11 @@
   <property name="title">SOER channel properties</property>
   <property name="organisationName" type="string">EEA</property>
   <property name="organisationURL"
-     type="string">http://www.eea.europa.eu/soer/</property>
+     type="string">https://www.eea.europa.eu/soer/</property>
   <property name="organisationContactURL"
-     type="string">http://www.eea.europa.eu/address.html</property>
+     type="string">https://www.eea.europa.eu/address.html</property>
   <property name="organisationLogoURL"
-     type="string">http://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
+     type="string">https://www.eea.europa.eu/about-us/documents/logos/eealogo.gif</property>
   <property name="license"
      type="string">http://creativecommons.org/licenses/by/2.5/</property>
  </object>
@@ -754,7 +754,7 @@
    <element value="webqa"/>
    <element value="owner"/>
   </property>
-  <property name="cms_url" type="string">http://www.eea.europa.eu/</property>
+  <property name="cms_url" type="string">https://www.eea.europa.eu/</property>
   <property name="highlight_confirmation" type="lines">
    <element value="reviewer"/>
    <element value="proofreader"/>

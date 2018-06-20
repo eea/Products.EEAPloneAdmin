@@ -354,7 +354,7 @@
    <element value="webqa"/>
    <element value="owner"/>
   </property>
-  <property name="cms_url" type="string">http://www.eea.europa.eu/</property>
+  <property name="cms_url" type="string">https://www.eea.europa.eu/</property>
   <property name="highlight_confirmation" type="lines">
    <element value="reviewer"/>
    <element value="proofreader"/>

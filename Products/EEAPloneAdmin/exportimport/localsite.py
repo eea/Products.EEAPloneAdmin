@@ -79,7 +79,7 @@ def _useCorrectUrlForWhereWeAreRunningThis(context):
     elif 'whiteshark' in url:
         url = 'http://www.webdev.eea.europa.eu/%s' % ending
     else:
-        url = 'http://www.eea.europa.eu/' + ending
+        url = 'https://www.eea.europa.eu/' + ending
 
     return url
 
@@ -256,16 +256,16 @@ def _fixNavigationUrls(portal_url, url, lang, site):
     # if we have changed main urls to our dev we need to fix
     # them back before running here
     # this is only need since we re-run the step on dev sites
-    url = url.replace('http://dev1:8080/', 'http://www.eea.europa.eu/')
+    url = url.replace('http://dev1:8080/', 'https://www.eea.europa.eu/')
     url = url.replace('http://www.webdev.eea.europa.eu/',
-                      'http://www.eea.europa.eu/')
-    url = url.replace('http://dev1:19999/', 'http://www.eea.europa.eu/')
+                      'https://www.eea.europa.eu/')
+    url = url.replace('http://dev1:19999/', 'https://www.eea.europa.eu/')
     if lang != '':
         if portal_url.endswith('/'):
             portal_url = portal_url[:-1]
         template = '%s/%s/' % (portal_url, lang)
 
-    menu_url = url.replace('http://www.eea.europa.eu/', template)
+    menu_url = url.replace('https://www.eea.europa.eu/', template)
     menu_url = menu_url.replace('http://reports.eea.europa.eu/',
                                 template + 'reports')
     menu_url = menu_url.replace('http://reports.eea.europa.eu',
@@ -772,10 +772,10 @@ def importTranslations(context):
         xliff = xliff.replace(
             'http://glossary.eea.europa.eu/results',
             'http://glossary.%s.eea.europa.eu/' % lang)
-        xliff = xliff.replace('http://www.eea.europa.eu/quicklinks/educational',
+        xliff = xliff.replace('https://www.eea.europa.eu/quicklinks/educational',
                               '/%s/quicklinks/educational' % lang)
         xliff = xliff.replace(
-            'http://www.eea.europa.eu/themes', '/%s/themes' % lang)
+            'https://www.eea.europa.eu/themes', '/%s/themes' % lang)
         xliff = xliff.replace('<a href="../../organisation/organigram.html"',
                         '<a href="resolveuid/103d4eb4c235fc7e8c60cb799af3cdbd"')
         xliff = xliff.replace('<a href="../../organisation/staff.html"',

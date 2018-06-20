@@ -667,7 +667,7 @@
   <property name="ct_type">Report</property>
   <property name="ct_interface"></property>
   <property
-     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+     name="ct_default_location">https://www.eea.europa.eu/portal_relations</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -759,7 +759,7 @@
   <property
      name="ct_interface">Products.EEAContentTypes.content.interfaces.IInteractiveData</property>
   <property
-     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+     name="ct_default_location">https://www.eea.europa.eu/portal_relations</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -961,7 +961,7 @@
   <property
      name="ct_interface">Products.EEAContentTypes.content.interfaces.IExternalHighlight</property>
   <property
-     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+     name="ct_default_location">https://www.eea.europa.eu/portal_relations</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>
@@ -1077,7 +1077,7 @@
   <property
      name="ct_interface">eea.indicators.content.interfaces.IIndicatorAssessment</property>
   <property
-     name="ct_default_location">http://www.eea.europa.eu/portal_relations</property>
+     name="ct_default_location">https://www.eea.europa.eu/portal_relations</property>
   <criteria>
    <criterion name="c0">
     <property name="widget">text</property>

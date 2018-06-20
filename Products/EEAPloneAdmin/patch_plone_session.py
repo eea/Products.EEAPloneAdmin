@@ -21,8 +21,8 @@ class PatchedSessionPlugin(BasedSessionPlugin):
     We patch:
     * ``refresh`` to expire/delete the auth cookie when it is timeout/invalid
     * ``_setCookie`` and ``resetCredentials`` to allow cookie_domain override
-    from os environment. See http://taskman.eionet.europa.eu/issues/14118
-    and http://taskman.eionet.europa.eu/issues/13992
+    from os environment. See https://taskman.eionet.europa.eu/issues/14118
+    and https://taskman.eionet.europa.eu/issues/13992
     """
 
     # IAuthenticationPlugin implementation
