@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.3 - (2018-06-20)
+---------------------
+* Change: updated URLs pointing to eea.europa.eu with https://
+  [alecghica refs #95849]
+
 18.2 - (2018-06-15)
 ---------------------
 * Upgrade step: within "Plone > Site setup > Add-ons" uninstall eea.socialmedia
@@ -1072,7 +1077,7 @@ Changelog
 * Upgrade step: delete /www/portal_view_customizations/zope.interface.interface-eea.js_belowbodytag
   [ghicaale refs #17513]
 * Upgrade step: must be the last manual step to be performed
-    - revert http://taskman.eionet.europa.eu/projects/zope/repository/revisions/35141
+    - revert https://taskman.eionet.europa.eu/projects/zope/repository/revisions/35141
     - remove eea.locationwidget from all EEA buildout CFG files
     - commit changes
     - re-run buildout
