@@ -457,22 +457,6 @@ jQuery.eearewriterules = function(context){
     });
   }
 
-  // @@manage-linkeddata
-  form = jQuery('h1:contains("Set the LinkedData Homepages for this website")', context);
-  if(form.length){
-    var homepages = jQuery("#content li a", context);
-    jQuery.each(homepages, function(){
-      var homepage_url = this.previousSibling.previousSibling.textContent;
-      if(homepage_url === '/www/SITE'){
-        jQuery(this).eearewrite({
-          attr: 'href',
-          oldVal: '/@@edit-linkeddata-homepage',
-          newVal: '/edit-linkeddata-homepage'
-        });
-      }
-    });
-  }
-
 /*
   //@@manage-portlets
   links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
@@ -513,8 +497,7 @@ jQuery(document).ready(function(){
   var form;
   var context = jQuery('body');
 
-  /* Rewrite on document ready
-  */
+  /* Rewrite on document ready */
   try{
     jQuery.eearewriterules(context);
   }catch(err){
@@ -523,9 +506,7 @@ jQuery(document).ready(function(){
     }
   }
 
-  /* Rewrite on events
-  */
-
+  /* Rewrite on events */
   // On AddGroupButton click
   try{
     form = jQuery('input[name="form.button.AddGroup"]', context);
