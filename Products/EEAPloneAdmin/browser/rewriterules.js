@@ -457,9 +457,25 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@manage-linkeddata
+  form = jQuery('h1:contains("Set the LinkedData Homepages for this website")', context);
+  if(form.length){
+    var homepages = jQuery("#content li a", context);
+    jQuery.each(homepages, function(){
+      var homepage_url = this.previousSibling.previousSibling.textContent;
+      if(homepage_url === '/www/SITE'){
+        jQuery(this).eearewrite({
+          attr: 'href',
+          oldVal: '/@@edit-linkeddata-homepage',
+          newVal: '/edit-linkeddata-homepage'
+        });
+      }
+    });
+  }
 
+/*
   //@@manage-portlets
-/*  links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
+  links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
   if(links.length){
     jQuery.each(links, function(){
       var selflink = jQuery(this),
@@ -483,7 +499,8 @@ jQuery.eearewriterules = function(context){
         newVal: new_href
       });
     });
-  } */
+  }
+*/
 
 };
 

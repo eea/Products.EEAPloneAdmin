@@ -3,6 +3,8 @@ Changelog
 
 18.4-dev0 - (unreleased)
 ---------------------
+* Bug fix: fixed URL for editing /www/SITE LinkedData Homepage
+  [alecghica refs #96375]
 
 18.3 - (2018-06-20)
 ---------------------
