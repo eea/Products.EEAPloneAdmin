@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.4 - (2018-07-03)
+---------------------
+* Change: cleanup
+  [alecghica refs #96375]
+
 18.3 - (2018-06-20)
 ---------------------
 * Change: updated URLs pointing to eea.europa.eu with https://

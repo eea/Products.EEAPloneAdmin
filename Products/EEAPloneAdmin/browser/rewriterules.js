@@ -457,9 +457,9 @@ jQuery.eearewriterules = function(context){
     });
   }
 
-
+/*
   //@@manage-portlets
-/*  links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
+  links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
   if(links.length){
     jQuery.each(links, function(){
       var selflink = jQuery(this),
@@ -483,7 +483,8 @@ jQuery.eearewriterules = function(context){
         newVal: new_href
       });
     });
-  } */
+  }
+*/
 
 };
 
@@ -496,8 +497,7 @@ jQuery(document).ready(function(){
   var form;
   var context = jQuery('body');
 
-  /* Rewrite on document ready
-  */
+  /* Rewrite on document ready */
   try{
     jQuery.eearewriterules(context);
   }catch(err){
@@ -506,9 +506,7 @@ jQuery(document).ready(function(){
     }
   }
 
-  /* Rewrite on events
-  */
-
+  /* Rewrite on events */
   // On AddGroupButton click
   try{
     form = jQuery('input[name="form.button.AddGroup"]', context);
