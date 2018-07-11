@@ -1,6 +1,12 @@
 Changelog
 =========
 
+18.5 - (2018-07-11)
+---------------------
+* Bug fix: updated patch_plone_outputfilters to v1.15.1 in order to fix
+  Unauthorized: You are not allowed to access '..' in this context
+  [avoinea refs #97057]
+
 18.4 - (2018-07-03)
 ---------------------
 * Change: cleanup

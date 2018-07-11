@@ -213,12 +213,12 @@
               replacement=".patch_atct.foldLine"
               preserveOriginal="false" />
 
-    <!-- Patch for plone.outputfilters ver 1.0 to solve logic bug in Plone code -->
+    <!-- Patch for plone.outputfilters ver 1.15.1 to solve logic bug in Plone code -->
     <monkey:patch description="Monkeypatch plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter to solve logic bug in Plone code"
                   class="plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter"
                   original="resolve_image"
                   replacement=".patch_plone_outputfilters.patched_resolve_image"
-                  preserveOriginal="false" />
+                  preserveOriginal="true" />
 
     <!-- Patch plone.app.redirector ver 1.1.2, to also redirect direct file download links (e.g. at_download/fileField) when
          the containing object defines an alias -->
