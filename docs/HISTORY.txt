@@ -1,7 +1,7 @@
 Changelog
 =========
 
-18.5-dev0 - (unreleased)
+18.5 - (2018-07-11)
 ---------------------
 * Bug fix: updated patch_plone_outputfilters to v1.15.1 in order to fix
   Unauthorized: You are not allowed to access '..' in this context
