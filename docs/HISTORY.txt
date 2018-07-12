@@ -1,6 +1,9 @@
 Changelog
 =========
 
+18.7-dev0 - (unreleased)
+---------------------
+
 18.6 - (2018-07-12)
 ---------------------
 * Upgrade step: Within "ZMI > acl_users > ldap-plugin > Cache Tab" set
