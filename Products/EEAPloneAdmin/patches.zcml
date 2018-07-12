@@ -303,4 +303,16 @@
                   replacement=".patch_products_compound_field.patched_set"
                   preserveOriginal="false" />
 
-</configure>
+    <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPUserFolder._lookupuserbyattr"
+                  class="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
+                  original="_lookupuserbyattr"
+                  replacement=".patch_products_ldapuserfolder._lookupuserbyattr"
+                  preserveOriginal="true" />
+
+  <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPDelegate.search"
+                class="Products.LDAPUserFolder.LDAPDelegate.LDAPDelegate"
+                original="search"
+                replacement=".patch_products_ldapuserfolder.LDAPDelegate_search"
+                preserveOriginal="true" />
+
+  </configure>
