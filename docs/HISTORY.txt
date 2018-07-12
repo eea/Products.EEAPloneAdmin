@@ -3,6 +3,8 @@ Changelog
 
 18.6-dev0 - (unreleased)
 ---------------------
+* Bug fix: fixed "ReferenceError /portal_registry in prepOverlay" JS error
+  [alecghica refs #97087]
 
 18.5 - (2018-07-11)
 ---------------------
