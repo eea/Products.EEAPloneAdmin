@@ -1,6 +1,9 @@
 Changelog
 =========
 
+18.8-dev0 - (unreleased)
+---------------------
+
 18.7 - (2018-07-25)
 ---------------------
 * Bug fix: Add missing dependency eea.cache
