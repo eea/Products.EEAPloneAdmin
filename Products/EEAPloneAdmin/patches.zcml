@@ -304,14 +304,14 @@
                   preserveOriginal="false" />
 
     <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPUserFolder._lookupuserbyattr"
-                  zcml:condition="installed eea.cache"
+                  zcml:condition="installed Products.LDAPUserFolder"
                   class="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
                   original="_lookupuserbyattr"
                   replacement=".patch_products_ldapuserfolder._lookupuserbyattr"
                   preserveOriginal="true" />
 
   <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPDelegate.search"
-                zcml:condition="installed eea.cache"
+                zcml:condition="installed Products.LDAPUserFolder"
                 class="Products.LDAPUserFolder.LDAPDelegate.LDAPDelegate"
                 original="search"
                 replacement=".patch_products_ldapuserfolder.LDAPDelegate_search"

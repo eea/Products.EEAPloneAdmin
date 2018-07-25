@@ -3,6 +3,8 @@ Changelog
 
 18.7-dev0 - (unreleased)
 ---------------------
+* Bug fix: Add missing dependency eea.cache
+  [avoinea refs #97095]
 
 18.6 - (2018-07-12)
 ---------------------
