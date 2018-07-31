@@ -3,6 +3,8 @@ Changelog
 
 18.8-dev0 - (unreleased)
 ---------------------
+* Cleanup: Move plone.comments viewlet overrides to eea.design
+  [avoinea refs #97399]
 
 18.7 - (2018-07-25)
 ---------------------
