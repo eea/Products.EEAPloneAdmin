@@ -1,6 +1,9 @@
 Changelog
 =========
 
+18.9-dev0 - (unreleased)
+---------------------
+
 18.8 - (2018-07-31)
 ---------------------
 * Cleanup: Move plone.comments viewlet overrides to eea.design
