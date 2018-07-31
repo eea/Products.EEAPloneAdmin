@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.8 - (2018-07-31)
+---------------------
+* Cleanup: Move plone.comments viewlet overrides to eea.design
+  [avoinea refs #97399]
+
 18.7 - (2018-07-25)
 ---------------------
 * Bug fix: Add missing dependency eea.cache
