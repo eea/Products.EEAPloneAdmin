@@ -3,6 +3,8 @@ Changelog
 
 18.9-dev0 - (unreleased)
 ---------------------
+* Cleanup: removed obsolete patches
+  [alecghica refs #97573]
 
 18.8 - (2018-07-31)
 ---------------------

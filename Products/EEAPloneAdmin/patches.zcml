@@ -46,26 +46,6 @@
                   replacement=".patch_blob.patched_getScale"
                   docstringWarning="true" />
 
-    ===========================[ GenericSetup patches ]==========================
-
-    <!-- Patch for Products.GenericSetup ver 1.6.3 to delete unused steps, as those functions had no docstings -->
-    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
-                  class="Products.GenericSetup.tool.SetupTool"
-                  original="manage_deleteImportSteps"
-                  replacement=".patch_genericsetup.manage_deleteImportSteps" />
-
-    <!-- Patch for Products.GenericSetup ver 1.6.3 to delete unused steps, as those functions had no docstings -->
-    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.tool.py"
-                  class="Products.GenericSetup.tool.SetupTool"
-                  original="manage_deleteExportSteps"
-                  replacement=".patch_genericsetup.manage_deleteExportSteps" />
-
-    <!-- Patch for Products.GenericSetup ver 1.6.3 to create valid tar.gz files -->
-    <monkey:patch description="Monkeypatch Products.GenericSetup-1.6.3.context.py"
-                  class="Products.GenericSetup.context.TarballExportContext"
-                  original="__init__"
-                  replacement=".patch_genericsetup.__patched_init__" />
-
     ===========================[ ResourceRegistries patches ]==========================
 
     <!-- Patch of Products.ResourceRegistries ver 2.0.4 to generate better ids; Solves #3962 -->
@@ -193,25 +173,18 @@
                   replacement=".patch_atctmixin.HEAD"
                   preserveOriginal="false" />
 
-    <!-- Patch of Products.ATContentTypes ver 2.0.7 -->
-    <monkey:patch description="Monkeypatch ATTopic.listSubtopics to correct bug. To be removed when egg 2.0.8 is available"
-                  class="Products.ATContentTypes.content.topic.ATTopic"
-                  original="listSubtopics"
-                  replacement=".patch_atct.listSubtopics"
-                  preserveOriginal="false" />
-
     <!-- Patch of Products.ATContentTypes ver 2.1.7 for calendar view with location as tuple  #5284 -->
     <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
-              class="Products.ATContentTypes.lib.calendarsupport"
-              original="vformat"
-              replacement=".patch_atct.vformat"
-              preserveOriginal="false" />
+                  class="Products.ATContentTypes.lib.calendarsupport"
+                  original="vformat"
+                  replacement=".patch_atct.vformat"
+                  preserveOriginal="false" />
 
     <monkey:patch description="Patch of Products.ATContentTypes for calendar view with location as tuple"
-              class="Products.ATContentTypes.lib.calendarsupport"
-              original="foldLine"
-              replacement=".patch_atct.foldLine"
-              preserveOriginal="false" />
+                  class="Products.ATContentTypes.lib.calendarsupport"
+                  original="foldLine"
+                  replacement=".patch_atct.foldLine"
+                  preserveOriginal="false" />
 
     <!-- Patch for plone.outputfilters ver 1.15.1 to solve logic bug in Plone code -->
     <monkey:patch description="Monkeypatch plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter to solve logic bug in Plone code"
@@ -228,53 +201,29 @@
                   replacement=".patch_plone_app_redirector.RedirectionStorage_get" />
 
     <monkey:patch description=" #5353 Monkeypatch validateSingleEmailAddress to corectly fail for bad email addresses"
-                     class="Products.CMFPlone.PloneTool.PloneTool"
-                     original="validateSingleEmailAddress"
-                     replacement=".patch_email_validation.validateSingleEmailAddress"
-                     preserveOriginal="false" />
+                  class="Products.CMFPlone.PloneTool.PloneTool"
+                  original="validateSingleEmailAddress"
+                  replacement=".patch_email_validation.validateSingleEmailAddress"
+                  preserveOriginal="false" />
 
     <monkey:patch description="Fix plone.app.search to use only alnum values from url"
-      class="plone.app.search.browser.Search"
-      original="results"
-      preserveOriginal="false"
-      replacement=".patch_plone_app_search.results" />
-
-    <!-- Backport change of contentMethod from plone.app.content 2.1a1 to 2.0.X to be removed after we have plone.app.content 2.0.12 -->
-    <monkey:patch description="#5533 patch contentsMethod from FolderContentsTable to display query results also for new style Collections"
-                     class="plone.app.content.browser.foldercontents.FolderContentsTable"
-                     original="contentsMethod"
-                     replacement=".patch_plone_app_content.contentsMethod"
-                     preserveOriginal="false" />
+                  class="plone.app.search.browser.Search"
+                  original="results"
+                  preserveOriginal="false"
+                  replacement=".patch_plone_app_search.results" />
 
     <monkey:patch description="#9972 patch _searchUsers from MemberLookup to search for fullname and email"
-                     class="Products.UserAndGroupSelectionWidget.memberlookup.MemberLookup"
-                     original="_searchUsers"
-                     replacement=".patch_userandgroupselectionwidget._patched_search_users"
-                     preserveOriginal="false" />
+                  class="Products.UserAndGroupSelectionWidget.memberlookup.MemberLookup"
+                  original="_searchUsers"
+                  replacement=".patch_userandgroupselectionwidget._patched_search_users"
+                  preserveOriginal="false" />
 
     <!-- Patch Products.LinguaPlone translation creation to clear the archetypes.schemaextender REQUEST cache before copying fields -->
     <monkey:patch description="#14436 patch getFieldsToCopy from LanguageIndependentFields to clear schemaextender cache"
-                 class="Products.LinguaPlone.utils.LanguageIndependentFields"
-                 original="getFieldsToCopy"
-                 replacement=".patch_linguaplone._patched_getFieldsToCopy"
-                 preserveOriginal="true" />
-
-    <!-- Patch Products.LinguaPlone getDefaultPage to overcome security assessments during traversal -->
-    <monkey:patch description="#74776 patch getDefaultPage to overcome security assessments during traversal"
-                 class="Products.LinguaPlone.browser.defaultpage.DefaultPage"
-                 original="getDefaultPage"
-                 replacement=".patch_linguaplone._patched_getDefaultPage"
-                 preserveOriginal="true" />
-
-     <!-- Commented this, it's no longer compatibile with rdflib 4.2.2 -->
-     <!-- Please enable if needed. This ticket is really old, -->
-     <!-- TODO: is this needed? -->
-    <!-- Temporary patch to inspect misterious OSError in rdflib when rendering EEA Organisational Graph page -->
-    <!-- <monkey:patch description="#7240 patch absolutize from NamespaceManager in rdflib to learn more about an OSError" -->
-    <!--              class="rdflib.namespace.NamespaceManager" -->
-    <!--              original="absolutize" -->
-    <!--              replacement=".patch_rdflib_namespacemanager._patched_absolutize" -->
-    <!--              preserveOriginal="true" /> -->
+                  class="Products.LinguaPlone.utils.LanguageIndependentFields"
+                  original="getFieldsToCopy"
+                  replacement=".patch_linguaplone._patched_getFieldsToCopy"
+                  preserveOriginal="true" />
 
     <!-- Patch for Products.PluggableAuthService ver 1.10.0 to solve ZMI groups and roles listing -->
     <monkey:patch description="Monkeypatch Products.PluggableAuthService.plugins.ZODBGroupManager.ZODBGroupManager.manage_groups to solve ZMI groups listing"
@@ -310,11 +259,11 @@
                   replacement=".patch_products_ldapuserfolder._lookupuserbyattr"
                   preserveOriginal="true" />
 
-  <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPDelegate.search"
-                zcml:condition="installed Products.LDAPUserFolder"
-                class="Products.LDAPUserFolder.LDAPDelegate.LDAPDelegate"
-                original="search"
-                replacement=".patch_products_ldapuserfolder.LDAPDelegate_search"
-                preserveOriginal="true" />
+    <monkey:patch description="Add eea.cache for Products.LDAPUserFolder.LDAPDelegate.search"
+                  zcml:condition="installed Products.LDAPUserFolder"
+                  class="Products.LDAPUserFolder.LDAPDelegate.LDAPDelegate"
+                  original="search"
+                  replacement=".patch_products_ldapuserfolder.LDAPDelegate_search"
+                  preserveOriginal="true" />
 
   </configure>

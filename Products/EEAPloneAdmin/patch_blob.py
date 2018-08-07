@@ -171,7 +171,7 @@ def patched_tag(self, instance, scale=None, height=None, width=None, alt=None,
                   'title': escape(title, quote=True),
                   'height': height,
                   'width': width,
-                  }
+                 }
 
         result = '<img src="%(src)s" alt="%(alt)s" title="%(title)s" '\
                  'height="%(height)s" width="%(width)s"' % values
