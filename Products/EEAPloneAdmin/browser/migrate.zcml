@@ -224,9 +224,9 @@
         permission="cmf.ManagePortal" />
 
     <browser:page for="*"
-      name="setEmptyFLVOnMediaFiles"
-      class=".migrate.SetEmptyFLVOnMediaFiles"
-      permission="cmf.ManagePortal" />
+        name="setEmptyFLVOnMediaFiles"
+        class=".migrate.SetEmptyFLVOnMediaFiles"
+        permission="cmf.ManagePortal" />
 
     <browser:page for="*"
       name="fixEU32CountryGroup"
@@ -238,10 +238,9 @@
       class=".migrate.FixBadCountryNamesForLocation"
       permission="cmf.ManagePortal" />
 
-  <browser:page for="*"
-    name="addReadTimeAnnotation"
-    class=".migrate.AddReadTimeAnnotation"
-    permission="cmf.ManagePortal" />
-
+    <browser:page for="*"
+      name="addReadTimeAnnotation"
+      class=".migrate.AddReadTimeAnnotation"
+      permission="cmf.ManagePortal" />
 
 </configure>

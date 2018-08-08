@@ -4,19 +4,19 @@
            i18n_domain="Products.EEAPloneAdmin"
            xmlns:plone="http://namespaces.plone.org/plone">
 
-    <!-- override for collective.portlet.usertrack to use memcache when storing statistics -->
+    <!-- Override for collective.portlet.usertrack to use memcache when storing statistics -->
     <configure zcml:condition="installed collective.portlet.usertrack">
         <utility factory="collective.portlet.usertrack.storage.MemcacheStorage"
-                    provides="collective.portlet.usertrack.interfaces.ITrackerStorage" />
+                 provides="collective.portlet.usertrack.interfaces.ITrackerStorage" />
 
         <plone:portlet name="collective.portlet.usertrack.Usertrack"
-                    interface="collective.portlet.usertrack.usertrack.IUsertrack"
-                    assignment="collective.portlet.usertrack.usertrack.Assignment"
-                    view_permission="cmf.ManagePortal"
-                    edit_permission="cmf.ManagePortal"
-                    renderer="collective.portlet.usertrack.usertrack.Renderer"
-                    addview="collective.portlet.usertrack.usertrack.AddForm"
-                    editview="collective.portlet.usertrack.usertrack.EditForm" />
+                       interface="collective.portlet.usertrack.usertrack.IUsertrack"
+                       assignment="collective.portlet.usertrack.usertrack.Assignment"
+                       view_permission="cmf.ManagePortal"
+                       edit_permission="cmf.ManagePortal"
+                       renderer="collective.portlet.usertrack.usertrack.Renderer"
+                       addview="collective.portlet.usertrack.usertrack.AddForm"
+                       editview="collective.portlet.usertrack.usertrack.EditForm" />
     </configure>
 
     <browser:page for="*"
@@ -47,14 +47,14 @@
              provides="Products.GenericSetup.interfaces.IFilesystemExporter"
              for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot" />
 
-    <!-- Fixed a Plone bug, see #17040 and https://github.com/plone/Products.CMFPlone/pull/72-->
+    <!-- Fixed a Plone bug, see #17040 and https://github.com/plone/Products.CMFPlone/pull/72 -->
     <browser:page for="*"
                   class="Products.CMFPlone.browser.syndication.views.SearchFeedView"
                   name="search_rss"
                   permission="zope2.View"
                   template="browser/search-rss.pt" />
 
-    <!-- Override quickupload ArchetypesFileSetter adapter to set filename as title on blobfile #16997-->
+    <!-- Override quickupload ArchetypesFileSetter adapter to set filename as title on blobfile #16997 -->
     <adapter factory=".quickupload.ArchetypesFileSetter" />
 
     <include package=".browser" file="overrides.zcml"/>
