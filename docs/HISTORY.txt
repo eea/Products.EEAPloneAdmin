@@ -1,7 +1,7 @@
 Changelog
 =========
 
-18.9-dev0 - (unreleased)
+18.9 - (2018-08-17)
 ---------------------
 * Cleanup: removed obsolete patches
   [alecghica refs #97573]
