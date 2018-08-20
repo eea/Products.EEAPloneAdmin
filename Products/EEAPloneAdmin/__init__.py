@@ -15,9 +15,6 @@ from Products.EEAPloneAdmin import patch_plone_app_caching
 # workflows when "Discussion Item" has no workflow assigned
 from Products.EEAPloneAdmin import patch_plone_app_discussion
 
-# Patch Products.statusmessages ver 4.0, due to #9445
-from Products.EEAPloneAdmin import patch_statusmessages
-
 # Patch plone.app.layout ver 2.2.7, due to #9518
 from Products.EEAPloneAdmin import patch_plone_app_layout
 
@@ -31,6 +28,5 @@ config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 __all__ = [patch_plone_app_caching.__name__,
            patch_plone_app_discussion.__name__,
            patch_plone_app_layout.__name__,
-           patch_statusmessages.__name__,
            patch_plone_session.__name__,
            translation_negotiator.__name__]

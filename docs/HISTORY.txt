@@ -1,6 +1,11 @@
 Changelog
 =========
 
+18.9 - (2018-08-17)
+---------------------
+* Cleanup: removed obsolete patches
+  [alecghica refs #97573]
+
 18.8 - (2018-07-31)
 ---------------------
 * Cleanup: Move plone.comments viewlet overrides to eea.design
