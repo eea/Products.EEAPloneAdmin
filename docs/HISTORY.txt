@@ -1,7 +1,7 @@
 Changelog
 =========
 
-19.0-dev0 - (unreleased)
+19.0 - (2018-12-18)
 ---------------------
 * Bug fix: patch difflib.HtmlDiff._line_wrapper to call an iterative
   variant of _split_line in case of the recursive version fails
