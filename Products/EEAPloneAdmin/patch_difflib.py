@@ -16,12 +16,12 @@ def _line_wrapper(self,diffs):
         fromlist,tolist = [],[]
         try:
             self._split_line(fromlist,fromline,fromtext)
-        except RuntimeError, err:
+        except RuntimeError:
             fromlist = []
             _iterative_split_line(self, fromlist, fromline, fromtext)
         try:
             self._split_line(tolist,toline,totext)
-        except RuntimeError, err:
+        except RuntimeError:
             tolist = []
             _iterative_split_line(self,tolist, toline, totext)
         # yield from/to line in pairs inserting blank lines as
@@ -91,6 +91,3 @@ def _iterative_split_line(self,data_list,line_num,text):
 
         line_num = '>'
         text = line2
-
-    # use this routine again to wrap the remaining text
-    #self._split_line(data_list,'>',line2)
