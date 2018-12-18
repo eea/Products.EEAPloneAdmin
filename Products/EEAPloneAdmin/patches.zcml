@@ -266,4 +266,13 @@
                   replacement=".patch_products_ldapuserfolder.LDAPDelegate_search"
                   preserveOriginal="true" />
 
+    ===========================[ difflib.HTMLDiff patches ]==========================
+
+    <!-- Patch difflib.HtmlDiff._line_wrapper to call an iterative variant of _split_line in case of the recursive version fails -->
+    <monkey:patch description="Monkeypatch difflib.HtmlDiff._line_wrapper to avoid call iterative _split_line in case the recursive version fails"
+                  class="difflib.HtmlDiff"
+                  original="_line_wrapper"
+                  replacement=".patch_difflib._line_wrapper"
+                  preserveOriginal="true" />
+
   </configure>
