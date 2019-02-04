@@ -1,10 +1,12 @@
 """ Extend catalog functionallity
 """
 import logging
+import pytz
 import transaction
 from random import randint
 from datetime import datetime, timedelta
 from zope.component import queryUtility
+from zope.globalrequest import getRequest
 from Products.Five.browser import BrowserView
 from plone.app.async.interfaces import IAsyncService
 logger = logging.getLogger('EEAPloneAdmin')
@@ -89,7 +91,7 @@ def sync(context, run_async=True):
     # Schedule new async cleanup job
     #
     if run_async:
-        schedule = datetime.now().replace(
+        schedule = datetime.now(pytz.UTC).replace(
             hour=randint(0, 6), minute=randint(0, 59)) + timedelta(days=1)
         async = queryUtility(IAsyncService)
         queue = async.getQueues()['']
@@ -112,6 +114,7 @@ def cleanup(context, run_async=True):
     if 'Language' in context._catalog.indexes:
         query['Language'] = 'all'
 
+    REQUEST = getattr(context, 'REQUEST', getRequest())
     brains = context(**query)
     total = len(brains)
     cleanup = set()
@@ -122,7 +125,7 @@ def cleanup(context, run_async=True):
             continue
 
         try:
-            brain.getObject()
+            brain.getObject(REQUEST=REQUEST)
         except Exception as err:
             cleanup.add(path)
         if index % 10000 == 0:
@@ -140,7 +143,7 @@ def cleanup(context, run_async=True):
     # Schedule new async cleanup job
     #
     if run_async:
-        schedule = datetime.now().replace(
+        schedule = datetime.now(pytz.UTC).replace(
             hour=randint(0, 6), minute=randint(0, 59)) + timedelta(days=1)
         async = queryUtility(IAsyncService)
         queue = async.getQueues()['']
