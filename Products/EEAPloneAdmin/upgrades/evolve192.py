@@ -14,7 +14,7 @@ def cleanup_catalogs(context):
     for catalog in site.objectValues(['ZCatalog', 'Plone Catalog Tool']):
         cleanup = queryMultiAdapter((catalog, request), name='cleanup')
         if cleanup:
-            cleanup(run_async=True)
+            cleanup(async=True)
     return 'Done'
 
 
@@ -26,5 +26,6 @@ def sync_catalogs(context):
     for catalog in site.objectValues(['ZCatalog', 'Plone Catalog Tool']):
         sync = queryMultiAdapter((catalog, request), name='sync')
         if sync:
-            sync(run_async=True)
+            sync(async=True)
+
     return 'Done'
