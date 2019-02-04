@@ -3,6 +3,8 @@ Changelog
 
 19.2-dev0 - (unreleased)
 ---------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
 * Feature: Add Catalog cleanup and sync jobs to be run daily
   [avoinea refs #102105]
 
