@@ -3,6 +3,8 @@ Changelog
 
 19.2-dev0 - (unreleased)
 ---------------------
+* Feature: Add Catalog cleanup and sync jobs to be run daily
+  [avoinea refs #102105]
 
 19.1 - (2019-01-28)
 ---------------------
