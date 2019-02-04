@@ -2,6 +2,7 @@
 """
 import logging
 import transaction
+from random import randint
 from datetime import datetime, timedelta
 from zope.component import queryUtility
 from Products.Five.browser import BrowserView
@@ -88,7 +89,8 @@ def sync(context, run_async=True):
     # Schedule new async cleanup job
     #
     if run_async:
-        schedule = datetime.now().replace(hour=23, minute=55) + timedelta(days=1)
+        schedule = datetime.now().replace(
+            hour=randint(0, 6), minute=randint(0, 59)) + timedelta(days=1)
         async = queryUtility(IAsyncService)
         queue = async.getQueues()['']
         async.queueJobInQueueWithDelay(
@@ -138,7 +140,8 @@ def cleanup(context, run_async=True):
     # Schedule new async cleanup job
     #
     if run_async:
-        schedule = datetime.now().replace(hour=23, minute=5) + timedelta(days=1)
+        schedule = datetime.now().replace(
+            hour=randint(0, 6), minute=randint(0, 59)) + timedelta(days=1)
         async = queryUtility(IAsyncService)
         queue = async.getQueues()['']
         async.queueJobInQueueWithDelay(
