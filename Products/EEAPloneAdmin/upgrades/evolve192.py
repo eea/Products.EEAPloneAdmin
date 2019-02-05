@@ -11,7 +11,7 @@ def cleanup_catalogs(context):
     """
     site = getSite()
     request = getattr(site, 'REQUEST', None)
-    for catalog in site.objectValues(['ZCatalog', 'Plone Catalog Tool']):
+    for catalog in site.objectValues(['Plone Catalog Tool']):
         cleanup = queryMultiAdapter((catalog, request), name='cleanup')
         if cleanup:
             cleanup(async=True)
