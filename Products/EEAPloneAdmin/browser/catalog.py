@@ -6,6 +6,7 @@ import transaction
 from random import randint
 from datetime import datetime, timedelta
 from zope.component import queryUtility
+from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from Products.Five.browser import BrowserView
 from plone.app.async.interfaces import IAsyncService
@@ -19,6 +20,7 @@ def _syncFromPaths(context):
     """ Sync catalog from Paths """
     count = 0
     dcount = 0
+    site = getSite()
     for rid, path in context._catalog.paths.iteritems():
         try:
             context._catalog.uids[path]
@@ -32,7 +34,7 @@ def _syncFromPaths(context):
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
-                obj = context.www.unrestrictedTraverse(path)
+                obj = site.unrestrictedTraverse(path)
                 newDataRecord = context._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
@@ -51,6 +53,7 @@ def _syncFromUids(context):
     """ Sync catalog from UIDS """
     count = 0
     dcount = 0
+    site = getSite()
     for path, rid in context._catalog.uids.iteritems():
         try:
             context._catalog.paths[rid]
@@ -64,7 +67,7 @@ def _syncFromUids(context):
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
-                obj = context.www.unrestrictedTraverse(path)
+                obj = site.unrestrictedTraverse(path)
                 newDataRecord = context._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
