@@ -86,9 +86,8 @@ def sync(context, run_async=True):
     msg.append(_syncFromUids(context))
     transaction.savepoint(optimistic=True)
     msg.append(_syncFromPaths(context))
-
     #
-    # Schedule new async cleanup job
+    # Schedule new async job
     #
     if run_async:
         schedule = datetime.now(pytz.UTC).replace(
@@ -117,30 +116,30 @@ def cleanup(context, run_async=True):
     REQUEST = getattr(context, 'REQUEST', getRequest())
     brains = context(**query)
     total = len(brains)
-    cleanup = set()
+    paths = set()
     for index, brain in enumerate(brains):
         path = brain.getPath()
         if 'portal_factory' in path:
-            cleanup.add(path)
+            paths.add(path)
             continue
 
         try:
             brain.getObject(REQUEST=REQUEST)
         except Exception as err:
-            cleanup.add(path)
+            paths.add(path)
         if index % 10000 == 0:
             logger.warn("Searching for orphan brains: %s/%s", index, total)
 
-    count = len(cleanup)
+    count = len(paths)
     logger.warn("Orphan brains: %s", count)
-    for path in cleanup:
+    for path in paths:
         logger.warn("Removing orphan brain: %s", path)
         try:
             context._catalog.uncatalogObject(path)
         except Exception as err:
             logger.exception(err)
     #
-    # Schedule new async cleanup job
+    # Schedule new async job
     #
     if run_async:
         schedule = datetime.now(pytz.UTC).replace(
@@ -158,7 +157,7 @@ def cleanup(context, run_async=True):
     #
     return "Removed orphan brains: %s\n%s" % (
         count,
-        "\n".join(cleanup)
+        "\n".join(paths)
     )
 
 
