@@ -5,12 +5,62 @@ import pytz
 import transaction
 from random import randint
 from datetime import datetime, timedelta
+from pkg_resources import DistributionNotFound
+from pkg_resources import get_distribution
 from zope.component import queryUtility
 from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
+from Acquisition import aq_base
+from Acquisition import aq_get
 from Products.Five.browser import BrowserView
 from plone.app.async.interfaces import IAsyncService
+
+try:
+    get_distribution('five.globalrequest')
+except DistributionNotFound:
+    _GLOBALREQUEST_INSTALLED = False
+else:
+    _GLOBALREQUEST_INSTALLED = True
+
+try:
+    from ZPublisher.BaseRequest import RequestContainer
+except ImportError:
+    # BBB: Zope 4 removes RequestContainer
+    _REQUESTCONTAINER_EXISTS = False
+else:
+    _REQUESTCONTAINER_EXISTS = True
+
 logger = logging.getLogger('EEAPloneAdmin')
+
+
+#
+# Get object from ZCatalog brain or path
+#
+def getObject(brain=None, path=None):
+    """Return the object for brain record
+
+    Will return None if the object cannot be found via its cataloged path
+    (i.e., it was deleted or moved without recataloging).
+
+    This method mimicks a subset of what publisher's traversal does,
+    so it allows access if the final object can be accessed even
+    if intermediate objects cannot.
+    """
+    if brain is not None:
+        path = brain.getPath()
+
+    if not path:
+        return None
+
+    path = path.split('/')
+    parent = getSite()
+
+    if (aq_get(parent, 'REQUEST', None) is None and
+            _GLOBALREQUEST_INSTALLED and _REQUESTCONTAINER_EXISTS):
+        request = getRequest()
+        request_container = RequestContainer(REQUEST=request)
+        parent = aq_base(parent).__of__(request_container)
+    return parent.unrestrictedTraverse(path)
 
 
 #
@@ -20,7 +70,6 @@ def _syncFromPaths(context):
     """ Sync catalog from Paths """
     count = 0
     dcount = 0
-    site = getSite()
     for rid, path in context._catalog.paths.iteritems():
         try:
             context._catalog.uids[path]
@@ -34,7 +83,7 @@ def _syncFromPaths(context):
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
-                obj = site.unrestrictedTraverse(path)
+                obj = getObject(path=path)
                 newDataRecord = context._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
@@ -53,7 +102,6 @@ def _syncFromUids(context):
     """ Sync catalog from UIDS """
     count = 0
     dcount = 0
-    site = getSite()
     for path, rid in context._catalog.uids.iteritems():
         try:
             context._catalog.paths[rid]
@@ -67,7 +115,7 @@ def _syncFromUids(context):
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
-                obj = site.unrestrictedTraverse(path)
+                obj = getObject(path=path)
                 newDataRecord = context._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
@@ -116,7 +164,6 @@ def cleanup(context, run_async=True):
     if 'Language' in context._catalog.indexes:
         query['Language'] = 'all'
 
-    REQUEST = getattr(context, 'REQUEST', getRequest())
     brains = context(**query)
     total = len(brains)
     paths = set()
@@ -127,7 +174,7 @@ def cleanup(context, run_async=True):
             continue
 
         try:
-            brain.getObject(REQUEST=REQUEST)
+            getObject(brain=brain)
         except Exception as err:
             paths.add(path)
         if index % 10000 == 0:
