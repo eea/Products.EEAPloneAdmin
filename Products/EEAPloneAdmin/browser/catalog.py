@@ -12,6 +12,7 @@ from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from Acquisition import aq_base
 from Acquisition import aq_get
+from OFS.Uninstalled import BrokenClass
 from Products.Five.browser import BrowserView
 from plone.app.async.interfaces import IAsyncService
 
@@ -52,43 +53,75 @@ def getObject(brain=None, path=None):
     if not path:
         return None
 
-    path = path.split('/')
-    parent = getSite()
+    # Handle portal_factory
+    if 'portal_factory' in path:
+        return None
 
+    # Handle relatedItems brains
+    path = path.split('/at_references')[0]
+
+    # Handle plone.app.discussion brains
+    path = path.split('/++conversation++')[0]
+
+    path = path.split('/')
+
+    # Remove empty string from begining of the path
+    if not path[0]:
+        path = path[1:]
+
+    if not path:
+        return None
+
+    # Remove site id from begining of the path
+    parent = getSite()
+    if path[0] == parent.getId():
+        path = path[1:]
+
+    if not path:
+        return parent
+
+    # Try to add REQUEST if not present
     if (aq_get(parent, 'REQUEST', None) is None and
             _GLOBALREQUEST_INSTALLED and _REQUESTCONTAINER_EXISTS):
         request = getRequest()
-        request_container = RequestContainer(REQUEST=request)
-        parent = aq_base(parent).__of__(request_container)
-    return parent.unrestrictedTraverse(path)
+        if request is not None:
+            request_container = RequestContainer(REQUEST=request)
+            parent = aq_base(parent).__of__(request_container)
+
+    obj = parent.unrestrictedTraverse(path)
+    if isinstance(obj, BrokenClass):
+        logger.warn('BrokenClass found at %s', path)
+        return None
+
+    return obj
 
 
 #
 # Sync Catalog UIDs from PATHs
 #
-def _syncFromPaths(context):
+def _syncFromPaths(catalog):
     """ Sync catalog from Paths """
     count = 0
     dcount = 0
-    for rid, path in context._catalog.paths.iteritems():
+    for rid, path in catalog._catalog.paths.iteritems():
         try:
-            context._catalog.uids[path]
+            catalog._catalog.uids[path]
         except KeyError as err:
-            context._catalog.uids[path] = rid
+            catalog._catalog.uids[path] = rid
             count += 1
 
         try:
-            context._catalog.data[rid]
+            catalog._catalog.data[rid]
         except KeyError as err:
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
                 obj = getObject(path=path)
-                newDataRecord = context._catalog.recordify(obj)
+                newDataRecord = catalog._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
             else:
-                context._catalog.data[rid] = newDataRecord
+                catalog._catalog.data[rid] = newDataRecord
 
     msg = "Fixed broken uids: \t%s\t empty brain data: \t %s" % (count, dcount)
     logger.warn(msg)
@@ -98,29 +131,29 @@ def _syncFromPaths(context):
 #
 # Sync Catalog PATHs from UIDs
 #
-def _syncFromUids(context):
+def _syncFromUids(catalog):
     """ Sync catalog from UIDS """
     count = 0
     dcount = 0
-    for path, rid in context._catalog.uids.iteritems():
+    for path, rid in catalog._catalog.uids.iteritems():
         try:
-            context._catalog.paths[rid]
+            catalog._catalog.paths[rid]
         except KeyError as err:
-            context._catalog.paths[rid] = path
+            catalog._catalog.paths[rid] = path
             count += 1
 
         try:
-            context._catalog.data[rid]
+            catalog._catalog.data[rid]
         except KeyError as err:
             logger.warn("Missing data for rid: %s. Trying to fix it", err)
             dcount += 1
             try:
                 obj = getObject(path=path)
-                newDataRecord = context._catalog.recordify(obj)
+                newDataRecord = catalog._catalog.recordify(obj)
             except Exception as derr:
                 logger.exception(derr)
             else:
-                context._catalog.data[rid] = newDataRecord
+                catalog._catalog.data[rid] = newDataRecord
 
     msg = "Fixed broken paths: \t%s\t empty brain data: \t %s" % (count, dcount)
     logger.warn(msg)
@@ -130,13 +163,13 @@ def _syncFromUids(context):
 #
 # Use this method to sync Catalog UIDs and Paths
 #
-def sync(context, run_async=True):
+def sync(catalog, run_async=True):
     """ Sync """
     logger.warn("Syncing _catalog uids / paths")
     msg = []
-    msg.append(_syncFromUids(context))
+    msg.append(_syncFromUids(catalog))
     transaction.savepoint(optimistic=True)
-    msg.append(_syncFromPaths(context))
+    msg.append(_syncFromPaths(catalog))
     #
     # Schedule new async job
     #
@@ -149,7 +182,7 @@ def sync(context, run_async=True):
             None, schedule,
             queue, ('default',),
             sync,
-            context
+            catalog
         )
     return "\n".join(msg)
 
@@ -157,26 +190,26 @@ def sync(context, run_async=True):
 #
 # Cleanup broken brains
 #
-def cleanup(context, run_async=True):
+def cleanup(catalog, run_async=True):
     """ Cleanup broken brains
     """
-    query = {'show_inactive': True}
-    if 'Language' in context._catalog.indexes:
+    query = {}
+    if 'Language' in catalog._catalog.indexes:
         query['Language'] = 'all'
 
-    brains = context(**query)
+    brains = catalog(**query)
     total = len(brains)
     paths = set()
     for index, brain in enumerate(brains):
         path = brain.getPath()
-        if 'portal_factory' in path:
-            paths.add(path)
-            continue
-
         try:
-            getObject(brain=brain)
+            doc = getObject(brain=brain)
         except Exception as err:
             paths.add(path)
+        else:
+            if not doc:
+                paths.add(path)
+
         if index % 10000 == 0:
             logger.warn("Searching for orphan brains: %s/%s", index, total)
 
@@ -185,7 +218,7 @@ def cleanup(context, run_async=True):
     for path in paths:
         logger.warn("Removing orphan brain: %s", path)
         try:
-            context._catalog.uncatalogObject(path)
+            catalog.uncatalog_object(path)
         except Exception as err:
             logger.exception(err)
     #
@@ -200,7 +233,7 @@ def cleanup(context, run_async=True):
             None, schedule,
             queue, ('default',),
             cleanup,
-            context
+            catalog
         )
     #
     # Return
