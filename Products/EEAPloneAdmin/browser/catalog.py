@@ -155,7 +155,8 @@ def _syncFromUids(catalog):
             else:
                 catalog._catalog.data[rid] = newDataRecord
 
-    msg = "Fixed broken paths: \t%s\t empty brain data: \t %s" % (count, dcount)
+    msg = "Fixed broken paths: \t%s\t empty brain data: \t %s" % (
+        count, dcount)
     logger.warn(msg)
     return msg
 
@@ -200,6 +201,7 @@ def cleanup(catalog, run_async=True):
     brains = catalog(**query)
     total = len(brains)
     paths = set()
+    count = 0
     for index, brain in enumerate(brains):
         path = brain.getPath()
         try:
@@ -208,12 +210,13 @@ def cleanup(catalog, run_async=True):
             paths.add(path)
         else:
             if not doc:
+                count += 1
                 paths.add(path)
 
         if index % 10000 == 0:
-            logger.warn("Searching for orphan brains: %s/%s", index, total)
+            logger.warn("Searching for orphan brains: %s/%s. Broken: %s",
+                        index, total, count)
 
-    count = len(paths)
     logger.warn("Orphan brains: %s", count)
     for path in paths:
         logger.warn("Removing orphan brain: %s", path)
@@ -238,15 +241,13 @@ def cleanup(catalog, run_async=True):
     #
     # Return
     #
-    return "Removed orphan brains: %s\n%s" % (
-        count,
-        "\n".join(paths)
-    )
+    return "Removed orphan brains: %s" % (count)
 
 
 class Catalog(BrowserView):
     """ Catalog utils
     """
+
     def cleanup(self, **kwargs):
         kwargs.update(self.request.form)
         run_async = kwargs.get('async', False)
