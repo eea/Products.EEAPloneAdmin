@@ -231,7 +231,7 @@ def cleanup(catalog, run_async=True):
     """
     query = {}
     catalog_id = catalog.getId()
-    if 'Language' in catalog._catalog.indexes:
+    if catalog_id != 'uid_catalog' and 'Language' in catalog._catalog.indexes:
         query['Language'] = 'all'
 
     brains = catalog(**query)
