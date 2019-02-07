@@ -240,8 +240,8 @@ def cleanup(catalog, run_async=True):
     count = 0
     for index, brain in enumerate(brains):
         if index % 10000 == 0:
-            logger.warn("Searching for orphan brains: %s/%s. Broken: %s",
-                        index, total, count)
+            logger.warn("%s - Searching for orphan brains: %s/%s. Broken: %s",
+                        catalog_id, index, total, count)
 
         path = brain.getPath()
         try:
@@ -279,9 +279,14 @@ def cleanup(catalog, run_async=True):
                 count += 1
                 paths.add(path)
 
-    logger.warn("Orphan brains: %s", count)
-    for path in paths:
-        logger.warn("Removing orphan brain: %s", path)
+    logger.warn("%s - Found orphan brains: %s", catalog_id, count)
+    for index, path in enumerate(paths):
+        if index % 10000 == 0:
+            logger.warn('%s - Removed orphan brains: %s/%s',
+                        catalog_id, index, count)
+            transaction.savepoint(optimistic=True)
+
+        logger.warn("\t%s - Removing orphan brain: %s", catalog_id, path)
         try:
             catalog.uncatalog_object(path)
         except Exception as err:
