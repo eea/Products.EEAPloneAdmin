@@ -9,13 +9,13 @@
     profile="Products.EEAPloneAdmin:default">
 
     <genericsetup:upgradeStep
-        title="Cleanup catalog broken brains"
-        handler=".evolve192.cleanup_catalogs"
+        title="Sync catalog UIDs and Paths"
+        handler=".evolve192.sync_catalogs"
         />
 
     <genericsetup:upgradeStep
-        title="Sync catalog UIDs and Paths"
-        handler=".evolve192.sync_catalogs"
+        title="Cleanup catalog broken brains"
+        handler=".evolve192.cleanup_catalogs"
         />
 
   </genericsetup:upgradeSteps>

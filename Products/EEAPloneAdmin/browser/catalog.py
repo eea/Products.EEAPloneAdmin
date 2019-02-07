@@ -35,6 +35,26 @@ logger = logging.getLogger('EEAPloneAdmin')
 
 
 #
+# Get path by UID
+#
+def getPath(uid):
+    """ Return path by given UID
+    """
+    site = getSite()
+    catalog = getattr(site, 'uid_catalog', None)
+    if not catalog:
+        return None
+
+    rids = catalog._catalog.indexes['UID']._index.get(uid, ())
+    if isinstance(rids, int):
+        rids = (rids, )
+
+    for rid in rids:
+        return catalog._catalog.paths[rid]
+    return None
+
+
+#
 # Get object from ZCatalog brain or path
 #
 def getObject(brain=None, path=None):
@@ -58,10 +78,14 @@ def getObject(brain=None, path=None):
         return None
 
     # Handle relatedItems brains
-    path = path.split('/at_references')[0]
+    at_reference = None
+    if '/at_references/' in path:
+        path, at_reference = path.split('/at_references/')
 
     # Handle plone.app.discussion brains
-    path = path.split('/++conversation++')[0]
+    discussion = None
+    if '/++conversation++default/' in path:
+        path, discussion = path.split('/++conversation++default/')
 
     path = path.split('/')
 
@@ -92,6 +116,17 @@ def getObject(brain=None, path=None):
     if isinstance(obj, BrokenClass):
         logger.warn('BrokenClass found at %s', path)
         return None
+
+    # Handle relatedItems
+    if at_reference is not None:
+        at_references = getattr(obj, 'at_references', {})
+        return at_references.get(at_reference, None)
+
+    # Handle plone.app.discussion
+    if discussion is not None:
+        anno = getattr(obj, '__annotations__', {})
+        discussions = anno.get('plone.app.discussion:conversation', {})
+        return discussions.get(discussion, None)
 
     return obj
 
@@ -195,6 +230,7 @@ def cleanup(catalog, run_async=True):
     """ Cleanup broken brains
     """
     query = {}
+    catalog_id = catalog.getId()
     if 'Language' in catalog._catalog.indexes:
         query['Language'] = 'all'
 
@@ -203,19 +239,45 @@ def cleanup(catalog, run_async=True):
     paths = set()
     count = 0
     for index, brain in enumerate(brains):
+        if index % 10000 == 0:
+            logger.warn("Searching for orphan brains: %s/%s. Broken: %s",
+                        index, total, count)
+
         path = brain.getPath()
         try:
             doc = getObject(brain=brain)
         except Exception as err:
+            count += 1
             paths.add(path)
-        else:
+            continue
+
+        if not doc:
+            count += 1
+            paths.add(path)
+            continue
+
+        # Also cleanup orphan references
+        if catalog_id == 'reference_catalog':
+            try:
+                targetPath = getPath(brain.targetUID)
+            except Exception:
+                # Maybe uid_catalog is corrupted.
+                # Avoid a reference_catalog massacre.
+                continue
+            else:
+                if not targetPath:
+                    continue
+
+            try:
+                doc = getObject(path=targetPath)
+            except Exception as err:
+                count += 1
+                paths.add(path)
+                continue
+
             if not doc:
                 count += 1
                 paths.add(path)
-
-        if index % 10000 == 0:
-            logger.warn("Searching for orphan brains: %s/%s. Broken: %s",
-                        index, total, count)
 
     logger.warn("Orphan brains: %s", count)
     for path in paths:
