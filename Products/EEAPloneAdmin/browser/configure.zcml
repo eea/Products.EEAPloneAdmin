@@ -95,4 +95,20 @@
         template="audit_local_roles.pt"
         />
 
+    <browser:page
+        name="cleanup"
+        for="Products.ZCatalog.interfaces.IZCatalog"
+        class=".catalog.Catalog"
+        permission="cmf.ManagePortal"
+        attribute="cleanup"
+        />
+
+    <browser:page
+        name="sync"
+        for="Products.ZCatalog.interfaces.IZCatalog"
+        class=".catalog.Catalog"
+        permission="cmf.ManagePortal"
+        attribute="sync"
+        />
+
 </configure>

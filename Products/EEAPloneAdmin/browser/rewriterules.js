@@ -23,7 +23,7 @@ jQuery.fn.eearewrite = function(options){
 
     var attr = self.attr(settings.attr);
 
-    if(attr.indexOf(settings.newVal) !== -1){
+    if(attr.indexOf(settings.newVal) !== -1 || attr.indexOf('/www/') !== -1){
       // Nothing to do, return
       return;
     }

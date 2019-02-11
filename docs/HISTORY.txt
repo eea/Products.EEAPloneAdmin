@@ -1,6 +1,13 @@
 Changelog
 =========
 
+19.2 - (2019-02-07)
+---------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+* Feature: Add Catalog cleanup and sync jobs to be run daily
+  [avoinea refs #102105]
+
 19.1 - (2019-01-28)
 ---------------------
 * Jenkins: Add sonarqube step
