@@ -1,6 +1,9 @@
 Changelog
 =========
 
+19.3-dev0 - (unreleased)
+---------------------
+
 19.2 - (2019-02-07)
 ---------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
