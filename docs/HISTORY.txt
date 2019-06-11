@@ -3,6 +3,12 @@ Changelog
 
 19.3-dev0 - (unreleased)
 ---------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [avoinea refs #103690]
+* Feature: Automatically backup portal_setup profiles within
+  blobstorage NFS shared folder
+  [avoinea refs #103690]
 
 19.2 - (2019-02-07)
 ---------------------
