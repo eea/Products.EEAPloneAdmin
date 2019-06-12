@@ -4,6 +4,18 @@
     i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="19.2"
+    destination="19.3"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeStep
+        title="Backup profiles weekly"
+        handler=".evolve193.backup"
+        />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="18.0"
     destination="19.2"
     profile="Products.EEAPloneAdmin:default">
