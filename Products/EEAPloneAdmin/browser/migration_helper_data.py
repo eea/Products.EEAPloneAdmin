@@ -1186,9 +1186,9 @@ def countryGroups():
                                  'type': 'Feature', 'bbox': [],
                                  'properties': {'center': [41.8333333, 22],
                                         'name': '718075',
-                                        'title': u'Former Yugoslav Republic of Macedonia, the',
+                                        'title': u'North Macedonia',
                                         'country': u'MK',
-                                        'description': u'Former Yugoslav Republic of Macedonia, the',
+                                        'description': u'North Macedonia',
                                         'tags': u'independent political entity',
                                         'adminCode1': u'00',
                                         'adminName1': u''}}, {
@@ -1965,13 +1965,13 @@ def countryDicts():
                                  'type': 'Feature', 'bbox': [],
                                  'properties': {'center': [41.8333333, 22],
                                         'name': '718075',
-                                        'title': u'Former Yugoslav Republic of Macedonia, the',
+                                        'title': u'North Macedonia',
                                         'country': u'MK',
-                                        'description': u'Former Yugoslav Republic of Macedonia, the',
+                                        'description': u'North Macedonia',
                                         'tags': u'independent political entity',
                                         'adminCode1': u'00',
                                         'adminName1': u''}}
-    countriesDict['Former Yugoslav Republic of Macedonia, the'] = \
+    countriesDict['North Macedonia'] = \
                                                 countriesDict['Macedonia']
 
     countriesDict['Moldova'] = {
