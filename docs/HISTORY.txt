@@ -1,6 +1,11 @@
 Changelog
 =========
 
+19.4 - (2019-07-16)
+---------------------
+* Change: Updated macedonia country name
+  [iulianpetchesi refs #106742]
+
 19.3 - (2019-06-12)
 ---------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
