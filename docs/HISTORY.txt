@@ -1,7 +1,7 @@
 Changelog
 =========
 
-19.4-dev0 - (unreleased)
+19.4 - (2019-07-16)
 ---------------------
 * Change: Updated macedonia country name
   [iulianpetchesi refs #106742]
