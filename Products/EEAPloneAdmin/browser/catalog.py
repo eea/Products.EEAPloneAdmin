@@ -250,8 +250,10 @@ def cleanup(catalog, run_async=True):
             count += 1
             paths.add(path)
             continue
-
-        if not doc:
+        # 107760 check if obj path is same of the brain path, if false remove
+        # brain
+        obj_path = '/' + doc.absolute_url(1)
+        if not doc or obj_path != path:
             count += 1
             paths.add(path)
             continue
