@@ -5097,7 +5097,7 @@ def translated_non_ascii_mapping_for_85616():
         u'Marea Mediteran\u0103': u'Mediterranean Sea',
         u'Ministerio de Medio Ambiente, Medio Rural y Marino , P\xba Infanta Isabel 1,  Madrid': u'Ministry of the Environment, Rural and Marine Affairs, Paseo de la Infanta Isabel 1, Madrid',
         u'Mont\xe9n\xe9gro': u'Montenegro',
-        u'Moravskoslezsk\xfd, Czechia':  u'Moravian-Silesian Region, Czechia',
+        u'Moravskoslezsk\xfd, Czech Republic':  u'Moravian-Silesian Region, Czechia',
         u'Moravskoslezsk\xfd, Czechia': u'Moravskoslezsky, Czechia',
         u'Mun\u021bii Pirinei': u'Pyrenees mountains',
         u'Na \u0160abatce 2050/17, 143 06 Praha 412-Komo\u0159any': u'Na \u0160abatce 2050/17, 143 06 Prague 412-Komo\u0159any',
