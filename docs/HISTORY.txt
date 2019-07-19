@@ -1,6 +1,11 @@
 Changelog
 =========
 
+19.5 - (unreleased)
+---------------------
+* Change: Updated czechia country name
+  [iulianpetchesi refs #106742]
+
 19.4 - (2019-07-16)
 ---------------------
 * Change: in async catalog cleanup job remove also the brains that are not equal

@@ -2673,7 +2673,7 @@ class FixEU32CountryGroup(object):
         not_found = []
         cc = "%s, Cyprus, Estonia, Poland, Denmark, " \
                 "Luxembourg, Ireland, Netherlands, Belgium, Latvia," \
-                " Malta, Germany, Czech Republic, Hungary, " \
+                " Malta, Germany, Czechia, Hungary, " \
                 "Bulgaria, Sweden, Greece, Portugal, Spain, Italy, " \
                 "Austria, Finland, Romania, United Kingdom, France," \
                 " Lithuania, Slovenia, Slovakia, Switzerland, " \
