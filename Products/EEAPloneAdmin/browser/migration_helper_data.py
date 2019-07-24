@@ -246,8 +246,8 @@ def countryGroups():
                            'type': 'Feature', 'bbox': [],
                            'properties': {'center': [49.75, 15],
                                       'name': '3077311',
-                                      'title': u'Czech Republic', 'country': u'CZ',
-                                      'description': u'Czech Republic',
+                                      'title': u'Czechia', 'country': u'CZ',
+                                      'description': u'Czechia',
                                       'tags': u'independent political entity',
                                       'adminCode1': u'00',
                                       'adminName1': u''}}, {
@@ -496,8 +496,8 @@ def countryGroups():
                            'type': 'Feature', 'bbox': [],
                            'properties': {'center': [49.75, 15],
                                       'name': '3077311',
-                                      'title': u'Czech Republic', 'country': u'CZ',
-                                      'description': u'Czech Republic',
+                                      'title': u'Czechia', 'country': u'CZ',
+                                      'description': u'Czechia',
                                       'tags': u'independent political entity',
                                       'adminCode1': u'00',
                                       'adminName1': u''}}, {
@@ -762,9 +762,9 @@ def countryGroups():
                             'type': 'Feature', 'bbox': [],
                             'properties': {'center': [49.75, 15],
                                        'name': '3077311',
-                                       'title': u'Czech Republic',
+                                       'title': u'Czechia',
                                        'country': u'CZ',
-                                       'description': u'Czech Republic',
+                                       'description': u'Czechia',
                                        'tags': u'independent political entity',
                                        'adminCode1': u'00',
                                        'adminName1': u''}}, {
@@ -1093,9 +1093,9 @@ def countryGroups():
                                  'type': 'Feature', 'bbox': [],
                                  'properties': {'center': [49.75, 15],
                                         'name': '3077311',
-                                        'title': u'Czech Republic',
+                                        'title': u'Czechia',
                                         'country': u'CZ',
-                                        'description': u'Czech Republic',
+                                        'description': u'Czechia',
                                         'tags': u'independent political entity',
                                         'adminCode1': u'00',
                                         'adminName1': u''}}, {
@@ -1580,10 +1580,10 @@ def countryDicts():
                                        'adminName1': u'',
                                        'center': [49.75, 15],
                                        'country': u'CZ',
-                                       'description': u'Czech Republic',
+                                       'description': u'Czechia',
                                        'name': '3077311',
                                        'tags': u'independent political entity',
-                                       'title': u'Czech Republic'},
+                                       'title': u'Czechia'},
                                 'type': 'Feature'}
     countriesDict['Czech Republic'] = countriesDict['Czechia']
 

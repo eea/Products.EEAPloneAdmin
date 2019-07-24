@@ -1,8 +1,16 @@
 Changelog
 =========
 
+19.5 - (2019-07-19)
+---------------------
+* Change: Updated czechia country name
+  [iulianpetchesi refs #106742]
+
 19.4 - (2019-07-16)
 ---------------------
+* Change: in async catalog cleanup job remove also the brains that are not equal
+  to the url of the relative object url
+  [ichim-david refs #107760]
 * Change: Updated macedonia country name
   [iulianpetchesi refs #106742]
 
