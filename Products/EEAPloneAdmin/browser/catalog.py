@@ -226,7 +226,7 @@ def sync(catalog, run_async=True):
 #
 # Cleanup broken brains
 #
-def cleanup(catalog, run_async=True):
+def cleanup(catalog, run_async=True, dry_run=False):
     """ Cleanup broken brains
     """
     query = {}
@@ -250,14 +250,11 @@ def cleanup(catalog, run_async=True):
             count += 1
             paths.add(path)
             continue
-        # 107760 check if obj path is same of the brain path, if false remove
-        # brain
-        obj_path = '/' + doc.absolute_url(1)
-        if not doc or obj_path != path:
+
+        if not doc:
             count += 1
             paths.add(path)
             continue
-
         # Also cleanup orphan references
         if catalog_id == 'reference_catalog':
             try:
@@ -286,13 +283,18 @@ def cleanup(catalog, run_async=True):
         if index % 10000 == 0:
             logger.warn('%s - Removed orphan brains: %s/%s',
                         catalog_id, index, count)
-            transaction.savepoint(optimistic=True)
+            if not dry_run:
+                transaction.savepoint(optimistic=True)
 
-        logger.warn("\t%s - Removing orphan brain: %s", catalog_id, path)
-        try:
-            catalog.uncatalog_object(path)
-        except Exception as err:
-            logger.exception(err)
+        if not dry_run:
+            logger.warn("\t%s - Removing orphan brain: %s", catalog_id, path)
+            try:
+                catalog.uncatalog_object(path)
+            except Exception as err:
+                logger.exception(err)
+        else:
+            logger.warn("\t%s - DRY RUN Removing orphan brain: %s", catalog_id,
+                        path)
     #
     # Schedule new async job
     #
@@ -307,6 +309,10 @@ def cleanup(catalog, run_async=True):
             cleanup,
             catalog
         )
+    if dry_run:
+        transaction.abort()
+        logger.warn("Dry run")  # pragma: no cover
+        logger.warn("Abort transaction")  # pragma: no cover
     #
     # Return
     #
@@ -320,8 +326,9 @@ class Catalog(BrowserView):
     def cleanup(self, **kwargs):
         kwargs.update(self.request.form)
         run_async = kwargs.get('async', False)
+        dry_run = kwargs.get('dry_run', False)
         if not run_async:
-            return cleanup(self.context, run_async=False)
+            return cleanup(self.context, run_async=False, dry_run=dry_run)
 
         async = queryUtility(IAsyncService)
         queue = async.getQueues()['']
