@@ -1,7 +1,7 @@
 Changelog
 =========
 
-19.6-dev0 - (unreleased)
+19.6 - (2019-08-07)
 ------------------------
 * Bug fix: undo catalog cleanup changes made in 107760 and introduced a dry_run
   option /catalog/@@cleanup?dry_run=True which if called will not perform any
