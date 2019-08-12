@@ -1,6 +1,6 @@
 include *.md *.rst *.txt
 graft docs
-graft eea
+graft Products
 global-exclude *pyc
 global-exclude *~
 global-exclude *.un~
