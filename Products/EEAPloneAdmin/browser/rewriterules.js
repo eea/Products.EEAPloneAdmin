@@ -38,7 +38,7 @@ jQuery.fn.eearewrite = function(options){
 */
 jQuery.eearewriterules = function(context){
 
-  var form;
+  var form, href, action;
 
   form = jQuery('form[action*="@@aliases-controlpanel"]', context);
   if(form.length){
@@ -470,7 +470,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-addaction"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
@@ -548,7 +548,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-add-new-workflow"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
@@ -572,7 +572,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-assign"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
@@ -583,7 +583,7 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-view-graph
   form = jQuery('form[action*="@@workflowmanager-view-graph"]', context);
   if(form.length){
-    var action = form.attr('action');
+    action = form.attr('action');
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: action,
@@ -630,7 +630,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-delete-workflow"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
@@ -641,7 +641,7 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-deleteaction
   form = jQuery('form[action*="@@workflowmanager-deleteaction"]', context);
   if(form.length){
-    var action = form.attr('action');
+    action = form.attr('action');
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: action,
@@ -732,7 +732,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-update-security-settings"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
@@ -771,7 +771,7 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-save-graph
   form = jQuery('form[action*="@@workflowmanager-save-graph"]', context);
   if(form.length){
-    var action = form.attr('action');
+    action = form.attr('action');
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: action,
@@ -782,7 +782,7 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-sanity-check
   form = jQuery('form[action*="@@workflowmanager-sanity-check"]', context);
   if(form.length){
-    var action = form.attr('action');
+    action = form.attr('action');
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: action,
@@ -792,7 +792,7 @@ jQuery.eearewriterules = function(context){
 
   form = jQuery('a[href*="@@workflowmanager-sanity-check"]', context);
   if(form.length){
-    var href = form.attr('href');
+    href = form.attr('href');
     jQuery(form).eearewrite({
       attr: 'href',
       oldVal: href,
