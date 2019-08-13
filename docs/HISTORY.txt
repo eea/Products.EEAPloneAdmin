@@ -3,6 +3,8 @@ Changelog
 
 19.8-dev0 - (unreleased)
 ---------------------------
+* Change: Added rewriterules for plone.app.workflowmanager
+  [iulianpetchesi refs #103756]
 
 19.7 - (2019-08-12)
 ---------------------------

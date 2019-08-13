@@ -457,6 +457,372 @@ jQuery.eearewriterules = function(context){
     });
   }
 
+  // @@workflowmanager-addaction
+  form = jQuery('form[action*="@@workflowmanager-addaction"]', context);
+  if(form.length){
+    var action = form.attr('action');
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: action,
+      newVal: action.replace('@@workflowmanager-addaction', 'www/@@workflowmanager-addaction')
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-addaction"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-addaction', 'www/@@workflowmanager-addaction')
+    });
+  }
+
+  // @@workflowmanager-add-new-state - se repeta
+  form = jQuery('form[action*="@@workflowmanager-add-new-state"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-add-new-state', 'www/@@workflowmanager-add-new-state')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-add-new-state"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-add-new-state', 'www/@@workflowmanager-add-new-state')
+      });
+    });
+  }
+
+  // @@workflowmanager-add-new-transition - se repeta
+  form = jQuery('form[action*="@@workflowmanager-add-new-transition"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-add-new-transition', 'www/@@workflowmanager-add-new-transition')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-add-new-transition"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-add-new-transition', 'www/@@workflowmanager-add-new-transition')
+      });
+    });
+  }
+
+  // @@workflowmanager-add-new-workflow
+  form = jQuery('form[action*="@@workflowmanager-add-new-workflow"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-add-new-workflow', 'www/@@workflowmanager-add-new-workflow')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-add-new-workflow"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-add-new-workflow', 'www/@@workflowmanager-add-new-workflow')
+    });
+  }
+
+  // @@workflowmanager-assign
+  form = jQuery('form[action*="@@workflowmanager-assign"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-assign', 'www/@@workflowmanager-assign')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-assign"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-assign', 'www/@@workflowmanager-assign')
+    });
+  }
+
+  // @@workflowmanager-view-graph
+  form = jQuery('form[action*="@@workflowmanager-view-graph"]', context);
+  if(form.length){
+    var action = form.attr('action');
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: action,
+      newVal: action.replace('@@workflowmanager-view-graph', 'www/@@workflowmanager-view-graph')
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-view-graph"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-view-graph', 'www/@@workflowmanager-view-graph')
+      });
+    });
+  }
+
+  form = jQuery('img[src*="@@workflowmanager-view-graph"]', context);
+  if(form.length){
+    var src = form.attr('src');
+    jQuery(form).eearewrite({
+      attr: 'src',
+      oldVal: src,
+      newVal: src.replace('@@workflowmanager-view-graph', 'www/@@workflowmanager-view-graph')
+    });
+  }
+
+  // @@workflowmanager-delete-workflow - se repeta
+  form = jQuery('form[action*="@@workflowmanager-delete-workflow"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-delete-workflow', 'www/@@workflowmanager-delete-workflow')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-delete-workflow"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-delete-workflow', 'www/@@workflowmanager-delete-workflow')
+    });
+  }
+
+  // @@workflowmanager-deleteaction
+  form = jQuery('form[action*="@@workflowmanager-deleteaction"]', context);
+  if(form.length){
+    var action = form.attr('action');
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: action,
+      newVal: action.replace('@@workflowmanager-deleteaction', 'www/@@workflowmanager-deleteaction')
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-deleteaction"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-deleteaction', 'www/@@workflowmanager-deleteaction')
+      });
+    });
+  }
+
+  // @@workflowmanager-delete-state
+  form = jQuery('form[action*="@@workflowmanager-delete-state"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-delete-state', 'www/@@workflowmanager-delete-state')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-delete-state"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-delete-state', 'www/@@workflowmanager-delete-state')
+      });
+    });
+  }
+
+  // @@workflowmanager-delete-transition
+  form = jQuery('form[action*="@@workflowmanager-delete-transition"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-delete-transition', 'www/@@workflowmanager-delete-transition')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-delete-transition"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-delete-transition', 'www/@@workflowmanager-delete-transition')
+      });
+    });
+  }
+
+  // @@workflowmanager-update-security-settings
+  form = jQuery('form[action*="@@workflowmanager-update-security-settings"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-update-security-settings', 'www/@@workflowmanager-update-security-settings')
+      });
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-update-security-settings"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-update-security-settings', 'www/@@workflowmanager-update-security-settings')
+    });
+  }
+
+  // @@workflowmanager-save-state
+  form = jQuery('form[action*="@@workflowmanager-save-state"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-save-state', 'www/@@workflowmanager-save-state')
+      });
+    });
+  }
+
+  // @@workflowmanager-save-transition
+  form = jQuery('form[action*="@@workflowmanager-save-transition"]', context);
+  if(form.length){
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var action = selfform.attr('action');
+      jQuery(selfform).eearewrite({
+        attr: 'action',
+        oldVal: action,
+        newVal: action.replace('@@workflowmanager-save-transition', 'www/@@workflowmanager-save-transition')
+      });
+    });
+  }
+
+  // @@workflowmanager-save-graph
+  form = jQuery('form[action*="@@workflowmanager-save-graph"]', context);
+  if(form.length){
+    var action = form.attr('action');
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: action,
+      newVal: action.replace('@@workflowmanager-save-graph', 'www/@@workflowmanager-save-graph')
+    });
+  }
+
+  // @@workflowmanager-sanity-check
+  form = jQuery('form[action*="@@workflowmanager-sanity-check"]', context);
+  if(form.length){
+    var action = form.attr('action');
+    jQuery(form).eearewrite({
+      attr: 'action',
+      oldVal: action,
+      newVal: action.replace('@@workflowmanager-sanity-check', 'www/@@workflowmanager-sanity-check')
+    });
+  }
+
+  form = jQuery('a[href*="@@workflowmanager-sanity-check"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-sanity-check', 'www/@@workflowmanager-sanity-check')
+    });
+  }
+
+  // @@workflowmanager-edit-state
+  form = jQuery('a[href*="@@workflowmanager-edit-state"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-edit-state', 'www/@@workflowmanager-edit-state')
+    });
+  }
+
+  // @@workflowmanager-edit-transition
+  form = jQuery('a[href*="@@workflowmanager-edit-transition"]', context);
+  if(form.length){
+    var href = form.attr('href');
+    jQuery(form).eearewrite({
+      attr: 'href',
+      oldVal: href,
+      newVal: href.replace('@@workflowmanager-edit-transition', 'www/@@workflowmanager-edit-transition')
+    });
+  }
+
+
 /*
   //@@manage-portlets
   links = jQuery('a[href*="@@spm-move-portlet-down"]', context);
@@ -521,6 +887,95 @@ jQuery(document).ready(function(){
   }catch(err2){
     if(window.console){
       console.log(err2);
+    }
+  }
+
+  /* Rewrite on events */
+  // WorkflowManager On
+
+  var state_btn, trans_btn, wflw_btn, sec_btn, delwflw_btn, edit_state_btn, edit_trans_btn;
+
+  try{
+    // Add new state button
+    state_btn = jQuery('input[name="add-new-state-button"]', context);
+    if(state_btn.length){
+      state_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Add new transition button
+    trans_btn = jQuery('input[name="add-new-transition-button"]', context);
+    if(trans_btn.length){
+      trans_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Assign workflow button
+    wflw_btn = jQuery('input[name="assign-workflow"]', context);
+    if(wflw_btn.length){
+      wflw_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Update security button
+    sec_btn = jQuery('input[name="update-security-settings"]', context);
+    if(sec_btn.length){
+      sec_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Delete workflow button
+    delwflw_btn = jQuery('input[name="delete-workflow-button"]', context);
+    if(delwflw_btn.length){
+      delwflw_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(5000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Edit state button
+    edit_state_btn = jQuery('input#plumb-state-edit', context);
+    if(edit_state_btn.length){
+      edit_state_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(50000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+    // Edit transition button
+    edit_trans_btn = jQuery('input#plumb-transition-edit', context);
+    if(edit_trans_btn.length){
+      edit_trans_btn.click(function(){
+        // Add a timer to give ajax call time to finish
+        jQuery(this).oneTime(50000, "rewrite", function(){
+          jQuery.eearewriterules(jQuery('.pb-ajax', context));
+        });
+      });
+    }
+
+  }catch(err3){
+    if(window.console){
+      console.log(err3);
     }
   }
 
