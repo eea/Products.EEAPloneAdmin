@@ -803,22 +803,28 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-edit-state
   form = jQuery('a[href*="@@workflowmanager-edit-state"]', context);
   if(form.length){
-    var href = form.attr('href');
-    jQuery(form).eearewrite({
-      attr: 'href',
-      oldVal: href,
-      newVal: href.replace('@@workflowmanager-edit-state', 'www/@@workflowmanager-edit-state')
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-edit-state', 'www/@@workflowmanager-edit-state')
+      });
     });
   }
 
   // @@workflowmanager-edit-transition
   form = jQuery('a[href*="@@workflowmanager-edit-transition"]', context);
   if(form.length){
-    var href = form.attr('href');
-    jQuery(form).eearewrite({
-      attr: 'href',
-      oldVal: href,
-      newVal: href.replace('@@workflowmanager-edit-transition', 'www/@@workflowmanager-edit-transition')
+    jQuery.each(form, function(){
+      var selfform = jQuery(this);
+      var href = selfform.attr('href');
+      jQuery(selfform).eearewrite({
+        attr: 'href',
+        oldVal: href,
+        newVal: href.replace('@@workflowmanager-edit-transition', 'www/@@workflowmanager-edit-transition')
+      });
     });
   }
 
@@ -956,7 +962,7 @@ jQuery(document).ready(function(){
     if(edit_state_btn.length){
       edit_state_btn.click(function(){
         // Add a timer to give ajax call time to finish
-        jQuery(this).oneTime(50000, "rewrite", function(){
+        jQuery(this).oneTime(40000, "rewrite", function(){
           jQuery.eearewriterules(jQuery('.pb-ajax', context));
         });
       });
@@ -967,7 +973,7 @@ jQuery(document).ready(function(){
     if(edit_trans_btn.length){
       edit_trans_btn.click(function(){
         // Add a timer to give ajax call time to finish
-        jQuery(this).oneTime(50000, "rewrite", function(){
+        jQuery(this).oneTime(40000, "rewrite", function(){
           jQuery.eearewriterules(jQuery('.pb-ajax', context));
         });
       });
