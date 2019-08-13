@@ -460,7 +460,7 @@ jQuery.eearewriterules = function(context){
   // @@workflowmanager-addaction
   form = jQuery('form[action*="@@workflowmanager-addaction"]', context);
   if(form.length){
-    var action = form.attr('action');
+    action = form.attr('action');
     jQuery(form).eearewrite({
       attr: 'action',
       oldVal: action,
