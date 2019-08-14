@@ -1,6 +1,11 @@
 Changelog
 =========
 
+19.8 - (2019-08-13)
+---------------------------
+* Change: Added rewriterules for plone.app.workflowmanager
+  [iulianpetchesi refs #103756]
+
 19.7 - (2019-08-12)
 ---------------------------
 * Change: Fix MANIFEST.in
