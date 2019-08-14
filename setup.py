@@ -54,6 +54,7 @@ setup(name=name,
           'eea.themecentre',
           'eea.mediacentre',
           'eea.reports',
+          'plone.app.workflowmanager',
       ],
       extras_require={
           'yum': [
