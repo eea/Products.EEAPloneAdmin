@@ -1,6 +1,11 @@
 Changelog
 =========
 
+19.9 - (2019-10-01)
+---------------------------
+* Change: Reduce clutter exceptions sent to sentry
+  [avoinea]
+
 19.8 - (2019-08-13)
 ---------------------------
 * Change: Added rewriterules for plone.app.workflowmanager
