@@ -3,6 +3,8 @@ Changelog
 
 19.9-dev0 - (unreleased)
 ---------------------------
+* Change: Reduce clutter exceptions sent to sentry
+  [avoinea]
 
 19.8 - (2019-08-13)
 ---------------------------

@@ -154,7 +154,7 @@ def _syncFromPaths(catalog):
                 obj = getObject(path=path)
                 newDataRecord = catalog._catalog.recordify(obj)
             except Exception as derr:
-                logger.exception(derr)
+                logger.warn(derr)
             else:
                 catalog._catalog.data[rid] = newDataRecord
 
@@ -186,7 +186,7 @@ def _syncFromUids(catalog):
                 obj = getObject(path=path)
                 newDataRecord = catalog._catalog.recordify(obj)
             except Exception as derr:
-                logger.exception(derr)
+                logger.warn(derr)
             else:
                 catalog._catalog.data[rid] = newDataRecord
 
@@ -291,7 +291,7 @@ def cleanup(catalog, run_async=True, dry_run=False):
             try:
                 catalog.uncatalog_object(path)
             except Exception as err:
-                logger.exception(err)
+                logger.warn(err)
         else:
             logger.warn("\t%s - DRY RUN Removing orphan brain: %s", catalog_id,
                         path)
