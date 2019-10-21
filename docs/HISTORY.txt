@@ -1,6 +1,11 @@
 Changelog
 =========
 
+20.0 - (2019-10-09)
+---------------------------
+* Change: Moved @@recreate-scales browserview utility to eea.depiction
+  [avoinea refs #109515]
+
 19.9 - (2019-10-01)
 ---------------------------
 * Change: Reduce clutter exceptions sent to sentry
