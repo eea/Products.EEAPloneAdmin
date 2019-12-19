@@ -3,6 +3,9 @@ Changelog
 
 20.1-dev0 - (unreleased)
 ---------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [iulianpetchesi refs #110427]
 
 20.0 - (2019-10-09)
 ---------------------------
