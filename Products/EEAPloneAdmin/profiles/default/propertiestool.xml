@@ -332,6 +332,8 @@
    <element value="HelpCenterTutorialFolder" />
    <element value="TempFolder" />
   </property>
+  <property name="cmshare_admin_username" type="string" purge="False"></property>
+  <property name="cmshare_admin_password" type="string" purge="False"></property>
  </object>
  <object name="workflow_properties" meta_type="Plone Property Sheet">
   <property name="title">EEA workflow properties</property>

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+20.1 - (2019-12-19)
+---------------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [iulianpetchesi refs #110427]
+
 20.0 - (2019-10-09)
 ---------------------------
 * Change: Moved @@recreate-scales browserview utility to eea.depiction

@@ -171,4 +171,12 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:registerProfile
+        name="upgrade201"
+        title="EEA Plone Admin upgrade profile for 20.1"
+        description='EEA Plone Admin upgrade profile for v20.1'
+        directory="profiles/upgrades/to_201"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
 </configure>
