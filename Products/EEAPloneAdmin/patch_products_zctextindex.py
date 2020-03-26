@@ -2,6 +2,7 @@
         - unindex doc;
 """
 import logging
+from BTrees.Length import Length
 from Products.ZCTextIndex.BaseIndex import unique
 
 logger = logging.getLogger('Prodcuts.EEAPloneAdmin')
