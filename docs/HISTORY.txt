@@ -1,7 +1,7 @@
 Changelog
 =========
 
-20.2-dev0 - (unreleased)
+20.2 - (2020-03-26)
 ---------------------------
 * Change: Added patch for Products.ZCTextIndex so that it will continue deleting
   object even if the index returns a keyerror for one object
