@@ -163,6 +163,14 @@
                   replacement=".patch_archetypes.SearchableText"
                   preserveOriginal="true" />
 
+    ===========================[ Products.ZCTextIndex patches ]==========================
+
+    <!-- Patch Products.ZCTextIndex ver >= 2.13.5, to continue deletion if index entry does not exist -->
+    <monkey:patch description="Fix Products.ZCTextIndex to continue index entry deletion"
+                  class="Products.ZCTextIndex.BaseIndex.BaseIndex"
+                  original="unindex_doc"
+                  replacement=".patch_products_zctextindex.unindex_doc" />
+
     ===========================[ Other patches ]==========================
 
     <!-- #2316 implement HEAD for zope3 BrowserView -->
