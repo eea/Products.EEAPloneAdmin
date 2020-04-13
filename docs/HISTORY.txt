@@ -3,6 +3,11 @@ Changelog
 
 20.3-dev0 - (unreleased)
 ---------------------------
+* Change: remove effectiveDate when workflow is changed only when there is no
+  action set such as the case when we create a new version. This is to avoid
+  removing effectiveDate when we change the object state and we've manually set
+  an effectiveDate.
+  [ichim-david refs #106898]
 
 20.2 - (2020-03-26)
 ---------------------------

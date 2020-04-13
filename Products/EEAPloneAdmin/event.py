@@ -85,7 +85,11 @@ def handle_workflow_change(obj, event):
                 figure = brain.getObject()
                 figure.setEffectiveDate(parent_date)
     else:
-        if obj.effective_date:
+        # 106898 remove effective date only if there is no action set
+        # which happens when we create a new version. This way we keep
+        # the effective date when setting an effective date in the future
+        # and we change to publish at a later time
+        if obj.effective_date and not event.status['action']:
             obj.setEffectiveDate('None')
 
 
