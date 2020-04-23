@@ -1,6 +1,12 @@
 Changelog
 =========
 
+20.4 - (2020-04-23)
+---------------------------
+* Bug fix: update datecomponents.py plone ceiling date to 2499 like newer
+  versions of plone.app.form defines the date limit that is valid
+  [ichim-david refs #106898]
+
 20.3 - (2020-04-22)
 ---------------------------
 * Change: remove effectiveDate when workflow is changed only when there is no
