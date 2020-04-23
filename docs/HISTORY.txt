@@ -1,7 +1,7 @@
 Changelog
 =========
 
-20.4-dev0 - (unreleased)
+20.4 - (2020-04-23)
 ---------------------------
 * Bug fix: update datecomponents.py plone ceiling date to 2499 like newer
   versions of plone.app.form defines the date limit that is valid
