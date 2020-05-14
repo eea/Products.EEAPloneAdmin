@@ -3,6 +3,10 @@ Changelog
 
 20.5-dev0 - (unreleased)
 ---------------------------
+* Feature: patch TinyMCE getConfiguration to show tinyMCE element pathbar and
+  append body classes needed in order to get better preview of how content
+  should look within view
+  [ichim-david refs #117294]
 
 20.4 - (2020-04-23)
 ---------------------------

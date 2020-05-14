@@ -200,3 +200,12 @@ def patched_save(self, text, fieldname):
                      force=False)
 
     return "saved"
+
+
+def patched_getConfiguration(self, context=None, field=None, request=None):
+    """ #117294 show path bar and add mini-header to body class """
+    results = self._old_getConfiguration(context, field, request)
+    results['theme_advanced_path'] = True
+    if context.restrictedTraverse('@@miniheader_content_types')():
+        results['body_class'] += ' mini-header'
+    return results
