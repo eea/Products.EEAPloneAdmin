@@ -1,7 +1,7 @@
 Changelog
 =========
 
-20.5-dev0 - (unreleased)
+20.5 - (2020-06-05)
 ---------------------------
 * Feature: patch TinyMCE getConfiguration to show tinyMCE element pathbar and
   append body classes needed in order to get better preview of how content
