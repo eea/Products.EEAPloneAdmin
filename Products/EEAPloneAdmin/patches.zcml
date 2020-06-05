@@ -85,6 +85,13 @@
                   replacement=".patch_tinymce.patched_getStyles"
                   preserveOriginal="false" />
 
+  <!-- Patch for Products.TinyMCE ver 1.4.0 to show pathbar and append body class  -->
+    <monkey:patch description="Monkeypatch Products.TinyMCE.getConfiguration"
+      class="Products.TinyMCE.utility.TinyMCE"
+      original="getConfiguration"
+      replacement=".patch_tinymce.patched_getConfiguration"
+      preserveOriginal="true" />
+
     <!-- Patch for Products.TinyMCE ver 1.4.0 to record a history version when using the TinyMCE save plugin  -->
     <monkey:patch description="Monkeypatch Products.TinyMCE.getStyle"
                   class="Products.TinyMCE.adapters.Save.Save"
@@ -169,7 +176,8 @@
     <monkey:patch description="Fix Products.ZCTextIndex to continue index entry deletion"
                   class="Products.ZCTextIndex.BaseIndex.BaseIndex"
                   original="unindex_doc"
-                  replacement=".patch_products_zctextindex.unindex_doc" />
+                  replacement=".patch_products_zctextindex.unindex_doc"
+    />
 
     ===========================[ Other patches ]==========================
 
