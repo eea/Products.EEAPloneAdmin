@@ -24,6 +24,7 @@ from Products.EEAPloneAdmin import patch_plone_session
 from Products.EEAPloneAdmin import translation_negotiator
 
 # Patch plone.app.folder ver 1.1.3 due to #120304
+# we have a folder "themes" that has an illegal ID name as a property name
 from Products.EEAPloneAdmin import patch_plone_app_folder
 
 config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
