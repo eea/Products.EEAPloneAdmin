@@ -18,7 +18,7 @@ def traverse(base, path):
             if value:
                 current = value
             else:
-                current = getattr(current, cid, None)
+                current = current.get(cid)
         except KeyError:
             return None
     return current
