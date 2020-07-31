@@ -23,10 +23,14 @@ from Products.EEAPloneAdmin import patch_plone_app_layout
 from Products.EEAPloneAdmin import patch_plone_session
 from Products.EEAPloneAdmin import translation_negotiator
 
+# Patch plone.app.folder ver 1.1.3 due to #120304
+from Products.EEAPloneAdmin import patch_plone_app_folder
+
 config.AUTO_NOTIFY_CANONICAL_UPDATE = 0
 
 __all__ = [patch_plone_app_caching.__name__,
            patch_plone_app_discussion.__name__,
            patch_plone_app_layout.__name__,
+           patch_plone_app_folder.__name__,
            patch_plone_session.__name__,
            translation_negotiator.__name__]

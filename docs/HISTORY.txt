@@ -1,6 +1,11 @@
 Changelog
 =========
 
+20.6 - (2020-07-31)
+---------------------------
+* Feature: added a patch for plone.app.folder to avoid an ID nameing conflict
+  [alecghica refs #120304]
+
 20.5 - (2020-06-05)
 ---------------------------
 * Feature: patch TinyMCE getConfiguration to show tinyMCE element pathbar and
