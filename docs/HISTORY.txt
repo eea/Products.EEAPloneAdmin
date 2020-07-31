@@ -1,7 +1,10 @@
 Changelog
 =========
 
-20.6-dev0 - (unreleased)
+20.7-dev0 - (unreleased)
+---------------------------
+
+20.6 - (2020-07-31)
 ---------------------------
 * Feature: added a patch for plone.app.folder to avoid an ID nameing conflict
   [alecghica refs #120304]
