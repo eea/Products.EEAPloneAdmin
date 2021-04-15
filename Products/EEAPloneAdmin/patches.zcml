@@ -202,6 +202,12 @@
                   replacement=".patch_atct.foldLine"
                   preserveOriginal="false" />
 
+    <monkey:patch description="Patch of Products.ATContentTypes stop setting layout parent layout to children for reports"
+                  class="Products.ATContentTypes.content.base.ATCTMixin"
+                  original="copyLayoutFromParent"
+                  replacement=".patch_atct.copyLayoutFromParent"
+                  preserveOriginal="false" />
+
     <!-- Patch for plone.outputfilters ver 1.15.1 to solve logic bug in Plone code -->
     <monkey:patch description="Monkeypatch plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter to solve logic bug in Plone code"
                   class="plone.outputfilters.filters.resolveuid_and_caption.ResolveUIDAndCaptionFilter"
