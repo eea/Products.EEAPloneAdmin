@@ -1,7 +1,7 @@
 Changelog
 =========
 
-20.7-dev0 - (unreleased)
+20.7 - (2021-04-15)
 ---------------------------
 * Change: Patched Products.ATContentTypes so that the parent layout is not set
   for its children when creating a report
