@@ -1,6 +1,12 @@
 Changelog
 =========
 
+20.7 - (2021-04-15)
+---------------------------
+* Change: Patched Products.ATContentTypes so that the parent layout is not set
+  for its children when creating a report
+  [iulianpetchesi refs #127437]
+
 20.6 - (2020-07-31)
 ---------------------------
 * Feature: added a patch for plone.app.folder to avoid an ID nameing conflict
