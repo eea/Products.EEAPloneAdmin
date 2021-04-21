@@ -1,6 +1,9 @@
 Changelog
 =========
 
+20.8-dev0 - (unreleased)
+---------------------------
+
 20.7 - (2021-04-15)
 ---------------------------
 * Change: Patched Products.ATContentTypes so that the parent layout is not set
