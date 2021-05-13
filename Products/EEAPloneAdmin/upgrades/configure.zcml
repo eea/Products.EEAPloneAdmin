@@ -4,6 +4,19 @@
     i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="20.1"
+    destination="20.2"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeStep
+        title="Restore deleted Zope root Basic authentication"
+        handler=".setupauthplugins.setup_auth_plugins"
+        />
+    />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="19.3"
     destination="20.1"
     profile="Products.EEAPloneAdmin:default">
