@@ -7,7 +7,7 @@ from zope.annotation.interfaces import IAnnotations
 from zope.component import queryAdapter
 from zope.component.interface import interfaceToName
 from persistent.list import PersistentList
-from eea.facetednavigation.interfaces import IFacetedNavigable, ICriteria
+from eea.facetednavigation.interfaces import IFacetedNavigable
 from eea.facetednavigation.config import ANNO_CRITERIA
 
 
