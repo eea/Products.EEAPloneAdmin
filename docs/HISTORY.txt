@@ -1,7 +1,7 @@
 Changelog
 =========
 
-20.9-dev0 - (unreleased)
+20.9 - (2021-05-20)
 ---------------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for EEA Plone Admin
