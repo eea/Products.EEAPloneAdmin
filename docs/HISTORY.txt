@@ -1,6 +1,18 @@
 Changelog
 =========
 
+20.9 - (2021-05-20)
+---------------------------
+* Change: moved patches to patches module, cleaning up
+  package root of patch files now that we have so many
+  [ichim-david refs #134252]
+* Change: added patch_plone_app_contentrules_handlers patch which ensures
+  that the content rules engine goes beyond SITE as parent with ISiteRoot
+  [ichim-david refs #134252]
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for EEA Plone Admin
+  [iulianpetchesi refs #131802]
+
 20.8 - (2021-05-13)
 ---------------------------
 * Change: Develop #131248

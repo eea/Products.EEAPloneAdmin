@@ -4,6 +4,19 @@
     i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="20.2"
+    destination="20.9"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeStep
+        title="Change faceted objects vocabularies so that they use taxonomies"
+        handler=".evolve209.change_faceted_vocabularies"
+        />
+    />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="20.1"
     destination="20.2"
     profile="Products.EEAPloneAdmin:default">
