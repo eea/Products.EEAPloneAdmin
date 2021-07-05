@@ -1,6 +1,11 @@
 Changelog
 =========
 
+21.0 - (2021-07-05)
+---------------------------
+* Bug fix: make use of propper interface for site root.
+  [alecghica refs #135698]
+
 20.9 - (2021-05-20)
 ---------------------------
 * Change: moved patches to patches module, cleaning up
