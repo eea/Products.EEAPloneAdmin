@@ -3,7 +3,7 @@
 from plone.contentrules.engine.interfaces import IRuleExecutor
 from plone.contentrules.engine.interfaces import IRuleStorage
 from plone.contentrules.engine.interfaces import StopRule
-from Products.CMFCore.interfaces import ISiteRoot
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from zope.component import queryUtility
 from Acquisition import aq_inner
 from Acquisition import aq_parent
@@ -42,7 +42,7 @@ def execute(context, event):
 
         # Do not bubble beyond the site root
         is_site = context.id == 'SITE'
-        if not ISiteRoot.providedBy(context) or is_site:
+        if not IPloneSiteRoot.providedBy(context) or is_site:
             parent = aq_parent(aq_inner(context))
             while parent is not None:
                 parent_is_site = parent.id == 'SITE'
@@ -50,7 +50,7 @@ def execute(context, event):
                 if executor is not None:
                     executor(event, bubbled=True, rule_filter=rule_filter)
                 # 134252 set parent to none only if parent id != SITE
-                if ISiteRoot.providedBy(parent) and not parent_is_site:
+                if IPloneSiteRoot.providedBy(parent) and not parent_is_site:
                     parent = None
                 else:
                     parent = aq_parent(aq_inner(parent))
