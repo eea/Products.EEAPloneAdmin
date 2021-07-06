@@ -1,6 +1,9 @@
 Changelog
 =========
 
+21.2-dev0 - (unreleased)
+---------------------------
+
 21.1 - (2021-07-06)
 ---------------------------
 * Bug fix: properly patch plone.app.contentrules method.
