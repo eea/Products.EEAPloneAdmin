@@ -3,6 +3,8 @@ Changelog
 
 21.1-dev0 - (unreleased)
 ---------------------------
+* Bug fix: propperly patch plone.app.contentrules method.
+  [alecghica refs #135698]
 
 21.0 - (2021-07-05)
 ---------------------------
