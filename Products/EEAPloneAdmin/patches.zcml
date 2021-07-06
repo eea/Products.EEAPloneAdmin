@@ -297,11 +297,4 @@
                   replacement=".patches.patch_difflib._line_wrapper"
                   preserveOriginal="true" />
 
-    <!-- #134252 patch content rules engine to go beyond site folder -->
-    <monkey:patch description="Monkeypatch plone.app.contentrules handlers execute function to run on www"
-      module="plone.app.contentrules.handlers"
-      original="execute"
-      replacement=".patches.patch_plone_app_contentrules_handlers.execute"
-      preserveOriginal="false" />
-
   </configure>
