@@ -3,6 +3,10 @@ Changelog
 
 21.2-dev0 - (unreleased)
 ---------------------------
+* Feature: added *pub_date_set_on_workflow_transition_or_state* property to
+  site_properties to be used for defining which transition or state we want to
+  check when we decide if EffectiveDate should be set if no date was set manually
+  [ichim-david refs #135801]
 
 21.1 - (2021-07-06)
 ---------------------------
