@@ -11,4 +11,4 @@ def add_workflow_properties(context):
     pprop = getToolByName(context, 'portal_properties')
     sprops = pprop.get('site_properties')
     sprops._setProperty('pub_date_set_on_workflow_transition_or_state',
-                       'publish', 'lines')
+                       ['publish'], 'lines')
