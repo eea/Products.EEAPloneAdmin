@@ -27,6 +27,16 @@ from plone.app.contentrules import handlers
 from patches.patch_plone_app_contentrules_handlers import execute as \
                                                           patched_execute
 
+# 135801 patch plone.restapi to use portal properties list of transitions
+# to set EffectiveDate
+has_restapi = True
+try:
+    from plone.restapi.services.workflow import transition
+    from patches.plone_restapi_workflow_transition import \
+        patched_recurse_transition
+except ImportError:
+    has_restapi = False
+
 # Patch plone.app.folder ver 1.1.3 due to #120304
 # we have a folder "themes" that has an illegal ID name as a property name
 
@@ -40,3 +50,6 @@ __all__ = [patch_plone_app_caching.__name__,
            translation_negotiator.__name__]
 
 handlers.execute = patched_execute
+if has_restapi:
+    transition.WorkflowTransition.recurse_transition = \
+        patched_recurse_transition

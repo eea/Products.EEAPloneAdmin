@@ -4,6 +4,19 @@
     i18n_domain="eea">
 
   <genericsetup:upgradeSteps
+    source="20.9"
+    destination="21.2"
+    profile="Products.EEAPloneAdmin:default">
+
+    <genericsetup:upgradeStep
+      title="Add workflow states and transitions to set EffectiveDate"
+      handler=".evolve.add_workflow_properties"
+    />
+    />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
     source="20.2"
     destination="20.9"
     profile="Products.EEAPloneAdmin:default">
