@@ -1,6 +1,11 @@
 Changelog
 =========
 
+21.4-dev0 - (unreleased)
+---------------------------
+* Bugfix: fixed patch of getSize when checking for image filename
+  [ichim-david refs #128468]
+
 21.3 - (2021-08-25)
 ---------------------------
 * Change: patch getSize and createScale of plone.app.imaging so that we can

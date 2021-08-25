@@ -69,7 +69,8 @@ def patched_createScale(self, instance, scale, width, height, data=None):
         if data:
             id = field.getName() + '_' + scale
             try:
-                if 'svg' in field.getFilename(instance):
+                filename = field.getFilename(instance)
+                if filename and 'svg' in filename:
                     imgdata = instance.restrictedTraverse('@@images').scale(
                         field.getName(), scale, width=width, height=height)
                     imgdata.getvalue = data_as_func(imgdata)
