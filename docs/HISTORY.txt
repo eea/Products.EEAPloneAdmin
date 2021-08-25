@@ -1,7 +1,7 @@
 Changelog
 =========
 
-21.4-dev0 - (unreleased)
+21.4 - (2021-08-25)
 ---------------------------
 * Bugfix: fixed patch of getSize when checking for image filename
   [ichim-david refs #128468]
