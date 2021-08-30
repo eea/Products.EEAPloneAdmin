@@ -46,6 +46,19 @@
                   replacement=".patches.patch_blob.patched_getScale"
                   docstringWarning="true" />
 
+    <monkey:patch description="Fix getScale method for svg blobs"
+      class="plone.app.imaging.traverse.DefaultImageScaleHandler"
+      original="getScale"
+      replacement=".patches.patch_plone_app_imaging_traverse.patched_getScale"
+      docstringWarning="true" />
+
+    <monkey:patch description="Fix createScale method for svg scale generation"
+      class="plone.app.imaging.traverse.DefaultImageScaleHandler"
+      original="createScale"
+      replacement=".patches.patch_plone_app_imaging_traverse.patched_createScale"
+      docstringWarning="true" />
+
+
     ===========================[ ResourceRegistries patches ]==========================
 
     <!-- Patch of Products.ResourceRegistries ver 2.0.4 to generate better ids; Solves #3962 -->
