@@ -1,7 +1,7 @@
 Changelog
 =========
 
-21.5-dev0 - (unreleased)
+21.5 - (2021-09-13)
 ---------------------------
 * Change: patched plone.restapi RelationChoiceFieldDeserializer to search
   from SITE when searching relationship by path as it is not passed by the
