@@ -3,6 +3,10 @@ Changelog
 
 21.5-dev0 - (unreleased)
 ---------------------------
+* Change: patched plone.restapi RelationChoiceFieldDeserializer to search
+  from SITE when searching relationship by path as it is not passed by the
+  relations widget
+  [ichim-david refs #134485]
 
 21.4 - (2021-08-25)
 ---------------------------
