@@ -34,8 +34,13 @@ try:
     from plone.restapi.services.workflow import transition
     from patches.plone_restapi_workflow_transition import \
         patched_recurse_transition
+    from plone.restapi.deserializer.relationfield import \
+        RelationChoiceFieldDeserializer
+    from patches.patch_plone_restapi_deserializer_relationfield import \
+        patched_call
 except ImportError:
     has_restapi = False
+
 
 # Patch plone.app.folder ver 1.1.3 due to #120304
 # we have a folder "themes" that has an illegal ID name as a property name
@@ -53,3 +58,4 @@ handlers.execute = patched_execute
 if has_restapi:
     transition.WorkflowTransition.recurse_transition = \
         patched_recurse_transition
+    RelationChoiceFieldDeserializer.__call__ = patched_call
