@@ -1,6 +1,11 @@
 Changelog
 =========
 
+21.6 - (2022-02-18)
+---------------------------
+* Bugfix: Fix plone.app.discussion patch
+  [avoinea refs #145801]
+
 21.5 - (2021-09-13)
 ---------------------------
 * Change: patched plone.restapi RelationChoiceFieldDeserializer to search

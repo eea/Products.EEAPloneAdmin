@@ -149,7 +149,7 @@
     <!-- Patch plone.app.discussion ver >= 2.0.10, to allow discussions on folderish objects -->
     <monkey:patch description="Fix plone.app.discussion to allow discussions on folderish objects"
                   class="plone.app.discussion.browser.conversation.ConversationView"
-                  original="enabled"
+                  original="_enabled_for_archetypes"
                   replacement=".patches.patch_plone_app_discussion.conversation_enabled" />
 
     ===========================[ Products.CMFCore patches ]==========================
