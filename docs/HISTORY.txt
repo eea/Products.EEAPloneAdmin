@@ -3,6 +3,8 @@ Changelog
 
 21.6-dev0 - (unreleased)
 ---------------------------
+* Bugfix: Fix plone.app.discussion patch
+  [avoinea refs #145801]
 
 21.5 - (2021-09-13)
 ---------------------------
