@@ -1,6 +1,9 @@
 Changelog
 =========
 
+21.7-dev0 - (unreleased)
+---------------------------
+
 21.6 - (2022-02-18)
 ---------------------------
 * Bugfix: Fix plone.app.discussion patch
