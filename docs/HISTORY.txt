@@ -3,6 +3,8 @@ Changelog
 
 21.7-dev0 - (unreleased)
 ---------------------------
+* Feature: Add external method to export users with local groups and roles as CSV
+  [avoinea - refs #272383]
 
 21.6 - (2022-02-18)
 ---------------------------
